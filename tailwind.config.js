@@ -12,6 +12,7 @@ module.exports = {
       "azul-ufal": "#0095DA",
       "cinza-texto": "#797D9A",
       "branco-100": "#FFFFFF",
+      'cinza-escuro': '#D9D9D9',
     },
     boxShadow: {
       "sombra-card": "0px 8px 16px rgba(0, 0, 0, 0.16)",
