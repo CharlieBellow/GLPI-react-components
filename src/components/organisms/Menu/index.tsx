@@ -20,7 +20,7 @@ function Menu() {
 				<div className="menu__geral flex flex-col items-start pl-6 pr-5 pb-[2.063rem]">
 					<h4 className="menu__titleSection text-branco-100 font-bold text-sm">Geral</h4>
 
-					<div className="menu__itemOption fdsdv">
+					<div className="menu__itemOption">
 						<p className="menu__item">
 							<FiGrid size={20} className="menu__icon" />
 							Dashboard
