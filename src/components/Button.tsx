@@ -1,14 +1,15 @@
 interface ButtonProps {
-  theme: string;
+  classname: string;
   title: string;
 }
 
 function Button(props: ButtonProps) {
   return (
-    <button className={props.theme}>
+    <button className={props.classname}>
       {props.title}
     </button>
   );
 }
 
 export default Button;
+

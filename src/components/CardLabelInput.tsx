@@ -8,7 +8,7 @@ interface CardInputProps {
 interface CardLabelInputProps {
   label: string;
   inputId: string;
-  width: string
+  width: string;
 }
 
 function CardInput(props: CardInputProps) {
