@@ -10,7 +10,7 @@ import logoUfal from '../../../assets/brasao-ufal.png'
 function Menu() {
   return (
 		<>
-			<div className="menu h-screen bg-azulFinalGradiente w-[13.375rem] m-0 z-10 fixed">
+			<div className="menu h-screen bg-azul-final-gradiente w-[13.375rem] m-0 z-10 fixed">
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
@@ -18,9 +18,9 @@ function Menu() {
 				/>
 
 				<div className="menu__geral flex flex-col items-start pl-6 pr-5 pb-[2.063rem]">
-					<h4 className="menu__titleSection">Geral</h4>
+					<h4 className="menu__titleSection text-branco-100 font-bold text-sm">Geral</h4>
 
-					<div className="menu__itemOption">
+					<div className="menu__itemOption ">
 						<p className="menu__item">
 							<FiGrid size={20} className="menu__icon" />
 							Dashboard
@@ -55,7 +55,7 @@ function Menu() {
 					<div className="menu__itemOption">
 						<p className="menu__item">
 							<FaListUl size={20} className="menu__icon" />
-							Listas
+							<Link to="/Table">Listas</Link>
 						</p>
 						<FaChevronDown className="menu__icon-chevron" />
 					</div>

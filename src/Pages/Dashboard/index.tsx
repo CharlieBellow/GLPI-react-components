@@ -10,10 +10,7 @@ function Dashboard() {
       <div className="layout__menu-header">
         <Header />
         <Menu />
-
       </div>
-
-     
     </>
   )
 }
