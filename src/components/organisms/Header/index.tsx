@@ -12,7 +12,7 @@ function Header() {
   
   return (
 		<>
-			<header className="fixed h-28.75 w-screen rounded-br-lg text-branco-100 bg-gradiente z-0">
+			<header className="h-28.75 w-full rounded-br-lg text-branco-100 bg-gradiente z-0">
 				<div className=" bg-[left_48rem_top_-6.5rem] bg-backgroundUfal  bg-auto">
 					<div className="flex flex-row items-start p-[2.625rem] w-auto h-[3.125rem] content-around">
 						<h4 className="text-[1.625rem] font-normal">Nome da Página</h4>
