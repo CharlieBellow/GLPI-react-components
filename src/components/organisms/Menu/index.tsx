@@ -21,7 +21,7 @@ function Menu() {
 					<h4 className="menu__titleSection text-branco-100 font-bold text-sm">Geral</h4>
 
 					<div className="menu__itemOption">
-						<p className="menu__item">
+						<p className="menu__item text-white">
 							<FiGrid size={20} className="menu__icon" />
 							Dashboard
 						</p>
