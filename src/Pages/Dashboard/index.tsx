@@ -1,15 +1,12 @@
-import React from 'react';
-
-import Header from '../../components/organisms/Header';
 import Menu from '../../components//organisms/Menu';
-import Button from '../../components/Button'
-
+import Header from '../../components/organisms/Header';
+import TableList from '../../components/TableList'
 
 function Dashboard() {
   return (
 		<>
 			<div className="layout__menu-header">
-				<div className="flex">
+				<div className="flex bg-branco-gelo-forte">
 					<div className="flex">
 						<Menu />
 					</div>
@@ -19,8 +16,8 @@ function Dashboard() {
 							<Header />
 						</div>
 
-						<div className="content">
-							<Button classname="bg-red-700 m-6 " title="botão" />
+						<div className="content  ">
+							<TableList />
 						</div>
 					</div>
 				</div>

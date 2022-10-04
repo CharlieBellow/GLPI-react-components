@@ -53,7 +53,7 @@ function Menu() {
 						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 pr-1">
 							<GrConfigure
 								size={20}
-								className="menu__icon pr-1  stroke-branco-100"
+								className="menu__icon pr-1 text-branco-100 stroke-branco-100"
 							/>
 							Configuração
 						</p>

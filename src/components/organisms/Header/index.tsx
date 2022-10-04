@@ -5,7 +5,7 @@ import * as React from 'react';
 
 
 import { FaRegBell, FaUserPlus, FaSearch } from 'react-icons/fa';
-//import logoTransparent from "../../../assets/ufal-sigla-branca-fundo-transparente-40por-cento.png";
+import logoTransparent from "../../../assets/ufal-sigla-branca-fundo-transparente-40por-cento.png";
 
 
 function Header() {
@@ -13,16 +13,19 @@ function Header() {
   
   return (
 		<>
-			<header className="flex h-7.75 w-full rounded-br-lg text-branco-100 bg-gradiente justify-around">
+			<header className="z-0 flex h-7.75 w-full rounded-br-lg text-branco-100 bg-gradiente justify-around">
+				<img
+					alt="logo"
+					src={logoTransparent}
+					className="z-10 h-[32.875rem] w-[25.75rem] fixed bg-clip-content mt-[-104px] mr-[16.25rem] no-repeat"
+				/>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-center">
 						<FaSearch size={18} className="header__iconSearch" />
 						<h4 className="text-[1.625rem] font-normal pl-2 mr-[5.125rem]">
 							Nome da Página
 						</h4>
-
 					</div>
-					
 
 					<div className="relative header__inputIcon">
 						<FaSearch
@@ -43,7 +46,7 @@ function Header() {
 								/>*/}
 					</div>
 
-					<div className="header__icons flex ml-[7.563rem] mr-8">
+					<div className="header__icons flex ml-[7.563rem] mr-8 border-r-2 pr-6">
 						<div className="header__iconsChild pr-6">
 							<FaRegBell size={24} />
 						</div>
@@ -66,8 +69,6 @@ function Header() {
 						/>
 					</div>
 				</div>
-
-				<div className="caixa"></div>
 			</header>
 		</>
 	);

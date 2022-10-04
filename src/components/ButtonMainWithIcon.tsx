@@ -5,10 +5,13 @@ interface ButtonProps {
 }
 
 function ButtonMainWithIcon(props: ButtonProps) {
-  <button className={props.classname}>
-		{props.icon}
-		{props.title}
-	</button>;
+  return (
+    <button className={props.classname}>
+      {props.icon}
+      {props.title}
+    </button>
+
+  )
 }
 
 export default ButtonMainWithIcon;
