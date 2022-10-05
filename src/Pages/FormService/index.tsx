@@ -34,19 +34,11 @@ function FormService() {
 					title="Solicitar"
 					bg="bg-cinza-texto"
 					textColor="text-branco-100"
-					textSize="text-base"
-					lineHeight="leading-[1.625rem]"
-					paddingHorizontal="px-[0.625rem]"
-					height="h-[2.625rem]"
 				/>
 				<ButtonCardAction
 					title="Cancelar"
 					bg="bg-cinza-medio"
 					textColor="text-cinza-texto"
-					textSize="text-base"
-					lineHeight="leading-[1.625rem]"
-					paddingHorizontal="px-[0.625rem]"
-					height="h-[2.625rem]"
 				/>
 			</div>
 		</div>
