@@ -13,9 +13,11 @@ interface CardLabelInputProps {
 
 function CardInput(props: CardInputProps) {
   return (
-    <div>
-      <input type="text" id={props.inputId} name={props.inputId} className={props.width}></input>
-    </div>
+    <input type="text" id={props.inputId} name={props.inputId} className={`
+      box-content py-1 px-4 h-8 bg-cinza-medio rounded-lg outline-hidden outline-2
+      focus:outline-azul-ufal text-fundo-claro text-base leading-[1.375rem] font-normal
+      ${props.width}
+    `} />
   );
 }
 

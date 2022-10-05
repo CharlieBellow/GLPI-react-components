@@ -9,11 +9,10 @@ function App() {
 		<>
 			<Router>
 				<Routes>
-					{/* <Route path="/" element={<Dashboard />} /> */}
+					<Route path="/" element={<Dashboard />} />
 					<Route path="/FormService" element={<FormService />} />
-					{/* <Route path="/Table" element={<FormService />} /> */}
+					<Route path="/Table" element={<FormService />} />
 				</Routes>
-				<FormService />
 			</Router>
 		</>
 	);
