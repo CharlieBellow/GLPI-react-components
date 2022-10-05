@@ -3,6 +3,11 @@ module.exports = {
 	content: ["./src/**/*.tsx"],
 	theme: {
 		extend: {
+			fontSize: {
+				base: ['16px', '24px'],
+				'3xl': ['32px', '52px'],
+			},
+
 			colors: {
 				"branco-gelo": "#F7FAFC",
 				"fundo-claro": "#333849",
