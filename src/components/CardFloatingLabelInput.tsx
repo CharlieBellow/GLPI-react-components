@@ -20,7 +20,7 @@ function CardLabel(props: CardFloatingLabelInputProps) {
 
 export function CardFloatingLabelInput(props: CardFloatingLabelInputProps) {
   return (
-      <div className="relative mx-[3.625rem]">
+      <div className="relative mx-14">
         <input 
           type="text"
           id={props.inputId}

@@ -19,11 +19,11 @@ function CardLabel(props: CardFloatingLabelTextareaProps) {
 
 export function CardFloatingLabelTextarea(props: CardFloatingLabelTextareaProps) {
   return (
-      <div className="relative mx-[3.625rem]">
+      <div className="relative mx-14">
         <textarea
           id={props.textareaId}
           name={props.textareaId}
-          className="block px-2.5 pb-2.5 pt-4 h-[10.125rem] min-h-full max-h-[10.125rem] w-full text-base
+          className="block px-2.5 pb-2.5 pt-4 h-40 min-h-full max-h-40 w-full text-base
           text-fundo-claro bg-transparent rounded-lg border-[0.1rem] border-fundo-claro appearance-none
           focus:outline-none focus:ring-0 focus:border-2 focus:border-azul-ufal peer"
           placeholder=" "
