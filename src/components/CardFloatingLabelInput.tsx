@@ -26,7 +26,7 @@ export function CardFloatingLabelInput(props: CardFloatingLabelInputProps) {
           id={props.inputId}
           name={props.inputId}
           className={`block px-2.5 pb-2.5 pt-4 text-base text-fundo-claro bg-transparent
-          rounded-lg border-[0.1rem] border-fundo-claro appearance-none focus:outline-none
+          rounded-lg border border-fundo-claro appearance-none focus:outline-none
           focus:ring-0 focus:border-2 focus:border-azul-ufal peer ${props.width}`}
           placeholder=" "
         />

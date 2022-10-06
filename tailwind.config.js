@@ -5,6 +5,7 @@ module.exports = {
 		extend: {
 			fontSize: {
 				base: ['16px', '24px'],
+				xl: ['20px', '32px'],
 				'3xl': ['32px', '52px'],
 			},
 

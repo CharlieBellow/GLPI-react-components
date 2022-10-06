@@ -1,5 +1,5 @@
 import "../../styles/main.css";
-import { ButtonCardAction } from '../../components/ButtonCardAction';
+import { Button } from '../../components/Button';
 import { CardTitle } from '../../components/CardTitle';
 import { CardLine } from '../../components/CardLine';
 import { CardFloatingLabelInput } from "../../components/CardFloatingLabelInput";
@@ -30,15 +30,13 @@ function FormService() {
 				</div>
 			</form>
 			<div className="flex justify-end gap-x-3.5 mr-14 mt-14">
-				<ButtonCardAction
+				<Button
 					title="Solicitar"
-					bg="bg-cinza-texto"
-					textColor="text-branco-100"
+					style="btn-primary-action"
 				/>
-				<ButtonCardAction
+				<Button
 					title="Cancelar"
-					bg="bg-cinza-medio"
-					textColor="text-cinza-texto"
+					style="btn-secondary-action"
 				/>
 			</div>
 		</div>
