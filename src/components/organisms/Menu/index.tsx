@@ -10,7 +10,7 @@ import logoUfal from '../../../assets/brasao-ufal.png'
 function Menu() {
   return (
 		<>
-			<div className="menu h-screen bg-azul-final-gradiente w-[13.375rem] m-0 z-10">
+			<div className="menu h- bg-azul-final-gradiente w-[13.375rem] m-0 z-10">
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
