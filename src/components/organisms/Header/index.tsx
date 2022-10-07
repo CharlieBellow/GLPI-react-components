@@ -13,11 +13,11 @@ function Header() {
   
   return (
 		<>
-			<header className="z-0 flex h-[7.75rem] w-full rounded-br-lg text-branco-100 bg-gradiente justify-around">
+			<header className="flex h-[7.75rem] w-full rounded-br-lg text-branco-100 bg-gradiente justify-around">
 				<img
 					alt="logo"
 					src={logoTransparent}
-					className="z-10 h-[7.75rem] border-box (attachment) w-[25.75rem] fixed bg-clip-content mt-[-104px] mr-[16.25rem] no-repeat"
+					className="box-box  w-[25.75rem] fixed  no-repeat"
 				/>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-center">
