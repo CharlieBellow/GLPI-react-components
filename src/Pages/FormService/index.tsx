@@ -11,7 +11,7 @@ function FormService() {
 			<div className="pl-9 pt-8">
 				<CardTitle title="Solicitar Serviço" />
 			</div>
-			<div className="mt-4 mb-8">
+			<div className="mt-4 mb-10">
 				<CardLine />
 			</div>
 			<form action="">
@@ -22,14 +22,14 @@ function FormService() {
 						width="w-full"
 					/>
 				</div>
-				<div className="mt-6">
+				<div className="mt-9">
 					<CardFloatingLabelTextarea
 						label="Descrição"
 						textareaId="description"
 					/>
 				</div>
 			</form>
-			<div className="flex justify-end gap-x-3.5 mr-14 mt-14">
+			<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 				<Button
 					title="Solicitar"
 					style="btn-primary-action"
