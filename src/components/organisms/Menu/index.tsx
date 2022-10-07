@@ -24,7 +24,7 @@ function Menu() {
 							<FiGrid size={20} className="menu__icon mr-2" />
 							Dashboard
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -32,7 +32,7 @@ function Menu() {
 							<FaUser size={20} className="menu__icon mr-2 stroke-branco-100" />
 							Perfil
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -43,7 +43,7 @@ function Menu() {
 							/>
 							<Link to="/FormService">Administração de setores</Link>
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -54,7 +54,7 @@ function Menu() {
 							/>
 							Configuração
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -65,7 +65,7 @@ function Menu() {
 							/>
 							<Link to="/Table">Listas</Link>
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 				</div>
 
@@ -82,7 +82,7 @@ function Menu() {
 							/>
 							Configurações
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -90,7 +90,7 @@ function Menu() {
 							<FaUser size={20} className="menu__icon mr-2 stroke-branco-100" />
 							Perfil
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -98,7 +98,7 @@ function Menu() {
 							<FaExclamationCircle size={20} className="menu__icon mr-2" />
 							Sobre
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
@@ -109,7 +109,7 @@ function Menu() {
 							/>
 							Ajuda
 						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-6 h-6" />
+						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
 					</div>
 				</div>
 			</div>
