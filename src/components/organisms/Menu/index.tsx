@@ -1,9 +1,7 @@
-
 import { FaUser, FaChevronDown, FaTools, FaListUl, FaExclamationCircle } from 'react-icons/fa';
 import { FiGrid, FiSettings, FiAlertCircle, FiTool } from "react-icons/fi";
 import {Link} from 'react-router-dom'
 import logoUfal from '../../../assets/brasao-ufal.png'
-
 
 
 function Menu() {

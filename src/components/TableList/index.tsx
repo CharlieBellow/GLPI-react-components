@@ -4,39 +4,26 @@ import { Link } from "react-router-dom";
 import { FaSearch, FaUserEdit, FaPlus } from "react-icons/fa";
 import ButtonMainWithIcon from "../ButtonMainWithIcon";
 
-
 import {
 	Table,
 	Thead,
 	Tbody,
-	Tfoot,
 	Tr,
 	Th,
 	Td,
-	TableCaption,
-	TableContainer,
 	Text,
 	Box,
-	Flex,
-	Heading,
-	Button,
-	Icon,
 	Checkbox,
-	useBreakpointValue,
-	Spinner,
 } from "@chakra-ui/react";
 
 import ButtonSelect from "../ButtonSelect";
 
-//import { Pagination } from "../Pagination";
 import PaginationTable from '../PaginationTable'
 interface TableProps {
 	itemList: Array<any>
 }
 
-
 function TableList(props: TableProps) {
-
 
 	return (
 		<>

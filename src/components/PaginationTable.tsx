@@ -1,8 +1,6 @@
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Link } from 'react-router-dom'
 
-
-//organizar isso!
 export default function PaginationTable() {
   return (
 		<>
@@ -41,7 +39,7 @@ export default function PaginationTable() {
 								<span className="sr-only">Previous</span>
 								<FiChevronLeft className="h-5 w-5" aria-hidden="true" />
 							</Link>
-							{/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+							
 							<Link
 								to="#"
 								aria-current="page"
