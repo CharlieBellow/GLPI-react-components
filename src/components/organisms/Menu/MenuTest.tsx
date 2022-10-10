@@ -14,7 +14,7 @@ import logoUfal from "../../../assets/brasao-ufal.png";
 function MenuTeste() {
 	return (
 		<>
-			<div className="menu h- bg-azul-final-gradiente w-[13.375rem] m-0 z-10">
+			<div className="menu bg-azul-final-gradiente w-[13.375rem] m-0 z-10">
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
@@ -26,51 +26,6 @@ function MenuTeste() {
 						Geral
 					</h4>
 					<AccordionMenu/>
-					{/*<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 pr-1">
-							<FiGrid size={20} className="menu__icon mr-2" />
-							Dashboard
-						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
-					</div>*/}
-
-					{/*<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 pr-1">
-							<FaUser size={20} className="menu__icon mr-2 stroke-branco-100" />
-							Perfil
-						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
-					</div>*/}
-
-					{/*<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FaTools
-								size={20}
-								className="menu__icon mr-2 stroke-branco-100"
-							/>
-							<Link to="/FormService">Administração de setores</Link>
-						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
-					</div>*/}
-
-					{/*<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FiTool size={20} className="menu__icon mr-2 text-branco-100" />
-							Configuração
-						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
-					</div>*/}
-
-					{/*<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FaListUl
-								size={20}
-								className="menu__icon mr-2 stroke-branco-100"
-							/>
-							<Link to="/Table">Listas</Link>
-						</p>
-						<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />
-					</div>*/}
 				</div>
 
 				<div className="menu__help flex flex-col items-start pl-6 pr-5 pb-[2.063rem]">

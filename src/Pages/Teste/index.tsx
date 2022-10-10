@@ -7,7 +7,7 @@ function Teste() {
 		<>
 			<div className="layout__menu-header">
 				<div className="flex bg-branco-gelo-forte">
-					<div className="flex h-screen">
+					<div className="flex h-full">
 						<Menu/>
 					</div>
 
