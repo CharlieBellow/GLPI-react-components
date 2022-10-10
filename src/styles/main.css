@@ -27,4 +27,7 @@ body {
   .btn-secondary-action {
     @apply bg-cinza-medio text-cinza-texto text-base px-[0.625rem] h-[2.625rem];
   }
+  .btn-text-only {
+    @apply bg-transparent shadow-none text-azul-ufal text-xl px-[3.25rem] h-12
+  }
 }
