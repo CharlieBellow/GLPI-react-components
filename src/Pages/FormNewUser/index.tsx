@@ -1,8 +1,8 @@
 import Menu from '../../components//organisms/Menu';
 import Header from '../../components/organisms/Header';
-import CardFormService from '../../components/CardFormService';
+import CardNewUser from '../../components/CardNewUser';
 
-function FormService() {
+function FormNewUser() {
   return (
 		<>
 			<div className="layout__menu-header">
@@ -17,7 +17,7 @@ function FormService() {
 						</div>
 
 						<div className="content">
-							<CardFormService />
+							<CardNewUser />
 						</div>
 					</div>
 				</div>
@@ -26,4 +26,4 @@ function FormService() {
 	);
 }
 
-export default FormService;
+export default FormNewUser;

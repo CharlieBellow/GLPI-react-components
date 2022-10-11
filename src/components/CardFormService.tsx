@@ -1,13 +1,12 @@
-import '../styles/main.css';
 import { Button } from './Button';
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
 
-export function CardFormService() {
+function CardFormService() {
   return (
-		<div className="m-[4.5rem] mb-52 container w-[50.5rem] h-[32rem] mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
+		<div className="font-roboto mt-[4.5rem] mb-56 container w-[50.5rem] h-[31rem] mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
 			<div className="pl-9 pt-8">
 				<CardTitle title="Solicitar Serviço" />
 			</div>
@@ -15,9 +14,10 @@ export function CardFormService() {
 				<CardLine />	
 			</div>
 			<form action="">
-				<div>
+				<div className="mx-14">
 					<CardLabelInput
 						label="Título"
+						type="text"
 						inputId="title"
 						width="w-full"
 					/>
@@ -42,3 +42,5 @@ export function CardFormService() {
 		</div>
 	);
 }
+
+export default CardFormService;

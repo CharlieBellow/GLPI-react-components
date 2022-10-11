@@ -3,6 +3,10 @@ module.exports = {
 	content: ["./src/**/*.tsx"],
 	theme: {
 		extend: {
+			fontFamily: {
+				'roboto': ['"Roboto"', 'sans-serif'],
+			},
+
 			fontSize: {
 				base: ['16px', '24px'],
 				xl: ['20px', '32px'],

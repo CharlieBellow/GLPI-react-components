@@ -1,7 +1,8 @@
 interface CardLabelInputProps {
   label: string;
+  type: string;  
   inputId: string;
-  width: string;  
+  width: string;
 }
 
 function CardLabel(props: CardLabelInputProps) {
@@ -21,19 +22,21 @@ function CardLabel(props: CardLabelInputProps) {
 
 export function CardLabelInput(props: CardLabelInputProps) {
   return (
-      <div className="relative mx-14">
+      <div className="relative">
         <input 
-          type="text"
+          type={props.type}
           id={props.inputId}
           name={props.inputId}
           className={`block px-2.5 pb-2.5 pt-2.5 text-base text-fundo-claro bg-cinza-medio focus:bg-transparent
           max-h-11 rounded-lg appearance-none focus:outline-none
           focus:ring-0 focus:border-2 focus:border-azul-ufal peer ${props.width}`}
           placeholder=" "
+          required
         />
         
         <CardLabel
           label={props.label}
+          type={props.type}
           inputId={props.inputId}
           width={props.width}
         />
