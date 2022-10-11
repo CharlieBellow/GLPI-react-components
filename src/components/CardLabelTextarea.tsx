@@ -1,9 +1,9 @@
-interface CardFloatingLabelTextareaProps {
+interface CardLabelTextareaProps {
   label: string;
   textareaId: string;  
 }
 
-function CardLabel(props: CardFloatingLabelTextareaProps) {
+function CardLabel(props: CardLabelTextareaProps) {
   return (
     <label
       htmlFor={props.textareaId}
@@ -17,7 +17,7 @@ function CardLabel(props: CardFloatingLabelTextareaProps) {
   )
 }
 
-export function CardFloatingLabelTextarea(props: CardFloatingLabelTextareaProps) {
+export function CardLabelTextarea(props: CardLabelTextareaProps) {
   return (
       <div className="relative mx-14">
         <textarea
