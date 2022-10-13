@@ -35,21 +35,21 @@ function TableList(props: TableProps) {
 						<label htmlFor="search" className="pr-6 font-normal text-xl">
 							Busca
 						</label>
-						<Search placeholder="pesquisar usuário"/>
+						<Search placeholder="pesquisar usuário" />
 					</div>
 
 					<ButtonSelect />
 					<div className="relative">
 						<ButtonMainWithIcon
 							classname="flex items-center px-[0.625rem] py-2 bg-azul-ufal text-branco-100 rounded-md shadow-sombra-botao font-bold text-base"
-							icon={<Plus className="mr-3" weight="bold" size={ 20} />}
+							icon={<Plus className="mr-3" weight="bold" size={20} />}
 							title="Adicionar"
 						/>
 					</div>
 				</div>
 
 				<div className="h-[26.375rem] overflow-y-auto">
-					<Table colorScheme="whiteAlpha" className="">
+					<Table colorScheme="whiteAlpha" className="relative">
 						<Thead className="border-b-2 border-cinza-texto">
 							<Th px={["4", "4", "6"]} className="text-cinza-texto" width="8">
 								<Checkbox
@@ -63,7 +63,7 @@ function TableList(props: TableProps) {
 							<Th w="6">Ações</Th>
 						</Thead>
 
-						<Tbody className="">
+						<Tbody className="scroll max-w-full">
 							{props.itemList.map(user => {
 								return (
 									<Tr className="border-b-2 border-cinza-texto">
@@ -89,7 +89,13 @@ function TableList(props: TableProps) {
 
 										<ButtonMainWithIcon
 											classname="flex items-center px-[0.625rem] py-2 m-6 bg-cinza-texto text-branco-100 rounded-md filter shadow-sombra-botao font-bold text-base"
-											icon={<PencilSimpleLine className="mr-3" weight="bold" size={ 20} />}
+											icon={
+												<PencilSimpleLine
+													className="mr-3"
+													weight="bold"
+													size={20}
+												/>
+											}
 											title="Editar"
 										/>
 									</Tr>
