@@ -10,7 +10,7 @@ function CardFormService() {
 			<div className="pl-9 pt-8">
 				<CardTitle title="Solicitar Serviço" />
 			</div>
-			<div className="mt-4 mb-10">
+			<div className="mx-9 mt-4 mb-10">
 				<CardLine />	
 			</div>
 			<form action="">

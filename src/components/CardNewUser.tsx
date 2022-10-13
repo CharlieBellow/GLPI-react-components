@@ -5,11 +5,11 @@ import { CardLabelInput } from "./CardLabelInput";
 
 function CardNewUser() {
   return (
-    <div className="font-roboto m-[4.5rem] mb-80 container w-[50.5rem] h-[24rem] mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
+    <div className="font-roboto mt-[4.5rem] mb-80 container w-[50.5rem] h-[24rem] mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
       <div className="pl-9 pt-8">
-				<CardTitle title="Criar usuário" />
+				<CardTitle title="Criar Usuário" />
 			</div>
-      <div className="mt-4 mb-10">
+      <div className="mx-9 mt-4 mb-10">
 				<CardLine />	
 			</div>
       <form action="">
