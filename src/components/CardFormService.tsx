@@ -2,8 +2,8 @@ import '../styles/main.css';
 import { Button } from './Button';
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
-import { CardFloatingLabelInput } from "./CardFloatingLabelInput";
-import { CardFloatingLabelTextarea } from "./CardFloatingLabelTextarea";
+import { CardLabelInput } from "./CardLabelInput";
+import { CardLabelTextarea } from "./CardLabelTextarea";
 
 export function CardFormService() {
   return (
@@ -16,14 +16,14 @@ export function CardFormService() {
 			</div>
 			<form action="">
 				<div>
-					<CardFloatingLabelInput
+					<CardLabelInput
 						label="Título"
 						inputId="title"
 						width="w-full"
 					/>
 				</div>
 				<div className="mt-9">
-					<CardFloatingLabelTextarea
+					<CardLabelTextarea
 						label="Descrição"
 						textareaId="description"
 					/>
