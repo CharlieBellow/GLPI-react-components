@@ -1,5 +1,5 @@
 import ButtonSelect from "../ButtonSelect";
-import { FaSearch, FaPlus } from "react-icons/fa";
+import { MagnifyingGlass, Plus } from "phosphor-react";
 import ButtonMainWithIcon from "../ButtonMainWithIcon";
 
 export default function TableOptions() {
@@ -13,7 +13,7 @@ export default function TableOptions() {
 						Busca
 					</label>
 					<div className="relative">
-						<FaSearch
+						<MagnifyingGlass
 							size={18}
 							className="header__iconSearch absolute top-[25%] left-[20px] text-cinza-texto"
 						/>
@@ -30,7 +30,7 @@ export default function TableOptions() {
 				<div className="relative">
 					<ButtonMainWithIcon
 						classname="flex items-center px-[0.625rem] py-2 bg-azul-ufal text-branco-100 rounded-md shadow-sombra-botao font-bold text-base"
-						icon={<FaPlus className="mr-3" />}
+						icon={<Plus className="mr-3" />}
 						title="Adicionar"
 					/>
 				</div>

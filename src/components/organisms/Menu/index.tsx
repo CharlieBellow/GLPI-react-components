@@ -1,11 +1,8 @@
 import AccordionMenu from "../../AccordionMenu";
 import {Link} from "react-router-dom"
 
-import {
-	FaUser,
-	FaExclamationCircle,
-} from "react-icons/fa";
-import {  FiSettings, FiAlertCircle } from "react-icons/fi";
+
+import { Gear, WarningCircle, User, Question } from "phosphor-react";
 
 import logoUfal from "../../../assets/brasao-ufal.png";
 
@@ -23,7 +20,7 @@ function Menu() {
 					<h4 className="menu__titleSection text-branco-100 font-bold text-sm">
 						Geral
 					</h4>
-					<AccordionMenu/>
+					<AccordionMenu />
 				</div>
 
 				<div className="menu__help flex flex-col items-start pl-6 pr-5 pb-[2.063rem]">
@@ -33,27 +30,24 @@ function Menu() {
 
 					<div className="menu__itemOption w-full flex items-center content-between">
 						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FiSettings
-								size={20}
-								className="menu__icon mr-2 stroke-branco-100"
-							/>
+							<Gear size={20} className="menu__icon mr-2 stroke-branco-100" />
 							Configurações
 						</p>
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
-							<Link to="/SignUp">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-								<FaUser size={20} className="menu__icon mr-2 stroke-branco-100" />
+						<Link to="/SignUp">
+							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+								<User size={20} className="menu__icon mr-2 stroke-branco-100" />
 								Perfil
-						</p>
-							</Link>
+							</p>
+						</Link>
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
 						<Link to="/Login">
 							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-								<FaExclamationCircle size={20} className="menu__icon mr-2" />
+								<Question size={20} className="menu__icon mr-2" />
 								Sobre
 							</p>
 						</Link>
@@ -62,7 +56,7 @@ function Menu() {
 					<div className="menu__itemOption w-full flex items-center content-between">
 						<Link to="/Teste">
 							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-								<FiAlertCircle
+								<WarningCircle
 									size={20}
 									className="menu__icon mr-2 stroke-branco-100"
 								/>

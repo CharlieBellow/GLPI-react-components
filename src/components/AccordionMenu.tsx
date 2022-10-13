@@ -6,9 +6,7 @@ import {
 	AccordionTrigger
 } from "@radix-ui/react-accordion";
 import { Link } from "react-router-dom";
-import { Heart } from "phosphor-react";
-
-import { FiGrid} from "react-icons/fi";
+import { SquaresFour, User, Wrench, Gear, ListDashes } from "phosphor-react";
 
 import { styled } from '@stitches/react';
 
@@ -35,7 +33,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Dashboard">
 				<AccordionTrigger className="menu__itemOption w-full flex items-center justify-between mr-2">
 					<p className="flex flex-row text-white font-semibold text-sm items-center content-start w-full my-5 mx-0 pr-1  hover:text-azul-fundo-gradiente-dark">
-						<FiGrid size={20} className="menu__icon mr-2" />
+						<SquaresFour size={20} className="menu__icon mr-2" />
 						<Link to="/FormService">Dashboard</Link>
 					</p>
 				</AccordionTrigger>
@@ -44,7 +42,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Perfil">
 				<AccordionTrigger className="menu__itemOption w-full flex items-center justify-around mr-2 text-branco-100 hover:text-azul-fundo-gradiente-dark">
 					<p className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0 pr-1">
-						<FiGrid size={20} className="menu__icon mr-2" />
+						<User size={20} className="menu__icon mr-2" />
 						Perfil
 					</p>
 					<AccordionChevron aria-hidden />
@@ -62,7 +60,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="AdmSectors">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-fundo-gradiente-dark">
 					<p className="flex flex-row font-semibold text-sm items-center text-start content-start w-full my-5 mx-0 mr-2">
-						<Heart weight="fill" size={20} className="mr-2" />
+						<Wrench weight="fill" size={20} className="mr-2" />
 						Administração de Setores
 					</p>
 					<AccordionChevron aria-hidden />
@@ -78,7 +76,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Configuration">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-fundo-gradiente-dark">
 					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 mr-2">
-						<FiGrid size={20} className="menu__icon mr-2" />
+						<Gear size={20} className="menu__icon mr-2" />
 						Configuração
 					</p>
 					<AccordionChevron aria-hidden />
@@ -94,7 +92,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Lists">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-fundo-gradiente-dark">
 					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 mr-2">
-						<FiGrid size={20} className="menu__icon mr-2" />
+						<ListDashes size={20} className="menu__icon mr-2" />
 						Listas
 					</p>
 					<AccordionChevron aria-hidden />

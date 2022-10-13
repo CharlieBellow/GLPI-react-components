@@ -1,4 +1,4 @@
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { CaretLeft, CaretRight } from "phosphor-react";
 import { Link } from 'react-router-dom'
 
 export default function PaginationTable() {
@@ -37,7 +37,7 @@ export default function PaginationTable() {
 								className="relative inline-flex items-center rounded-l-md border border-cinza-texto bg-cinza-medio px-2 py-2 text-sm font-bold text-fundo-claro hover:bg-cinza-escuro focus:z-20"
 							>
 								<span className="sr-only">Previous</span>
-								<FiChevronLeft className="h-5 w-5" aria-hidden="true" />
+								<CaretLeft className="h-5 w-5" aria-hidden="true" />
 							</Link>
 							
 							<Link
@@ -85,7 +85,7 @@ export default function PaginationTable() {
 								className="relative inline-flex items-center rounded-r-md border border-cinza-texto bg-cinza-medio px-2 py-2 text-sm font-bold text-fundo-claro hover:bg-branco-100 focus:z-20"
 							>
 								<span className="sr-only">Next</span>
-								<FiChevronRight className="h-5 w-5" aria-hidden="true" />
+								<CaretRight className="h-5 w-5" aria-hidden="true" />
 							</Link>
 						</nav>
 					</div>

@@ -1,7 +1,8 @@
 
 import { Link } from "react-router-dom";
-import { FaSearch, FaUserEdit, FaPlus } from "react-icons/fa";
+import {PencilSimpleLine, Plus } from "phosphor-react";
 import ButtonMainWithIcon from "../ButtonMainWithIcon";
+import Search from '../Search'
 
 import {
 	Table,
@@ -34,25 +35,14 @@ function TableList(props: TableProps) {
 						<label htmlFor="search" className="pr-6 font-normal text-xl">
 							Busca
 						</label>
-						<div className="relative">
-							<FaSearch
-								size={18}
-								className="header__iconSearch absolute top-[25%] left-[20px] text-cinza-texto"
-							/>
-							<input
-								type="text"
-								name="search"
-								placeholder="pesquisar usuário"
-								className="header__searchBar text-cinza-texto bg-branco-gelo-forte rounded-xl focus:outline-azul-ufal border-none shadow-sombra-card py-2 pr-[101px] pl-[58px] text-base font-normal"
-							/>
-						</div>
+						<Search placeholder="pesquisar usuário"/>
 					</div>
 
 					<ButtonSelect />
 					<div className="relative">
 						<ButtonMainWithIcon
 							classname="flex items-center px-[0.625rem] py-2 bg-azul-ufal text-branco-100 rounded-md shadow-sombra-botao font-bold text-base"
-							icon={<FaPlus className="mr-3" />}
+							icon={<Plus className="mr-3" weight="bold" size={ 20} />}
 							title="Adicionar"
 						/>
 					</div>
@@ -99,7 +89,7 @@ function TableList(props: TableProps) {
 
 										<ButtonMainWithIcon
 											classname="flex items-center px-[0.625rem] py-2 m-6 bg-cinza-texto text-branco-100 rounded-md filter shadow-sombra-botao font-bold text-base"
-											icon={<FaUserEdit className="mr-3" />}
+											icon={<PencilSimpleLine className="mr-3" weight="bold" size={ 20} />}
 											title="Editar"
 										/>
 									</Tr>
