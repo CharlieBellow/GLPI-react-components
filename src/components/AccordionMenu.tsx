@@ -1,4 +1,5 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+
 import {
 	Accordion,
 	AccordionItem,
@@ -7,22 +8,11 @@ import {
 	AccordionHeader,
 } from "@radix-ui/react-accordion";
 import { Link } from "react-router-dom";
-import { Horse, Heart, Cube } from "phosphor-react";
+import { Heart } from "phosphor-react";
 
-import {
-	FaUser,
-	FaChevronDown,
-	FaTools,
-	FaListUl,
-	FaExclamationCircle,
-} from "react-icons/fa";
-import { FiGrid, FiSettings, FiAlertCircle, FiTool } from "react-icons/fi";
-
-
+import { FiGrid} from "react-icons/fi";
 
 import { styled } from '@stitches/react';
-
-//import * as Accordion from '@radix-ui/react-accordion';
 
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 const AccordionChevron = styled(ChevronDownIcon, {
@@ -31,7 +21,6 @@ const AccordionChevron = styled(ChevronDownIcon, {
 
 	'[data-state=open] &': { transform: 'rotate(180deg)' }
 	
-
 });
 
 
@@ -51,7 +40,6 @@ export const AccordionMenu = () => (
 						<FiGrid size={20} className="menu__icon mr-2" />
 						<Link to="/FormService">Dashboard</Link>
 					</p>
-					{/*<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />*/}
 				</AccordionTrigger>
 			</AccordionItem>
 
@@ -75,12 +63,11 @@ export const AccordionMenu = () => (
 
 			<AccordionItem value="AdmSectors">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-ufal">
-					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 mr-2">
+					<p className="flex flex-row font-semibold text-sm items-center text-start content-start w-full my-5 mx-0 mr-2">
 						<Heart weight="fill" size={20} className="mr-2" />
 						Administração de Setores
 					</p>
 					<AccordionChevron aria-hidden />
-					{/*<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />*/}
 				</AccordionTrigger>
 				<AccordionPrimitive.AccordionContent className="flex items-center justify-center gap-1 text-branco-100 hover:opacity-70">
 					<Link to="/FormService">Secretaria</Link>
@@ -97,7 +84,6 @@ export const AccordionMenu = () => (
 						Configuração
 					</p>
 					<AccordionChevron aria-hidden />
-					{/*<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />*/}
 				</AccordionTrigger>
 				<AccordionPrimitive.AccordionContent className="flex items-center justify-center gap-1 text-branco-100 hover:opacity-70">
 					<Link to="/FormService">Geral</Link>
@@ -114,7 +100,6 @@ export const AccordionMenu = () => (
 						Listas
 					</p>
 					<AccordionChevron aria-hidden />
-					{/*<FaChevronDown className="menu__icon-chevron active:rotate-180 text-white w-4 h-4" />*/}
 				</AccordionTrigger>
 				<AccordionPrimitive.AccordionContent className="flex items-center justify-center gap-1 text-branco-100 hover:opacity-70">
 					<Link to="/FormService">Tabela de usuários</Link>
@@ -125,9 +110,3 @@ export const AccordionMenu = () => (
 );
 
 export default AccordionMenu;
-
-
-
-
-
-

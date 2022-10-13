@@ -2,7 +2,7 @@ import "../styles/main.css";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 //import { CardLine } from "./CardLine";
-import { CardFloatingLabelInput } from "./CardFloatingLabelInput";
+import { CardLabelInput } from "./CardLabelInput";
 
 export function CardLogin() {
 	return (
@@ -12,21 +12,21 @@ export function CardLogin() {
 			</div>
 			<form action="">
 				<div className="mb-6">
-					<CardFloatingLabelInput
+					<CardLabelInput
 						label="Nome Completo"
 						inputId="fullName"
 						width="w-full"
 					/>
 				</div>
 				<div className="mb-6">
-					<CardFloatingLabelInput
+					<CardLabelInput
 						label="Email"
 						inputId="email"
 						width="w-full"
 					/>
 				</div>
 				<div className="mb-6">
-					<CardFloatingLabelInput
+					<CardLabelInput
 						label="Senha"
 						inputId="password"
 						width="w-full"

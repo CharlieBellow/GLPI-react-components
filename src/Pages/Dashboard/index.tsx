@@ -1,4 +1,4 @@
-import Menu from '../../components//organisms/Menu';
+import Menu from '../../components/organisms/Menu';
 import Header from '../../components/organisms/Header';
 import TableList from '../../components/TableList'
 

@@ -1,5 +1,5 @@
 
-import Menu from "../../components//organisms/Menu/MenuTest";
+import Menu from "../../components/organisms/Menu";
 import Header from "../../components/organisms/Header";
 
 function Teste() {
