@@ -1,7 +1,7 @@
 
 import { CardLogin } from '../../components/CardLogin'
 
-function Login() {
+function SignUp() {
   return (
 		<>
 			<div className="bg-gradiente w-screen h-screen fixed">
@@ -20,5 +20,5 @@ function Login() {
 	);
 }
 
-export default Login
+export default SignUp;
 

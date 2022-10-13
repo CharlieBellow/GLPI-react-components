@@ -1,5 +1,4 @@
-import React from "react";
-import {useState} from 'react'
+
 import { Link } from "react-router-dom";
 import { FaSearch, FaUserEdit, FaPlus } from "react-icons/fa";
 import ButtonMainWithIcon from "../ButtonMainWithIcon";
@@ -86,7 +85,7 @@ function TableList(props: TableProps) {
 										</Td>
 										<Td>
 											<Box>
-												<Link to="/" key={user.id}>
+												<Link to="#" key={user.id}>
 													<Text fontWeight="bold" className="text-azul-ufal">
 														{user.name}
 													</Text>

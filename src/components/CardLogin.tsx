@@ -1,42 +1,25 @@
 import "../styles/main.css";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
-//import { CardLine } from "./CardLine";
 import { CardLabelInput } from "./CardLabelInput";
 
 export function CardLogin() {
 	return (
-		<div className="m-[4.5rem] mb-52 container w-[25rem] h-[32rem] mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
-			<div className="pt-[1.625rem] pb-8 text-center">
-				<CardTitle title="Criar Conta" />
+		<div className="container w-[25rem] h-[32rem] my-auto mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
+			<div className="pt-[4.125rem] pb-[2.25rem] text-center">
+				<CardTitle title="Fazer Login" />
 			</div>
 			<form action="">
 				<div className="mb-6">
-					<CardLabelInput
-						label="Nome Completo"
-						inputId="fullName"
-						width="w-full"
-					/>
+					<CardLabelInput label="Email" inputId="email" width="w-full" />
 				</div>
 				<div className="mb-6">
-					<CardLabelInput
-						label="Email"
-						inputId="email"
-						width="w-full"
-					/>
-				</div>
-				<div className="mb-6">
-					<CardLabelInput
-						label="Senha"
-						inputId="password"
-						width="w-full"
-					/>
+					<CardLabelInput label="Senha" inputId="password" width="w-full" />
 				</div>
 			</form>
-      <div className="flex flex-col justify-center  mt-8 mx-11">
-        {/* quando colocar o estilo pela pros style ele não sobrescreve a estilização e aí dificulta o aproveitamento do componente  */}
-				<Button title="Cadastrar" style="btn-primary pb-4" />
-				<Button title="Fazer login" style="btn-text-only" />
+			<div className="flex flex-col justify-center  mt-[3.375rem] mx-11">
+				<Button title="Entrar" style="btn-primary-mobile" />
+				<Button title="Esqueci a senha" style="btn-text-only" />
 			</div>
 		</div>
 	);

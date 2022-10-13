@@ -1,20 +1,18 @@
 import AccordionMenu from "../../AccordionMenu";
+import {Link} from "react-router-dom"
 
 import {
 	FaUser,
-	FaChevronDown,
-	FaTools,
-	FaListUl,
 	FaExclamationCircle,
 } from "react-icons/fa";
-import { FiGrid, FiSettings, FiAlertCircle, FiTool } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import {  FiSettings, FiAlertCircle } from "react-icons/fi";
+
 import logoUfal from "../../../assets/brasao-ufal.png";
 
 function Menu() {
 	return (
 		<>
-			<div className="menu bg-azul-final-gradiente w-[13.375rem] m-0 z-10">
+			<aside className="menu bg-azul-final-gradiente w-[13.375rem] m-0 z-10">
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
@@ -44,30 +42,36 @@ function Menu() {
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
+							<Link to="/SignUp">
 						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FaUser size={20} className="menu__icon mr-2 stroke-branco-100" />
-							Perfil
+								<FaUser size={20} className="menu__icon mr-2 stroke-branco-100" />
+								Perfil
 						</p>
+							</Link>
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FaExclamationCircle size={20} className="menu__icon mr-2" />
-							Sobre
-						</p>
+						<Link to="/Login">
+							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+								<FaExclamationCircle size={20} className="menu__icon mr-2" />
+								Sobre
+							</p>
+						</Link>
 					</div>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
-							<FiAlertCircle
-								size={20}
-								className="menu__icon mr-2 stroke-branco-100"
-							/>
-							Ajuda
-						</p>
+						<Link to="/Teste">
+							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+								<FiAlertCircle
+									size={20}
+									className="menu__icon mr-2 stroke-branco-100"
+								/>
+								Ajuda
+							</p>
+						</Link>
 					</div>
 				</div>
-			</div>
+			</aside>
 		</>
 	);
 }
