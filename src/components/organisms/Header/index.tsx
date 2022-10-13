@@ -5,10 +5,10 @@ import Search from '../../Search'
 
 function Header() {
   
-  return (
+	return (
 		<>
 			<header className="flex h-[7.75rem] w-full rounded-br-lg text-branco-100 bg-gradiente justify-around">
-				<div className="bg-backgroundUfal w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute right-[29.8rem]"></div>
+				<div className="bg-backgroundUfal box-content w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-center">
 						<X size={18} weight="bold" className="header__iconSearch" />
