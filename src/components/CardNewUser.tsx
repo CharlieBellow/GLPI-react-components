@@ -44,11 +44,11 @@ function CardNewUser() {
         <div className="flex justify-end gap-x-3.5 mr-14 mt-10">
           <Button
             title="Salvar"
-            style="btn-primary-action"
+            style={`btn-primary-action`}
           />
           <Button
             title="Cancelar"
-            style="btn-secondary-action"
+            style={`btn-secondary-action`}
           />
 			  </div>
       </form>

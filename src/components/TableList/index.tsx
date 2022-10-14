@@ -66,7 +66,7 @@ function TableList(props: TableProps) {
 						<Tbody className="scroll max-w-full">
 							{props.itemList.map(user => {
 								return (
-									<Tr className="border-b-2 border-cinza-texto">
+									<Tr className="border-b-2 border-cinza-texto" key={user.name}>
 										<Td px={["4", "4", "6"]}>
 											<Checkbox
 												className="border-cinza-texto"
@@ -74,8 +74,8 @@ function TableList(props: TableProps) {
 											></Checkbox>
 										</Td>
 										<Td>
-											<Box>
-												<Link to="#" key={user.id}>
+											<Box key={user.name}>
+												<Link to="#">
 													<Text fontWeight="bold" className="text-azul-ufal">
 														{user.name}
 													</Text>

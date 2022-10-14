@@ -3,7 +3,7 @@ import { CardLabelInput } from "./CardLabelInput";
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { Button } from './Button';
-import { violet, mauve, blackA, green } from '@radix-ui/colors'; 
+import { mauve, blackA} from '@radix-ui/colors'; 
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 const StyledTabs = styled(TabsPrimitive.Root, {
@@ -217,11 +217,11 @@ const CardAddUser = () => (
           <div className="flex justify-end gap-x-3.5 mt-10">
             <Button
               title="Salvar"
-              style="btn-primary-action"
+              style={`btn-primary-action`}
             />
             <Button
               title="Cancelar"
-              style="btn-secondary-action"
+              style={`btn-secondary-action`}
             />
           </div>
         </form>

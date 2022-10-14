@@ -16,6 +16,7 @@ export function CardSignUp() {
 						label="Nome Completo"
 						inputId="fullName"
 						width="w-full"
+						type=""
 					/>
 				</div>
 				<div className="mb-6">
@@ -23,6 +24,7 @@ export function CardSignUp() {
 						label="Email"
 						inputId="email"
 						width="w-full"
+						type=""
 					/>
 				</div>
 				<div className="mb-6">
@@ -30,14 +32,14 @@ export function CardSignUp() {
 						label="Senha"
 						inputId="password"
 						width="w-full"
+						type=""
 					/>
 				</div>
 			</form>
-      <div className="flex flex-col justify-center  mt-8 mx-11">
-        {/* quando colocar o estilo pela pros style ele não sobrescreve a estilização e aí dificulta o aproveitamento do componente  */}
-				<Button title="Cadastrar" style="btn-primary-mobile"/>
-					<Button title="Fazer login" style="btn-text-only" />
-				
+			<div className="flex flex-col justify-center  mt-8 mx-11">
+				{/* quando colocar o estilo pela pros style ele não sobrescreve a estilização e aí dificulta o aproveitamento do componente  */}
+				<Button title="Cadastrar" style="btn-primary-mobile" />
+				<Button title="Fazer login" style="btn-text-only" />
 			</div>
 		</div>
 	);
