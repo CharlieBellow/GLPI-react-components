@@ -3,7 +3,6 @@ import { CardLabelInput } from "./CardLabelInput";
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { Button } from './Button';
-
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 const StyledTabs = styled(TabsPrimitive.Root, {
@@ -20,7 +19,6 @@ const StyledList = styled(TabsPrimitive.List, {
 });
 
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
-<<<<<<< HEAD
 	all: "unset",
 	backgroundColor: "var(--branco-gelo)",
 	padding: "0 20px",
