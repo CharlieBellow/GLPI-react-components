@@ -3,23 +3,24 @@ import { CardLabelInput } from "./CardLabelInput";
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { Button } from './Button';
-import { mauve, blackA} from '@radix-ui/colors'; 
+
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: 'flex',
   flexDirection: 'column',
   width: 840,
-  boxShadow: `0 2px 10px ${blackA.blackA4}`,
+  boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.16)',
 });
 
 const StyledList = styled(TabsPrimitive.List, {
   flexShrink: 0,
   display: 'flex',
-  borderBottom: `1px solid ${mauve.mauve6}`,
+  borderBottom: '1px solid #DEE2E6',
 });
 
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
+<<<<<<< HEAD
 	all: "unset",
 	backgroundColor: "var(--branco-gelo)",
 	padding: "0 20px",
@@ -35,7 +36,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
 	border: "2px solid var(--cinza-medio)",
 	borderTopLeftRadius: 8,
 	borderTopRightRadius: 8,
-	boxShadow: `0 2px 10px ${blackA.blackA4}`,
+	boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
 	"&:first-child": {},
 	"&:last-child": {},
 	"&:hover": {
@@ -49,6 +50,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
 		boxShadow: " 0 3px 0 0 currentColor",
 	},
 	"&:focus": { position: "relative" },
+
 });
 
 const StyledContent = styled(TabsPrimitive.Content, {
