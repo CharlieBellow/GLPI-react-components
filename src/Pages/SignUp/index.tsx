@@ -1,5 +1,6 @@
 
-import { CardLogin } from '../../components/CardLogin'
+//import { CardLogin } from '../../components/CardLogin'
+import { CardSignUp } from '../../components/CardSignUp';
 
 function SignUp() {
   return (
@@ -12,7 +13,7 @@ function SignUp() {
 			<div
 				className="w-full h-full fixed flex"
 			>
-			<CardLogin  />
+			<CardSignUp />
 				
 			</div>
 			

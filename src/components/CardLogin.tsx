@@ -10,7 +10,7 @@ export function CardLogin() {
 				<CardTitle title="Fazer Login" />
 			</div>
 			<form action="">
-				<div className="mb-6">
+				<div className="mb-6 px-10">
 					<CardLabelInput
 						label="Email"
 						inputId="email"
@@ -18,7 +18,7 @@ export function CardLogin() {
 						type=""
 					/>
 				</div>
-				<div className="mb-6">
+				<div className="mb-6 px-10">
 					<CardLabelInput
 						label="Senha"
 						inputId="password"

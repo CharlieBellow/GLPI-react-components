@@ -13,7 +13,7 @@ function Menu() {
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
-					className="menu__logo w-[3.438rem] h-24 m-[1.625rem] bg-brasaoUfal"
+					className="menu__logo w-[3.438rem] h-24 m-[1.625rem] bg-brasaoUfal mx-auto"
 				/>
 
 				<div className="menu__geral flex flex-col  pl-6 pr-5 pb-[2.063rem]">

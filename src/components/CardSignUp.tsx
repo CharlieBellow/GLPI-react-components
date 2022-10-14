@@ -6,12 +6,12 @@ import { CardLabelInput } from "./CardLabelInput";
 
 export function CardSignUp() {
 	return (
-		<div className="container w-[25rem] h-[32rem] my-auto mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
+		<div className="container w-[25rem] h-[29.625rem] my-auto mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
 			<div className="pt-[1.625rem] pb-8 text-center">
 				<CardTitle title="Criar Conta" />
 			</div>
 			<form action="">
-				<div className="mb-6">
+				<div className="mb-6 px-10">
 					<CardLabelInput
 						label="Nome Completo"
 						inputId="fullName"
@@ -19,7 +19,7 @@ export function CardSignUp() {
 						type=""
 					/>
 				</div>
-				<div className="mb-6">
+				<div className="mb-6 px-10">
 					<CardLabelInput
 						label="Email"
 						inputId="email"
@@ -27,7 +27,7 @@ export function CardSignUp() {
 						type=""
 					/>
 				</div>
-				<div className="mb-6">
+				<div className="mb-6 px-10">
 					<CardLabelInput
 						label="Senha"
 						inputId="password"
@@ -37,9 +37,8 @@ export function CardSignUp() {
 				</div>
 			</form>
 			<div className="flex flex-col justify-center  mt-8 mx-11">
-				{/* quando colocar o estilo pela pros style ele não sobrescreve a estilização e aí dificulta o aproveitamento do componente  */}
-				<Button title="Cadastrar" style="btn-primary-mobile" />
-				<Button title="Fazer login" style="btn-text-only" />
+				<Button title="Cadastrar" style={`btn-primary-mobile`} />
+				<Button title="Fazer login" style={`btn-text-only`} />
 			</div>
 		</div>
 	);
