@@ -3,20 +3,19 @@ import { CardLabelInput } from "./CardLabelInput";
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { Button } from './Button';
-import { violet, mauve, blackA, green } from '@radix-ui/colors'; 
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: 'flex',
   flexDirection: 'column',
   width: 840,
-  boxShadow: `0 2px 10px ${blackA.blackA4}`,
+  boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.16)',
 });
 
 const StyledList = styled(TabsPrimitive.List, {
   flexShrink: 0,
   display: 'flex',
-  borderBottom: `1px solid ${mauve.mauve6}`,
+  borderBottom: '1px solid #DEE2E6',
 });
 
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
@@ -35,7 +34,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   border: '1px solid #DEE2E6',
   borderTopLeftRadius: 8,
   borderTopRightRadius: 8,
-  boxShadow: `0 2px 10px ${blackA.blackA4}`,
+  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
   '&:first-child': {  },
   '&:last-child': {  },
   '&:hover': { 
