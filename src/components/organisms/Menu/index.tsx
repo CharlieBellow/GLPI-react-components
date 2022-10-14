@@ -29,7 +29,7 @@ function Menu() {
 					</h4>
 
 					<div className="menu__itemOption w-full flex items-center content-between">
-						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+						<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
 							<Gear size={20} className="menu__icon mr-2 stroke-branco-100" />
 							Configurações
 						</p>
@@ -37,7 +37,7 @@ function Menu() {
 
 					<div className="menu__itemOption w-full flex items-center content-between">
 						<Link to="/SignUp">
-							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
 								<User size={20} className="menu__icon mr-2 stroke-branco-100" />
 								Perfil
 							</p>
@@ -46,7 +46,7 @@ function Menu() {
 
 					<div className="menu__itemOption w-full flex items-center content-between">
 						<Link to="/Login">
-							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
 								<Question size={20} className="menu__icon mr-2" />
 								Sobre
 							</p>
@@ -55,7 +55,7 @@ function Menu() {
 
 					<div className="menu__itemOption w-full flex items-center content-between">
 						<Link to="/Teste">
-							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2">
+							<p className="menu__item text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
 								<WarningCircle
 									size={20}
 									className="menu__icon mr-2 stroke-branco-100"
