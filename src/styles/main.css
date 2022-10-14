@@ -4,22 +4,30 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-azul-ufal text-branco-100 text-xl px-[3.25rem] h-12;
+    @apply bg-azul-ufal text-branco-100 text-xl px-[3.25rem] h-12 py-2 shadow-sombra-botao;
   }
 
   .btn-secondary {
-    @apply bg-cinza-texto text-branco-100 text-xl px-[3.25rem] h-12;
+    @apply bg-cinza-texto text-branco-100 text-xl px-[3.25rem] h-12 py-2 shadow-sombra-botao;
   }
 
   .btn-tertiary {
-    @apply bg-cinza-medio text-cinza-texto text-xl px-[3.25rem] h-12;
+    @apply bg-cinza-medio text-cinza-texto text-xl px-[3.25rem] h-12 py-2 shadow-sombra-botao;
   }
 
   .btn-primary-action {
-    @apply bg-cinza-texto text-branco-100 text-base px-[0.625rem] h-[2.625rem];
+    @apply bg-cinza-texto text-branco-100 text-base px-[0.625rem] h-[2.625rem] py-2 shadow-sombra-botao;
   }
 
   .btn-secondary-action {
-    @apply bg-cinza-medio text-cinza-texto text-base px-[0.625rem] h-[2.625rem];
+    @apply bg-cinza-medio text-cinza-texto text-base px-[0.625rem] h-[2.625rem] py-2 shadow-sombra-botao;
+  }
+
+/* mobile */
+  .btn-text-only {
+    @apply bg-transparent text-azul-ufal text-base w-full py-4;
+  }
+  .btn-primary-mobile {
+    @apply bg-azul-ufal text-branco-100 text-base px-[6.25rem] py-4 shadow-sombra-botao;
   }
 }

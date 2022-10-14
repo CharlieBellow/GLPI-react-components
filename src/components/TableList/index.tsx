@@ -1,42 +1,29 @@
-import React from "react";
-import {useState} from 'react'
-import { Link } from "react-router-dom";
-import { FaSearch, FaUserEdit, FaPlus } from "react-icons/fa";
-import ButtonMainWithIcon from "../ButtonMainWithIcon";
 
+import { Link } from "react-router-dom";
+import {PencilSimpleLine, Plus } from "phosphor-react";
+import ButtonMainWithIcon from "../ButtonMainWithIcon";
+import Search from '../Search'
 
 import {
 	Table,
 	Thead,
 	Tbody,
-	Tfoot,
 	Tr,
 	Th,
 	Td,
-	TableCaption,
-	TableContainer,
 	Text,
 	Box,
-	Flex,
-	Heading,
-	Button,
-	Icon,
 	Checkbox,
-	useBreakpointValue,
-	Spinner,
 } from "@chakra-ui/react";
 
 import ButtonSelect from "../ButtonSelect";
 
-//import { Pagination } from "../Pagination";
 import PaginationTable from '../PaginationTable'
 interface TableProps {
 	itemList: Array<any>
 }
 
-
 function TableList(props: TableProps) {
-
 
 	return (
 		<>
@@ -48,32 +35,21 @@ function TableList(props: TableProps) {
 						<label htmlFor="search" className="pr-6 font-normal text-xl">
 							Busca
 						</label>
-						<div className="relative">
-							<FaSearch
-								size={18}
-								className="header__iconSearch absolute top-[25%] left-[20px] text-cinza-texto"
-							/>
-							<input
-								type="text"
-								name="search"
-								placeholder="pesquisar usuário"
-								className="header__searchBar text-cinza-texto bg-branco-gelo-forte rounded-xl focus:outline-azul-ufal border-none shadow-sombra-card py-2 pr-[101px] pl-[58px] text-base font-normal"
-							/>
-						</div>
+						<Search placeholder="pesquisar usuário" />
 					</div>
 
 					<ButtonSelect />
 					<div className="relative">
 						<ButtonMainWithIcon
 							classname="flex items-center px-[0.625rem] py-2 bg-azul-ufal text-branco-100 rounded-md shadow-sombra-botao font-bold text-base"
-							icon={<FaPlus className="mr-3" />}
+							icon={<Plus className="mr-3" weight="bold" size={20} />}
 							title="Adicionar"
 						/>
 					</div>
 				</div>
 
 				<div className="h-[26.375rem] overflow-y-auto">
-					<Table colorScheme="whiteAlpha" className="">
+					<Table colorScheme="whiteAlpha" className="relative">
 						<Thead className="border-b-2 border-cinza-texto">
 							<Th px={["4", "4", "6"]} className="text-cinza-texto" width="8">
 								<Checkbox
@@ -87,7 +63,7 @@ function TableList(props: TableProps) {
 							<Th w="6">Ações</Th>
 						</Thead>
 
-						<Tbody className="">
+						<Tbody className="scroll max-w-full">
 							{props.itemList.map(user => {
 								return (
 									<Tr className="border-b-2 border-cinza-texto">
@@ -99,7 +75,7 @@ function TableList(props: TableProps) {
 										</Td>
 										<Td>
 											<Box>
-												<Link to="/" key={user.id}>
+												<Link to="#" key={user.id}>
 													<Text fontWeight="bold" className="text-azul-ufal">
 														{user.name}
 													</Text>
@@ -113,7 +89,13 @@ function TableList(props: TableProps) {
 
 										<ButtonMainWithIcon
 											classname="flex items-center px-[0.625rem] py-2 m-6 bg-cinza-texto text-branco-100 rounded-md filter shadow-sombra-botao font-bold text-base"
-											icon={<FaUserEdit className="mr-3" />}
+											icon={
+												<PencilSimpleLine
+													className="mr-3"
+													weight="bold"
+													size={20}
+												/>
+											}
 											title="Editar"
 										/>
 									</Tr>

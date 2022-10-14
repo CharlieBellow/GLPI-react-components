@@ -13,7 +13,7 @@ const siblingsCount = 2;
 function generatePageArrays(from: number, to: number){
   return [...new Array(to - from )]
     .map((_, index) => {
-     return from + index + 1;
+      return from + index + 1;
     })
     .filter(page => page > 0 );
 }
