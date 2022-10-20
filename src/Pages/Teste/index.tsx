@@ -1,6 +1,6 @@
 
-import Menu from "../../components/organisms/Menu";
-import Header from "../../components/organisms/Header";
+import {Menu} from "../../components/organisms/Menu";
+import {Header} from "../../components/organisms/Header";
 
 function Teste() {
 	return (

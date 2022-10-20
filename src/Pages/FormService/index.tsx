@@ -1,5 +1,5 @@
-import Menu from '../../components/organisms/Menu';
-import Header from '../../components/organisms/Header';
+import {Menu} from '../../components/organisms/Menu';
+import {Header} from '../../components/organisms/Header';
 import CardFormService from '../../components/CardFormService';
 
 function FormService() {

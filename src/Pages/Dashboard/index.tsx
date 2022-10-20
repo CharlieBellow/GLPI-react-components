@@ -1,5 +1,5 @@
-import Menu from '../../components/organisms/Menu';
-import Header from '../../components/organisms/Header';
+import {Menu} from '../../components/organisms/Menu';
+import {Header} from '../../components/organisms/Header';
 import TableList from '../../components/TableList'
 
 
@@ -20,19 +20,19 @@ const users = [
 function Dashboard() {
   return (
 		<>
-			<div className="layout__menu-header">
-				<div className="flex bg-branco-gelo-forte">
+			<div className="w-full ">
+				<div className="flex bg-branco-gelo-forte w-screen">
 					<div className="flex">
 						<Menu />
 					</div>
 
-					<div className="pageContent w-screen flex flex-col">
+					<div className="w-screen flex flex-col lg:block">
 						<div>
 							<Header />
 						</div>
 
-						<div className="content">
-							<TableList itemList={users}/>
+						<div className="w-screen h-full lg:h-auto lg:w-auto">
+							<TableList itemList={users} />
 						</div>
 					</div>
 				</div>
