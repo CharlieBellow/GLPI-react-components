@@ -9,7 +9,7 @@ export const ButtonSelect = () => (
 		<Select>
 			<SelectTrigger
 				aria-label="Filter"
-				className="flex w-[11rem] justify-between"
+				className="flex lg:w-[11rem] justify-between"
 			>
 				<SelectValue placeholder="Filtrar por…" />
 				<SelectIcon>

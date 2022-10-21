@@ -6,15 +6,20 @@ import Search from "../Search";
 export default function TableOptions() {
 	return (
 		<>
-			<div className="flex flex-col  lg:flex-row items-center justify-between text-cinza-texto mx-8 my-6">
-				<h4 className="font-medium text-lg lg:text-2xl">Lista de usuário</h4>
+			<div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-0 text-cinza-texto lg:mx-8 lg:my-6">
+				<h4 className="font-medium text-lg lg:text-2xl hidden lg:flex">
+					Lista de usuário
+				</h4>
 
-				<div className="flex flex-row items-center ">
-					<label htmlFor="search" className="pr-6 font-normal text-xl hidden lg:flex">
+				<div className="flex flex-row items-center">
+					<label
+						htmlFor="search"
+						className="pr-6 font-normal text-xl hidden lg:flex"
+					>
 						Busca
 					</label>
 
-					<Search placeholder="pesquisar usuário"/>
+					<Search placeholder="pesquisar usuário" />
 				</div>
 
 				<ButtonSelect />
