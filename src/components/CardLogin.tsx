@@ -5,7 +5,7 @@ import { CardLabelInput } from "./CardLabelInput";
 
 export function CardLogin() {
 	return (
-		<div className="container w-[25rem] h-[32rem] my-auto mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
+		<div className="container w-auto lg:w-[25rem] h-[32rem] my-auto mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
 			<div className="pt-[4.125rem] pb-[2.25rem] text-center">
 				<CardTitle title="Fazer Login" />
 			</div>
