@@ -29,7 +29,7 @@ function TableList(props: TableProps) {
 	return (
 		<>
 			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-[41rem]">
-				<TableOptions />
+				<TableOptions/>
 
 				<div className="h-[26.375rem] overflow-y-auto">
 					<Table colorScheme="whiteAlpha" className="relative">
@@ -54,46 +54,43 @@ function TableList(props: TableProps) {
 											className="lg:border-b-2 lg:border-cinza-texto  lg:bg-branco-100   lg:flex flex-row w-full justify-between items-center"
 											key={user.name}
 										>
-											<div className="flex flex-start min-w-[33.33%]">
-												<Td px={["4", "4", "6"]} className="">
+											{/*<div className="flex lg:flex-1 ">*/}
+											<div className=" flex lg:flex lg:flex-1 flex-row">
+												<Td px={["4", "4", "6"]} className="flex items-center ">
 													<Checkbox
 														className="border-cinza-texto"
 														colorScheme="gray"
 													></Checkbox>
 												</Td>
-												<Td>
-													<Box key={user.name}>
-														<Link to="#">
-															<Text
-																fontWeight="bold"
-																className="text-azul-ufal"
-															>
-																{user.name}
+												<div className="flex flex-row justify-between w-full">
+													<Td className="">
+														<Box key={user.name}>
+															<Link to="#">
+																<Text
+																	fontWeight="bold"
+																	className="text-azul-ufal"
+																>
+																	{user.name}
+																</Text>
+															</Link>
+															<Text fontSize="sm" className="text-cinza-texto">
+																{user.email}
 															</Text>
-														</Link>
-														<Text fontSize="sm" className="text-cinza-texto">
-															{user.email}
-														</Text>
-													</Box>
-												</Td>
-												<div>
-													
+														</Box>
+													</Td>
+													<ButtonMainWithIcon
+														classname="lg:hidden items-center bg-transparent text-fundo-claro pr-5"
+														icon={<FiMoreVertical className="" size={18} />}
+														title=""
+													/>
 												</div>
-												<ButtonMainWithIcon
-													classname="lg:hidden items-center px-2 py-2 ml-5 mt-4 bg-transparent text-fundo-claro rounded-md"
-													icon={
-														<FiMoreVertical
-															className=""
-															size={18}
-														/>
-													}
-													title=""
-												/>
 											</div>
-											{/*<div className="max-w-[33.33%] flex flex-row justify-around">*/}
-											<Td className="text-fundo-claro text-xs lg:text-base">
-												{user.date}
-											</Td>
+
+											<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
+												<Td className="text-fundo-claro text-xs lg:text-base">
+													{user.date}
+												</Td>
+											</div>
 											{/*</div>*/}
 
 											<ButtonMainWithIcon

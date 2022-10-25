@@ -18,14 +18,16 @@ export default function TableOptions() {
 					>
 						Busca
 					</label>
-
-					<Search placeholder="pesquisar usuário" />
+					
+						<Search placeholder="pesquisar usuário" />
+					
 				</div>
-
-				<ButtonSelect />
+				<div className="hidden lg:flex">
+					<ButtonSelect />
+				</div>
 				<div className="relative">
 					<ButtonMainWithIcon
-						classname="flex items-center px-[0.625rem] py-2 bg-azul-ufal text-branco-100 rounded-md shadow-sombra-botao font-bold text-base"
+						classname="hidden lg:flex items-center px-[0.625rem] py-2 bg-azul-ufal text-branco-100 rounded-md shadow-sombra-botao font-bold text-base"
 						icon={<Plus className="mr-3" />}
 						title="Adicionar"
 					/>

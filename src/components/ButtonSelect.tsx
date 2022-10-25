@@ -1,11 +1,16 @@
 
 import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport } from "@radix-ui/react-select";
+interface ButtonSelectProps {
+	className?: string
+}
 
 
-
-export const ButtonSelect = () => (
-	<div className="bg-cinza-medio text-cinza-texto font-bold text-base py-2 px-[0.625rem] rounded-md ">
+export const ButtonSelect = (props: ButtonSelectProps) => (
+	<div
+		className={` bg-cinza-medio text-cinza-texto font-bold text-base py-2 px-[0.625rem] rounded-md`}
+		{...props}
+	>
 		<Select>
 			<SelectTrigger
 				aria-label="Filter"
@@ -20,8 +25,8 @@ export const ButtonSelect = () => (
 				<SelectScrollUpButton>
 					<FiChevronUp size={24} className="pl-1" />
 				</SelectScrollUpButton>
-				<SelectViewport className="bg-cinza-medio rounded-md">
-					<SelectGroup className="px-1 py-1">
+				<SelectViewport className="bg-cinza-medio rounded-md ">
+					<SelectGroup className="px-1 py-1 h-full">
 						<SelectLabel>Selecione uma opção:</SelectLabel>
 						<SelectItem
 							value="name"

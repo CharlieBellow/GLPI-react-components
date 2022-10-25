@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export default function PaginationTable() {
   return (
 		<>
-			<div className="flex items-center justify-between border-t border-cinza-texto bg-branco-100 px-4 mt-6 py-3 sm:px-6">
-				<div className="flex flex-1 justify-between sm:hidden">
+			<div className="flex items-center justify-between border-t border-cinza-texto lg:bg-branco-100 px-4 mt-6 py-3 sm:px-6">
+				<div className="flex-1 justify-between hidden">
 					<Link
 						to="#"
 						className="relative inline-flex items-center rounded-md border border-cinza-texto bg-cinza-medio px-4 py-2 text-sm font-medium text-fundo-claro hover:bg-cinza-escuro"
@@ -19,7 +19,7 @@ export default function PaginationTable() {
 						Next
 					</Link>
 				</div>
-				<div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+				<div className="flex flex-1 items-center flex-col lg:flex-row gap-2 justify-between">
 					<div>
 						<p className="text-lg text-fundo-claro">
 							Mostrando <span className="font-medium">1</span> -{" "}

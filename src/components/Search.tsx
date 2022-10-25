@@ -7,10 +7,10 @@ interface SearchProps {
 
 export default function Search(props: SearchProps) {
   return (
-		<div className="relative ">
+		<div className="relative flex justify-center">
 			<MagnifyingGlass
 				size={20}
-				className="absolute top-[25%] left-[18px] text-cinza-texto"
+				className="absolute top-[25%] left-[64px] lg:left-[18px] text-cinza-texto"
 			/>
 			<label htmlFor="search"></label>
 			<input
