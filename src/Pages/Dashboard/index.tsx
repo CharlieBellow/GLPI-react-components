@@ -20,8 +20,8 @@ const users = [
 function Dashboard() {
   return (
 		<>
-			<div className="w-full ">
-				<div className="flex bg-branco-gelo-forte w-screen">
+			<div className="w-full  bg-branco-gelo-forte">
+				<div className="flex bg-branco-gelo-forte w-screen 2xl:max-w-[1900px] mx-auto">
 					<div className="flex">
 						<Menu />
 					</div>
