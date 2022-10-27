@@ -2,6 +2,7 @@ import "../styles/main.css";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "./CardLabelInput";
+import { Eye } from "phosphor-react";
 
 export function CardLogin() {
 	return (
@@ -24,6 +25,7 @@ export function CardLogin() {
 						inputId="password"
 						width="w-full"
 						type=""
+						icon={<Eye className="absolute flex ml-[14.6rem] lg:ml-[18.7rem]" weight="bold" />}
 					/>
 				</div>
 			</form>

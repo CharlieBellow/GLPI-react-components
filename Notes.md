@@ -10,4 +10,5 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 
 - no header quando colocar muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
 
+- no CardLabelInput é necessário criar uma propriedade que aceite um ícone para o input
 

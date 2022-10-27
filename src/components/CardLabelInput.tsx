@@ -1,9 +1,13 @@
+import { Eye } from "phosphor-react";
+import { ReactNode } from "react";
+
 interface CardLabelInputProps {
   label: string;
   type: string;  
   inputId: string;
   width: string;
   pattern?: string;
+  icon?: ReactNode;
 }
 
 function CardLabel(props: CardLabelInputProps) {
@@ -23,26 +27,28 @@ function CardLabel(props: CardLabelInputProps) {
 
 export function CardLabelInput(props: CardLabelInputProps) {
   return (
-      <div className="relative">
-        <input 
-          type={props.type}
-          id={props.inputId}
-          name={props.inputId}
-          pattern={props.pattern}
-          className={`block px-2.5 pb-2.5 pt-2.5 text-base text-fundo-claro bg-cinza-medio focus:bg-transparent
+		<div className="relative flex items-center">
+			<input
+				type={props.type}
+				id={props.inputId}
+				name={props.inputId}
+				pattern={props.pattern}
+				className={`block px-2.5 pb-2.5 pt-2.5 text-base text-fundo-claro bg-cinza-medio focus:bg-transparent
           max-h-11 rounded-lg appearance-none focus:outline-none
           focus:ring-0 focus:border-2 focus:border-azul-ufal peer ${props.width}`}
-          placeholder=" "
-          required
-        />
-        
-        <CardLabel
-          label={props.label}
-          type={props.type}
-          inputId={props.inputId}
-          width={props.width}
-          pattern={props.pattern}
-        />
-      </div>
-  )
+				placeholder=" "
+				required
+			/>
+
+      { props.icon}
+
+			<CardLabel
+				label={props.label}
+				type={props.type}
+				inputId={props.inputId}
+				width={props.width}
+				pattern={props.pattern}
+			/>
+		</div>
+	);
 }
