@@ -33,7 +33,7 @@ function TableList(props: TableProps) {
 
 				<div className="h-[26.375rem] overflow-y-auto">
 					<Table colorScheme="whiteAlpha" className="relative">
-						<Thead className="border-b-2 border-cinza-texto  hidden lg:none ">
+						<Thead className="border-b-2 border-cinza-texto  hidden lg:flex lg:none ">
 							<Th px={["4", "4", "6"]} className="text-cinza-texto " width="8">
 								<Checkbox
 									className="border-cinza-texto"

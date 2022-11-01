@@ -18,7 +18,7 @@ function CardNewUser() {
 						label="Nome Completo"
             type="text"
 						inputId="name"
-						width="w-80"
+            width="lg:w-80 w-auto"
 					/>
           <CardLabelInput
 						label="E-mail"
