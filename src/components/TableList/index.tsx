@@ -29,24 +29,32 @@ function TableList(props: TableProps) {
 	return (
 		<>
 			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-[41rem]">
-				<TableOptions/>
+				<div className="lg:mb-16">
+					<TableOptions />
+				</div>
 
 				<div className="h-[26.375rem] overflow-y-auto">
-					<Table colorScheme="whiteAlpha" className="relative">
-						<Thead className="border-b-2 border-cinza-texto  hidden lg:flex lg:none ">
-							<Th px={["4", "4", "6"]} className="text-cinza-texto " width="8">
-								<Checkbox
-									className="border-cinza-texto"
-									colorScheme="gray"
-								></Checkbox>
-							</Th>
+					<Table colorScheme="whiteAlpha" className="">
+						<Thead className="border-b-2 border-cinza-texto hidden lg:flex lg:none lg:absolute lg:right-[7.863rem] lg:left-[20.288rem]  lg:justify-between lg:top-[18.438rem] ">
+							<div>
+								<Th
+									px={["4", "4", "6"]}
+									className="text-cinza-texto "
+									width="8"
+								>
+									<Checkbox
+										className="border-cinza-texto"
+										colorScheme="gray"
+									></Checkbox>
+								</Th>
 
-							<Th className="">Usuário</Th>
+								<Th className="">Usuário</Th>
+							</div>
 							{<Th>Data de Cadastro</Th>}
-							<Th w="6">Ações</Th>
+							<Th w="">Ações</Th>
 						</Thead>
 
-						<Tbody className="scroll max-w-full ">
+						<Tbody className="scroll max-w-full lg:top-4">
 							{props.itemList.map(user => {
 								return (
 									<div className=" rounded-[0.75rem] lg:rounded-0 bg-branco-gelo my-3 lg:my-0 flex flex-col lg:flex-row mx-6">
