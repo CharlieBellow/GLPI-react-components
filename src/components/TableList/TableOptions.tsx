@@ -4,6 +4,7 @@ import ButtonMainWithIcon from "../ButtonMainWithIcon";
 import Search from "../Search";
 
 export default function TableOptions() {
+	const ItemSelect = ['Nome', 'Email', 'Data de Criação', 'Matrícula',]
 	return (
 		<>
 			<div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-0 text-cinza-texto lg:mx-8 lg:my-6">
@@ -18,12 +19,11 @@ export default function TableOptions() {
 					>
 						Busca
 					</label>
-					
-						<Search placeholder="pesquisar usuário" />
-					
+
+					<Search placeholder="pesquisar usuário" />
 				</div>
 				<div className="hidden lg:flex">
-					<ButtonSelect />
+					<ButtonSelect value={ItemSelect} />
 				</div>
 				<div className="relative">
 					<ButtonMainWithIcon

@@ -1,8 +1,11 @@
 
 import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
-import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport } from "@radix-ui/react-select";
+import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
 interface ButtonSelectProps {
-	className?: string
+	className?: string;
+	value: Array<any>;
+	title?: string;
+	
 }
 
 
@@ -27,43 +30,21 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 				</SelectScrollUpButton>
 				<SelectViewport className="bg-cinza-medio rounded-md ">
 					<SelectGroup className="px-1 py-1 h-full">
-						<SelectLabel>Selecione uma opção:</SelectLabel>
-						<SelectItem
-							value="name"
-							className="py-1 flex hover:bg-azul-ufal outline-azul-ufal  hover:text-branco-100"
-						>
-							<SelectItemText>Nome</SelectItemText>
-							<SelectItemIndicator>
-								<FiCheck size={24} className="pl-1" />
-							</SelectItemIndicator>
-						</SelectItem>
-						<SelectItem
-							value="email"
-							className="py-1 flex hover:bg-azul-ufal outline-azul-ufal hover:text-branco-100"
-						>
-							<SelectItemText>Email</SelectItemText>
-							<SelectItemIndicator>
-								<FiCheck size={24} className="pl-1" />
-							</SelectItemIndicator>
-						</SelectItem>
-						<SelectItem
-							value="createdAt"
-							className="py-1 flex hover:bg-azul-ufal outline-azul-ufal hover:text-branco-100"
-						>
-							<SelectItemText>Data de Criação</SelectItemText>
-							<SelectItemIndicator>
-								<FiCheck size={24} className="pl-1" />
-							</SelectItemIndicator>
-						</SelectItem>
-						<SelectItem
-							value="registrationNumber"
-							className="py-1 flex hover:bg-azul-ufal outline-azul-ufal hover:text-branco-100"
-						>
-							<SelectItemText>Matrícula</SelectItemText>
-							<SelectItemIndicator>
-								<FiCheck size={24} className="pl-1" />
-							</SelectItemIndicator>
-						</SelectItem>
+						<SelectLabel>{props.title}</SelectLabel>
+						{props.value.map(selectItem => {
+							return (
+								<SelectItem
+									key={selectItem}
+									value={selectItem}
+									className="py-1 flex hover:bg-azul-ufal outline-azul-ufal  hover:text-branco-100"
+								>
+									<SelectItemText>{selectItem}</SelectItemText>
+									<SelectItemIndicator>
+										<FiCheck size={24} className="pl-1" />
+									</SelectItemIndicator>
+								</SelectItem>
+							)
+						})}
 					</SelectGroup>
 
 					<SelectSeparator />
