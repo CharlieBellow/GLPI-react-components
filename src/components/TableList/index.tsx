@@ -21,8 +21,11 @@ import PaginationTable from '../PaginationTable'
 import TableOptions from "./TableOptions";
 import { FiMoreVertical } from "react-icons/fi";
 interface TableProps {
-	itemList: Array<any>
+	itemList: Array<any>;
+	listSelectButton: Array<any>
 }
+
+
 
 function TableList(props: TableProps) {
 
@@ -30,7 +33,7 @@ function TableList(props: TableProps) {
 		<>
 			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-[41rem]">
 				<div className="lg:mb-16">
-					<TableOptions />
+					<TableOptions listSelectButton={props.listSelectButton} />
 				</div>
 
 				<div className="h-[26.375rem] overflow-y-auto">

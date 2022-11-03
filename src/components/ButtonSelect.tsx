@@ -3,9 +3,8 @@ import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
 interface ButtonSelectProps {
 	className?: string;
-	value: Array<any>;
+	listSelectButton: Array<any>;
 	title?: string;
-	
 }
 
 
@@ -31,7 +30,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 				<SelectViewport className="bg-cinza-medio rounded-md ">
 					<SelectGroup className="px-1 py-1 h-full">
 						<SelectLabel>{props.title}</SelectLabel>
-						{props.value.map(selectItem => {
+						{props.listSelectButton.map(selectItem => {
 							return (
 								<SelectItem
 									key={selectItem}
@@ -43,7 +42,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 										<FiCheck size={24} className="pl-1" />
 									</SelectItemIndicator>
 								</SelectItem>
-							)
+							);
 						})}
 					</SelectGroup>
 

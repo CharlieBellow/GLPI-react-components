@@ -16,6 +16,8 @@ const users = [
 	{ id: '10', name: "Felipe", email: "lipe@email.com", date: "01/02/2022" },
 ];
 
+	const ItemSelect = ['Nome', 'Email', 'Data de Criação', 'Matrícula']
+
 
 function Dashboard() {
   return (
@@ -32,7 +34,7 @@ function Dashboard() {
 						</div>
 
 						<div className="w-screen h-full lg:h-auto lg:w-auto">
-							<TableList itemList={users} />
+							<TableList itemList={users} listSelectButton={ItemSelect} />
 						</div>
 					</div>
 				</div>
