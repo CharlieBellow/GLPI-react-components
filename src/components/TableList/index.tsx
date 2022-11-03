@@ -65,7 +65,6 @@ function TableList(props: TableProps) {
 											className="lg:border-b-2 lg:border-cinza-texto  lg:bg-branco-100  lg:flex flex-row w-full justify-between items-center"
 											key={user.name}
 										>
-											{/*<div className="flex lg:flex-1 ">*/}
 											<div className=" flex lg:flex lg:flex-1 flex-row">
 												<Td px={["4", "4", "6"]} className="flex items-center ">
 													<Checkbox
@@ -102,7 +101,6 @@ function TableList(props: TableProps) {
 													{user.date}
 												</Td>
 											</div>
-											{/*</div>*/}
 
 											<ButtonMainWithIcon
 												classname="lg:flex hidden items-center px-[0.625rem] py-2 m-6 bg-cinza-texto text-branco-100 rounded-md filter shadow-sombra-botao font-bold text-base "

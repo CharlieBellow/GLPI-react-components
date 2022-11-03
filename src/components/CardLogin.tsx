@@ -16,7 +16,7 @@ export function CardLogin() {
 						label="Email"
 						inputId="email"
 						width="w-full"
-						type=""
+						type="email"
 					/>
 				</div>
 				<div className="mb-6 px-10">
@@ -24,7 +24,7 @@ export function CardLogin() {
 						label="Senha"
 						inputId="password"
 						width="w-full"
-						type=""
+						type="password"
 						icon={<Eye className="absolute flex ml-[14.6rem] lg:ml-[18.7rem]" weight="bold" />}
 					/>
 				</div>

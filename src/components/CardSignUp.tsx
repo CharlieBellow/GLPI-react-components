@@ -17,7 +17,7 @@ export function CardSignUp() {
 						label="Nome Completo"
 						inputId="fullName"
 						width="w-full"
-						type=""
+						type="name"
 					/>
 				</div>
 				<div className="mb-6 px-10">
@@ -25,7 +25,7 @@ export function CardSignUp() {
 						label="Email"
 						inputId="email"
 						width="w-full"
-						type=""
+						type="email"
 					/>
 				</div>
 				<div className="mb-6 px-10">
@@ -33,7 +33,7 @@ export function CardSignUp() {
 						label="Senha"
 						inputId="password"
 						width="w-full"
-						type=""
+						type="password"
 						icon={
 							<Eye className="absolute flex ml-[14.6rem] lg:ml-[18.7rem]" weight="bold" />
 						}
