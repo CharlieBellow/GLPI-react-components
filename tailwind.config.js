@@ -2,15 +2,25 @@
 module.exports = {
 	content: ["./src/**/*.tsx"],
 	theme: {
+		screens: {
+			sm: "576px",
+			// => @media (min-width: 576px) { ... }
+
+			md: "960px",
+			// => @media (min-width: 960px) { ... }
+
+			lg: "1440px",
+			// => @media (min-width: 1440px) { ... }
+		},
 		extend: {
 			fontFamily: {
-				'roboto': ['"Roboto"', 'sans-serif'],
+				roboto: ['"Roboto"', "sans-serif"],
 			},
 
 			fontSize: {
-				base: ['16px', '24px'],
-				xl: ['20px', '32px'],
-				'3xl': ['32px', '52px'],
+				base: ["16px", "24px"],
+				xl: ["20px", "32px"],
+				"3xl": ["32px", "52px"],
 			},
 
 			colors: {
@@ -25,7 +35,7 @@ module.exports = {
 				"azul-final-gradiente": "#4FB4E4",
 				"azul-fundo-gradiente-dark": "#0B70A2",
 				"vermelho-ufal": "#ED1C24",
-				"fundo": "#212532",
+				fundo: "#212532",
 			},
 
 			backgroundImage: {

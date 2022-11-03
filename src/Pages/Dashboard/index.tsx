@@ -21,7 +21,7 @@ function Dashboard() {
   return (
 		<>
 			<div className="w-full  bg-branco-gelo-forte">
-				<div className="flex bg-branco-gelo-forte w-screen 2xl:max-w-[1900px] mx-auto">
+				<div className="flex bg-branco-gelo-forte w-screen lg:max-w-[1900px] mx-auto">
 					<div className="flex">
 						<Menu />
 					</div>

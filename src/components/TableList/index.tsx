@@ -35,7 +35,7 @@ function TableList(props: TableProps) {
 
 				<div className="h-[26.375rem] overflow-y-auto">
 					<Table colorScheme="whiteAlpha" className="">
-						<Thead className="border-b-2 border-cinza-texto hidden lg:flex lg:none lg:absolute lg:right-[7.863rem] lg:left-[20.288rem]  lg:justify-between lg:top-[18.438rem] ">
+						<Thead className="border-b-2 border-cinza-texto hidden lg:flex lg:none lg:absolute lg:right-[7.863rem] lg:left-[20.288rem]  lg:justify-between lg:top-[18.438rem] max-w-[1450px] mx-auto ">
 							<div>
 								<Th
 									px={["4", "4", "6"]}
@@ -59,7 +59,7 @@ function TableList(props: TableProps) {
 								return (
 									<div className=" rounded-[0.75rem] lg:rounded-0 bg-branco-gelo my-3 lg:my-0 flex flex-col lg:flex-row mx-6">
 										<Tr
-											className="lg:border-b-2 lg:border-cinza-texto  lg:bg-branco-100   lg:flex flex-row w-full justify-between items-center"
+											className="lg:border-b-2 lg:border-cinza-texto  lg:bg-branco-100  lg:flex flex-row w-full justify-between items-center"
 											key={user.name}
 										>
 											{/*<div className="flex lg:flex-1 ">*/}

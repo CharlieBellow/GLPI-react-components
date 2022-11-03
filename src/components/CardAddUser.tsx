@@ -217,7 +217,7 @@ const CardAddUser = () => (
 							width="lg:w-80 w-auto"
 						/>
 					</div>
-					<div className="flex justify-end gap-x-3.5 mt-10">
+					<div className="flex justify-end gap-x-3.5 mt-10 w-full mr-14">
 						<Button title="Salvar" style={`btn-primary-action`} />
 						<Button title="Cancelar" style={`btn-secondary-action`} />
 					</div>
