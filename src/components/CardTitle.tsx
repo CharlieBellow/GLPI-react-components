@@ -4,8 +4,8 @@ interface CardTitleProps {
 
 export function CardTitle(props: CardTitleProps) {
   return (
-    <span className="text-fundo-claro font-semibold text-3xl">
+    <h2 className="text-fundo-claro font-bold text-3xl">
       {props.title}
-    </span>
+    </h2>
   );
 }

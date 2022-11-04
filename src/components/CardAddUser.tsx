@@ -66,7 +66,7 @@ export const TabsContent = StyledContent;
 const Box = styled('div', {});
 
 const CardAddUser = () => (
-	<Box className="font-roboto mt-[4.5rem] mb-80 mx-4 lg:mx-0 flex lg:block">
+	<Box className="font-sans mt-[4.5rem] mb-80 mx-4 lg:mx-0 flex lg:block">
 		{/* h-[34.5rem] */}
 		<Tabs
 			className="bg-branco-gelo pb-9 rounded-lg lg:w-[50.5rem] lg:h-[34.5rem] mx-auto"

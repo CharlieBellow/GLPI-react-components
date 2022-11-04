@@ -11,8 +11,9 @@ function CardFormService() {
   return (
 		<div className='mx-4'>
 			<div
-				className="font-roboto mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-				bg-branco-gelo pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem] h-auto shadow-sombra-card"
+				className="font-sans mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
+				bg-branco-gelo pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+				h-auto shadow-sombra-card"
 			>
 				<div className="pl-9 pt-8">
 					<CardTitle title="Solicitar Serviço" />
