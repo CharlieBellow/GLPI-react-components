@@ -3,6 +3,7 @@
 import { CardSignUp } from '../../components/CardSignUp';
 
 function SignUp() {
+	document.title = "Cadastro - GLPI";
   return (
 		<>
 			<div className="bg-gradiente w-screen h-screen relative bg:fixed">

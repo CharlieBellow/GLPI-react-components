@@ -3,6 +3,7 @@ import {Menu} from "../../components/organisms/Menu";
 import {Header} from "../../components/organisms/Header";
 
 function Teste() {
+	document.title = "Página de Testes - GLPI";
 	return (
 		<>
 			<div className="layout__menu-header">
@@ -13,7 +14,7 @@ function Teste() {
 
 					<div className="pageContent w-screen flex flex-col">
 						<div>
-							<Header/>
+							<Header page="Página de Testes" />
 						</div>
 
 						<div className="content">

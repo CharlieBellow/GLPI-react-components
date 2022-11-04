@@ -3,6 +3,7 @@ import {Header} from '../../components/organisms/Header';
 import CardFormService from '../../components/CardFormService';
 
 function FormService() {
+	document.title = "Abertura de Chamados - GLPI";
   return (
 		<>
 			<div className="layout__menu-header">
@@ -13,7 +14,7 @@ function FormService() {
 
 					<div className="pageContent w-screen flex flex-col">
 						<div>
-							<Header />
+							<Header page="Abertura de Chamados" />
 						</div>
 
 						<div className="content">

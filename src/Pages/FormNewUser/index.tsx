@@ -3,6 +3,7 @@ import {Header} from '../../components/organisms/Header';
 import CardNewUser from '../../components/CardNewUser';
 
 function FormNewUser() {
+	document.title = "Criação de Usuários - GLPI";
   return (
 		<>
 			<div className="layout__menu-header">
@@ -13,7 +14,7 @@ function FormNewUser() {
 
 					<div className="pageContent w-screen flex flex-col">
 						<div>
-							<Header />
+							<Header page="Criação de Usuários" />
 						</div>
 
 						<div className="content">

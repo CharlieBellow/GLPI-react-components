@@ -1,8 +1,8 @@
 
 import { CardLogin } from '../../components/CardLogin'
 
-
 function Login() {
+	document.title = "Login - GLPI";
   return (
 		<>
 			<div className="bg-gradiente w-screen h-screen relative bg:fixed ">

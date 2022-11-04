@@ -18,8 +18,8 @@ const users = [
 
 	const ItemSelect = ['Nome', 'Email', 'Data de Criação', 'Matrícula']
 
-
 function Dashboard() {
+	document.title = "Dashboard - GLPI";
   return (
 		<>
 			<div className="w-full  bg-branco-gelo-forte">
@@ -30,7 +30,7 @@ function Dashboard() {
 
 					<div className="w-screen flex flex-col lg:block">
 						<div>
-							<Header />
+							<Header page="Dashboard" />
 						</div>
 
 						<div className="w-screen h-full lg:h-auto lg:w-auto">

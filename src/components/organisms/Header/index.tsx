@@ -1,10 +1,13 @@
 
 import { Link } from 'react-router-dom';
 import { X, Bell, UserPlus, Question, List } from "phosphor-react";
-import Search from '../../Search'
+import Search from '../../Search';
 
-export function Header() {
-  
+interface HeaderProps {
+	page: string;
+}
+
+export function Header(props: HeaderProps) {
 	return (
 		<>
 			<header
@@ -20,7 +23,7 @@ export function Header() {
 							className="flex w-6 h-6 invisible lg:visible"
 						/>
 						<h4 className="lg:text-[1.625rem] text-lg font-bold lg:font-normal lg:pl-2 lg:mr-[5.125rem] lg:pt-0 pt-16 ">
-							Nome da Página
+							{props.page} 
 						</h4>
 					</div>
 					<div className="hidden lg:flex">
