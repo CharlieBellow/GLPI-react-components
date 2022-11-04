@@ -26,7 +26,7 @@ export default function TableOptions(props: TableOptionsProps) {
 					<Search placeholder="pesquisar usuário" />
 				</div>
 				<div className="hidden lg:flex">
-					<ButtonSelect listSelectButton={props.listSelectButton} />
+					<ButtonSelect placeholder="Filtrar por..." listSelectButton={props.listSelectButton} />
 				</div>
 				<div className="relative">
 					<ButtonMainWithIcon

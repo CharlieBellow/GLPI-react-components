@@ -5,12 +5,13 @@ interface ButtonSelectProps {
 	className?: string;
 	listSelectButton: Array<any>;
 	title?: string;
+	placeholder: string;
 }
 
 
 export const ButtonSelect = (props: ButtonSelectProps) => (
 	<div
-		className={` bg-cinza-medio text-cinza-texto font-bold text-base py-2 px-[0.625rem] rounded-md`}
+		className={`bg-cinza-medio text-cinza-texto font-bold text-base py-2 px-[0.625rem] rounded-md`}
 		{...props}
 	>
 		<Select>
@@ -18,7 +19,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 				aria-label="Filter"
 				className="flex lg:w-[11rem] justify-between"
 			>
-				<SelectValue placeholder="Filtrar por…" />
+				<SelectValue placeholder={props.placeholder} />
 				<SelectIcon>
 					<FiChevronDown size={24} className="pl-1 w-5" />
 				</SelectIcon>
@@ -27,7 +28,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 				<SelectScrollUpButton>
 					<FiChevronUp size={24} className="pl-1" />
 				</SelectScrollUpButton>
-				<SelectViewport className="bg-cinza-medio rounded-md ">
+				<SelectViewport className="bg-cinza-medio rounded-md border-2 border-azul-ufal">
 					<SelectGroup className="px-1 py-1 h-full">
 						<SelectLabel>{props.title}</SelectLabel>
 						{props.listSelectButton.map(selectItem => {
@@ -35,7 +36,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 								<SelectItem
 									key={selectItem}
 									value={selectItem}
-									className="py-1 flex hover:bg-azul-ufal outline-azul-ufal  hover:text-branco-100"
+									className="py-1 flex hover:bg-azul-ufal outline-azul-ufal hover:text-branco-100"
 								>
 									<SelectItemText>{selectItem}</SelectItemText>
 									<SelectItemIndicator>

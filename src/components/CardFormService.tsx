@@ -1,8 +1,11 @@
+import ButtonSelect from "./ButtonSelect";
 import { Button } from './Button';
 import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
+
+const serviceLocation = ['Bloco A', 'Bloco B', 'Bloco C'];
 
 function CardFormService() {
   return (
@@ -27,18 +30,19 @@ function CardFormService() {
 			 					width="w-full"	
 			 				/>
 			 			</div>
+						<CardLabelTextarea
+							label="Descrição"
+							textareaId="description"
+						/>
 			 			<div className='mx-14'>
-			 				<CardLabelInput
-			 					label="Local do serviço"
-			 					type="text"
-			 					inputId="title"
-			 					width="w-full"
-			 				/>
+						 	<ButtonSelect
+								title="LOCAL DO SERVIÇO:"
+								placeholder="Local do serviço"
+								listSelectButton={serviceLocation}
+								className="block px-2.5 pb-2.5 pt-2.5 text-base text-fundo-claro bg-cinza-medio focus:bg-transparent
+								max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-azul-ufal peer"
+							/>
 			 			</div>
-			 			<CardLabelTextarea
-			 				label="Descrição"
-			 				textareaId="description"
-			 			/>
 			 		</div>
 			 	</form>
 			 	<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
