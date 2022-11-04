@@ -51,7 +51,7 @@ function TableList(props: TableProps) {
 									></Checkbox>
 								</Th>
 
-								<Th className="">Usuário</Th>
+								<Th className="tabela">Usuário</Th>
 							</div>
 							{<Th>Data de Cadastro</Th>}
 							<Th w="">Ações</Th>

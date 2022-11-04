@@ -9,13 +9,23 @@
 coloca uma tabela só com thead dentro de uma div e outra div só com tbody, depois faz a estilização diferente. (!!!Atenção!!! isso pode causar um problema de requisição no back-end). Outra alternativa é colocar os estilos apenas no thead e tbody para ver se ele se conversam e não fica alterando a estilização.
   - mantive o thead fixo, mas ele aumenta de tamanho quando a tela aumenta. (possível solução: definir uma largura maxima para esse elemento que vai respeitar a largura maxima da página para telas maiores)
 - ok - estilizar o layout Desktop para telas a partir de 1024px. No momento só está funcionando a responsividade para telas a partir de 1440px.
+- ok- parcial - no header do mobile os ícones de menu estão scrolando junto com a tela. tem que resolver isso. Talvez tenha que retirar a estilização fixed
+  - se tirar a estilização fixed, retira também a responsividade dos ícones
+- ok - na tela de login do mobile a tela está scrolando sem necessidade.
 
 - parcial - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - agora na última aba os labels dos inputs estão desalinhados;
 
-- parcial - no header do mobile os ícones de menu estão scrolando junto com a tela. tem que resolver isso. Talvez tenha que retirar a estilização fixed
-  - se tirar a estilização fixed, retira também a responsividade dos ícones
-
-- na tela de login do mobile a tela está scrolando sem necessidade.
-
 - no header quando colocar muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
+
+- em progresso - fazer a responsividade do menu lateral.
+  - quando clica no menu pra ele diminuir, o thead da tabela continua fixo. Como resolver se o tamanho dele está fixo?
+  - os ícones ficam pequenos quando o menu está clicado
+
+
+
+- criar um componente de Page que recebe como props o conteúdo da página
+
+- fazer o toastfy e o spinner de carregamento
+
+- fazer o accordionMenu: colocar o mesmo sistema de .map() e as props para que ele possa ser reaproveitado.

@@ -30,6 +30,56 @@
   .btn-primary-mobile {
     @apply bg-azul-ufal text-branco-100 text-base px-[6.25rem] py-4 shadow-sombra-botao;
   }
+
+  /* classes para estilização do Menu lateral responsivo */
+  input:checked + .checkbox-wrapper {
+    @apply text-green-600;
+
+  }
+
+  input:checked + .checkbox-wrapper {
+    @apply w-[3.75rem];
+
+  }
+
+  input:checked + .checkbox-wrapper img {
+    @apply w-[2.176rem] h-[3.736rem] items-center bottom-5;
+
+  }
+
+   input:checked + .checkbox-wrapper .text-hidden {
+    @apply hidden;
+
+  }
+
+  input:checked + .checkbox-wrapper .text-invisible {
+    @apply invisible;
+
+  }
+
+  input:checked + .checkbox-wrapper .aumentaIcone {
+    @apply w-auto justify-center items-center;
+
+  }
+
+  
+
+
+ /* Chackbox e Ícone de botão que vão mudar conforme o clique do menu. Colocar a rotação e transition do ícone aqui */
+  .float {
+  color: white;
+  left: 280px;
+  ;
+  top:32px;
+  position: absolute
+ 
+  
+  }
+/* Colocar a rotação e transition do ícone aqui. usar o webkit transform: rotate() e construir as barras uma por uma  (usando 3 divs) e depois rotacionar quando estiver no checked. (foi exatamente assim que fiz no Figma) */
+  input:checked + .checkbox-wrapper .float {
+  transform: rotate(90deg);
+  }
+
 }
 
 
@@ -54,3 +104,4 @@
 	--sombra-botao: 0px 4px 4px rgba(0, 0, 0, 0.16);
 
 }
+

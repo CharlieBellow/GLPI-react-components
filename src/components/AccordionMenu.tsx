@@ -33,25 +33,27 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Dashboard">
 				<AccordionTrigger className="menu__itemOption w-full flex items-center justify-between mr-2">
 					<p className="flex flex-row text-white font-semibold text-sm items-center content-start w-full my-5 mx-0 pr-1  hover:text-azul-fundo-gradiente-dark">
-						<SquaresFour size={20} className="menu__icon mr-2" />
-						<Link to="/FormService">Dashboard</Link>
+						<Link to="/FormService" className="flex flex-row">
+							<SquaresFour size={20} className="menu__icon mr-2" />
+							<p className="text-invisible  aumentaIcone">Dashboard</p>
+						</Link>
 					</p>
 				</AccordionTrigger>
 			</AccordionItem>
 
 			<AccordionItem value="Perfil">
 				<AccordionTrigger className="menu__itemOption w-full flex items-center justify-around mr-2 text-branco-100 hover:text-azul-fundo-gradiente-dark">
-					<p className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0 pr-1">
-						<User size={20} className="menu__icon mr-2" />
-						Perfil
+					<p className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0 pr-1 aumentaIcone">
+						<User size={20} className="menu__icon w-auto" />
+						<p className="text-hidden ml-2">Perfil</p>
 					</p>
-					<AccordionChevron aria-hidden />
+					<AccordionChevron aria-hidden className="text-hidden" />
 				</AccordionTrigger>
-				<div className="">
-					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+				<div className="text-hidden">
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70 text-hidden">
 						<Link to="/FormService">Alterar Dados</Link>
 					</AccordionPrimitive.AccordionContent>
-					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70 text-hidden">
 						<Link to="/FormService">Editar Perfil</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
@@ -59,47 +61,53 @@ export const AccordionMenu = () => (
 
 			<AccordionItem value="AdmSectors">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-fundo-gradiente-dark">
-					<p className="flex flex-row font-semibold text-sm items-center text-start content-start w-full my-5 mx-0 mr-2">
-						<Wrench weight="fill" size={20} className="mr-2" />
-						Administração de Setores
+					<p className="flex flex-row font-semibold text-sm items-center text-start content-start w-full my-5 mx-0 pr-1 aumentaIcone">
+						<Wrench weight="fill" size={20} className="" />
+						<p className="text-hidden ml-2">Administração de Setores</p>
 					</p>
 					<AccordionChevron aria-hidden />
 				</AccordionTrigger>
-				<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
-					<Link to="/FormService">Secretaria</Link>
-				</AccordionPrimitive.AccordionContent>
-				<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
-					<Link to="/FormService">NTI</Link>
-				</AccordionPrimitive.AccordionContent>
+				<div className="text-hidden">
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+						<Link to="/FormService">Secretaria</Link>
+					</AccordionPrimitive.AccordionContent>
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+						<Link to="/FormService">NTI</Link>
+					</AccordionPrimitive.AccordionContent>
+				</div>
 			</AccordionItem>
 
 			<AccordionItem value="Configuration">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-fundo-gradiente-dark">
-					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 mr-2">
-						<Gear size={20} className="menu__icon mr-2" />
-						Configuração
+					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 pr-1 aumentaIcone">
+						<Gear size={20} className="menu__icon " />
+						<p className="text-hidden ml-2">Configuração</p>
 					</p>
 					<AccordionChevron aria-hidden />
 				</AccordionTrigger>
-				<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
-					<Link to="/FormService">Geral</Link>
-				</AccordionPrimitive.AccordionContent>
-				<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
-					<Link to="/FormService">Dark Mode</Link>
-				</AccordionPrimitive.AccordionContent>
+				<div className="text-hidden">
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+						<Link to="/FormService">Geral</Link>
+					</AccordionPrimitive.AccordionContent>
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+						<Link to="/FormService">Dark Mode</Link>
+					</AccordionPrimitive.AccordionContent>
+				</div>
 			</AccordionItem>
 
 			<AccordionItem value="Lists">
 				<AccordionTrigger className="w-full flex items-center content-between text-branco-100 hover:text-azul-fundo-gradiente-dark">
-					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 mr-2">
-						<ListDashes size={20} className="menu__icon mr-2" />
-						Listas
+					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 pr-1 aumentaIcone">
+						<ListDashes size={20} className="menu__icon " />
+						<p className="text-hidden ml-2">Listas</p>
 					</p>
 					<AccordionChevron aria-hidden />
 				</AccordionTrigger>
-				<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
-					<Link to="/FormService">Tabela de usuários</Link>
-				</AccordionPrimitive.AccordionContent>
+				<div className="text-hidden">
+					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-branco-100 hover:opacity-70">
+						<Link to="/FormService">Tabela de usuários</Link>
+					</AccordionPrimitive.AccordionContent>
+				</div>
 			</AccordionItem>
 		</Accordion>
 	</div>
