@@ -1,6 +1,7 @@
 
 import {Menu} from "../../components/organisms/Menu";
-import {Header} from "../../components/organisms/Header";
+import { Header } from "../../components/organisms/Header";
+import TableTeste from "./TableTeste";
 
 function Teste() {
 	document.title = "Página de Testes - GLPI";
@@ -9,7 +10,7 @@ function Teste() {
 			<div className="layout__menu-header">
 				<div className="flex bg-white-strong-ice">
 					<div className="flex h-full">
-						<Menu/>
+						<Menu />
 					</div>
 
 					<div className="pageContent w-screen flex flex-col">
@@ -18,7 +19,7 @@ function Teste() {
 						</div>
 
 						<div className="content">
-							
+							<TableTeste />
 						</div>
 					</div>
 				</div>

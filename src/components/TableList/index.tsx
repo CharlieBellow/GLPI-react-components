@@ -23,6 +23,7 @@ import { FiMoreVertical } from "react-icons/fi";
 interface TableProps {
 	itemList: Array<any>;
 	listSelectButton: Array<any>
+	
 }
 
 
@@ -36,9 +37,10 @@ function TableList(props: TableProps) {
 					<TableOptions listSelectButton={props.listSelectButton} />
 				</div>
 
-				<div className="h-[26.375rem] overflow-y-auto">
+				<div className="h-auto ">
 					<Table colorScheme="whiteAlpha" className="">
-						<Thead className="border-b-2 border-gray-text hidden lg:flex lg:none lg:absolute lg:right-[7.863rem] lg:left-[20.288rem]  lg:justify-between lg:top-[18.438rem] max-w-[1450px] mx-auto ">
+						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none   lg:justify-between ">
+
 							<div>
 								<Th
 									px={["4", "4", "6"]}
@@ -57,10 +59,11 @@ function TableList(props: TableProps) {
 							<Th w="">Ações</Th>
 						</Thead>
 
-						<Tbody className="scroll max-w-full lg:top-4">
+						<Tbody className="scroll max-w-full lg:top-4 ">
 							{props.itemList.map(user => {
 								return (
-									<div className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row mx-6">
+									<div className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row mx-6 pb-0">
+
 										<Tr
 											className="lg:border-b-2 lg:border-gray-text  lg:bg-white-100  lg:flex flex-row w-full justify-between items-center"
 											key={user.name}
@@ -89,7 +92,8 @@ function TableList(props: TableProps) {
 														</Box>
 													</Td>
 													<ButtonMainWithIcon
-														classname="lg:hidden items-center bg-transparent text-light-bg pr-5"
+														classname="lg:hidden items-center bg-transparent text-light-bg"
+
 														icon={<FiMoreVertical className="" size={18} />}
 														title=""
 													/>
@@ -104,6 +108,7 @@ function TableList(props: TableProps) {
 
 											<ButtonMainWithIcon
 												classname="lg:flex hidden items-center px-[0.625rem] py-2 m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
+
 												icon={
 													<PencilSimpleLine
 														className="mr-3"
