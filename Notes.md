@@ -16,18 +16,17 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
   - quando clica no menu pra ele diminuir, o thead da tabela continua fixo. Como resolver se o tamanho dele está fixo?
   - ok - os ícones ficam pequenos quando o menu está clicado
   - ok - falta centralizar melhor os ícones
-
-
-- parcial - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
+- ok - criar um componente de Page que recebe como props o conteúdo da página
+- ok - no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
+- ok - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - agora na última aba os labels dos inputs estão desalinhados;
 
-- no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
-
-- criar um componente de Page que recebe como props o conteúdo da página
 
 - fazer o toastfy e o spinner de carregamento
 
 - fazer o accordionMenu: colocar o mesmo sistema de .map() e as props para que ele possa ser reaproveitado.
 
 - consertar o thead da tabela: coloquei um position relative no pai e agora falta reestilizar para ele ficar no lugar 
-- retirar o scroll da tabela
+- in progress - retirar o scroll da tabela
+  - agora a tabela não está mais responsiva
+
