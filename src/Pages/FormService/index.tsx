@@ -7,7 +7,7 @@ function FormService() {
   return (
 		<>
 			<div className="layout__menu-header">
-				<div className="flex bg-branco-gelo-forte lg:max-w-[1900px] mx-auto">
+				<div className="flex bg-white-strong-ice lg:max-w-[1900px] mx-auto">
 					<div className="flex">
 						<Menu />
 					</div>

@@ -20,7 +20,7 @@ const StyledList = styled(TabsPrimitive.List, {
 
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
 	all: "unset",
-	backgroundColor: "var(--branco-gelo)",
+	backgroundColor: "var(--white-ice)",
 	padding: "0 20px",
 	height: 45,
 	flex: 1,
@@ -29,21 +29,21 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
 	justifyContent: "center",
 	fontSize: 16,
 	lineHeight: "160%",
-	color: "var(--fundo-claro)",
+	color: "var(--light-bg)",
 	userSelect: "none",
-	border: "2px solid var(--cinza-medio)",
+	border: "2px solid var(--gray-medium)",
 	borderTopLeftRadius: 8,
 	borderTopRightRadius: 8,
 	boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
 	"&:first-child": {},
 	"&:last-child": {},
 	"&:hover": {
-		color: "var(--azul-ufal)",
+		color: "var(--blue-ufal)",
 		cursor: "pointer",
 	},
 	'&[data-state="active"]': {
 		fontWeight: "bold",
-		color: "var(--azul-ufal)",
+		color: "var(--blue-ufal)",
 		border: "none",
 		boxShadow: " 0 3px 0 0 currentColor",
 	},
@@ -54,7 +54,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
 const StyledContent = styled(TabsPrimitive.Content, {
   flexGrow: 1,
   // padding: 20,
-  backgroundColor: 'var(--branco-gelo)',
+  backgroundColor: 'var(--white-ice)',
   outline: 'none',
 });
 
@@ -69,7 +69,7 @@ const CardAddUser = () => (
 	<Box className="font-sans mt-[4.5rem] mb-80 mx-4 lg:mx-0 flex lg:block">
 		{/* h-[34.5rem] */}
 		<Tabs
-			className="bg-branco-gelo pb-9 rounded-lg lg:w-[50.5rem] lg:h-[34.5rem] mx-auto"
+			className="bg-white-ice pb-9 rounded-lg lg:w-[50.5rem] lg:h-[34.5rem] mx-auto"
 			defaultValue="tab1"
 		>
 			<div className="pl-9 pt-8">

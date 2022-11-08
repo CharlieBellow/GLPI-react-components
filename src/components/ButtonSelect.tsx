@@ -11,7 +11,7 @@ interface ButtonSelectProps {
 
 export const ButtonSelect = (props: ButtonSelectProps) => (
 	<div
-		className={`bg-cinza-medio text-cinza-texto font-bold text-base py-2 px-[0.625rem] rounded-md`}
+		className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-[0.625rem] rounded-md`}
 		{...props}
 	>
 		<Select>
@@ -28,7 +28,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 				<SelectScrollUpButton>
 					<FiChevronUp size={24} className="pl-1" />
 				</SelectScrollUpButton>
-				<SelectViewport className="bg-cinza-medio rounded-md border-2 border-azul-ufal">
+				<SelectViewport className="bg-gray-medium rounded-md border-2 border-blue-ufal">
 					<SelectGroup className="px-1 py-1 h-full">
 						<SelectLabel>{props.title}</SelectLabel>
 						{props.listSelectButton.map(selectItem => {
@@ -36,7 +36,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 								<SelectItem
 									key={selectItem}
 									value={selectItem}
-									className="py-1 flex hover:bg-azul-ufal outline-azul-ufal hover:text-branco-100"
+									className="py-1 flex hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
 								>
 									<SelectItemText>{selectItem}</SelectItemText>
 									<SelectItemIndicator>

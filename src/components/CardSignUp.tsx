@@ -7,7 +7,7 @@ import { Eye } from "phosphor-react";
 
 export function CardSignUp() {
 	return (
-		<div className="container w-auto lg:w-[25rem] h-[29.625rem] my-auto mx-auto bg-branco-gelo rounded-lg shadow-sombra-card">
+		<div className="container w-auto lg:w-[25rem] h-[29.625rem] my-auto mx-auto bg-white-ice rounded-lg shadow-card">
 			<div className="pt-[1.625rem] pb-8 text-center">
 				<CardTitle title="Criar Conta" />
 			</div>

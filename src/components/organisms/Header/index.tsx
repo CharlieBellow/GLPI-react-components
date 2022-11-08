@@ -12,9 +12,9 @@ export function Header(props: HeaderProps) {
 		<>
 			<header
 				className="flex lg:h-[7.75rem] h-[10rem]
-			 rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-branco-100 bg-gradiente justify-around"
+			 rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-white-100 bg-gradient justify-around"
 			>
-				<div className="bg-backgroundUfal lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
+				<div className="bg-ufalBackground lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-center ml-[-3rem] lg:ml-0">
 						<X
@@ -42,7 +42,7 @@ export function Header(props: HeaderProps) {
 
 						<div className="flex items-center relative">
 							<div className="lg:flex flex-col pr-3 items-end hidden">
-								<p className="text-azul-ufal no-underline hover:opacity-70">
+								<p className="text-blue-ufal no-underline hover:opacity-70">
 									<Link to="/Login">Nome Completo</Link>
 								</p>
 								<p>email@email.com</p>

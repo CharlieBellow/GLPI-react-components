@@ -22,8 +22,8 @@ function Dashboard() {
 	document.title = "Dashboard - GLPI";
   return (
 		<>
-			<div className="w-full  bg-branco-gelo-forte">
-				<div className="flex bg-branco-gelo-forte w-screen lg:max-w-[1900px] mx-auto">
+			<div className="w-full  bg-white-strong-ice">
+				<div className="flex bg-white-strong-ice w-screen lg:max-w-[1900px] mx-auto">
 					<div className="flex">
 						<Menu />
 					</div>

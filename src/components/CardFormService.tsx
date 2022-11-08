@@ -12,8 +12,8 @@ function CardFormService() {
 		<div className='mx-4'>
 			<div
 				className="font-sans mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-				bg-branco-gelo pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
-				h-auto shadow-sombra-card"
+				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
 					<CardTitle title="Solicitar Serviço" />
@@ -40,8 +40,8 @@ function CardFormService() {
 								title="LOCAL DO SERVIÇO:"
 								placeholder="Local do serviço"
 								listSelectButton={serviceLocation}
-								className="block px-2.5 pb-2.5 pt-2.5 text-base text-fundo-claro bg-cinza-medio focus:bg-transparent
-								max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-azul-ufal peer"
+								className="block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
+								max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
 							/>
 			 			</div>
 			 		</div>

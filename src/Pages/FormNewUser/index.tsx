@@ -7,7 +7,7 @@ function FormNewUser() {
   return (
 		<>
 			<div className="layout__menu-header">
-				<div className="flex bg-branco-gelo-forte">
+				<div className="flex bg-white-strong-ice">
 					<div className="flex">
 						<Menu />
 					</div>
