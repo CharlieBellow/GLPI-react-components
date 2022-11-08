@@ -32,10 +32,6 @@
   }
 
   /* classes para estilização do Menu lateral responsivo */
-  input:checked + .checkbox-wrapper {
-    @apply text-green-600;
-
-  }
 
   input:checked + .checkbox-wrapper {
     @apply w-[3.75rem];
@@ -76,9 +72,30 @@
   
   }
 /* Colocar a rotação e transition do ícone aqui. usar o webkit transform: rotate() e construir as barras uma por uma  (usando 3 divs) e depois rotacionar quando estiver no checked. (foi exatamente assim que fiz no Figma) */
-  input:checked + .checkbox-wrapper .float {
-  transform: rotate(90deg);
+  input:checked + .checkbox-wrapper .float .change {
+  transform: translateX(-630%);
   }
+
+  input:checked + .checkbox-wrapper .float .change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 7px) ;
+  transform: rotate(-45deg) translate(-6px, 7px) ;
+  margin:0;
+  padding:0;
+  width:100%;
+  }
+
+  input:checked + .checkbox-wrapper .float .change .bar2 {
+  visibility: hidden;
+  }
+
+  input:checked + .checkbox-wrapper .float .change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-3px, -5px) ;
+  transform: rotate(45deg) translate(1px, -4px);
+  
+  }
+
+  
+
 
 }
 

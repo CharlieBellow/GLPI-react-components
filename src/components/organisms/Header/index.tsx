@@ -17,11 +17,11 @@ export function Header() {
 							<div className="lg:hidden flex items-start">
 								<List size={24} weight="bold" />
 							</div>
-						<X
+						{/*<X
 							size={18}
 							weight="bold"
 							className="flex w-6 h-6 invisible lg:visible"
-						/>
+						/>*/}
 						<h4 className="lg:text-[1.625rem] text-lg font-bold lg:font-normal lg:pl-2 lg:mr-[5.125rem] lg:pt-0 pt-16 ">
 							Nome da Página
 						</h4>

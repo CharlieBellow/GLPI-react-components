@@ -16,16 +16,18 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 - parcial - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - agora na última aba os labels dos inputs estão desalinhados;
 
-- no header quando colocar muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
+- no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
 
 - em progresso - fazer a responsividade do menu lateral.
   - quando clica no menu pra ele diminuir, o thead da tabela continua fixo. Como resolver se o tamanho dele está fixo?
-  - os ícones ficam pequenos quando o menu está clicado
-
-
+  - ok - os ícones ficam pequenos quando o menu está clicado
+  - falta centralizar melhor os ícones
 
 - criar um componente de Page que recebe como props o conteúdo da página
 
 - fazer o toastfy e o spinner de carregamento
 
 - fazer o accordionMenu: colocar o mesmo sistema de .map() e as props para que ele possa ser reaproveitado.
+
+- consertar o thead da tabela: coloquei um position relative no pai e agora falta reestilizar para ele ficar no lugar 
+- retirar o scroll da tabela
