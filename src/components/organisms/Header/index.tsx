@@ -1,17 +1,20 @@
 
 import { Link } from 'react-router-dom';
 import { X, Bell, UserPlus, Question, List } from "phosphor-react";
-import Search from '../../Search'
+import Search from '../../Search';
 
-export function Header() {
-  
+interface HeaderProps {
+	page: string;
+}
+
+export function Header(props: HeaderProps) {
 	return (
 		<>
 			<header
 				className="flex lg:h-[7.75rem] h-[10rem]
-			 rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-branco-100 bg-gradiente justify-around"
+			 rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-white-100 bg-gradient justify-around"
 			>
-				<div className="bg-backgroundUfal lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
+				<div className="bg-ufalBackground lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-4 lg:mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-start ml-[-3rem] lg:ml-0">
 							<div className="lg:hidden flex items-start">
@@ -23,7 +26,7 @@ export function Header() {
 							className="flex w-6 h-6 invisible lg:visible"
 						/>
 						<h4 className="lg:text-[1.625rem] text-lg font-bold lg:font-normal lg:pl-2 lg:mr-[5.125rem] lg:pt-0 pt-16 ">
-							Nome da Página
+							{props.page} 
 						</h4>
 					</div>
 					<div className="hidden lg:flex">
@@ -42,7 +45,7 @@ export function Header() {
 
 						<div className="flex items-center relative">
 							<div className="lg:flex flex-col pr-3 items-end hidden">
-								<p className="text-azul-ufal no-underline hover:opacity-70">
+								<p className="text-blue-ufal no-underline hover:opacity-70">
 									<Link to="/Login">Nome Completo</Link>
 								</p>
 								<p>email@email.com</p>

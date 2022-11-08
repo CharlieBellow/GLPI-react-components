@@ -12,9 +12,10 @@ module.exports = {
 			lg: "1440px",
 			// => @media (min-width: 1440px) { ... }
 		},
+
 		extend: {
 			fontFamily: {
-				roboto: ['"Roboto"', "sans-serif"],
+				sans: ['"Roboto"', "sans-serif"],
 			},
 
 			fontSize: {
@@ -24,30 +25,40 @@ module.exports = {
 			},
 
 			colors: {
-				"branco-gelo": "#F7FAFC",
-				"fundo-claro": "#333849",
-				"cinza-medio": "#DEE2E6",
-				"azul-ufal": "#0095DA",
-				"cinza-texto": "#797D9A",
-				"branco-100": "#FFFFFF",
-				"cinza-escuro": "#D9D9D9",
-				"branco-gelo-forte": "#EDF2F7",
-				"azul-final-gradiente": "#4FB4E4",
-				"azul-fundo-gradiente-dark": "#0B70A2",
-				"vermelho-ufal": "#ED1C24",
-				fundo: "#212532",
+				bg: "#212532",
+				"light-bg": "#333849",
+				"red-ufal": "#ED1C24",
+
+				white: {
+					100: "#FFFFFF",
+					ice: "#F7FAFC",
+					'strong-ice': "#EDF2F7",
+				},
+
+				blue: {
+					ufal: "#0095DA",
+					"final-gradient": "#4FB4E4",
+					"dark-final-gradient": "#0B70A2",
+				},
+
+				gray: {
+					text: "#797D9A",
+					medium: "#DEE2E6",
+					dark: "#D9D9D9",
+				},
 			},
 
 			backgroundImage: {
-				gradiente:
+				gradient:
 					"linear-gradient(90.18deg, rgba(1, 149, 218, 0.67) 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
-				backgroundUfal:
+				"ufalBackground":
 					"url('/src/assets/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
 			},
 
 			boxShadow: {
-				"sombra-card": "0px 8px 16px rgba(0, 0, 0, 0.16)",
-				"sombra-botao": "0px 4px 4px rgba(0, 0, 0, 0.16)",
+				card: "0px 8px 16px rgba(0, 0, 0, 0.16)",
+				button: "0px 4px 4px rgba(0, 0, 0, 0.16)",
+				tab: "0 3px 0 0 #DEE2E6",
 			},
 		},
 	},

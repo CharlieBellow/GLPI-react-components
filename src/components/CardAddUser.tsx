@@ -5,86 +5,52 @@ import { CardLine } from './CardLine';
 import { Button } from './Button';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-const StyledTabs = styled(TabsPrimitive.Root, {
-  display: 'flex',
-  flexDirection: 'column',
-  width: 840,
-  boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.16)',
-});
-
-const StyledList = styled(TabsPrimitive.List, {
-  flexShrink: 0,
-  display: 'flex',
-  borderBottom: '1px solid #DEE2E6',
-});
-
-const StyledTrigger = styled(TabsPrimitive.Trigger, {
-	all: "unset",
-	backgroundColor: "var(--branco-gelo)",
-	padding: "0 20px",
-	height: 45,
-	flex: 1,
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	fontSize: 16,
-	lineHeight: "160%",
-	color: "var(--fundo-claro)",
-	userSelect: "none",
-	border: "2px solid var(--cinza-medio)",
-	borderTopLeftRadius: 8,
-	borderTopRightRadius: 8,
-	boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
-	"&:first-child": {},
-	"&:last-child": {},
-	"&:hover": {
-		color: "var(--azul-ufal)",
-		cursor: "pointer",
-	},
+export const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
 		fontWeight: "bold",
-		color: "var(--azul-ufal)",
+		color: "#0095DA",
 		border: "none",
-		boxShadow: " 0 3px 0 0 currentColor",
+		boxShadow: "0 3px 0 0 currentColor",
 	},
-	"&:focus": { position: "relative" },
-
 });
-
-const StyledContent = styled(TabsPrimitive.Content, {
-  flexGrow: 1,
-  // padding: 20,
-  backgroundColor: 'var(--branco-gelo)',
-  outline: 'none',
-});
-
-export const Tabs = StyledTabs;
-export const TabsList = StyledList;
-export const TabsTrigger = StyledTrigger;
-export const TabsContent = StyledContent;
-
-const Box = styled('div', {});
 
 const CardAddUser = () => (
-	<Box className="font-roboto mt-[4.5rem] mb-80 mx-4 lg:mx-0 flex lg:block">
-		{/* h-[34.5rem] */}
-		<Tabs
-			className="bg-branco-gelo pb-9 rounded-lg lg:w-[50.5rem] lg:h-[34.5rem] mx-auto"
+	<div className="font-sans mt-[4.5rem] mb-80 mx-4 lg:mx-0 flex lg:block">
+		<TabsPrimitive.Root
+			className="bg-white-ice flex flex-col pb-9 rounded-lg
+			lg:w-[50.5rem] lg:h-[34.5rem] mx-auto shadow-card"
 			defaultValue="tab1"
 		>
 			<div className="pl-9 pt-8">
 				<CardTitle title="Adicionar Usuário" />
 			</div>
-			{/* antes era mb-4 */}
 			<div className="mx-9 mt-4 mb-6">
 				<CardLine />
 			</div>
-			<TabsList className="mb-10 lg:mx-[4.5rem] flex flex-col lg:flex-row gap-2 lg:gap-0 mx-auto">
-				<TabsTrigger value="tab1">Informações pessoais</TabsTrigger>
-				<TabsTrigger value="tab2">Endereço</TabsTrigger>
-				<TabsTrigger value="tab3">Dados Bancários</TabsTrigger>
-			</TabsList>
-			<TabsContent className="w-auto lg:mx-auto" value="tab1">
+			<TabsPrimitive.List
+				className="shrink-0 mb-10 lg:mx-[3.7rem] flex flex-col lg:flex-row
+				gap-2 lg:gap-0 mx-auto border-b border-b-gray-medium"
+			>
+				<TabsTrigger
+					className='tab'
+					value="tab1"
+				>
+					Informações pessoais
+				</TabsTrigger>
+				<TabsTrigger 
+					className='tab'
+					value="tab2"
+				>	
+					Endereço
+				</TabsTrigger>
+				<TabsTrigger
+					className='tab'
+					value="tab3"
+				>
+					Dados Bancários
+				</TabsTrigger>
+			</TabsPrimitive.List>
+			<TabsPrimitive.Content className="w-auto lg:mx-auto" value="tab1">
 				<form action="" className="flex flex-wrap justify-center w-auto">
 					<div className="lg:mx-14 mx-0">
 						<CardLabelInput
@@ -138,8 +104,8 @@ const CardAddUser = () => (
 						/>
 					</div>
 				</form>
-			</TabsContent>
-			<TabsContent className="mx-0 w-auto justify-center flex" value="tab2">
+			</TabsPrimitive.Content>
+			<TabsPrimitive.Content className="mx-0 w-auto justify-center flex" value="tab2">
 				<form action="" className="flex flex-wrap  justify-center w-auto ">
 					<div className="lg:mx-14 mx-0">
 						<CardLabelInput
@@ -186,8 +152,8 @@ const CardAddUser = () => (
 						/>
 					</div>
 				</form>
-			</TabsContent>
-			<TabsContent className="mx-0 w-auto justify-center flex" value="tab3">
+			</TabsPrimitive.Content>
+			<TabsPrimitive.Content className="mx-0 w-auto justify-center flex" value="tab3">
 				<form action="" className="flex flex-wrap justify-center w-auto ">
 					<div className="flex justify-center gap-x-[3.25rem] flex-wrap gap-[3.25rem]">
 						<CardLabelInput
@@ -222,10 +188,9 @@ const CardAddUser = () => (
 						<Button title="Cancelar" style={`btn-secondary-action`} />
 					</div>
 				</form>
-			</TabsContent>
-		</Tabs>
-	</Box>
+			</TabsPrimitive.Content>
+		</TabsPrimitive.Root>
+	</div>
 );
 
 export default CardAddUser;
-

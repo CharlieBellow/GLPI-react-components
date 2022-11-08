@@ -18,7 +18,7 @@ export function Menu() {
 	return (
 		<>
 			<input type="checkbox" name="checkbox" id="checkbox" className="float" />
-			<aside className="checkbox-wrapper hidden lg:block lg:bg-azul-final-gradiente lg:w-[13.375rem] lg:m-0 lg:z-10  ">
+			<aside className="checkbox-wrapper hidden lg:block lg:bg-blue-final-gradient lg:w-[13.375rem] lg:m-0 lg:z-10  ">
 				<label htmlFor="checkbox" className=" float">
 					<List size={24} />
 					{/* colocar as 3 divs aqui */}
@@ -30,28 +30,32 @@ export function Menu() {
 				/>
 
 				<div className="flex flex-col  pl-6 pr-5 pb-[2.063rem] pt-6">
-					<h4 className="text-branco-100 font-bold text-sm text-invisible">
+					<h4 className="text-white-100 font-bold text-sm text-invisible">
+
 						Geral
 					</h4>
 					<AccordionMenu />
 				</div>
 
 				<div className="flex flex-col items-start pl-6 pr-5 pb-[2.063rem]">
-					<h4 className="text-branco-100 font-bold text-sm text-invisible">
+
+					<h4 className="text-white-100 font-bold text-sm text-invisible">
+
 						Ajuda
 					</h4>
 
 					<div className=" w-full flex items-center content-between">
-						<p className=" text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
-							<Gear size={20} className=" stroke-branco-100  aumentaIcone" />
+						<p className=" text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
+							<Gear size={20} className=" stroke-white-100  aumentaIcone" />
 							<p className="text-hidden ml-2">Configurações</p>
+
 						</p>
 					</div>
 
 					<div className="w-full flex items-center content-between">
 						<Link to="/SignUp">
-							<p className="text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
-								<User size={20} className="mr-2 stroke-branco-100" />
+							<p className="text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
+								<User size={20} className="mr-2 stroke-white-100" />
 								<p className="text-hidden">Perfil</p>
 							</p>
 						</Link>
@@ -59,7 +63,7 @@ export function Menu() {
 
 					<div className="w-full flex items-center content-between">
 						<Link to="/Login">
-							<p className="text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
+							<p className="text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
 								<Question size={20} className="mr-2" />
 								<p className="text-hidden">Sobre</p>
 							</p>
@@ -68,9 +72,10 @@ export function Menu() {
 
 					<div className="w-full flex items-center content-between">
 						<Link to="/Teste">
-							<p className="text-white font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-azul-fundo-gradiente-dark">
-								<WarningCircle size={20} className="mr-2 stroke-branco-100" />
+							<p className="text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
+								<WarningCircle size={20} className="mr-2 stroke-white-100" />
 								<p className="text-hidden">Ajuda</p>
+
 							</p>
 						</Link>
 					</div>

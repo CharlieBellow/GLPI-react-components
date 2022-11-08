@@ -13,7 +13,7 @@ export const ButtonSelect = (props: SelectItemProps) => (
 		arr.map(
 		<SelectItem
 			value={props.value}
-			className="py-1 flex hover:bg-azul-ufal outline-azul-ufal  hover:text-branco-100"
+			className="py-1 flex hover:bg-blue-ufal outline-blue-ufal  hover:text-white-100"
 		>
 			<SelectItemText>{props.value}</SelectItemText>
 			<SelectItemIndicator>

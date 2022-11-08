@@ -17,28 +17,21 @@ const users = [
 
 	const ItemSelect = ['Nome', 'Email', 'Data de Criação', 'Matrícula']
 
-
 function Dashboard() {
+	document.title = "Dashboard - GLPI";
   return (
 		<>
-			<div className="w-full  bg-branco-gelo-forte">
-				<div className="flex bg-branco-gelo-forte w-screen lg:max-w-[1900px] mx-auto">
-					{/*<input
-						type="checkbox"
-						name="checkbox"
-						id="checkbox"
-						className=" float ml-5"
-					/>*/}
 
+			<div className="w-full  bg-white-strong-ice">
+				<div className="flex bg-white-strong-ice w-screen lg:max-w-[1900px] mx-auto">
 					<div className="flex  relative">
 						<Menu />
 					</div>
 
 					<div className="w-screen flex flex-col lg:block">
-						{/*<label htmlFor="checkbox" className="float">
-							<List size={ 24} />
-						</label>*/}
-						<Header />
+						<div>
+							<Header page="Dashboard" />
+						</div>
 
 						<div className="w-screen h-full lg:h-auto lg:w-auto">
 							<TableList itemList={users} listSelectButton={ItemSelect} />
