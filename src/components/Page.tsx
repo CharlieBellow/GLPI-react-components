@@ -21,9 +21,7 @@ export function Page(props: PageProps) {
 							<Header page={props.pageTitle} />
 						</div>
 
-						<div className="content">
-              {props.contentPage}
-						</div>
+						<div className="content">{props.contentPage}</div>
 					</div>
 				</div>
 			</div>
