@@ -31,14 +31,14 @@ function TableList(props: TableProps) {
 
 	return (
 		<>
-			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-[41rem]">
-				<div className="lg:mb-14">
+			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-auto ">
+				<div className="">
 					<TableOptions listSelectButton={props.listSelectButton} />
 				</div>
 
-				<div className="h-[26.375rem] overflow-y-auto pt-5">
-					<Table colorScheme="whiteAlpha" className="relative ">
-						<Thead className="border-b-2 border-cinza-texto hidden lg:flex lg:none lg:absolute lg:right-[7.863rem] lg:left-[1.288rem] lg:justify-between lg:top-[-2rem] max-w-[1550px] mx-auto w-full">
+				<div className="h-auto overflow-y-auto">
+					<Table colorScheme="whiteAlpha" className=" ">
+						<Thead className="border-b-2 mx-6 border-cinza-texto hidden lg:flex lg:none   lg:justify-between  ">
 							<div>
 								<Th
 									px={["4", "4", "6"]}
@@ -57,10 +57,10 @@ function TableList(props: TableProps) {
 							<Th w="">Ações</Th>
 						</Thead>
 
-						<Tbody className="scroll max-w-full lg:top-4">
+						<Tbody className="scroll max-w-full lg:top-4 ">
 							{props.itemList.map(user => {
 								return (
-									<div className=" rounded-[0.75rem] lg:rounded-0 bg-branco-gelo my-3 lg:my-0 flex flex-col lg:flex-row mx-6">
+									<div className=" rounded-[0.75rem] lg:rounded-0 bg-branco-gelo my-3 lg:my-0 flex flex-col lg:flex-row mx-6 pb-0">
 										<Tr
 											className="lg:border-b-2 lg:border-cinza-texto  lg:bg-branco-100  lg:flex flex-row w-full justify-between items-center"
 											key={user.name}
@@ -89,7 +89,7 @@ function TableList(props: TableProps) {
 														</Box>
 													</Td>
 													<ButtonMainWithIcon
-														classname="lg:hidden items-center bg-transparent text-fundo-claro pr-5"
+														classname="lg:hidden items-center bg-transparent text-fundo-claro"
 														icon={<FiMoreVertical className="" size={18} />}
 														title=""
 													/>
@@ -103,7 +103,7 @@ function TableList(props: TableProps) {
 											</div>
 
 											<ButtonMainWithIcon
-												classname="lg:flex hidden items-center px-[0.625rem] py-2 m-6 bg-cinza-texto text-branco-100 rounded-md filter shadow-sombra-botao font-bold text-base "
+												classname="lg:flex hidden items-center px-[0.625rem] py-2 m-0 bg-cinza-texto text-branco-100 rounded-md filter shadow-sombra-botao font-bold text-base "
 												icon={
 													<PencilSimpleLine
 														className="mr-3"

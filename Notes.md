@@ -12,16 +12,16 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 - ok- parcial - no header do mobile os ícones de menu estão scrolando junto com a tela. tem que resolver isso. Talvez tenha que retirar a estilização fixed
   - se tirar a estilização fixed, retira também a responsividade dos ícones
 - ok - na tela de login do mobile a tela está scrolando sem necessidade.
+- ok - fazer a responsividade do menu lateral.
+  - quando clica no menu pra ele diminuir, o thead da tabela continua fixo. Como resolver se o tamanho dele está fixo?
+  - ok - os ícones ficam pequenos quando o menu está clicado
+  - ok - falta centralizar melhor os ícones
+
 
 - parcial - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - agora na última aba os labels dos inputs estão desalinhados;
 
 - no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
-
-- em progresso - fazer a responsividade do menu lateral.
-  - quando clica no menu pra ele diminuir, o thead da tabela continua fixo. Como resolver se o tamanho dele está fixo?
-  - ok - os ícones ficam pequenos quando o menu está clicado
-  - falta centralizar melhor os ícones
 
 - criar um componente de Page que recebe como props o conteúdo da página
 
