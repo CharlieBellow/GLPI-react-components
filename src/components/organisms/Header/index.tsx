@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { X, Bell, UserPlus, Question, List } from "phosphor-react";
+import { Bell, UserPlus, Question, List } from "phosphor-react";
 import Search from '../../Search';
 
 interface HeaderProps {
@@ -11,8 +11,7 @@ export function Header(props: HeaderProps) {
 	return (
 		<>
 			<header
-				className="flex lg:h-[7.75rem] h-[10rem]
-			 rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-white-100 bg-gradient justify-around"
+				className="flex lg:h-[7.75rem] h-[10rem] rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-white-100 bg-gradient justify-around"
 			>
 				<div className="bg-ufalBackground lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-4 lg:mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
@@ -20,11 +19,6 @@ export function Header(props: HeaderProps) {
 							<div className="lg:hidden flex items-start">
 								<List size={24} weight="bold" />
 							</div>
-						{/*<X
-							size={18}
-							weight="bold"
-							className="flex w-6 h-6 invisible lg:visible"
-						/>*/}
 						<h4 className="lg:text-[1.625rem] text-lg font-bold lg:font-normal lg:pl-2 lg:mr-[5.125rem] lg:pt-0 pt-16 ">
 							{props.page} 
 						</h4>

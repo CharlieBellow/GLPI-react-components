@@ -17,13 +17,12 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
   - ok - os ícones ficam pequenos quando o menu está clicado
   - ok - falta centralizar melhor os ícones
 
-
-- parcial - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
+- in progress - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - agora na última aba os labels dos inputs estão desalinhados;
 
-- no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
+- ok - o header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
 
-- criar um componente de Page que recebe como props o conteúdo da página
+-   criar um componente de Page que recebe como props o conteúdo da página
 
 - fazer o toastfy e o spinner de carregamento
 

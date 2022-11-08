@@ -1,7 +1,7 @@
 import { Menu } from "../../components/organisms/Menu";
 import { Header } from "../../components/organisms/Header";
-//import TableTeste from "../Teste/TableTeste";
-import TableList from "../../components/TableList";
+import TableTeste from "../Teste/TableTeste";
+//import TableList from "../../components/TableList";
 
 const users = [
 	{ id: 1, name: "Charlie", email: "email@email.com", date: "01/02/2022" },
@@ -14,12 +14,7 @@ const users = [
 	{ id: 8, name: "Marcelo", email: "marcelo@email.com", date: "01/02/2022" },
 	{ id: 9, name: "Pedro", email: "pedro@email.com", date: "01/02/2022" },
 	{ id: 10, name: "Felipe", email: "lipe@email.com", date: "01/02/2022" },
-	{
-		id: 11,
-		name: "Giancarlo",
-		email: "giancarlo@email.com",
-		date: "01/02/2022",
-	},
+	{ id: 11, name: "Giancarlo", email: "giancarlo@email.com", date: "01/02/2022",},
 	{ id: 12, name: "Roberta", email: "roberta@email.com", date: "01/02/2022" },
 	{ id: 13, name: "Caio", email: "caio@email.com", date: "01/02/2022" },
 	{ id: 14, name: "Rodrigo", email: "rodrigo@email.com", date: "01/02/2022" },
@@ -43,8 +38,8 @@ function Dashboard() {
 						</div>
 
 						<div className="w-screen h-full lg:h-auto lg:w-auto">
-							{/*<TableTeste />*/}
-							<TableList itemList={users} listSelectButton={ItemSelect} />
+							<TableTeste />
+							{/*<TableList itemList={users} listSelectButton={ItemSelect} />*/}
 						</div>
 					</div>
 				</div>
