@@ -23,6 +23,7 @@ import { FiMoreVertical } from "react-icons/fi";
 interface TableProps {
 	itemList: Array<any>;
 	listSelectButton: Array<any>
+	
 }
 
 
@@ -31,13 +32,13 @@ function TableList(props: TableProps) {
 
 	return (
 		<>
-			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-auto ">
+			<div className="lg:bg-branco-100 p-4 lg:m-[4.5rem] rounded-lg h-auto  ">
 				<div className="">
 					<TableOptions listSelectButton={props.listSelectButton} />
 				</div>
 
-				<div className="h-auto overflow-y-auto">
-					<Table colorScheme="whiteAlpha" className=" ">
+				<div className="h-auto ">
+					<Table colorScheme="whiteAlpha" className=" " >
 						<Thead className="border-b-2 mx-6 border-cinza-texto hidden lg:flex lg:none   lg:justify-between  ">
 							<div>
 								<Th

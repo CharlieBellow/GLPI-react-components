@@ -13,20 +13,16 @@ import logoUfal from "../../../assets/brasao-ufal.png";
 
 export function Menu() {
 
-	
-
 	return (
 		<>
 			<input type="checkbox" name="checkbox" id="checkbox" className="float hidden" />
 			<aside className="checkbox-wrapper hidden lg:block lg:bg-azul-final-gradiente lg:w-[13.375rem] lg:m-0 lg:z-10  ">
 				<label htmlFor="checkbox" className="float p-[-12px] ml-[-32px]">
 					<List size={24} className="invisible"/>
-					{/* colocar as 3 divs do menu hamburguer aqui */}
 					<div className="transition-[0.4s] change">
-					<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar1"></div>
-					<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar2"></div>
-					<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar3"></div>
-
+						<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar1"></div>
+						<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar2"></div>
+						<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar3"></div>
 					</div>
 				</label>
 				<img

@@ -4,15 +4,16 @@ import ButtonMainWithIcon from "../ButtonMainWithIcon";
 import Search from "../Search";
 interface TableOptionsProps {
 	listSelectButton: Array<any>;
+	titleOfTable?: string;
 }
 
 export default function TableOptions(props: TableOptionsProps) {
 	//const ItemSelect = ["Nome", "Email", "Data de Criação", "Matrícula"];
 	return (
 		<>
-			<div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-0 text-cinza-texto lg:mx-8 lg:my-6">
-				<h4 className="font-medium text-lg lg:text-2xl hidden lg:flex">
-					Lista de usuário
+			<div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-0 text-cinza-texto lg:mx-8 lg:my-6 ">
+				<h4 className="font-medium text-lg lg:text-2xl hidden lg:flex ">
+					{props.titleOfTable}
 				</h4>
 
 				<div className="flex flex-row items-center">
