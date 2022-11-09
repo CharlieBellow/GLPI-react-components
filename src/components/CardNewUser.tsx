@@ -7,7 +7,7 @@ function CardNewUser() {
   return (
     <div className='mx-4'>
       <div
-				className="font-sans mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
+				className="mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
 				h-auto shadow-card"
 			>
