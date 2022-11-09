@@ -42,6 +42,7 @@ function CardFormService() {
 								listSelectButton={serviceLocation}
 								className="block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
 								max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
+								triggerWidth="w-full"
 							/>
 			 			</div>
 			 		</div>

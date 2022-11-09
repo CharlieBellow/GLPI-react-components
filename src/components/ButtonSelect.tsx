@@ -1,13 +1,14 @@
 
 import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
+
 interface ButtonSelectProps {
 	className?: string;
 	listSelectButton: Array<any>;
 	title?: string;
 	placeholder: string;
+	triggerWidth: string;
 }
-
 
 export const ButtonSelect = (props: ButtonSelectProps) => (
 	<div
@@ -17,7 +18,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 		<Select>
 			<SelectTrigger
 				aria-label="Filter"
-				className="flex lg:w-[11rem] justify-between"
+				className={`flex justify-between ${props.triggerWidth}`}
 			>
 				<SelectValue placeholder={props.placeholder} />
 				<SelectIcon>
@@ -36,7 +37,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 								<SelectItem
 									key={selectItem}
 									value={selectItem}
-									className="py-1 flex hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
+									className="py-1 flex cursor-pointer hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
 								>
 									<SelectItemText>{selectItem}</SelectItemText>
 									<SelectItemIndicator>
