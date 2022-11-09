@@ -10,6 +10,7 @@ import Teste from './Pages/Teste'
 import SignUp from './Pages/SignUp'
 import FormNewUser from "./Pages/FormNewUser";
 import FormAddUser from "./Pages/FormAddUser";
+import HomeMobile from "./Pages/HomeMobile";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -29,6 +30,7 @@ function App() {
 						<Route path="/FormNewUser" element={<FormNewUser />} />
 						<Route path="/FormAddUser" element={<FormAddUser />} />
 						<Route path="/Teste" element={<Teste />} />
+						<Route path="/HomeMobile" element={<HomeMobile />} />
 					</Routes>
 				</Router>
 			</ChakraProvider>
