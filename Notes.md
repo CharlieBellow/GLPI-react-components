@@ -25,6 +25,7 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 - ok - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - ok - agora na última aba os labels dos inputs estão desalinhados;
 -- ok - no mobile os ícones da tabela sumiram. tem que refazer.
+-- ok -as paginas não ficam mais ocupando apenas uma determinada largura
 
 - fazer o toastfy e o spinner de carregamento
 
@@ -36,6 +37,7 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 
 - fazer o toggle Menu do mobile
 
--as paginas não ficam mais ocupando apenas uma determinada largura
+- usar formik e yup para validar formulários
 
+- o toggle menu está mudando de lugar quando aumenta o tamanho da tela
 

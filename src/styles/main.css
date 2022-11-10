@@ -45,11 +45,11 @@
   }
 
   input:checked + .checkbox-wrapper img {
-    @apply w-[2.176rem] h-[3.736rem] items-center bottom-5;
+    @apply w-[2.176rem] h-[3.736rem] mx-3 mb-[-1rem];
 
   }
 
-   input:checked + .checkbox-wrapper .text-hidden {
+  input:checked + .checkbox-wrapper .text-hidden {
     @apply hidden;
 
   }
@@ -59,7 +59,7 @@
 
   }
 
-  input:checked + .checkbox-wrapper .aumentaIcone {
+  input:checked + .checkbox-wrapper .increaseIcon {
     @apply w-auto justify-center items-center;
 
   }
@@ -68,21 +68,20 @@
 
 
  /* Chackbox e Ícone de botão que vão mudar conforme o clique do menu. Colocar a rotação e transition do ícone aqui */
-  .float {
+  .floatToggle {
   color: white;
-  left: 280px;
-  ;
-  top:32px;
-  position: absolute
- 
+  left: 3rem;
+  top: 2rem;
+  float: right;
+  position: relative;
   
   }
 /* Colocar a rotação e transition do ícone aqui. usar o webkit transform: rotate() e construir as barras uma por uma  (usando 3 divs) e depois rotacionar quando estiver no checked. (foi exatamente assim que fiz no Figma) */
-  input:checked + .checkbox-wrapper .float .change {
-  transform: translateX(-630%);
+  input:checked + .checkbox-wrapper .floatToggle .change {
+  transform: translateX(-30%);
   }
 
-  input:checked + .checkbox-wrapper .float .change .bar1 {
+  input:checked + .checkbox-wrapper .floatToggle .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-5px, 7px) ;
   transform: rotate(-45deg) translate(-6px, 7px) ;
   margin:0;
@@ -90,17 +89,28 @@
   width:100%;
   }
 
-  input:checked + .checkbox-wrapper .float .change .bar2 {
+  input:checked + .checkbox-wrapper .floatToggle .change .bar2 {
   visibility: hidden;
   }
 
-  input:checked + .checkbox-wrapper .float .change .bar3 {
+  input:checked + .checkbox-wrapper .floatToggle .change .bar3 {
   -webkit-transform: rotate(45deg) translate(-3px, -5px) ;
   transform: rotate(45deg) translate(1px, -4px);
   
   }
 
   
+  /* menu no mobile */
 
+  .checkbox-wrapper-mobile {
 
+  }
+
+  .floatToggle-mobile {
+  
+  }
+
+  .change-mobile {
+  
+  }
 }

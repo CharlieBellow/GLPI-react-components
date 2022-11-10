@@ -59,8 +59,8 @@ const users: User[] = [
 	{ id: 28, name: "Rodrigo", email: "rodrigo@email.com", date: "01/02/2022" },
 ];
 
-const ItemSelect = ["Tudo", "Nome", "Email", "Data de Criação", "Matrícula"];
-const editTableOptions = ["Editar", "Excluir"];
+const ItemSelect = ["Tudo", "Nome", "Email", "Data de Criação", "Matrícula", "Descrição"];
+const editTableOptions = ["Editar", "Excluir", "desativar"];
 
 function TableTeste() {
 	const [page, setPage] = useState(1);

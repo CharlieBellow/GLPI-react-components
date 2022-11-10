@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Bell, UserPlus, Question, List } from "phosphor-react";
 import Search from '../../Search';
 
-interface HeaderProps {
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 	page: string;
 }
 
@@ -12,7 +12,7 @@ export function Header(props: HeaderProps) {
 		<>
 			<header
 				className="flex lg:h-[7.75rem] h-[10rem] rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-white-100 bg-gradient justify-around"
-			>
+				{...props}>
 				<div className="bg-ufalBackground lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-4 lg:mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-start ml-[-3rem] lg:ml-0">

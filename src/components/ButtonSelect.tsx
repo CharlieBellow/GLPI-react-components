@@ -1,7 +1,7 @@
 
 import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
-interface ButtonSelectProps {
+interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;
 	listSelectButton: Array<any>;
 	title?: string;
