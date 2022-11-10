@@ -19,11 +19,12 @@ export function Menu(props: MenuProps) {
 				type="checkbox"
 				name="checkbox"
 				id="checkbox"
-				className="floatToggle lg:hidden"
+				className="floatToggle hidden"
 				{...props}
 			/>
-			<aside className="checkbox-wrapper lg:block lg:bg-blue-final-gradient lg:w-[13.375rem] lg:m-0 lg:z-10  ">
-				<label htmlFor="checkbox" className="floatToggle  ">
+			<aside className="checkbox-wrapper block bg-blue-final-gradient lg:w-[13.375rem] lg:m-0 lg:z-10 w-0 ">
+			<div className="lg:hidden  modal"></div>
+				<label htmlFor="checkbox" className="floatToggle">
 					<List size={24} className="invisible" />
 					<div className="transition-[0.4s] change">
 						<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar1"></div>
@@ -33,8 +34,12 @@ export function Menu(props: MenuProps) {
 				</label>
 				<img
 					src={logoUfal}
-					alt="logo da ufal" className={ "w-[3.438rem] h-24 mt-[1.625rem] bg-brasaoUfal mx-auto mb-3" } />
-				<div className="flex flex-col  pl-6 pr-5 pb-[.063rem] pt-6">
+					alt="logo da ufal"
+					className={
+						"w-[3.438rem] h-24 mt-[1.625rem] bg-brasaoUfal mx-auto mb-3 mobile-hidden"
+					}
+				/>
+				<div className="flex flex-col  pl-6 pr-5 pb-[.063rem] pt-6 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible ">
 						Geral
 					</h4>
@@ -43,7 +48,7 @@ export function Menu(props: MenuProps) {
 					{props.accordionMenu}
 				</div>
 
-				<div className="flex flex-col items-start pl-6 pr-5 pb-[2.063rem]">
+				<div className="flex flex-col items-start pl-6 pr-5 pb-[2.063rem] mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible">
 						Ajuda
 					</h4>

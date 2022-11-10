@@ -16,7 +16,7 @@ export function Header(props: HeaderProps) {
 				<div className="bg-ufalBackground lg:box-content lg:w-[25.75rem] mt-[-6.5rem] bg-cover h-[14.25rem] absolute mr-[-17rem]"></div>
 				<div className="flex flex-row items-center justify-between pt-[2.625rem] mr-4 lg:mr-[4.5rem] w-full pb-8 ml-[3.75rem]">
 					<div className="flex items-start ml-[-3rem] lg:ml-0">
-							<div className="lg:hidden flex items-start">
+							<div className="lg:hidden invisible flex items-start">
 								<List size={24} weight="bold" />
 							</div>
 						<h4 className="lg:text-[1.625rem] text-lg font-bold lg:font-normal lg:pl-2 lg:mr-[5.125rem] lg:pt-0 pt-16 ">
