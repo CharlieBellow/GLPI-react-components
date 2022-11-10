@@ -10,8 +10,8 @@ export function Page(props: PageProps) {
 	document.title = props.pageTitle;
 	return (
 		<>
-			<div className="layout__menu-header">
-				<div className="flex bg-white-strong-ice">
+			<div className="layout__menu-header bg-white-strong-ice">
+				<div className="flex max-w-[128rem] mx-auto">
 					<div className="flex">
 						<Menu />
 					</div>
@@ -21,7 +21,7 @@ export function Page(props: PageProps) {
 							<Header page={props.pageTitle} />
 						</div>
 
-						<div className="content">{props.contentPage}</div>
+						<div className="content ">{props.contentPage}</div>
 					</div>
 				</div>
 			</div>

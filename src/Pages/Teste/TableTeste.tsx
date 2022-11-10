@@ -19,6 +19,7 @@ import {
 //não aceita phosphor-icons
 import { FiUser } from "react-icons/fi";
 import TableOptions from "../../components/TableList/TableOptions";
+import ButtonSelect from "../../components/ButtonSelect";
 
 type User = {
 	id: number;
@@ -59,40 +60,51 @@ const users: User[] = [
 ];
 
 const ItemSelect = ["Tudo", "Nome", "Email", "Data de Criação", "Matrícula"];
+const editTableOptions = ["Editar", "Excluir"];
 
 function TableTeste() {
 	const [page, setPage] = useState(1);
 
 	const tableData = users.map(user => ({
 		name: (
-			<Flex align="center">
+			<Flex align="center" className="w-full">
 				<Checkbox className="border-gray-text" colorScheme="gray"></Checkbox>
-				<div className="flex flex-col justify-between w-full ml-5">
+				<div className="flex flex-col justify-between lg:w-full ml-5 text-sm lg:text-base p-0">
 					<Link to="#">
 						<Text fontWeight="bold" className="text-blue-ufal">
 							{user.name}
 						</Text>
 					</Link>
-					<Text fontSize="sm" className="text-gray-text">
+					<Text fontSize="sm" className="text-gray-text text-xs">
 						{user.email}
 					</Text>
 				</div>
 			</Flex>
 		),
 		date: (
-			<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
-				<div className="text-light-bg text-xs lg:text-base">{user.date}</div>
+			<div className="lg:flex lg:flex-row w-16 lg:w-full">
+				<div className="text-light-bg text-xs lg:text-base ">{user.date}</div>
 			</div>
 		),
 		action: (
-			<div className="flex items-center justify-end">
+			<div className="flex lg:items-center lg:justify-end">
 				<ButtonMainWithIcon
 					classname="lg:flex hidden items-center px-[0.625rem] mx-0 py-2 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
 					icon={<PencilSimpleLine className="mr-3" weight="bold" size={20} />}
 					title="Editar"
 				/>
 				{/* botão de opções para mobile não funciona */}
-				<DotsThreeVertical size={ 24} className="text-gray-text lg:hidden flex" />
+				<ButtonSelect
+					placeholder=""
+					className="text-gray-text lg:hidden flex hover:text-blue-ufal shadow-sm"
+					icon={
+						<DotsThreeVertical
+							size={24}
+						/>
+					}
+					listSelectButton={editTableOptions}
+					
+				/>
 			</div>
 		),
 	}));
@@ -114,33 +126,35 @@ function TableTeste() {
 
 	return (
 		<>
-			<div className="w-full bg-white-strong-ice ">
-				<div className="flex bg-white-strong-ice w-screen lg:max-w-[75rem] mx-auto">
-					<div className="w-full h-full lg:h-auto lg:w-full justify-center ">
+			<div className="w-full bg-white-strong-ice">
+				<div className="flex bg-white-strong-ice w-screen lg:max-w-[75rem] lg:mx-auto ">
+					<div className="w-full h-full lg:h-auto lg:w-full justify-center  ">
 						<Box p="12" className=" bg-white-100 my-9 mx-9 rounded-lg">
-							<Heading size="sm" as="h3">
+							<Heading size="sm" as="h3" className="">
 								<TableOptions
-									titleOfTable={"Lista de usuário"}
+									titleOfTable={"Lista de usuários"}
 									listSelectButton={ItemSelect}
 								/>
 							</Heading>
-
-							<Box mt="6" className=" bg-white-100 rounded-lg">
-								<Table
-									colorScheme="blue"
-									// Fallback component when list is empty
-									emptyData={{
-										icon: FiUser,
-										text: "Nobody is registered here.",
-									}}
-									totalRegisters={users.length}
-									page={page}
-									// Listen change page event and control the current page using state
-									onPageChange={page => setPage(page)}
-									columns={tableColumns}
-									data={tableData}
-								/>
-							</Box>
+							<div className="lg:w-full">
+								<Box mt="6" className=" bg-white-100 rounded-lg">
+									<Table
+										classname=""
+										colorScheme="blue"
+										// Fallback component when list is empty
+										emptyData={{
+											icon: FiUser,
+											text: "Nobody is registered here.",
+										}}
+										totalRegisters={users.length}
+										page={page}
+										// Listen change page event and control the current page using state
+										onPageChange={page => setPage(page)}
+										columns={tableColumns}
+										data={tableData}
+									/>
+								</Box>
+							</div>
 						</Box>
 					</div>
 				</div>

@@ -5,7 +5,8 @@ interface ButtonSelectProps {
 	className?: string;
 	listSelectButton: Array<any>;
 	title?: string;
-	placeholder: string;
+	placeholder?: any;
+	icon?: any;
 }
 
 
@@ -21,14 +22,14 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 			>
 				<SelectValue placeholder={props.placeholder} />
 				<SelectIcon>
-					<FiChevronDown size={24} className="pl-1 w-5" />
+					{props.icon}
 				</SelectIcon>
 			</SelectTrigger>
 			<SelectContent>
 				<SelectScrollUpButton>
 					<FiChevronUp size={24} className="pl-1" />
 				</SelectScrollUpButton>
-				<SelectViewport className="bg-gray-medium rounded-md border-2 border-blue-ufal">
+				<SelectViewport className="bg-gray-medium rounded-md border-2">
 					<SelectGroup className="px-1 py-1 h-full">
 						<SelectLabel>{props.title}</SelectLabel>
 						{props.listSelectButton.map(selectItem => {

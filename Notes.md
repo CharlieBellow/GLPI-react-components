@@ -24,6 +24,7 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 - ok - no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
 - ok - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
   - ok - agora na última aba os labels dos inputs estão desalinhados;
+-- ok - no mobile os ícones da tabela sumiram. tem que refazer.
 
 - fazer o toastfy e o spinner de carregamento
 
@@ -37,5 +38,4 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 
 -as paginas não ficam mais ocupando apenas uma determinada largura
 
-- no mobile os ícones da tabela sumiram. tem que refazer.
 
