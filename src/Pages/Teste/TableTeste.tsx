@@ -143,7 +143,6 @@ function TableTeste() {
 							<div className="lg:w-full">
 								<Box mt="6" className=" bg-white-100 rounded-lg">
 									<Table
-										classname="bg-red-900"
 										colorScheme="blue"
 										// Fallback component when list is empty
 										emptyData={{
