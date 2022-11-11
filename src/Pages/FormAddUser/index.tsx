@@ -1,28 +1,12 @@
-import {Menu} from '../../components//organisms/Menu';
-import {Header} from '../../components/organisms/Header';
-import CardAddUser from '../../components/CardAddUser';
+import CardAddUser from "../../components/CardAddUser";
+import { Page } from "../../components/Page";
 
 function FormNewUser() {
-	document.title = "Cadastro de Usuários - GLPI";
-  return (
+	return (
 		<>
-			<div className="layout__menu-header">
-				<div className="flex bg-white-strong-ice lg:max-w-[1900px] mx-auto">
-					<div className="flex">
-						<Menu />
-					</div>
-
-					<div className="pageContent w-screen flex flex-col">
-						<div>
-							<Header page="Cadastro de Usuários" />
-						</div>
-
-						<div className="content">
-							<CardAddUser />
-						</div>
-					</div>
-				</div>
-			</div>
+			<Page pageTitle={"Cadastro de Usuários - GLPI"} contentPage={ 
+				<CardAddUser/>				
+			}/>
 		</>
 	);
 }

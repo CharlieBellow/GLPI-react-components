@@ -2,12 +2,13 @@
 import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
 
-interface ButtonSelectProps {
+interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;
 	listSelectButton: Array<any>;
 	title?: string;
-	placeholder: string;
-	triggerWidth: string;
+	placeholder?: any;
+	icon?: any;
+	triggerWidth?: string;
 }
 
 export const ButtonSelect = (props: ButtonSelectProps) => (
@@ -22,14 +23,14 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 			>
 				<SelectValue placeholder={props.placeholder} />
 				<SelectIcon>
-					<FiChevronDown size={24} className="pl-1 w-5" />
+					{props.icon}
 				</SelectIcon>
 			</SelectTrigger>
 			<SelectContent>
 				<SelectScrollUpButton>
 					<FiChevronUp size={24} className="pl-1" />
 				</SelectScrollUpButton>
-				<SelectViewport className="bg-gray-medium rounded-md border-2 border-blue-ufal">
+				<SelectViewport className="bg-gray-medium rounded-md border-2">
 					<SelectGroup className="px-1 py-1 h-full">
 						<SelectLabel>{props.title}</SelectLabel>
 						{props.listSelectButton.map(selectItem => {

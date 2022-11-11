@@ -31,8 +31,8 @@ export function CardLogin() {
 				</div>
 			</form>
 			<div className="flex flex-col justify-center  mt-[3.375rem] mx-11">
-				<Button title="Entrar" style={`btn-primary-mobile`} />
-				<Button title="Esqueci a senha" style={`btn-text-only`} />
+				<Button title="Entrar"  />
+				<Button title="Esqueci a senha" />
 			</div>
 		</div>
 	);

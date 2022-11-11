@@ -1,19 +1,20 @@
 import { MagnifyingGlass } from "phosphor-react";
 
-interface SearchProps {
+interface SearchProps extends React.HTMLAttributes<HTMLElement>{
   placeholder: string;
 }
 
 
 export default function Search(props: SearchProps) {
   return (
-		<div className="relative flex justify-center">
+		<div className="relative flex justify-center" {...props}>
 			<MagnifyingGlass
 				size={20}
 				className="absolute top-[25%] left-[64px] lg:left-[18px] text-gray-text"
 			/>
-			<label htmlFor="search"></label>
+			<label {...props} htmlFor="search"></label>
 			<input
+				{...props}
 				type="text"
 				name="search"
 				placeholder={props.placeholder}

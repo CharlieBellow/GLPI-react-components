@@ -3,6 +3,7 @@ import { Plus } from "phosphor-react";
 import ButtonMainWithIcon from "../ButtonMainWithIcon";
 import Search from "../Search";
 import { FiChevronDown } from "react-icons/fi";
+
 interface TableOptionsProps {
 	listSelectButton: Array<any>;
 	titleOfTable?: string;
@@ -31,7 +32,6 @@ export default function TableOptions(props: TableOptionsProps) {
 					<ButtonSelect
 						placeholder="Filtrar por..."
 						listSelectButton={props.listSelectButton}
-						triggerWidth="lg:w-[11rem]"
 						icon={<FiChevronDown size={24} className="pl-1 w-5" />}
 					/>
 				</div>

@@ -22,6 +22,7 @@
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "formik": "^2.2.9",
     "framer-motion": "^7.5.2",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",

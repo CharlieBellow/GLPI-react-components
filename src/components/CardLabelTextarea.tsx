@@ -1,11 +1,12 @@
-interface CardLabelTextareaProps {
-  label: string;
-  textareaId: string;  
+interface CardLabelTextareaProps extends React.HTMLAttributes<HTMLElement> {
+	label: string;
+	textareaId: string;
 }
 
 function CardLabel(props: CardLabelTextareaProps) {
   return (
     <label
+      {...props}
       htmlFor={props.textareaId}
       className="absolute text-base peer-focus:bg-white-ice text-light-bg duration-300 transform
       -translate-y-5 scale-100 -top-1 origin-[0] peer-focus:px-2 peer-focus:text-blue-ufal

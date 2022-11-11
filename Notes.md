@@ -1,3 +1,6 @@
+Link do projeto na vercel:
+
+<https://glpi-react-components.vercel.app/>
 # Notas:
 
 - ok - trocar todos os ícones pela biblioteca do phophor-icon;
@@ -17,16 +20,30 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
   - ok - os ícones ficam pequenos quando o menu está clicado
   - ok - falta centralizar melhor os ícones
 
-- in progress - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
-  - agora na última aba os labels dos inputs estão desalinhados;
-
-- ok - o header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
-
--   criar um componente de Page que recebe como props o conteúdo da página
+- ok - criar um componente de Page que recebe como props o conteúdo da página
+- ok - no header quando coloca muito texto o ícone de x diminui, não consegui entender porquê esse comportamento ocorre
+- ok - no CardAddUser  na última aba o input está com os titulo descentralizados, estou arrumando seguindo o modelo de um outro código antigo que foi copiado.
+  - ok - agora na última aba os labels dos inputs estão desalinhados;
+-- ok - no mobile os ícones da tabela sumiram. tem que refazer.
+-- ok -as paginas não ficam mais ocupando apenas uma determinada largura
+- ok - o toggle menu está mudando de lugar quando aumenta o tamanho da tela
 
 - fazer o toastfy e o spinner de carregamento
 
 - fazer o accordionMenu: colocar o mesmo sistema de .map() e as props para que ele possa ser reaproveitado.
 
 - consertar o thead da tabela: coloquei um position relative no pai e agora falta reestilizar para ele ficar no lugar 
-- retirar o scroll da tabela
+- in progress - retirar o scroll da tabela
+  - in progress - agora a tabela não está mais responsiva
+
+- fazer o toggle Menu do mobile
+  - fazer o scroll
+
+- usar formik e yup para validar formulários
+
+- criar um component para a data e exportar ele na table test.
+- criar um component novo e fazer a tabela usando o modelo do dashgo.  
+
+mobile: acordion menu > fechamento de tag p
+
+
