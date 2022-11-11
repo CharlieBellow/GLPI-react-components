@@ -1,7 +1,9 @@
+import { Button } from "./Button";
+
 function CardHomeMobile(){
     return(
         <>
-        <div className="bg-white-ice h-[9.75rem] w-[19.5rem] pt-2 pr-2 pb-3 pl-4 rounded-lg">
+        <div className="bg-white-ice h-[9.75rem] w-[19.5rem] pt-2 px-2 rounded-lg -mt-16 shadow-card">
             <h4 className="text-base font-bold">Resumo</h4>
             <div className="flex justify-between">
                 <div className="flex flex-col">
@@ -30,9 +32,15 @@ function CardHomeMobile(){
                     </p>
                 </div>
             </div>
+            <div className="flex justify-between mt-5">
+             <Button title={"Botão principal"} style={"bg-gray-medium text-xs text-gray-text px-6 py-2"} />
+             <Button title={"Botão principal"} style={"bg-blue-final-gradient text-xs text-white-ice px-6 py-2"} />
+            </div>
         </div>
         </>
     )
 }
 
 export default CardHomeMobile;
+
+// Perguntas: tamanho, fonte usada, usar margin negativa
