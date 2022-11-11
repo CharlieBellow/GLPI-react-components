@@ -78,6 +78,10 @@ function TableTeste() {
 					<Text fontSize="sm" className="text-gray-text text-xs">
 						{user.email}
 					</Text>
+					<Text fontSize="sm" className="text-gray-text text-xs">
+						{user.date}
+					</Text>
+
 				</div>
 			</Flex>
 		),
@@ -139,7 +143,7 @@ function TableTeste() {
 							<div className="lg:w-full">
 								<Box mt="6" className=" bg-white-100 rounded-lg">
 									<Table
-										classname=""
+										classname="bg-red-900"
 										colorScheme="blue"
 										// Fallback component when list is empty
 										emptyData={{

@@ -26,6 +26,7 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
   - ok - agora na última aba os labels dos inputs estão desalinhados;
 -- ok - no mobile os ícones da tabela sumiram. tem que refazer.
 -- ok -as paginas não ficam mais ocupando apenas uma determinada largura
+- ok - o toggle menu está mudando de lugar quando aumenta o tamanho da tela
 
 - fazer o toastfy e o spinner de carregamento
 
@@ -36,8 +37,13 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
   - in progress - agora a tabela não está mais responsiva
 
 - fazer o toggle Menu do mobile
+  - fazer o scroll
 
 - usar formik e yup para validar formulários
 
-- o toggle menu está mudando de lugar quando aumenta o tamanho da tela
+- criar um component para a data e exportar ele na table test.
+- criar um component novo e fazer a tabela usando o modelo do dashgo.  
+
+mobile: acordion menu > fechamento de tag p
+
 
