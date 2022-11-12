@@ -130,7 +130,7 @@ function TableTeste() {
 
 	return (
 		<>
-			<div className="w-full bg-white-strong-ice">
+			<div className="w-full bg-white-strong-ice ">
 				<div className="flex bg-white-strong-ice w-screen lg:max-w-[75rem] lg:mx-auto ">
 					<div className="w-full h-full lg:h-auto lg:w-full justify-center  ">
 						<Box p="12" className=" bg-white-100 my-9 mx-9 rounded-lg">

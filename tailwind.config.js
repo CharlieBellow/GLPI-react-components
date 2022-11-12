@@ -4,13 +4,17 @@ module.exports = {
 	theme: {
 		screens: {
 			sm: "576px",
-			// => @media (min-width: 576px) { ... }
+			// => @media (min-width: 576px) { mobile }
 
 			md: "960px",
-			// => @media (min-width: 960px) { ... }
+			// => @media (min-width: 960px) { Tablet }
+			
+			ds: "1024",
+			// => @media (min-width: 1024px) { desktops pequenos }
+
 
 			lg: "1440px",
-			// => @media (min-width: 1440px) { ... }
+			// => @media (min-width: 1440px) { monitores e TVs }
 		},
 
 		extend: {

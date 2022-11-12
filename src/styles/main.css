@@ -67,6 +67,10 @@
 		top: 2rem;
 		float: right;
 		position: relative;
+		text-decoration: none;
+		cursor: pointer;
+
+		
 	}
 
 	/* Colocar a rotação e transition do ícone aqui. usar o webkit transform: rotate() e construir as barras uma por uma  (usando 3 divs) e depois rotacionar quando estiver no checked. (foi exatamente assim que fiz no Figma) */
@@ -91,7 +95,8 @@
 		transform: rotate(45deg) translate(1px, -4px);
 	}
 
-	/* tentar fazwer usando o dialog do radix */
+	/* adicionar tamanho de tela para desktops pequenos ds: "1024" */
+	/* tentar fazer usando o dialog do radix */
 	@media screen and (max-width: 1440px) {
 		.floatToggle {
 			left: 3rem;
