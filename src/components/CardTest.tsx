@@ -33,18 +33,18 @@ export function CardTest() {
     <div className='bg-gray-900 w-full absolute h-screen'>
       <div className='mx-4'>
         <div
-          className="mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-          bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+          className="mt-18 mx-auto mb-80 flex flex-col lg:block
+          bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
           h-auto shadow-card"
         >
           <div className="pl-9 pt-8">
-            <CardTitle title="Testando Formik" />
+            <CardTitle title="Testes" />
           </div>
           <div className="mx-9 mt-4 mb-10">
             <CardLine />	
           </div>
           <form action="" className='flex flex-col gap-9 mx-14'>
-            <div className='flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9'>
+            <div className='flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9'>
               <CardLabelInput
                 label="Nome Completo"
                 type="text"

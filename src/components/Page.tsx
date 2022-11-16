@@ -11,7 +11,7 @@ export function Page(props: PageProps) {
 	return (
 		<>
 			<div className="layout__menu-header bg-white-strong-ice" {...props}>
-				<div className="flex max-w-[128rem] mx-auto" {...props}>
+				<div className="flex max-w-13xl mx-auto" {...props}>
 					<div className="flex" {...props}>
 						<Menu />
 					</div>

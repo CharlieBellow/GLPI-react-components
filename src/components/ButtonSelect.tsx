@@ -13,7 +13,7 @@ interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 
 export const ButtonSelect = (props: ButtonSelectProps) => (
 	<div
-		className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-[0.625rem] rounded-md`}
+		className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md`}
 		{...props}
 	>
 		<Select>

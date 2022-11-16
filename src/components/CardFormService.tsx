@@ -11,8 +11,8 @@ function CardFormService() {
   return (
 		<div className='mx-4'>
 			<div
-				className=" mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+				className="mt-18 mx-auto mb-80 flex flex-col lg:block
+				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">

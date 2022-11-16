@@ -40,7 +40,7 @@ export function CardLabelInput(props: CardLabelInputProps) {
 				required
 			/>
 
-      { props.icon}
+      {props.icon}
 
 			<CardLabel
 				label={props.label}

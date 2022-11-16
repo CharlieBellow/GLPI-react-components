@@ -21,8 +21,8 @@ hover:text-blue-ufal hover:cursor-pointer focus:relative`
 const CardAddUser = () => (
 	<div className='mx-4'>
 		<div 
-			className="mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-			bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+			className="mt-18 mx-auto mb-80 flex flex-col lg:block
+			bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 			h-auto shadow-card"
 		>
 			<TabsPrimitive.Root
@@ -35,7 +35,7 @@ const CardAddUser = () => (
 					<CardLine />
 				</div>
 				<TabsPrimitive.List
-					className="shrink-0 mb-10 lg:mx-[3.7rem] flex flex-col lg:flex-row
+					className="shrink-0 mb-10 lg:mx-15 flex flex-col lg:flex-row
 					gap-2 lg:gap-0 mx-14 border-b border-b-gray-medium"
 				>
 					<TabsTrigger
@@ -65,7 +65,7 @@ const CardAddUser = () => (
 							inputId="name"
 							width="w-full"
 						/>
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="CPF"
 								type="text"
@@ -79,7 +79,7 @@ const CardAddUser = () => (
 								width="lg:w-80 w-full"
 							/>
 						</div>
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="N° de matrícula"
 								type="number"
@@ -93,7 +93,7 @@ const CardAddUser = () => (
 								width="lg:w-80 w-full"
 							/>
 						</div>
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="Campus"
 								type="text"
@@ -123,7 +123,7 @@ const CardAddUser = () => (
 							inputId="complement"
 							width="w-full"
 						/>
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="Bairro"
 								type="text"
@@ -137,7 +137,7 @@ const CardAddUser = () => (
 								width="lg:w-80 w-full"
 							/>
 						</div>
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="Estado"
 								type="text"
@@ -155,7 +155,7 @@ const CardAddUser = () => (
 				</TabsPrimitive.Content>
 				<TabsPrimitive.Content className="outline-none" value="tab3">
 					<form action="" className="flex flex-col gap-9 mx-14">
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="Banco"
 								type="text"
@@ -169,7 +169,7 @@ const CardAddUser = () => (
 								width="lg:w-80 w-full"
 							/>
 						</div>
-						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9">
+						<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 							<CardLabelInput
 								label="Conta"
 								type="text"
