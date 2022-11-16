@@ -3,40 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-  .primary {
-    @apply bg-blue-ufal text-white-100 text-xl px-[3.25rem] h-12 py-2 shadow-button;
-  }
-
-  .secondary {
-    @apply bg-gray-text text-white-100 text-xl px-[3.25rem] h-12 py-2 shadow-button;
-  }
-
-
-	.btn-tertiary {
-		@apply bg-gray-medium text-gray-text text-xl px-[3.25rem] h-12 py-2 shadow-button;
-	}
-
-  .primary-action {
-    @apply bg-gray-text text-white-100 text-base px-[0.625rem] h-[2.625rem] py-2 shadow-button;
-  }
-
-  .secondary-action {
-    @apply bg-gray-medium text-gray-text text-base px-[0.625rem] h-[2.625rem] py-2 shadow-button;
-  }
-
 	.tab {
-		@apply bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
+		@apply 	bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
     text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
     hover:text-blue-ufal hover:cursor-pointer focus:relative;
 	}
-
-/* mobile */
-  .btn-text-only {
-    @apply bg-transparent text-blue-ufal text-base w-full py-4;
-  }
-  .primary-mobile {
-    @apply bg-blue-ufal text-white-100 text-base px-[6.25rem] py-4 shadow-button;
-  }
 
 	/* classes para estilização do Menu lateral responsivo */
 

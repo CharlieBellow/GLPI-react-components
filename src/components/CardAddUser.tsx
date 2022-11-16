@@ -182,8 +182,8 @@ const CardAddUser = () => (
 						</div>
 					</form>
 					<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
-						<Button title="Salvar" />
-						<Button title="Cancelar" />
+						<Button title="Salvar" theme='primaryAction' />
+						<Button title="Cancelar" theme='secondaryAction' />
 					</div>
 				</TabsPrimitive.Content>
 			</TabsPrimitive.Root>

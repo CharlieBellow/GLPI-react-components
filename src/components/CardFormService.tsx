@@ -50,11 +50,11 @@ function CardFormService() {
 			 	<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 			 		<Button
 			 			title="Solicitar"
-			 			// theme={`primary-action`}
+			 			theme="primaryAction"
 			 		/>
 			 		<Button
 			 			title="Cancelar"
-			 			// theme={`secondary-action`}
+			 			theme="secondaryAction"
 			 		/>
 			 	</div>
 			</div>

@@ -62,11 +62,11 @@ export function CardTest() {
           <div className="flex justify-end gap-x-3.5 mr-14 mt-10">
             <Button
               title="Salvar"
-              theme='primary'
+              theme='primaryAction'
             />
             <Button
               title="Cancelar"
-              theme='secondary'
+              theme='secondaryAction'
             />
           </div>
         </div>

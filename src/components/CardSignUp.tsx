@@ -41,8 +41,8 @@ export function CardSignUp() {
 				</div>
 			</form>
 			<div className="flex flex-col justify-center  mt-8 mx-11">
-				<Button title="Cadastrar"  />
-				<Button title="Fazer login"  />
+				<Button title="Cadastrar" theme="primary" />
+				<Button title="Fazer login" theme="textOnly" />
 			</div>
 		</div>
 	);

@@ -6,8 +6,7 @@ import { Eye } from "phosphor-react";
 
 export function CardLogin() {
 	return (
-		<div className="container w-auto lg:w-[25rem] h-[32rem] my-auto mx-auto bg-white-ice  rounded-lg shadow-card">
-
+		<div className="container w-auto lg:w-[25rem] h-[32rem] my-auto mx-auto bg-white-ice rounded-lg shadow-card">
 			<div className="pt-[4.125rem] pb-[2.25rem] text-center">
 				<CardTitle title="Fazer Login" />
 			</div>
@@ -31,8 +30,8 @@ export function CardLogin() {
 				</div>
 			</form>
 			<div className="flex flex-col justify-center  mt-[3.375rem] mx-11">
-				<Button title="Entrar"  />
-				<Button title="Esqueci a senha" />
+				<Button title="Entrar" theme="primary" />
+				<Button title="Esqueci a senha" theme="textOnly" />
 			</div>
 		</div>
 	);
