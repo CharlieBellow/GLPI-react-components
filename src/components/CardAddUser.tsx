@@ -5,7 +5,7 @@ import { CardLine } from './CardLine';
 import { Button } from './Button';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-export const TabsTrigger = styled(TabsPrimitive.Trigger, {
+const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
 		fontWeight: "bold",
 		color: "#0095DA",
@@ -13,6 +13,10 @@ export const TabsTrigger = styled(TabsPrimitive.Trigger, {
 		boxShadow: "0 3px 0 0 currentColor",
 	},
 });
+
+const tab = `bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
+text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
+hover:text-blue-ufal hover:cursor-pointer focus:relative`
 
 const CardAddUser = () => (
 	<div className='mx-4'>
@@ -35,19 +39,19 @@ const CardAddUser = () => (
 					gap-2 lg:gap-0 mx-14 border-b border-b-gray-medium"
 				>
 					<TabsTrigger
-						className='tab'
+						className={tab}
 						value="tab1"
 					>
 						Informações pessoais
 					</TabsTrigger>
 					<TabsTrigger 
-						className='tab'
+						className={tab}
 						value="tab2"
 					>	
 						Endereço
 					</TabsTrigger>
 					<TabsTrigger
-						className='tab'
+						className={tab}
 						value="tab3"
 					>
 						Dados Bancários
@@ -67,7 +71,6 @@ const CardAddUser = () => (
 								type="text"
 								inputId="cpf"
 								width="lg:w-80 w-full"
-								pattern="(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)"
 							/>
 							<CardLabelInput
 								label="E-mail"

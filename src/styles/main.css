@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-	.tab {
-		@apply 	bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
-    text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
-    hover:text-blue-ufal hover:cursor-pointer focus:relative;
-	}
-
 	/* classes para estilização do Menu lateral responsivo */
 
 	input:checked + .checkbox-wrapper {
