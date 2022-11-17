@@ -9,6 +9,7 @@ import Login from './Pages/Login'
 import Teste from './Pages/Teste'
 import SignUp from './Pages/SignUp'
 import FormNewUser from "./Pages/FormNewUser";
+import {ServiceLetter} from "./Pages/ServiceLetter";
 import FormAddUser from "./Pages/FormAddUser";
 import { CardTest } from "./components/CardTest";
 
@@ -22,6 +23,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Dashboard />} />
 						<Route path="/Dashboard" element={<Dashboard />} />
+						<Route path="/ServiceLetter" element={<ServiceLetter />} />
 						<Route path="/FormService" element={<FormService />} />
 						<Route path="/Table" element={<Dashboard />} />
 						<Route path="/Login" element={<Login />} />
