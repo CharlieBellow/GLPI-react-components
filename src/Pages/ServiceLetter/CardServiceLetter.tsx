@@ -49,16 +49,20 @@ interface CardServiceLetterProps {
 }
 
 export function CardServiceLetter(props: CardServiceLetterProps) {
+
+	
+
 	return (
 		<>
 			<div className="lg:bg-white-100 lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
 				<div className="flex  justify-between">
-					<h3 className="font-3xl pt-4 font-extrabold ml-4 text-2xl lg:text-3xl lg:flex">{props.serviceTitle}</h3>
+					<h3 className="font-3xl pt-4 font-extrabold ml-4 text-2xl lg:text-3xl lg:flex">
+						{props.serviceTitle}
+					</h3>
 					<button className="hidden lg:flex">Solicitar serviço</button>
 				</div>
-
 				<InfoServiceItem
-					icon={<Icon.Target size={20} weight="bold" className="" />}
+					icon={<Icon.Target size={20} weight="bold" className=""/>}
 					infos={servicesList}
 				/>
 			</div>

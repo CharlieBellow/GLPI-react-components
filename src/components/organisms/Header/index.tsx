@@ -24,7 +24,7 @@ export function Header(props: HeaderProps) {
 						</h4>
 					</div>
 					<div className="hidden lg:flex">
-						<Search placeholder="o que você está buscando?" />
+						<Search theme="outline-gray" placeholder="o que você está buscando?" />
 					</div>
 
 					<div className="flex row items-center">

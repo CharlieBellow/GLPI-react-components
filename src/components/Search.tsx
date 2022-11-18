@@ -1,16 +1,21 @@
 import { MagnifyingGlass } from "phosphor-react";
-
+import * as Icon from "phosphor-react"
 interface SearchProps extends React.HTMLAttributes<HTMLElement>{
-  placeholder: string;
+	placeholder: string;
+	theme?: "outline-gray" | ""
+
 }
 
 
 export default function Search(props: SearchProps) {
   return (
-		<div className="relative flex justify-center" {...props}>
+		<div
+			className={`flex bg-white-strong-ice rounded-xl shadow-card focus-within:ring-2 ring-blue-ufal ${props.theme === "outline-gray" ?  "ring-light-bg" : "" } items-center gap-1 px-2`}
+			{...props}
+		>
 			<MagnifyingGlass
 				size={20}
-				className="absolute top-[25%] left-[64px] lg:left-[18px] text-gray-text"
+				className=" text-gray-text"
 			/>
 			<label {...props} htmlFor="search"></label>
 			<input
@@ -18,7 +23,7 @@ export default function Search(props: SearchProps) {
 				type="text"
 				name="search"
 				placeholder={props.placeholder}
-				className=" text-gray-text bg-white-strong-ice rounded-xl focus:outline-blue-ufal border-none shadow-card py-2 pr-[101px] pl-[58px] text-base font-normal max-w-[80%]  lg:max-w-full lg:w-auto"
+				className="text-gray-text bg-white-strong-ice outline-none border-none  py-2 text-base font-normal lg:max-w-full lg:w-auto"
 			/>
 		</div>
 	);
