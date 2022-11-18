@@ -25,6 +25,7 @@ module.exports = {
 			fontSize: {
 				base: ["16px", "24px"],
 				xl: ["20px", "32px"],
+				// esses tamanhos de fonte não estão funcionando
 				"3xl": ["32px", "52px"],
 			},
 
