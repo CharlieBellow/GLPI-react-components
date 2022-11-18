@@ -3,6 +3,7 @@
 import TableListTeste from "../../components/TableListTest";
 import { Page } from "../../components/Page";
 
+
 const users = [
 	{ id: 1, name: "Charlie", email: "email@email.com", date: "01/02/2022" },
 	{ id: 2, name: "Humberto", email: "humberto@email.com", date: "01/02/2022" },
@@ -43,6 +44,8 @@ const ItemSelect = [
 	"Descrição",
 ];
 
+
+//import { IconTeste} from '../../components/IconTeste'
 //const editTableOptions = ["Editar", "Excluir", "desativar"];
 
 function Teste() {
@@ -51,7 +54,10 @@ function Teste() {
 			<Page
 				pageTitle={"Página de Teste"}
 				contentPage={
+		<>
 					<TableListTeste itemList={users} listSelectButton={ItemSelect} />
+		</>
+
 				}
 			/>
 		</>
