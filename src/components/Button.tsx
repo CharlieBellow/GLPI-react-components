@@ -1,9 +1,19 @@
 
 import { ButtonHTMLAttributes } from "react";
+import * as Icon from "phosphor-react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	title: string;
-	theme: "primary" | "secondary" | "tertiary" | "primaryAction" | "secondaryAction" | "textOnly" | "primaryMobile";
+	title?: string;
+	icon?: Icon.IconProps;
+	theme:
+		"primary" |
+		"secondary" |
+		"tertiary" |
+		"primaryAction" |
+		"secondaryAction" |
+		"textOnly" |
+		"primaryMobile" |
+		"withIcon";
 }
 
 export function Button(props: ButtonProps) {
@@ -47,8 +57,17 @@ export function Button(props: ButtonProps) {
 					? "bg-blue-ufal focus:outline-light-bg text-white-100 text-base px-25 py-4 shadow-button"
 					: ""
 				}
+				${
+					props.theme === "withIcon"
+					? `flex items-center justify-center gap-2 bg-blue-ufal focus:outline-light-bg lg:py-6 lg:px-3 py-4 px-4 min-w-[3.75rem]
+					lg:h-10 h-15 lg:rounded-md rounded-full text-base text-white-100 shadow-button` 
+					: ""
+				}
 			`}
 		>	
+			<>
+				{props.icon}
+			</>
 			{props.title}
 		</button>
 	);
