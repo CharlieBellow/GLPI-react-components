@@ -103,6 +103,24 @@
 
 		input:checked + .checkbox-wrapper .text-hidden {
 			@apply visible block;
+	/* mostrar mais e mostrar menos da tela de abertura de chamado */
+
+		.toggleCheck .noShow{
+			visibility: hidden;
+			overflow: hidden;
+			display: none;
+		}
+
+
+		.toggleCheck p {
+				max-height: 10rem;
+				overflow: hidden;
+		}
+		
+		.toggleCheck .show {
+			overflow: visible;
+			display: block;
+		
 		}
 
 		input:checked + .checkbox-wrapper .text-invisible {
@@ -113,4 +131,23 @@
 			@apply relative top-[-.1rem]  bg-black opacity-20 w-auto h-auto flex flex-row;
 		}
 	}
+		input:checked + .check .show{
+			color: red;
+		}
+
+		input:checked + .toggleCheck p {
+				max-height: 100%;
+				overflow: visible;
+		}
+	
+		input:checked + .toggleCheck .show {
+				display: none;
+				
+			}
+			
+			input:checked + .toggleCheck .noShow {
+				display: block;
+				visibility: visible;
+		}
 }
+

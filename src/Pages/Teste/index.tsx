@@ -3,6 +3,7 @@
 import TableListTeste from "../../components/TableListTest";
 import { Page } from "../../components/Page";
 
+
 const users = [
 	{ id: 1, name: "Charlie", email: "email@email.com", date: "01/02/2022" },
 	{ id: 2, name: "Humberto", email: "humberto@email.com", date: "01/02/2022" },
@@ -51,7 +52,9 @@ function Teste() {
 			<Page
 				pageTitle={"Página de Teste"}
 				contentPage={
-					<TableListTeste itemList={users} listSelectButton={ItemSelect} />
+					<>
+						<TableListTeste itemList={users} listSelectButton={ItemSelect} />
+					</>
 				}
 			/>
 		</>

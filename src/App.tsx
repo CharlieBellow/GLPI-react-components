@@ -9,7 +9,9 @@ import Login from './Pages/Login'
 import Teste from './Pages/Teste'
 import SignUp from './Pages/SignUp'
 import UserInfo from "./Pages/UserInfo";
+import {ServiceLetter} from "./Pages/ServiceLetter";
 import AddUser from "./Pages/AddUser";
+
 import { CardTest } from "./components/CardTest";
 
 import { ChakraProvider } from "@chakra-ui/react";
@@ -22,6 +24,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Dashboard />} />
 						<Route path="/Dashboard" element={<Dashboard />} />
+						<Route path="/ServiceLetter" element={<ServiceLetter />} />
 						<Route path="/CreateService" element={<CreateService />} />
 						<Route path="/Table" element={<Dashboard />} />
 						<Route path="/Login" element={<Login />} />
