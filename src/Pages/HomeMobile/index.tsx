@@ -24,15 +24,15 @@ function HomeMobile(){
                 </div>
             </div>
        </div>
-      
+{/*      
        <div className="flex flex-col gap-6 items-center">
+       </div>*/}
         <CardHomeMobile />
         <Search placeholder={"O que está procurando?"} />
-       </div>
       
        <h1 className="font-semibold text-base my-6 ml-8">Categorias</h1>
       
-       <div className="mx-8 flex flex-wrap gap-2">
+       <div className="mx-auto flex flex-wrap gap-2 max-w-[19rem] justify-center">
 
        <CategoriaHomeMobile Name={"Biblioteca"} Icon={<BookOpen  />} />
        <CategoriaHomeMobile Name={"NTI"} Icon={<Cpu />} />

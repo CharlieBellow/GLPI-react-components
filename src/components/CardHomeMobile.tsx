@@ -3,7 +3,7 @@ import { Button } from "./Button";
 function CardHomeMobile(){
     return(
         <>
-        <div className="bg-white-ice h-[9.75rem] w-[19.5rem] pt-2 px-2 rounded-lg -mt-16 shadow-card">
+        <div className="bg-white-ice h-[9.75rem] w-[19.5rem] pt-2 px-2 rounded-lg -mt-16  shadow-card">
             <h4 className="text-base font-bold">Resumo</h4>
             <div className="flex justify-between">
                 <div className="flex flex-col">
