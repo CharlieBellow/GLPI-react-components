@@ -36,10 +36,10 @@ export function Menu(props: MenuProps) {
 					src={logoUfal}
 					alt="logo da ufal"
 					className={
-						"w-[3.438rem] h-24 mt-[1.625rem] bg-brasaoUfal mx-auto mb-3 mobile-hidden"
+						"w-14 h-24 mt-7 bg-brasaoUfal mx-auto mb-3 mobile-hidden"
 					}
 				/>
-				<div className="flex flex-col  pl-6 pr-5 pb-[.063rem] pt-6 mobile-hidden">
+				<div className="flex flex-col pl-6 pr-5 pb-px pt-6 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible ">
 						Geral
 					</h4>
@@ -48,7 +48,7 @@ export function Menu(props: MenuProps) {
 					{props.accordionMenu}
 				</div>
 
-				<div className="flex flex-col items-start pl-6 pr-5 pb-[2.063rem] mobile-hidden">
+				<div className="flex flex-col items-start pl-6 pr-5 pb-8 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible">
 						Ajuda
 					</h4>

@@ -3,7 +3,7 @@ import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { CardLabelInput } from "./CardLabelInput";
 
-function CardNewUser() {
+function CardUserInfo() {
   return (
     <div className='mx-4'>
       <div
@@ -12,7 +12,7 @@ function CardNewUser() {
 				h-auto shadow-card"
 			>
         <div className="pl-9 pt-8">
-				  <CardTitle title="Criar Usuário" />
+				  <CardTitle title="Informações do Perfil" />
 			  </div>
 				<div className="mx-9 mt-4 mb-10">
 		 			<CardLine />	
@@ -62,4 +62,4 @@ function CardNewUser() {
   )
 }
 
-export default CardNewUser;
+export default CardUserInfo;

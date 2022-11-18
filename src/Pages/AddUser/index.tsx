@@ -1,7 +1,7 @@
 import CardAddUser from "../../components/CardAddUser";
 import { Page } from "../../components/Page";
 
-function FormNewUser() {
+function FormUserInfo() {
 	return (
 		<>
 			<Page pageTitle={"Cadastro de Usuários - GLPI"} contentPage={ 
@@ -11,4 +11,4 @@ function FormNewUser() {
 	);
 }
 
-export default FormNewUser;
+export default FormUserInfo;

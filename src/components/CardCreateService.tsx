@@ -7,7 +7,7 @@ import { CardLabelTextarea } from "./CardLabelTextarea";
 
 const serviceLocation = ['Bloco A', 'Bloco B', 'Bloco C'];
 
-function CardFormService() {
+function CreateService() {
   return (
 		<div className='mx-4'>
 			<div
@@ -62,7 +62,7 @@ function CardFormService() {
 	);
 }
 
-export default CardFormService;
+export default CreateService;
 
 // mandar p/ back-end um objeto com titulo, descrição, local onde será realizado o serviço e categoria do serviço e subcategoria do serviço. adicionar input de local do serviço (select)
 //resolver o problema dos botões

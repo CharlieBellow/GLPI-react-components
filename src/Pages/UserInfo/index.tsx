@@ -1,16 +1,16 @@
 import { Page } from "../../components/Page";
-import CardNewUser from "../../components/CardNewUser";
+import CardUserInfo from "../../components/CardUserInfo";
 
-function FormNewUser() {
+function FormUserInfo() {
 	document.title = "Criação de Usuários - GLPI";
 	return (
 		<>
 			<Page
 				pageTitle={"Cadastro de Usuários - GLPI"}
-				contentPage={<CardNewUser />}
+				contentPage={<CardUserInfo />}
 			/>
 		</>
 	);
 }
 
-export default FormNewUser;
+export default FormUserInfo;

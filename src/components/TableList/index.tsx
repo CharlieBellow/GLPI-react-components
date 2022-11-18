@@ -33,7 +33,7 @@ function TableList(props: TableProps) {
 	return (
 		<>
 			<div
-				className="lg:bg-white-100 p-4 lg:m-[4.5rem] rounded-lg h-[41rem]"
+				className="lg:bg-white-100 p-4 lg:m-18 rounded-lg h-[41rem]"
 				{...props}
 			>
 				<div className="lg:mb-16" {...props}>
@@ -60,7 +60,7 @@ function TableList(props: TableProps) {
 						<Tbody className="scroll max-w-full lg:top-4 ">
 							{props.itemList.map(user => {
 								return (
-									<div className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row mx-6 pb-0" {...props}>
+									<div className=" rounded-xl lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row mx-6 pb-0" {...props}>
 										<Tr
 											className="lg:border-b-2 lg:border-gray-text  lg:bg-white-100  lg:flex flex-row w-full justify-between items-center"
 											key={user.name}
@@ -103,7 +103,7 @@ function TableList(props: TableProps) {
 											</div>
 
 											<ButtonMainWithIcon
-												classname="lg:flex hidden items-center px-[0.625rem] py-2 m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
+												classname="lg:flex hidden items-center px-2.5 py-2 m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
 												icon={
 													<PencilSimpleLine
 														className="mr-3"
