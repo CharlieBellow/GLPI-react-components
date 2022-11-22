@@ -13,6 +13,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 		"secondaryAction" |
 		"textOnly" |
 		"primaryMobile" |
+		"tertiaryMobile" |
 		"withIcon";
 }
 
@@ -37,6 +38,11 @@ export function Button(props: ButtonProps) {
 					? "bg-gray-medium text-gray-text text-base px-13 h-12 py-2 shadow-button"
 					: ""
 				}
+				${
+					props.theme === "tertiaryMobile"
+					? "bg-gray-medium text-gray-text text-sm px-5 py-2 shadow-button"
+					: ""
+				}
         ${
 					props.theme === "primaryAction"
 					? "bg-blue-ufal focus:outline-light-bg w-22 text-white-100 text-base px-2.5 h-11 py-2 shadow-button"
@@ -54,7 +60,7 @@ export function Button(props: ButtonProps) {
 				}
 				${
 					props.theme === "primaryMobile"
-					? "bg-blue-ufal focus:outline-light-bg text-white-100 text-base px-25 py-4 shadow-button"
+					? "bg-blue-ufal focus:outline-light-bg text-white-100 text-sm px-5 py-2 shadow-button"
 					: ""
 				}
 				${
