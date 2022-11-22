@@ -4,6 +4,14 @@ import ButtonMainWithIcon from "../ButtonMainWithIcon";
 import Search from "../Search";
 import { FiChevronDown } from "react-icons/fi";
 
+
+
+import {
+	
+	useBreakpointValue,
+
+} from "@chakra-ui/react";
+
 interface TableOptionsProps {
 	listSelectButton: Array<any>;
 	titleOfTable?: string;
@@ -11,9 +19,15 @@ interface TableOptionsProps {
 
 export default function TableOptions(props: TableOptionsProps) {
 	//const ItemSelect = ["Nome", "Email", "Data de Criação", "Matrícula"];
+	//const title = isWideVersion ? "Adicionar" : "";
+
+	const isWideVersion = useBreakpointValue({
+		base: false,
+		lg: true,
+	}); 
 	return (
 		<>
-			<div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-0 text-gray-text lg:mx-8 lg:my-6">
+			<div className="flex flex-row items-center justify-between gap-3 lg:gap-0 text-gray-text lg:mx-8 lg:my-6 mx-6">
 				<h4 className="font-medium text-lg lg:text-2xl hidden lg:flex">
 					{props.titleOfTable}
 				</h4>
@@ -37,10 +51,15 @@ export default function TableOptions(props: TableOptionsProps) {
 				</div>
 				<div className="relative">
 					<ButtonMainWithIcon
-						classname="hidden lg:flex items-center px-[0.625rem] py-2 bg-blue-ufal text-white-100 rounded-md shadow-button font-bold text-base"
-						icon={<Plus className="mr-3" />}
-						title="Adicionar"
+						classname="flex items-center px-[0.625rem] py-2 bg-blue-ufal text-white-100 rounded-md shadow-button font-bold text-base"
+						icon={<Plus className="lg:mr-3 mr-0" />}
+						title={isWideVersion ? 'Adicionar' : ""}
+						
 					/>
+					{/*<ButtonMainWithIcon
+						classname="flex lg:hidden items-center px-[0.625rem] py-2 m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
+						icon={<Plus className="mr-3" weight="bold" size={20} />}
+					/>*/}
 				</div>
 			</div>
 		</>

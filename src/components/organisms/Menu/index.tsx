@@ -35,7 +35,7 @@ export function Menu(props: MenuProps) {
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
-					className={"w-14 h-24 mt-7 bg-brasaoUfal mx-auto mb-3 mobile-hidden"}
+					className={"w-14 h-24 mt-7 mx-auto mb-3 mobile-hidden"}
 				/>
 				<div className="flex flex-col pl-6 pr-5 pb-px pt-5 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible ">

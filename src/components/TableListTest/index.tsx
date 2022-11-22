@@ -1,8 +1,8 @@
 
 import { Link } from "react-router-dom";
-import {PencilSimpleLine } from "phosphor-react";
+import { useState } from "react";
+import { PencilSimpleLine } from "phosphor-react";
 import ButtonMainWithIcon from "../ButtonMainWithIcon";
-
 
 import {
 	Table,
@@ -14,22 +14,30 @@ import {
 	Text,
 	Box,
 	Checkbox,
+	useBreakpointValue,
+	Spinner,
 } from "@chakra-ui/react";
 
-
-import PaginationTable from '../PaginationTable'
 import TableOptions from "./TableOptions";
-import { FiMoreVertical } from "react-icons/fi";
+import {DropDownMenu} from "../DropDownMenu";
+import { Pagination } from "../Pagination";
+
 interface TableProps extends React.HTMLAttributes<HTMLElement>{
 	itemList: Array<any>;
 	listSelectButton: Array<any>
 	
 }
 
-
-
 function TableListTeste(props: TableProps) {
 
+	const [page, setPage] = useState(1);
+	
+	 const isWideVersion = useBreakpointValue({
+			base: false,
+			lg: true,
+		});  
+
+	  
 	return (
 		<>
 			<div
@@ -37,10 +45,13 @@ function TableListTeste(props: TableProps) {
 				{...props}
 			>
 				<div className="lg:mb-16" {...props}>
-					<TableOptions listSelectButton={props.listSelectButton} />
+					<TableOptions
+						listSelectButton={props.listSelectButton}
+						titleOfTable="Lista de Usuários"
+					/>
 				</div>
 
-				<div className="h-auto " {...props}>
+				<div className="h-auto" {...props}>
 					<Table colorScheme="whiteAlpha" className="" {...props}>
 						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none   lg:justify-between ">
 							<div {...props}>
@@ -53,28 +64,34 @@ function TableListTeste(props: TableProps) {
 
 								<Th className="tabela">Usuário</Th>
 							</div>
-							{<Th>Data de Cadastro</Th>}
+							{isWideVersion && <Th>Data de Cadastro</Th>}
 							<Th w="">Ações</Th>
 						</Thead>
 
-						<Tbody className="scroll max-w-full lg:top-4 ">
+						<Tbody className="scroll lg:max-w-full lg:top-4  ">
 							{props.itemList.map(user => {
 								return (
-									<div className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row mx-6 pb-0" {...props}>
+									<div
+										className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row lg:mx-6 pb-0 md:mx-9"
+										{...props}
+									>
 										<Tr
-											className="lg:border-b-2 lg:border-gray-text  lg:bg-white-100  lg:flex flex-row w-full justify-between items-center"
+											className="lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
 											key={user.name}
 										>
-											<div className=" flex lg:flex lg:flex-1 flex-row">
-												<Td px={["4", "4", "6"]} className="flex items-center ">
+											<div className=" flex lg:flex lg:flex-1 flex-row ">
+												<Td
+													px={["0", "0", "0"]}
+													className="flex items-center mx-1 lg:mx-4"
+												>
 													<Checkbox
 														className="border-gray-text"
 														colorScheme="gray"
 													></Checkbox>
 												</Td>
-												<div className="flex flex-row justify-between w-full">
-													<Td className="">
-														<Box key={user.name}>
+												<div className="flex flex-row justify-between lg:w-full w-6 0">
+													<Td className="text-sm lg:text-lg">
+														<Box key={user.name} className="">
 															<Link to="#">
 																<Text
 																	fontWeight="bold"
@@ -88,31 +105,32 @@ function TableListTeste(props: TableProps) {
 															</Text>
 														</Box>
 													</Td>
-													<ButtonMainWithIcon
-														classname="lg:hidden items-center bg-transparent text-light-bg"
-														icon={<FiMoreVertical className="" size={18} />}
-														title=""
-													/>
 												</div>
 											</div>
 
-											<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
-												<Td className="text-light-bg text-xs lg:text-base">
-													{user.date}
-												</Td>
+											{isWideVersion && (
+												<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
+													<Td className="text-light-bg text-xs lg:text-base">
+														{user.date}
+													</Td>
+												</div>
+											)}
+											<div className="flex pr-1 ">
+												<div className="lg:hidden flex my-auto pr-4 lg:gap-2 gap-0">
+													<DropDownMenu date={user.date} />
+												</div>
+												<ButtonMainWithIcon
+													className="flex items-center px-[0.625rem] py-2 lg:m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base"
+													icon={
+														<PencilSimpleLine
+															className="lg:mr-3 mr-0"
+															weight="bold"
+															size={20}
+														/>
+													}
+													title={isWideVersion ? "Editar" : ""}
+												/>
 											</div>
-
-											<ButtonMainWithIcon
-												classname="lg:flex hidden items-center px-[0.625rem] py-2 m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
-												icon={
-													<PencilSimpleLine
-														className="mr-3"
-														weight="bold"
-														size={20}
-													/>
-												}
-												title="Editar"
-											/>
 										</Tr>
 									</div>
 								);
@@ -120,7 +138,11 @@ function TableListTeste(props: TableProps) {
 						</Tbody>
 					</Table>
 				</div>
-				<PaginationTable />
+				<Pagination
+					totalCountOfRegisters={props.itemList.length}
+					currentPage={page}
+					onPageChange={setPage}
+				/>
 			</div>
 		</>
 	);

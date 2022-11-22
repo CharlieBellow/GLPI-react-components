@@ -23,7 +23,7 @@ export default function Search(props: SearchProps) {
 				type="text"
 				name="search"
 				placeholder={props.placeholder}
-				className="text-gray-text bg-white-strong-ice outline-none border-none  py-2 text-base font-normal lg:max-w-full lg:w-auto"
+				className="text-gray-text bg-white-strong-ice outline-none border-none  py-2 text-base font-normal lg:max-w-full lg:w-auto max-w-[9rem]"
 			/>
 		</div>
 	);

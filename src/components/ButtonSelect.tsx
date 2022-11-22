@@ -1,14 +1,16 @@
 
 import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
+import * as Icon from 'phosphor-react';
 
 interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;
 	listSelectButton: Array<any>;
 	title?: string;
 	placeholder?: any;
-	icon?: any;
+	icon?: Icon.IconProps;
 	triggerWidth?: string;
+	iconSelectItemIndicator?: Icon.IconProps | "";
 }
 
 export const ButtonSelect = (props: ButtonSelectProps) => (
@@ -23,7 +25,9 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 			>
 				<SelectValue placeholder={props.placeholder} />
 				<SelectIcon>
+					<>
 					{props.icon}
+					</>
 				</SelectIcon>
 			</SelectTrigger>
 			<SelectContent>
@@ -42,7 +46,10 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 								>
 									<SelectItemText>{selectItem}</SelectItemText>
 									<SelectItemIndicator>
-										<FiCheck size={24} className="pl-1" />
+										<>
+										{props.iconSelectItemIndicator === "" ?  <FiCheck size={24} className="pl-1" /> : props.iconSelectItemIndicator}
+										</>
+										
 									</SelectItemIndicator>
 								</SelectItem>
 							);

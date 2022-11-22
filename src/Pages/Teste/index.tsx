@@ -1,6 +1,4 @@
 
-
-import TableListTeste from "../../components/TableListTest";
 import { Page } from "../../components/Page";
 
 
@@ -53,7 +51,7 @@ function Teste() {
 				pageTitle={"Página de Teste"}
 				contentPage={
 					<>
-						<TableListTeste itemList={users} listSelectButton={ItemSelect} />
+						{/*<TableTeste  />*/}
 					</>
 				}
 			/>
