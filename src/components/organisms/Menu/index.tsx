@@ -1,8 +1,8 @@
 import AccordionMenu from "../../AccordionMenu";
-import { Link } from "react-router-dom"
+import {AccordionMenuHelp} from "../../AccordionMenuHelp";
+
 import { List } from "phosphor-react";
 
-import { Gear, WarningCircle, User, Question } from "phosphor-react";
 
 import logoUfal from "../../../assets/brasao-ufal.png";
 import { ReactNode } from "react";
@@ -22,8 +22,8 @@ export function Menu(props: MenuProps) {
 				className="floatToggle hidden"
 				{...props}
 			/>
-			<aside className="checkbox-wrapper block bg-blue-final-gradient lg:w-53 lg:m-0 lg:z-10 w-0">
-			<div className="lg:hidden  modal"></div>
+			<aside className="checkbox-wrapper block h-full lg:bg-blue-final-gradient lg:bg-none bg-gradient lg:w-53 lg:m-0 lg:z-10 w-0">
+				<div className="lg:hidden  modal"></div>
 				<label htmlFor="checkbox" className="floatToggle">
 					<List size={24} className="invisible" />
 					<div className="transition-[0.4s] change">
@@ -35,57 +35,22 @@ export function Menu(props: MenuProps) {
 				<img
 					src={logoUfal}
 					alt="logo da ufal"
-					className={
-						"w-14 h-24 mt-7 bg-brasaoUfal mx-auto mb-3 mobile-hidden"
-					}
+					className={"w-14 h-24 mt-7 bg-brasaoUfal mx-auto mb-3 mobile-hidden"}
 				/>
-				<div className="flex flex-col pl-6 pr-5 pb-px pt-6 mobile-hidden">
+				<div className="flex flex-col pl-6 pr-5 pb-px pt-5 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible ">
 						Geral
 					</h4>
 					<AccordionMenu />
 					{/* substituir depois */}
-					{props.accordionMenu}
+					{/*{props.accordionMenu}*/}
 				</div>
 
-				<div className="flex flex-col items-start pl-6 pr-5 pb-8 mobile-hidden">
+				<div className="flex flex-col items-start pl-6 pr-5 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible">
 						Ajuda
 					</h4>
-
-					<div className=" w-full flex items-center content-between">
-						<p className=" text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
-							<Gear size={20} className=" stroke-white-100  increaseIcon" />
-							<p className="text-hidden ml-2">Configurações</p>
-						</p>
-					</div>
-
-					<div className="w-full flex items-center content-between">
-						<Link to="/SignUp">
-							<p className="text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
-								<User size={20} className="mr-2 stroke-white-100" />
-								<p className="text-hidden">Perfil</p>
-							</p>
-						</Link>
-					</div>
-
-					<div className="w-full flex items-center content-between">
-						<Link to="/Login">
-							<p className="text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
-								<Question size={20} className="mr-2" />
-								<p className="text-hidden">Sobre</p>
-							</p>
-						</Link>
-					</div>
-
-					<div className="w-full flex items-center content-between">
-						<Link to="/Teste">
-							<p className="text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-5 mx-0 mr-2 hover:text-blue-dark-final-gradient">
-								<WarningCircle size={20} className="mr-2 stroke-white-100" />
-								<p className="text-hidden">Ajuda</p>
-							</p>
-						</Link>
-					</div>
+					<AccordionMenuHelp />
 				</div>
 			</aside>
 		</>
