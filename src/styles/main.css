@@ -56,17 +56,19 @@
 		transform: rotate(45deg) translate(1px, -4px);
 	}
 
+	
 	/* tentar fazwer usando o dialog do radix */
-	@media screen and (max-width: 1440px) {
+	@media screen and (max-width: 1023px) {
 		.floatToggle {
 			left: 3rem;
 			top: 1rem;
 		}
 
+
 		.mobile-hidden {
-			/*display: none;*/
-			visibility: hidden;
-		}
+		/*display: none;*/
+		visibility: visible;
+	}
 
 		input:checked + .checkbox-wrapper .floatToggle .change {
 			transform: translateX(30%);
@@ -103,9 +105,9 @@
 
 		input:checked + .checkbox-wrapper .text-hidden {
 			@apply visible block;
-	/* mostrar mais e mostrar menos da tela de abertura de chamado */
 		}
-
+		
+		/* mostrar mais e mostrar menos da tela de abertura de chamado */
 		.toggleCheck .noShow{
 			visibility: hidden;
 			overflow: hidden;
@@ -128,9 +130,9 @@
 			@apply visible block;
 		}
 
-		input:checked + .checkbox-wrapper .modal {
+		/*input:checked + .checkbox-wrapper .modal {
 			@apply relative top-[-.1rem]  bg-black opacity-20 w-auto h-auto flex flex-row;
-		}
+		}*/
 		input:checked + .check .show{
 			color: red;
 		}

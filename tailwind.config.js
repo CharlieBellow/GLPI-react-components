@@ -9,11 +9,11 @@ module.exports = {
 			md: "960px",
 			// => @media (min-width: 960px) { Tablet }
 			
-			ds: "1024",
+			lg: "1024px",
 			// => @media (min-width: 1024px) { desktops pequenos }
-
-
-			lg: "1440px",
+			
+			
+			tv: "1440",
 			// => @media (min-width: 1440px) { monitores e TVs }
 		},
 

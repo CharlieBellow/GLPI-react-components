@@ -28,7 +28,7 @@ interface TableProps extends React.HTMLAttributes<HTMLElement>{
 	
 }
 
-function TableListTeste(props: TableProps) {
+function TableList(props: TableProps) {
 
 	const [page, setPage] = useState(1);
 	
@@ -148,4 +148,4 @@ function TableListTeste(props: TableProps) {
 	);
 }
 
-export default TableListTeste;
+export default TableList;

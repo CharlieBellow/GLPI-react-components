@@ -22,7 +22,7 @@ export function Menu(props: MenuProps) {
 				className="floatToggle hidden"
 				{...props}
 			/>
-			<aside className="checkbox-wrapper block h-full lg:bg-blue-final-gradient lg:bg-none bg-gradient lg:w-53 lg:m-0 lg:z-10 w-0">
+			<aside className="checkbox-wrapper block h-full lg:bg-blue-final-gradient lg:bg-none bg-gradient lg:w-53 lg:m-0 w-0">
 				<div className="lg:hidden  modal"></div>
 				<label htmlFor="checkbox" className="floatToggle">
 					<List size={24} className="invisible" />
