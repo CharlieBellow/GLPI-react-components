@@ -13,7 +13,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 		"secondaryAction" |
 		"textOnly" |
 		"primaryMobile" |
-		"withIcon";
+		"withIcon" |
+		"primaryActionWithIcon" |
+		"secondaryActionWithIcon" |
+		"tertiaryActionWithIcon";
 }
 
 export function Button(props: ButtonProps) {
@@ -60,7 +63,25 @@ export function Button(props: ButtonProps) {
 				${
 					props.theme === "withIcon"
 					? `flex items-center justify-center gap-2 bg-blue-ufal focus:outline-light-bg lg:py-6 lg:px-3 py-4 px-4 min-w-[3.75rem]
-					lg:h-10 h-15 lg:rounded-md rounded-full text-base text-white-100 shadow-button` 
+					lg:h-10 h-15 lg:rounded-md rounded-full text-base text-white-100 shadow-button lg:relative fixed ${props.className}` 
+					: ""
+				}
+				${
+					props.theme === "primaryActionWithIcon"
+					? `flex items-center justify-center gap-2 bg-blue-ufal focus:outline-light-bg py-4 px-4 text-xl font-bold
+					text-white-100 shadow-button` 
+					: ""
+				}
+				${
+					props.theme === "secondaryActionWithIcon"
+					? `flex items-center justify-center gap-2 bg-gray-text py-4 px-4 text-xl font-bold
+					text-white-100 shadow-button` 
+					: ""
+				}
+				${
+					props.theme === "tertiaryActionWithIcon"
+					? `flex items-center justify-center gap-2 bg-gray-medium py-4 px-4 text-xl font-bold
+					text-gray-text shadow-button` 
 					: ""
 				}
 			`}

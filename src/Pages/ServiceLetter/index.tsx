@@ -5,7 +5,7 @@ export function ServiceLetter() {
   return (
 		<Page
 			pageTitle={"Carta de Serviço"}
-			contentPage={<CardServiceLetter serviceTitle={"Nome do serviço"} />}
+			contentPage={<CardServiceLetter serviceTitle={"Instalação e configuração de software (519)"} />}
 		/>
 	);
 }

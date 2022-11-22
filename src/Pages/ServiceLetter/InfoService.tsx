@@ -3,7 +3,7 @@
 import * as Icon from 'phosphor-react'
 
 interface InfoServiceItemProps {
-	icon: Icon.IconProps;
+	icon?: Icon.IconProps;
 	infos: Array<any>
 }
 
@@ -15,10 +15,10 @@ export function InfoServiceItem(props: InfoServiceItemProps) {
 		<>
 			{props.infos.map(info => {
 				return (
-					<div className="mt-3 mx-4" key={info.title}>
+					<div className="mt-9 mx-4" key={info.title}>
 						<div className="flex gap-2 items-center">
-							<>{props.icon}</>
-							<h3 className="text-lg font-bold">{info.title}</h3>
+							<>{info.icon}</>
+							<h3 className="text-3xl font-semibold">{info.title}</h3>
 						</div>
 						<input
 							type="checkbox"
@@ -26,7 +26,7 @@ export function InfoServiceItem(props: InfoServiceItemProps) {
 							id={info.title}
 							className="hidden"
 						/>
-						<div className="toggleCheck ">
+						<div className="toggleCheck mt-3">
 							<p className="check">{info.description}</p>
 
 							<label htmlFor={info.title} className="label ">
