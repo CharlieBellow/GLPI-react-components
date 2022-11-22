@@ -3,22 +3,22 @@ import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { CardLabelInput } from "./CardLabelInput";
 
-function CardNewUser() {
+function CardUserInfo() {
   return (
     <div className='mx-4'>
       <div
-				className="font-sans mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+				className="mt-18 mx-auto mb-80 flex flex-col lg:block
+				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 				h-auto shadow-card"
 			>
         <div className="pl-9 pt-8">
-				  <CardTitle title="Criar Usuário" />
+				  <CardTitle title="Informações do Perfil" />
 			  </div>
 				<div className="mx-9 mt-4 mb-10">
 		 			<CardLine />	
 		 		</div>
         <form action="" className='flex flex-col gap-9 mx-14'>
-          <div className='flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9'>
+          <div className='flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9'>
             <CardLabelInput
 		   				label="Nome Completo"
               type="text"
@@ -32,7 +32,7 @@ function CardNewUser() {
 		   				width="lg:w-80 w-full"
 		   			/>
           </div>
-          <div className='flex flex-col lg:flex-row justify-center lg:gap-x-[3.25rem] gap-9'>
+          <div className='flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9'>
             <CardLabelInput
 		   				label="Senha"
               type="password"
@@ -50,11 +50,11 @@ function CardNewUser() {
         <div className="flex justify-end gap-x-3.5 mr-14 mt-10">
           <Button
             title="Salvar"
-            style={`btn-primary-action`}
+            theme='primaryAction'
           />
           <Button
             title="Cancelar"
-            style={`btn-secondary-action`}
+            theme='secondaryAction'
           />
 		   	</div>
       </div>
@@ -62,4 +62,4 @@ function CardNewUser() {
   )
 }
 
-export default CardNewUser;
+export default CardUserInfo;

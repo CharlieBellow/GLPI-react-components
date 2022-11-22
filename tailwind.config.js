@@ -4,24 +4,52 @@ module.exports = {
 	theme: {
 		screens: {
 			sm: "576px",
-			// => @media (min-width: 576px) { ... }
+			// => @media (min-width: 576px) { mobile }
 
 			md: "960px",
-			// => @media (min-width: 960px) { ... }
+			// => @media (min-width: 960px) { Tablet }
+			
+			ds: "1024",
+			// => @media (min-width: 1024px) { desktops pequenos }
+
 
 			lg: "1440px",
-			// => @media (min-width: 1440px) { ... }
+			// => @media (min-width: 1440px) { monitores e TVs }
 		},
 
 		extend: {
+			spacing: {
+				'13': '3.25rem',
+				'15': '3.75rem',
+				'18': '4.5rem',
+				'22': '5.5rem',
+				'25': '6.25rem',
+				'26': '6.5rem',
+				'31': '7.75rem',
+				'53': '13.25rem',
+				'57': '14.25rem',
+				'68': '17rem',
+				'100': '25rem',
+				'103': '25.75rem',
+				'118': '29.5rem',
+				'128': '32rem',
+				'202': '50.5rem',
+			},
+
+			maxWidth: {
+				'13xl': '128rem',
+				card: '50.5rem',
+			},
+
 			fontFamily: {
-				sans: ['"Roboto"', "sans-serif"],
+				sans: 'Roboto, sans-serif'
 			},
 
 			fontSize: {
 				base: ["16px", "24px"],
 				xl: ["20px", "32px"],
-				"3xl": ["32px", "52px"],
+				"3xl": "26px",
+				"4xl": ["32px", "52px"],
 			},
 
 			colors: {

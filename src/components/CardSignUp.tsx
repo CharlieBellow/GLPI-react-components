@@ -7,8 +7,8 @@ import { Eye } from "phosphor-react";
 
 export function CardSignUp() {
 	return (
-		<div className="container w-auto lg:w-[25rem] h-[29.625rem] my-auto mx-auto bg-white-ice rounded-lg shadow-card">
-			<div className="pt-[1.625rem] pb-8 text-center">
+		<div className="container w-100 h-118 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
+			<div className="pt-7 pb-8 text-center">
 				<CardTitle title="Criar Conta" />
 			</div>
 			<form action="">
@@ -35,14 +35,14 @@ export function CardSignUp() {
 						width="w-full"
 						type="password"
 						icon={
-							<Eye className="absolute flex ml-[14.6rem] lg:ml-[18.7rem]" weight="bold" />
+							<Eye className="absolute flex ml-72" weight="bold" />
 						}
 					/>
 				</div>
 			</form>
 			<div className="flex flex-col justify-center  mt-8 mx-11">
-				<Button title="Cadastrar" style={`btn-primary-mobile`} />
-				<Button title="Fazer login" style={`btn-text-only`} />
+				<Button title="Cadastrar" theme="primary" />
+				<Button title="Fazer login" theme="textOnly" />
 			</div>
 		</div>
 	);

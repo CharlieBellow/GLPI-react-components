@@ -3,14 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import './styles/main.css'
 import Dashboard from "./Pages/Dashboard";
-import FormService from "./Pages/FormService";
+import CreateService from "./Pages/CreateService";
 
 import Login from './Pages/Login'
 import Teste from './Pages/Teste'
 import SignUp from './Pages/SignUp'
-import FormNewUser from "./Pages/FormNewUser";
-import FormAddUser from "./Pages/FormAddUser";
+
 import HomeMobile from "./Pages/HomeMobile";
+import UserInfo from "./Pages/UserInfo";
+import {ServiceLetter} from "./Pages/ServiceLetter";
+import AddUser from "./Pages/AddUser";
+
+import { CardTest } from "./components/CardTest";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -22,13 +26,15 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Dashboard />} />
 						<Route path="/Dashboard" element={<Dashboard />} />
-						<Route path="/FormService" element={<FormService />} />
+						<Route path="/ServiceLetter" element={<ServiceLetter />} />
+						<Route path="/CreateService" element={<CreateService />} />
 						<Route path="/Table" element={<Dashboard />} />
 						<Route path="/Login" element={<Login />} />
 						<Route path="/SignUp" element={<SignUp />} />
-						<Route path="/FormService" element={<FormService />} />
-						<Route path="/FormNewUser" element={<FormNewUser />} />
-						<Route path="/FormAddUser" element={<FormAddUser />} />
+						<Route path="/CreateService" element={<CreateService />} />
+						<Route path="/UserInfo" element={<UserInfo />} />
+						<Route path="/AddUser" element={<AddUser />} />
+						<Route path="/CardTest" element={<CardTest />} />
 						<Route path="/Teste" element={<Teste />} />
 						<Route path="/HomeMobile" element={<HomeMobile />} />
 					</Routes>

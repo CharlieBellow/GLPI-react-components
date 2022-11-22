@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-interface CardLabelInputProps {
+interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement>{
   label: string;
   type: string;  
   inputId: string;
@@ -12,6 +12,7 @@ interface CardLabelInputProps {
 function CardLabel(props: CardLabelInputProps) {
   return (
     <label
+      {...props}
       htmlFor={props.inputId}
       className="absolute text-base peer-focus:bg-white-ice text-light-bg duration-300 transform
       -translate-y-5 scale-100 -top-1 origin-[0] peer-focus:px-2 peer-focus:text-blue-ufal
@@ -39,7 +40,7 @@ export function CardLabelInput(props: CardLabelInputProps) {
 				required
 			/>
 
-      { props.icon}
+      {props.icon}
 
 			<CardLabel
 				label={props.label}

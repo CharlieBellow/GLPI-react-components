@@ -7,12 +7,12 @@ import { CardLabelTextarea } from "./CardLabelTextarea";
 
 const serviceLocation = ['Bloco A', 'Bloco B', 'Bloco C'];
 
-function CardFormService() {
+function CreateService() {
   return (
 		<div className='mx-4'>
 			<div
-				className="font-sans mt-[4.5rem] mx-auto mb-80 flex flex-col lg:block
-				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-[50.5rem] lg:w-[50.5rem]
+				className="mt-18 mx-auto mb-80 flex flex-col lg:block
+				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
@@ -42,6 +42,7 @@ function CardFormService() {
 								listSelectButton={serviceLocation}
 								className="block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
 								max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
+								triggerWidth="w-full"
 							/>
 			 			</div>
 			 		</div>
@@ -49,11 +50,11 @@ function CardFormService() {
 			 	<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 			 		<Button
 			 			title="Solicitar"
-			 			style={`btn-primary-action`}
+			 			theme="primaryAction"
 			 		/>
 			 		<Button
 			 			title="Cancelar"
-			 			style={`btn-secondary-action`}
+			 			theme="secondaryAction"
 			 		/>
 			 	</div>
 			</div>
@@ -61,7 +62,7 @@ function CardFormService() {
 	);
 }
 
-export default CardFormService;
+export default CreateService;
 
 // mandar p/ back-end um objeto com titulo, descrição, local onde será realizado o serviço e categoria do serviço e subcategoria do serviço. adicionar input de local do serviço (select)
 //resolver o problema dos botões
