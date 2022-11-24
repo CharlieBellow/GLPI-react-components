@@ -5,6 +5,9 @@ import { CardLine } from './CardLine';
 import { Button } from './Button';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 
+import * as yup from 'yup';
+import { cpfNumber, cepNumber } from '../Utils/validations';
+
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
 		fontWeight: "bold",
@@ -17,6 +20,33 @@ const TabsTrigger = styled(TabsPrimitive.Trigger, {
 const tab = `bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
 text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
 hover:text-blue-ufal hover:cursor-pointer focus:relative`
+
+
+
+const validationSchema = yup.object({
+	// validação: .matches() = verifica se o que foi passado combina com a expressão regular
+	fullName: yup.string().required(),
+	cpf: yup.string().required().matches(cpfNumber),
+	email: yup.string().email().required(),
+	nMatricula: yup.string().required(),
+	bond: yup.string().required(),
+	campos: yup.string(),
+	gender: yup.string().required(),
+	//phone: yup.string().matches(phoneNumber),
+	address: yup.string().required(),
+	complement: yup.string().required(),
+	district: yup.string().required(),
+	city: yup.string().required(),
+	state: yup.string().required(),
+	cep: yup.string().matches(cepNumber).required(),
+	bank: yup.string().required(),
+	acountType: yup.string().required(),
+	agency: yup.string().required(),
+	
+	
+
+
+})
 
 const CardAddUser = () => (
 	<div className='mx-4'>

@@ -4,10 +4,26 @@ import { CardTitle } from './CardTitle';
 import { CardLine } from './CardLine';
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
+import { phoneNumber } from "../Utils/validations";
 
 const serviceLocation = ['Bloco A', 'Bloco B', 'Bloco C'];
 
+
+
+const validationSchema = yup.object({
+	title: yup.string().required(),
+	description: yup.string().required(),
+	LocalService: yup.string(),
+	
+
+})
+
 function CreateService() {
+
+	//const [handleSubmit] = useForm({ resolver: yupResolver(validationSchema) })
+	
   return (
 		<div className='mx-4'>
 			<div
@@ -21,7 +37,7 @@ function CreateService() {
 				<div className="mx-9 mt-4 mb-10">
 		 			<CardLine />	
 		 		</div>
-				<form action="" className="">
+				<form action="" className="" >
 		 			<div className='flex flex-col gap-9'>
 			 			<div className='mx-14'>
 			 				<CardLabelInput

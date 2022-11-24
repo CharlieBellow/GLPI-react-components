@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import './styles/main.css'
-import Dashboard from "./Pages/Dashboard";
+import {Dashboard} from "./Pages/Dashboard";
 import CreateService from "./Pages/CreateService";
 
 import Login from './Pages/Login'

@@ -50,7 +50,7 @@ const ItemSelect = [
 	"Matrícula",
 	"Descrição",
 ];
-const editTableOptions = ["Editar", "Excluir", "desativar"];
+//const editTableOptions = ["Editar", "Excluir", "desativar"];
 
 export function Dashboard() {
 	return (

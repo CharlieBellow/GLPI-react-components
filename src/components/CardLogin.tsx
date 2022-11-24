@@ -4,6 +4,8 @@ import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "./CardLabelInput";
 import { Eye } from "phosphor-react";
 
+
+
 export function CardLogin() {
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
@@ -30,7 +32,7 @@ export function CardLogin() {
 				</div>
 			</form>
 			<div className="flex flex-col justify-center mt-13 mx-11">
-				<Button title="Entrar" theme="primary" />
+				<Button title="Entrar" theme="primary" type="submit"/>
 				<Button title="Esqueci a senha" theme="textOnly" />
 			</div>
 		</div>
