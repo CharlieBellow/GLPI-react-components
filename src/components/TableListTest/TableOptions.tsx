@@ -28,14 +28,14 @@ export default function TableOptions(props: TableOptionsProps) {
 	return (
 		<>
 			<div className="flex flex-row items-center justify-between gap-3 lg:gap-0 text-gray-text lg:mx-8 lg:my-6 mx-6">
-				<h4 className="font-medium text-lg lg:text-2xl hidden lg:flex">
+				<h4 className="font-medium text-lg lg:text-lg hidden lg:flex">
 					{props.titleOfTable}
 				</h4>
 
 				<div className="flex flex-row items-center">
 					<label
 						htmlFor="search"
-						className="pr-4 font-normal text-xl hidden lg:flex"
+						className="pr-4 font-normal text-xl hidden"
 					>
 						Busca
 					</label>

@@ -41,7 +41,7 @@ function TableList(props: TableProps) {
 	return (
 		<>
 			<div
-				className="lg:bg-white-100 p-4 lg:m-[4.5rem] rounded-lg h-[41rem]"
+				className="lg:bg-white-100 p-4 lg:m-10 tv:m-18 rounded-lg h-[41rem]"
 				{...props}
 			>
 				<div className="lg:mb-16" {...props}>

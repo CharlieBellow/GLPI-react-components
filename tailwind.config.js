@@ -13,7 +13,7 @@ module.exports = {
 			// => @media (min-width: 1024px) { desktops pequenos }
 			
 			
-			tv: "1440",
+			tv: "1440px",
 			// => @media (min-width: 1440px) { monitores e TVs }
 		},
 

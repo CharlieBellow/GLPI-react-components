@@ -52,7 +52,7 @@ const ItemSelect = [
 ];
 const editTableOptions = ["Editar", "Excluir", "desativar"];
 
-function Dashboard() {
+export function Dashboard() {
 	return (
 		<>
 			<Page
@@ -64,5 +64,3 @@ function Dashboard() {
 		</>
 	);
 }
-
-export default Dashboard;

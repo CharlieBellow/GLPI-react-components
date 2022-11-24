@@ -16,12 +16,12 @@ export function Page(props: PageProps) {
 						<Menu />
 					</div>
 
-					<div className="pageContent w-screen flex flex-col" {...props}>
+					<div className="pageContent w-full flex flex-col" {...props}>
 						<div {...props}>
 							<Header page={props.pageTitle} />
 						</div>
 
-						<div {...props} className="content ">
+						<div {...props} className="content">
 							{props.contentPage}
 						</div>
 					</div>
