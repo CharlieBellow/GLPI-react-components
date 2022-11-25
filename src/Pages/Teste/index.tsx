@@ -1,5 +1,6 @@
 
 import { Page } from "../../components/Page";
+import CardCreateService from "../../components/CardCreateService";
 
 function Teste() {
 	return (
@@ -8,7 +9,7 @@ function Teste() {
 				pageTitle={"Página de Teste"}
 				contentPage={
 					<>
-					
+					<CardCreateService />
 					</>
 				}
 			/>

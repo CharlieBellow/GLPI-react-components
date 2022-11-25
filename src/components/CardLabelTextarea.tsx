@@ -1,6 +1,7 @@
 interface CardLabelTextareaProps extends React.HTMLAttributes<HTMLElement> {
 	label: string;
-	textareaId: string;
+  textareaId: string;
+  register?: any;
 }
 
 function CardLabel(props: CardLabelTextareaProps) {
@@ -27,7 +28,8 @@ export function CardLabelTextarea(props: CardLabelTextareaProps) {
           className="block px-2.5 pb-2.5 pt-2.5 h-40 min-h-full max-h-40 w-full text-base
           text-light-bg bg-gray-medium focus:bg-transparent rounded-lg appearance-none
           focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
-          placeholder=" "
+        placeholder=" "
+        ref={ props.register}
         />      
             
         <CardLabel

@@ -47,6 +47,7 @@ export default function TableOptions(props: TableOptionsProps) {
 						placeholder="Filtrar por..."
 						listSelectButton={props.listSelectButton}
 						icon={<FiChevronDown size={24} className="pl-1 w-5" />}
+						
 					/>
 				</div>
 				<div className="relative">

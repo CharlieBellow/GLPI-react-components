@@ -11,9 +11,18 @@ interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	icon?: Icon.IconProps;
 	triggerWidth?: string;
 	iconSelectItemIndicator?: Icon.IconProps | "";
+	//register?: any;
+	selectValue?: string;
+	//itemId?: number;
 }
 
-export const ButtonSelect = (props: ButtonSelectProps) => (
+export function ButtonSelect(props: ButtonSelectProps) {
+
+
+	//const [selectValue, setSelectValue] = useState(1)
+	const serviceLocation = [{ id: 1, values: 'Bloco A' }, { id: 2, values: 'Bloco B' }, { id: 3, values: 'Bloco C' }, { id: 4, values: 'Bloco Med' }, { id: 5, values: 'Bloco em L' }, { id: 6, values: 'Casa Velha' }, { id: 7, values: 'NCEX' }, { id: 8, values: 'RU' }, { id: 9, values: 'Administrativo' }, { id: 10, values: 'Bloco Co}ordenações' }, { id: 11, values: 'Transporte' }];
+	
+return (
 	<div
 		className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md`}
 		{...props}
@@ -23,7 +32,7 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 				aria-label="Filter"
 				className={`flex justify-between ${props.triggerWidth}`}
 			>
-				<SelectValue placeholder={props.placeholder} />
+				<SelectValue placeholder={props.placeholder}  />
 				<SelectIcon>
 					<>
 					{props.icon}
@@ -40,11 +49,18 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 						{props.listSelectButton.map(selectItem => {
 							return (
 								<SelectItem
-									key={selectItem}
-									value={selectItem}
+									key={selectItem.id}
+									value={selectItem.values}
 									className="py-1 flex cursor-pointer hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
+									//ref={props.register}
+									//onChange={e => {
+									//	setSelectValue(e.target.value)
+									//	console.log(e.target.value)
+									//}}
+								
+									
 								>
-									<SelectItemText>{selectItem}</SelectItemText>
+									<SelectItemText>{selectItem.values}</SelectItemText>
 									<SelectItemIndicator>
 										<>
 										{props.iconSelectItemIndicator === "" ?  <FiCheck size={24} className="pl-1" /> : props.iconSelectItemIndicator}
@@ -64,6 +80,6 @@ export const ButtonSelect = (props: ButtonSelectProps) => (
 			</SelectContent>
 		</Select>
 	</div>
-);
+)};
 
 export default ButtonSelect;

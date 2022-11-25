@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import * as Icon from "phosphor-react";
 
 interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement>{
   label: string;
@@ -6,7 +6,8 @@ interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement>{
   inputId: string;
   width: string;
   pattern?: string;
-  icon?: ReactNode;
+  icon?: Icon.IconProps;
+  register?: any;
 }
 
 function CardLabel(props: CardLabelInputProps) {
@@ -29,18 +30,21 @@ export function CardLabelInput(props: CardLabelInputProps) {
   return (
 		<div className="relative flex items-center">
 			<input
-				type={props.type}
-				id={props.inputId}
-				name={props.inputId}
-				pattern={props.pattern}
-				className={`block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
+        {...props}
+        type={props.type}
+        id={props.inputId}
+        name={props.inputId}
+        pattern={props.pattern}
+        className={`block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
           max-h-11 rounded-lg appearance-none focus:outline-none
           focus:ring-0 focus:border-2 focus:border-blue-ufal peer ${props.width}`}
-				placeholder=" "
-				required
+        placeholder=" "
+        required
+        ref={ props.register}
 			/>
-
-      {props.icon}
+      <>
+        {props.icon}
+      </>
 
 			<CardLabel
 				label={props.label}
