@@ -25,7 +25,8 @@ export function Button(props: ButtonProps) {
 				hover:bg-opacity-80 font-bold rounded-md focus:outline-blue-ufal
 				${
 					props.theme === "primary"
-					? "bg-blue-ufal focus:outline-light-bg text-white-100 text-base px-13 h-12 py-2 shadow-button"
+					// text- base for text-xl
+					? "bg-blue-ufal focus:outline-light-bg text-white-100 text-xl px-13 h-12 py-2 shadow-button"
 					: ""
 				}
 				${
@@ -35,7 +36,8 @@ export function Button(props: ButtonProps) {
 				}
 				${
 					props.theme === "tertiary"
-					? "bg-gray-medium text-gray-text text-base px-13 h-12 py-2 shadow-button"
+					// text- base for text-xl
+					? "bg-gray-medium text-gray-text text-xl px-13 h-12 py-2 shadow-button"
 					: ""
 				}
 				${

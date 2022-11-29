@@ -17,6 +17,7 @@ import AddUser from "./Pages/AddUser";
 import { CardTest } from "./components/CardTest";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import PageCategoriaHome from "./Pages/PageCategoriaHome";
 
 function App() {
 	return (
@@ -37,6 +38,7 @@ function App() {
 						<Route path="/CardTest" element={<CardTest />} />
 						<Route path="/Teste" element={<Teste />} />
 						<Route path="/HomeMobile" element={<HomeMobile />} />
+						<Route path="/PageCategoriaHome" element={<PageCategoriaHome />} />
 					</Routes>
 				</Router>
 			</ChakraProvider>

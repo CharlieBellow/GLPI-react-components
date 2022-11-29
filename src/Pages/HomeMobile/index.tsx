@@ -9,7 +9,7 @@ import Search from "../../components/Search";
 
 function HomeMobile(){
     return(
-       <Page pageTitle={"ScreenHomeMobile"} contentPage={<ScreenHomeMobile />} />
+       <Page pageTitle={""} contentPage={<ScreenHomeMobile />} />
     )
 }
 
