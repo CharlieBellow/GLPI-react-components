@@ -28,10 +28,8 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 				<h3 className="pt-4 font-medium ml-4 text-3xl lg:text-4xl lg:flex">
 					{props.serviceTitle}
 				</h3>
-				<div className="mr-4 flex justify-end">
+				<div className="fixed top-[630px] right-2 lg:right-22 lg:top-202">
 					<Button
-							// ver alguma forma de nao usar margin, pois nao é a maneira ideal
-							className="mt-128 lg:mt-0" 
 							title={floatingButton ? "" : "Solicitar serviço"}
 							theme="withIcon"
 							icon={<Icon.PhoneOutgoing size={24} />}
