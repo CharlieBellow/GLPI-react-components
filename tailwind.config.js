@@ -65,6 +65,7 @@ module.exports = {
 
 				blue: {
 					ufal: "#0095DA",
+					"ufal-hover": "#33AAE1",
 					"final-gradient": "#4FB4E4",
 					"dark-final-gradient": "#0B70A2",
 				},
