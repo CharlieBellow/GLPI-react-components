@@ -1,13 +1,14 @@
 import * as Icon from "phosphor-react";
+import { Field } from 'formik';
 
 interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement>{
   label: string;
   type: string;  
-  inputId: string;
+  inputId?: string;
   width: string;
   pattern?: string;
   icon?: Icon.IconProps;
-  register?: any;
+  name?: string
 }
 
 function CardLabel(props: CardLabelInputProps) {
@@ -29,18 +30,16 @@ function CardLabel(props: CardLabelInputProps) {
 export function CardLabelInput(props: CardLabelInputProps) {
   return (
 		<div className="relative flex items-center">
-			<input
-        {...props}
-        type={props.type}
-        id={props.inputId}
-        name={props.inputId}
-        pattern={props.pattern}
-        className={`block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
+			<Field
+        { ...props }
+        type={ props.type }
+        name={ props.name}
+        pattern={ props.pattern }
+        className={ `block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
           max-h-11 rounded-lg appearance-none focus:outline-none
-          focus:ring-0 focus:border-2 focus:border-blue-ufal peer ${props.width}`}
+          focus:ring-0 focus:border-2 focus:border-blue-ufal peer ${ props.width }` }
         placeholder=" "
-        required
-        ref={ props.register}
+        //required
 			/>
       <>
         {props.icon}

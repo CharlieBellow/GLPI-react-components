@@ -1,7 +1,11 @@
+import { Field } from "formik";
+
 interface CardLabelTextareaProps extends React.HTMLAttributes<HTMLElement> {
 	label: string;
-  textareaId: string;
+  textareaId?: string;
   register?: any;
+  type?: string;
+  name?: string
 }
 
 function CardLabel(props: CardLabelTextareaProps) {
@@ -21,15 +25,17 @@ function CardLabel(props: CardLabelTextareaProps) {
 
 export function CardLabelTextarea(props: CardLabelTextareaProps) {
   return (
-      <div className="relative mx-14">
-        <textarea
-          id={props.textareaId}
-          name={props.textareaId}
-          className="block px-2.5 pb-2.5 pt-2.5 h-40 min-h-full max-h-40 w-full text-base
+    <div className="relative mx-14">
+      
+      <Field as="textarea"
+        { ...props }
+        name={ props.name }
+        id={ props.label }
+        type={ props.type }
+        className="block px-2.5 pb-2.5 pt-2.5 h-40 min-h-full max-h-40 w-full text-base
           text-light-bg bg-gray-medium focus:bg-transparent rounded-lg appearance-none
           focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
         placeholder=" "
-        ref={ props.register}
         />      
             
         <CardLabel
