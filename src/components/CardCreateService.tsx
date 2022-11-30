@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonSelect from "./ButtonSelect";
+import ButtonSelectObject from "./ButtonSelectObject";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
@@ -110,7 +111,7 @@ export const CardCreateService = () => {
 								{/*{ errors.description?.type}*/}
 								<div className="mx-14">
 									{/*<Field as="select"> -- não aceita um componente select, não pega o estado -- */}
-									<ButtonSelect
+									<ButtonSelectObject
 										type="select"
 										name="serviceLocal"
 										title="LOCAL DO SERVIÇO:"

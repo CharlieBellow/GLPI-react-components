@@ -19,7 +19,7 @@ interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	type?: string;
 }
 
-export function ButtonSelect(props: ButtonSelectProps) {
+export function ButtonSelectObject(props: ButtonSelectProps) {
 
 
 	const serviceLocation = [{ id: 1, values: 'Bloco A' }, { id: 2, values: 'Bloco B' }, { id: 3, values: 'Bloco C' }, { id: 4, values: 'Bloco Med' }, { id: 5, values: 'Bloco em L' }, { id: 6, values: 'Casa Velha' }, { id: 7, values: 'NCEX' }, { id: 8, values: 'RU' }, { id: 9, values: 'Administrativo' }, { id: 10, values: 'Bloco Co}ordenações' }, { id: 11, values: 'Transporte' }];
@@ -52,8 +52,8 @@ return (
 							{props.listSelectButton.map(selectItem => {
 								return (
 									<SelectItem
-											key={selectItem}
-											value={selectItem}
+											key={selectItem.id}
+											value={selectItem.values}
 											className="py-1 flex cursor-pointer hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
 											//ref={props.register}
 											//onChange={e => {
@@ -62,7 +62,7 @@ return (
 											//}}
 										>
 											<SelectItemText className="text-md text-red-ufal">
-												{ selectItem }
+												{ selectItem.values }
 											</SelectItemText>
 								
 											<SelectItemIndicator>
@@ -90,4 +90,4 @@ return (
 	</div>
 );};
 
-export default ButtonSelect;
+export default ButtonSelectObject;
