@@ -7,7 +7,7 @@ export function AccordionMenuHelp() {
 		
 
 			<div className=" w-full flex items-center content-between">
-				<p className=" text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-3 mx-0 mr-2 hover:text-blue-dark-final-gradient">
+				<p className=" text-white-100 font-semibold text-sm flex flex-row items-center content-start w-full my-3 mx-0  hover:text-blue-dark-final-gradient">
 					<Gear size={20} className=" stroke-white-100" />
 					<p className="text-hidden ml-2">Configurações</p>
 				</p>
