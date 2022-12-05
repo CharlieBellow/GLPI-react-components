@@ -1,6 +1,7 @@
 import { InfoServiceItem } from "./InfoService";
 import * as Icon from 'phosphor-react'
 import { Button } from "../../components/Button";
+import { useState } from "react";
 
 const servicesList = [
 	{
@@ -51,7 +52,15 @@ interface CardServiceLetterProps {
 
 export function CardServiceLetter(props: CardServiceLetterProps) {
 
-	
+	const [floatingButton, setFloatingButton] = useState(false);
+
+	const changeFloatingButton = () => {
+		if (window.scrollY >= 80) {
+			setFloatingButton(true);
+		} else {
+			setFloatingButton(false);
+		}
+	};
 
 	return (
 		<>
