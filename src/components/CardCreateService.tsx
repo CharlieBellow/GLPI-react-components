@@ -6,54 +6,26 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-//import { phoneNumber } from "../Utils/validations";
-import { Formik, FormikHelpers, Field, Form, setNestedObjectValues } from "formik";
+import { validationSchema } from "../Utils/validations";
 
-import { useForm } from "react-hook-form";
-//import { useState } from 'react';
+import { Formik, Field, Form} from "formik";
+
+
+const serviceLocation = [
+	{ values: "bloco-a", label: "Bloco A" },
+	{ values: "bloco-b", label: "Bloco B" },
+	{ values: "bloco-c", label: "Bloco C" },
+	{ values: "bloco-med", label: "Bloco Med" },
+	{ values: "bloco-em-l", label: "Bloco em L" },
+	{ values: "casa-velha", label: "Casa Velha" },
+	{ values: "ncex", label: "NCEX" },
+	{ values: "ru", label: "RU" },
+	{ values: "administrativo", label: "Administrativo" },
+	{ values: "bloco-coordenações", label: "Bloco Coordenações" },
+	{ values: "transporte", label: "Transporte" },
+];
 
 export const CardCreateService = () => {
-	const serviceLocation = [
-		{ id: 1, values: "Bloco A" },
-		{ id: 2, values: "Bloco B" },
-		{ id: 2, values: "Bloco C" },
-		{ id: 2, values: "Bloco Med" },
-		{ id: 2, values: "Bloco em L" },
-		{ id: 2, values: "Casa Velha" },
-		{ id: 2, values: "NCEX" },
-		{ id: 2, values: "RU" },
-		{ id: 2, values: "Administrativo" },
-		{ id: 2, values: "Bloco Co}ordenações" },
-		{ id: 2, values: "Transporte" },
-	];
-	//
-	const validationSchema = yup.object().shape({
-		title: yup
-			.string()
-			.min(5, "No mínimo 5 caracteres")
-			.required("É obrigatório colocar um título"),
-		description: yup
-			.string()
-			.min(10, "No mínimo 10 caracteres")
-			.required("É obrigatório descrever o motivo"),
-		//LocalService: yup.string(),
-	});
-
-//	function validate (values:any) {
-//		const errors = {};
-//
-//		if ( !values.title ) {
-//			errors.title = "O título é obrigatório"
-//		}
-//
-//		return errors
-//	}
-	function onSubmit(values: any, ) {
-		console.log("sumit", values);
-	}
-
 	return (
 		<div className="mx-4">
 			<div
@@ -69,16 +41,39 @@ export const CardCreateService = () => {
 				</div>
 				<Formik
 					validationSchema={validationSchema}
-					onSubmit={onSubmit}
-					initialValues={{
+					onSubmit={(values, { setSubmitting }) => {
+						setTimeout(() => {
+							console.log("submit", values);
+
+							alert(JSON.stringify(values, null, 2));
+							setSubmitting(false);
+						}, 400);
+					}}
+					initialValues={ {
+						name: "",
 						title: "",
 						description: "",
 						serviceLocal: "",
 					}}
 					render={({ values, handleSubmit, errors, touched }) => (
 						<Form onSubmit={handleSubmit}>
-							<div className="flex flex-col gap-9">
-								<div className="mx-14">
+							<div className="flex flex-col gap-9 mx-14">
+								<div className="">
+									<CardLabelInput
+										label="Nome"
+										name="name"
+										type="text"
+										width="w-full"
+										inputId="title"
+									/>
+									{errors.name && touched.name && (
+										<span className="text-red-ufal text-sm">
+											{errors.name}
+										</span>)}
+									
+								</div>
+
+								<div className="">
 									<CardLabelInput
 										label="Título"
 										name="title"
@@ -86,49 +81,62 @@ export const CardCreateService = () => {
 										width="w-full"
 										inputId="title"
 									/>
-									{errors.title && (
+									{errors.title && touched.title && (
 										<span className="text-red-ufal text-sm">
 											{errors.title}
 										</span>
 									)}
-									{/*{ errors.title?.type }*/}
+							
 								</div>
 
 								<div className="">
-								<CardLabelTextarea
-									label="Descrição"
-									type="textarea"
-									name="description"
-									textareaId="description"
-								/>
-									{errors.description && (
-										<span className="mx-14 text-red-ufal text-sm">
+									<CardLabelTextarea
+										label="Descrição"
+										type="textarea"
+										name="description"
+										textareaId="description"
+									/>
+									{errors.description && touched.description && (
+										<span className=" text-red-ufal text-sm">
 											{errors.description}
 										</span>
 									)}
 								</div>
-								{/*{errors.description?.message}*/}
-								{/*{ errors.description?.type}*/}
-								<div className="mx-14">
-									{/*<Field as="select"> -- não aceita um componente select, não pega o estado -- */}
-									<ButtonSelectObject
-										type="select"
+								<div >
+									<Field
+										as="select"
+										placeholder="selecione"
 										name="serviceLocal"
-										title="LOCAL DO SERVIÇO:"
-										placeholder="LOCAL DO SERVIÇO:"
-										listSelectButton={serviceLocation}
-										className="block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
-													max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
-										triggerWidth="w-full"
-										itemId={32}
-										//selectValue={selectValue}
-										//value={selectValue}
+										className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md w-full`}
+									>
+										<option value="" className="">
+											LOCAL DO SERVIÇO:
+										</option>
+										{serviceLocation.map(item => {
+											return <option value={item.values}>{item.label}</option>;
+										})}
 
-										//onChange={ e => {setSelectValue(e.target.value)}}
-										//{...register('')}
-									/>
-
-									{/*</Field>*/}
+										{/*<ButtonSelectObject
+											type="select"
+											label={"serviceLocal"}
+											name="serviceLocal"
+											title="LOCAL DO SERVIÇO:"
+											placeholder="LOCAL DO SERVIÇO:"
+											listSelectButton={serviceLocation}
+											className="block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
+														max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
+											triggerWidth="w-full"
+										itemId={ 32 }
+										/>*/}
+									</Field>
+									<>
+										{errors.serviceLocal &&  touched.serviceLocal && (
+											<span className=" text-red-ufal text-sm">
+												{errors.serviceLocal}
+											</span>
+										)}
+										
+									</>
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">

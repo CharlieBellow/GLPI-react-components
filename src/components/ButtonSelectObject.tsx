@@ -3,6 +3,7 @@ import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
 import { Select, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport} from "@radix-ui/react-select";
 import * as Icon from 'phosphor-react';
 import { Field } from "formik";
+import { string } from "yup/lib/locale";
 
 interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;
@@ -15,8 +16,11 @@ interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	//register?: any;
 	selectValue?: string;
 	itemId?: number;
-	name?: string;
+	myName?: string;
 	type?: string;
+	atualValue?: string;
+	label?: string;
+	ariaLabel?: string;
 }
 
 export function ButtonSelectObject(props: ButtonSelectProps) {
@@ -29,11 +33,10 @@ return (
 		className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md`}
 		{...props}
 	>
-			<Select>
-			
-				{/*<Field as="select"  name={ props.name } type={ props.type}>*/}
+		{/*<Field as={props.type} name={props.myName}>*/}
+			<Select >
 				<SelectTrigger
-					aria-label="Filter"
+				aria-label={props.ariaLabel}
 					className={`flex justify-between ${props.triggerWidth}`}
 				>
 					<SelectValue placeholder={props.placeholder} />
@@ -41,7 +44,7 @@ return (
 						<>{props.icon}</>
 					</SelectIcon>
 				</SelectTrigger>
-				
+
 				<SelectContent>
 					<SelectScrollUpButton>
 						<FiChevronUp size={24} className="pl-1" />
@@ -52,29 +55,29 @@ return (
 							{props.listSelectButton.map(selectItem => {
 								return (
 									<SelectItem
-											key={selectItem.id}
-											value={selectItem.values}
-											className="py-1 flex cursor-pointer hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
-											//ref={props.register}
-											//onChange={e => {
-												//	setSelectValue(e.target.value)
-											//	console.log(e.target.value)
-											//}}
-										>
-											<SelectItemText className="text-md text-red-ufal">
-												{ selectItem.values }
-											</SelectItemText>
-								
-											<SelectItemIndicator>
-												<>
-													{props.iconSelectItemIndicator === "" ? (
-														<FiCheck size={24} className="pl-1" />
-													) : (
-														props.iconSelectItemIndicator
-													)}
-												</>
-											</SelectItemIndicator>
-										</SelectItem>
+										key={selectItem.id}
+										value={selectItem.values}
+										className="py-1 flex cursor-pointer hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
+										//ref={props.register}
+										//onChange={e => {
+										//	setSelectValue(e.target.value)
+										//	console.log(e.target.value)
+										//}}
+									>
+										<SelectItemText className="text-md text-red-ufal">
+											{selectItem.values}
+										</SelectItemText>
+
+										<SelectItemIndicator>
+											<>
+												{props.iconSelectItemIndicator === "" ? (
+													<FiCheck size={24} className="pl-1" />
+												) : (
+													props.iconSelectItemIndicator
+												)}
+											</>
+										</SelectItemIndicator>
+									</SelectItem>
 								);
 							})}
 						</SelectGroup>

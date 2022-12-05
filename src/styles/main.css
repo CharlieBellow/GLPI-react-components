@@ -67,8 +67,8 @@
 
 		.mobile-hidden {
 		/*display: none;*/
-		visibility: visible;
-	}
+		visibility: hidden;
+		}
 
 		input:checked + .checkbox-wrapper .floatToggle .change {
 			transform: translateX(30%);
@@ -107,8 +107,20 @@
 			@apply visible block;
 		}
 		
+		
+
+		input:checked + .checkbox-wrapper .text-invisible {
+			@apply visible block;
+		}
+
+		/*input:checked + .checkbox-wrapper .modal {
+			@apply relative top-[-.1rem]  bg-black opacity-20 w-auto h-auto flex flex-row;
+		}*/
+
+		
+	}
 		/* mostrar mais e mostrar menos da tela de abertura de chamado */
-		.toggleCheck .noShow{
+.toggleCheck .noShow{
 			visibility: hidden;
 			overflow: hidden;
 			display: none;
@@ -125,14 +137,7 @@
 			display: block;
 		
 		}
-
-		input:checked + .checkbox-wrapper .text-invisible {
-			@apply visible block;
-		}
-
-		/*input:checked + .checkbox-wrapper .modal {
-			@apply relative top-[-.1rem]  bg-black opacity-20 w-auto h-auto flex flex-row;
-		}*/
+		
 		input:checked + .check .show{
 			color: red;
 		}
@@ -144,13 +149,14 @@
 	
 		input:checked + .toggleCheck .show {
 				display: none;
-				
+				color: red;
 			}
 			
 			input:checked + .toggleCheck .noShow {
 				display: block;
 				visibility: visible;
 		}
+
 }
-}
+
 

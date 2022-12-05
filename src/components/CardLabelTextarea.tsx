@@ -25,7 +25,7 @@ function CardLabel(props: CardLabelTextareaProps) {
 
 export function CardLabelTextarea(props: CardLabelTextareaProps) {
   return (
-    <div className="relative mx-14">
+    <div className="relative">
       
       <Field as="textarea"
         { ...props }

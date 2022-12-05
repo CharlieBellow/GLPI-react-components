@@ -32,7 +32,7 @@ export const AccordionMenu = () => (
 		>
 			<AccordionItem value="Dashboard">
 				<AccordionTrigger className="w-full flex items-center justify-between mr-2">
-					<p className="flex flex-row text-white-100 font-semibold text-sm items-center content-start w-full my-5 mx-0  hover:text-blue-dark-final-gradient">
+					<p className="flex flex-row text-white-100 font-semibold text-sm items-center content-start w-full lg:my-5 my-2 mx-0  hover:text-blue-dark-final-gradient">
 						<Link to="/CreateService" className="flex flex-row">
 							<SquaresFour size={20} className="menu__icon mr-2" />
 							<p className="text-invisible">Dashboard</p>
@@ -43,7 +43,7 @@ export const AccordionMenu = () => (
 
 			<AccordionItem value="Perfil">
 				<AccordionTrigger className="w-full flex items-center justify-around mr-2 text-white-100 hover:text-blue-dark-final-gradient">
-					<p className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0  ">
+					<p className="flex flex-row font-semibold text-sm content-start justify-start w-full lg:my-5 my-2 mx-0  ">
 						<User size={20} className="w-auto" />
 						<p className="text-hidden ml-2">Perfil</p>
 					</p>
@@ -61,7 +61,7 @@ export const AccordionMenu = () => (
 
 			<AccordionItem value="AdmSectors">
 				<AccordionTrigger className="w-full flex items-center content-between text-white-100 hover:text-blue-dark-final-gradient">
-					<p className="flex flex-row font-semibold text-sm items-center text-start content-start w-full my-3 leading-4 mx-0">
+					<p className="flex flex-row font-semibold text-sm items-center text-start content-start w-full lg:my-5 my-2 leading-4 mx-0">
 						<Wrench weight="fill" size={20} className="" />
 						<p className="text-hidden ml-2">Administração de Setores</p>
 					</p>
@@ -79,7 +79,7 @@ export const AccordionMenu = () => (
 
 			<AccordionItem value="Configuration">
 				<AccordionTrigger className="w-full flex items-center content-between text-white-100 hover:text-blue-dark-final-gradient">
-					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0 ">
+					<p className="flex flex-row font-semibold text-sm items-center content-start w-full lg:my-5 my-2 mx-0 ">
 						<Gear size={20} className="" />
 						<p className="text-hidden ml-2">Configuração</p>
 					</p>
@@ -97,7 +97,7 @@ export const AccordionMenu = () => (
 
 			<AccordionItem value="Lists">
 				<AccordionTrigger className="w-full flex items-center content-between text-white-100 hover:text-blue-dark-final-gradient">
-					<p className="flex flex-row font-semibold text-sm items-center content-start w-full my-5 mx-0">
+					<p className="flex flex-row font-semibold text-sm items-center content-start w-full lg:my-5 my-2 mx-0">
 						<ListDashes size={20} className="" />
 						<p className="text-hidden ml-2">Listas</p>
 					</p>
