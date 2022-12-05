@@ -9,7 +9,7 @@ module.exports = {
 			md: "960px",
 			// => @media (min-width: 960px) { Tablet }
 			
-			ds: "1024",
+			ds: "1024px",
 			// => @media (min-width: 1024px) { desktops pequenos }
 
 
