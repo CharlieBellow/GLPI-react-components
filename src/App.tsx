@@ -16,6 +16,9 @@ import { CardTest } from "./components/CardTest";
 
 import { ChakraProvider } from "@chakra-ui/react";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
 function App() {
 	return (
 		<>
@@ -37,6 +40,8 @@ function App() {
 					</Routes>
 				</Router>
 			</ChakraProvider>
+
+			<ToastContainer />
 		</>
 	);
 }

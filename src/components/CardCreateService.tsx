@@ -9,6 +9,7 @@ import { CardLabelTextarea } from "./CardLabelTextarea";
 import { validationSchema } from "../Utils/validations";
 
 import { Formik, Field, Form} from "formik";
+import { toast } from "react-toastify";
 
 
 const serviceLocation = [
@@ -45,9 +46,11 @@ export const CardCreateService = () => {
 						setTimeout(() => {
 							console.log("submit", values);
 
-							alert(JSON.stringify(values, null, 2));
+							toast.success('Chamado criado com sucesso!')
+							//alert(JSON.stringify(values, null, 2));
 							setSubmitting(false);
-						}, 400);
+						}, 400 );
+						
 					}}
 					initialValues={ {
 						name: "",
