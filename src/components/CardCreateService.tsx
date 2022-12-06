@@ -6,11 +6,11 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
-import { validationSchema } from "../Utils/validations";
+import { blocList, validationSchema } from "../Utils/validations";
 
-import { Formik, Field, Form} from "formik";
+import { Formik, Field, Form, FormikHelpers } from "formik";
 import { toast } from "react-toastify";
-
+import FieldSelect from './FieldSelect';
 
 const serviceLocation = [
 	{ values: "bloco-a", label: "Bloco A" },
@@ -25,6 +25,13 @@ const serviceLocation = [
 	{ values: "bloco-coordenações", label: "Bloco Coordenações" },
 	{ values: "transporte", label: "Transporte" },
 ];
+
+interface Values {
+  name: string,
+	title: string,
+	description: string,
+	serviceLocal: string
+}
 
 export const CardCreateService = () => {
 	return (
@@ -42,24 +49,37 @@ export const CardCreateService = () => {
 				</div>
 				<Formik
 					validationSchema={validationSchema}
-					onSubmit={(values, { setSubmitting }) => {
-						setTimeout(() => {
+//					onSubmit={(values, { setSubmitting }) => {
+//						setTimeout(() => {
+//							console.log("submit", values);
+//
+//							toast.success("Chamado criado com sucesso!");
+//							//alert(JSON.stringify(values, null, 2));
+//							setSubmitting(false);
+//						}, 400);
+//					}}
+					
+					onSubmit={ (
+						values: Values,
+						{ setSubmitting }: FormikHelpers<Values>
+					) => {
+						setTimeout( () => {
 							console.log("submit", values);
-
-							toast.success('Chamado criado com sucesso!')
-							//alert(JSON.stringify(values, null, 2));
-							setSubmitting(false);
-						}, 400 );
-						
-					}}
-					initialValues={ {
+							toast.success( "Chamado criado com sucesso!" );
+							
+							//alert( JSON.stringify( values, null, 2 ) );
+							setSubmitting( false );
+						}, 500 );
+					} }
+					initialValues={{
 						name: "",
 						title: "",
 						description: "",
 						serviceLocal: "",
 					}}
-					render={({ values, handleSubmit, errors, touched }) => (
-						<Form onSubmit={handleSubmit}>
+				>
+					{({ values, handleSubmit, errors, touched, isValidating }) => (
+						<Form>
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
 									<CardLabelInput
@@ -67,13 +87,11 @@ export const CardCreateService = () => {
 										name="name"
 										type="text"
 										width="w-full"
-										inputId="title"
+										inputid="title"
 									/>
 									{errors.name && touched.name && (
-										<span className="text-red-ufal text-sm">
-											{errors.name}
-										</span>)}
-									
+										<span className="text-red-ufal text-sm">{errors.name}</span>
+									)}
 								</div>
 
 								<div className="">
@@ -82,14 +100,13 @@ export const CardCreateService = () => {
 										name="title"
 										type="text"
 										width="w-full"
-										inputId="title"
+										inputid="title"
 									/>
 									{errors.title && touched.title && (
 										<span className="text-red-ufal text-sm">
 											{errors.title}
 										</span>
 									)}
-							
 								</div>
 
 								<div className="">
@@ -97,7 +114,7 @@ export const CardCreateService = () => {
 										label="Descrição"
 										type="textarea"
 										name="description"
-										textareaId="description"
+										textareaid="description"
 									/>
 									{errors.description && touched.description && (
 										<span className=" text-red-ufal text-sm">
@@ -105,8 +122,14 @@ export const CardCreateService = () => {
 										</span>
 									)}
 								</div>
-								<div >
-									<Field
+								<div className="">
+									<FieldSelect
+										label="serviceLocal"
+										name="serviceLocal"
+										default="Selecione"
+										listitems={blocList}
+									/>
+									{/*<Field
 										as="select"
 										placeholder="selecione"
 										name="serviceLocal"
@@ -116,10 +139,14 @@ export const CardCreateService = () => {
 											LOCAL DO SERVIÇO:
 										</option>
 										{serviceLocation.map(item => {
-											return <option value={item.values}>{item.label}</option>;
-										})}
+											return (
+												<option key={item.values} value={item.values}>
+													{item.label}
+												</option>
+											);
+										})}*/}
 
-										{/*<ButtonSelectObject
+									{/*<ButtonSelectObject
 											type="select"
 											label={"serviceLocal"}
 											name="serviceLocal"
@@ -131,15 +158,13 @@ export const CardCreateService = () => {
 											triggerWidth="w-full"
 										itemId={ 32 }
 										/>*/}
-									</Field>
-									<>
-										{errors.serviceLocal &&  touched.serviceLocal && (
-											<span className=" text-red-ufal text-sm">
-												{errors.serviceLocal}
-											</span>
-										)}
-										
-									</>
+									{/*</Field>*/}
+
+									{errors.serviceLocal && touched.serviceLocal && (
+										<span className=" text-red-ufal text-sm">
+											{errors.serviceLocal}
+										</span>
+									)}
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
@@ -148,7 +173,7 @@ export const CardCreateService = () => {
 							</div>
 						</Form>
 					)}
-				/>
+				</Formik>
 			</div>
 		</div>
 	);

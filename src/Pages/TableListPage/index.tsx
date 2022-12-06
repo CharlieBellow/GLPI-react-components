@@ -54,14 +54,16 @@ const ItemSelect = [
 ];
 //const editTableOptions = ["Editar", "Excluir", "desativar"];
 
-
 function TableListPage() {
 	return (
 		<>
-			<Page pageTitle={ "Dashboard" } contentPage={
-				//<TableTeste />
-			<TableList itemList={users} listSelectButton={ItemSelect} />
-			} />
+			<Page
+				pagetitle={"Dashboard"}
+				contentpage={
+					//<TableTeste />
+					<TableList itemList={users} listSelectButton={ItemSelect} />
+				}
+			/>
 			{/*<TableTeste />*/}
 			{/*<TableList itemList={users} listSelectButton={ItemSelect} />*/}
 		</>

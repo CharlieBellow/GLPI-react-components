@@ -1,11 +1,15 @@
 import { Page } from "../../components/Page";
-import {CardServiceLetter} from './CardServiceLetter'
+import { CardServiceLetter } from "./CardServiceLetter";
 
 export function ServiceLetter() {
-  return (
+	return (
 		<Page
-			pageTitle={"Carta de Serviço"}
-			contentPage={<CardServiceLetter serviceTitle={"Instalação e configuração de software (519)"} />}
+			pagetitle={"Carta de Serviço"}
+			contentpage={
+				<CardServiceLetter
+					serviceTitle={"Instalação e configuração de software (519)"}
+				/>
+			}
 		/>
 	);
 }

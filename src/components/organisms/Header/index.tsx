@@ -42,7 +42,7 @@ export function Header(props: HeaderProps) {
 								<p className="text-blue-ufal no-underline hover:opacity-70">
 									<Link to="/Login">Nome Completo</Link>
 								</p>
-								<p>email@email.com</p>
+								<span>email@email.com</span>
 							</div>
 							<div className="lg:w-11 lg:h-11 flex">
 								<div className="lg:mt-0 mt-[-70px] lg:ml-0 flex flex-row items-center">

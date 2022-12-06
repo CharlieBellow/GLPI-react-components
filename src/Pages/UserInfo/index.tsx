@@ -6,8 +6,8 @@ function FormUserInfo() {
 	return (
 		<>
 			<Page
-				pageTitle={"Cadastro de Usuários - GLPI"}
-				contentPage={<CardUserInfo />}
+				pagetitle={"Cadastro de Usuários - GLPI"}
+				contentpage={<CardUserInfo />}
 			/>
 		</>
 	);

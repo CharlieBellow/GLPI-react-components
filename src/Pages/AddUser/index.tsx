@@ -4,9 +4,10 @@ import { Page } from "../../components/Page";
 function FormUserInfo() {
 	return (
 		<>
-			<Page pageTitle={"Cadastro de Usuários - GLPI"} contentPage={ 
-				<CardAddUser/>				
-			}/>
+			<Page
+				pagetitle={"Cadastro de Usuários - GLPI"}
+				contentpage={<CardAddUser />}
+			/>
 		</>
 	);
 }

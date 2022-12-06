@@ -33,10 +33,10 @@ export const AccordionItemMenu = (props: AccordionItemMenuProps) => (
 	
 			<AccordionItem value={ props.value}>
 				<AccordionTrigger className="menu__itemOption w-full flex items-center justify-around mr-2 text-white-100 hover:text-blue-dark-final-gradient">
-					<p className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0 pr-1 aumentaIcone">
+					<div className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0 pr-1 aumentaIcone">
 						<>{ props.icon}</>
-						<p className="text-hidden ml-2">{ props.title}</p>
-					</p>
+						<div className="text-hidden ml-2">{ props.title}</div>
+					</div>
 					<AccordionChevron aria-hidden className="text-hidden" />
 				</AccordionTrigger>
 				{props.content.map((item: { LinkTo: string; contentTitle: string }) => {

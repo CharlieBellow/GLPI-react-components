@@ -1,13 +1,12 @@
-
-import CardCreateService from '../../components/CardCreateService';
+import CardCreateService from "../../components/CardCreateService";
 import { Page } from "../../components/Page";
 
 function CreateService() {
-  return (
+	return (
 		<>
 			<Page
-				pageTitle={"Abertura de Chamados - GLPI"}
-				contentPage={<CardCreateService />}
+				pagetitle={"Abertura de Chamados - GLPI"}
+				contentpage={<CardCreateService />}
 			/>
 		</>
 	);

@@ -3,28 +3,28 @@ import * as Icon from "phosphor-react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	title?: string;
+	//type: "button" | "submit" | "reset" | undefined;
 	icon?: Icon.IconProps;
 	theme:
-		"primary" |
-		"secondary" |
-		"tertiary" |
-		"primaryAction" |
-		"secondaryAction" |
-		"textOnly" |
-		"primaryMobile" |
-		"withIcon" |
-		"primaryActionWithIcon" |
-	"secondaryActionWithIcon" |
-	"tertiaryMobile" |
-		"tertiaryActionWithIcon";
-
-
+		| "primary"
+		| "secondary"
+		| "tertiary"
+		| "primaryAction"
+		| "secondaryAction"
+		| "textOnly"
+		| "primaryMobile"
+		| "withIcon"
+		| "primaryActionWithIcon"
+		| "secondaryActionWithIcon"
+		| "tertiaryMobile"
+		| "tertiaryActionWithIcon";
 }
 
 export function Button(props: ButtonProps) {
 	return (
 		<button
-			{...props}
+			{ ...props }
+			type={props.type}
 			className={`
 				font-bold rounded-md focus:outline-blue-ufal
 				${
