@@ -1,7 +1,7 @@
 import { Page } from "../../components/Page";
-import TableTeste from "../Teste/TableTeste";
+//import TableTeste from "../Teste/TableTeste";
 //import TableList from "../../components/TableList";
-import TableListTeste from "../../components/TableListTest";
+import TableList from "../../components/TableList";
 
 const users = [
 	{ id: 1, name: "Charlie", email: "email@email.com", date: "01/02/2022" },
@@ -55,12 +55,12 @@ const ItemSelect = [
 //const editTableOptions = ["Editar", "Excluir", "desativar"];
 
 
-function TableList() {
+function TableListPage() {
 	return (
 		<>
 			<Page pageTitle={ "Dashboard" } contentPage={
 				//<TableTeste />
-			<TableListTeste itemList={users} listSelectButton={ItemSelect} />
+			<TableList itemList={users} listSelectButton={ItemSelect} />
 			} />
 			{/*<TableTeste />*/}
 			{/*<TableList itemList={users} listSelectButton={ItemSelect} />*/}
@@ -68,4 +68,4 @@ function TableList() {
 	);
 }
 
-export default TableList;
+export default TableListPage;

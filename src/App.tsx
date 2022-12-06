@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './styles/main.css'
 
 
-import TableList from "./Pages/TableList";
+import TableListPage from "./Pages/TableListPage";
 import CreateService from "./Pages/CreateService";
 
 import Login from './Pages/Login'
@@ -35,7 +35,7 @@ function App() {
 						<Route path="/Dashboard" element={<Dashboard />} />
 						<Route path="/ServiceLetter" element={<ServiceLetter />} />
 						<Route path="/CreateService" element={<CreateService />} />
-						<Route path="/Table" element={<TableList />} />
+						<Route path="/Table" element={<TableListPage />} />
 						<Route path="/Login" element={<Login />} />
 						<Route path="/SignUp" element={<SignUp />} />
 						<Route path="/CreateService" element={<CreateService />} />

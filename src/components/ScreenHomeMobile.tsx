@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 function ScreenHomeMobile(){
     return(
         <div className="w-full h-screen">
-            <div className="ds:hidden">
+            <div className="lg:hidden">
                 <div className=" flex flex-col mx-2 gap-6 items-center">
                         <CardHomeMobile />
                         <Search placeholder={"O que está procurando?"} />
@@ -29,7 +29,7 @@ function ScreenHomeMobile(){
                 </div>
             </div>
 
-            <div className="w-full hidden ds:flex ds:flex-col justify-center items-center h-screen gap-10">
+            <div className="w-full hidden lg:flex lg:flex-col justify-center items-center h-screen gap-10">
                 <div className="flex gap-11 w-[61.5rem]">
                     <CardHomeMobile />
                     <div className="bg-white-ice w-[21.25rem] h-[18.75rem] pt-4 px-6 rounded-lg shadow-card box-border">
@@ -67,6 +67,3 @@ function ScreenHomeMobile(){
 }
 
 export default ScreenHomeMobile;
-
-// ver pq não funciona no ds
-// medal errado
