@@ -14,8 +14,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 		"primaryMobile" |
 		"withIcon" |
 		"primaryActionWithIcon" |
-		"secondaryActionWithIcon" |
+	"secondaryActionWithIcon" |
+	"tertiaryMobile" |
 		"tertiaryActionWithIcon";
+
 
 }
 
@@ -27,7 +29,8 @@ export function Button(props: ButtonProps) {
 				font-bold rounded-md focus:outline-blue-ufal
 				${
 					props.theme === "primary"
-					? "bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg text-white-100 text-base px-13 h-12 py-2 shadow-button"
+					? "bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg text-white-100 text-base px-13 h-12 py-2 shadow-button focus:outline-light-bg text-xl"
+
 					: ""
 				}
 				${
@@ -37,7 +40,14 @@ export function Button(props: ButtonProps) {
 				}
 				${
 					props.theme === "tertiary"
-					? "bg-gray-medium hover:bg-opacity-80 text-gray-text text-base px-13 h-12 py-2 shadow-button"
+
+					// text- base for text-xl
+					? "bg-gray-medium hover:bg-opacity-80 text-gray-text text-base text-xl px-13 h-12 py-2 shadow-button"
+					: ""
+				}
+				${
+					props.theme === "tertiaryMobile"
+					? "bg-gray-medium text-gray-text text-sm px-5 py-2 shadow-button"
 					: ""
 				}
         ${
@@ -57,7 +67,8 @@ export function Button(props: ButtonProps) {
 				}
 				${
 					props.theme === "primaryMobile"
-					? "bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg text-white-100 text-base px-25 py-4 shadow-button"
+					? "bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg text-white-100 text-sm text-base px-25 py-4 shadow-button px-5 py-2"
+
 					: ""
 				}
 				${

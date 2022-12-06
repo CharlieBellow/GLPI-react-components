@@ -10,6 +10,7 @@ module.exports = {
 			// => @media (min-width: 960px) { Tablet }
 			
 			lg: "1024px",
+
 			// => @media (min-width: 1024px) { desktops pequenos }
 			
 			
