@@ -15,7 +15,7 @@ import {
 	Box,
 	Checkbox,
 	useBreakpointValue,
-	Spinner,
+	//Spinner,
 } from "@chakra-ui/react";
 
 import TableOptions from "./TableOptions";

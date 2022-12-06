@@ -1,4 +1,4 @@
-import { Url } from "url";
+
 
 interface TicketsHomeProps{
     icon: any;

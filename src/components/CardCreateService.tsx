@@ -1,6 +1,6 @@
 import React from "react";
-import ButtonSelect from "./ButtonSelect";
-import ButtonSelectObject from "./ButtonSelectObject";
+//import ButtonSelect from "./ButtonSelect";
+//import ButtonSelectObject from "./ButtonSelectObject";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";

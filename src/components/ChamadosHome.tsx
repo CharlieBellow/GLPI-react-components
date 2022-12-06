@@ -1,4 +1,4 @@
-import { Url } from "url";
+
 
 interface ChamadosHomeProps{
     url: string;
