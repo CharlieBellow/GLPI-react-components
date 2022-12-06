@@ -67,7 +67,7 @@ export function Button(props: ButtonProps) {
 				}
 				${
 					props.theme === "primaryMobile"
-					? "bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg text-white-100 text-sm text-base px-25 py-4 shadow-button px-5 py-2"
+					? "bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg text-white-100 text-sm lg:text-base lg:px-25 lg:py-4 shadow-button px-5 py-2"
 
 					: ""
 				}

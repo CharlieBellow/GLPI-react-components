@@ -33,7 +33,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Dashboard">
 				<AccordionTrigger className="w-full flex items-center justify-between mr-2">
 					<p className="flex flex-row text-white-100 font-semibold text-sm items-center content-start w-full lg:my-5 my-2 mx-0  hover:text-blue-dark-final-gradient">
-						<Link to="/CreateService" className="flex flex-row">
+						<Link to="/" className="flex flex-row">
 							<SquaresFour size={20} className="menu__icon mr-2" />
 							<p className="text-invisible">Dashboard</p>
 						</Link>
@@ -51,10 +51,10 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70 text-hidden">
-						<Link to="/CreateService">Alterar Dados</Link>
+						<Link to="/AddUser">Alterar Dados</Link>
 					</AccordionPrimitive.AccordionContent>
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70 text-hidden">
-						<Link to="/CreateService">Editar Perfil</Link>
+						<Link to="/UserInfo">Editar Perfil</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
@@ -72,7 +72,7 @@ export const AccordionMenu = () => (
 						<Link to="/CreateService">Secretaria</Link>
 					</AccordionPrimitive.AccordionContent>
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70">
-						<Link to="/CreateService">NTI</Link>
+						<Link to="/ServiceLetter">NTI</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
@@ -87,10 +87,10 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70">
-						<Link to="/CreateService">Geral</Link>
+						<Link to="/Login">Geral</Link>
 					</AccordionPrimitive.AccordionContent>
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70">
-						<Link to="/CreateService">Dark Mode</Link>
+						<Link to="/SignUp">Dark Mode</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
@@ -105,7 +105,7 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70">
-						<Link to="/CreateService">Tabela de usuários</Link>
+						<Link to="/Table">Tabela de usuários</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
