@@ -15,7 +15,7 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 	const [floatingButton, setFloatingButton] = useState(false);
 
 	const changeFloatingButton = () => {
-		if (window.scrollY >= 80) {
+		if ((window.screen.width <= 1023) && window.scrollY >= 80) {
 			setFloatingButton(true);
 		} else {
 			setFloatingButton(false);
@@ -31,7 +31,7 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 				<h3 className="pt-4 font-medium ml-4 text-3xl lg:text-4xl lg:flex">
 					{props.serviceTitle}
 				</h3>
-				<div className="fixed top-[630px] right-2 lg:right-22 lg:top-202">
+				<div className="fixed lg:relative top-[630px] right-2 lg:right-4 lg:top-0">
 					<Button
 							title={floatingButton ? "" : "Solicitar serviço"}
 							theme="withIcon"
@@ -43,23 +43,6 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 				infos={ServicesList}
 			/>
 			<div className="ml-4 mt-9 flex gap-3.5 lg:visible invisible">
-				<Button
-					title="Solicitar Serviço"
-					theme="primaryActionWithIcon"
-					icon={<Icon.PhoneOutgoing size={24} />}
-				/>
-				<Button
-					title="Esclarecer Dúvidas"
-					theme="secondaryActionWithIcon"
-					icon={<Icon.Question size={24} />}
-				/>
-				<Button
-					title="Relatar Problema"
-					theme="tertiaryActionWithIcon"
-					icon={<Icon.Warning size={24} />}
-
-				/>
-				<div className="ml-4 mt-9 flex gap-3.5 lg:visible invisible">
 					<Button
 						title="Solicitar Serviço"
 						theme="primaryActionWithIcon"
@@ -75,7 +58,6 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 						theme="tertiaryActionWithIcon"
 						icon={<Icon.Warning size={24} />}
 					/>
-				</div>
 			</div>
 		</div>
 	);
