@@ -26,6 +26,7 @@ const validate = yup.object().shape({
 });
 
 export const CardCreateService = () => {
+
 	return (
 		<div className="mx-4">
 			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block

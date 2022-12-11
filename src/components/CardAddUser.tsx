@@ -5,6 +5,7 @@ import { CardLine } from "./CardLine";
 import { Button } from "./Button";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import * as yup from 'yup';
+//import {CpfMask} from '../Utils/Masks'
 
 import {
 	validationSchema,
@@ -49,6 +50,7 @@ const validate = yup.object().shape({
 	agency: validationSchema.agency,
 });
 
+//const cpfmask = CpfMask;
 
 const CardAddUser = () => (
 	<div className="mx-4">
@@ -88,7 +90,7 @@ const CardAddUser = () => (
 					agency: "",
 				}}
 			>
-				{({ isSubmitting }) => (
+				{({ isSubmitting, setFieldValue }) => (
 					<TabsPrimitive.Root defaultValue="tab1">
 						<div className="pl-9 pt-8">
 							<CardTitle title="Adicionar Usuário" />
