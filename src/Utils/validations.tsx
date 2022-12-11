@@ -99,6 +99,11 @@ export const validationSchema = {
 		.string()
 		.email("Ex. de e-mail válido: email@email.com")
 		.required("É obrigatório informar seu email."),
+	confirmEmail: yup
+		.string()
+		.oneOf([yup.ref("email"), null], "Os emails precisam ser iguais.")
+		.required("Você precisa confirmar seu email"),
+
 	password: yup
 		.string()
 		.min(6, "Deve conter no mínimo 6 dígitos")
@@ -138,23 +143,23 @@ export const validationSchema = {
 	cep: yup.string().required("É obrigatório informar seu CPF"),
 	bank: yup
 		.number()
-		.positive()
-		.integer()
+		.positive("Apenas valores positivos.")
+		.integer("Digite apenas números inteiros")
 		.required("É obrigatório informar o banco"),
 	acountType: yup
 		.number()
-		.positive()
-		.integer()
+		.positive("Apenas valores positivos.")
+		.integer("Digite apenas números inteiros")
 		.required("É obrigatório informar o tipo de conta"),
 	agency: yup
 		.number()
-		.positive()
-		.integer()
+		.positive("Apenas valores positivos.")
+		.integer("Digite apenas números inteiros")
 		.required("É obrigatório informar a agência"),
 	account: yup
 		.number()
-		.positive()
-		.integer()
+		.positive("Apenas valores positivos.")
+		.integer("Digite apenas números inteiros")
 		.required("É obrigatório informar o Nº da conta"),
 }; ;
   

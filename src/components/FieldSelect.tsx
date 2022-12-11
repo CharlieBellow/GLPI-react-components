@@ -19,7 +19,9 @@ export default function FieldSelect(
 	const [field, meta] = useField(props);
 
 	return (
-		<div className={`w-full relative flex items-start flex-col  ${props.theme}`}>
+		<div
+			className={`w-full relative flex items-start flex-col  ${props.theme}`}
+		>
 			<Field
 				{...props}
 				{...field}
@@ -41,8 +43,10 @@ export default function FieldSelect(
 					);
 				})}
 			</Field>
-			
-			{meta.error && meta.touched ? <span className="text-red-ufal">{meta.error}</span> : null}
+
+			{meta.error && meta.touched ? (
+				<span className="text-red-ufal text-sm">{meta.error}</span>
+			) : null}
 		</div>
 	);
 }

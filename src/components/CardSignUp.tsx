@@ -3,26 +3,48 @@ import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "./CardLabelInput";
 import { Eye } from "phosphor-react";
-import { Form, Formik, FormikValues } from "formik";
-//import { validationSchema } from "../Utils/validationSchema";
+import { Form, Formik } from "formik";
+import { validationSchema } from "../Utils/validations";
+
+import * as yup from "yup";
+import { toast } from "react-toastify";
+
+const validate = yup.object().shape({
+	fullName: validationSchema.fullName,
+	email: validationSchema.email,
+	confirmEmail: validationSchema.confirmEmail,
+	password: validationSchema.password,
+	confirmPassword: validationSchema.confirmPassword,
+});
+
 
 export function CardSignUp() {
 	return (
-		<div className="container w-100 h-118 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
+		<div className="container w-100 h-auto my-auto  mx-auto bg-white-ice rounded-lg shadow-card">
 			<div className="pt-7 pb-8 text-center">
 				<CardTitle title="Criar Conta" />
 			</div>
 			<Formik
-				initialValues={{ email: "", password: "" }}
-				//validationSchema={validationSchema}
-				onSubmit={(values: FormikValues) => {
-					return console.log("submit: ", values);
-					//console.log(values.email)
+				initialValues={{
+					fullName: "",
+					email: "",
+					confirmEmail: "",
+					password: "",
+					confirmPassword: "",
+				}}
+				validationSchema={validate}
+				onSubmit={(values, actions) => {
+					setTimeout(() => {
+						console.log("submit:", values);
 
-					//throw new Error( "Function not implemented." );
+						toast.success("Chamado criado com sucesso!");
+						//alert(JSON.stringify(values, null, 2));
+						actions.resetForm();
+						//setSubmitting(false);
+					}, 400);
 				}}
 			>
-				{({ errors, touched, isSubmitting }) => (
+				{({ isSubmitting }) => (
 					<Form>
 						<div className="mb-6 px-10">
 							<CardLabelInput
@@ -31,11 +53,6 @@ export function CardSignUp() {
 								width="w-full"
 								type="name"
 							/>
-							<>
-								{errors.email && touched.email ? (
-									<span className="text-red-ufal">{errors.email}</span>
-								) : null}
-							</>
 						</div>
 						<div className="mb-6 px-10">
 							<CardLabelInput
@@ -44,11 +61,14 @@ export function CardSignUp() {
 								width="w-full"
 								type="email"
 							/>
-							<>
-								{errors.email && touched.email ? (
-									<span className="text-red-ufal">{errors.email}</span>
-								) : null}
-							</>
+						</div>
+						<div className="mb-6 px-10">
+							<CardLabelInput
+								label="Confirme seu Email"
+								name="confirmEmail"
+								width="w-full"
+								type="email"
+							/>
 						</div>
 						<div className="mb-6 px-10">
 							<CardLabelInput
@@ -58,11 +78,15 @@ export function CardSignUp() {
 								type="password"
 								icon={<Eye className="absolute flex ml-72" weight="bold" />}
 							/>
-							<>
-								{errors.email && touched.email ? (
-									<span className="text-red-ufal">{errors.email}</span>
-								) : null}
-							</>
+						</div>
+						<div className="mb-6 px-10">
+							<CardLabelInput
+								label="Confirme sua Senha"
+								name="confirmPassword"
+								width="w-full"
+								type="password"
+								icon={<Eye className="absolute flex ml-72" weight="bold" />}
+							/>
 						</div>
 
 						<div className="flex flex-col justify-center  mt-8 mx-11">
@@ -71,7 +95,6 @@ export function CardSignUp() {
 								theme="primary"
 								type="submit"
 								disabled={isSubmitting}
-								className={isSubmitting ? "bg-opacity-0 " : ""}
 							/>
 							<Button title="Fazer login" theme="textOnly" />
 						</div>

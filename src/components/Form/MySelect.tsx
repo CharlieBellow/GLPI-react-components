@@ -109,7 +109,7 @@ export const MySelect = (
 				</Select>
 			</div>
 			{meta.error ? <span className="text-red-ufal">{meta.error}</span> : null}*/}
-
+{/*
 			<label>{props.label}</label>
 			<select
 				{...field}
@@ -118,7 +118,7 @@ export const MySelect = (
               ${meta.touched && meta.error ? " border-red-ufal" : ""}
             `}
 			/>
-			{meta.error ? <span className="text-red-ufal">{meta.error}</span> : null}
+			{meta.error ? <span className="text-red-ufal">{meta.error}</span> : null}*/}
 		</>
 	);
 };

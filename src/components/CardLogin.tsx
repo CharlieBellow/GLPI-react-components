@@ -3,9 +3,15 @@ import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "./CardLabelInput";
 import { Eye } from "phosphor-react";
-import { Form, Formik, FormikValues } from "formik";
-//import { validationSchema } from "../Utils/validations";
+import { Form, Formik } from "formik";
+import { validationSchema } from "../Utils/validations";
+import * as yup from "yup";
+import { toast } from "react-toastify";
 
+const validate = yup.object().shape({
+	email: validationSchema.email,
+	password: validationSchema.password,
+});
 
 export function CardLogin() {
 	return (
@@ -15,16 +21,20 @@ export function CardLogin() {
 			</div>
 			<Formik
 				initialValues={{ email: "", password: "" }}
-				//validationSchema={validationSchema}
-				onSubmit={(values: FormikValues) => {
-					return console.log(values);
-					//console.log(values.email)
+				validationSchema={validate}
+				onSubmit={(values, actions) => {
+					setTimeout(() => {
+						console.log("submit:", values);
 
-					//throw new Error( "Function not implemented." );
+						toast.success("Chamado criado com sucesso!");
+						//alert(JSON.stringify(values, null, 2));
+						actions.resetForm();
+						//setSubmitting(false);
+					}, 400);
 				}}
 			>
-				{({ errors, touched }) => (
-					<Form >
+				{({ isSubmitting }) => (
+					<Form>
 						<div className="mb-6 px-10">
 							<CardLabelInput
 								label="Email"
@@ -32,11 +42,6 @@ export function CardLogin() {
 								width="w-full"
 								type="email"
 							/>
-							<>
-								{errors.email && touched.email ? (
-									<span className="text-red-ufal">{errors.email}</span>
-								) : null}
-							</>
 						</div>
 						<div className="mb-6 px-10">
 							<CardLabelInput
@@ -46,14 +51,15 @@ export function CardLogin() {
 								type="password"
 								icon={<Eye className="absolute flex ml-72" weight="bold" />}
 							/>
-							<>
-								{errors.password && touched.password ? (
-									<span className="text-red-ufal">{errors.password}</span>
-								) : null}
-							</>
 						</div>
+
 						<div className="flex flex-col justify-center mt-13 mx-11">
-							<Button title="Entrar" theme="primary" type="submit" />
+							<Button
+								title="Entrar"
+								theme="primary"
+								type="submit"
+								disabled={isSubmitting}
+							/>
 							<Button title="Esqueci a senha" theme="textOnly" />
 						</div>
 					</Form>

@@ -9,7 +9,7 @@ interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
 	width: string;
 	pattern?: string;
 	icon?: Icon.IconProps;
-	name?: string;
+	name: string;
 }
 
 function CardLabel ( props: CardLabelInputProps ) {
@@ -33,7 +33,7 @@ ClassAttributes<HTMLInputElement> &
 FieldHookConfig<string> ) {
 	const [field, meta] = useField(props);
 	return (
-		<div className="relative flex items-start flex-col">
+		<div className="relative flex items-start justify-center flex-col">
 			<Field
 				{...props}
 				{...field}
@@ -51,7 +51,8 @@ FieldHookConfig<string> ) {
 			<>{props.icon}</>
 
 			<CardLabel
-				label={props.label}
+				label={ props.label }
+				name={props.name}
 				type={props.type}
 				inputid={props.inputid}
 				width={props.width}
@@ -59,7 +60,7 @@ FieldHookConfig<string> ) {
 			/>
 
 			{meta.error && meta.touched ? (
-				<span className="text-red-ufal">{meta.error}</span>
+				<span className="text-red-ufal text-sm">{meta.error}</span>
 			) : null}
 		</div>
 	);

@@ -4,13 +4,14 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { Button } from "./Button";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import * as yup from 'yup';
 
 import {
 	validationSchema,
 	campusList,
 	bondList,
 	genderList,
-} from "../Utils/validation";
+} from "../Utils/validations";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "./FieldSelect";
@@ -28,6 +29,27 @@ const tab = `bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center jus
 text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
 hover:text-blue-ufal hover:cursor-pointer focus:relative`;
 
+const validate = yup.object().shape({
+	fullName: validationSchema.fullName,
+	cpf: validationSchema.cpf,
+	email: validationSchema.email,
+	nMatricula: validationSchema.nMatricula,
+	bond: validationSchema.bond,
+	campus: validationSchema.campus,
+	gender: validationSchema.gender,
+	address: validationSchema.address,
+	complement: validationSchema.complement,
+	district: validationSchema.district,
+	city: validationSchema.city,
+	state: validationSchema.state,
+	cep: validationSchema.cep,
+	bank: validationSchema.bank,
+	acountType: validationSchema.acountType,
+	account: validationSchema.account,
+	agency: validationSchema.agency,
+});
+
+
 const CardAddUser = () => (
 	<div className="mx-4">
 		<div
@@ -36,14 +58,14 @@ const CardAddUser = () => (
 			h-auto shadow-card"
 		>
 			<Formik
-				validationSchema={validationSchema}
-				onSubmit={(values, { setSubmitting }) => {
+				validationSchema={validate}
+				onSubmit={values => {
 					setTimeout(() => {
 						console.log("submit", values);
 
 						toast.success("Chamado criado com sucesso!");
 						//alert(JSON.stringify(values, null, 2));
-						setSubmitting(false);
+						//setSubmitting(false);
 					}, 400);
 				}}
 				initialValues={{
@@ -66,7 +88,7 @@ const CardAddUser = () => (
 					agency: "",
 				}}
 			>
-				{({ values, handleSubmit, errors, touched }) => (
+				{({ isSubmitting }) => (
 					<TabsPrimitive.Root defaultValue="tab1">
 						<div className="pl-9 pt-8">
 							<CardTitle title="Adicionar Usuário" />
@@ -88,7 +110,7 @@ const CardAddUser = () => (
 								Dados Bancários
 							</TabsTrigger>
 						</TabsPrimitive.List>
-						<Form onSubmit={handleSubmit} className="flex flex-col gap-9 mx-14">
+						<Form className="flex flex-col gap-9 mx-14">
 							<TabsPrimitive.Content className="outline-none" value="tab1">
 								<div className="flex flex-col gap-9">
 									<div className="w-auto">
@@ -99,11 +121,6 @@ const CardAddUser = () => (
 											name="fullName"
 											width="w-full"
 										/>
-										{errors.fullName && touched.fullName && (
-											<span className="text-red-ufal text-sm">
-												{errors.fullName}
-											</span>
-										)}
 									</div>
 									<div className=" flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 										<div>
@@ -114,11 +131,6 @@ const CardAddUser = () => (
 												name="cpf"
 												width="lg:w-80 w-full"
 											/>
-											{errors.cpf && touched.cpf && (
-												<span className="text-red-ufal text-sm">
-													{errors.cpf}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -128,11 +140,6 @@ const CardAddUser = () => (
 												name="email"
 												width="lg:w-80 w-full"
 											/>
-											{errors.email && touched.email && (
-												<span className="text-red-ufal text-sm">
-													{errors.email}
-												</span>
-											)}
 										</div>
 									</div>
 
@@ -145,11 +152,6 @@ const CardAddUser = () => (
 												name="nMatricula"
 												width="lg:w-80 w-full"
 											/>
-											{errors.nMatricula && touched.nMatricula && (
-												<span className="text-red-ufal text-sm">
-													{errors.nMatricula}
-												</span>
-											)}
 										</div>
 										<div className="text-red-ufal text-sm lg:w-80">
 											<FieldSelect
@@ -158,11 +160,6 @@ const CardAddUser = () => (
 												default="Selecione o vínculo"
 												listitems={bondList}
 											/>
-											{errors.bond && touched.bond && (
-												<span className="text-red-ufal text-sm">
-													{errors.bond}
-												</span>
-											)}
 										</div>
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
@@ -173,11 +170,6 @@ const CardAddUser = () => (
 												default="Selecione seu campus"
 												listitems={campusList}
 											/>
-											{errors.campus && touched.campus && (
-												<span className="text-red-ufal text-sm">
-													{errors.campus}
-												</span>
-											)}
 										</div>
 										<div className="lg:w-80">
 											<FieldSelect
@@ -186,11 +178,6 @@ const CardAddUser = () => (
 												default="Selecione seu gênero"
 												listitems={genderList}
 											/>
-											{errors.gender && touched.gender && (
-												<span className="text-red-ufal text-sm">
-													{errors.gender}
-												</span>
-											)}
 										</div>
 									</div>
 								</div>
@@ -206,11 +193,6 @@ const CardAddUser = () => (
 											name="address"
 											width="w-full"
 										/>
-										{errors.address && touched.address && (
-											<span className="text-red-ufal text-sm">
-												{errors.address}
-											</span>
-										)}
 									</div>
 									<div>
 										<CardLabelInput
@@ -220,11 +202,6 @@ const CardAddUser = () => (
 											name="complement"
 											width="w-full"
 										/>
-										{errors.complement && touched.complement && (
-											<span className="text-red-ufal text-sm">
-												{errors.complement}
-											</span>
-										)}
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 										<div>
@@ -235,11 +212,6 @@ const CardAddUser = () => (
 												name="district"
 												width="lg:w-80 w-full"
 											/>
-											{errors.district && touched.district && (
-												<span className="text-red-ufal text-sm">
-													{errors.district}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -249,11 +221,6 @@ const CardAddUser = () => (
 												name="city"
 												width="lg:w-80 w-full"
 											/>
-											{errors.city && touched.city && (
-												<span className="text-red-ufal text-sm">
-													{errors.city}
-												</span>
-											)}
 										</div>
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
@@ -265,11 +232,6 @@ const CardAddUser = () => (
 												name="state"
 												width="lg:w-80 w-full"
 											/>
-											{errors.state && touched.state && (
-												<span className="text-red-ufal text-sm">
-													{errors.state}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -279,11 +241,6 @@ const CardAddUser = () => (
 												name="cep"
 												width="lg:w-80 w-full"
 											/>
-											{errors.cep && touched.cep && (
-												<span className="text-red-ufal text-sm">
-													{errors.cep}
-												</span>
-											)}
 										</div>
 									</div>
 								</div>
@@ -299,11 +256,6 @@ const CardAddUser = () => (
 												name="bank"
 												width="lg:w-80 w-full"
 											/>
-											{errors.bank && touched.bank && (
-												<span className="text-red-ufal text-sm">
-													{errors.bank}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -313,11 +265,6 @@ const CardAddUser = () => (
 												name="acountType"
 												width="lg:w-80 w-full"
 											/>
-											{errors.acountType && touched.acountType && (
-												<span className="text-red-ufal text-sm">
-													{errors.acountType}
-												</span>
-											)}
 										</div>
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
@@ -329,11 +276,6 @@ const CardAddUser = () => (
 												name="account"
 												width="lg:w-80 w-full"
 											/>
-											{errors.account && touched.account && (
-												<span className="text-red-ufal text-sm">
-													{errors.account}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -343,16 +285,16 @@ const CardAddUser = () => (
 												name="agency"
 												width="lg:w-80 w-full"
 											/>
-											{errors.agency && touched.agency && (
-												<span className="text-red-ufal text-sm">
-													{errors.agency}
-												</span>
-											)}
 										</div>
 									</div>
 								</div>
 								<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
-									<Button title="Salvar" theme="primaryAction" type="submit" />
+									<Button
+										title="Solicitar"
+										theme="primaryAction"
+										type="submit"
+										disabled={isSubmitting}
+									/>
 									<Button title="Cancelar" theme="secondaryAction" />
 								</div>
 							</TabsPrimitive.Content>

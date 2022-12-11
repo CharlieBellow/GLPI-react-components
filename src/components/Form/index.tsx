@@ -1,14 +1,9 @@
 import { Formik, Form } from "formik";
 
 import {
-	validations,
-	genderList,
-	lettersOnly,
-	passwordRules,
-	serviceLocal,
 	validationSchema,
 	blocList,
-} from "./validations";
+} from "../../Utils/validations";
 
 import * as yup from 'yup'
 import { toast } from "react-toastify";
@@ -16,7 +11,7 @@ import { Button } from "../Button";
 import { CardLabelInput } from "../CardLabelInput";
 import { CardTitle } from "../CardTitle";
 import { CardLine } from "../CardLine";
-import { MySelect } from "./MySelect";
+
 import FieldSelect from "../FieldSelect";
 
 
