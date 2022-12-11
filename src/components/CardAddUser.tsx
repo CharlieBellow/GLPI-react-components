@@ -10,7 +10,7 @@ import {
 	campusList,
 	bondList,
 	genderList,
-} from "../Utils/validations";
+} from "../Utils/validation";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "./FieldSelect";
@@ -22,8 +22,7 @@ const TabsTrigger = styled(TabsPrimitive.Trigger, {
 		border: "none",
 		boxShadow: "0 3px 0 0 currentColor",
 	},
-} );
-
+});
 
 const tab = `bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
 text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg

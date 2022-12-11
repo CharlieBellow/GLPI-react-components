@@ -18,6 +18,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 		| "secondaryActionWithIcon"
 		| "tertiaryMobile"
 		| "tertiaryActionWithIcon";
+		disabled?: boolean;
 }
 
 export function Button(props: ButtonProps) {
@@ -93,6 +94,12 @@ export function Button(props: ButtonProps) {
 					props.theme === "tertiaryActionWithIcon"
 					? `flex items-center justify-center gap-2 bg-gray-medium hover:bg-opacity-80 py-4 px-4 text-xl font-bold
 					text-gray-text shadow-button` 
+					: ""
+				}
+				${
+					props.disabled === true
+					? "bg-gray-text hover:bg-gray-text opacity-60 hover:opacity-60"
+
 					: ""
 				}
 			`}
