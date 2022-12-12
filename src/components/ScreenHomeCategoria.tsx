@@ -4,8 +4,8 @@ import CategoriaHomeMobile from "./CategoriaHomeMobile";
 function ScreenCategoriaHome(){
     return(
         <>
-            <h4 className="text-4xl m-15 font-semibold mb-9">Categorias</h4>        
-            <div className="w-[59.5rem] m-15 grid grid-cols-4 gap-x-10 gap-y-6 mt-0">
+            <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Categorias</h4>        
+            <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-x-10 gap-y-6 mt-0">
                 <CategoriaHomeMobile Name={"Biblioteca"} Icon={<Icon.BookOpen  size={27}/>} />
                 <CategoriaHomeMobile Name={"NTI"} Icon={<Icon.Cpu  size={27}/>} />
                 <CategoriaHomeMobile Name={"Biblioteca"} Icon={<Icon.BookOpen  size={27}/>} />
