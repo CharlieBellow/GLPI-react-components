@@ -26,12 +26,12 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 	window.addEventListener('scroll', changeFloatingButton);
 
 	return (
-		<div className="lg:bg-white-100 lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
+		<div className="lg:bg-white-100 lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify ">
 			<div className="lg:flex lg:justify-between lg:items-baseline">
 				<h3 className="pt-4 font-medium ml-4 text-3xl lg:text-4xl lg:flex">
 					{props.serviceTitle}
 				</h3>
-				<div className="fixed lg:relative top-[630px] right-2 lg:right-4 lg:top-0">
+				<div className="absolute lg:relative top-[630px] right-2 lg:right-4 lg:top-0">
 					<Button
 							title={floatingButton ? "" : "Solicitar serviço"}
 							theme="withIcon"
