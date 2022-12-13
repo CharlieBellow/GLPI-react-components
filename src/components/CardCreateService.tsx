@@ -16,6 +16,8 @@ import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "./FieldSelect";
 
+import {Spinner} from "@chakra-ui/react";
+
 export const lettersOnly = /[^a-zA-Z]/g;
 
 const validate = yup.object().shape({
@@ -29,9 +31,11 @@ export const CardCreateService = () => {
 
 	return (
 		<div className="mx-4">
-			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
+			<div
+				className="mt-18 mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card">
+				h-auto shadow-card"
+			>
 				<div className="pl-9 pt-8">
 					<CardTitle title="Solicitar Serviço" />
 				</div>
@@ -51,14 +55,14 @@ export const CardCreateService = () => {
 						setTimeout(() => {
 							console.log("submit:", values);
 
-							toast.success("Chamado criado com sucesso!");
+							toast.success("Serviço criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 							//setSubmitting(false);
 						}, 400);
 					}}
 				>
-					{({isSubmitting}) => (
+					{({ isSubmitting }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -99,6 +103,7 @@ export const CardCreateService = () => {
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
 									title="Solicitar"
 									theme="primaryAction"
@@ -107,6 +112,7 @@ export const CardCreateService = () => {
 								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>
+							
 						</Form>
 					)}
 				</Formik>

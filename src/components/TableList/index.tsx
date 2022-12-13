@@ -77,9 +77,9 @@ function TableList(props: TableProps) {
 									>
 										<Tr
 											className="lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
-											key={user.name}
+											key={user.id}
 										>
-											<div className=" flex lg:flex lg:flex-1 flex-row ">
+											<div className=" flex lg:flex lg:flex-1 flex-row">
 												<Td
 													px={["0", "0", "0"]}
 													className="flex items-center mx-1 lg:mx-4"
@@ -90,8 +90,8 @@ function TableList(props: TableProps) {
 													></Checkbox>
 												</Td>
 												<div className="flex flex-row justify-between lg:w-full w-6 0">
-													<Td className="text-sm lg:text-lg">
-														<Box key={user.name} className="">
+													<Td className="text-sm lg:text-lg" key={user.name}>
+														<Box className="">
 															<Link to="#">
 																<Text
 																	fontWeight="bold"
@@ -110,7 +110,10 @@ function TableList(props: TableProps) {
 
 											{isWideVersion && (
 												<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
-													<Td className="text-light-bg text-xs lg:text-base">
+													<Td
+														className="text-light-bg text-xs lg:text-base"
+														key={user.date}
+													>
 														{user.date}
 													</Td>
 												</div>

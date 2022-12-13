@@ -6,6 +6,7 @@ import { validationSchema } from "../Utils/validations";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
+import { Spinner } from "@chakra-ui/react";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -82,6 +83,7 @@ function CardUserInfo() {
 								/>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mt-10">
+								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
 									title="Salvar"
 									theme="primaryAction"

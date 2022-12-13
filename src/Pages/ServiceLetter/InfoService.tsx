@@ -30,7 +30,7 @@ export function InfoServiceItem(props: InfoServiceItemProps) {
 							<p className="check">{info.description}</p>
 
 							<label htmlFor={info.title} className="label ">
-								<p className="text-end text-blue-ufal  underline pt-1">
+								<div className="text-end text-blue-ufal  underline pt-1">
 									<strong className="show hover:opacity-70">
 										...Mostrar mais
 									</strong>
@@ -38,7 +38,7 @@ export function InfoServiceItem(props: InfoServiceItemProps) {
 										Mostrar menos
 									</strong>
 									<div className="border-b-2 border-gray-text"></div>
-								</p>
+								</div>
 							</label>
 						</div>
 					</div>

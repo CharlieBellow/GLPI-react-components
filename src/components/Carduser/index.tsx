@@ -1,6 +1,6 @@
 import { Formik, Form } from "formik";
-//import { useState } from "react";
-
+import React, { useState } from "react";
+import {User, usersList} from './User'
 import {
 	validationSchema,
 	//blocList,
@@ -19,9 +19,18 @@ import { CardLine } from "../CardLine";
 const validate = yup.object().shape({
 	name: validationSchema.name,
 
-});
+} );
+
+
+
 
 export const BasicForm = () => {
+
+const [name, setName] = useState("")
+const [date, setDate] = useState("")
+const [time, setTime] = useState("")
+
+
 	return (
 		<div className="mx-4">
 			<div
@@ -40,12 +49,50 @@ export const BasicForm = () => {
 				<Formik
 					initialValues={{
 						name: "",
+						date: "",
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							toast.success( "Chamado criado com sucesso!" );
+							//setValues( values );
+							setName(values.name);
+							setDate(
+								new Date().toLocaleTimeString("pt-br", {
+									day: "2-digit",
+									month: "2-digit",
+									year: "numeric",
+								})
+							);
+							setTime(
+								new Date().toLocaleTimeString("pt-br", {
+									hour: "2-digit",
+									minute: "2-digit",
+									second: "2-digit",
+								}),
+							);
+							usersList.push({
+								name: values.name,
+								id: new Date().toLocaleTimeString("pt-br", {
+									hour: "2-digit",
+									minute: "2-digit",
+									second: "2-digit",
+								}),
+								date: new Date().toLocaleTimeString("pt-br", {
+									hour: "2-digit",
+									minute: "2-digit",
+									second: "2-digit",
+									
+								}),
+								time: new Date().toLocaleTimeString("pt-br", {
+									hour: "2-digit",
+									minute: "2-digit",
+									second: "2-digit",
+								}),
+							});
+						
+
+							toast.success("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 						}, 400);
@@ -63,8 +110,6 @@ export const BasicForm = () => {
 										inputid="title"
 									/>
 								</div>
-
-								
 							</div>
 
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
@@ -80,6 +125,10 @@ export const BasicForm = () => {
 					)}
 				</Formik>
 			</div>
+			<>
+			<User nome={ name } date={ date } time={time} />
+			{console.log(usersList)}
+			</>
 		</div>
 	);
 };

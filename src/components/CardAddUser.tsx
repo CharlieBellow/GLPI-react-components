@@ -16,6 +16,7 @@ import {
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "./FieldSelect";
+import { Spinner } from "@chakra-ui/react";
 
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
@@ -60,16 +61,6 @@ const CardAddUser = () => (
 			h-auto shadow-card"
 		>
 			<Formik
-				validationSchema={validate}
-				onSubmit={values => {
-					setTimeout(() => {
-						console.log("submit", values);
-
-						toast.success("Chamado criado com sucesso!");
-						//alert(JSON.stringify(values, null, 2));
-						//setSubmitting(false);
-					}, 400);
-				}}
 				initialValues={{
 					fullName: "",
 					cpf: "",
@@ -88,6 +79,16 @@ const CardAddUser = () => (
 					acountType: "",
 					account: "",
 					agency: "",
+				}}
+				validationSchema={validate}
+				onSubmit={(values, { setSubmitting }) => {
+					setTimeout(() => {
+						console.log("submit", values);
+
+						toast.success("Usuário criado com sucesso!");
+						//alert(JSON.stringify(values, null, 2));
+						setSubmitting(false);
+					}, 400);
 				}}
 			>
 				{({ isSubmitting, setFieldValue }) => (
@@ -291,8 +292,9 @@ const CardAddUser = () => (
 									</div>
 								</div>
 								<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
+									{isSubmitting ? <Spinner size="xl" /> : null}
 									<Button
-										title="Solicitar"
+										title="Adicionar"
 										theme="primaryAction"
 										type="submit"
 										disabled={isSubmitting}
