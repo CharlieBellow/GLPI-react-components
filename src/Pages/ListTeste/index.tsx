@@ -83,7 +83,7 @@ function ListTestePage () {
 		}
 	}, []);
 	
-	
+	console.log(lista);
 	return (
 		<>
 			<Page

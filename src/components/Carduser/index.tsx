@@ -40,18 +40,22 @@ export const BasicForm = () => {
 		setName(values.name);
 		setEmail(values.email);
 		setDate(
-			new Date().toLocaleTimeString("pt-br", {
-				day: "2-digit",
-				month: "2-digit",
-				year: "numeric",
-			})
+			new Date()
+				.toLocaleTimeString("pt-br", {
+					day: "2-digit",
+					month: "2-digit",
+					year: "numeric",
+				})
+				.toString()
 		);
 		setTime(
-			new Date().toLocaleTimeString("pt-br", {
-				hour: "2-digit",
-				minute: "2-digit",
-				second: "2-digit",
-			})
+			new Date()
+				.toLocaleTimeString("pt-br", {
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
+				})
+				.toString()
 		);
 
 		setId( time );
@@ -59,22 +63,27 @@ export const BasicForm = () => {
 		usersList.push({
 			name: values.name,
 			email: values.email,
-			id: new Date().toLocaleTimeString( "pt-br", {
-				hour: "2-digit",
-				minute: "2-digit",
-				second: "2-digit",
-			} ),
-			date: new Date().toLocaleTimeString("pt-br", {
-				day: "2-digit",
-				month: "2-digit",
-				year: "numeric",
-			}),
-			time: new Date().toLocaleTimeString("pt-br", {
+			id: new Date().toLocaleTimeString("pt-br", {
 				hour: "2-digit",
 				minute: "2-digit",
 				second: "2-digit",
 			}),
-		});
+			date: new Date()
+				.toLocaleTimeString("pt-br", {
+					day: "2-digit",
+					month: "2-digit",
+					year: "numeric",
+				})
+				.toString(),
+			time: new Date()
+				.toLocaleTimeString("pt-br", {
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
+				})
+				.toString(),
+		} );
+		return {name: name, email: email, date: date, time: time, id: id}
 	}
 
 	useEffect(() => {
@@ -90,6 +99,7 @@ export const BasicForm = () => {
 	useEffect( () => {
 		localStorage.setItem("users", JSON.stringify(users));
 	}, [users]);
+		
 		
 	return (
 		<div className="mx-4">
@@ -110,17 +120,14 @@ export const BasicForm = () => {
 					initialValues={{
 						name: "",
 						email: "",
-						date: "",
-						time: "",
-						id: "",
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
 							
-						setValues(values);
-							setUsers( [...users, values ] );
+						const val = setValues(values);
+							setUsers([...users, val]);
 							//usersList.push(...users);
 							toast.success("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
