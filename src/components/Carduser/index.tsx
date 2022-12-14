@@ -152,7 +152,9 @@ export const BasicForm = () => {
 							console.log("submit:", values);
 							//setValues(values);
 						setValues(values);
-							setUsers(  [...users,  values] );
+							//setUsers(  [...users,  values] );
+
+							
 							//console.log("user: ", user);
 							//console.log( "users: ", users );
 							//console.log( "val: ", val );

@@ -30,10 +30,10 @@ function ScreenHomeMobile(){
             </div>
 
             <div className="w-full hidden lg:flex lg:flex-col justify-center items-center h-screen gap-10">
-                <div className="flex gap-11 w-[61.5rem]">
+                <div className="flex gap-11 w-auto">
                     <CardHomeMobile />
                     <div className="bg-white-ice w-[21.25rem] h-[18.75rem] pt-4 px-6 rounded-lg shadow-card box-border">
-                        <h4 className="text-4xl mb-10 font-bold">Resumo</h4>
+                        <h4 className="text-4xl mb-10 font-bold">Categorias</h4>
                         <Link to="/PageCategoriaHome">
                             <CategoriaHomeMobile Name={"Biblioteca"} Icon={<Icon.BookOpen  size={27}/>} />
                         </Link>
@@ -42,10 +42,10 @@ function ScreenHomeMobile(){
                 
                 <div className="flex gap-11 w-[61.5rem]">
                     <div className="bg-white-ice w-[30rem] h-[14.25rem] pt-4 px-6 rounded-lg shadow-card box-border">                        
-                        <h4 className="text-2xl mb-4 font-bold">chamados</h4>
+                        <h4 className="text-2xl mb-4 font-bold">Chamados</h4>
                         <div>
                             <ChamadosHome url={"https://www.github.com/charliebellow.png"} nome={"Felipe Padilha"} area={"Administração"} data={"15/08"} />
-                            <ChamadosHome url={"https://www.github.com/charliebellow.png"} nome={"Caarlos Eduardo"} area={"GTI"} data={"15/08"} />
+                            <ChamadosHome url={"https://www.github.com/charliebellow.png"} nome={"Carlos Eduardo"} area={"GTI"} data={"15/08"} />
                             <ChamadosHome url={"https://www.github.com/charliebellow.png"} nome={"Patrick Passos"} area={"Redes"} data={"15/08"} />
                             <ChamadosHome url={"https://www.github.com/charliebellow.png"} nome={"Nome Completo"} area={"Redes"} data={"15/08"} />
                         </div>

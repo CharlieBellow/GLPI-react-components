@@ -17,7 +17,7 @@ export function Page(props: PageProps) {
 					</div>
 
 					<div className="pageContent w-full h-screen flex flex-col" {...props}>
-						<div {...props}>
+						<div { ...props } >
 							<Header page={props.pagetitle} />
 						</div>
 

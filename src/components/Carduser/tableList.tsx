@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { PencilSimpleLine } from "phosphor-react";
-import ButtonMainWithIcon from "../ButtonMainWithIcon";
+import {Button} from "../Button";
 
 
 import {
@@ -123,17 +123,13 @@ function TableList(props: TableProps) {
 												<div className="lg:hidden flex my-auto pr-4 lg:gap-2 gap-0">
 													<DropDownMenu date={user.date} />
 												</div>
-												<ButtonMainWithIcon
-													className="flex items-center px-[0.625rem] py-2 lg:m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base"
-													icon={
-														<PencilSimpleLine
-															className="lg:mr-3 mr-0"
-															weight="bold"
-															size={20}
-														/>
-													}
-													title={isWideVersion ? "Editar" : ""}
-												/>
+												<Button
+													className="flex items-center   bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
+													icon={ <PencilSimpleLine
+														className=""
+														weight="bold"
+														size={ 20 } /> }
+													title={ isWideVersion ? "Editar" : "" } theme={ "secondary" }												/>
 											</div>
 										</Tr>
 									</div>
