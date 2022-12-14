@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {User, usersList} from './User'
 import {
 	validationSchema,
@@ -12,25 +12,85 @@ import { Button } from "../Button";
 import { CardLabelInput } from "../CardLabelInput";
 import { CardTitle } from "../CardTitle";
 import { CardLine } from "../CardLine";
+//import { UserList } from "phosphor-react";
 
 
 
 
 const validate = yup.object().shape({
 	name: validationSchema.name,
+	email: validationSchema.email,
 
 } );
 
 
 
-
 export const BasicForm = () => {
+	
+	const [name, setName] = useState("")
+	const [email, setEmail] = useState("")
+	const [date, setDate] = useState("")
+	const [ time, setTime ] = useState( "" )
+	const [ id, setId ] = useState( "" )
+	
+	const [users, setUsers] = useState(usersList)
+	
+	function setValues (values: any) {
+		
+		setName(values.name);
+		setEmail(values.email);
+		setDate(
+			new Date().toLocaleTimeString("pt-br", {
+				day: "2-digit",
+				month: "2-digit",
+				year: "numeric",
+			})
+		);
+		setTime(
+			new Date().toLocaleTimeString("pt-br", {
+				hour: "2-digit",
+				minute: "2-digit",
+				second: "2-digit",
+			})
+		);
 
-const [name, setName] = useState("")
-const [date, setDate] = useState("")
-const [time, setTime] = useState("")
+		setId( time );
+		
+		usersList.push({
+			name: values.name,
+			email: values.email,
+			id: new Date().toLocaleTimeString( "pt-br", {
+				hour: "2-digit",
+				minute: "2-digit",
+				second: "2-digit",
+			} ),
+			date: new Date().toLocaleTimeString("pt-br", {
+				day: "2-digit",
+				month: "2-digit",
+				year: "numeric",
+			}),
+			time: new Date().toLocaleTimeString("pt-br", {
+				hour: "2-digit",
+				minute: "2-digit",
+				second: "2-digit",
+			}),
+		});
+	}
 
+	useEffect(() => {
+		const usersStorage = localStorage.getItem("users");
 
+		if (usersStorage) {
+			setUsers(JSON.parse(usersStorage));
+		}
+
+		console.log("lista:", usersStorage);
+	}, []);
+
+	useEffect( () => {
+		localStorage.setItem("users", JSON.stringify(users));
+	}, [users]);
+		
 	return (
 		<div className="mx-4">
 			<div
@@ -49,49 +109,19 @@ const [time, setTime] = useState("")
 				<Formik
 					initialValues={{
 						name: "",
+						email: "",
 						date: "",
+						time: "",
+						id: "",
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							//setValues( values );
-							setName(values.name);
-							setDate(
-								new Date().toLocaleTimeString("pt-br", {
-									day: "2-digit",
-									month: "2-digit",
-									year: "numeric",
-								})
-							);
-							setTime(
-								new Date().toLocaleTimeString("pt-br", {
-									hour: "2-digit",
-									minute: "2-digit",
-									second: "2-digit",
-								}),
-							);
-							usersList.push({
-								name: values.name,
-								id: new Date().toLocaleTimeString("pt-br", {
-									hour: "2-digit",
-									minute: "2-digit",
-									second: "2-digit",
-								}),
-								date: new Date().toLocaleTimeString("pt-br", {
-									hour: "2-digit",
-									minute: "2-digit",
-									second: "2-digit",
-									
-								}),
-								time: new Date().toLocaleTimeString("pt-br", {
-									hour: "2-digit",
-									minute: "2-digit",
-									second: "2-digit",
-								}),
-							});
-						
-
+							
+						setValues(values);
+							setUsers( [...users, values ] );
+							//usersList.push(...users);
 							toast.success("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
@@ -107,7 +137,16 @@ const [time, setTime] = useState("")
 										name="name"
 										type="text"
 										width="w-full"
-										inputid="title"
+										inputid="name"
+									/>
+								</div>
+								<div className="">
+									<CardLabelInput
+										label="email"
+										name="email"
+										type="email"
+										width="w-full"
+										inputid="email"
 									/>
 								</div>
 							</div>
@@ -126,7 +165,12 @@ const [time, setTime] = useState("")
 				</Formik>
 			</div>
 			<>
-			<User nome={ name } date={ date } time={time} />
+				{ usersList.map( (user: any) => {
+					return (
+						<User nome={ user.name } date={ user.date } time={ user.time } email={ user.email } id={user.time} />
+
+					)
+				})}
 			{console.log(usersList)}
 			</>
 		</div>

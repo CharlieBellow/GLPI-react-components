@@ -1,5 +1,5 @@
 export const usersList = [
-	{id: "0", name: "Charlie", date: "13/12/2024", time:"00"}
+	{ name: "Charlie", email: "", date: "13/12/2024", time:"00", id: "0",}
 ];
 
 interface UsersProps {
@@ -12,10 +12,11 @@ export const Users = (props: UsersProps) => {
 		{
 			props.usersList.map( (users: any) => {
 				return (
-					<div className="bg-white-100" key={users.date}>
-						<h1>
-							<>{users.name}</>
-						</h1>
+					<div className="bg-white-100" key={users.time}>
+						<h2>
+							{users.name}
+						</h2>
+						<h3>{users.email}</h3>
 						<p>{users.date}</p>
 					</div>
 				)
@@ -30,18 +31,25 @@ export const Users = (props: UsersProps) => {
 interface UserProps {
 	nome: string;
 	date: string;
+	email: string;
 	time: string;
+	id: string;
 }
 
 export const User = (props: UserProps) => {
 	return (
 		<>
-			<div className="bg-white-100 w-1/2 p-3 m-4" key={ props.time } id={props.time}>
-						<h1>
-							<>{props.nome}</>
-						</h1>
-						<div>{props.date}</div>
-					</div>
+			<div
+				className="bg-white-100 w-1/2 p-3 m-4"
+				key={props.time}
+				id={props.id}
+			>
+				<h1>
+					<>{props.nome}</>
+				</h1>
+				<h3>{props.email}</h3>
+				<div>{props.date}</div>
+			</div>
 		</>
 	);
 };
