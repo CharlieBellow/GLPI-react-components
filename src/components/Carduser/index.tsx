@@ -27,38 +27,62 @@ const validate = yup.object().shape({
 
 export const BasicForm = () => {
 	
-	const [name, setName] = useState("")
-	const [email, setEmail] = useState("")
-	const [date, setDate] = useState("")
-	const [ time, setTime ] = useState( "" )
-	const [ id, setId ] = useState( "" )
+	const [user, setUser] = useState({})
+	//const [email, setEmail] = useState("")
+	//const [date, setDate] = useState("")
+	//const [ time, setTime ] = useState( "" )
+	//const [ id, setId ] = useState( "" )
 	
 	const [users, setUsers] = useState(usersList)
 	
 	function setValues (values: any) {
 		
-		setName(values.name);
-		setEmail(values.email);
-		setDate(
-			new Date()
+	const newUser = setUser({
+			name: values.name,
+			email: values.email,
+			date: new Date()
 				.toLocaleTimeString("pt-br", {
 					day: "2-digit",
 					month: "2-digit",
 					year: "numeric",
 				})
-				.toString()
-		);
-		setTime(
-			new Date()
+				.toString(),
+			time: new Date()
 				.toLocaleTimeString("pt-br", {
 					hour: "2-digit",
 					minute: "2-digit",
 					second: "2-digit",
 				})
-				.toString()
-		);
-
-		setId( time );
+				.toString(),
+			id: new Date()
+				.toLocaleTimeString("pt-br", {
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
+				})
+				.toString(),
+		});
+//		setEmail(values.email);
+//		setDate(
+//			new Date()
+//				.toLocaleTimeString("pt-br", {
+//					day: "2-digit",
+//					month: "2-digit",
+//					year: "numeric",
+//				})
+//				.toString()
+//		);
+//		setTime(
+//			new Date()
+//				.toLocaleTimeString("pt-br", {
+//					hour: "2-digit",
+//					minute: "2-digit",
+//					second: "2-digit",
+//				})
+//				.toString()
+//		);
+//
+//		setId( time );
 		
 		usersList.push({
 			name: values.name,
@@ -83,7 +107,8 @@ export const BasicForm = () => {
 				})
 				.toString(),
 		} );
-		return {name: name, email: email, date: date, time: time, id: id}
+		return newUser;
+		//{ name: user.name, email: user.email, date: user.date, time: user.time, id: user.id; }
 	}
 
 	useEffect(() => {
@@ -125,9 +150,15 @@ export const BasicForm = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
+							//setValues(values);
+						setValues(values);
+							setUsers(  [...users,  values] );
+							//console.log("user: ", user);
+							//console.log( "users: ", users );
+							//console.log( "val: ", val );
+							//console.log("userlist: ", usersList);
 							
-						const val = setValues(values);
-							setUsers([...users, val]);
+							
 							//usersList.push(...users);
 							toast.success("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
