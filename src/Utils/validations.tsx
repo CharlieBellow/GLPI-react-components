@@ -3,6 +3,7 @@ import * as yup from "yup";
 export const lettersOnly = /[^a-zA-Z]/g;
 
 export const phoneNumber = /\([0-9]{2}\) 9[0-9]\d{3}-\d{4}/;
+export const cep = /[0-9]{8}/g;
 
 export const cpfNumber =
 	/([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})/;
@@ -139,8 +140,16 @@ export const validationSchema = {
 	complement: yup.string(),
 	district: yup.string().required("É obrigatório informar o bairro"),
 	city: yup.string().required("É obrigatório informar a cidade"),
-	state: yup.string().required("É obrigatório informar o estado"),
-	cep: yup.string().required("É obrigatório informar seu CPF"),
+	uf: yup
+		.string()
+		.uppercase()
+		.min(2, "Apenas duas letras maiúsculas")
+		.max(2, "Apenas duas letras maiúsculas")
+		.required("É obrigatório informar o estado"),
+	cep: yup
+		.string()
+		.matches(cep, "Deve conter 8 números")
+		.required("É obrigatório informar seu CEP"),
 	bank: yup
 		.number()
 		.positive("Apenas valores positivos.")
@@ -243,8 +252,16 @@ export const validations = yup.object().shape({
 	complement: yup.string(),
 	district: yup.string().required("É obrigatório informar o bairro"),
 	city: yup.string().required("É obrigatório informar a cidade"),
-	state: yup.string().required("É obrigatório informar o estado"),
-	cep: yup.string().required("É obrigatório informar seu CPF"),
+	uf: yup
+		.string()
+		.uppercase()
+		.min(2, "Apenas duas letras maiúsculas")
+		.max(2, "Apenas duas letras maiúsculas")
+		.required("É obrigatório informar o estado"),
+	cep: yup
+		.string()
+		.matches(cep, "Deve conter 8 números")
+		.required("É obrigatório informar seu CEP"),
 	bank: yup
 		.number()
 		.positive()

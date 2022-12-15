@@ -31,6 +31,10 @@ const tab = `bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center jus
 text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
 hover:text-blue-ufal hover:cursor-pointer focus:relative`;
 
+//function handleBlur (ev) {
+	
+//};
+
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
 	cpf: validationSchema.cpf,
@@ -43,7 +47,7 @@ const validate = yup.object().shape({
 	complement: validationSchema.complement,
 	district: validationSchema.district,
 	city: validationSchema.city,
-	state: validationSchema.state,
+	uf: validationSchema.uf,
 	cep: validationSchema.cep,
 	bank: validationSchema.bank,
 	acountType: validationSchema.acountType,
@@ -52,6 +56,30 @@ const validate = yup.object().shape({
 });
 
 //const cpfmask = CpfMask;
+
+//function handleBlurEv ( e: Event, setFieldValue:Function) {
+//	const { value } = e.target;
+//
+//	const cep = value?.replace(/[^0-9]/g, "");
+//	// call the built-in handleBur
+//	console.log("e:", value);
+//	if (value?.length !== 8) {
+//		return;
+//	}
+//
+//	fetch(`https://viacep.com.br/ws/${cep}/json/`)
+//		.then(res => res.json())
+//		.then(data => {
+//			console.log( data );
+//			
+//			setFieldValue( 'district', data.bairro );
+//			setFieldValue( 'city', data.localidade );
+//			setFieldValue("address", data.logradouro);
+//			setFieldValue( 'uf', data.uf );
+//		} );
+//	
+//	//handleBlur(e);
+//}
 
 const CardAddUser = () => (
 	<div className="mx-4">
@@ -73,7 +101,7 @@ const CardAddUser = () => (
 					complement: "",
 					district: "",
 					city: "",
-					state: "",
+					uf: "",
 					cep: "",
 					bank: "",
 					acountType: "",
@@ -84,6 +112,7 @@ const CardAddUser = () => (
 				onSubmit={(values, { setSubmitting }) => {
 					setTimeout(() => {
 						console.log("submit", values);
+						console.log("cep", values.cep);
 
 						toast.success("Usuário criado com sucesso!");
 						//alert(JSON.stringify(values, null, 2));
@@ -188,33 +217,19 @@ const CardAddUser = () => (
 
 							<TabsPrimitive.Content className="outline-none" value="tab2">
 								<div className="flex flex-col gap-9">
-									<div>
-										<CardLabelInput
-											label="Endereço"
-											type="text"
-											inputid="address"
-											name="address"
-											width="w-full"
-										/>
-									</div>
-									<div>
-										<CardLabelInput
-											label="Complemento"
-											type="text"
-											inputid="complement"
-											name="complement"
-											width="w-full"
-										/>
-									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 										<div>
 											<CardLabelInput
-												label="Bairro"
+												label="CEP"
 												type="text"
-												inputid="district"
-												name="district"
+												inputid="cep"
+												name="cep"
 												width="lg:w-80 w-full"
+												onChange={(e: any) => console.log(e.target.value)}
 											/>
+											<>
+												
+											</>
 										</div>
 										<div>
 											<CardLabelInput
@@ -231,20 +246,38 @@ const CardAddUser = () => (
 											<CardLabelInput
 												label="Estado"
 												type="text"
-												inputid="state"
-												name="state"
+												inputid="uf"
+												name="uf"
 												width="lg:w-80 w-full"
 											/>
 										</div>
 										<div>
 											<CardLabelInput
-												label="CEP"
+												label="Bairro"
 												type="text"
-												inputid="cep"
-												name="cep"
+												inputid="district"
+												name="district"
 												width="lg:w-80 w-full"
 											/>
 										</div>
+									</div>
+									<div>
+										<CardLabelInput
+											label="Endereço Completo com Nº"
+											type="text"
+											inputid="address"
+											name="address"
+											width="w-full"
+										/>
+									</div>
+									<div>
+										<CardLabelInput
+											label="Complemento"
+											type="text"
+											inputid="complement"
+											name="complement"
+											width="w-full"
+										/>
 									</div>
 								</div>
 							</TabsPrimitive.Content>
