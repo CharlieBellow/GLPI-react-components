@@ -105,7 +105,7 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70">
-						<Link to="/Table">Tabela de usuários</Link>
+						<Link to="/List">Tabela de usuários</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>

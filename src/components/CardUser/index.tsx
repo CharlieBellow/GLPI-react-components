@@ -12,9 +12,6 @@ import { Button } from "../Button";
 import { CardLabelInput } from "../CardLabelInput";
 import { CardTitle } from "../CardTitle";
 import { CardLine } from "../CardLine";
-//import { UserList } from "phosphor-react";
-
-
 
 
 const validate = yup.object().shape({
