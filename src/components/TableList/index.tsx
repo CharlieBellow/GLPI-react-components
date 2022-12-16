@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { PencilSimpleLine } from "phosphor-react";
@@ -19,25 +18,22 @@ import {
 } from "@chakra-ui/react";
 
 import TableOptions from "./TableOptions";
-import {DropDownMenu} from "../DropDownMenu";
+import { DropDownMenu } from "../DropDownMenu";
 import { Pagination } from "../Pagination";
 
-interface TableProps extends React.HTMLAttributes<HTMLElement>{
-	itemList: Array<any>;
-	listSelectButton: Array<any>
-	
+interface TableProps extends React.HTMLAttributes<HTMLElement> {
+	itemlist: Array<any>;
+	listselecbutton: Array<any>;
 }
 
 function TableList(props: TableProps) {
-
 	const [page, setPage] = useState(1);
-	
-	 const isWideVersion = useBreakpointValue({
-			base: false,
-			lg: true,
-		});  
 
-	  
+	const isWideVersion = useBreakpointValue({
+		base: false,
+		lg: true,
+	});
+
 	return (
 		<>
 			<div
@@ -46,7 +42,7 @@ function TableList(props: TableProps) {
 			>
 				<div className="lg:mb-16" {...props}>
 					<TableOptions
-						listSelectButton={props.listSelectButton}
+						listselecbutton={props.listselecbutton}
 						titleOfTable="Lista de Usuários"
 					/>
 				</div>
@@ -69,7 +65,7 @@ function TableList(props: TableProps) {
 						</Thead>
 
 						<Tbody className="scroll lg:max-w-full lg:top-4  ">
-							{props.itemList.map(user => {
+							{props.itemlist.map(user => {
 								return (
 									<div
 										className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row lg:mx-6 pb-0 md:mx-9"
@@ -77,9 +73,9 @@ function TableList(props: TableProps) {
 									>
 										<Tr
 											className="lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
-											key={user.name}
+											key={user.id}
 										>
-											<div className=" flex lg:flex lg:flex-1 flex-row ">
+											<div className=" flex lg:flex lg:flex-1 flex-row">
 												<Td
 													px={["0", "0", "0"]}
 													className="flex items-center mx-1 lg:mx-4"
@@ -90,8 +86,8 @@ function TableList(props: TableProps) {
 													></Checkbox>
 												</Td>
 												<div className="flex flex-row justify-between lg:w-full w-6 0">
-													<Td className="text-sm lg:text-lg">
-														<Box key={user.name} className="">
+													<Td className="text-sm lg:text-lg" key={user.name}>
+														<Box className="">
 															<Link to="#">
 																<Text
 																	fontWeight="bold"
@@ -110,7 +106,10 @@ function TableList(props: TableProps) {
 
 											{isWideVersion && (
 												<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
-													<Td className="text-light-bg text-xs lg:text-base">
+													<Td
+														className="text-light-bg text-xs lg:text-base"
+														key={user.date}
+													>
 														{user.date}
 													</Td>
 												</div>
@@ -139,7 +138,7 @@ function TableList(props: TableProps) {
 					</Table>
 				</div>
 				<Pagination
-					totalCountOfRegisters={props.itemList.length}
+					totalCountOfRegisters={props.itemlist.length}
 					currentPage={page}
 					onPageChange={setPage}
 				/>

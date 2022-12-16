@@ -17,31 +17,36 @@ const users = [
 	{ id: 12, name: "Roberta", email: "roberta@email.com", date: "01/02/2022" },
 	{ id: 13, name: "Caio", email: "caio@email.com", date: "01/02/2022" },
 	{ id: 14, name: "Rodrigo", email: "rodrigo@email.com", date: "01/02/2022" },
-	{ id: 15, name: "Charlie", email: "email@email.com", date: "01/02/2022" },
-	{ id: 16, name: "Humberto", email: "humberto@email.com", date: "01/02/2022" },
-	{ id: 17, name: "Ítalo", email: "italo@email.com", date: "01/02/2022" },
-	{ id: 18, name: "Evellyn", email: "evellyn@email.com", date: "01/02/2022" },
+	{ id: 15, name: "Charlie2", email: "email@email.com", date: "01/02/2022" },
+	{
+		id: 16,
+		name: "Humberto2",
+		email: "humberto@email.com",
+		date: "01/02/2022",
+	},
+	{ id: 17, name: "Ítalo2", email: "italo@email.com", date: "01/02/2022" },
+	{ id: 18, name: "Evellyn2", email: "evellyn@email.com", date: "01/02/2022" },
 	{ id: 19, name: "Josue", email: "zue@email.com", date: "01/02/2022" },
 	{
 		id: 11,
-		name: "Giancarlo",
+		name: "Giancarlo2",
 		email: "giancarlo@email.com",
 		date: "01/02/2022",
 	},
-	{ id: 20, name: "Luan", email: "luan@email.com", date: "01/02/2022" },
-	{ id: 21, name: "Marcos", email: "marcos@email.com", date: "01/02/2022" },
+	{ id: 20, name: "Luan2", email: "luan@email.com", date: "01/02/2022" },
+	{ id: 21, name: "Marcos2", email: "marcos@email.com", date: "01/02/2022" },
 	{
 		id: 25,
 		name: "Giancarlo",
 		email: "giancarlo@email.com",
 		date: "01/02/2022",
 	},
-	{ id: 22, name: "Marcelo", email: "marcelo@email.com", date: "01/02/2022" },
-	{ id: 28, name: "Rodrigo", email: "rodrigo@email.com", date: "01/02/2022" },
-	{ id: 23, name: "Pedro", email: "pedro@email.com", date: "01/02/2022" },
-	{ id: 26, name: "Roberta", email: "roberta@email.com", date: "01/02/2022" },
-	{ id: 24, name: "Felipe", email: "lipe@email.com", date: "01/02/2022" },
-	{ id: 27, name: "Caio", email: "caio@email.com", date: "01/02/2022" },
+	{ id: 22, name: "Marcelo2", email: "marcelo@email.com", date: "01/02/2022" },
+	{ id: 28, name: "Rodrigo2", email: "rodrigo@email.com", date: "01/02/2022" },
+	{ id: 23, name: "Pedro2", email: "pedro@email.com", date: "01/02/2022" },
+	{ id: 26, name: "Roberta2", email: "roberta@email.com", date: "01/02/2022" },
+	{ id: 24, name: "Felipe2", email: "lipe@email.com", date: "01/02/2022" },
+	{ id: 27, name: "Caio2", email: "caio@email.com", date: "01/02/2022" },
 ];
 
 const ItemSelect = [
@@ -61,11 +66,11 @@ function TableListPage() {
 				pagetitle={"Dashboard"}
 				contentpage={
 					//<TableTeste />
-					<TableList itemList={users} listSelectButton={ItemSelect} />
+					<TableList itemlist={users} listselecbutton={ItemSelect} />
 				}
 			/>
 			{/*<TableTeste />*/}
-			{/*<TableList itemList={users} listSelectButton={ItemSelect} />*/}
+			{/*<TableList itemlist={users} listselecbutton={ItemSelect} />*/}
 		</>
 	);
 }

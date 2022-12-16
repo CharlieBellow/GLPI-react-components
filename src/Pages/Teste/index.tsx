@@ -1,5 +1,8 @@
 import { Page } from "../../components/Page";
-import CardCreateService from "../../components/CardCreateService";
+//import CardCreateService from "../../components/CardCreateService";
+import { BasicForm } from "../../components/Carduser";
+
+
 
 function Teste() {
 	return (
@@ -8,7 +11,9 @@ function Teste() {
 				pagetitle={"Página de Teste"}
 				contentpage={
 					<>
-						<CardCreateService />
+						{/*<CardCreateService />*/ }
+	
+						<BasicForm/>
 					</>
 				}
 			/>

@@ -1,14 +1,15 @@
-import { Field } from "formik";
+import { Field, FieldHookConfig, useField } from "formik";
+import { ClassAttributes, InputHTMLAttributes } from "react";
 
 interface CardLabelTextareaProps extends React.HTMLAttributes<HTMLElement> {
 	label: string;
 	textareaid?: string;
 	register?: any;
 	type?: string;
-	name?: string;
+	name: string;
 }
 
-function CardLabel(props: CardLabelTextareaProps) {
+function CardLabel(props: CardLabelTextareaProps ) {
 	return (
 		<label
 			{...props}
@@ -23,22 +24,39 @@ function CardLabel(props: CardLabelTextareaProps) {
 	);
 }
 
-export function CardLabelTextarea(props: CardLabelTextareaProps) {
+export function CardLabelTextarea(
+	props: CardLabelTextareaProps &
+		InputHTMLAttributes<HTMLInputElement> &
+		ClassAttributes<HTMLInputElement> &
+		FieldHookConfig<string>
+) {
+	const [field, meta] = useField(props);
 	return (
 		<div className="relative">
 			<Field
 				as="textarea"
 				{...props}
+				{...field}
 				name={props.name}
 				id={props.label}
 				type={props.type}
-				className="block px-2.5 pb-2.5 pt-2.5 h-40 min-h-full max-h-40 w-full text-base
+				className={`block px-2.5 pb-2.5 pt-2.5 h-40 min-h-full max-h-40 w-full text-base
           text-light-bg bg-gray-medium focus:bg-transparent rounded-lg appearance-none
-          focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
+          focus:outline-none focus:ring-0 focus:border-2 peer ${
+						meta.error ? " border-red-ufal" : "focus:border-blue-ufal"
+					}`}
 				placeholder=" "
 			/>
 
-			<CardLabel label={props.label} textareaid={props.textareaid} />
+			<CardLabel
+				name={props.name}
+				label={props.label}
+				textareaid={props.textareaid}
+			/>
+
+			{meta.error && meta.touched ? (
+				<span className="text-red-ufal text-sm">{meta.error}</span>
+			) : null}
 		</div>
 	);
 }

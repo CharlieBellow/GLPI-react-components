@@ -1,39 +1,34 @@
 import React from "react";
-//import ButtonSelect from "./ButtonSelect";
-//import ButtonSelectObject from "./ButtonSelectObject";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
-import { blocList, validationSchema } from "../Utils/validations";
 
-import { Formik, Field, Form, FormikHelpers } from "formik";
+import {
+	blocList,
+	validationSchema,
+} from "../Utils/validations";
+
+import * as yup from "yup";
+
+import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
-import FieldSelect from './FieldSelect';
+import FieldSelect from "./FieldSelect";
 
-const serviceLocation = [
-	{ values: "bloco-a", label: "Bloco A" },
-	{ values: "bloco-b", label: "Bloco B" },
-	{ values: "bloco-c", label: "Bloco C" },
-	{ values: "bloco-med", label: "Bloco Med" },
-	{ values: "bloco-em-l", label: "Bloco em L" },
-	{ values: "casa-velha", label: "Casa Velha" },
-	{ values: "ncex", label: "NCEX" },
-	{ values: "ru", label: "RU" },
-	{ values: "administrativo", label: "Administrativo" },
-	{ values: "bloco-coordenações", label: "Bloco Coordenações" },
-	{ values: "transporte", label: "Transporte" },
-];
+import {Spinner} from "@chakra-ui/react";
 
-interface Values {
-  name: string,
-	title: string,
-	description: string,
-	serviceLocal: string
-}
+export const lettersOnly = /[^a-zA-Z]/g;
+
+const validate = yup.object().shape({
+	name: validationSchema.name,
+	title: validationSchema.title,
+	description: validationSchema.description,
+	serviceLocal: validationSchema.serviceLocal,
+});
 
 export const CardCreateService = () => {
+
 	return (
 		<div className="mx-4">
 			<div
@@ -48,38 +43,27 @@ export const CardCreateService = () => {
 					<CardLine />
 				</div>
 				<Formik
-					validationSchema={validationSchema}
-//					onSubmit={(values, { setSubmitting }) => {
-//						setTimeout(() => {
-//							console.log("submit", values);
-//
-//							toast.success("Chamado criado com sucesso!");
-//							//alert(JSON.stringify(values, null, 2));
-//							setSubmitting(false);
-//						}, 400);
-//					}}
-					
-					onSubmit={ (
-						values: Values,
-						{ setSubmitting }: FormikHelpers<Values>
-					) => {
-						setTimeout( () => {
-							console.log("submit", values);
-							toast.success( "Chamado criado com sucesso!" );
-							
-							//alert( JSON.stringify( values, null, 2 ) );
-							setSubmitting( false );
-						}, 500 );
-					} }
 					initialValues={{
 						name: "",
 						title: "",
 						description: "",
 						serviceLocal: "",
 					}}
+					//validationSchema={validations}
+					validationSchema={validate}
+					onSubmit={(values, actions) => {
+						setTimeout(() => {
+							console.log("submit:", values);
+
+							toast.success("Serviço criado com sucesso!");
+							//alert(JSON.stringify(values, null, 2));
+							actions.resetForm();
+							//setSubmitting(false);
+						}, 400);
+					}}
 				>
-					{({ values, handleSubmit, errors, touched, isValidating }) => (
-						<Form>
+					{({ isSubmitting }) => (
+						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
 									<CardLabelInput
@@ -89,9 +73,6 @@ export const CardCreateService = () => {
 										width="w-full"
 										inputid="title"
 									/>
-									{errors.name && touched.name && (
-										<span className="text-red-ufal text-sm">{errors.name}</span>
-									)}
 								</div>
 
 								<div className="">
@@ -102,11 +83,6 @@ export const CardCreateService = () => {
 										width="w-full"
 										inputid="title"
 									/>
-									{errors.title && touched.title && (
-										<span className="text-red-ufal text-sm">
-											{errors.title}
-										</span>
-									)}
 								</div>
 
 								<div className="">
@@ -116,11 +92,6 @@ export const CardCreateService = () => {
 										name="description"
 										textareaid="description"
 									/>
-									{errors.description && touched.description && (
-										<span className=" text-red-ufal text-sm">
-											{errors.description}
-										</span>
-									)}
 								</div>
 								<div className="">
 									<FieldSelect
@@ -129,48 +100,19 @@ export const CardCreateService = () => {
 										default="Selecione"
 										listitems={blocList}
 									/>
-									{/*<Field
-										as="select"
-										placeholder="selecione"
-										name="serviceLocal"
-										className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md w-full`}
-									>
-										<option value="" className="">
-											LOCAL DO SERVIÇO:
-										</option>
-										{serviceLocation.map(item => {
-											return (
-												<option key={item.values} value={item.values}>
-													{item.label}
-												</option>
-											);
-										})}*/}
-
-									{/*<ButtonSelectObject
-											type="select"
-											label={"serviceLocal"}
-											name="serviceLocal"
-											title="LOCAL DO SERVIÇO:"
-											placeholder="LOCAL DO SERVIÇO:"
-											listSelectButton={serviceLocation}
-											className="block px-2.5 pb-2.5 pt-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
-														max-h-11 rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-2 focus:border-blue-ufal peer"
-											triggerWidth="w-full"
-										itemId={ 32 }
-										/>*/}
-									{/*</Field>*/}
-
-									{errors.serviceLocal && touched.serviceLocal && (
-										<span className=" text-red-ufal text-sm">
-											{errors.serviceLocal}
-										</span>
-									)}
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								<Button title="Solicitar" theme="primaryAction" type="submit" />
+								{isSubmitting ? <Spinner size="xl" /> : null}
+								<Button
+									title="Solicitar"
+									theme="primaryAction"
+									type="submit"
+									disabled={isSubmitting}
+								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>
+							
 						</Form>
 					)}
 				</Formik>
@@ -180,6 +122,3 @@ export const CardCreateService = () => {
 };
 
 export default CardCreateService;
-
-// mandar p/ back-end um objeto com titulo, descrição, local onde será realizado o serviço e categoria do serviço e subcategoria do serviço. adicionar input de local do serviço (select)
-//resolver o problema dos botões

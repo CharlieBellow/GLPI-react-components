@@ -4,6 +4,8 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { Button } from "./Button";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import * as yup from 'yup';
+//import {CpfMask} from '../Utils/Masks'
 
 import {
 	validationSchema,
@@ -14,6 +16,7 @@ import {
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "./FieldSelect";
+import { Spinner } from "@chakra-ui/react";
 
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
@@ -22,12 +25,61 @@ const TabsTrigger = styled(TabsPrimitive.Trigger, {
 		border: "none",
 		boxShadow: "0 3px 0 0 currentColor",
 	},
-} );
-
+});
 
 const tab = `bg-white-ice shadow-tab py-0 px-5 h-11 flex-1 flex items-center justify-center
 text-base text-light-bg select-none border-2 border-b border-gray-medium rounded-t-lg
 hover:text-blue-ufal hover:cursor-pointer focus:relative`;
+
+//function handleBlur (ev) {
+	
+//};
+
+const validate = yup.object().shape({
+	fullName: validationSchema.fullName,
+	cpf: validationSchema.cpf,
+	email: validationSchema.email,
+	nMatricula: validationSchema.nMatricula,
+	bond: validationSchema.bond,
+	campus: validationSchema.campus,
+	gender: validationSchema.gender,
+	address: validationSchema.address,
+	complement: validationSchema.complement,
+	district: validationSchema.district,
+	city: validationSchema.city,
+	uf: validationSchema.uf,
+	cep: validationSchema.cep,
+	bank: validationSchema.bank,
+	acountType: validationSchema.acountType,
+	account: validationSchema.account,
+	agency: validationSchema.agency,
+});
+
+//const cpfmask = CpfMask;
+
+//function handleBlurEv ( e: Event, setFieldValue:Function) {
+//	const { value } = e.target;
+//
+//	const cep = value?.replace(/[^0-9]/g, "");
+//	// call the built-in handleBur
+//	console.log("e:", value);
+//	if (value?.length !== 8) {
+//		return;
+//	}
+//
+//	fetch(`https://viacep.com.br/ws/${cep}/json/`)
+//		.then(res => res.json())
+//		.then(data => {
+//			console.log( data );
+//			
+//			setFieldValue( 'district', data.bairro );
+//			setFieldValue( 'city', data.localidade );
+//			setFieldValue("address", data.logradouro);
+//			setFieldValue( 'uf', data.uf );
+//		} );
+//	
+//	//handleBlur(e);
+//}
 
 const CardAddUser = () => (
 	<div className="mx-4">
@@ -37,16 +89,6 @@ const CardAddUser = () => (
 			h-auto shadow-card"
 		>
 			<Formik
-				validationSchema={validationSchema}
-				onSubmit={(values, { setSubmitting }) => {
-					setTimeout(() => {
-						console.log("submit", values);
-
-						toast.success("Chamado criado com sucesso!");
-						//alert(JSON.stringify(values, null, 2));
-						setSubmitting(false);
-					}, 400);
-				}}
 				initialValues={{
 					fullName: "",
 					cpf: "",
@@ -59,15 +101,26 @@ const CardAddUser = () => (
 					complement: "",
 					district: "",
 					city: "",
-					state: "",
+					uf: "",
 					cep: "",
 					bank: "",
 					acountType: "",
 					account: "",
 					agency: "",
 				}}
+				validationSchema={validate}
+				onSubmit={(values, { setSubmitting }) => {
+					setTimeout(() => {
+						console.log("submit", values);
+						console.log("cep", values.cep);
+
+						toast.success("Usuário criado com sucesso!");
+						//alert(JSON.stringify(values, null, 2));
+						setSubmitting(false);
+					}, 400);
+				}}
 			>
-				{({ values, handleSubmit, errors, touched }) => (
+				{({ isSubmitting, setFieldValue }) => (
 					<TabsPrimitive.Root defaultValue="tab1">
 						<div className="pl-9 pt-8">
 							<CardTitle title="Adicionar Usuário" />
@@ -89,7 +142,7 @@ const CardAddUser = () => (
 								Dados Bancários
 							</TabsTrigger>
 						</TabsPrimitive.List>
-						<Form onSubmit={handleSubmit} className="flex flex-col gap-9 mx-14">
+						<Form className="flex flex-col gap-9 mx-14">
 							<TabsPrimitive.Content className="outline-none" value="tab1">
 								<div className="flex flex-col gap-9">
 									<div className="w-auto">
@@ -100,26 +153,16 @@ const CardAddUser = () => (
 											name="fullName"
 											width="w-full"
 										/>
-										{errors.fullName && touched.fullName && (
-											<span className="text-red-ufal text-sm">
-												{errors.fullName}
-											</span>
-										)}
 									</div>
 									<div className=" flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 										<div>
 											<CardLabelInput
 												label="CPF"
-												type="text"
+												type="number"
 												inputid="cpf"
 												name="cpf"
 												width="lg:w-80 w-full"
 											/>
-											{errors.cpf && touched.cpf && (
-												<span className="text-red-ufal text-sm">
-													{errors.cpf}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -129,11 +172,6 @@ const CardAddUser = () => (
 												name="email"
 												width="lg:w-80 w-full"
 											/>
-											{errors.email && touched.email && (
-												<span className="text-red-ufal text-sm">
-													{errors.email}
-												</span>
-											)}
 										</div>
 									</div>
 
@@ -146,11 +184,6 @@ const CardAddUser = () => (
 												name="nMatricula"
 												width="lg:w-80 w-full"
 											/>
-											{errors.nMatricula && touched.nMatricula && (
-												<span className="text-red-ufal text-sm">
-													{errors.nMatricula}
-												</span>
-											)}
 										</div>
 										<div className="text-red-ufal text-sm lg:w-80">
 											<FieldSelect
@@ -159,11 +192,6 @@ const CardAddUser = () => (
 												default="Selecione o vínculo"
 												listitems={bondList}
 											/>
-											{errors.bond && touched.bond && (
-												<span className="text-red-ufal text-sm">
-													{errors.bond}
-												</span>
-											)}
 										</div>
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
@@ -174,11 +202,6 @@ const CardAddUser = () => (
 												default="Selecione seu campus"
 												listitems={campusList}
 											/>
-											{errors.campus && touched.campus && (
-												<span className="text-red-ufal text-sm">
-													{errors.campus}
-												</span>
-											)}
 										</div>
 										<div className="lg:w-80">
 											<FieldSelect
@@ -187,11 +210,6 @@ const CardAddUser = () => (
 												default="Selecione seu gênero"
 												listitems={genderList}
 											/>
-											{errors.gender && touched.gender && (
-												<span className="text-red-ufal text-sm">
-													{errors.gender}
-												</span>
-											)}
 										</div>
 									</div>
 								</div>
@@ -199,48 +217,19 @@ const CardAddUser = () => (
 
 							<TabsPrimitive.Content className="outline-none" value="tab2">
 								<div className="flex flex-col gap-9">
-									<div>
-										<CardLabelInput
-											label="Endereço"
-											type="text"
-											inputid="address"
-											name="address"
-											width="w-full"
-										/>
-										{errors.address && touched.address && (
-											<span className="text-red-ufal text-sm">
-												{errors.address}
-											</span>
-										)}
-									</div>
-									<div>
-										<CardLabelInput
-											label="Complemento"
-											type="text"
-											inputid="complement"
-											name="complement"
-											width="w-full"
-										/>
-										{errors.complement && touched.complement && (
-											<span className="text-red-ufal text-sm">
-												{errors.complement}
-											</span>
-										)}
-									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 										<div>
 											<CardLabelInput
-												label="Bairro"
-												type="text"
-												inputid="district"
-												name="district"
+												label="CEP"
+												type="number"
+												inputid="cep"
+												name="cep"
 												width="lg:w-80 w-full"
+												onChange={(e: any) => console.log(e.target.value)}
 											/>
-											{errors.district && touched.district && (
-												<span className="text-red-ufal text-sm">
-													{errors.district}
-												</span>
-											)}
+											<>
+												
+											</>
 										</div>
 										<div>
 											<CardLabelInput
@@ -250,11 +239,6 @@ const CardAddUser = () => (
 												name="city"
 												width="lg:w-80 w-full"
 											/>
-											{errors.city && touched.city && (
-												<span className="text-red-ufal text-sm">
-													{errors.city}
-												</span>
-											)}
 										</div>
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
@@ -262,30 +246,38 @@ const CardAddUser = () => (
 											<CardLabelInput
 												label="Estado"
 												type="text"
-												inputid="state"
-												name="state"
+												inputid="uf"
+												name="uf"
 												width="lg:w-80 w-full"
 											/>
-											{errors.state && touched.state && (
-												<span className="text-red-ufal text-sm">
-													{errors.state}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
-												label="CEP"
+												label="Bairro"
 												type="text"
-												inputid="cep"
-												name="cep"
+												inputid="district"
+												name="district"
 												width="lg:w-80 w-full"
 											/>
-											{errors.cep && touched.cep && (
-												<span className="text-red-ufal text-sm">
-													{errors.cep}
-												</span>
-											)}
 										</div>
+									</div>
+									<div>
+										<CardLabelInput
+											label="Endereço Completo com Nº"
+											type="text"
+											inputid="address"
+											name="address"
+											width="w-full"
+										/>
+									</div>
+									<div>
+										<CardLabelInput
+											label="Complemento"
+											type="text"
+											inputid="complement"
+											name="complement"
+											width="w-full"
+										/>
 									</div>
 								</div>
 							</TabsPrimitive.Content>
@@ -295,46 +287,31 @@ const CardAddUser = () => (
 										<div>
 											<CardLabelInput
 												label="Banco"
-												type="text"
+												type="number"
 												inputid="bank"
 												name="bank"
 												width="lg:w-80 w-full"
 											/>
-											{errors.bank && touched.bank && (
-												<span className="text-red-ufal text-sm">
-													{errors.bank}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
 												label="Tipo de Conta"
-												type="text"
+												type="number"
 												inputid="bank_type"
 												name="acountType"
 												width="lg:w-80 w-full"
 											/>
-											{errors.acountType && touched.acountType && (
-												<span className="text-red-ufal text-sm">
-													{errors.acountType}
-												</span>
-											)}
 										</div>
 									</div>
 									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 										<div>
 											<CardLabelInput
 												label="Conta"
-												type="text"
+												type="number"
 												inputid="bank_account"
 												name="account"
 												width="lg:w-80 w-full"
 											/>
-											{errors.account && touched.account && (
-												<span className="text-red-ufal text-sm">
-													{errors.account}
-												</span>
-											)}
 										</div>
 										<div>
 											<CardLabelInput
@@ -344,16 +321,17 @@ const CardAddUser = () => (
 												name="agency"
 												width="lg:w-80 w-full"
 											/>
-											{errors.agency && touched.agency && (
-												<span className="text-red-ufal text-sm">
-													{errors.agency}
-												</span>
-											)}
 										</div>
 									</div>
 								</div>
 								<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
-									<Button title="Salvar" theme="primaryAction" type="submit" />
+									{isSubmitting ? <Spinner size="xl" /> : null}
+									<Button
+										title="Adicionar"
+										theme="primaryAction"
+										type="submit"
+										disabled={isSubmitting}
+									/>
 									<Button title="Cancelar" theme="secondaryAction" />
 								</div>
 							</TabsPrimitive.Content>

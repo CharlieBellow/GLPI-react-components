@@ -10,6 +10,7 @@ import CreateService from "./Pages/CreateService";
 import Login from './Pages/Login'
 import Teste from './Pages/Teste'
 import SignUp from './Pages/SignUp'
+import ListTestePage from "./Pages/ListTeste";
 
 
 import UserInfo from "./Pages/UserInfo";
@@ -36,6 +37,7 @@ function App() {
 						<Route path="/ServiceLetter" element={<ServiceLetter />} />
 						<Route path="/CreateService" element={<CreateService />} />
 						<Route path="/Table" element={<TableListPage />} />
+						<Route path="/ListTeste" element={<ListTestePage />} />
 						<Route path="/Login" element={<Login />} />
 						<Route path="/SignUp" element={<SignUp />} />
 						<Route path="/CreateService" element={<CreateService />} />

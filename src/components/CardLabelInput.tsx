@@ -1,5 +1,6 @@
 import * as Icon from "phosphor-react";
-import { Field } from "formik";
+import { Field, FieldHookConfig, useField } from "formik";
+import { ClassAttributes, InputHTMLAttributes } from "react";
 
 interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
 	label: string;
@@ -8,10 +9,10 @@ interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
 	width: string;
 	pattern?: string;
 	icon?: Icon.IconProps;
-	name?: string;
+	name: string;
 }
 
-function CardLabel(props: CardLabelInputProps) {
+function CardLabel ( props: CardLabelInputProps ) {
 	return (
 		<label
 			{...props}
@@ -27,32 +28,40 @@ function CardLabel(props: CardLabelInputProps) {
 	);
 }
 
-export function CardLabelInput(props: CardLabelInputProps) {
+export function CardLabelInput ( props: CardLabelInputProps &InputHTMLAttributes<HTMLInputElement> &
+ClassAttributes<HTMLInputElement> &
+FieldHookConfig<string> ) {
+	const [field, meta] = useField(props);
 	return (
-		<div className="relative flex items-center">
+		<div className="relative flex items-start justify-center flex-col">
 			<Field
 				{...props}
+				{...field}
 				type={props.type}
-				name={props.name}
+				//name={props.name}
 				pattern={props.pattern}
 				className={`block px-2.5 py-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
           max-h-11 rounded-lg appearance-none focus:outline-none
-          focus:ring-0 focus:border-2 focus:border-blue-ufal peer ${props.width}`}
+          focus:ring-0 focus:border-2  peer ${
+						meta.error ? " border-red-ufal" : "focus:border-blue-ufal"
+					} ${props.width}`}
 				placeholder=" "
 				//required
 			/>
 			<>{props.icon}</>
 
-			{/*{props.error.props.name && props.touch.nMatricula && (
-				<span className="text-red-ufal text-sm">{props.error.props.name}</span>
-			)}*/}
 			<CardLabel
-				label={props.label}
+				label={ props.label }
+				name={props.name}
 				type={props.type}
 				inputid={props.inputid}
 				width={props.width}
 				pattern={props.pattern}
 			/>
+
+			{meta.error && meta.touched ? (
+				<span className="text-red-ufal text-sm">{meta.error}</span>
+			) : null}
 		</div>
 	);
 }
