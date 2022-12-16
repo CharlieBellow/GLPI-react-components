@@ -1,7 +1,5 @@
 import { Page } from "../../components/Page";
-import { BasicForm } from "../../components/CardUser";
-
-
+import { BasicForm } from "./BasicForm";
 
 function Teste() {
 	return (
@@ -10,7 +8,7 @@ function Teste() {
 				pagetitle={"Página de Teste"}
 				contentpage={
 					<>
-						<BasicForm/>
+						<BasicForm />
 					</>
 				}
 			/>

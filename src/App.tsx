@@ -23,6 +23,7 @@ import Dashboard from "./Pages/Dashboard";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import ServicesPage from "./Pages/ServicesPage";
 
 function App() {
 	return (
@@ -38,6 +39,7 @@ function App() {
 						<Route path="/Login" element={<Login />} />
 						<Route path="/SignUp" element={<SignUp />} />
 						<Route path="/CreateService" element={<CreateService />} />
+						<Route path="/Services" element={<ServicesPage />} />
 						<Route path="/UserInfo" element={<UserInfo />} />
 						<Route path="/AddUser" element={<AddUser />} />
 						<Route path="/CardTest" element={<CardTest />} />

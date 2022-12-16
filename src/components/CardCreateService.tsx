@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
-
+import {servicesList} from './Service'
 import {
 	blocList,
 	validationSchema,
@@ -29,6 +29,22 @@ const validate = yup.object().shape({
 
 export const CardCreateService = () => {
 
+	const [services, setServices] = useState(servicesList);
+	
+	useEffect(() => {
+		const servicesStorage = localStorage.getItem("services")
+
+		if(servicesStorage) {
+			setServices(JSON.parse(servicesStorage))
+		}
+		console.log("lista: ", servicesStorage)
+	}, [])
+
+
+	useEffect(() => {
+		localStorage.setItem("services", JSON.stringify(services));
+	}, [services])
+
 	return (
 		<div className="mx-4">
 			<div
@@ -48,12 +64,29 @@ export const CardCreateService = () => {
 						title: "",
 						description: "",
 						serviceLocal: "",
+						id: new Date()
+							.toLocaleTimeString("pt-br", {
+								day: "2-digit",
+								month: "2-digit",
+								year: "numeric",
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+							})
+							.toString()
+							.replace(":", "")
+							.replace(":", "")
+							.replace("/", "")
+							.replace("/", "")
+							.replace(" ", "")
 					}}
 					//validationSchema={validations}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
+							setServices([...services, values]);
+							console.log("servicesList:", services);
 
 							toast.success("Serviço criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
@@ -112,7 +145,6 @@ export const CardCreateService = () => {
 								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>
-							
 						</Form>
 					)}
 				</Formik>
