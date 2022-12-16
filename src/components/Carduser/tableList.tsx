@@ -1,9 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { PencilSimpleLine } from "phosphor-react";
-import {Button} from "../Button";
-
+import { Button } from "../Button";
 
 import {
 	Table,
@@ -20,25 +18,22 @@ import {
 } from "@chakra-ui/react";
 
 import TableOptions from "../TableList/TableOptions";
-import {DropDownMenu} from "../DropDownMenu";
+import { DropDownMenu } from "../DropDownMenu";
 import { Pagination } from "../Pagination";
 
-interface TableProps extends React.HTMLAttributes<HTMLElement>{
-	itemList: any;
-	listSelectButton: Array<any>
-	
+interface TableProps extends React.HTMLAttributes<HTMLElement> {
+	itemlist: any;
+	listselecbutton: Array<any>;
 }
 
 function TableList(props: TableProps) {
-
 	const [page, setPage] = useState(1);
-	
-	 const isWideVersion = useBreakpointValue({
-			base: false,
-			lg: true,
-		});  
 
-	  
+	const isWideVersion = useBreakpointValue({
+		base: false,
+		lg: true,
+	});
+
 	return (
 		<>
 			<div
@@ -47,7 +42,7 @@ function TableList(props: TableProps) {
 			>
 				<div className="lg:mb-16" {...props}>
 					<TableOptions
-						listSelectButton={props.listSelectButton}
+						listselecbutton={props.listselecbutton}
 						titleOfTable="Lista de Usuários"
 					/>
 				</div>
@@ -70,15 +65,17 @@ function TableList(props: TableProps) {
 						</Thead>
 
 						<Tbody className="scroll lg:max-w-full lg:top-4  ">
-							{props.itemList.map((user: any) => {
+							{props.itemlist.map((user: any) => {
 								return (
 									<div
 										className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row lg:mx-6 pb-0 md:mx-9"
 										{...props}
+										key={user.time}
 									>
 										<Tr
 											className="lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
-											key={ user.time } id={user.time}
+											key={user.time}
+											id={user.time}
 										>
 											<div className=" flex lg:flex lg:flex-1 flex-row">
 												<Td
@@ -125,11 +122,16 @@ function TableList(props: TableProps) {
 												</div>
 												<Button
 													className="flex items-center   bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
-													icon={ <PencilSimpleLine
-														className=""
-														weight="bold"
-														size={ 20 } /> }
-													title={ isWideVersion ? "Editar" : "" } theme={ "secondary" }												/>
+													icon={
+														<PencilSimpleLine
+															className=""
+															weight="bold"
+															size={20}
+														/>
+													}
+													title={isWideVersion ? "Editar" : ""}
+													theme={"secondary"}
+												/>
 											</div>
 										</Tr>
 									</div>
@@ -139,7 +141,7 @@ function TableList(props: TableProps) {
 					</Table>
 				</div>
 				<Pagination
-					totalCountOfRegisters={props.itemList.length}
+					totalCountOfRegisters={props.itemlist.length}
 					currentPage={page}
 					onPageChange={setPage}
 				/>

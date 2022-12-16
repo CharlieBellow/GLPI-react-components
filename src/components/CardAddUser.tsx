@@ -158,7 +158,7 @@ const CardAddUser = () => (
 										<div>
 											<CardLabelInput
 												label="CPF"
-												type="text"
+												type="number"
 												inputid="cpf"
 												name="cpf"
 												width="lg:w-80 w-full"
@@ -221,7 +221,7 @@ const CardAddUser = () => (
 										<div>
 											<CardLabelInput
 												label="CEP"
-												type="text"
+												type="number"
 												inputid="cep"
 												name="cep"
 												width="lg:w-80 w-full"
@@ -287,7 +287,7 @@ const CardAddUser = () => (
 										<div>
 											<CardLabelInput
 												label="Banco"
-												type="text"
+												type="number"
 												inputid="bank"
 												name="bank"
 												width="lg:w-80 w-full"
@@ -296,7 +296,7 @@ const CardAddUser = () => (
 										<div>
 											<CardLabelInput
 												label="Tipo de Conta"
-												type="text"
+												type="number"
 												inputid="bank_type"
 												name="acountType"
 												width="lg:w-80 w-full"
@@ -307,7 +307,7 @@ const CardAddUser = () => (
 										<div>
 											<CardLabelInput
 												label="Conta"
-												type="text"
+												type="number"
 												inputid="bank_account"
 												name="account"
 												width="lg:w-80 w-full"

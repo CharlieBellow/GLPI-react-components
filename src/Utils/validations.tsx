@@ -10,8 +10,18 @@ export const cpfNumber =
 
 export const cepNumber = /^[0-9]{5}-[0-9]{3}$/;
 
+export const bank =  /[0-9]{5,9}/
+		
+export const acountType = /[0-9]{2}/g
+	
+export const agency = /[0-9]{4}/g
+
+export const account = /[0-9]{4,7}/ 
+
+
+
 //criar uma máscara pra ele aceitar só 8 ou 10 números
-export const nMatricula = /([0-9]{8})/ || /([0-9]{10})/;
+export const nMatricula = /([0-9]{8,10})/;
 
 export const blocList = [
 	"Bloco A",
@@ -149,137 +159,33 @@ export const validationSchema = {
 	cep: yup
 		.string()
 		.matches(cep, "Deve conter 8 números")
-		.required("É obrigatório informar seu CEP"),
+		.required("É obrigatório informar seu CEP")
+		.min(8, "No mínimo 11 números.")
+		.max(8, "Apenas 11 números"),
 	bank: yup
-		.number()
-		.positive("Apenas valores positivos.")
-		.integer("Digite apenas números inteiros")
-		.required("É obrigatório informar o banco"),
+		.string()
+		.required("É obrigatório informar o banco")
+		.matches(bank, "Digite apenas 5 ou 9 números.")
+		.min(5, "No mínimo 5 números.")
+		.max(9, "Apenas 9 números"),
+
 	acountType: yup
-		.number()
-		.positive("Apenas valores positivos.")
-		.integer("Digite apenas números inteiros")
-		.required("É obrigatório informar o tipo de conta"),
+		.string()
+		.matches(acountType, "Digite apenas 3 números.")
+		.min(3, "No mínimo 3 números.")
+		.max(3, "Apenas 3 números"),
 	agency: yup
-		.number()
-		.positive("Apenas valores positivos.")
-		.integer("Digite apenas números inteiros")
-		.required("É obrigatório informar a agência"),
+		.string()
+		.matches(agency, "Digite apenas 4 números.")
+		.required("É obrigatório informar a agência")
+		.min(4, "No mínimo 4 números.")
+		.max(4, "Apenas 4 números"),
 	account: yup
-		.number()
-		.positive("Apenas valores positivos.")
-		.integer("Digite apenas números inteiros")
-		.required("É obrigatório informar o Nº da conta"),
-}; ;
-  
+		.string()
+		.matches(account, "Digite apenas 5 ou 9 números.")
+		.required("É obrigatório informar o Nº da conta")
+		.min(5, "No mínimo 5 números.")
+		.max(9, "Apenas 9 números"),
+};
 
-
-
-
-export const validations = yup.object().shape({
-	name: yup
-		.string()
-		.matches(lettersOnly, "Apenas letras")
-		.min(10, "No mínimo 10 caracteres")
-		.max(60, "No máximo 60 caracteres")
-		.required("É obrigatório informar seu nome"),
-	title: yup
-		.string()
-		.min(5, "No mínimo 5 caracteres")
-		.max(60, "No máximo 60 caracteres")
-		.required("É obrigatório colocar um título"),
-	description: yup
-		.string()
-		.min(50, "No mínimo 50 caracteres")
-		.max(500, "No máximo 500 caracteres")
-		.required("É obrigatório descrever o motivo"),
-	serviceLocal: yup
-		.string()
-		.oneOf(blocList, "Escolha entre essas opções:")
-		.required("É obrigatório escolher um local"),
-
-	phone: yup.string().matches(phoneNumber),
-
-	fullName: yup
-		.string()
-		.matches(lettersOnly, "Apenas letras")
-		.min(9, "No mínimo 9 caracteres.")
-		.max(60, "No máximo 60 caracteres.")
-		.required("É obrigatório informar seu nome completo."),
-	cpf: yup
-		.string()
-		.required("É obrigatório informar seu cpf.")
-		.matches(cpfNumber, "Digite apenas 11 números.")
-		.min(11, "No mínimo 11 números.")
-		.max(11, "Apenas 11 números"),
-
-	email: yup
-		.string()
-		.email("Ex. de e-mail válido: email@email.com")
-		.required("É obrigatório informar seu email."),
-	password: yup
-		.string()
-		.min(6, "Deve conter no mínimo 6 dígitos")
-		.matches(
-			passwordRules,
-			"Mínimo de oito caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um número"
-		)
-		.required("É obrigatório informar a senha"),
-	confirmPassword: yup
-		.string()
-		.oneOf([yup.ref("password"), null], "As senhas precisam ser iguais.")
-		.required("Você precisa confirmar sua senha"),
-	nMatricula: yup
-		.string()
-		.matches(nMatricula, "Ex.: 20221516 ou 2022151645")
-		.required("É obrigatório informar o número de matrícula."),
-
-	bond: yup
-		.string()
-		.oneOf(bondList, "Escolha entre essas opções:")
-		.required(
-			"É obrigatório informar o seu tipo de vínculo com a instituição. "
-		),
-	campus: yup
-		.string()
-		.oneOf(campusList, "Escolha entre essas opções:")
-		.required("É obrigatório informar de qual campus você é."),
-	gender: yup
-		.string()
-		.oneOf(genderList, "Escolha entre essas opções:")
-		.required("É obrigatório informar seu gênero"),
-	address: yup.string().required("É obrigatório informar seu endereço"),
-	complement: yup.string(),
-	district: yup.string().required("É obrigatório informar o bairro"),
-	city: yup.string().required("É obrigatório informar a cidade"),
-	uf: yup
-		.string()
-		.uppercase()
-		.min(2, "Apenas duas letras maiúsculas")
-		.max(2, "Apenas duas letras maiúsculas")
-		.required("É obrigatório informar o estado"),
-	cep: yup
-		.string()
-		.matches(cep, "Deve conter 8 números")
-		.required("É obrigatório informar seu CEP"),
-	bank: yup
-		.number()
-		.positive()
-		.integer()
-		.required("É obrigatório informar o banco"),
-	acountType: yup
-		.number()
-		.positive()
-		.integer()
-		.required("É obrigatório informar o tipo de conta"),
-	agency: yup
-		.number()
-		.positive()
-		.integer()
-		.required("É obrigatório informar a agência"),
-	account: yup
-		.number()
-		.positive()
-		.integer()
-		.required("É obrigatório informar o Nº da conta"),
-});
+export const validations = yup.object().shape(validationSchema);

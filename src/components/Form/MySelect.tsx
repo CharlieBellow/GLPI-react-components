@@ -22,7 +22,7 @@ import { ClassAttributes, InputHTMLAttributes, useState } from "react";
 
 interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;
-	listSelectButton: Array<any>;
+	listselecbutton: Array<any>;
 	title?: string;
 	placeholder?: any;
 	icon?: Icon.IconProps;
@@ -77,7 +77,7 @@ export const MySelect = (
 						<SelectViewport className="bg-gray-medium rounded-md border-2">
 							<SelectGroup className="px-1 py-1 h-full">
 								<SelectLabel>{props.label}</SelectLabel>
-								{props.listSelectButton.map(selectItem => {
+								{props.listselecbutton.map(selectItem => {
 									return (
 										<SelectItem
 											key={selectItem}
@@ -109,7 +109,7 @@ export const MySelect = (
 				</Select>
 			</div>
 			{meta.error ? <span className="text-red-ufal">{meta.error}</span> : null}*/}
-{/*
+			{/*
 			<label>{props.label}</label>
 			<select
 				{...field}

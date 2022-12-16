@@ -1,14 +1,14 @@
 import * as Icon from 'phosphor-react'
 
 interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
-	classname?: string;
+	//classname?: string;
 	title?: string;
 	icon: Icon.IconProps;
 }
 
 function ButtonMainWithIcon(props: ButtonProps) {
   return (
-    <button className={props.classname} {...props}>
+    <button  {...props}>
       <>{props.icon}</>
       {props.title}
     </button>

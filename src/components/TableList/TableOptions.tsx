@@ -4,16 +4,10 @@ import ButtonMainWithIcon from "../ButtonMainWithIcon";
 import Search from "../Search";
 import { FiChevronDown } from "react-icons/fi";
 
-
-
-import {
-	
-	useBreakpointValue,
-
-} from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 interface TableOptionsProps {
-	listSelectButton: Array<any>;
+	listselecbutton: Array<any>;
 	titleOfTable?: string;
 }
 
@@ -24,7 +18,7 @@ export default function TableOptions(props: TableOptionsProps) {
 	const isWideVersion = useBreakpointValue({
 		base: false,
 		lg: true,
-	}); 
+	});
 	return (
 		<>
 			<div className="flex flex-row items-center justify-between gap-3 lg:gap-0 text-gray-text lg:mx-8 lg:my-6 mx-6">
@@ -33,10 +27,7 @@ export default function TableOptions(props: TableOptionsProps) {
 				</h4>
 
 				<div className="flex flex-row items-center">
-					<label
-						htmlFor="search"
-						className="pr-4 font-normal text-xl hidden"
-					>
+					<label htmlFor="search" className="pr-4 font-normal text-xl hidden">
 						Busca
 					</label>
 
@@ -45,17 +36,15 @@ export default function TableOptions(props: TableOptionsProps) {
 				<div className="hidden lg:flex">
 					<ButtonSelect
 						placeholder="Filtrar por..."
-						listSelectButton={props.listSelectButton}
+						listselecbutton={props.listselecbutton}
 						icon={<FiChevronDown size={24} className="pl-1 w-5" />}
-						
 					/>
 				</div>
 				<div className="relative">
 					<ButtonMainWithIcon
-						classname="flex items-center px-[0.625rem] py-2 bg-blue-ufal text-white-100 rounded-md shadow-button font-bold text-base"
+						className="flex items-center px-[0.625rem] py-2 bg-blue-ufal text-white-100 rounded-md shadow-button font-bold text-base"
 						icon={<Plus className="lg:mr-3 mr-0" />}
-						title={isWideVersion ? 'Adicionar' : ""}
-						
+						title={isWideVersion ? "Adicionar" : ""}
 					/>
 					{/*<ButtonMainWithIcon
 						classname="flex lg:hidden items-center px-[0.625rem] py-2 m-6 bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "

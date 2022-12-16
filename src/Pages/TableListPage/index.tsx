@@ -18,7 +18,12 @@ const users = [
 	{ id: 13, name: "Caio", email: "caio@email.com", date: "01/02/2022" },
 	{ id: 14, name: "Rodrigo", email: "rodrigo@email.com", date: "01/02/2022" },
 	{ id: 15, name: "Charlie2", email: "email@email.com", date: "01/02/2022" },
-	{ id: 16, name: "Humberto2", email: "humberto@email.com", date: "01/02/2022" },
+	{
+		id: 16,
+		name: "Humberto2",
+		email: "humberto@email.com",
+		date: "01/02/2022",
+	},
 	{ id: 17, name: "Ítalo2", email: "italo@email.com", date: "01/02/2022" },
 	{ id: 18, name: "Evellyn2", email: "evellyn@email.com", date: "01/02/2022" },
 	{ id: 19, name: "Josue", email: "zue@email.com", date: "01/02/2022" },
@@ -61,11 +66,11 @@ function TableListPage() {
 				pagetitle={"Dashboard"}
 				contentpage={
 					//<TableTeste />
-					<TableList itemList={users} listSelectButton={ItemSelect} />
+					<TableList itemlist={users} listselecbutton={ItemSelect} />
 				}
 			/>
 			{/*<TableTeste />*/}
-			{/*<TableList itemList={users} listSelectButton={ItemSelect} />*/}
+			{/*<TableList itemlist={users} listselecbutton={ItemSelect} />*/}
 		</>
 	);
 }

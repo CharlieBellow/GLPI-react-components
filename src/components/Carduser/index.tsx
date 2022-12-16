@@ -1,6 +1,6 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
-import {User, usersList} from './User'
+import {usersList} from './User'
 import {
 	validationSchema,
 	//blocList,
@@ -24,93 +24,10 @@ const validate = yup.object().shape({
 } );
 
 
-
 export const BasicForm = () => {
-	
-	const [user, setUser] = useState({})
-	//const [email, setEmail] = useState("")
-	//const [date, setDate] = useState("")
-	//const [ time, setTime ] = useState( "" )
-	//const [ id, setId ] = useState( "" )
 	
 	const [users, setUsers] = useState(usersList)
 	
-	function setValues (values: any) {
-		
-	const newUser = setUser({
-			name: values.name,
-			email: values.email,
-			date: new Date()
-				.toLocaleTimeString("pt-br", {
-					day: "2-digit",
-					month: "2-digit",
-					year: "numeric",
-				})
-				.toString(),
-			time: new Date()
-				.toLocaleTimeString("pt-br", {
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				})
-				.toString(),
-			id: new Date()
-				.toLocaleTimeString("pt-br", {
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				})
-				.toString(),
-		});
-//		setEmail(values.email);
-//		setDate(
-//			new Date()
-//				.toLocaleTimeString("pt-br", {
-//					day: "2-digit",
-//					month: "2-digit",
-//					year: "numeric",
-//				})
-//				.toString()
-//		);
-//		setTime(
-//			new Date()
-//				.toLocaleTimeString("pt-br", {
-//					hour: "2-digit",
-//					minute: "2-digit",
-//					second: "2-digit",
-//				})
-//				.toString()
-//		);
-//
-//		setId( time );
-		
-		usersList.push({
-			name: values.name,
-			email: values.email,
-			id: new Date().toLocaleTimeString("pt-br", {
-				hour: "2-digit",
-				minute: "2-digit",
-				second: "2-digit",
-			}),
-			date: new Date()
-				.toLocaleTimeString("pt-br", {
-					day: "2-digit",
-					month: "2-digit",
-					year: "numeric",
-				})
-				.toString(),
-			time: new Date()
-				.toLocaleTimeString("pt-br", {
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				})
-				.toString(),
-		} );
-		return newUser;
-		//{ name: user.name, email: user.email, date: user.date, time: user.time, id: user.id; }
-	}
-
 	useEffect(() => {
 		const usersStorage = localStorage.getItem("users");
 
@@ -145,23 +62,38 @@ export const BasicForm = () => {
 					initialValues={{
 						name: "",
 						email: "",
+						date: new Date()
+							.toLocaleTimeString("pt-br", {
+								day: "2-digit",
+								month: "2-digit",
+								year: "numeric",
+							} )
+							.substr( 0, 10 )
+							.replace(new RegExp("/", 'g'),"-" )
+							.toString(),
+						time: new Date()
+							.toLocaleTimeString("pt-br", {
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+							})
+							.toString(),
+						id: new Date()
+							.toLocaleTimeString("pt-br", {
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+							})
+							.toString(),
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							//setValues(values);
-						setValues(values);
-							//setUsers(  [...users,  values] );
 
-							
-							//console.log("user: ", user);
-							//console.log( "users: ", users );
-							//console.log( "val: ", val );
-							//console.log("userlist: ", usersList);
-							
-							
-							//usersList.push(...users);
+							setUsers([...users, values]);
+							console.log("users: ", users);
+
 							toast.success("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
@@ -204,15 +136,21 @@ export const BasicForm = () => {
 					)}
 				</Formik>
 			</div>
-			<>
-				{ usersList.map( (user: any) => {
+			{/*<>
+				{usersList.map((user: any) => {
 					return (
-						<User nome={ user.name } date={ user.date } time={ user.time } email={ user.email } id={user.time} />
-
-					)
+						<User
+							nome={user.name}
+							date={user.date}
+							time={user.time}
+							email={user.email}
+							id={user.time}
+							key={user.time}
+						/>
+					);
 				})}
-			{console.log(usersList)}
-			</>
+				{console.log(usersList)}
+			</>*/}
 		</div>
 	);
 };
