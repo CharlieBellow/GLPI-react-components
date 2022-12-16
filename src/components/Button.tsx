@@ -36,7 +36,7 @@ export function Button(props: ButtonProps) {
 				}
 				${
 					props.theme === "secondary"
-					? "bg-gray-text hover:bg-opacity-80 text-white-100 text-base px-13 h-12 py-2 shadow-button"
+					? "bg-gray-text hover:bg-opacity-80 text-white-100 text-base px-2 lg:px-10 h-12 py-2 shadow-button flex gap-2 items-center"
 					: ""
 				}
 				${

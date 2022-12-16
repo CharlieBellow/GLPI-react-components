@@ -69,7 +69,7 @@ export const BasicForm = () => {
 								year: "numeric",
 							} )
 							.substr( 0, 10 )
-							.replace(new RegExp("/", 'g'),"-" )
+							//.replace(new RegExp("/", 'g'),"-" )
 							.toString(),
 						time: new Date()
 							.toLocaleTimeString("pt-br", {
@@ -80,8 +80,6 @@ export const BasicForm = () => {
 							.toString(),
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
-								hour: "2-digit",
-								minute: "2-digit",
 								second: "2-digit",
 							})
 							.toString(),

@@ -14,6 +14,7 @@ import {
 	Box,
 	Checkbox,
 	useBreakpointValue,
+	Spinner,
 	//Spinner,
 } from "@chakra-ui/react";
 
@@ -46,97 +47,97 @@ function TableList(props: TableProps) {
 						titleOfTable="Lista de Usuários"
 					/>
 				</div>
+				
 
 				<div className="h-auto" {...props}>
 					<Table colorScheme="whiteAlpha" className="" {...props}>
 						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none   lg:justify-between ">
-							<div {...props}>
+							<Tr>
 								<Th px={["4", "4", "6"]} className="text-gray-text " width="8">
 									<Checkbox
 										className="border-gray-text"
 										colorScheme="gray"
 									></Checkbox>
 								</Th>
-
 								<Th className="tabela">Usuário</Th>
-							</div>
-							{isWideVersion && <Th>Data de Cadastro</Th>}
-							<Th w="">Ações</Th>
+
+								{isWideVersion && <Th>Data de Cadastro</Th>}
+								<Th w="">Ações</Th>
+							</Tr>
 						</Thead>
 
 						<Tbody className="scroll lg:max-w-full lg:top-4  ">
 							{props.itemlist.map((user: any) => {
 								return (
-									<div
-										className=" rounded-[0.75rem] lg:rounded-0 bg-white-ice my-3 lg:my-0 flex flex-col lg:flex-row lg:mx-6 pb-0 md:mx-9"
-										{...props}
-										key={user.time}
+									<Tr
+										className=" rounded-[0.75rem] lg:rounded-none bg-white-ice my-3 lg:my-0  lg:flex-row lg:mx-6 pb-0 md:mx-9 lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
+										key={user.id}
+										id={user.id}
 									>
-										<Tr
-											className="lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
-											key={user.time}
-											id={user.time}
+										<Td
+											px={["0", "0", "0"]}
+											className="flex items-center mx-1 lg:mx-4 lg:flex lg:flex-1 flex-row"
 										>
-											<div className=" flex lg:flex lg:flex-1 flex-row">
-												<Td
-													px={["0", "0", "0"]}
-													className="flex items-center mx-1 lg:mx-4"
-												>
-													<Checkbox
-														className="border-gray-text"
-														colorScheme="gray"
-													></Checkbox>
-												</Td>
-												<div className="flex flex-row justify-between lg:w-full w-6 0">
-													<Td className="text-sm lg:text-lg" key={user.name}>
-														<Box className="">
-															<Link to="/UserInfo">
-																<Text
-																	fontWeight="bold"
-																	className="text-blue-ufal"
-																>
-																	{user.name}
-																</Text>
-															</Link>
-															<Text fontSize="sm" className="text-gray-text">
-																{user.email}
-															</Text>
-														</Box>
-													</Td>
-												</div>
-											</div>
+											<Checkbox
+												className="border-gray-text mx-4"
+												colorScheme="gray"
+											></Checkbox>
 
-											{isWideVersion && (
-												<div className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
-													<Td
+											<>
+												<div
+													className="text-sm lg:text-lg    flex flex-row justify-between lg:w-full w-6 0"
+													key={user.name}
+												>
+													<Box className="">
+														<Link to="/UserInfo">
+															<Text
+																fontWeight="bold"
+																className="text-blue-ufal"
+															>
+																{user.name}
+															</Text>
+														</Link>
+														<Text fontSize="sm" className="text-gray-text">
+															{user.email}
+														</Text>
+													</Box>
+												</div>
+											</>
+										</Td>
+
+										{isWideVersion && (
+											<Td className="lg:flex lg:flex-1 flex-col lg:flex-row hidden">
+												<>
+													<div
 														className="text-light-bg text-xs lg:text-base"
 														key={user.date}
 													>
 														{user.date}
-													</Td>
-												</div>
-											)}
-											<div className="flex pr-1 ">
-												<div className="lg:hidden flex my-auto pr-4 lg:gap-2 gap-0">
-													<DropDownMenu date={user.date} />
-												</div>
-												<Button
-													className="flex items-center   bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
-													icon={
-														<PencilSimpleLine
-															className=""
-															weight="bold"
-															size={20}
-														/>
-													}
-													title={isWideVersion ? "Editar" : ""}
-													theme={"secondary"}
-												/>
+													</div>
+												</>
+											</Td>
+										)}
+										<Td className="flex pr-1 ">
+											<div className="lg:hidden flex my-auto pr-4 lg:gap-2 gap-0">
+												<DropDownMenu date={user.date} />
 											</div>
-										</Tr>
-									</div>
+											<Button
+												className="flex items-center justify-center bg-gray-text text-white-100 rounded-md filter shadow-button font-bold text-base "
+												icon={
+													<PencilSimpleLine
+														className=""
+														weight="bold"
+														size={20}
+													/>
+												}
+												title={isWideVersion ? "Editar" : ""}
+												theme={"secondary"}
+											/>
+										</Td>
+									</Tr>
 								);
 							})}
+							{/*</div>*/}
 						</Tbody>
 					</Table>
 				</div>
