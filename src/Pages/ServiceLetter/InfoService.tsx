@@ -18,7 +18,7 @@ export function InfoServiceItem(props: InfoServiceItemProps) {
 					<div className="mt-9 mx-4" key={info.title}>
 						<div className="flex gap-2 items-center">
 							<>{info.icon}</>
-							<h3 className="text-3xl font-semibold">{info.title}</h3>
+							<h3 className="lg:text-3xl text-base font-semibold">{info.title}</h3>
 						</div>
 						<input
 							type="checkbox"
