@@ -1,5 +1,5 @@
 import * as Icon from "phosphor-react";
-import CategoriaHomeMobile from "./CategoriaHomeMobile";
+import CategoriaHomeMobile from "./CategoryHomeMobile";
 
 function ScreenCategoriaHome(){
     return(
