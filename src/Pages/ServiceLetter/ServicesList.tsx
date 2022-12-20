@@ -44,3 +44,11 @@ export const ServicesList = [
 		icon: <Icon.FileText size={26} weight="bold"/>,
 	},
 ];
+
+export const services = [
+	{
+		title: "Instalarção de impressora",
+		link: "/ServiceLetter",
+		serviceLetter: ServicesList,
+	},
+];

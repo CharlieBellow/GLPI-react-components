@@ -24,6 +24,9 @@ import Dashboard from "./Pages/Dashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import ServicesPage from "./Pages/ServicesPage";
+import PageSubcategory from "./Pages/PageSubcategory";
+import ServicesByCategory from "./Pages/ServicesByCategory";
+
 
 function App() {
 	return (
@@ -38,13 +41,14 @@ function App() {
 						<Route path="/List" element={<ListPage />} />
 						<Route path="/Login" element={<Login />} />
 						<Route path="/SignUp" element={<SignUp />} />
-						<Route path="/CreateService" element={<CreateService />} />
 						<Route path="/Services" element={<ServicesPage />} />
 						<Route path="/UserInfo" element={<UserInfo />} />
 						<Route path="/AddUser" element={<AddUser />} />
 						<Route path="/CardTest" element={<CardTest />} />
 						<Route path="/Teste" element={<Teste />} />
-						<Route path="/PageCategoriaHome" element={<PageCategoriaHome />} />
+						<Route path="/CategoriaHome" element={<PageCategoriaHome />} />
+						<Route path="/Subcategorias" element={<PageSubcategory />} />
+						<Route path="/ListServices" element={<ServicesByCategory />} />
 					</Routes>
 				</Router>
 			</ChakraProvider>
