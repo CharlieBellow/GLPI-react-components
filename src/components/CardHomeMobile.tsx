@@ -35,7 +35,7 @@ function CardHomeMobile() {
 					<Button title={"Botão principal"} theme={"primaryMobile"} />
 				</div>
 
-				<div className="justify-between hidden lg:flex mt-10 gap-4">
+				<div className="justify-between hidden lg:flex mt-10 gap-4 text-base">
 					<Button title={"Meus Chamados"} theme={"tertiary"} />
 					<Button title={"Abrir Chamados"} theme={"primary"} />
 				</div>

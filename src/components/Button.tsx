@@ -41,7 +41,7 @@ export function Button(props: ButtonProps) {
 				${
 					props.theme === "tertiary"
 						? // text- base for text-xl
-						  "bg-gray-medium hover:bg-opacity-80 text-gray-text text-base text-xl px-13 h-12 py-2 shadow-button"
+						  "bg-gray-medium hover:bg-opacity-80 text-gray-text text-base px-13 h-12 py-2 shadow-button"
 						: ""
 				}
 				${

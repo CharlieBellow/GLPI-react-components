@@ -39,7 +39,7 @@ function ScreenHomeMobile(){
 					</div>
 				</div>
 
-				<div className="hidden lg:grid w-auto lg:grid-cols-2 items-center h-auto gap-4 m-4 tv:max-w-[75rem] mx-auto">
+				<div className="hidden lg:grid w-auto lg:grid-cols-2 items-center h-auto gap-4 m-4 lg:mx-5 tv:max-w-[75rem] mx-auto">
 					<CardHomeMobile />
                     <CardCategory/>
                     <CardServices/>
