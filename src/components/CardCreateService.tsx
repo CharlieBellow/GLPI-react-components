@@ -71,7 +71,7 @@ export const CardCreateService = () => {
 								year: "numeric",
 								hour: "2-digit",
 								minute: "2-digit",
-								second: "2-digit",
+								second: "numeric",
 							})
 							.toString()
 							.replace(":", "")
@@ -86,7 +86,7 @@ export const CardCreateService = () => {
 						setTimeout(() => {
 							console.log("submit:", values);
 							setServices([...services, values]);
-							console.log("servicesList:", services);
+							console.log("services:", services);
 
 							toast.success("Serviço criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
