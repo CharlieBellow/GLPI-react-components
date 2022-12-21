@@ -17,20 +17,24 @@ const CardCategory = () => {
 					</Link>
 					<div className="gap-3 grid grid-cols-2">
 						<Link to="/">Dashboard</Link>
-						<Link to="/ServiceLetter">Carta de Serviço</Link>
-						<Link to="/CreateService">Criar Serviço</Link>
-						<Link to="/List">Tabela</Link>
-						<Link to="/Login">Login</Link>
-						<Link to="/SignUp">Cadastro</Link>
+						<Link to="/service/letter">Carta de Serviço</Link>
+						<Link to="/service/create">Criar Serviço</Link>
+						<Link to="/users/list">Tabela</Link>
+						<Link to="/login">Login</Link>
+						<Link to="/signup">Cadastro</Link>
 
-						<Link to="/Services">Lista de Serviços</Link>
-						<Link to="/UserInfo">Informações do usuário</Link>
-						<Link to="/AddUser">Adicionar Usuário</Link>
-						<Link to="/CardTest"> Card Teste</Link>
-						<Link to="/Teste">Teste </Link>
-						<Link to="/CategoriaHome">Categorias</Link>
-						<Link to="/AddCategory" >Add Category </Link>
-						<Link to="/AddSubcategory"> Add Subcategory</Link>
+						<Link to="/service/list">Lista de Serviços</Link>
+						<Link to="/user/info">Informações do usuário</Link>
+						<Link to="/user/create">Adicionar Usuário</Link>
+						<Link to="/test/card"> Card Teste</Link>
+						<Link to="/test">Teste </Link>
+						<Link to="/servicebook/category">Categorias</Link>
+						<Link to="/servicebook/subcategory">Subcategorias</Link>
+						<Link to="/servicebook/category/create">Add Category </Link>
+						<Link to="/servicebook/subcategory/create"> Add Subcategory</Link>
+						<Link to="/servicebook/service"> Serviços por category</Link>
+
+			
 					</div>
 				</div>
 			</div>

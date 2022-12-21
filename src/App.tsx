@@ -33,18 +33,21 @@ function App() {
 			<ChakraProvider>
 				<Router>
 					<Routes>
+
 						<Route path="/" element={<Dashboard />} />
-						<Route path="/Dashboard" element={<Dashboard />} />
-						<Route path="/ServiceLetter" element={<ServiceLetter />} />
-						<Route path="/CreateService" element={<CreateService />} />
-						<Route path="/List" element={<ListPage />} />
-						<Route path="/Login" element={<Login />} />
-						<Route path="/SignUp" element={<SignUp />} />
-						<Route path="/Services" element={<ServicesPage />} />
-						<Route path="/UserInfo" element={<UserInfo />} />
-						<Route path="/AddUser" element={<AddUser />} />
-						<Route path="/CardTest" element={<CardTest />} />
-						<Route path="/Teste" element={<Teste />} />
+						<Route path="/dashboard" element={<Dashboard />} />
+						
+						<Route path="/service/letter" element={ <ServiceLetter /> } />
+						<Route path="/service/create" element={<CreateService />} />
+						<Route path="/service/list" element={<ServicesPage />} />
+						
+						<Route path="/user/info" element={<UserInfo />} />
+						<Route path="/user/create" element={<AddUser />} />
+						
+						<Route path="/users/list" element={ <ListPage /> } />
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<SignUp />} />
+						
 						<Route
 							path="/servicebook/category"
 							element={<PageCategoriaHome />}
@@ -64,7 +67,12 @@ function App() {
 						<Route
 							path="/servicebook/subcategory/create"
 							element={<AddSubcategory />}
-						/>						
+						/>
+					
+						<Route path="/test/card" element={ <CardTest /> } />
+						<Route path="/test" element={ <Teste /> } />
+						
+
 					</Routes>
 				</Router>
 			</ChakraProvider>

@@ -57,6 +57,7 @@ export const CardCreateService = () => {
 					initialValues={{
 						name: "",
 						title: "",
+						//patrimonio: "",
 						description: "",
 						serviceLocal: "",
 						id: new Date()
