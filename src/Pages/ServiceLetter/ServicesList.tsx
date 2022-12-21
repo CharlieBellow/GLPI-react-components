@@ -47,8 +47,14 @@ export const ServicesList = [
 
 export const services = [
 	{
-		title: "Instalarção de impressora",
+		title: "Instalação de impressora",
 		link: "/ServiceLetter",
 		serviceLetter: ServicesList,
 	},
+	{
+		title: "Manutenção de Computadores",
+		link: "/ServiceLetter",
+		serviceLetter: ServicesList,
+	},
+
 ];

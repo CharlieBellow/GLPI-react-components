@@ -26,6 +26,8 @@ import "react-toastify/dist/ReactToastify.min.css";
 import ServicesPage from "./Pages/ServicesPage";
 import PageSubcategory from "./Pages/PageSubcategory";
 import ServicesByCategory from "./Pages/ServicesByCategory";
+import AddCategory from "./Pages/AddCategory";
+import AddSubcategory from "./Pages/AddSubcategory";
 
 
 function App() {
@@ -49,6 +51,8 @@ function App() {
 						<Route path="/CategoriaHome" element={<PageCategoriaHome />} />
 						<Route path="/Subcategorias" element={<PageSubcategory />} />
 						<Route path="/ListServices" element={<ServicesByCategory />} />
+						<Route path="/AddCategory" element={<AddCategory />} />
+						<Route path="/AddSubcategory" element={<AddSubcategory />} />
 					</Routes>
 				</Router>
 			</ChakraProvider>

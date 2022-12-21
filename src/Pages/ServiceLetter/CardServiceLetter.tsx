@@ -6,7 +6,8 @@ import { useState } from "react";
 import { Link } from 'react-router-dom';
 
 interface CardServiceLetterProps {
-	serviceTitle: string;
+	service: Array<any>;
+	index: number;
 }
 
 export function CardServiceLetter(props: CardServiceLetterProps) {
@@ -31,13 +32,17 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 		}
 	}
 
+	console.log( props.service[ props.index ] );
+	
+	
+
 	window.addEventListener('scroll', changeFloatingButton);
 
 	return (
 		<div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
 			<div className="lg:flex lg:justify-between lg:items-baseline">
 				<h3 className="pt-4 font-medium ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
-					{props.serviceTitle}
+					{props.service[props.index].title}
 				</h3>
 				<div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 					<Link to="/CreateService">
@@ -49,7 +54,7 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 					</Link>
 				</div>
 			</div>
-			<InfoServiceItem infos={ServicesList} />
+			<InfoServiceItem infos={props.service[props.index].serviceLetter} />
 			<div className="ml-4 mt-9 gap-3.5 lg:flex hidden">
 				<Button
 					title="Solicitar Serviço"

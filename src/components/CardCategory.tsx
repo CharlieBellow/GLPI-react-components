@@ -29,6 +29,8 @@ const CardCategory = () => {
 						<Link to="/CardTest"> Card Teste</Link>
 						<Link to="/Teste">Teste </Link>
 						<Link to="/CategoriaHome">Categorias</Link>
+						<Link to="/AddCategory" >Add Category </Link>
+						<Link to="/AddSubcategory"> Add Subcategory</Link>
 					</div>
 				</div>
 			</div>

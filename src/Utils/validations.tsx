@@ -1,5 +1,8 @@
 import * as yup from "yup";
 
+
+import { services } from '../Pages/ServiceLetter/ServicesList'
+
 export const lettersOnly = /[^a-zA-Z]/g;
 
 export const phoneNumber = /\([0-9]{2}\) 9[0-9]\d{3}-\d{4}/;
@@ -63,6 +66,20 @@ export const genderList = [
 	"outro",
 	"prefiro não informar",
 ];
+export const servicesList = services.map( service => {
+	return (
+		service.title
+	)
+} )
+
+//const categoriesStorage = localStorage.getItem( "categories" );
+
+export const categoriesList = ["lista de categorias criadas", "outros"]
+//	categoriesStorage.map( service => {
+//	return service.title;
+//});
+
+
 
 // Mínimo de seis caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial (Ex.: @ $ ! % * ? &) = /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{6,}$"/
 export const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
@@ -186,6 +203,24 @@ export const validationSchema = {
 		.required("É obrigatório informar o Nº da conta")
 		.min(5, "No mínimo 5 números.")
 		.max(9, "Apenas 9 números"),
+	titleCategory: yup
+		.string()
+		.min(3, "No mínimo 3 caracteres")
+		.max(50, "No máximo 50 caracteres")
+		.required("É obrigatório informar o nome da Categoria"),
+	titleSubcategory: yup
+		.string()
+		.min(3, "No mínimo 3 caracteres")
+		.max(50, "No máximo 50 caracteres")
+		.required("É obrigatório informar o nome da Subcategoria"),
+	services: yup
+		.string()
+		.oneOf(servicesList, "Escolha entre essas opções:")
+		.required("É obrigatório informar o serviço"),
+	category: yup
+		.string()
+		.oneOf(categoriesList, "Escolha entre essas opções:")
+		.required("É obrigatório informar o serviço"),
 };
 
 export const validations = yup.object().shape(validationSchema);
