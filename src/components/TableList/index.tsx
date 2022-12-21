@@ -47,20 +47,19 @@ function TableList(props: TableProps) {
 						titleOfTable="Lista de Usuários"
 					/>
 				</div>
-				
-
 				<div className="h-auto" {...props}>
 					<Table colorScheme="whiteAlpha" className="" {...props}>
 						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none lg:justify-between ">
-							<Tr className="w-full flex justify-between">
-								<Th px={["4", "4", "6"]} className="text-gray-text " width="8">
-									<Checkbox
-										className="border-gray-text"
-										colorScheme="gray"
-									></Checkbox>
+							<Tr className="w-full flex justify-between ">
+								<Th px={ [ "4", "4", "6" ] } className="text-gray-text " width="8">
+										<Checkbox
+											className="border-gray-text"
+											colorScheme="gray"
+										></Checkbox>
 								</Th>
-								<Th className="tabela">Usuário</Th>
-
+									<Th className="tabela flex justify-center items-center text-center flex-row">
+										Usuário
+								</Th>
 								{isWideVersion && <Th>Data de Cadastro</Th>}
 								<Th w="">Ações</Th>
 							</Tr>
@@ -70,7 +69,7 @@ function TableList(props: TableProps) {
 							{props.itemlist.map((user: any) => {
 								return (
 									<Tr
-										className=" rounded-[0.75rem] lg:rounded-none bg-white-ice my-3 lg:my-0  lg:flex-row lg:mx-6 pb-0 md:mx-9 lg:border-b-2 lg:border-gray-text lg:w-full lg:bg-white-100  flex flex-row  justify-between items-center"
+										className=" rounded-[0.75rem] lg:rounded-none bg-white-ice my-3 lg:my-0  lg:flex-row lg:mx-6 pb-0 md:mx-9 lg:border-b-2 lg:border-gray-text lg:w-auto lg:bg-white-100  flex flex-row  justify-between items-center"
 										key={user.id}
 										id={user.id}
 									>
