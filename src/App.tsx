@@ -13,7 +13,7 @@ import UserInfo from "./Pages/UserInfo";
 import { ServiceLetter } from "./Pages/ServiceLetter";
 import AddUser from "./Pages/AddUser";
 
-import { CardTest } from "./components/CardTest";
+import { CardTest } from "./components/Cards/CardTest";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import PageCategoriaHome from "./Pages/PageCategoriaHome";

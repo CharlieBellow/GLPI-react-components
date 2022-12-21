@@ -1,7 +1,7 @@
 import { Page } from "../../components/Page";
 import {services} from '../ServiceLetter/ServicesList'
 
-import ServiceByCategory from "../../components/ServiceByCategory";
+import ServiceByCategory from "../../components/ServicesComponent/ServiceByCategory";
 
 const ServicesByCategory = () => {
 	return (

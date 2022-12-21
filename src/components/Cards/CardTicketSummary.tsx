@@ -1,4 +1,4 @@
-import TicketsHome from "./TicketsHome";
+import TicketsHome from "../TicketsHome";
 import * as Icon from "phosphor-react"
 const TicketSummary = () => {
   return (

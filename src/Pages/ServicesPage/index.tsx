@@ -1,5 +1,5 @@
 import { Page } from "../../components/Page";
-import Services from "../../components/Services";
+import Services from "../../components/ServicesComponent/Services";
 
 
 export default function ServicesPage() {

@@ -1,9 +1,9 @@
 import { InfoServiceItem } from "./InfoService";
-import * as Icon from 'phosphor-react'
-import { Button } from "../../components/Button";
-import { ServicesList } from "./ServicesList";
+import * as Icon from "phosphor-react";
+import { Button } from "../../components/Buttons/Button";
+//import { ServicesList } from "./ServicesList";
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 interface CardServiceLetterProps {
 	service: Array<any>;
@@ -11,18 +11,15 @@ interface CardServiceLetterProps {
 }
 
 export function CardServiceLetter(props: CardServiceLetterProps) {
-
 	const [floatingButton, setFloatingButton] = useState(false);
 
 	const changeFloatingButton = () => {
-
 		if (window.scrollY >= 80 && window.screen.width < 1024) {
-
 			setFloatingButton(true);
 		} else {
 			setFloatingButton(false);
 		}
-	}
+	};
 
 	const changeButtonName = () => {
 		if (window.screen.width < 1024) {
@@ -30,13 +27,11 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 		} else {
 			return "Solicitar serviço";
 		}
-	}
+	};
 
-	console.log( props.service[ props.index ] );
-	
-	
+	console.log(props.service[props.index]);
 
-	window.addEventListener('scroll', changeFloatingButton);
+	window.addEventListener("scroll", changeFloatingButton);
 
 	return (
 		<div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">

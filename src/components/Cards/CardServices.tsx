@@ -1,4 +1,4 @@
-import ServicesHome from "./ServicesHome";
+import ServicesHome from "../ServicesComponent/ServicesHome";
 
 const CardServices = () => {
   return (

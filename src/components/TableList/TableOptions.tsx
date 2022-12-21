@@ -1,7 +1,7 @@
-import ButtonSelect from "../ButtonSelect";
+import ButtonSelect from "../Buttons/ButtonSelect";
 import { Plus } from "phosphor-react";
-import {Button} from "../Button";
-import Search from "../Search";
+import { Button } from "../Buttons/Button";
+import Search from "../Inputs/Search";
 import { FiChevronDown } from "react-icons/fi";
 
 import { useBreakpointValue } from "@chakra-ui/react";
@@ -43,8 +43,10 @@ export default function TableOptions(props: TableOptionsProps) {
 				<div className="relative">
 					<Button
 						className="flex items-center px-[0.625rem] py-2 bg-blue-ufal text-white-100 rounded-md shadow-button font-bold text-base"
-						icon={ <Plus className="lg:mr-3 mr-0" /> }
-						title={ isWideVersion ? "Adicionar" : "" } theme={ "primary" }					/>
+						icon={<Plus className="lg:mr-3 mr-0" />}
+						title={isWideVersion ? "Adicionar" : ""}
+						theme={"primary"}
+					/>
 				</div>
 			</div>
 		</>

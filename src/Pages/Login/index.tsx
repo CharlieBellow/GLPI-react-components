@@ -1,5 +1,5 @@
 
-import { CardLogin } from '../../components/CardLogin'
+import { CardLogin } from '../../components/Cards/CardLogin'
 
 function Login() {
 	document.title = "Login - GLPI";

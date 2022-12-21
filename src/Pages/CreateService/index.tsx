@@ -1,4 +1,4 @@
-import CardCreateService from "../../components/CardCreateService";
+import CardCreateService from "../../components/Cards/CardCreateService";
 import { Page } from "../../components/Page";
 
 function CreateService() {

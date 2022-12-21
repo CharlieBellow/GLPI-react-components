@@ -1,10 +1,10 @@
 import { styled } from "@stitches/react";
-import { CardLabelInput } from "./CardLabelInput";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardTitle } from "./CardTitle";
-import { CardLine } from "./CardLine";
-import { Button } from "./Button";
+import { CardLine } from "../Cards/CardLine";
+import { Button } from "../Buttons/Button";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import * as yup from 'yup';
+import * as yup from "yup";
 //import {CpfMask} from '../Utils/Masks'
 
 import {
@@ -12,10 +12,10 @@ import {
 	campusList,
 	bondList,
 	genderList,
-} from "../Utils/validations";
+} from "../../Utils/validations";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
-import FieldSelect from "./FieldSelect";
+import FieldSelect from "../Inputs/FieldSelect";
 import { Spinner } from "@chakra-ui/react";
 
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
@@ -32,7 +32,7 @@ text-base text-light-bg select-none border-2 border-b border-gray-medium rounded
 hover:text-blue-ufal hover:cursor-pointer focus:relative`;
 
 //function handleBlur (ev) {
-	
+
 //};
 
 const validate = yup.object().shape({
@@ -71,13 +71,13 @@ const validate = yup.object().shape({
 //		.then(res => res.json())
 //		.then(data => {
 //			console.log( data );
-//			
+//
 //			setFieldValue( 'district', data.bairro );
 //			setFieldValue( 'city', data.localidade );
 //			setFieldValue("address", data.logradouro);
 //			setFieldValue( 'uf', data.uf );
 //		} );
-//	
+//
 //	//handleBlur(e);
 //}
 

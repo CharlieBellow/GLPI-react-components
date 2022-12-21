@@ -1,44 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "./Button";
-import { CardTitle } from "./CardTitle";
-import { CardLine } from "./CardLine";
-import { CardLabelInput } from "./CardLabelInput";
-import { CardLabelTextarea } from "./CardLabelTextarea";
-import { servicesList } from "./Service";
-import { blocList, validationSchema } from "../Utils/validations";
-
-import * as yup from "yup";
-
-import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
-import FieldSelect from "./FieldSelect";
-
 import { Spinner } from "@chakra-ui/react";
-
-export const lettersOnly = /[^a-zA-Z]/g;
+import { Form, Formik } from "formik";
+import { toast } from "react-toastify";
+import { Button } from "../Buttons/Button";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
+import { CardLine } from "../Cards/CardLine";
+import { CardTitle } from "./CardTitle";
+import FieldSelect from "../Inputs/FieldSelect";
+import { validationSchema, servicesList } from "../../Utils/validations";
+import * as yup from "yup";
+//import { services, ServicesList } from '../Pages/ServiceLetter/ServicesList';
+import { useEffect, useState } from "react";
 
 const validate = yup.object().shape({
-	name: validationSchema.name,
-	title: validationSchema.title,
+	titleCategory: validationSchema.titleCategory,
 	description: validationSchema.description,
-	serviceLocal: validationSchema.serviceLocal,
+	services: validationSchema.services,
 });
 
-export const CardCreateService = () => {
-	const [services, setServices] = useState(servicesList);
+export const CardCreateCategory = () => {
+	const [categories, setCategories] = useState([{}]);
 
 	useEffect(() => {
-		const servicesStorage = localStorage.getItem("services");
+		const categoryStorage = localStorage.getItem("categories");
 
-		if (servicesStorage) {
-			setServices(JSON.parse(servicesStorage));
+		if (categoryStorage) {
+			setCategories(JSON.parse(categoryStorage));
+
+			console.log("categories: ", categoryStorage);
 		}
-		console.log("lista: ", servicesStorage);
 	}, []);
 
 	useEffect(() => {
-		localStorage.setItem("services", JSON.stringify(services));
-	}, [services]);
+		localStorage.setItem("categories", JSON.stringify(categories));
+	});
 
 	return (
 		<div className="mx-4">
@@ -48,18 +43,16 @@ export const CardCreateService = () => {
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
-					<CardTitle title="Solicitar Serviço" />
+					<CardTitle title="Criar Categoria" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
 				</div>
 				<Formik
 					initialValues={{
-						name: "",
-						title: "",
-						//patrimonio: "",
+						titleCategory: "",
 						description: "",
-						serviceLocal: "",
+						services: "",
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
 								day: "2-digit",
@@ -81,8 +74,8 @@ export const CardCreateService = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							setServices([...services, values]);
-							console.log("services:", services);
+							setCategories([...categories, values]);
+							console.log("category:", categories);
 
 							toast.success("Serviço criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
@@ -96,18 +89,8 @@ export const CardCreateService = () => {
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
 									<CardLabelInput
-										label="Nome"
-										name="name"
-										type="text"
-										width="w-full"
-										inputid="title"
-									/>
-								</div>
-
-								<div className="">
-									<CardLabelInput
-										label="Título"
-										name="title"
+										label="Nome da Categoria"
+										name="titleCategory"
 										type="text"
 										width="w-full"
 										inputid="title"
@@ -124,16 +107,16 @@ export const CardCreateService = () => {
 								</div>
 								<div className="">
 									<FieldSelect
-										label="serviceLocal"
-										name="serviceLocal"
-										default="Selecione"
-										listitems={blocList}
+										label="services"
+										name="services"
+										default="Selecione o serviço"
+										listitems={servicesList}
 									/>
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
-									isSubmitting={isSubmitting}
 									title="Solicitar"
 									theme="primaryAction"
 									type="submit"
@@ -148,5 +131,3 @@ export const CardCreateService = () => {
 		</div>
 	);
 };
-
-export default CardCreateService;

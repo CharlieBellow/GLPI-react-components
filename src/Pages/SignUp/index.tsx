@@ -1,6 +1,6 @@
 
 //import { CardLogin } from '../../components/CardLogin'
-import { CardSignUp } from '../../components/CardSignUp';
+import { CardSignUp } from '../../components/Cards/CardSignUp';
 
 function SignUp() {
 	document.title = "Cadastro - GLPI";

@@ -1,6 +1,6 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
-import { usersList } from "../../components/CardUser/User";
+import { usersList } from "../../components/Cards/CardUser/User";
 import {
 	validationSchema,
 	//blocList,
@@ -8,10 +8,10 @@ import {
 
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { Button } from "../../components/Button";
-import { CardLabelInput } from "../../components/CardLabelInput";
-import { CardTitle } from "../../components/CardTitle";
-import { CardLine } from "../../components/CardLine";
+import { Button } from "../../components/Buttons/Button";
+import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
+import { CardTitle } from "../../components/Cards/CardTitle";
+import { CardLine } from "../../components/Cards/CardLine";
 
 const validate = yup.object().shape({
 	name: validationSchema.name,

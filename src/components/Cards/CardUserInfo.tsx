@@ -1,8 +1,8 @@
-import { Button } from "./Button";
+import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
-import { CardLine } from "./CardLine";
-import { CardLabelInput } from "./CardLabelInput";
-import { validationSchema } from "../Utils/validations";
+import { CardLine } from "../Cards/CardLine";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";

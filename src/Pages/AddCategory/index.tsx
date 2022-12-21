@@ -1,4 +1,4 @@
-import { CardCreateCategory } from "../../components/CardCreateCategory";
+import { CardCreateCategory } from "../../components/Cards/CardCreateCategory";
 import { Page } from "../../components/Page";
 
 export default function AddCategory() {

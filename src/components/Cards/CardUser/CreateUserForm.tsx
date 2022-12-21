@@ -1,30 +1,26 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
-import {usersList} from './User'
+import { usersList } from "./User";
 import {
 	validationSchema,
 	//blocList,
-} from "../../Utils/validations";
+} from "../../../Utils/validations";
 
-import * as yup from 'yup'
+import * as yup from "yup";
 import { toast } from "react-toastify";
-import { Button } from "../Button";
-import { CardLabelInput } from "../CardLabelInput";
-import { CardTitle } from "../CardTitle";
-import { CardLine } from "../CardLine";
-
+import { Button } from "../../Buttons/Button";
+import { CardLabelInput } from "../../Inputs/CardLabelInput";
+import { CardTitle } from "../../Cards/CardTitle";
+import { CardLine } from "../../Cards/CardLine";
 
 const validate = yup.object().shape({
 	name: validationSchema.name,
 	email: validationSchema.email,
-
-} );
-
+});
 
 export const BasicForm = () => {
-	
-	const [users, setUsers] = useState(usersList)
-	
+	const [users, setUsers] = useState(usersList);
+
 	useEffect(() => {
 		const usersStorage = localStorage.getItem("users");
 
@@ -35,11 +31,10 @@ export const BasicForm = () => {
 		console.log("lista:", usersStorage);
 	}, []);
 
-	useEffect( () => {
+	useEffect(() => {
 		localStorage.setItem("users", JSON.stringify(users));
 	}, [users]);
-		
-		
+
 	return (
 		<div className="mx-4">
 			<div
@@ -64,8 +59,8 @@ export const BasicForm = () => {
 								day: "2-digit",
 								month: "2-digit",
 								year: "numeric",
-							} )
-							.substr( 0, 10 )
+							})
+							.substr(0, 10)
 							//.replace(new RegExp("/", 'g'),"-" )
 							.toString(),
 						time: new Date()

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { PencilSimpleLine } from "phosphor-react";
-import { Button } from "../Button";
+import { Button } from "../Buttons/Button";
 
 import {
 	Table,
@@ -51,14 +51,14 @@ function TableList(props: TableProps) {
 					<Table colorScheme="whiteAlpha" className="" {...props}>
 						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none lg:justify-between ">
 							<Tr className="w-full flex justify-between ">
-								<Th px={ [ "4", "4", "6" ] } className="text-gray-text " width="8">
-										<Checkbox
-											className="border-gray-text"
-											colorScheme="gray"
-										></Checkbox>
+								<Th px={["4", "4", "6"]} className="text-gray-text " width="8">
+									<Checkbox
+										className="border-gray-text"
+										colorScheme="gray"
+									></Checkbox>
 								</Th>
-									<Th className="tabela flex justify-center items-center text-center flex-row">
-										Usuário
+								<Th className="tabela flex justify-center items-center text-center flex-row">
+									Usuário
 								</Th>
 								{isWideVersion && <Th>Data de Cadastro</Th>}
 								<Th w="">Ações</Th>

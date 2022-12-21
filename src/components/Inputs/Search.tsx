@@ -1,5 +1,4 @@
 import { MagnifyingGlass } from "phosphor-react";
-import * as Icon from "phosphor-react"
 interface SearchProps extends React.HTMLAttributes<HTMLElement>{
 	placeholder: string;
 	theme?: "outline-gray" | ""

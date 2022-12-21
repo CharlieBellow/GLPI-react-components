@@ -1,5 +1,5 @@
-import AccordionMenu from "../../AccordionMenu";
-import {AccordionMenuHelp} from "../../AccordionMenuHelp";
+import AccordionMenu from "../../Accordions/AccordionMenu";
+import { AccordionMenuHelp } from "../../Accordions/AccordionMenuHelp";
 
 import { List } from "phosphor-react";
 

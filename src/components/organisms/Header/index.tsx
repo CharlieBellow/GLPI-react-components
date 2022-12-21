@@ -1,7 +1,6 @@
-
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Bell, UserPlus, Question, List } from "phosphor-react";
-import Search from '../../Search';
+import Search from "../../Inputs/Search";
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 	page: string;
@@ -12,19 +11,23 @@ export function Header(props: HeaderProps) {
 		<>
 			<header
 				className="flex lg:h-31 h-40 rounded-b-lg lg:rounded-br-lg lg:rounded-bl-none text-white-100 bg-gradient justify-around"
-				{...props}>
+				{...props}
+			>
 				<div className="bg-ufalBackground lg:box-content lg:w-103 -mt-26 bg-cover h-57 absolute lg:mr-16 tv:-mr-26"></div>
 				<div className="flex flex-row items-center justify-between pt-10 mr-4 lg:mr-18 w-full pb-8 ml-15">
 					<div className="flex items-start -ml-12 lg:ml-0">
-							<div className="lg:hidden invisible flex items-start">
-								<List size={24} weight="bold" />
-							</div>
+						<div className="lg:hidden invisible flex items-start">
+							<List size={24} weight="bold" />
+						</div>
 						<h4 className="lg:text-3xl text-lg font-bold lg:font-normal lg:mr-5 lg:pt-0 pt-16">
-							{props.page} 
+							{props.page}
 						</h4>
 					</div>
 					<div className="hidden lg:flex m-0">
-						<Search theme="outline-gray" placeholder="o que você está buscando?" />
+						<Search
+							theme="outline-gray"
+							placeholder="o que você está buscando?"
+						/>
 					</div>
 
 					<div className="flex row items-center">

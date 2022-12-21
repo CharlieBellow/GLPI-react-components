@@ -1,17 +1,17 @@
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
-import { Button } from "./Button";
-import { CardLabelInput } from "./CardLabelInput";
-import { CardLabelTextarea } from "./CardLabelTextarea";
-import { CardLine } from "./CardLine";
+import { Button } from "../Buttons/Button";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
+import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
-import FieldSelect from "./FieldSelect";
+import FieldSelect from "../Inputs/FieldSelect";
 import {
 	validationSchema,
 	servicesList,
 	categoriesList,
-} from "../Utils/validations";
+} from "../../Utils/validations";
 import * as yup from "yup";
 //import { services, ServicesList } from "../Pages/ServiceLetter/ServicesList";
 import { useEffect, useState } from "react";

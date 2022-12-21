@@ -1,10 +1,10 @@
-import "../styles/main.css";
-import { Button } from "./Button";
+import "../../styles/main.css";
+import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
-import { CardLabelInput } from "./CardLabelInput";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { Eye } from "phosphor-react";
 import { Form, Formik } from "formik";
-import { validationSchema } from "../Utils/validations";
+import { validationSchema } from "../../Utils/validations";
 
 import * as yup from "yup";
 import { toast } from "react-toastify";
@@ -16,7 +16,6 @@ const validate = yup.object().shape({
 	password: validationSchema.password,
 	confirmPassword: validationSchema.confirmPassword,
 });
-
 
 export function CardSignUp() {
 	return (

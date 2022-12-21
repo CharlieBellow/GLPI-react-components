@@ -1,6 +1,6 @@
 import * as  Icon from "phosphor-react";
 import { Link } from "react-router-dom";
-import CategoryHomeMobile from "./CategoryHomeMobile";
+import CategoryHomeMobile from "../CategoryHomeMobile";
 
 const CardCategory = () => {
   return (
