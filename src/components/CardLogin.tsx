@@ -33,7 +33,7 @@ export function CardLogin() {
 					}, 400);
 				}}
 			>
-				{({ isSubmitting }) => (
+				{({ isSubmitting, isValid }) => (
 					<Form>
 						<div className="mb-6 px-10">
 							<CardLabelInput
@@ -58,7 +58,7 @@ export function CardLogin() {
 								title="Entrar"
 								theme="primary"
 								type="submit"
-								disabled={isSubmitting}
+								disabled={isSubmitting || !isValid}
 							/>
 							<Button title="Esqueci a senha" theme="textOnly" />
 						</div>

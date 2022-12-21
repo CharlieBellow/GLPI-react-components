@@ -90,7 +90,7 @@ export const CardCreateCategory = () => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting }) => (
+					{({ isSubmitting, isValid }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -126,7 +126,7 @@ export const CardCreateCategory = () => {
 									title="Solicitar"
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting}
+									disabled={isSubmitting || !isValid}
 								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>

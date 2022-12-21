@@ -1,18 +1,16 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import './styles/main.css'
+import "./styles/main.css";
 
 import CreateService from "./Pages/CreateService";
 
-import Login from './Pages/Login'
-import Teste from './Pages/Teste'
-import SignUp from './Pages/SignUp'
+import Login from "./Pages/Login";
+import Teste from "./Pages/Teste";
+import SignUp from "./Pages/SignUp";
 import ListPage from "./Pages/ListPage";
 
-
 import UserInfo from "./Pages/UserInfo";
-import {ServiceLetter} from "./Pages/ServiceLetter";
+import { ServiceLetter } from "./Pages/ServiceLetter";
 import AddUser from "./Pages/AddUser";
 
 import { CardTest } from "./components/CardTest";
@@ -28,7 +26,6 @@ import PageSubcategory from "./Pages/PageSubcategory";
 import ServicesByCategory from "./Pages/ServicesByCategory";
 import AddCategory from "./Pages/AddCategory";
 import AddSubcategory from "./Pages/AddSubcategory";
-
 
 function App() {
 	return (
@@ -48,11 +45,26 @@ function App() {
 						<Route path="/AddUser" element={<AddUser />} />
 						<Route path="/CardTest" element={<CardTest />} />
 						<Route path="/Teste" element={<Teste />} />
-						<Route path="/CategoriaHome" element={<PageCategoriaHome />} />
-						<Route path="/Subcategorias" element={<PageSubcategory />} />
-						<Route path="/ListServices" element={<ServicesByCategory />} />
-						<Route path="/AddCategory" element={<AddCategory />} />
-						<Route path="/AddSubcategory" element={<AddSubcategory />} />
+						<Route
+							path="/servicebook/category"
+							element={<PageCategoriaHome />}
+						/>
+						<Route
+							path="/servicebook/subcategory"
+							element={<PageSubcategory />}
+						/>
+						<Route
+							path="/servicebook/service"
+							element={<ServicesByCategory />}
+						/>
+						<Route
+							path="/servicebook/category/create"
+							element={<AddCategory />}
+						/>
+						<Route
+							path="/servicebook/subcategory/create"
+							element={<AddSubcategory />}
+						/>						
 					</Routes>
 				</Router>
 			</ChakraProvider>

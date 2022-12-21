@@ -120,7 +120,7 @@ const CardAddUser = () => (
 					}, 400);
 				}}
 			>
-				{({ isSubmitting, setFieldValue }) => (
+				{({ isSubmitting, setFieldValue, isValid }) => (
 					<TabsPrimitive.Root defaultValue="tab1">
 						<div className="pl-9 pt-8">
 							<CardTitle title="Adicionar Usuário" />
@@ -227,9 +227,7 @@ const CardAddUser = () => (
 												width="lg:w-80 w-full"
 												onChange={(e: any) => console.log(e.target.value)}
 											/>
-											<>
-												
-											</>
+											<></>
 										</div>
 										<div>
 											<CardLabelInput
@@ -330,7 +328,7 @@ const CardAddUser = () => (
 										title="Adicionar"
 										theme="primaryAction"
 										type="submit"
-										disabled={isSubmitting}
+										disabled={isSubmitting || !isValid}
 									/>
 									<Button title="Cancelar" theme="secondaryAction" />
 								</div>

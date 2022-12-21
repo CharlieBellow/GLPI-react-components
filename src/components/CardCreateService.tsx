@@ -4,11 +4,8 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "./CardLabelInput";
 import { CardLabelTextarea } from "./CardLabelTextarea";
-import {servicesList} from './Service'
-import {
-	blocList,
-	validationSchema,
-} from "../Utils/validations";
+import { servicesList } from "./Service";
+import { blocList, validationSchema } from "../Utils/validations";
 
 import * as yup from "yup";
 
@@ -16,7 +13,7 @@ import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "./FieldSelect";
 
-import {Spinner} from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -28,22 +25,20 @@ const validate = yup.object().shape({
 });
 
 export const CardCreateService = () => {
-
 	const [services, setServices] = useState(servicesList);
-	
+
 	useEffect(() => {
-		const servicesStorage = localStorage.getItem("services")
+		const servicesStorage = localStorage.getItem("services");
 
-		if(servicesStorage) {
-			setServices(JSON.parse(servicesStorage))
+		if (servicesStorage) {
+			setServices(JSON.parse(servicesStorage));
 		}
-		console.log("lista: ", servicesStorage)
-	}, [])
-
+		console.log("lista: ", servicesStorage);
+	}, []);
 
 	useEffect(() => {
 		localStorage.setItem("services", JSON.stringify(services));
-	}, [services])
+	}, [services]);
 
 	return (
 		<div className="mx-4">
@@ -78,7 +73,7 @@ export const CardCreateService = () => {
 							.replace(":", "")
 							.replace("/", "")
 							.replace("/", "")
-							.replace(" ", "")
+							.replace(" ", ""),
 					}}
 					//validationSchema={validations}
 					validationSchema={validate}
@@ -95,7 +90,7 @@ export const CardCreateService = () => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting }) => (
+					{({ isSubmitting, isValid }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -136,12 +131,12 @@ export const CardCreateService = () => {
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
+									isSubmitting={isSubmitting}
 									title="Solicitar"
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting}
+									disabled={isSubmitting || !isValid}
 								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>

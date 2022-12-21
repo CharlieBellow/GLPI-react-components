@@ -30,7 +30,7 @@ export default function ListPage() {
 	return (
 		<>
 			<Page
-				pagetitle={"Dashboard"}
+				pagetitle={"Tabela"}
 				contentpage={
 					<TableList itemlist={lista} listselecbutton={ItemSelect} />
 				}

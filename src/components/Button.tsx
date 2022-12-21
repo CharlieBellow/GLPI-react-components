@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 import * as Icon from "phosphor-react";
+import { Spinner } from "@chakra-ui/react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	title?: string;
@@ -18,10 +19,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 		| "secondaryActionWithIcon"
 		| "tertiaryMobile"
 		| "tertiaryActionWithIcon";
-		disabled?: boolean;
+	disabled?: boolean;
+	isSubmitting?: boolean;
 }
 
-export function Button(props: ButtonProps) {
+export function Button({ isSubmitting = false, ...props }: ButtonProps) {
 	return (
 		<button
 			{...props}
@@ -101,7 +103,7 @@ export function Button(props: ButtonProps) {
 			`}
 		>
 			<>{props.icon}</>
-			{props.title}
+			{isSubmitting ? <Spinner size="xl" /> : props.title}
 		</button>
 	);
 }

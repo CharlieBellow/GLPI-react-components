@@ -57,8 +57,8 @@ export const CardCreateSubcategory = () => {
 					initialValues={{
 						titleSubcategory: "",
 						description: "",
-            category: "",
-            services: "",
+						category: "",
+						services: "",
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
 								day: "2-digit",
@@ -90,7 +90,7 @@ export const CardCreateSubcategory = () => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting }) => (
+					{({ isSubmitting, isValid }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -134,7 +134,7 @@ export const CardCreateSubcategory = () => {
 									title="Solicitar"
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting}
+									disabled={isSubmitting || !isValid}
 								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>

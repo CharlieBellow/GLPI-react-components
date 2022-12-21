@@ -48,7 +48,7 @@ function CardUserInfo() {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting }) => (
+					{({ isSubmitting, isValid }) => (
 						<Form action="" className="flex flex-col gap-9 mx-14">
 							<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 								<CardLabelInput
@@ -88,7 +88,7 @@ function CardUserInfo() {
 									title="Salvar"
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting}
+									disabled={isSubmitting || !isValid}
 								/>
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>

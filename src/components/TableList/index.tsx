@@ -51,8 +51,8 @@ function TableList(props: TableProps) {
 
 				<div className="h-auto" {...props}>
 					<Table colorScheme="whiteAlpha" className="" {...props}>
-						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none   lg:justify-between ">
-							<Tr>
+						<Thead className="border-b-2 mx-6 border-gray-text hidden lg:flex lg:none lg:justify-between ">
+							<Tr className="w-full flex justify-between">
 								<Th px={["4", "4", "6"]} className="text-gray-text " width="8">
 									<Checkbox
 										className="border-gray-text"
