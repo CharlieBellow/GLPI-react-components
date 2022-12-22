@@ -1,3 +1,4 @@
+//rfce
 import { Page } from "../../components/Page";
 import { BasicForm } from "./BasicForm";
 
@@ -9,6 +10,7 @@ function Teste() {
 				contentpage={
 					<>
 						<BasicForm />
+					
 					</>
 				}
 			/>
