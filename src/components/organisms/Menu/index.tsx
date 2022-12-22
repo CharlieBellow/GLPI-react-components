@@ -33,7 +33,7 @@ export function Menu(props: MenuProps) {
 						<div className="after:content-[''] block border-b-2 border-solid border-branco-100 pt-1 change bar3"></div>
 					</div>
 				</label>
-				<div className="lg:hidden visible">
+				<div className="lg:hidden visible -ml-2">
 					<MenuMobile />
 				</div>
 

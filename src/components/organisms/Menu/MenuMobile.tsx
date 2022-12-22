@@ -7,6 +7,8 @@ import logoUfal from "../../../assets/brasao-ufal.png";
 import AccordionMenu from "../../Accordions/AccordionMenu";
 import { AccordionMenuHelp } from "../../Accordions/AccordionMenuHelp";
 
+// esse mesmo componente será usado para fazer as opções de usuário das telas desktop  
+
 export function MenuMobile() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	//const firstField = React.useRef();
