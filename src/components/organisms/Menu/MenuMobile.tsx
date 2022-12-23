@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, InputGroup, InputLeftAddon, InputRightAddon, Select, Stack, Textarea, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent,  DrawerHeader, DrawerOverlay, Stack, useDisclosure } from "@chakra-ui/react";
 import { List } from "phosphor-react";
 import React from "react";
 
@@ -25,6 +25,7 @@ export function MenuMobile() {
 				isOpen={isOpen}
 				placement="left"
 				onClose={onClose}
+				//initialFocusRef={firstField}
 			>
 				<DrawerOverlay />
 				<DrawerContent
@@ -43,7 +44,7 @@ export function MenuMobile() {
 
 					<DrawerBody>
 						<Stack spacing="24px">
-							<Box>
+							<Box >
 								<h4 className="text-white-100 font-bold text-sm text-invisible ">
 									Geral
 								</h4>
@@ -51,10 +52,10 @@ export function MenuMobile() {
 							</Box>
 
 							<Box>
-									<h4 className="text-white-100 font-bold text-sm text-invisible">
-										Ajuda
-									</h4>
-									<AccordionMenuHelp />
+								<h4 className="text-white-100 font-bold text-sm text-invisible">
+									Ajuda
+								</h4>
+								<AccordionMenuHelp />
 							</Box>
 						</Stack>
 					</DrawerBody>

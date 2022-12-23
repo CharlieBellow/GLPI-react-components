@@ -1,6 +1,7 @@
-//rfce
+//rfc
 import { Page } from "../../components/Page";
 import { BasicForm } from "./BasicForm";
+import ContextTest from "./ContextTest";
 
 function Teste() {
 	return (
@@ -9,7 +10,8 @@ function Teste() {
 				pagetitle={"Página de Teste"}
 				contentpage={
 					<>
-						<BasicForm />
+						{/*<BasicForm />*/ }
+						<ContextTest/>
 					
 					</>
 				}
