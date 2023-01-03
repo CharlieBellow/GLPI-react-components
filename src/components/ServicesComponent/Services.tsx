@@ -1,3 +1,5 @@
+// usar UUID
+
 //import { servicesList } from "./Service";
 import Service from "./Service"
 import { useEffect, useState } from "react";
@@ -18,7 +20,7 @@ export default function Services () {
     }
   }, [])
 
-      //console.log("servicesList: ", servicesList);
+      //console.log  ("servicesList: ", servicesList);
 
   return (
 		<>
