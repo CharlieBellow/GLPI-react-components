@@ -40,6 +40,8 @@ export function CardSignUp() {
 						//alert(JSON.stringify(values, null, 2));
 						actions.resetForm();
 						//setSubmitting(false);
+
+						//usar o contexto de autenticação e setar como true
 					}, 400);
 				}}
 			>
