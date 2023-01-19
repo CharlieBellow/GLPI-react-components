@@ -6,7 +6,7 @@ export const servicesList = [
 	{
 		id: "00",
 		name: "Socorro Jesus",
-		title: "Preciso de ajuda!",
+		title: "Manutenção de Computadore",
 		description:
 			"Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
 		serviceLocal: "Bloco A",

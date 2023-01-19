@@ -11,6 +11,7 @@ import { validationSchema, servicesList } from "../../Utils/validations";
 import * as yup from "yup";
 //import { services, ServicesList } from '../Pages/ServiceLetter/ServicesList';
 import { useEffect, useState } from "react";
+import { useCategoryContext } from '../../Contexts/CategoryContext';
 
 const validate = yup.object().shape({
 	titleCategory: validationSchema.titleCategory,
@@ -19,6 +20,8 @@ const validate = yup.object().shape({
 });
 
 export const CardCreateCategory = () => {
+
+	//const {category} = useCategoryContext()
 	const [categories, setCategories] = useState([{}]);
 
 	useEffect(() => {
@@ -77,7 +80,7 @@ export const CardCreateCategory = () => {
 							setCategories([...categories, values]);
 							console.log("category:", categories);
 
-							toast.success("Serviço criado com sucesso!");
+							toast.success("Categoria criada com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 							//setSubmitting(false);

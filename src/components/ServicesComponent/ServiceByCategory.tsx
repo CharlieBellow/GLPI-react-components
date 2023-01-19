@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 
 interface ServiceByCategoryProps {
-  listservices: Array<any>;
+  listservices: Array<object>;
   subcategory: string;
 }
 
@@ -17,7 +17,7 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 
 	const aqui = document.getElementById( "serviceList" )
 		//.addEventListener( "click", () => console.log( "clicou" ) );
-  console.log(aqui);
+  console.log("aqui", aqui);
 	
 	return (
 	
