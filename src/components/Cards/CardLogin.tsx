@@ -7,13 +7,20 @@ import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
 	password: validationSchema.password,
 });
 
-export function CardLogin() {
+export function CardLogin () {
+	
+	const { auth, setAuth }: any = useContext( AuthContext )
+	console.log("auth", auth);
+	
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
 			<div className="pt-16 pb-9 text-center">
@@ -24,9 +31,16 @@ export function CardLogin() {
 				validationSchema={validate}
 				onSubmit={(values, actions) => {
 					setTimeout(() => {
-						console.log("submit:", values);
+						console.log( "submit:", values );
+						if ( values.email === "admin@admin.com" && values.password === "Admin123" ) {
+							setAuth( true )
+							//navigate("/dashboard")
+							toast.success("Login realizado com sucesso!");
+							
+						} else {
+						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
 
-						toast.success("Chamado criado com sucesso!");
+						}
 						//alert(JSON.stringify(values, null, 2));
 						actions.resetForm();
 						//setSubmitting(false);
@@ -61,6 +75,8 @@ export function CardLogin() {
 								disabled={isSubmitting || !isValid}
 							/>
 							<Button title="Esqueci a senha" theme="textOnly" />
+							<Link to="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
+							
 						</div>
 					</Form>
 				)}

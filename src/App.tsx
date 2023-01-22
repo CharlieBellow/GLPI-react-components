@@ -14,7 +14,7 @@ import PrivateRoutes from "./Routes/private.routes";
 function App () {
 	
 	const {auth}: any = useContext( AuthContext )
-	console.log(auth)
+	console.log("auth", auth)
 	return (
 		<>
 			<ChakraProvider>

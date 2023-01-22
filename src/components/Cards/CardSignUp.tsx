@@ -8,6 +8,9 @@ import { validationSchema } from "../../Utils/validations";
 
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -17,7 +20,11 @@ const validate = yup.object().shape({
 	confirmPassword: validationSchema.confirmPassword,
 });
 
-export function CardSignUp() {
+export function CardSignUp () {
+	
+	const { auth, setAuth }: any = useContext( AuthContext )
+	console.log( "auth", auth );
+
 	return (
 		<div className="container w-100 h-auto my-auto  mx-auto bg-white-ice rounded-lg shadow-card">
 			<div className="pt-7 pb-8 text-center">
@@ -36,7 +43,15 @@ export function CardSignUp() {
 					setTimeout(() => {
 						console.log("submit:", values);
 
-						toast.success("Chamado criado com sucesso!");
+						if ( values  ) {
+							setAuth( true );
+							//navigate("/dashboard")
+							toast.success("Conta criada com sucesso!");
+							
+						} else {
+							toast.error("Algo deu errado, tente novamente inserindo outros dados");
+
+						}
 						//alert(JSON.stringify(values, null, 2));
 						actions.resetForm();
 						//setSubmitting(false);
@@ -97,7 +112,7 @@ export function CardSignUp() {
 								type="submit"
 								disabled={isSubmitting || !isValid}
 							/>
-							<Button title="Fazer login" theme="textOnly" />
+							<Link to="/login" className="text-blue-ufal text-center font-semibold text-base py-5">Fazer login</Link>
 						</div>
 					</Form>
 				)}
