@@ -1,5 +1,4 @@
 
-//import { CardLogin } from '../../components/CardLogin'
 import { CardSignUp } from '../../components/Cards/CardSignUp';
 
 function SignUp() {

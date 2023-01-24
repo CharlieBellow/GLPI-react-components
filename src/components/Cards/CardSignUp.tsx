@@ -45,18 +45,16 @@ export function CardSignUp () {
 
 						if ( values  ) {
 							setAuth( true );
-							//navigate("/dashboard")
+						
 							toast.success("Conta criada com sucesso!");
 							
 						} else {
 							toast.error("Algo deu errado, tente novamente inserindo outros dados");
 
 						}
-						//alert(JSON.stringify(values, null, 2));
+					
 						actions.resetForm();
-						//setSubmitting(false);
-
-						//usar o contexto de autenticação e setar como true
+						
 					}, 400);
 				}}
 			>

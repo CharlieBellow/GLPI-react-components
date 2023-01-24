@@ -88,9 +88,9 @@ export const CardCreateService = () => {
 							console.log("services:", services);
 
 							toast.success("Serviço criado com sucesso!");
-							//alert(JSON.stringify(values, null, 2));
+						
 							actions.resetForm();
-							//setSubmitting(false);
+							
 						}, 400);
 					}}
 				>

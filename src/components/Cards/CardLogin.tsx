@@ -41,9 +41,7 @@ export function CardLogin () {
 						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
 
 						}
-						//alert(JSON.stringify(values, null, 2));
 						actions.resetForm();
-						//setSubmitting(false);
 					}, 400);
 				}}
 			>

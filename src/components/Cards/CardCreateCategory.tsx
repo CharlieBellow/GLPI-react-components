@@ -81,9 +81,9 @@ export const CardCreateCategory = () => {
 							console.log("category:", categories);
 
 							toast.success("Categoria criada com sucesso!");
-							//alert(JSON.stringify(values, null, 2));
+							
 							actions.resetForm();
-							//setSubmitting(false);
+					
 						}, 400);
 					}}
 				>
