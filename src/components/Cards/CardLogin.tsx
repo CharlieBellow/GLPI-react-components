@@ -9,7 +9,8 @@ import * as yup from "yup";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
@@ -19,7 +20,12 @@ const validate = yup.object().shape({
 export function CardLogin () {
 	
 	const { auth, setAuth }: any = useContext( AuthContext )
-	console.log("auth", auth);
+	console.log( "auth", auth );
+	const navigate = useNavigate()
+	
+	const signUp = () => {
+		navigate('/')
+	}
 	
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
@@ -36,6 +42,7 @@ export function CardLogin () {
 							setAuth( true )
 							//navigate("/dashboard")
 							toast.success("Login realizado com sucesso!");
+							signUp()
 							
 						} else {
 						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
@@ -66,12 +73,17 @@ export function CardLogin () {
 						</div>
 
 						<div className="flex flex-col justify-center mt-13 mx-11">
+							
 							<Button
 								title="Entrar"
 								theme="primary"
 								type="submit"
-								disabled={isSubmitting || !isValid}
+								disabled={ isSubmitting || !isValid }
+								
 							/>
+							
+						
+								
 							<Button title="Esqueci a senha" theme="textOnly" />
 							<Link to="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
 							

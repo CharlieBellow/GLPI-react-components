@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CategoryProvider } from "../Contexts/CategoryContext";
+import { Routes, Route } from "react-router-dom";
 import { ServiceProvider } from "../Contexts/ServiceContext";
 import AddCategory from "../Pages/AddCategory";
 import AddSubcategory from "../Pages/AddSubcategory";
@@ -14,7 +13,7 @@ import ServicesPage from "../Pages/ServicesPage";
 export function ServiceRoutes () {
   return (
     <ServiceProvider>
-    <Router>
+ 
       <Routes>
         <Route path="/service/letter" element={ <ServiceLetter /> } />
         <Route path="/service/create" element={ <CreateService /> } />
@@ -33,15 +32,15 @@ export function ServiceRoutes () {
           element={ <ServicesByCategory /> }
         />
         <Route
-          path="../servicebook/category/create"
+          path="/servicebook/category/create"
           element={ <AddCategory /> }
         />
         <Route
-          path="../servicebook/subcategory/create"
+          path="/servicebook/subcategory/create"
           element={ <AddSubcategory /> }
         />
       </Routes>
-    </Router>
+
     </ServiceProvider>
 
   );

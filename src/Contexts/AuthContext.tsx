@@ -7,7 +7,7 @@ interface AuthProviderProps {
 }
 export function AuthProvider ( { children }: AuthProviderProps ) {
   // Depois mudar o valor inicial para false
-  const [auth, setAuth] = useState(false)
+  const [ auth, setAuth ] = useState( true)
 
 
 

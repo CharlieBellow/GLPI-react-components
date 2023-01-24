@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+import { categoryModel, serviceModel, subcategoryModel } from './ServiceModels'
 
 import { services } from '../Pages/ServiceLetter/ServicesList'
 
@@ -216,11 +217,11 @@ export const validationSchema = {
 		.required("É obrigatório informar o nome da Subcategoria"),
 	services: yup
 		.string()
-		.oneOf(servicesList, "Escolha entre essas opções:")
+		.oneOf( serviceModel.map( serviceName => { return serviceName.title; } ), "Escolha entre essas opções:")
 		.required("É obrigatório informar o serviço"),
 	category: yup
 		.string()
-		.oneOf(categoriesList, "Escolha entre essas opções:")
+		.oneOf( categoryModel.map( categoryName => { return categoryName.titleCategory; }), "Escolha entre essas opções:")
 		.required("É obrigatório informar o serviço"),
 };
 

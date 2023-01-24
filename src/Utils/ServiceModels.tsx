@@ -22,6 +22,7 @@ pra obrigar a carta de serviço a ter uma categoria eu crio desde o início a ca
 */
 
 import * as Icon from 'phosphor-react'
+
 export const categoryIcons = [
   { name: "Plus", icon: <Icon.Plus /> },
   { name: "DotsThreeVertical", icon: <Icon.DotsThreeVertical /> },
@@ -71,7 +72,7 @@ export const categoryModel = [
   id: "00",
     titleCategory: "Outros",
     name: "Biblioteca 2",
-    Icon: "",
+    Icon: categoryIcons[3].icon,
     link: "/servicebook/subcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
     subcategory: [ {
@@ -96,21 +97,50 @@ export const categoryModel = [
   
 ];
 
-export const subcategoryModel = [ {
+export const serviceModel = [
+  {
+  id: "service01",
+  category: [ { sendo: "pegar o index do array da lista de categorias" } ],
+  subcategory: [ { sendo: "pegar o index do array da lista de subcategorias" } ],
+  applicantsName: "vai ser o contextUser (usuário logado) da pessoa - pego pelo contexto",
+  credentialType: "aluno/servidor/professor/tecnico - pego pelo contexto de usuário",
+  title: "informado pelo usuário" ,
+  patrimônio: "arquivo pdf",
+  description:
+    "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
+  serviceLocal: "Bloco A",
+},
+  {
+  id: "service02",
+  category: [ { sendo: "pegar o index do array da lista de categorias" } ],
+  subcategory: [ { sendo: "pegar o index do array da lista de subcategorias" } ],
+  applicantsName: "vai ser o contextUser (usuário logado) da pessoa - pego pelo contexto",
+  credentialType: "aluno/servidor/professor/tecnico - pego pelo contexto de usuário",
+  title: "titulo do serviço dois" ,
+  patrimônio: "arquivo pdf",
+  description:
+    "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
+  serviceLocal: "Bloco A",
+},
+]
+
+
+export const subcategoryModel = [
+  {
   id: "",
   titleSubcategory: "",
   description: "",
-  category: [ { sendo: "select múltiplo lista de categorias criadas" } ],
-  services: [ { sendo: "select múltiplo da lista de serviços criados opcional" } ],
-} ];
+  category: "categoria a qual ela pertence" ,
+    services: serviceModel,
+  }
+];
 
-//lógica: se pra ter acesso a essa carta de serviço eu já tenho que ter validado todas as credencias e nome da pessoa, eu posso pegar o contexto a partir daqui. Mas a questão é que a pessoa pode ver o serviço mas se ela não tiver permissão pra criar o serviço o botão vai ficar desabilitado.
 
 export const serviceLetterModel = [ {
   id: "",
   category: [ { sendo: "pegar o index do array da lista de categorias"} ],
   subcategory: [ { sendo: "pegar o index do array da lista de subcategorias"} ],
-  title: [ { sendo: "informado pelo usuário" } ],
+  title: [ { sendo: "nome do serviço clicado na lista da carta de serviço" } ],
   patrimônio: "opcional mas informado pelo usuário se precisa e de qual tipo",
   description:
     "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
@@ -121,21 +151,3 @@ export const serviceLetterModel = [ {
 },
 
 ];
-
-
-export const serviceModel = [ {
-  id: "",
-  category: [ { sendo: "pegar o index do array da lista de categorias"} ],
-  subcategory: [ { sendo: "pegar o index do array da lista de subcategorias"} ],
-  
-  applicantsName: "vai ser o contextUser (usuário logado) da pessoa - pego pelo contexto",
-  credentialType: "aluno/servidor/professor/tecnico - pego pelo contexto de usuário",
-  title: [ { sendo: "nome do serviço clicado na lista da carta de serviço" } ],
-  patrimônio: "arquivo pdf",
-  description:
-    "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
-  serviceLocal: "Bloco A",
-},
-
-];
-

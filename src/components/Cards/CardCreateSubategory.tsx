@@ -7,6 +7,8 @@ import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
+
+import {categoryModel, serviceModel } from '../../Utils/ServiceModels'
 import {
 	validationSchema,
 	servicesList,
@@ -38,8 +40,8 @@ export const CardCreateSubcategory = () => {
 
 	useEffect(() => {
 		localStorage.setItem("subcategories", JSON.stringify(subcategories));
-	});
-
+	} );
+	
 	return (
 		<div className="mx-4">
 			<div
@@ -116,7 +118,12 @@ export const CardCreateSubcategory = () => {
 										label="services"
 										name="services"
 										default="Selecione o serviço"
-										listitems={servicesList}
+										listitems={ serviceModel.map( service => {
+											return (
+												service.title
+											);
+										}
+										) }
 									/>
 								</div>
 								<div className="">
@@ -124,7 +131,14 @@ export const CardCreateSubcategory = () => {
 										label="category"
 										name="category"
 										default="Selecione a categoria"
-										listitems={categoriesList}
+										listitems={ 
+											categoryModel.map( category => {
+												return (
+													category.titleCategory
+												);
+											}
+											)
+} 
 									/>
 								</div>
 							</div>

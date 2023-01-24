@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import {categoryModel} from "../Utils/ServiceModels"
 
 interface CategoryContextProps {
   category: Array<object>;
@@ -12,18 +13,7 @@ interface CategoryProviderProps {
 export const CategoryContext = createContext({} as CategoryContextProps)
 
 export const CategoryProvider = ( { children }: CategoryProviderProps ) => {
-  const [ categories, setCategories ] = useState<Array<object>>( [
-    {
-		name: "Biblioteca 2",
-		Icon: "",
-    link: "/servicebook/subcategory",
-	},
-    {
-		name: "Manutenção 2",
-		Icon: "",
-    link: "/servicebook/subcategory",
-	},
-  ]) 
+  const [ categories, setCategories ] = useState<Array<object>>( categoryModel ) 
 
 
   function addCategory ( category: Array<object> ) {
