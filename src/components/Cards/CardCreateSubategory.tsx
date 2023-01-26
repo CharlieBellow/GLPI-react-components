@@ -8,7 +8,7 @@ import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
-import {categoryModel, serviceModel } from '../../Utils/ServiceModels'
+import { categoryModel, serviceModel, subcategoryModel } from '../../Utils/ServiceModels'
 import {
 	validationSchema,
 	servicesList,
@@ -17,6 +17,8 @@ import {
 import * as yup from "yup";
 //import { services, ServicesList } from "../Pages/ServiceLetter/ServicesList";
 import { useEffect, useState } from "react";
+import { useServiceContext } from "../../Contexts/ServiceContext";
+import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 
 const validate = yup.object().shape({
 	titleSubcategory: validationSchema.titleSubcategory,
@@ -26,7 +28,13 @@ const validate = yup.object().shape({
 });
 
 export const CardCreateSubcategory = () => {
-	const [subcategories, setSubcategories] = useState([{}]);
+
+	const { addInfoService, infoService } = useServiceContext()
+	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
+
+	
+	console.log( "infoServiceLetter:", infoServiceLetter )
+	const [ subcategories, setSubcategories ] = useState( subcategoryModel );
 
 	useEffect(() => {
 		const subcategoryStorage = localStorage.getItem("subcategories");
@@ -34,9 +42,9 @@ export const CardCreateSubcategory = () => {
 		if (subcategoryStorage) {
 			setSubcategories(JSON.parse(subcategoryStorage));
 
-			console.log("subcategories: ", subcategoryStorage);
+			//console.log("subcategories: ", subcategoryStorage);
 		}
-	}, []);
+	}, [] );
 
 	useEffect(() => {
 		localStorage.setItem("subcategories", JSON.stringify(subcategories));
@@ -59,8 +67,8 @@ export const CardCreateSubcategory = () => {
 					initialValues={{
 						titleSubcategory: "",
 						description: "",
-						category: "",
-						services: "",
+						category: categoryModel[ 0 ],
+						//services: [],
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
 								day: "2-digit",
@@ -84,11 +92,15 @@ export const CardCreateSubcategory = () => {
 							console.log("submit:", values);
 							setSubcategories([...subcategories, values]);
 							console.log("subcategory:", subcategories);
-
+						console.log("values:", values);
+						
+						
+							addInfoServiceLetter( [ { subcategory: values, id: "0" } ] )
+							console.log( "infoServiceLetter:", infoServiceLetter )
 							toast.success("Serviço criado com sucesso!");
-							//alert(JSON.stringify(values, null, 2));
+					
 							actions.resetForm();
-							//setSubmitting(false);
+						
 						}, 400);
 					}}
 				>
@@ -120,7 +132,7 @@ export const CardCreateSubcategory = () => {
 										default="Selecione o serviço"
 										listitems={ serviceModel.map( service => {
 											return (
-												service.title
+												service.serviceLetter.title
 											);
 										}
 										) }
@@ -132,7 +144,7 @@ export const CardCreateSubcategory = () => {
 										name="category"
 										default="Selecione a categoria"
 										listitems={ 
-											categoryModel.map( category => {
+											categoryModel.map( (category) => {
 												return (
 													category.titleCategory
 												);

@@ -51,7 +51,7 @@ export const campusList = [
 	"Centro de Engenharia e Ciências Agrárias",
 ];
 
-export const bondList = ["Aluno", "Técnico", "Professor", "Servidor", "outro"];
+export const bondList = ["Aluno", "Técnico", "Professor", "Servidor", "outro", "Administrador"];
 
 export const genderList = [
 	"Homem",
@@ -98,6 +98,10 @@ export const validationSchema = {
 		.string()
 		.min(5, "No mínimo 5 caracteres")
 		.max(60, "No máximo 60 caracteres")
+		.required("É obrigatório colocar um título"),
+	link: yup
+		.string()
+		.min(1, "No mínimo 5 caracteres")
 		.required("É obrigatório colocar um título"),
 	description: yup
 		.string()
@@ -217,7 +221,7 @@ export const validationSchema = {
 		.required("É obrigatório informar o nome da Subcategoria"),
 	services: yup
 		.string()
-		.oneOf( serviceModel.map( serviceName => { return serviceName.title; } ), "Escolha entre essas opções:")
+		.oneOf( serviceModel.map( serviceName => { return serviceName.serviceLetter.title; } ), "Escolha entre essas opções:")
 		.required("É obrigatório informar o serviço"),
 	category: yup
 		.string()

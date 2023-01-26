@@ -23,13 +23,16 @@ pra obrigar a carta de serviço a ter uma categoria eu crio desde o início a ca
 
 import * as Icon from 'phosphor-react'
 
+const sizeIcon = 27
+const classIcon = ""
+
 export const categoryIcons = [
   { name: "Plus", icon: <Icon.Plus /> },
   { name: "DotsThreeVertical", icon: <Icon.DotsThreeVertical /> },
   { name: "AddressBook", icon: <Icon.DotsThreeVertical /> },
+  { name: "Archive", icon: <Icon.Archive size={ sizeIcon } className={ classIcon } /> },
   { name: "Archive", icon: <Icon.Archive /> },
-  { name: "Archive", icon: <Icon.Archive /> },
-  { name: "Asterisk", icon: <Icon.Asterisk /> },
+  { name: "Asterisk", icon: <Icon.Asterisk size={ sizeIcon } className={ classIcon } /> },
   { name: "Book", icon: <Icon.Book /> },
   { name: "Books", icon: <Icon.Books /> },
   { name: "BookOpen", icon: <Icon.BookOpen /> },
@@ -71,58 +74,12 @@ export const categoryModel = [
   {
   id: "00",
     titleCategory: "Outros",
-    name: "Biblioteca 2",
-    Icon: categoryIcons[3].icon,
+    icon: categoryIcons[3].icon,
     link: "/servicebook/subcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
-    subcategory: [ {
-      requisito: "opcional",
-      id: "00",
-      titleSubcategory: "Outros",
-      description: "Quando uma categoria é criada mas não tem nenhuma outra subcategorias, essa subcategoria será atribuída.",
-      category: [ { sendo: " select múltiplo da lista de categorias criadas opcional" } ],
-      services: [ { sendo: "select múltiplo da lista de serviços criados opcional" } ],
-    }],
-  },
-  
-  {
-  id: "",
-  titleCategory: "",
-  description: "",
-  subcategory: [ { sendo: "lista de subcategorias opcional" } ],
-  name: "Biblioteca 2",
-  Icon: "",
-  link: "/servicebook/subcategory",
   },
   
 ];
-
-export const serviceModel = [
-  {
-  id: "service01",
-  category: [ { sendo: "pegar o index do array da lista de categorias" } ],
-  subcategory: [ { sendo: "pegar o index do array da lista de subcategorias" } ],
-  applicantsName: "vai ser o contextUser (usuário logado) da pessoa - pego pelo contexto",
-  credentialType: "aluno/servidor/professor/tecnico - pego pelo contexto de usuário",
-  title: "informado pelo usuário" ,
-  patrimônio: "arquivo pdf",
-  description:
-    "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
-  serviceLocal: "Bloco A",
-},
-  {
-  id: "service02",
-  category: [ { sendo: "pegar o index do array da lista de categorias" } ],
-  subcategory: [ { sendo: "pegar o index do array da lista de subcategorias" } ],
-  applicantsName: "vai ser o contextUser (usuário logado) da pessoa - pego pelo contexto",
-  credentialType: "aluno/servidor/professor/tecnico - pego pelo contexto de usuário",
-  title: "titulo do serviço dois" ,
-  patrimônio: "arquivo pdf",
-  description:
-    "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
-  serviceLocal: "Bloco A",
-},
-]
 
 
 export const subcategoryModel = [
@@ -130,18 +87,17 @@ export const subcategoryModel = [
   id: "",
   titleSubcategory: "",
   description: "",
-  category: "categoria a qual ela pertence" ,
-    services: serviceModel,
+  category: categoryModel[0],
   }
 ];
 
 
 export const serviceLetterModel = [ {
   id: "",
-  category: [ { sendo: "pegar o index do array da lista de categorias"} ],
-  subcategory: [ { sendo: "pegar o index do array da lista de subcategorias"} ],
-  title: [ { sendo: "nome do serviço clicado na lista da carta de serviço" } ],
-  patrimônio: "opcional mas informado pelo usuário se precisa e de qual tipo",
+  category: categoryModel[0],
+  subcategory: subcategoryModel[0],
+  title: "titulo do serviço clicado na lista de subcategorias",
+  patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
   description:
     "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
@@ -150,4 +106,15 @@ export const serviceLetterModel = [ {
 
 },
 
+];
+
+export const serviceModel = [
+  {
+    id: "service01",
+    serviceLocal: "Bloco A",
+    description:
+      "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
+    serviceLetter: serviceLetterModel[0],
+    patrimonio: "se obrigatorio (verificado em serviceLetterModel[0].patrimonio (booleano) então será exibido o input para adicionar arquivo)",
+  },
 ];

@@ -1,4 +1,4 @@
-import { Spinner } from "@chakra-ui/react";
+import { Icon, Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
@@ -12,17 +12,22 @@ import * as yup from "yup";
 //import { services, ServicesList } from '../Pages/ServiceLetter/ServicesList';
 import { useEffect, useState } from "react";
 import { useCategoryContext } from '../../Contexts/CategoryContext';
+import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
+
+
+
 
 const validate = yup.object().shape({
 	titleCategory: validationSchema.titleCategory,
 	description: validationSchema.description,
 	services: validationSchema.services,
+	link: validationSchema.link,
 });
 
 export const CardCreateCategory = () => {
 
 	//const {category} = useCategoryContext()
-	const [categories, setCategories] = useState([{}]);
+	const [ categories, setCategories ] = useState( categoryModel );
 
 	useEffect(() => {
 		const categoryStorage = localStorage.getItem("categories");
@@ -37,6 +42,7 @@ export const CardCreateCategory = () => {
 	useEffect(() => {
 		localStorage.setItem("categories", JSON.stringify(categories));
 	});
+
 
 	return (
 		<div className="mx-4">
@@ -55,7 +61,9 @@ export const CardCreateCategory = () => {
 					initialValues={{
 						titleCategory: "",
 						description: "",
-						services: "",
+						//services: [],
+						//icon: categoryIcons[ 3 ].icon,
+						link: "",
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
 								day: "2-digit",
@@ -77,7 +85,7 @@ export const CardCreateCategory = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							setCategories([...categories, values]);
+							//setCategories([...categories, values]);
 							console.log("category:", categories);
 
 							toast.success("Categoria criada com sucesso!");
@@ -109,11 +117,12 @@ export const CardCreateCategory = () => {
 									/>
 								</div>
 								<div className="">
-									<FieldSelect
-										label="services"
-										name="services"
-										default="Selecione o serviço"
-										listitems={servicesList}
+									<CardLabelInput
+										label="link"
+										name="link"
+										type="text"
+										width="w-full"
+										inputid="title"
 									/>
 								</div>
 							</div>

@@ -16,6 +16,9 @@ import * as yup from "yup";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
+import { categoryModel, serviceModel, subcategoryModel, serviceLetterModel } from "../../Utils/ServiceModels";
+import { useServiceContext } from "../../Contexts/ServiceContext";
+import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -28,7 +31,12 @@ const validate = yup.object().shape({
 });
 
 export const CardCreateService = () => {
-	const [services, setServices] = useState(servicesList);
+	
+	const { addInfoService, infoService } = useServiceContext()
+	
+	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
+	
+	const [ services, setServices ] = useState( serviceModel );
 
 	useEffect(() => {
 		const servicesStorage = localStorage.getItem("services");
@@ -57,10 +65,9 @@ export const CardCreateService = () => {
 					<CardLine />
 				</div>
 				<Formik
-					initialValues={{
-						name: "",
-						title: "",
-						//patrimonio: "",
+					initialValues={ {
+						serviceLetter: serviceLetterModel[0],
+						patrimonio: "",
 						description: "",
 						serviceLocal: "",
 						id: new Date()
@@ -86,6 +93,9 @@ export const CardCreateService = () => {
 							console.log("submit:", values);
 							setServices([...services, values]);
 							console.log("services:", services);
+							addInfoService( [ { ...values, serviceLetter: infoServiceLetter } ] )
+							
+							console.log( "infos:", infoServiceLetter )
 
 							toast.success("Serviço criado com sucesso!");
 						
@@ -100,10 +110,11 @@ export const CardCreateService = () => {
 								<div className="">
 									<CardLabelInput
 										label="Nome"
-										name="name"
+										name="aplicantsName"
 										type="text"
 										width="w-full"
 										inputid="title"
+									
 									/>
 								</div>
 

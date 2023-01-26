@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-
+import { serviceModel } from "../Utils/ServiceModels"
 
 export const servicesList = [
 	{
@@ -62,18 +62,7 @@ export const ServiceContext = createContext({} as ServiceContextProps)
 
 export const ServiceProvider = ( { children }: ServiceProviderProps ) => {
 
-  const [ infoServices, setInfoServices ] = useState<Array<object>>( [
-    {
-		id: "00",
-		applicantsName: "vai ser o Auth (usuário logado) da pessoa - pego pelo contexto",
-    credentialType: "aluno/servidor/professor/tecnico - pego pelo contexto",
-    title: "nome do serviço clicado",
-    patrimônio: "arquivo pdf",
-		description:
-			"Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
-    serviceLocal: "Bloco A",
-	},
-  ] ) 
+  const [ infoServices, setInfoServices ] = useState<Array<object>>( serviceModel ) 
 
 
   function addInfoService ( infoService: Array<object> ) {
