@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import * as Icon from "phosphor-react";
 import CategoriaHomeMobile from "./CategoryHomeMobile";
 import { categoryModel } from "../Utils/ServiceModels"
