@@ -1,6 +1,6 @@
 
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface ServiceByCategoryProps {
   listservices: Array<object>;
@@ -13,7 +13,7 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 
 	console.log( "title: ", title );
 	
-
+	const { Redes } = useParams();
 
 	const aqui = document.getElementById( "serviceList" )
 		//.addEventListener( "click", () => console.log( "clicou" ) );
@@ -33,7 +33,7 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 						<>
 							<Link
 								id={ service.title }
-								to={ service.link }
+								to={ `/servicebook/:titleCategory/:${ Redes }/:serviceLetter/: idServiceLetter` }
 								key={ service.title }
 								className="text-blue-ufal font-bold text-xl hover:underline hover:underline-offset-2"
 									>

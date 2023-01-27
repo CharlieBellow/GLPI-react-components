@@ -55,7 +55,7 @@ export const categoryModel = [
   id: "00",
     titleCategory: "Outros",
     icon: categoryIcons[3].icon,
-    link: "/servicebook/:titleCategory/:id/:titleSubcategory",
+    link: "/servicebook/:titleCategory/:titleSubcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
   },
   

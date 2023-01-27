@@ -21,25 +21,31 @@ export function ServiceRoutes () {
           <SubcategoryProvider>
         <CategoryProvider>
             
-      <Routes>
-              <Route path="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter" element={ <ServiceLetter /> } />
+            <Routes>
+              
+              <Route
+                path="/servicebook/:titleCategory"
+                element={ <ScreenCategoriaHome /> }
+              />
 
-              <Route path="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter/service/create" element={ <CreateService /> } />
+              <Route
+                path="/servicebook/:c/:titleSubcategory"
+                element={ <PageSubcategory /> }
+              />
+              
+              <Route
+                path="/servicebook/:titleCategory/:titleSubcategory"
+                element={ <ServicesByCategory /> }
+              />
+              
+              <Route path="/servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter" element={ <ServiceLetter /> } />
+
+              <Route path="/servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter/service/create" element={ <CreateService /> } />
 
         <Route path="/service/list" element={ <ServicesPage /> } />
 
-        <Route
-                path="/servicebook/:titleCategory/:id"
-                element={ <ScreenCategoriaHome /> }
-          />
-        <Route
-                path="/servicebook/:titleCategory/:id/:titleSubcategory"
-          element={ <PageSubcategory /> }
-          />
-        <Route
-          path="/servicebook/service"
-          element={ <ServicesByCategory /> }
-          />
+       
+      
         <Route
           path="/servicebook/category/create"
           element={ <AddCategory /> }

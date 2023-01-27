@@ -2,9 +2,10 @@ import { Page } from "../../components/Page";
 import * as Icon from "phosphor-react"
 
 import CategoriaHomeMobile from "../../components/CategoryHomeMobile";
+import { useParams } from "react-router-dom";
 const PageSubcategory = () => {
 
-	//const { id, titleCategory } = useParams()
+	
   return (
 		<Page
 			pagetitle={"Subcategorias"}
@@ -19,7 +20,7 @@ const PageSubcategory = () => {
 						{/*<div className="flex flex-col gap-4 ">*/}
 						<div>
 							<CategoriaHomeMobile
-								link="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter"
+								link={`/servicebook/:titleCategory/:Redes`}
 								Name={"Redes"}
 								Icon={<Icon.Cpu size={27} />}
 							/>

@@ -48,12 +48,12 @@ export const ServicesList = [
 export const services = [
 	{
 		title: "Instalação de impressora",
-		link: "/ServiceLetter",
+		link: "/servicebook/:titleCategory/:{titleSubcategory}/:serviceLetter/:idServiceLetter",
 		serviceLetter: ServicesList,
 	},
 	{
 		title: "Manutenção de Computadores",
-		link: "/ServiceLetter",
+		link: "/servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter",
 		serviceLetter: ServicesList,
 	},
 
