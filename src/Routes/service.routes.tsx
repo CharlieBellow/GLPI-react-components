@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ScreenCategoriaHome from "../components/ScreenHomeCategoria";
 import { CategoryProvider } from "../Contexts/CategoryContext";
 import { ServiceProvider } from "../Contexts/ServiceContext";
 import { ServiceLetterProvider } from "../Contexts/ServiceLetterContext";
@@ -21,16 +22,18 @@ export function ServiceRoutes () {
         <CategoryProvider>
             
       <Routes>
-        <Route path="/service/letter" element={ <ServiceLetter /> } />
-        <Route path="/service/create" element={ <CreateService /> } />
+              <Route path="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter" element={ <ServiceLetter /> } />
+
+              <Route path="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter/service/create" element={ <CreateService /> } />
+
         <Route path="/service/list" element={ <ServicesPage /> } />
 
         <Route
-          path="/servicebook/category"
-          element={ <PageCategoriaHome /> }
+                path="/servicebook/:titleCategory/:id"
+                element={ <ScreenCategoriaHome /> }
           />
         <Route
-          path="/servicebook/subcategory"
+                path="/servicebook/:titleCategory/:id/:titleSubcategory"
           element={ <PageSubcategory /> }
           />
         <Route

@@ -40,7 +40,7 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 					{props.service[props.index].title}
 				</h3>
 				<div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
-					<Link to="/CreateService">
+					<Link to="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter/service/create">
 						<Button
 							title={floatingButton ? "" : changeButtonName()}
 							theme="withIcon"

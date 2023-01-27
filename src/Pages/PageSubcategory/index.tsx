@@ -3,6 +3,8 @@ import * as Icon from "phosphor-react"
 
 import CategoriaHomeMobile from "../../components/CategoryHomeMobile";
 const PageSubcategory = () => {
+
+	//const { id, titleCategory } = useParams()
   return (
 		<Page
 			pagetitle={"Subcategorias"}
@@ -17,7 +19,7 @@ const PageSubcategory = () => {
 						{/*<div className="flex flex-col gap-4 ">*/}
 						<div>
 							<CategoriaHomeMobile
-								link="/ListServices"
+								link="/servicebook/:titleCategory/:id/:titleSubcategory/:serviceLetter"
 								Name={"Redes"}
 								Icon={<Icon.Cpu size={27} />}
 							/>

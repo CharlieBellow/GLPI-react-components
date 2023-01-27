@@ -70,12 +70,13 @@ export const categoryIcons = [
   { name: "Wrench", icon: <Icon.Wrench /> },
 ]
 
+
 export const categoryModel = [
   {
   id: "00",
     titleCategory: "Outros",
     icon: categoryIcons[3].icon,
-    link: "/servicebook/subcategory",
+    link: "/servicebook/:titleCategory/:id/:titleSubcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
   },
   
