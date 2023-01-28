@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import ScreenCategoriaHome from "../components/ScreenHomeCategoria";
 import { CategoryProvider } from "../Contexts/CategoryContext";
 import { ServiceProvider } from "../Contexts/ServiceContext";
@@ -12,37 +12,67 @@ import PageSubcategory from "../Pages/PageSubcategory";
 import { ServiceLetter } from "../Pages/ServiceLetter";
 import ServicesByCategory from "../Pages/ServicesByCategory";
 import ServicesPage from "../Pages/ServicesPage";
-
+import routes from "../components/ScreenHomeCategoria"
+import { categoryModel } from "../Utils/ServiceModels";
+import {CategoryRoutes} from "./category.routes";
 
 export function ServiceRoutes () {
+
+  const { titleCategory } = useParams()
+  
   return (
     <ServiceProvider>
       <ServiceLetterProvider>
           <SubcategoryProvider>
         <CategoryProvider>
-            
+              <CategoryRoutes />
             <Routes>
+     
+
+              {/*aqui vou ter que pegar o array de categorias, subcategoria e tudo mais... e fazer um map para criar rotas baseado no nome das categorias
+              não sei se criar uma rota dentro da outra vai ajudar.. ou se criar as rootas já dentro do componente que faz o map pra exibir.. e depois importar aqui..
+            */}
               
               <Route
-                path="/servicebook/:titleCategory"
+                path="/servicebook/category"
                 element={ <ScreenCategoriaHome /> }
-              />
+              >
+                <Route
+                  path=":titleCategory"
+                  element={ <PageSubcategory /> }
+                >
+                  
+                  
 
-              <Route
-                path="/servicebook/:c/:titleSubcategory"
-                element={ <PageSubcategory /> }
-              />
+                  <Route
+                    path={ `:titleSubcategory`}
+                    element={ <ServicesByCategory /> }
+                  >
+                    {/* nessa rota pega o id da carta de serviço e passa pra próxima */}
+                    <Route path=":serviceLetter/:idServiceLetter" element={ <ServiceLetter /> } >
+                      {/* pegar o id da carta de serviço */}
+                      <Route path=":idServiceLetter/create" element={ <CreateService /> } />
+
+                    </Route>
+                  </Route>
+                </Route>
+
+
+              </Route>
+
+            
               
-              <Route
-                path="/servicebook/:titleCategory/:titleSubcategory"
-                element={ <ServicesByCategory /> }
-              />
+          
+             
+
               
-              <Route path="/servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter" element={ <ServiceLetter /> } />
 
-              <Route path="/servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter/service/create" element={ <CreateService /> } />
-
-        <Route path="/service/list" element={ <ServicesPage /> } />
+              <Route path="/service/list" element={ <ServicesPage /> } />
+              {/*  fazer o map com as rotas*/ }
+              
+          
+        
+       
 
        
       

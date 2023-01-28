@@ -5,6 +5,7 @@ import CategoriaHomeMobile from "../../components/CategoryHomeMobile";
 import { useParams } from "react-router-dom";
 const PageSubcategory = () => {
 
+	const { titleCategory } = useParams()
 	
   return (
 		<Page
@@ -20,7 +21,7 @@ const PageSubcategory = () => {
 						{/*<div className="flex flex-col gap-4 ">*/}
 						<div>
 							<CategoriaHomeMobile
-								link={`/servicebook/:titleCategory/:Redes`}
+								link={ `/servicebook/${ titleCategory}/:titleSubcategory`}
 								Name={"Redes"}
 								Icon={<Icon.Cpu size={27} />}
 							/>

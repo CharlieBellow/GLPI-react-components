@@ -4,10 +4,13 @@ import * as Icon from "phosphor-react";
 import CategoriaHomeMobile from "./CategoryHomeMobile";
 import { categoryModel } from "../Utils/ServiceModels"
 import { Page } from "./Page";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
+import PageSubcategory from '../Pages/PageSubcategory';
 
+export let routes = {}
 function ScreenCategoriaHome () {
-
+    
+    //const { titleCategory } = useParams()
     
 
     return(
@@ -19,9 +22,13 @@ function ScreenCategoriaHome () {
     
                     { categoryModel.map( category => {
                         return (
-                            <CategoriaHomeMobile link={ category.link } Name={ category.titleCategory } Icon={ category.icon }
-                            key={category.id} />
+                            <>
                             
+                            <CategoriaHomeMobile link={ `/servicebook/${category.titleCategory}` } Name={ category.titleCategory } Icon={ category.icon }
+                                key={ category.id } />
+                        
+                            
+                            </>
                             )
                         })}
                     </div>
