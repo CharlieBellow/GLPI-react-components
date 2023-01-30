@@ -1,6 +1,6 @@
 import * as  Icon from "phosphor-react";
 import { Link } from "react-router-dom";
-import CategoryHomeMobile from "../CardCategory";
+import CardCategory from "../CardCategory";
 
 const CardCategories = () => {
 	return (
@@ -9,11 +9,10 @@ const CardCategories = () => {
 				<h4 className="text-4xl mb-8 font-bold">Categorias</h4>
 				<div className="grid grid-cols-2">
 					<Link to="/PageCategoriaHome">
-						<CategoryHomeMobile
+						<CardCategory
 							link="/"
 							Name={ "Biblioteca" }
-							Icon={ <Icon.BookOpen size={ 27 } /> }
-						/>
+							Icon={ <Icon.BookOpen size={ 27 } /> } idCategory={ "" }						/>
 					</Link>
 					<div className="gap-3 grid grid-cols-2">
 						<Link to="/">Dashboard</Link>

@@ -59,7 +59,7 @@ export const categoryModel = [
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
   },
   {
-  id: "00",
+  id: "01",
     titleCategory: "NTI",
     icon: categoryIcons[5].icon,
     link: "/servicebook/:titleCategory/:titleSubcategory",
@@ -71,7 +71,7 @@ export const categoryModel = [
 
 export const subcategoryModel = [
   {
-  id: "",
+  id: "02",
   titleSubcategory: "Redes",
   description: "",
   category: categoryModel[0],

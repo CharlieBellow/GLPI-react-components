@@ -15,6 +15,7 @@ import routes from "../components/Category";
 import { categoryModel } from "../Utils/ServiceModels";
 import { CategoryRoutes } from "./category.routes";
 import Category from "../components/Category";
+import RoutesProvider from "../Contexts/RouteContext";
 
 export function ServiceRoutes () {
 
@@ -24,24 +25,25 @@ export function ServiceRoutes () {
     <ServiceProvider>
       <ServiceLetterProvider>
         <SubcategoryProvider>
+          <RoutesProvider>
           <CategoryProvider>
             <CategoryRoutes />
             <Routes>
 
 
               <Route
-                path="/servicebook/"
+                path="/servicebook"
                 element={ <Category /> }
               >
                 <Route
-                  path="/servicebook/:titleCategory"
+                  path=":titleCategory"
                   element={ <Subcategory /> }
                 >
 
 
 
                   <Route
-                    path={ `/servicebook/:titleCategory/:titleSubcategory` }
+                    path={`/servicebook/:titleCategory/:titleSubcategory`}
                     element={ <ServicesByCategory /> }
                   >
                     {/* nessa rota pega o id da carta de serviço e passa pra próxima */ }
@@ -82,7 +84,8 @@ export function ServiceRoutes () {
               />
             </Routes>
 
-          </CategoryProvider>
+            </CategoryProvider>
+          </RoutesProvider>
         </SubcategoryProvider>
       </ServiceLetterProvider>
     </ServiceProvider>
