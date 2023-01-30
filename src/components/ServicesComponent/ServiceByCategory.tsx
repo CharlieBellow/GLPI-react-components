@@ -13,12 +13,12 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 
 	console.log( "title: ", title );
 	
-	const { Redes } = useParams();
-
-	const aqui = document.getElementById( "serviceList" )
-		//.addEventListener( "click", () => console.log( "clicou" ) );
-  console.log("aqui", aqui);
 	
+	const aqui = document.getElementById( "serviceList" )
+	//.addEventListener( "click", () => console.log( "clicou" ) );
+  console.log("aqui", aqui);
+
+	const { titleCategory, titleSubcategory } = useParams()
 	return (
 	
 				<>
@@ -33,7 +33,7 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 						<>
 							<Link
 								id={ service.title }
-								to={ `/servicebook/:titleCategory/:${ Redes }/:serviceLetter/: idServiceLetter` }
+								to={ `/servicebook/${ titleCategory }/:${ titleSubcategory }/:serviceLetter/: idServiceLetter` }
 								key={ service.title }
 								className="text-blue-ufal font-bold text-xl hover:underline hover:underline-offset-2"
 									>

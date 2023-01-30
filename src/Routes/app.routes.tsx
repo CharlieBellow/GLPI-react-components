@@ -4,7 +4,7 @@ import "../styles/main.css";
 
 import Teste from "../Pages/Teste";
 import SignUp from "../Pages/SignUp";
-import ListPage from "../Pages/ListPage";
+import ListPage from "../Pages/List";
 
 import UserInfo from "../Pages/UserInfo";
 
@@ -18,27 +18,28 @@ import Dashboard from "../Pages/Dashboard";
 export function AppRoutes () {
   return (
 
-      <Router>
-        <Routes>
+    <Router>
+      <Routes>
 
-          <Route path="/" element={ <Dashboard /> } />
-          <Route path="/dashboard" element={ <Dashboard /> } />
-
-
-          <Route path="/user/info" element={ <UserInfo /> } />
-          <Route path="/user/create" element={ <AddUser /> } />
-
-          <Route path="/users/list" element={ <ListPage /> } />
+        <Route path="/" element={ <Dashboard /> } />
+        <Route path="/dashboard" element={ <Dashboard /> } />
 
 
+        <Route path="/user/info" element={ <UserInfo /> } />
+        <Route path="/user/create" element={ <AddUser /> } />
 
-          <Route path="/signup" element={ <SignUp /> } />
-
-          <Route path="/test/card" element={ <CardTest /> } />
-          <Route path="/test" element={ <Teste /> } />
+        <Route path="/users/list" element={ <ListPage /> } />
 
 
 
-        </Routes>
-      </Router>
-    )}
+        <Route path="/signup" element={ <SignUp /> } />
+
+        <Route path="/test/card" element={ <CardTest /> } />
+        <Route path="/test" element={ <Teste /> } />
+
+
+
+      </Routes>
+    </Router>
+  );
+}

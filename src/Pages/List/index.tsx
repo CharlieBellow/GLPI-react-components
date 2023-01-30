@@ -13,7 +13,7 @@ const ItemSelect = [
 ];
 
 
-export default function ListPage() {
+export default function List() {
 	const usersStorage = localStorage.getItem("users");
 	const [lista, setLista] = useState([]);
 

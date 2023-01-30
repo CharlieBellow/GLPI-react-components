@@ -4,7 +4,7 @@ import "../styles/main.css";
 
 import Teste from "../Pages/Teste";
 
-import ListPage from "../Pages/ListPage";
+import ListPage from "../Pages/List";
 
 import UserInfo from "../Pages/UserInfo";
 

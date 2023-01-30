@@ -3,9 +3,19 @@ import * as Icon from "phosphor-react"
 
 import CategoriaHomeMobile from "../../components/CategoryHomeMobile";
 import { useParams } from "react-router-dom";
-const PageSubcategory = () => {
+import { categoryModel, subcategoryModel } from "../../Utils/ServiceModels";
+
+interface CategoriaProps {
+	categoryId?: string;
+}
+
+const Subcategory = ( { categoryId }: CategoriaProps ) => {
 
 	const { titleCategory } = useParams()
+	const parametros = useParams()
+	console.log(parametros);
+	
+	console.log( "titleCategory", titleCategory );
 	
   return (
 		<Page
@@ -21,9 +31,11 @@ const PageSubcategory = () => {
 						{/*<div className="flex flex-col gap-4 ">*/}
 						<div>
 							<CategoriaHomeMobile
-								link={ `/servicebook/${ titleCategory}/:titleSubcategory`}
-								Name={"Redes"}
-								Icon={<Icon.Cpu size={27} />}
+								link={ `/servicebook/${ titleCategory }/${ subcategoryModel[ 0 ].titleSubcategory }` }
+								Name={ subcategoryModel[ 0 ].titleSubcategory }
+								Icon={ <Icon.Cpu size={ 27 } /> }
+								
+								
 							/>
 							<p>
 								Clique no card para solicitar um serviço relacionado a Rede de
@@ -109,4 +121,4 @@ const PageSubcategory = () => {
 	);
 }
  
-export default PageSubcategory;
+export default Subcategory;

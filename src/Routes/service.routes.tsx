@@ -7,51 +7,47 @@ import { SubcategoryProvider } from "../Contexts/SubcategoryContext";
 import AddCategory from "../Pages/AddCategory";
 import AddSubcategory from "../Pages/AddSubcategory";
 import CreateService from "../Pages/CreateService";
-import PageCategoriaHome from "../Pages/PageCategoriaHome";
-import PageSubcategory from "../Pages/PageSubcategory";
+import CategoriaHome from "../Pages/CategoriaHome";
+import Subcategory from "../Pages/Subcategory";
 import { ServiceLetter } from "../Pages/ServiceLetter";
 import ServicesByCategory from "../Pages/ServicesByCategory";
 import ServicesPage from "../Pages/ServicesPage";
-import routes from "../components/ScreenHomeCategoria"
+import routes from "../components/ScreenHomeCategoria";
 import { categoryModel } from "../Utils/ServiceModels";
-import {CategoryRoutes} from "./category.routes";
+import { CategoryRoutes } from "./category.routes";
 
 export function ServiceRoutes () {
 
-  const { titleCategory } = useParams()
-  
+  const { titleCategory } = useParams();
+
   return (
     <ServiceProvider>
       <ServiceLetterProvider>
-          <SubcategoryProvider>
-        <CategoryProvider>
-              <CategoryRoutes />
+        <SubcategoryProvider>
+          <CategoryProvider>
+            <CategoryRoutes />
             <Routes>
-     
 
-              {/*aqui vou ter que pegar o array de categorias, subcategoria e tudo mais... e fazer um map para criar rotas baseado no nome das categorias
-              não sei se criar uma rota dentro da outra vai ajudar.. ou se criar as rootas já dentro do componente que faz o map pra exibir.. e depois importar aqui..
-            */}
-              
+
               <Route
-                path="/servicebook/category"
+                path="/servicebook/"
                 element={ <ScreenCategoriaHome /> }
               >
                 <Route
-                  path=":titleCategory"
-                  element={ <PageSubcategory /> }
+                  path="/servicebook/:titleCategory"
+                  element={ <Subcategory /> }
                 >
-                  
-                  
+
+
 
                   <Route
-                    path={ `:titleSubcategory`}
+                    path={ `/servicebook/:titleCategory/:titleSubcategory` }
                     element={ <ServicesByCategory /> }
                   >
-                    {/* nessa rota pega o id da carta de serviço e passa pra próxima */}
-                    <Route path=":serviceLetter/:idServiceLetter" element={ <ServiceLetter /> } >
-                      {/* pegar o id da carta de serviço */}
-                      <Route path=":idServiceLetter/create" element={ <CreateService /> } />
+                    {/* nessa rota pega o id da carta de serviço e passa pra próxima */ }
+                    <Route path="servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter" element={ <ServiceLetter /> } >
+                      {/* pegar o id da carta de serviço */ }
+                      <Route path="servicebook/:titleCategory/:titleSubcategory/:serviceTitle/create" element={ <CreateService /> } />
 
                     </Route>
                   </Route>
@@ -60,35 +56,35 @@ export function ServiceRoutes () {
 
               </Route>
 
-            
-              
-          
-             
 
-              
+
+
+
+
+
 
               <Route path="/service/list" element={ <ServicesPage /> } />
               {/*  fazer o map com as rotas*/ }
-              
-          
-        
-       
 
-       
-      
-        <Route
-          path="/servicebook/category/create"
-          element={ <AddCategory /> }
-          />
-        <Route
-          path="/servicebook/subcategory/create"
-          element={ <AddSubcategory /> }
-          />
-      </Routes>
+
+
+
+
+
+
+              <Route
+                path="/servicebook/category/create"
+                element={ <AddCategory /> }
+              />
+              <Route
+                path="/servicebook/subcategory/create"
+                element={ <AddSubcategory /> }
+              />
+            </Routes>
 
           </CategoryProvider>
-            </SubcategoryProvider>
-        </ServiceLetterProvider>
+        </SubcategoryProvider>
+      </ServiceLetterProvider>
     </ServiceProvider>
 
   );

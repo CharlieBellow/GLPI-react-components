@@ -14,41 +14,6 @@ export const servicesList = [
 	},
 ];
 
-// informações do usuário
-//const infoUser = {
-  //  idUser: user.id,
-//  fullName: user.fullName,
-//	email: user.email,
-//	credentialType: user.bond,
-//  campus: user.campus,
-//serviceName: mome do serviço que ele clicou e coloca como valor do input de título na página de criação do serviço
-categoryService:
-subcategorySubcategory: 
-//}
-
-//Contexto de serviço
-/* 
-const lista de serviços
-id da carta de serviço
-
-const lista de categorias
-id da categoria
-
-const lista de subcategorias 
-id da subcategoria
-
-
-criar o serviço
-id, nome e credencial do usuário pelo contexto de usuário logado
-id da carta de serviço eu sei a qual categoria ele pertence 
-
-
-pra obrigar a carta de serviço a ter uma categoria eu crio desde o início a categoria e subcategoria com o nome outros. E aí quando for criar a carta de serviço obriga a colocar uma categoria e subcategoria, se não se aplicar a nenhuma a pessao escolhe outros.
-
-*/
-
-
-
 interface ServiceContextProps {
   infoService: Array<object>;
   addInfoService: ( infoService: Array<object> ) => void;

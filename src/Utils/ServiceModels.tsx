@@ -60,8 +60,8 @@ export const categoryModel = [
   },
   {
   id: "00",
-    titleCategory: "REDES",
-    icon: categoryIcons[3].icon,
+    titleCategory: "NTI",
+    icon: categoryIcons[5].icon,
     link: "/servicebook/:titleCategory/:titleSubcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
   },
@@ -72,7 +72,7 @@ export const categoryModel = [
 export const subcategoryModel = [
   {
   id: "",
-  titleSubcategory: "",
+  titleSubcategory: "Redes",
   description: "",
   category: categoryModel[0],
   }
@@ -80,7 +80,7 @@ export const subcategoryModel = [
 
 
 export const serviceLetterModel = [ {
-  id: "",
+  id: "005",
   category: categoryModel[0],
   subcategory: subcategoryModel[0],
   title: "titulo do serviço clicado na lista de subcategorias",
