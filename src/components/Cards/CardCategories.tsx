@@ -1,9 +1,9 @@
 import * as  Icon from "phosphor-react";
 import { Link } from "react-router-dom";
-import CategoryHomeMobile from "../CategoryHomeMobile";
+import CategoryHomeMobile from "../CardCategory";
 
-const CardCategory = () => {
-  return (
+const CardCategories = () => {
+	return (
 		<>
 			<div className="bg-white-ice w-auto h-auto py-4 px-4 rounded-lg shadow-card box-border">
 				<h4 className="text-4xl mb-8 font-bold">Categorias</h4>
@@ -11,8 +11,8 @@ const CardCategory = () => {
 					<Link to="/PageCategoriaHome">
 						<CategoryHomeMobile
 							link="/"
-							Name={"Biblioteca"}
-							Icon={<Icon.BookOpen size={27} />}
+							Name={ "Biblioteca" }
+							Icon={ <Icon.BookOpen size={ 27 } /> }
 						/>
 					</Link>
 					<div className="gap-3 grid grid-cols-2">
@@ -34,12 +34,12 @@ const CardCategory = () => {
 						<Link to="/servicebook/subcategory/create"> Add Subcategory</Link>
 						<Link to="/servicebook/service"> Serviços por category</Link>
 
-			
+
 					</div>
 				</div>
 			</div>
 		</>
 	);
-}
+};
 
-export default CardCategory;
+export default CardCategories;

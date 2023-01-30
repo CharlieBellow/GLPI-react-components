@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import * as Icon from "phosphor-react";
-import CategoriaHomeMobile from "./CategoryHomeMobile";
+import CategoriaHomeMobile from "./CardCategory";
 import { categoryModel } from "../Utils/ServiceModels";
 import { Page } from "./Page";
 import { Route, Routes, useParams } from "react-router-dom";
 import Subcategory from '../Pages/Subcategory';
 
 
-function ScreenCategoriaHome (  ) {
+export default function Category () {
 
     //const { titleCategory } = useParams()
 
@@ -25,7 +25,7 @@ function ScreenCategoriaHome (  ) {
                                 <>
 
                                     <CategoriaHomeMobile link={ `/servicebook/${ category.id }` } Name={ category.titleCategory } Icon={ category.icon }
-                                    key={ category.id } />
+                                        key={ category.id } />
 
                                 </>
                             );
@@ -50,4 +50,4 @@ function ScreenCategoriaHome (  ) {
     );
 }
 
-export default ScreenCategoriaHome;
+;

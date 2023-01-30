@@ -1,12 +1,12 @@
 import React from "react";
 import { Page } from "../../components/Page";
-import ScreenHomeMobile from "../../components/ScreenHomeMobile";
+import HomeScreen from "../../components/HomeScreen";
 
 function Dashboard() {
 	return (
 		<Page
 			pagetitle={"Dashboard"}
-			contentpage={<ScreenHomeMobile />}
+			contentpage={ <HomeScreen />}
 		/>
 	);
 }

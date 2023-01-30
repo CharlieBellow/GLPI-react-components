@@ -1,19 +1,19 @@
 import CardHomeMobile from "./Cards/CardHomeMobile";
-import CategoryHomeMobile from "./CategoryHomeMobile";
+import CategoryHomeMobile from "./CardCategory";
 import * as Icon from "phosphor-react";
 import Search from "./Inputs/Search";
 
-import CardCategory from "./Cards/CardCategory";
+import CardCategory from "./Cards/CardCategories";
 import CardTicketSummary from "./Cards/CardTicketSummary";
 import CardServices from "./Cards/CardServices";
 
-function ScreenHomeMobile() {
+function HomeScreen () {
 	return (
 		<div className="w-full h-screen">
 			<div className="lg:hidden">
 				<div className=" flex flex-col mx-2 gap-6 items-center">
 					<CardHomeMobile />
-					<Search placeholder={"O que está procurando?"} />
+					<Search placeholder={ "O que está procurando?" } />
 				</div>
 
 				<h1 className="font-semibold text-base my-6 ml-8">Categorias</h1>
@@ -21,34 +21,34 @@ function ScreenHomeMobile() {
 				<div className="mx-auto flex flex-wrap gap-2 max-w-xl justify-center md:m-0">
 					<CategoryHomeMobile
 						link="/"
-						Name={"Biblioteca"}
-						Icon={<Icon.BookOpen size={18} />}
+						Name={ "Biblioteca" }
+						Icon={ <Icon.BookOpen size={ 18 } /> }
 					/>
 					<CategoryHomeMobile
 						link="/"
-						Name={"NTI"}
-						Icon={<Icon.Cpu size={18} />}
+						Name={ "NTI" }
+						Icon={ <Icon.Cpu size={ 18 } /> }
 					/>
 					<CategoryHomeMobile
 						link="/"
-						Name={"manutenção"}
-						Icon={<Icon.Wrench size={18} />}
+						Name={ "manutenção" }
+						Icon={ <Icon.Wrench size={ 18 } /> }
 					/>
 					<CategoryHomeMobile
 						link="/"
-						Name={"Infraestrutura"}
-						Icon={<Icon.FileText size={18} />}
+						Name={ "Infraestrutura" }
+						Icon={ <Icon.FileText size={ 18 } /> }
 					/>
-					{/* Icon false */}
+					{/* Icon false */ }
 					<CategoryHomeMobile
 						link="/"
-						Name={"CRCA"}
-						Icon={<Icon.User size={18} />}
+						Name={ "CRCA" }
+						Icon={ <Icon.User size={ 18 } /> }
 					/>
 					<CategoryHomeMobile
 						link="/"
-						Name={"NAE"}
-						Icon={<Icon.Users size={18} />}
+						Name={ "NAE" }
+						Icon={ <Icon.Users size={ 18 } /> }
 					/>
 				</div>
 			</div>
@@ -63,4 +63,4 @@ function ScreenHomeMobile() {
 	);
 }
 
-export default ScreenHomeMobile;
+export default HomeScreen;

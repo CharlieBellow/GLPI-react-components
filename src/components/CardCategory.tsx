@@ -7,7 +7,7 @@ interface categoriaProps {
 	link: string;
 }
 
-function CategoryHomeMobile(props: categoriaProps) {
+function CardCategory(props: categoriaProps) {
 	return (
 		<Link to={props.link}>
 			<div className="text-light-bg w-36 h-20 bg-white-ice pt-3 px-3 rounded-lg shadow-card lg:w-52 lg:h-26 flex flex-col lg:gap-2 lg:pt-4 lg:px-4 cursor-pointer hover:bg-opacity-20">
@@ -18,4 +18,4 @@ function CategoryHomeMobile(props: categoriaProps) {
 	);
 }
 
-export default CategoryHomeMobile;
+export default CardCategory;
