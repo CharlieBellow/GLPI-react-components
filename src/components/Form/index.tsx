@@ -6,19 +6,15 @@ import {
 	//blocList,
 } from "../../Utils/validations";
 
-import * as yup from 'yup'
+import * as yup from "yup";
 import { toast } from "react-toastify";
-import { Button } from "../Button";
-import { CardLabelInput } from "../CardLabelInput";
-import { CardTitle } from "../CardTitle";
-import { CardLine } from "../CardLine";
-
-
-
+import { Button } from "../Buttons/Button";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { CardTitle } from "../Cards/CardTitle";
+import { CardLine } from "../Cards/CardLine";
 
 const validate = yup.object().shape({
 	name: validationSchema.name,
-
 });
 
 export const BasicForm = () => {
@@ -45,7 +41,7 @@ export const BasicForm = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							toast.success( "Chamado criado com sucesso!" );
+							toast.success("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 						}, 400);
@@ -63,8 +59,6 @@ export const BasicForm = () => {
 										inputid="title"
 									/>
 								</div>
-
-								
 							</div>
 
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">

@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #EDF2F7;
+}
+
+@layer components {
+	/* classes para estilização do Menu lateral responsivo */
+
+	input:checked + .checkbox-wrapper {
+		@apply w-[3.75rem];
+	}
+
+	input:checked + .checkbox-wrapper img {
+		@apply w-[2.176rem] h-[3.736rem] mx-3 mb-[-1rem];
+	}
+
+	input:checked + .checkbox-wrapper .text-hidden {
+		@apply hidden;
+	}
+
+	input:checked + .checkbox-wrapper .text-invisible {
+		@apply invisible;
+	}
+
+	input:checked + .checkbox-wrapper .increaseIcon {
+		@apply w-full  justify-center items-center;
+	}
+
+	/* Chackbox e Ícone de botão que vão mudar conforme o clique do menu. Colocar a rotação e transition do ícone aqui */
+	.floatToggle {
+		color: white;
+		left: 3rem;
+		top: 2rem;
+		float: right;
+		position: relative;
+	}
+
+	/* Colocar a rotação e transition do ícone aqui. usar o webkit transform: rotate() e construir as barras uma por uma  (usando 3 divs) e depois rotacionar quando estiver no checked. (foi exatamente assim que fiz no Figma) */
+	input:checked + .checkbox-wrapper .floatToggle .change {
+		transform: translateX(-30%);
+	}
+
+	input:checked + .checkbox-wrapper .floatToggle .change .bar1 {
+		-webkit-transform: rotate(-45deg) translate(-5px, 7px);
+		transform: rotate(-45deg) translate(-6px, 7px);
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	input:checked + .checkbox-wrapper .floatToggle .change .bar2 {
+		visibility: hidden;
+	}
+
+	input:checked + .checkbox-wrapper .floatToggle .change .bar3 {
+		-webkit-transform: rotate(45deg) translate(-3px, -5px);
+		transform: rotate(45deg) translate(1px, -4px);
+	}
+
+	
+	/* tentar fazwer usando o dialog do radix */
+	@media screen and (max-width: 1023px) {
+		.floatToggle {
+			left: 3rem;
+			top: 1rem;
+		}
+
+
+		.mobile-hidden {
+		/*display: none;*/
+		visibility: hidden;
+		}
+
+		input:checked + .checkbox-wrapper .floatToggle .change {
+			transform: translateX(30%);
+		}
+
+		input:checked + .checkbox-wrapper .floatToggle .change .bar1 {
+			-webkit-transform: rotate(-45deg) translate(-5px, 7px);
+			transform: rotate(-45deg) translate(-6px, 7px);
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+
+		input:checked + .checkbox-wrapper .floatToggle .change .bar2 {
+			visibility: hidden;
+		}
+
+		input:checked + .checkbox-wrapper .floatToggle .change .bar3 {
+			-webkit-transform: rotate(45deg) translate(-3px, -5px);
+			transform: rotate(45deg) translate(1px, -4px);
+		}
+
+		input:checked + .checkbox-wrapper {
+			@apply w-[13.375rem] fixed z-10;
+		}
+
+		input:checked + .checkbox-wrapper .mobile-hidden {
+			@apply visible;
+		}
+
+		input:checked + .checkbox-wrapper img {
+			@apply w-[2.176rem] h-[3.736rem] mx-3 visible mb-3;
+		}
+
+		input:checked + .checkbox-wrapper .text-hidden {
+			@apply visible block;
+		}
+		
+		
+
+		input:checked + .checkbox-wrapper .text-invisible {
+			@apply visible block;
+		}
+
+		/*input:checked + .checkbox-wrapper .modal {
+			@apply relative top-[-.1rem]  bg-black opacity-20 w-auto h-auto flex flex-row;
+		}*/
+
+		
+	}
+		/* mostrar mais e mostrar menos da tela de abertura de chamado */
+.toggleCheck .noShow{
+			visibility: hidden;
+			overflow: hidden;
+			display: none;
+		}
+
+
+		.toggleCheck p {
+				max-height: 10rem;
+				overflow: hidden;
+		}
+		
+		.toggleCheck .show {
+			overflow: visible;
+			display: block;
+		
+		}
+		
+		input:checked + .check .show{
+			color: red;
+		}
+
+		input:checked + .toggleCheck p {
+				max-height: 100%;
+				overflow: visible;
+		}
+	
+		input:checked + .toggleCheck .show {
+				display: none;
+				color: red;
+			}
+			
+			input:checked + .toggleCheck .noShow {
+				display: block;
+				visibility: visible;
+		}
+
+}
