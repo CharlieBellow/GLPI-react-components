@@ -75,17 +75,32 @@ export const subcategoryModel = [
   titleSubcategory: "Redes",
   description: "",
   category: categoryModel[0],
+  icon: categoryIcons[3].icon,
   }
 ];
 
 
-export const serviceLetterModel = [ {
-  id: "005",
+export const serviceModel = [ 
+  {
+    id: "005",
+    category: categoryModel[0],
+    subcategory: subcategoryModel[0],
+    title: "titulo do serviço clicado na lista de subcategorias",
+    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
+    description:
+    "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
+  applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
+  publicoAlvo: "informado pelo usuário",
+  tempoDeEspera: "input",
+
+},
+  {
+  id: "02456",
   category: categoryModel[0],
   subcategory: subcategoryModel[0],
-  title: "titulo do serviço clicado na lista de subcategorias",
-  patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
-  description:
+  title: "titulo do serviço 2",
+    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
+    description:
     "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
@@ -95,13 +110,21 @@ export const serviceLetterModel = [ {
 
 ];
 
-export const serviceModel = [
+export const serviceOrderModel = [
   {
     id: "service01",
     serviceLocal: "Bloco A",
     description:
       "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
-    serviceLetter: serviceLetterModel[0],
+    serviceLetter: serviceModel[0],
+    patrimonio: "se obrigatorio (verificado em serviceLetterModel[0].patrimonio (booleano) então será exibido o input para adicionar arquivo)",
+  },
+  {
+    id: "service02",
+    serviceLocal: "Bloco C",
+    description:
+      "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
+    serviceLetter: serviceModel[1],
     patrimonio: "se obrigatorio (verificado em serviceLetterModel[0].patrimonio (booleano) então será exibido o input para adicionar arquivo)",
   },
 ];

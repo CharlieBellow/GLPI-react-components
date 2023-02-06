@@ -1,28 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "../styles/main.css";
 
-import Teste from "../Pages/Teste";
-import SignUp from "../Pages/SignUp";
-import ListPage from "../Pages/List";
+import Teste from "../pages/Teste";
+import SignUp from "../pages/SignUp";
+import ListPage from "../pages/List";
 
-import UserInfo from "../Pages/UserInfo";
+import UserInfo from "../pages/UserInfo";
 
-import AddUser from "../Pages/AddUser";
+import AddUser from "../pages/AddUser";
 
 import { CardTest } from "../components/Cards/CardTest";
 
 
-import Dashboard from "../Pages/Dashboard";
+import Dashboard from "../pages/privateroutes/dashboard";
 
 export function AppRoutes () {
   return (
 
-    <Router>
-      <Routes>
+    //<Router>
+    //  <Routes>
 
+
+        {/*   <Route path="/Dashboard" element={ <Dashboard /> } />
         <Route path="/" element={ <Dashboard /> } />
-        <Route path="/dashboard" element={ <Dashboard /> } />
 
 
         <Route path="/user/info" element={ <UserInfo /> } />
@@ -36,10 +37,10 @@ export function AppRoutes () {
 
         <Route path="/test/card" element={ <CardTest /> } />
         <Route path="/test" element={ <Teste /> } />
+*/}
 
 
-
-      </Routes>
-    </Router>
+      {/*</Routes>
+    </Router>*/}
   );
 }

@@ -2,13 +2,13 @@ import { Routes, Route } from "react-router-dom";
 
 import "../styles/main.css";
 
-import Login from "../Pages/Login";
-import Teste from "../Pages/Teste";
+import Login from "../pages/Login";
+import Teste from "../pages/Teste";
 
 import { CardTest } from "../components/Cards/CardTest";
 
 import "react-toastify/dist/ReactToastify.min.css";
-import SignUp from "../Pages/SignUp";
+import SignUp from "../pages/SignUp";
 
 
 function PublicRoutes () {

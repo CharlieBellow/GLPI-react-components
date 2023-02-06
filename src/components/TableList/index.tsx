@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import  Link  from "next/link";
 import { useState } from "react";
 import { PencilSimpleLine } from "phosphor-react";
 import { Button } from "../Buttons/Button";
@@ -88,7 +88,7 @@ function TableList(props: TableProps) {
 													key={user.name}
 												>
 													<Box className="">
-														<Link to="/UserInfo">
+														<Link href="/privateroutes/UserInfo">
 															<Text
 																fontWeight="bold"
 																className="text-blue-ufal"

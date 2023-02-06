@@ -1,5 +1,5 @@
 import * as  Icon from "phosphor-react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import CardCategory from "../CardCategory";
 
 const CardCategories = () => {
@@ -8,17 +8,17 @@ const CardCategories = () => {
 			<div className="bg-white-ice w-auto h-auto py-4 px-4 rounded-lg shadow-card box-border">
 				<h4 className="text-4xl mb-8 font-bold">Categorias</h4>
 				<div className="grid grid-cols-2">
-					<Link to="/PageCategoriaHome">
+					{/*<Link to="/PageCategoriaHome">*/}
 						<CardCategory
 							link="/"
 							Name={ "Biblioteca" }
 							Icon={ <Icon.BookOpen size={ 27 } /> } idCategory={ "" }						/>
-					</Link>
+					{/*</Link>*/}
 					<div className="gap-3 grid grid-cols-2">
-						<Link to="/">Dashboard</Link>
-						<Link to="/service/letter">Carta de Serviço</Link>
-						<Link to="/service/create">Criar Serviço</Link>
-						<Link to="/users/list">Tabela</Link>
+						{/*<Link to="/">Dashboard</Link>*/}
+						{/*<Link to="/service/letter">Carta de Serviço</Link>*/}
+						{/*<Link to="/service/create">Criar Serviço</Link>*/}
+						{/*<Link to="/users/list">Tabela</Link>
 						<Link to="/login">Login</Link>
 						<Link to="/signup">Cadastro</Link>
 
@@ -31,7 +31,7 @@ const CardCategories = () => {
 						<Link to="/servicebook/subcategory">Subcategorias</Link>
 						<Link to="/servicebook/category/create">Add Category </Link>
 						<Link to="/servicebook/subcategory/create"> Add Subcategory</Link>
-						<Link to="/servicebook/service"> Serviços por category</Link>
+						<Link to="/servicebook/service"> Serviços por category</Link>*/}
 
 
 					</div>

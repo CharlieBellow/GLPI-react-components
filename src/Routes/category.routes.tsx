@@ -2,28 +2,29 @@
 
 
 import React from 'react';
-import { Route, Routes, useParams } from 'react-router-dom';
-import PageSubcategory from '../Pages/Subcategory';
+//import { Route, Routes, useParams } from 'react-router-dom';
+//import PageSubcategory from '../pages/Subcategory';
 import { categoryModel, subcategoryModel, serviceLetterModel, serviceModel } from '../Utils/ServiceModels';
 import ServiceByCategory from '../components/ServicesComponent/ServiceByCategory';
-import ServicesByCategory from '../Pages/ServicesByCategory';
-import CreateService from '../Pages/CreateService';
-import { ServiceLetter } from '../Pages/ServiceLetter';
+import ServicesByCategory from '../pages/privateroutes/ServicesByCategory';
+import CreateService from '../pages/privateroutes/CreateService';
+import { ServiceLetter } from '../pages/privateroutes/ServiceLetter';
 
+import Link from "next/link"
 export function CategoryRoutes () {
 
 
   return (
     <>
-      <Routes>
+      {/*<Routes>*/}
         { categoryModel.map( category => {
           return (
-            <Route path={ `/servicebook/${ category.titleCategory }` } element={ <PageSubcategory /> } />
+            <Link href={ `/servicebook/${ category.titleCategory }` }  />
 
           );
         }
         ) }
-      </Routes>
+      {/*</Routes>*/}
     </>
   );
 }
@@ -33,13 +34,13 @@ export function SubcategoryRoutes () {
   const { titleCategory } = useParams();
   return (
     <>
-      <Routes>
+      {/*<Routes>*/}
         { subcategoryModel.map( subcategory => {
           return (
-            <Route path={ `/servicebook/${ titleCategory }/${ subcategory.titleSubcategory }` } element={ <ServicesByCategory /> } />
+            <Link href={ `/servicebook/${ titleCategory }/${ subcategory.titleSubcategory }` }  />
           );
         } ) }
-      </Routes>
+      {/*</Routes>*/}
     </>
   );
 }
@@ -49,17 +50,17 @@ export function ServiceByCategoryRoutes () {
 
   return (
     <>
-      <Routes>
+      {/*<Routes>*/}
 
         { serviceLetterModel.map( serviceLetter => {
           return (
-            <Route path={ `/servicebook/${ titleCategory }/:${ titleSubcategory }/${ serviceLetter.title }/${ serviceLetter.id }` } element={ <ServiceLetter /> } />
+            <Link href={ `/servicebook/${ titleCategory }/:${ titleSubcategory }/${ serviceLetter.title }/${ serviceLetter.id }` } />
           );
         } )
 
         }
 
-      </Routes>
+      {/*</Routes>*/}
     </>
   );
 }
@@ -69,13 +70,13 @@ export function ServiceLetterRoutes () {
   const { titleCategory, titleSubcategory, serviceLetter, idServiceLetter, serviceTitle } = useParams();
   return (
     <>
-      <Routes>
+      {/*<Routes>*/}
         { serviceLetterModel.map( serviceTitle => {
           return (
-            <Route path={ `/servicebook/${ titleCategory }/:${ titleSubcategory }/${ serviceLetter }/${ idServiceLetter }/${ serviceTitle.title }/create` } element={ <CreateService /> } />
+            <Link href={ `/servicebook/${ titleCategory }/:${ titleSubcategory }/${ serviceLetter }/${ idServiceLetter }/${ serviceTitle.title }/create` } />
           );
         } ) }
-      </Routes>
+      {/*</Routes>*/}
     </>
   );
 }

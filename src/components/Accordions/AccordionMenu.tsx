@@ -5,7 +5,7 @@ import {
 	AccordionItem,
 	AccordionTrigger
 } from "@radix-ui/react-accordion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { SquaresFour, User, Wrench, Gear, ListDashes } from "phosphor-react";
 
 import { styled } from '@stitches/react';
@@ -33,7 +33,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Dashboard">
 				<AccordionTrigger className="w-full flex items-center justify-between mr-2">
 					<div className="flex flex-row text-white-100 font-semibold text-sm items-center content-start w-full lg:my-4 my-2 mx-0  hover:text-blue-dark-final-gradient">
-						<Link to="/" className="flex flex-row">
+						<Link href="/privateroutes/dashboard" className="flex flex-row">
 							<SquaresFour size={20} className="menu__icon mr-2" />
 							<p className="text-invisible">Dashboard</p>
 						</Link>
@@ -51,10 +51,10 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70 text-hidden">
-						<Link to="/AddUser">Alterar Dados</Link>
+						<Link href="/privateroutes/user/adduser">Alterar Dados</Link>
 					</AccordionPrimitive.AccordionContent>
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70 text-hidden">
-						<Link to="/UserInfo">Editar Perfil</Link>
+						<Link href="/privateroutes/user/userinfo">Editar Perfil</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
@@ -69,10 +69,10 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70">
-						<Link to="/CreateService">Secretaria</Link>
+						<Link href="/privateroutes/servicebook/createservice">Secretaria</Link>
 					</AccordionPrimitive.AccordionContent>
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70">
-						<Link to="/ServiceLetter">NTI</Link>
+            <Link href="/privateroutes/servicebook/serviceletter">NTI</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
@@ -87,10 +87,10 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70">
-						<Link to="/Login">Geral</Link>
+						<Link href="/publicroutes/">Geral</Link>
 					</AccordionPrimitive.AccordionContent>
 					<AccordionPrimitive.AccordionContent className="flex items-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70">
-						<Link to="/SignUp">Dark Mode</Link>
+            <Link href="/publicroutes/signup">Dark Mode</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>
@@ -105,7 +105,7 @@ export const AccordionMenu = () => (
 				</AccordionTrigger>
 				<div className="text-hidden">
 					<AccordionPrimitive.AccordionContent className="flex text-center justify-center my-1 py-1 gap-1 text-blue-ufal bg-white-100 rounded-xl hover:opacity-70">
-						<Link to="/List">Tabela de usuários</Link>
+            <Link href="/privateroutes/list">Tabela de usuários</Link>
 					</AccordionPrimitive.AccordionContent>
 				</div>
 			</AccordionItem>

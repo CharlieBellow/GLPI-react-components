@@ -7,7 +7,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@radix-ui/react-accordion";
-import { Link, To } from "react-router-dom";
+import Link from "next/link";
 import * as Icon from "phosphor-react";
 
 import { styled } from "@stitches/react";
@@ -44,7 +44,7 @@ export const AccordionItemMenu = (props: AccordionItemMenuProps) => (
 						<>
 							<div className="text-hidden">
 								<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70 text-hidden">
-									<Link to={item.LinkTo}>{item.contentTitle}</Link>
+									<Link href={item.LinkTo}>{item.contentTitle}</Link>
 								</AccordionPrimitive.AccordionContent>
 							</div>
 						</>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Bell, UserPlus, Question, List } from "phosphor-react";
 import Search from "../../Inputs/Search";
 
@@ -43,7 +43,7 @@ export function Header(props: HeaderProps) {
 						<div className="flex items-center relative">
 							<div className="lg:flex flex-col pr-3 items-end hidden">
 								<p className="text-blue-ufal no-underline hover:opacity-70">
-									<Link to="/Login">Nome Completo</Link>
+									<Link href="/privateroutes/user/userinfo">Nome Completo</Link>
 								</p>
 								<span>email@email.com</span>
 							</div>
@@ -53,7 +53,7 @@ export function Header(props: HeaderProps) {
 										<Question size={24} weight="bold" />
 									</div>
 									<div className="flex-1 flex">
-										<Link to="/Login">
+										<Link href="/privateroutes/user/userinfo">
 											<img
 												src="https://www.github.com/charliebellow.png"
 												alt="favicon"

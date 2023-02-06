@@ -1,4 +1,6 @@
-import "../../styles/main.css";
+import { useEffect } from "react";
+//import { AuthContext } from "../../Contexts/AuthContext";
+import { useAuth } from '../../Contexts/AuthContext';
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
@@ -7,9 +9,8 @@ import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { useContext } from "react";
-import { AuthContext } from "../../Contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import {useRouter} from "next/router"
 
 
 const validate = yup.object().shape({
@@ -19,13 +20,10 @@ const validate = yup.object().shape({
 
 export function CardLogin () {
 	
-	const { auth, setAuth }: any = useContext( AuthContext )
-	console.log( "auth", auth );
-	const navigate = useNavigate()
-	
-	const signUp = () => {
-		navigate('/')
-	}
+  const { auth, changeAuth } = useAuth()
+
+	const router = useRouter();
+
 	
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
@@ -39,10 +37,12 @@ export function CardLogin () {
 					setTimeout(() => {
 						console.log( "submit:", values );
 						if ( values.email === "admin@admin.com" && values.password === "Admin123" ) {
-							setAuth( true )
-							//navigate("/dashboard")
+              console.log( "auth login 2", auth );
+              changeAuth( auth )
+              console.log( "auth login 3", auth );
+		
 							toast.success("Login realizado com sucesso!");
-							signUp()
+              router.push( "../privateroutes/dashboard", "/" )
 							
 						} else {
 						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
@@ -85,12 +85,13 @@ export function CardLogin () {
 						
 								
 							<Button title="Esqueci a senha" theme="textOnly" />
-							<Link to="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
+							<Link href="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
 							
 						</div>
 					</Form>
 				)}
 			</Formik>
+    
 		</div>
 	);
 }

@@ -1,4 +1,4 @@
-import "../../styles/main.css";
+
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -110,7 +110,7 @@ export function CardSignUp () {
 								type="submit"
 								disabled={isSubmitting || !isValid}
 							/>
-							<Link to="/login" className="text-blue-ufal text-center font-semibold text-base py-5">Fazer login</Link>
+							<Link href="/publicroutes/login" className="text-blue-ufal text-center font-semibold text-base py-5">Fazer login</Link>
 						</div>
 					</Form>
 				)}
