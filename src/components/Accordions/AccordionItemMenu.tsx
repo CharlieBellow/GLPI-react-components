@@ -44,7 +44,8 @@ export const AccordionItemMenu = (props: AccordionItemMenuProps) => (
 						<>
 							<div className="text-hidden">
 								<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70 text-hidden">
-									<Link href={item.LinkTo}>{item.contentTitle}</Link>
+                  <Link href={ item.LinkTo }>{ item.contentTitle }</Link>
+                  
 								</AccordionPrimitive.AccordionContent>
 							</div>
 						</>

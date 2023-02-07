@@ -4,14 +4,13 @@ import { useAuth }  from '../Contexts/AuthContext';
 
 import { useRouter } from "next/router";
 import {useEffect} from "react"
- 
+
 
 export default function Home () {
 
 const router = useRouter();
 
   const { auth } = useAuth();
-
 
   console.log( "auth App", auth );
 
@@ -26,9 +25,6 @@ const router = useRouter();
 
   return (
     <>
-
-    
-
     </>
   );
 }

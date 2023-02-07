@@ -40,13 +40,13 @@ export default function CardServiceLetter ( props: CardServiceLetterProps ) {
 
 
 
-  useEffect( () => {
+  //useEffect( () => {
 
     if ( typeof window !== "undefined" ) {
       
       window.addEventListener( "scroll", changeFloatingButton )
     }
-  } )
+  //} )
 
   const router = useRouter();
 
