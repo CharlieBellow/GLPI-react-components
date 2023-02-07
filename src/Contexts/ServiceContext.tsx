@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { serviceModel } from "../Utils/ServiceModels"
+import { serviceOrderModel } from "../Utils/ServiceModels"
 
 export const servicesList = [
 	{
@@ -27,7 +27,7 @@ export const ServiceContext = createContext({} as ServiceContextProps)
 
 export const ServiceProvider = ( { children }: ServiceProviderProps ) => {
 
-  const [ infoServices, setInfoServices ] = useState<Array<object>>( serviceModel ) 
+  const [ infoServices, setInfoServices ] = useState<Array<object>>( serviceOrderModel ) 
 
 
   function addInfoService ( infoService: Array<object> ) {

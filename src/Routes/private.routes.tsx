@@ -1,26 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+
 
 import "../styles/main.css";
-
-import Teste from "../pages/Teste";
-
-import ListPage from "../pages/List";
-
-import UserInfo from "../pages/UserInfo";
-
-import AddUser from "../pages/AddUser";
-
-import { CardTest } from "../components/Cards/CardTest";
-
-import Dashboard from "../pages/privateroutes/dashboard";
-
-import { ServiceRoutes } from "./service.routes";
 
 
 function PrivateRoutes () {
   return (
     <>
-      <Routes>
+      {/*<Routes>
 
         <Route path="/" element={ <Dashboard /> } />
         <Route path="/dashboard" element={ <Dashboard /> } />
@@ -34,7 +20,7 @@ function PrivateRoutes () {
 
       </Routes>
 
-      <ServiceRoutes />
+      <ServiceRoutes />*/}
     </>
   );
 }

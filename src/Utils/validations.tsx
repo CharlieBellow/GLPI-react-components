@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
-import { categoryModel, serviceModel, subcategoryModel } from './ServiceModels';
+import { categoryModel, serviceModel, serviceOrderModel, subcategoryModel } from './ServiceModels';
 
-import { services } from '../pages/privateroutes/servicebook/[category]/[subcategory]/[service]/[serviceorder]/ServicesList';
+import  services  from '../Utils/ServicesList';
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -221,7 +221,7 @@ export const validationSchema = {
     .required( "É obrigatório informar o nome da Subcategoria" ),
   services: yup
     .string()
-    .oneOf( serviceModel.map( serviceName => { return serviceName.serviceLetter.title; } ), "Escolha entre essas opções:" )
+    .oneOf( serviceOrderModel.map( serviceName => { return serviceName.serviceLetter.title; } ), "Escolha entre essas opções:" )
     .required( "É obrigatório informar o serviço" ),
   category: yup
     .string()

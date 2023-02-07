@@ -16,7 +16,7 @@ import * as yup from "yup";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
-import { categoryModel, serviceModel, subcategoryModel, serviceLetterModel } from "../../Utils/ServiceModels";
+import { categoryModel, serviceOrderModel, subcategoryModel, serviceModel } from "../../Utils/ServiceModels";
 import { useServiceContext } from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 
@@ -36,7 +36,7 @@ export const CardCreateService = () => {
 	
 	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
 	
-	const [ services, setServices ] = useState( serviceModel );
+	const [ services, setServices ] = useState( serviceOrderModel );
 
 	useEffect(() => {
 		const servicesStorage = localStorage.getItem("services");
@@ -66,7 +66,7 @@ export const CardCreateService = () => {
 				</div>
 				<Formik
 					initialValues={ {
-						serviceLetter: serviceLetterModel[0],
+						serviceLetter: serviceModel[0],
 						patrimonio: "",
 						description: "",
 						serviceLocal: "",

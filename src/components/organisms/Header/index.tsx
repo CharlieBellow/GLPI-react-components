@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Bell, UserPlus, Question, List } from "phosphor-react";
 import Search from "../../Inputs/Search";
+import Image  from 'next/image';
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 	page: string;
@@ -54,10 +55,14 @@ export function Header(props: HeaderProps) {
 									</div>
 									<div className="flex-1 flex">
 										<Link href="/privateroutes/user/userinfo">
-											<img
+											<Image
 												src="https://www.github.com/charliebellow.png"
 												alt="favicon"
-												className=" lg:w-11 lg:h-11 w-8 h-8 rounded-full lg:relative top-0 lg:right-0 lg:top-0"
+                        className=" lg:w-11 lg:h-11 w-8 h-8 rounded-full lg:relative top-0 lg:right-0 lg:top-0"
+                        width={176}
+                        height={176}
+                        
+                        
 											/>
 										</Link>
 									</div>

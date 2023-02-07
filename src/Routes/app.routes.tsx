@@ -2,24 +2,13 @@
 
 import "../styles/main.css";
 
-import Teste from "../pages/Teste";
-import SignUp from "../pages/SignUp";
-import ListPage from "../pages/List";
 
-import UserInfo from "../pages/UserInfo";
-
-import AddUser from "../pages/AddUser";
-
-import { CardTest } from "../components/Cards/CardTest";
-
-
-import Dashboard from "../pages/privateroutes/dashboard";
 
 export function AppRoutes () {
   return (
-
-    //<Router>
-    //  <Routes>
+    <>
+    {/*//<Router>
+    //  <Routes>*/}
 
 
         {/*   <Route path="/Dashboard" element={ <Dashboard /> } />
@@ -42,5 +31,6 @@ export function AppRoutes () {
 
       {/*</Routes>
     </Router>*/}
+    </>
   );
 }

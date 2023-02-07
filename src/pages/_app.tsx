@@ -6,6 +6,7 @@ import { UserProvider } from '../Contexts/UserContext';
 import { MenuProvider } from '../Contexts/MenuContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import  {ServiceContext}  from '../Contexts/ServiceContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,11 +14,15 @@ export default function App({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <UserProvider>
         <MenuProvider>
+
           <ChakraProvider>
+          
+
             <>
               <Component {...pageProps} />
               <ToastContainer />
             </>
+         
           </ChakraProvider>
         </MenuProvider>
       </UserProvider>
