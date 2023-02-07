@@ -10,6 +10,8 @@ import {
 	validationSchema,
 	
 } from "../../Utils/validations";
+import { CardLabelInputFile } from "./CardLabelInputFile";
+import { Eye, UploadSimple } from "phosphor-react";
 
 import * as yup from "yup";
 
@@ -28,6 +30,7 @@ const validate = yup.object().shape({
 	title: validationSchema.title,
 	description: validationSchema.description,
 	serviceLocal: validationSchema.serviceLocal,
+	addFile: validationSchema.file,
 });
 
 export const CardCreateService = () => {
@@ -127,7 +130,16 @@ export const CardCreateService = () => {
 										inputid="title"
 									/>
 								</div>
-
+								<div className="">
+									<CardLabelInputFile
+										label="Adicionar Documento"
+										name="addFile"
+										type="file"
+										width="w-full"
+										inputid="title"
+										icon={<UploadSimple className="absolute flex mr-4" weight="bold" />}
+									/>
+								</div>
 								<div className="">
 									<CardLabelTextarea
 										label="Descrição"

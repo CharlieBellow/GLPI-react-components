@@ -22,7 +22,7 @@ export const agency = /[0-9]{4}/g;
 
 export const account = /[0-9]{4,7}/;
 
-
+export const fileExtension = /\.(doc|pdf|jpe?g|png)$/i;
 
 //criar uma máscara pra ele aceitar só 8 ou 10 números
 export const nMatricula = /([0-9]{8,10})/;
@@ -112,6 +112,10 @@ export const validationSchema = {
     .string()
     .oneOf( blocList, "Escolha entre essas opções:" )
     .required( "É obrigatório escolher um local" ),
+  file: yup
+		.string()
+		.required("Você precisa anexar um documento")
+		.matches(fileExtension, "Insira um arquivo válido"),
 
   phone: yup.string().matches( phoneNumber ),
 
