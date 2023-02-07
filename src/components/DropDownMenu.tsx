@@ -1,6 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import ButtonMainWithIcon from "./ButtonMainWithIcon";
-import { DotsThreeVertical, PencilSimpleLine } from "phosphor-react";
+import { DotsThreeVertical} from "phosphor-react";
 
 
 

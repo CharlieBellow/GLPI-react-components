@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./src/**/*.tsx"],
-	theme: {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
 		screens: {
 			sm: "576px",
 			// => @media (min-width: 576px) { mobile }
@@ -93,4 +93,4 @@ module.exports = {
 		},
 	},
 	plugins: [],
-};
+}
