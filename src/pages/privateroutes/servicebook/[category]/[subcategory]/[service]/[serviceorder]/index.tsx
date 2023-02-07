@@ -1,8 +1,8 @@
 import { Page } from "../../../../../../../components/Page";
-import { CardServiceLetter } from './CardServiceLetter';
+import  CardServiceLetter  from './CardServiceLetter';
 import { services } from './ServicesList';
 
-export function ServiceLetter () {
+export default function ServiceLetter () {
   return (
     <Page
       pagetitle={ "Carta de Serviço" }

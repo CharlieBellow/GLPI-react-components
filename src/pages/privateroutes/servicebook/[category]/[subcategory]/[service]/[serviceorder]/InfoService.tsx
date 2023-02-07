@@ -9,7 +9,7 @@ interface InfoServiceItemProps {
 
 
 // estilizar o acordeon
-export function InfoServiceItem(props: InfoServiceItemProps) {
+export default function InfoServiceItem(props: InfoServiceItemProps) {
 	//const altura =  height <= 70rem ? showButton : hideButton
 	return (
 		<>
