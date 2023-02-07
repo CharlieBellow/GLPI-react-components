@@ -1,5 +1,5 @@
-import CardCreateService from "../../../../../../../components/Cards/CardCreateService";
-import { Page } from "../../../../../../../components/Page";
+import CardCreateService from "../../../../../../../../components/Cards/CardCreateService";
+import  {Page}  from "../../../../../../../../components/Page";
 
 function CreateService() {
 	return (

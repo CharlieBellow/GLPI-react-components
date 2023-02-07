@@ -20,7 +20,7 @@ const router = useRouter();
     } else {
       router.push( "publicroutes/Login", "login" );
     }
-  }, [  ] )
+  } )
 
 
   return (

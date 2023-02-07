@@ -2,7 +2,7 @@
 import { CardLogin } from '../../components/Cards/CardLogin';
 import Head from "next/head"
 
-function Login () {
+export function Login () {
   
   return (
     <>

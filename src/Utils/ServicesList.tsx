@@ -1,6 +1,6 @@
 import * as Icon from 'phosphor-react'
 
-export const ServicesList = [
+const ServicesList = [
 	{
 		title: "Público-alvo",
 		description:
@@ -45,18 +45,5 @@ export const ServicesList = [
 	},
 ];
 
-export const services = [
-	{
-		title: "Instalação de impressora",
-    id: "002",
-		link: "/servicebook/:titleCategory/:{titleSubcategory}/:serviceLetter/:idServiceLetter",
-		serviceLetter: ServicesList,
-	},
-	{
-		title: "Manutenção de Computadores",
-    id: "0033",
-		link: "/servicebook/:titleCategory/:titleSubcategory/:serviceLetter/:idServiceLetter",
-		serviceLetter: ServicesList,
-	},
+export default ServicesList;
 
-];

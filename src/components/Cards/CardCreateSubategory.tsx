@@ -8,7 +8,7 @@ import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
-import { categoryModel, serviceModel, subcategoryModel } from '../../Utils/ServiceModels'
+import { categoryModel, serviceOrderModel, subcategoryModel } from '../../Utils/ServiceModels'
 import {
 	validationSchema,
 	servicesList,
@@ -17,7 +17,7 @@ import {
 import * as yup from "yup";
 //import { services, ServicesList } from "../Pages/ServiceLetter/ServicesList";
 import { useEffect, useState } from "react";
-import { useServiceContext } from "../../Contexts/ServiceContext";
+import  {useServiceContext}  from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 
 const validate = yup.object().shape({
@@ -69,6 +69,7 @@ export const CardCreateSubcategory = () => {
 						description: "",
 						category: categoryModel[ 0 ],
 						//services: [],
+            icon: <></>,
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
 								day: "2-digit",
@@ -130,7 +131,7 @@ export const CardCreateSubcategory = () => {
 										label="services"
 										name="services"
 										default="Selecione o serviço"
-										listitems={ serviceModel.map( service => {
+										listitems={ serviceOrderModel.map( service => {
 											return (
 												service.serviceLetter.title
 											);

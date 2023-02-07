@@ -1,6 +1,6 @@
 import { Page } from "../../../../../../components/Page";
 
-import { services } from '../../../[category]/[subcategory]/[service]/[serviceorder]/ServicesList'
+import services from '../../../../../../Utils/services';
 
 import ServiceByCategory from "../../../../../../components/ServicesComponent/ServiceByCategory";
 

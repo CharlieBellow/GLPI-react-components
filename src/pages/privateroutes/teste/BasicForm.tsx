@@ -18,7 +18,7 @@ const validate = yup.object().shape({
 	email: validationSchema.email,
 });
 
-export const BasicForm = () => {
+const BasicForm = () => {
 	const [users, setUsers] = useState(usersList);
 
 	useEffect(() => {
@@ -129,3 +129,4 @@ export const BasicForm = () => {
 		</div>
 	);
 };
+export default BasicForm;
