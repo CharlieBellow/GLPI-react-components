@@ -3,7 +3,7 @@ import { AccordionMenuHelp } from "../../Accordions/AccordionMenuHelp";
 
 import { List } from "phosphor-react";
 
-import logoUfal from "../../../../public/assets/brasao-ufal.png";
+import logoUfal from "../../../assets/brasao-ufal.png";
 import { ReactNode } from "react";
 import { MenuMobile } from "./MenuMobile";
 import { useMenu } from '../../../Contexts/MenuContext';
