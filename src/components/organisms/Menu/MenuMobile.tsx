@@ -4,7 +4,7 @@ import { List } from "phosphor-react";
 import React from "react";
 
 
-import logoUfal from "../../../assets/brasao-ufal.png";
+import logoUfal from "../../../../public/images/brasao-ufal.png";
 import AccordionMenu from "../../Accordions/AccordionMenu";
 import { AccordionMenuHelp } from "../../Accordions/AccordionMenuHelp";
 
