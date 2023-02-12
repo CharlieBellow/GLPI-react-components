@@ -18,6 +18,9 @@ const Subcategory = (  ) => {
 
   const router = useRouter()
 
+  console.log("router", router);
+  
+
 
 
   return (
@@ -59,7 +62,11 @@ const Subcategory = (  ) => {
 								internet
 							{/*</p>*/}
 						</div>
-						{/*<CardCategory
+						{/*
+            
+            criar mais categorias dessa no serviceMod
+            
+            <CardCategory
 							link="/ListServices"
 							Name={ "Sistemas" }
 							Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }						/>

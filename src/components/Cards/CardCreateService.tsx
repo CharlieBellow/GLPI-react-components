@@ -1,4 +1,7 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
+import {useRouter} from "next/router"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
@@ -10,6 +13,7 @@ import {
 	validationSchema,
 	
 } from "../../Utils/validations";
+
 
 import * as yup from "yup";
 
@@ -50,6 +54,13 @@ export const CardCreateService = () => {
 	useEffect(() => {
 		localStorage.setItem("services", JSON.stringify(services));
 	}, [services]);
+
+
+
+const router = useRouter()
+
+console.log("router", router.query)
+
 
 	return (
 		<div className="mx-4">
