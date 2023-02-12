@@ -47,3 +47,14 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 mobile: acordion menu > fechamento de tag p
 
 
+
+
+
+
+# GetStaticProps()
+    - pegar dados dinâmicos (das rotas)
+    - é pra usar ná pagina que em que vai exibir os dados
+    - retorna um objeto com os dados que estamos esperando para poderem ser usados nessa página
+    - renderiza antes do acesso do usuário Pre-rendering
+    - 
+

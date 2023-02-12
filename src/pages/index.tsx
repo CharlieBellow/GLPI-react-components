@@ -16,9 +16,9 @@ const router = useRouter();
 
   useEffect( () => {
     if ( auth ) {
-      router.push( "privateroutes/dashboard", "/" );
+      router.push( "/privateroutes", "/" );
     } else {
-      router.push( "publicroutes/Login", "login" );
+      router.push( "/publicroutes", "/login" );
     }
   } )
 

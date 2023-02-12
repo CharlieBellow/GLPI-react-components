@@ -42,7 +42,7 @@ export function CardLogin () {
               console.log( "auth login 3", auth );
 		
 							toast.success("Login realizado com sucesso!");
-              router.push( "../privateroutes/dashboard", "/" )
+              router.push( "../privateroutes", "/" )
 							
 						} else {
 						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");

@@ -1,3 +1,5 @@
+"use client"
+
 import { Page } from "../../../components/Page";
 import TableList from "../../../components/TableList";
 import { useEffect, useState } from "react";
@@ -20,18 +22,18 @@ export default function List() {
 
 	
   
-  //useEffect( () => {
-  //  if (localStorage.getItem("users") !== null) {
-  //    
-  //    const usersStorage = localStorage.getItem("users");
-	//		const listas = JSON.parse(usersStorage)!;
-	//		console.log("lista:", lista);
-	//		setLista(listas);
-	//		console.log(listas);
-	//	}
-  //}, [ lista ]);
+  useEffect( () => {
+    
+    if (localStorage.getItem("users") !== null) {
+      const usersStorage = localStorage.getItem("users");
+      const listas = JSON.parse(usersStorage)!;
+      console.log("lista:", lista);
+      setLista(listas);
+      console.log(listas);
+		}
+  }, [ lista ]);
 
-	//console.log(lista);
+	console.log(lista);
 	return (
 		<>
 			<Page
