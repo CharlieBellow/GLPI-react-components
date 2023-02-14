@@ -2,6 +2,8 @@
 import React from 'react'
 import * as Icon from 'phosphor-react'
 
+import ServicesList from "./ServicesList"
+
 const sizeIcon = 27
 const classIcon = ""
 
@@ -92,7 +94,7 @@ export const serviceModel = [
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
-
+  serviceDescription: ServicesList
 },
   {
   id: "02456",
@@ -105,6 +107,7 @@ export const serviceModel = [
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
+  serviceDescription: ServicesList
 
 },
 

@@ -1,6 +1,6 @@
 import { Page } from "../../../../../../components/Page";
 
-import services from '../../../../../../Utils/services';
+import {serviceModel} from '../../../../../../Utils/ServiceModels';
 
 import ServiceByCategory from "../../../../../../components/ServicesComponent/ServiceByCategory";
 
@@ -9,7 +9,7 @@ const ServicesByCategory = () => {
     <Page
       pagetitle={ "Subcategorias" }
       contentpage={
-        <ServiceByCategory listservices={ services } subcategory={ "GTI" } />
+        <ServiceByCategory listservices={ serviceModel } subcategory={ "GTI" } />
       }
     />
   );
