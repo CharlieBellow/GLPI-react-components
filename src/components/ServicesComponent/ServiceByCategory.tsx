@@ -1,7 +1,9 @@
 
 
 import Link from "next/link";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+
+
 
 
 
@@ -32,16 +34,16 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 					<div className="lg:w-[59.5rem] m-15 flex flex-col gap-x-10  gap-y-6 mt-0" >
 				{ props.listservices.map( ( service: any, index ) => {
 					return (
-						<>
+						
 							<Link
 								id={ service.title }
 								href={ `/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${service.id}` }
-								key={ service.title }
+								key={ service.id }
 								className="text-blue-ufal font-bold text-xl hover:underline hover:underline-offset-2"
 									>
 										{service.title}
 							</Link>
-						</>
+						
 					);
 						})}
 					</div>

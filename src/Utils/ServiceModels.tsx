@@ -107,7 +107,7 @@ export const serviceModel = [
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
-  serviceDescription: ServicesList
+  serviceDescription: ServicesList,
 
 },
 

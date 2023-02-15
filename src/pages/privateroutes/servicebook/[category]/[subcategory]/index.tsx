@@ -18,11 +18,6 @@ const Subcategory = (  ) => {
 
   const router = useRouter()
 
-  console.log("router", router);
-  
-
-
-
   return (
 		<Page
 			pagetitle={"Subcategorias"}
@@ -40,14 +35,12 @@ const Subcategory = (  ) => {
               { subcategoryModel.map( ( subcategory, index ) => {
                 
                 return (
-                  <>
 
                     <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.titleSubcategory }` } Name={ subcategory.titleSubcategory } Icon={ subcategory.icon }
                       key={ subcategory.id }
                       idCategory={ subcategory.id }
                     />
 
-                  </>
                 );
               } ) }
 

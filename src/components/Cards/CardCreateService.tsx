@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import {useRouter} from "next/router"
@@ -14,15 +14,17 @@ import {
 	
 } from "../../Utils/validations";
 
+import Link from "next/link"
 
+
+import { useServiceContext } from "../../Contexts/ServiceContext";
+import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 import * as yup from "yup";
 
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
 import { categoryModel, serviceOrderModel, subcategoryModel, serviceModel } from "../../Utils/ServiceModels";
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -48,7 +50,7 @@ export const CardCreateService = () => {
 		if (servicesStorage) {
 			setServices(JSON.parse(servicesStorage));
 		}
-		console.log("lista: ", servicesStorage);
+		//console.log("lista: ", servicesStorage);
 	}, []);
 
 	useEffect(() => {
@@ -59,7 +61,23 @@ export const CardCreateService = () => {
 
 const router = useRouter()
 
-console.log("router", router.query)
+
+var myIndex;
+  const indexService = () => {
+    serviceModel.map( ( service, index ) => {
+
+      if ( service.id == router.query.serviceorder ) {
+
+        myIndex = index
+        return myIndex;
+      }
+    } );
+
+  };
+
+  indexService();
+
+
 
 
 	return (
@@ -77,25 +95,27 @@ console.log("router", router.query)
 				</div>
 				<Formik
 					initialValues={ {
-						serviceLetter: serviceModel[0],
-						patrimonio: "",
-						description: "",
-						serviceLocal: "",
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
+            id: new Date()
+            .toLocaleTimeString("pt-br", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "numeric",
+            })
+            .toString()
+            .replace(":", "")
+            .replace(":", "")
+            .replace("/", "")
+            .replace("/", "")
+            .replace(" ", ""),
+            serviceLocal: "",
+            //description: "",
+            //aplicantsName: "",
+            //serviceLetter: serviceModel[myIndex],
+            //title: serviceModel[myIndex].title,
+            //patrimonio: "",
 					}}
 					//validationSchema={validations}
 					validationSchema={validate}
@@ -104,7 +124,7 @@ console.log("router", router.query)
 							console.log("submit:", values);
 							setServices([...services, values]);
 							console.log("services:", services);
-							addInfoService( [ { ...values, serviceLetter: infoServiceLetter } ] )
+							addInfoService( [ { ...values } ] )
 							
 							console.log( "infos:", infoServiceLetter )
 
@@ -119,33 +139,33 @@ console.log("router", router.query)
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
-									<CardLabelInput
+									{/*<CardLabelInput
 										label="Nome"
 										name="aplicantsName"
 										type="text"
 										width="w-full"
 										inputid="title"
 									
-									/>
+									/>*/}
 								</div>
 
 								<div className="">
-									<CardLabelInput
+									{/*<CardLabelInput
 										label="Título"
 										name="title"
 										type="text"
 										width="w-full"
 										inputid="title"
-									/>
+									/>*/}
 								</div>
 
 								<div className="">
-									<CardLabelTextarea
+									{/*<CardLabelTextarea
 										label="Descrição"
 										type="textarea"
 										name="description"
 										textareaid="description"
-									/>
+									/>*/}
 								</div>
 								<div className="">
 									<FieldSelect
@@ -164,7 +184,9 @@ console.log("router", router.query)
 									type="submit"
 									disabled={isSubmitting || !isValid}
 								/>
-								<Button title="Cancelar" theme="secondaryAction" />
+                {/*<Link href={"./"}> voltar uma página*/}
+								<Button title="Cancelar" theme="secondaryAction" type="button" />
+                {/*</Link>*/}
 							</div>
 						</Form>
 					)}

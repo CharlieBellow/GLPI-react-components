@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 export default function Category () {
 const router = useRouter()
   const {category} = router.query
-  console.log("category", router.query.category);
+ 
   
 
   return (
@@ -22,16 +22,12 @@ const router = useRouter()
       <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0">
 
         { categoryModel.map( ( category, index ) => {
-          console.log( "meu id ", categoryModel[ index ].id );
           return (
-            <>
-
               <CardCategory link={ `/privateroutes/servicebook/category/${ category.titleCategory }` } Name={ category.titleCategory } Icon={ category.icon }
                 key={ category.id }
                 idCategory={ category.id }
               />
-             
-            </>
+
           );
         } ) }
       </div>
