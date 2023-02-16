@@ -78,4 +78,3 @@ mobile: acordion menu > fechamento de tag p
 
 sonacu - avaliar desempenho do cádigo
 
-
