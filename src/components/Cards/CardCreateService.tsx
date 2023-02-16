@@ -30,7 +30,7 @@ import { categoryModel, serviceOrderModel, subcategoryModel, serviceModel } from
 export const lettersOnly = /[^a-zA-Z]/g;
 
 const validate = yup.object().shape({
-	name: validationSchema.name,
+	aplicantsName: validationSchema.name,
 	title: validationSchema.title,
 	description: validationSchema.description,
 	serviceLocal: validationSchema.serviceLocal,
@@ -50,7 +50,7 @@ export const CardCreateService = () => {
 		if (servicesStorage) {
 			setServices(JSON.parse(servicesStorage));
 		}
-		//console.log("lista: ", servicesStorage);
+		console.log("lista: ", servicesStorage);
 	}, []);
 
 	useEffect(() => {
@@ -110,21 +110,20 @@ var myIndex;
             .replace("/", "")
             .replace("/", "")
             .replace(" ", ""),
-            serviceLocal: "",
+            //serviceLocal: "",
             //description: "",
-            //aplicantsName: "",
-            //serviceLetter: serviceModel[myIndex],
-            //title: serviceModel[myIndex].title,
-            //patrimonio: "",
+            aplicantsName: "",
+            serviceLetter: serviceModel[myIndex],
+            title: serviceModel[myIndex].title,
+            patrimonio: "",
 					}}
-					//validationSchema={validations}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
 							setServices([...services, values]);
 							console.log("services:", services);
-							addInfoService( [ { ...values } ] )
+              addInfoService( [ values  ] )
 							
 							console.log( "infos:", infoServiceLetter )
 
@@ -139,33 +138,33 @@ var myIndex;
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
-									{/*<CardLabelInput
+									<CardLabelInput
 										label="Nome"
 										name="aplicantsName"
 										type="text"
 										width="w-full"
 										inputid="title"
 									
-									/>*/}
+									/>
 								</div>
 
 								<div className="">
-									{/*<CardLabelInput
+									<CardLabelInput
 										label="Título"
 										name="title"
 										type="text"
 										width="w-full"
 										inputid="title"
-									/>*/}
+									/>
 								</div>
 
 								<div className="">
-									{/*<CardLabelTextarea
+									<CardLabelTextarea
 										label="Descrição"
 										type="textarea"
 										name="description"
 										textareaid="description"
-									/>*/}
+									/>
 								</div>
 								<div className="">
 									<FieldSelect
@@ -184,9 +183,9 @@ var myIndex;
 									type="submit"
 									disabled={isSubmitting || !isValid}
 								/>
-                {/*<Link href={"./"}> voltar uma página*/}
+                <Link href={"/"}>
 								<Button title="Cancelar" theme="secondaryAction" type="button" />
-                {/*</Link>*/}
+                </Link>
 							</div>
 						</Form>
 					)}

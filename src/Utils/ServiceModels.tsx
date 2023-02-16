@@ -88,7 +88,7 @@ export const serviceModel = [
     category: categoryModel[0],
     subcategory: subcategoryModel[0],
     title: "titulo do serviço clicado na lista de subcategorias",
-    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
+    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo - boolean",
     description:
     "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
