@@ -33,7 +33,7 @@ export const AccordionMenu = () => (
 			<AccordionItem value="Dashboard">
 				<AccordionTrigger className="w-full flex items-center justify-between mr-2">
 					<div className="flex flex-row text-white-100 font-semibold text-sm items-center content-start w-full lg:my-4 my-2 mx-0  hover:text-blue-dark-final-gradient">
-						<Link href="/privateroutes/dashboard" className="flex flex-row">
+						<Link href="/privateroutes" className="flex flex-row">
 							<SquaresFour size={20} className="menu__icon mr-2" />
 							<p className="text-invisible">Dashboard</p>
 						</Link>
