@@ -94,7 +94,9 @@ export const serviceModel = [
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
-  serviceDescription: ServicesList
+  serviceDescription: ServicesList,
+  isPatromonyIdRequired: true
+
 },
   {
   id: "02456",
@@ -108,6 +110,7 @@ export const serviceModel = [
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
   serviceDescription: ServicesList,
+  isPatromonyIdRequired: false
 
 },
 

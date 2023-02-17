@@ -16,6 +16,7 @@ import {
 
 import Link from "next/link"
 
+import fetchApiData from "../../Utils/fetchApiData";
 
 import { useServiceContext } from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
@@ -25,6 +26,7 @@ import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
 import { categoryModel, serviceOrderModel, subcategoryModel, serviceModel } from "../../Utils/ServiceModels";
+
 
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -38,24 +40,24 @@ const validate = yup.object().shape({
 
 export const CardCreateService = () => {
 	
-	const { addInfoService, infoService } = useServiceContext()
-	
-	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
-	
-	const [ services, setServices ] = useState( serviceOrderModel );
-
-	useEffect(() => {
-		const servicesStorage = localStorage.getItem("services");
-
-		if (servicesStorage) {
-			setServices(JSON.parse(servicesStorage));
-		}
-		console.log("lista: ", servicesStorage);
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem("services", JSON.stringify(services));
-	}, [services]);
+//	const { addInfoService, infoService } = useServiceContext()
+//	
+//	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
+//	
+//	const [ services, setServices ] = useState( serviceOrderModel );
+//
+//	useEffect(() => {
+//		const servicesStorage = localStorage.getItem("services");
+//
+//		if (servicesStorage) {
+//			setServices(JSON.parse(servicesStorage));
+//		}
+//		console.log("lista: ", servicesStorage);
+//	}, []);
+//
+//	useEffect(() => {
+//		localStorage.setItem("services", JSON.stringify(services));
+//	}, [services]);
 
 
 
@@ -95,6 +97,36 @@ var myIndex;
 				</div>
 				<Formik
 					initialValues={ {
+            updatedAt: new Date()
+            .toLocaleTimeString("pt-br", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "numeric",
+            })
+            .toString()
+            .replace(":", "")
+            .replace(":", "")
+            .replace("/", "")
+            .replace("/", "")
+            .replace(" ", ""),
+            createdAt: new Date()
+            .toLocaleTimeString("pt-br", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "numeric",
+            })
+            .toString()
+            .replace(":", "")
+            .replace(":", "")
+            .replace("/", "")
+            .replace("/", "")
+            .replace(" ", ""),
             id: new Date()
             .toLocaleTimeString("pt-br", {
               day: "2-digit",
@@ -110,22 +142,23 @@ var myIndex;
             .replace("/", "")
             .replace("/", "")
             .replace(" ", ""),
-            //serviceLocal: "",
-            //description: "",
+            serviceLocal: "",
+            description: "",
             aplicantsName: "",
-            serviceLetter: serviceModel[myIndex],
+            serviceSubGroupId: serviceModel[myIndex].id,
             title: serviceModel[myIndex].title,
-            patrimonio: "",
+            patrimony: "",
+            personType: 0,
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							setServices([...services, values]);
-							console.log("services:", services);
-              addInfoService( [ values  ] )
+							//setServices([...services, values]);
+							//console.log("services:", services);
+              //addInfoService( [ values  ] )
 							
-							console.log( "infos:", infoServiceLetter )
+							//console.log( "infos:", infoServiceLetter )
 
 							toast.success("Serviço criado com sucesso!");
 						
@@ -164,8 +197,19 @@ var myIndex;
 										type="textarea"
 										name="description"
 										textareaid="description"
-									/>
+                    />
 								</div>
+                  <div>
+                    { serviceModel[ myIndex ].isPatromonyIdRequired ? 
+                    <CardLabelInput
+                      label="Patrimônio"
+                      name="patrimony"
+                      type="text"
+                      width="w-full"
+                      inputid="patrimony"
+                    />
+                    : <></>}
+                  </div>
 								<div className="">
 									<FieldSelect
 										label="serviceLocal"
@@ -183,9 +227,9 @@ var myIndex;
 									type="submit"
 									disabled={isSubmitting || !isValid}
 								/>
-                <Link href={"/"}>
-								<Button title="Cancelar" theme="secondaryAction" type="button" />
-                </Link>
+                {/*<Link href={"/"}>*/}
+                  <Button title="Cancelar" theme="secondaryAction" type="button" onClick={fetchApiData()} />
+                {/*</Link>*/}
 							</div>
 						</Form>
 					)}
