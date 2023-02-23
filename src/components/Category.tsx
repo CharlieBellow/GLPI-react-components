@@ -6,14 +6,33 @@ import { Page } from "./Page";
 import { useContext } from 'react';
 import { RoutesContext } from '../Contexts/RouteContext';
 import { useRouter } from "next/router";
-
+import {useEffect, useState} from "react"
+import * as Icon from 'phosphor-react'
 
 
 export default function Category () {
 const router = useRouter()
   const {category} = router.query
+
+  const url = "http://172.27.12.171:3333/servicebook/group/"
+
+  const [categoriesList, setCategoriesList] = useState([])
  
-  
+  const axios = require('axios').default
+
+  async function getCategories() {
+
+   await axios.get(url)
+      .then(response => {
+        setCategoriesList(response.data)
+  })
+  .catch(error => console.log(error))
+  }
+
+  getCategories()
+ 
+
+
 
   return (
 
@@ -21,9 +40,9 @@ const router = useRouter()
       <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Categorias</h4>
       <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0">
 
-        { categoryModel.map( ( category, index ) => {
+        { categoriesList.map( ( category ) => {
           return (
-              <CardCategory link={ `/privateroutes/servicebook/category/${ category.titleCategory }` } Name={ category.titleCategory } Icon={ category.icon }
+              <CardCategory link={ `/privateroutes/servicebook/category/${ category.description }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
                 key={ category.id }
                 idCategory={ category.id }
               />
@@ -35,7 +54,7 @@ const router = useRouter()
   );
 };
 
-
+//criar esses cards lá no banco
 {/*<CardCategory link="/Subcategorias" Name={"Biblioteca"} Icon={<Icon.BookOpen  size={27}/>} />
                 <CardCategory link="/Subcategorias" Name={"NTI"} Icon={<Icon.Cpu  size={27}/>} />
                 <CardCategory link="/Subcategorias" Name={"Manutenção"} Icon={<Icon.Wrench  size={27}/>} />

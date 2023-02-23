@@ -6,7 +6,9 @@ import CardCategory from "../../../../../components/CardCategory";
 import { categoryModel, subcategoryModel } from "../../../../../Utils/ServiceModels";
 import { RoutesContext } from "../../../../../Contexts/RouteContext";
 import { useContext } from "react";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+import {useState} from "react";
+
 
 //interface CategoriaProps {
 //	categoryId?: string;
@@ -18,6 +20,20 @@ const Subcategory = (  ) => {
 
   const router = useRouter()
 
+  const axios = require("axios").default
+  const [subcategoriesList, setSubcategoriesList] = useState([])
+  const url = `http://172.27.12.171:3333/servicebook/${router.query.subcategory}/` /* falta fazer essa rota */
+  
+//  async function getSubcategories() {
+//    await axios.get(url)
+  //.then(response => {
+    //setSubcategoryList(response.data)
+  //})
+  //.catch( error => console.log(error))
+//
+//  } 
+//getSubcategories()
+
   return (
 		<Page
 			pagetitle={"Subcategorias"}
@@ -27,16 +43,16 @@ const Subcategory = (  ) => {
 						Subcategorias
 					</h4>
 
-					<h5 className="text-xl font-bold m-8">GTI</h5>
+					<h5 className="text-xl font-bold m-8">{router.query.subcategory}</h5>
 					<div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
 						{/*<div className="flex flex-col gap-4 ">*/}
 						<div>
 
-              { subcategoryModel.map( ( subcategory, index ) => {
+              { subcategoryModel.map( ( subcategory ) => {
                 
                 return (
 
-                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.titleSubcategory }` } Name={ subcategory.titleSubcategory } Icon={ subcategory.icon }
+                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.description }` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
                       key={ subcategory.id }
                       idCategory={ subcategory.id }
                     />

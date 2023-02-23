@@ -15,7 +15,16 @@ import { useCategoryContext } from '../../Contexts/CategoryContext';
 import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
 
 
+/* 
 
+{
+	"id": "35be846f-55ba-48d0-a752-d22a9a82eb47",
+	"description": "GTI",
+	"createdAt": "2023-02-17T17:23:59.579Z",
+	"updatedAt": "2023-02-17T17:23:59.579Z"
+}
+
+*/
 
 const validate = yup.object().shape({
 	titleCategory: validationSchema.titleCategory,
@@ -32,7 +41,7 @@ export const CardCreateCategory = () => {
 	useEffect(() => {
 		const categoryStorage = localStorage.getItem("categories");
 
-		if (categoryStorage) {
+		if (categoryStorage !== "undefined") {
 			setCategories(JSON.parse(categoryStorage));
 
 			console.log("categories: ", categoryStorage);
@@ -59,11 +68,9 @@ export const CardCreateCategory = () => {
 				</div>
 				<Formik
 					initialValues={{
-						titleCategory: "",
 						description: "",
-						//services: [],
-						//icon: categoryIcons[ 3 ].icon,
 						link: "",
+            createdAt: 
 						id: new Date()
 							.toLocaleTimeString("pt-br", {
 								day: "2-digit",
