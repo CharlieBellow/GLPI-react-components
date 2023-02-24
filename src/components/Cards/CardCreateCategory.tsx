@@ -1,3 +1,4 @@
+import axios from "axios"; 
 import { Icon, Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
@@ -14,6 +15,9 @@ import { useEffect, useState } from "react";
 import { useCategoryContext } from '../../Contexts/CategoryContext';
 import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
 
+import {useAuth} from "../../Contexts/AuthContext"
+
+
 
 /* 
 
@@ -27,33 +31,27 @@ import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
 */
 
 const validate = yup.object().shape({
-	titleCategory: validationSchema.titleCategory,
-	description: validationSchema.description,
-	services: validationSchema.services,
-	link: validationSchema.link,
+  description: validationSchema.titleCategory,
+	
 });
 
 export const CardCreateCategory = () => {
 
-	//const {category} = useCategoryContext()
-	const [ categories, setCategories ] = useState( categoryModel );
+  const {token} = useAuth()
 
-	useEffect(() => {
-		const categoryStorage = localStorage.getItem("categories");
-
-		if (categoryStorage !== "undefined") {
-			setCategories(JSON.parse(categoryStorage));
-
-			console.log("categories: ", categoryStorage);
-		}
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem("categories", JSON.stringify(categories));
-	});
+  async function postCategory(values) {
+  const postCategory = await axios({
+                method: 'post',
+                baseURL: "http://172.27.12.171:3333",
+                url: "/servicebook/group",
+                data: values,
+                headers: {authorization: `Bearer ${ token }`}
+              }) 
+    }
 
 
-	return (
+  return (
+    <>
 		<div className="mx-4">
 			<div
 				className="mt-18 mx-auto mb-80 flex flex-col lg:block
@@ -69,33 +67,18 @@ export const CardCreateCategory = () => {
 				<Formik
 					initialValues={{
 						description: "",
-						link: "",
-            createdAt: 
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
+            
 					}}
-					//validationSchema={validations}
+		
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							//setCategories([...categories, values]);
-							console.log("category:", categories);
+              postCategory(values)
 
 							toast.success("Categoria criada com sucesso!");
+
+              
 							
 							actions.resetForm();
 					
@@ -108,28 +91,10 @@ export const CardCreateCategory = () => {
 								<div className="">
 									<CardLabelInput
 										label="Nome da Categoria"
-										name="titleCategory"
+                    name="description"
 										type="text"
 										width="w-full"
-										inputid="title"
-									/>
-								</div>
-
-								<div className="">
-									<CardLabelTextarea
-										label="Descrição"
-										type="textarea"
-										name="description"
-										textareaid="description"
-									/>
-								</div>
-								<div className="">
-									<CardLabelInput
-										label="link"
-										name="link"
-										type="text"
-										width="w-full"
-										inputid="title"
+                    inputid="description"
 									/>
 								</div>
 							</div>
@@ -147,6 +112,7 @@ export const CardCreateCategory = () => {
 					)}
 				</Formik>
 			</div>
-		</div>
+		</div >
+      </>
 	);
 };

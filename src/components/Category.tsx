@@ -42,7 +42,7 @@ const router = useRouter()
 
         { categoriesList.map( ( category ) => {
           return (
-              <CardCategory link={ `/privateroutes/servicebook/category/${ category.description }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
+              <CardCategory link={ `/privateroutes/servicebook/category/${ category.id }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
                 key={ category.id }
                 idCategory={ category.id }
               />

@@ -1,3 +1,5 @@
+import * as yup from "yup";
+import axios from "axios";
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
@@ -8,47 +10,52 @@ import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
-import { categoryModel, serviceOrderModel, subcategoryModel } from '../../Utils/ServiceModels'
+import {useAuth} from "../../Contexts/AuthContext"
+
 import {
 	validationSchema,
 	servicesList,
 	categoriesList,
 } from "../../Utils/validations";
-import * as yup from "yup";
-//import { services, ServicesList } from "../Pages/ServiceLetter/ServicesList";
-import { useEffect, useState } from "react";
-import  {useServiceContext}  from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
+
 
 const validate = yup.object().shape({
-	titleSubcategory: validationSchema.titleSubcategory,
-	description: validationSchema.description,
-	category: validationSchema.category,
-	services: validationSchema.services,
+	description: validationSchema.titleSubcategory,
 });
 
 export const CardCreateSubcategory = () => {
 
-	const { addInfoService, infoService } = useServiceContext()
-	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
 
-	
-	console.log( "infoServiceLetter:", infoServiceLetter )
-	const [ subcategories, setSubcategories ] = useState( subcategoryModel );
+let categorias = []
+ const getCategoriesList = async function() {
 
-	useEffect(() => {
-		const subcategoryStorage = localStorage.getItem("subcategories");
+  const categoriesList = await axios({
+                method: 'get',
+                baseURL: "http://172.27.12.171:3333",
+                url: "/servicebook/group",
+              })
+              
+              .then(response => {
+               categorias = response.data
+            console.log(categorias)
+               
+                return categorias
+               
+              })
+            }
+getCategoriesList()
 
-		if (subcategoryStorage) {
-			setSubcategories(JSON.parse(subcategoryStorage));
+const {token} = useAuth()
+ async function postSubategory(values) {
+  const postCategory = await axios({
+                method: 'post',
+                baseURL: "http://172.27.12.171:3333",
+                url: "/servicebook/subgroup",
+                data: values,
+                headers: {authorization: `Bearer ${ token }`}
+              }) 
+    }
 
-			//console.log("subcategories: ", subcategoryStorage);
-		}
-	}, [] );
-
-	useEffect(() => {
-		localStorage.setItem("subcategories", JSON.stringify(subcategories));
-	} );
 	
 	return (
 		<div className="mx-4">
@@ -65,40 +72,20 @@ export const CardCreateSubcategory = () => {
 				</div>
 				<Formik
 					initialValues={{
-						titleSubcategory: "",
+						serviceGroupId: "",
 						description: "",
-						category: categoryModel[ 0 ],
-						//services: [],
-            icon: <></>,
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
+						
 					}}
-					//validationSchema={validations}
+				
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							setSubcategories([...subcategories, values]);
-							console.log("subcategory:", subcategories);
-						console.log("values:", values);
-						
-						
-							addInfoServiceLetter( [ { subcategory: values, id: "0" } ] )
-							console.log( "infoServiceLetter:", infoServiceLetter )
+						  postSubategory(values)
+
 							toast.success("Serviço criado com sucesso!");
+
+
 					
 							actions.resetForm();
 						
@@ -111,22 +98,22 @@ export const CardCreateSubcategory = () => {
 								<div className="">
 									<CardLabelInput
 										label="Nome da Subcategoria"
-										name="titleSubcategory"
+										name="description"
 										type="text"
 										width="w-full"
 										inputid="title"
 									/>
 								</div>
 
-								<div className="">
-									<CardLabelTextarea
-										label="Descrição"
-										type="textarea"
-										name="description"
-										textareaid="description"
-									/>
-								</div>
-								<div className="">
+                <div className="">
+                  <FieldSelect
+                    label="serviceGroupId"
+                    name="serviceGroupId"
+                    default="Selecione a categoria a qual ela pertence"
+                    listitems={categorias} 
+                  />
+                </div>
+								{/*<div className="">
 									<FieldSelect
 										label="services"
 										name="services"
@@ -138,31 +125,16 @@ export const CardCreateSubcategory = () => {
 										}
 										) }
 									/>
-								</div>
-								<div className="">
-									<FieldSelect
-										label="category"
-										name="category"
-										default="Selecione a categoria"
-										listitems={ 
-											categoryModel.map( (category) => {
-												return (
-													category.titleCategory
-												);
-											}
-											)
-} 
-									/>
-								</div>
+								</div>*/}
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
-									title="Solicitar"
+									title={isSubmitting ? <Spinner size="md" /> : "Solicitar" }
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}
-								/>
+                  
+                  />
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>
 						</Form>

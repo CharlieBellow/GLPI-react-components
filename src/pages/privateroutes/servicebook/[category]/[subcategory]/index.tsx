@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Page } from "../../../../../components/Page";
 import * as Icon from "phosphor-react"
 
@@ -20,10 +21,11 @@ const Subcategory = (  ) => {
 
   const router = useRouter()
 
-  const axios = require("axios").default
   const [subcategoriesList, setSubcategoriesList] = useState([])
   const url = `http://172.27.12.171:3333/servicebook/${router.query.subcategory}/` /* falta fazer essa rota */
   
+
+  console.log(router)
 //  async function getSubcategories() {
 //    await axios.get(url)
   //.then(response => {
@@ -33,6 +35,21 @@ const Subcategory = (  ) => {
 //
 //  } 
 //getSubcategories()
+
+const nameCategory = axios.get(`http://172.27.12.171:3333/servicebook/group/${router.query.subcategory}`)
+
+
+async function postCategory(values) {
+  const nameCategory = await axios({
+                method: 'get',
+                baseURL: "http://172.27.12.171:3333",
+                url: `/servicebook/group/${router.query.subcategory}`,
+              }) 
+              .then(response => console.log("response", response))
+    }
+
+
+console.log("router", router.query.subcategory)
 
   return (
 		<Page
@@ -60,16 +77,7 @@ const Subcategory = (  ) => {
                 );
               } ) }
 
-							{/*<CardCategory
-								link={`/servicebook/category/${ category }/${ subcategoryModel[ 0 ].titleSubcategory }` }
-								Name={ subcategoryModel[ 0 ].titleSubcategory }
-								Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }
-								
-							/>
-							<p>*/}
-								Clique no card para solicitar um serviço relacionado a Rede de
-								internet
-							{/*</p>*/}
+							
 						</div>
 						{/*
             
