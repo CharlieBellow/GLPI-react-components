@@ -75,7 +75,14 @@ export const subcategoryModel = [
   {
   id: "02",
   titleSubcategory: "Redes",
-  description: "",
+  description: "oi",
+  category: categoryModel[0],
+  icon: categoryIcons[3].icon,
+  },
+  {
+  id: "04",
+  titleSubcategory: "Redes",
+  description: "osdfsd",
   category: categoryModel[0],
   icon: categoryIcons[3].icon,
   }

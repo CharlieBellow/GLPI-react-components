@@ -8,7 +8,9 @@ import { categoryModel, subcategoryModel } from "../../../../../Utils/ServiceMod
 import { RoutesContext } from "../../../../../Contexts/RouteContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+
+import {getCategory, category} from "../../../../../Utils/server/getInfo"
 
 
 //interface CategoriaProps {
@@ -21,11 +23,20 @@ const Subcategory = (  ) => {
 
   const router = useRouter()
 
-  const [subcategoriesList, setSubcategoriesList] = useState([])
-  const url = `http://172.27.12.171:3333/servicebook/${router.query.subcategory}/` /* falta fazer essa rota */
+  //const [subcategoriesList, setSubcategoriesList] = useState([])
+  //const url = `http://172.27.12.171:3333/servicebook/${router.query.subcategory}/` 
   
 
-  console.log(router)
+//a página renderiza o nome mas não aparece de imediato, é necessário criar um state ou um contexto para salvar o nome da categoria em tempo real
+const [myCategory, setMyCategory] = useState(category)
+  
+getCategory(router.query.subcategory)
+
+
+    console.log( "category", category )
+
+
+
 //  async function getSubcategories() {
 //    await axios.get(url)
   //.then(response => {
@@ -36,7 +47,7 @@ const Subcategory = (  ) => {
 //  } 
 //getSubcategories()
 
-const nameCategory = axios.get(`http://172.27.12.171:3333/servicebook/group/${router.query.subcategory}`)
+//const nameCategory = axios.get(`http://172.27.12.171:3333/servicebook/group/${router.query.subcategory}`)
 
 
 async function postCategory(values) {
@@ -60,15 +71,15 @@ console.log("router", router.query.subcategory)
 						Subcategorias
 					</h4>
 
-					<h5 className="text-xl font-bold m-8">{router.query.subcategory}</h5>
+          <h5 className="text-xl font-bold m-8">{category.description}</h5>
 					<div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
-						{/*<div className="flex flex-col gap-4 ">*/}
-						<div>
+					
+					
 
               { subcategoryModel.map( ( subcategory ) => {
                 
                 return (
-
+                  
                     <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.description }` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
                       key={ subcategory.id }
                       idCategory={ subcategory.id }
@@ -78,7 +89,7 @@ console.log("router", router.query.subcategory)
               } ) }
 
 							
-						</div>
+						
 						{/*
             
             criar mais categorias dessa no serviceMod
