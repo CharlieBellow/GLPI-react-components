@@ -1,21 +1,23 @@
 import * as yup from "yup";
-import axios from "axios";
+
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
 import {useAuth} from "../../Contexts/AuthContext"
 
+import { postSubcategory } from "../../Utils/server/postInfo"
+
+import { listCategory, getAllCategory } from "../../Utils/server/getInfo"
+
 import {
 	validationSchema,
-	servicesList,
-	categoriesList,
+
 } from "../../Utils/validations";
 
 
@@ -25,36 +27,9 @@ const validate = yup.object().shape({
 
 export const CardCreateSubcategory = () => {
 
+  getAllCategory()
 
-let categorias = []
- const getCategoriesList = async function() {
-
-  const categoriesList = await axios({
-                method: 'get',
-                baseURL: "http://172.27.12.171:3333",
-                url: "/servicebook/group",
-              })
-              
-              .then(response => {
-               categorias = response.data
-            console.log(categorias)
-               
-                return categorias
-               
-              })
-            }
-getCategoriesList()
-
-const {token} = useAuth()
- async function postSubategory(values) {
-  const postCategory = await axios({
-                method: 'post',
-                baseURL: "http://172.27.12.171:3333",
-                url: "/servicebook/subgroup",
-                data: values,
-                headers: {authorization: `Bearer ${ token }`}
-              }) 
-    }
+  const {token} = useAuth()
 
 	
 	return (
@@ -81,12 +56,8 @@ const {token} = useAuth()
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-						  postSubategory(values)
-
+						  postSubcategory( values, token )
 							toast.success("Serviço criado com sucesso!");
-
-
-					
 							actions.resetForm();
 						
 						}, 400);
@@ -110,22 +81,9 @@ const {token} = useAuth()
                     label="serviceGroupId"
                     name="serviceGroupId"
                     default="Selecione a categoria a qual ela pertence"
-                    listitems={categorias} 
+                    listitems={listCategory} 
                   />
                 </div>
-								{/*<div className="">
-									<FieldSelect
-										label="services"
-										name="services"
-										default="Selecione o serviço"
-										listitems={ serviceOrderModel.map( service => {
-											return (
-												service.serviceLetter.title
-											);
-										}
-										) }
-									/>
-								</div>*/}
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 								<Button

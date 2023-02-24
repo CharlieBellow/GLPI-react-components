@@ -1,6 +1,8 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
+import Link from "next/link"
+import { Formik, Form } from "formik";
+import { toast } from "react-toastify";
+import * as yup from "yup";
 import {useRouter} from "next/router"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
@@ -14,18 +16,14 @@ import {
 	
 } from "../../Utils/validations";
 
-import Link from "next/link"
 
 import fetchApiData from "../../Utils/fetchApiData";
 
 import { useServiceContext } from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
-import * as yup from "yup";
 
-import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
-import { categoryModel, serviceOrderModel, subcategoryModel, serviceModel } from "../../Utils/ServiceModels";
+import {  serviceModel } from "../../Utils/ServiceModels";
 
 
 
@@ -37,6 +35,23 @@ const validate = yup.object().shape({
 	description: validationSchema.description,
 	serviceLocal: validationSchema.serviceLocal,
 });
+
+
+/* 
+
+{
+	"serviceSubGroupId": "446ba367-8c8e-4f11-b920-413ef6e9e836",
+	"title": "Criar email institucional",
+	"description": "Acessar perfil.ufal.br, ",
+	"definition": "Etapas para criação do email institucional",
+	"personType": [
+		"Discente",
+		"Docente"
+	],
+	"isPatromonyIdRequired": "true"
+}
+
+*/
 
 export const CardCreateService = () => {
 	
@@ -60,6 +75,7 @@ export const CardCreateService = () => {
 //	}, [services]);
 
 
+  
 
 const router = useRouter()
 

@@ -1,34 +1,19 @@
+import * as yup from "yup";
 import axios from "axios"; 
 import { Icon, Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
+
 import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
-import FieldSelect from "../Inputs/FieldSelect";
-import { validationSchema, servicesList } from "../../Utils/validations";
-import * as yup from "yup";
-//import { services, ServicesList } from '../Pages/ServiceLetter/ServicesList';
-import { useEffect, useState } from "react";
-import { useCategoryContext } from '../../Contexts/CategoryContext';
-import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
+
+import { validationSchema } from "../../Utils/validations";
 
 import {useAuth} from "../../Contexts/AuthContext"
+import {postCategory} from "../../Utils/server/postInfo"
 
-
-
-/* 
-
-{
-	"id": "35be846f-55ba-48d0-a752-d22a9a82eb47",
-	"description": "GTI",
-	"createdAt": "2023-02-17T17:23:59.579Z",
-	"updatedAt": "2023-02-17T17:23:59.579Z"
-}
-
-*/
 
 const validate = yup.object().shape({
   description: validationSchema.titleCategory,
@@ -38,18 +23,7 @@ const validate = yup.object().shape({
 export const CardCreateCategory = () => {
 
   const {token} = useAuth()
-
-  async function postCategory(values) {
-  const postCategory = await axios({
-                method: 'post',
-                baseURL: "http://172.27.12.171:3333",
-                url: "/servicebook/group",
-                data: values,
-                headers: {authorization: `Bearer ${ token }`}
-              }) 
-    }
-
-
+  
   return (
     <>
 		<div className="mx-4">
@@ -74,12 +48,8 @@ export const CardCreateCategory = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-              postCategory(values)
-
+              postCategory(values, token)
 							toast.success("Categoria criada com sucesso!");
-
-              
-							
 							actions.resetForm();
 					
 						}, 400);
@@ -99,9 +69,8 @@ export const CardCreateCategory = () => {
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
-									title="Solicitar"
+                    title={ isSubmitting ? <Spinner size="md" /> : "Solicitar" }
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

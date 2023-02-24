@@ -12,39 +12,57 @@ const baseURL = "http://172.27.12.171:3333"
               })
 
     }
+
+
+export let listCategory = []
  export async function getAllCategory() {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: "/servicebook/group",
               })
+              .then(response => {
+                listCategory = response.data
+                
+              })
 
     }
 
-     export async function getAllSubategory(values) {
+    export let listSubcategory = []
+     export async function getAllSubcategory() {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: "/servicebook/subgroup",
 
-              }) 
+  } ) 
+    .then( response => {
+      listSubcategory = response.data;
+
+    } )
     }
 
     export async function getSubcategory(id) {
-  const getCategory = await axios({
-                method: 'get',
-                baseURL: baseURL,
-                url: `/servicebook/subgroup/${id}`,
-              })
-
+      const getCategory = await axios({
+        method: 'get',
+        baseURL: baseURL,
+        url: `/servicebook/subgroup/${id}`,
+      })
+      
+      
     }
-
-     export async function getAllService(values) {
+    
+    export let listService = []
+     export async function getAllService() {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: "/servicebook/service",
               }) 
+    .then( response => {
+      listService = response.data;
+
+    } )
     }
 
     export async function getService(id) {
@@ -53,5 +71,6 @@ const baseURL = "http://172.27.12.171:3333"
                 baseURL: baseURL,
                 url: `/servicebook/service/${id}`,
               })
+              
 
     }
