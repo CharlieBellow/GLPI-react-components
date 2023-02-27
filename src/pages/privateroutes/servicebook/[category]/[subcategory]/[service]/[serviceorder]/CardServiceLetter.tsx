@@ -18,12 +18,12 @@ export default function CardServiceLetter ( props: CardServiceLetterProps ) {
 
   const changeFloatingButton = () => {
     if ( typeof window !== "undefined" ) {
-      if ( window.scrollY >= 80 && window.screen.width < 1024 ) {
+      if ( window.scrollY >= 30 && window.screen.width < 1024 ) {
         setFloatingButton( true );
       } else {
         setFloatingButton( false );
       }
-      
+      console.log(floatingButton);
     }
   };
 
