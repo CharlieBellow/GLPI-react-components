@@ -1,18 +1,17 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
-import { usersList } from "../../components/Cards/CardUser/User";
+import { usersList } from "../../../components/Cards/CardUser/User";
 import {
 	validationSchema,
 	//blocList,
 } from "../../Utils/validations";
 
 import * as yup from "yup";
-import { toast } from "react-toastify";
-import { Button } from "../../components/Buttons/Button";
-import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
-import { CardTitle } from "../../components/Cards/CardTitle";
-import { CardLine } from "../../components/Cards/CardLine";
-
+import { Button } from "../../../components/Buttons/Button";
+import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
+import { CardTitle } from "../../../components/Cards/CardTitle";
+import { CardLine } from "../../../components/Cards/CardLine";
+import { useMessage } from "../../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,
 	email: validationSchema.email,
@@ -20,6 +19,7 @@ const validate = yup.object().shape({
 
 export const BasicForm = () => {
 	const [users, setUsers] = useState(usersList);
+	const {errorMessage, successMessage} = useMessage()
 
 	useEffect(() => {
 		const usersStorage = localStorage.getItem("users");
@@ -84,7 +84,7 @@ export const BasicForm = () => {
 							setUsers([...users, values]);
 							console.log("users: ", users);
 
-							toast.success("Chamado criado com sucesso!");
+							successMessage("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 						}, 400);

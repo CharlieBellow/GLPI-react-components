@@ -1,6 +1,5 @@
 import { Icon, Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
@@ -13,7 +12,7 @@ import * as yup from "yup";
 import { useEffect, useState } from "react";
 import { useCategoryContext } from '../../Contexts/CategoryContext';
 import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
-
+import { useMessage } from "../../Contexts/MessageContext";
 
 
 
@@ -28,7 +27,7 @@ export const CardCreateCategory = () => {
 
 	//const {category} = useCategoryContext()
 	const [ categories, setCategories ] = useState( categoryModel );
-
+	const {errorMessage, successMessage} = useMessage()
 	useEffect(() => {
 		const categoryStorage = localStorage.getItem("categories");
 
@@ -88,7 +87,7 @@ export const CardCreateCategory = () => {
 							//setCategories([...categories, values]);
 							console.log("category:", categories);
 
-							toast.success("Categoria criada com sucesso!");
+							successMessage("Categoria criada com sucesso!");
 							
 							actions.resetForm();
 					

@@ -14,9 +14,9 @@ import {
 	genderList,
 } from "../../Utils/validations";
 import { Form, Formik } from "formik";
-import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
 import { Spinner } from "@chakra-ui/react";
+import { useMessage } from "../../Contexts/MessageContext";
 
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
@@ -80,8 +80,9 @@ const validate = yup.object().shape({
 //
 //	//handleBlur(e);
 //}
-
+const {errorMessage, successMessage} = useMessage()
 const CardAddUser = () => (
+	
 	<div className="mx-4">
 		<div
 			className="mt-18 mx-auto mb-80 flex flex-col lg:block
@@ -114,7 +115,7 @@ const CardAddUser = () => (
 						console.log("submit", values);
 						console.log("cep", values.cep);
 
-						toast.success("Usuário criado com sucesso!");
+						successMessage("Usuário criado com sucesso!");
 						//alert(JSON.stringify(values, null, 2));
 						setSubmitting(false);
 					}, 400);

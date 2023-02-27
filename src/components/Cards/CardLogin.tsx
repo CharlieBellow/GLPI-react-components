@@ -8,10 +8,9 @@ import { Eye } from "phosphor-react";
 import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
-import { toast } from "react-toastify";
 import Link from "next/link";
 import {useRouter} from "next/router"
-
+import { useMessage } from "../../Contexts/MessageContext";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
@@ -21,7 +20,7 @@ const validate = yup.object().shape({
 export function CardLogin () {
 	
   const { auth, changeAuth } = useAuth()
-
+  const {errorMessage, successMessage} = useMessage()
 	const router = useRouter();
 
 	
@@ -41,11 +40,11 @@ export function CardLogin () {
               changeAuth( auth )
               console.log( "auth login 3", auth );
 		
-							toast.success("Login realizado com sucesso!");
+			  successMessage("Login realizado com sucesso!");
               router.push( "../privateroutes/dashboard", "/" )
 							
 						} else {
-						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
+						errorMessage("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
 
 						}
 						actions.resetForm();

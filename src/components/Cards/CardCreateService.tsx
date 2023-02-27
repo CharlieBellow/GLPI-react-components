@@ -16,11 +16,11 @@ import { Eye, UploadSimple } from "phosphor-react";
 import * as yup from "yup";
 
 import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
 import { categoryModel, serviceModel, subcategoryModel, serviceLetterModel } from "../../Utils/ServiceModels";
 import { useServiceContext } from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
+import { useMessage } from "../../Contexts/MessageContext";
 
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -36,6 +36,8 @@ const validate = yup.object().shape({
 export const CardCreateService = () => {
 	
 	const { addInfoService, infoService } = useServiceContext()
+
+	const {errorMessage, successMessage} = useMessage()
 	
 	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
 	
@@ -100,7 +102,7 @@ export const CardCreateService = () => {
 							
 							console.log( "infos:", infoServiceLetter )
 
-							toast.success("Serviço criado com sucesso!");
+							successMessage("Serviço criado com sucesso!");
 						
 							actions.resetForm();
 							

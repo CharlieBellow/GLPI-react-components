@@ -1,6 +1,5 @@
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
@@ -19,6 +18,7 @@ import * as yup from "yup";
 import { useEffect, useState } from "react";
 import { useServiceContext } from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
+import { useMessage } from "../../Contexts/MessageContext";
 
 const validate = yup.object().shape({
 	titleSubcategory: validationSchema.titleSubcategory,
@@ -31,7 +31,7 @@ export const CardCreateSubcategory = () => {
 
 	const { addInfoService, infoService } = useServiceContext()
 	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
-
+	const {errorMessage, successMessage} = useMessage()
 	
 	console.log( "infoServiceLetter:", infoServiceLetter )
 	const [ subcategories, setSubcategories ] = useState( subcategoryModel );
@@ -97,7 +97,7 @@ export const CardCreateSubcategory = () => {
 						
 							addInfoServiceLetter( [ { subcategory: values, id: "0" } ] )
 							console.log( "infoServiceLetter:", infoServiceLetter )
-							toast.success("Serviço criado com sucesso!");
+							successMessage("Serviço criado com sucesso!");
 					
 							actions.resetForm();
 						

@@ -33,3 +33,8 @@ export function MessageProvider( { children}: MessageProviderProps){
         </MessageContext.Provider>
     )
 }
+export function useMessage(){
+    const messageContext = useContext(MessageContext)
+
+    return messageContext;
+}
