@@ -74,7 +74,7 @@ export default function CardServiceLetter ( ) {
     <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
       <div className="lg:flex lg:justify-between lg:items-baseline">
         <h3 className="pt-4 font-medium ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
-          { service.description }
+          { service.title }
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 
@@ -87,7 +87,9 @@ export default function CardServiceLetter ( ) {
           </Link>
         </div>
       </div>
-      <InfoServiceItem infos={ service } />
+
+      <InfoServiceItem infos={ service } icon={<Icon.DotsThreeVertical size={24}/> }/>
+     
 
       <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">
         <Link href={`/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${ router.query.serviceorder }/createservice`}>
