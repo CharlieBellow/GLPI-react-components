@@ -19,22 +19,22 @@ export let category = []
     }
 
 
-export let listCategory = []
- export async function getAllCategory() {
+export let listCategories = []
+ export async function getAllCategories() {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: "/servicebook/group",
               })
               .then(response => {
-                listCategory = response.data
+                listCategories = response.data
                 
               })
 
     }
 
-    export let listSubcategory = []
-export async function getAllSubcategory ( idCategory ) {
+    export let listSubcategories = []
+export async function getAllSubcategories ( idCategory ) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -42,40 +42,51 @@ export async function getAllSubcategory ( idCategory ) {
 
   } ) 
     .then( response => {
-      listSubcategory = response.data;
+      listSubcategories = response.data;
 
     } )
     }
 
+    export let subCategory = []
     export async function getSubcategory(id) {
       const getCategory = await axios({
         method: 'get',
         baseURL: baseURL,
         url: `/servicebook/subgroup/${id}`,
       })
+      .then(
+             response => {
+              subCategory = response.data
+            }
+              )
       
       
     }
     
-    export let listService = []
-     export async function getAllService() {
+    export let listServices = []
+     export async function getAllServices(idSubgroup) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
-                url: "/servicebook/service",
+                url: `/servicebook/subgroup/${idSubgroup}/service`,
               }) 
     .then( response => {
-      listService = response.data;
+      listServices = response.data;
 
     } )
     }
 
+        export let service = []
     export async function getService(id) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: `/servicebook/service/${id}`,
               })
-              
+              .then(
+             response => {
+              service = response.data
+            }
+              )
 
     }

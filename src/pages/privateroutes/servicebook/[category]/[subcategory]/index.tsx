@@ -1,23 +1,18 @@
 import axios from "axios";
-import { Page } from "../../../../../components/Page";
+import {useEffect, useState, useContext} from "react";
+import { useRouter } from "next/router";
 import * as Icon from "phosphor-react"
 
+
+import { Page } from "../../../../../components/Page";
 import CardCategory from "../../../../../components/CardCategory";
 //import { useParams } from "react-router-dom";
 import { categoryModel, subcategoryModel } from "../../../../../Utils/ServiceModels";
 import { RoutesContext } from "../../../../../Contexts/RouteContext";
-import { useContext } from "react";
-import { useRouter } from "next/router";
-import {useEffect, useState} from "react";
 
-import {getCategory, category} from "../../../../../Utils/server/getInfo"
+import { getCategory, getAllSubcategories, listSubcategories, category} from "../../../../../Utils/server/getInfo"
 
 
-//interface CategoriaProps {
-//	categoryId?: string;
-//}
-
-//{ categoryId }: CategoriaProps
 
 const Subcategory = (  ) => {
 
@@ -30,7 +25,9 @@ const Subcategory = (  ) => {
 //a página renderiza o nome mas não aparece de imediato, é necessário criar um state ou um contexto para salvar o nome da categoria em tempo real
 const [myCategory, setMyCategory] = useState(category)
   
-getCategory(router.query.subcategory)
+  getCategory( router.query.subcategory );
+getAllSubcategories(router.query.subcategory)
+
 
 
     console.log( "category", category )
@@ -76,11 +73,11 @@ console.log("router", router.query.subcategory)
 					
 					
 
-              { subcategoryModel.map( ( subcategory ) => {
+            { listSubcategories.map( ( subcategory ) => {
                 
                 return (
                   
-                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.description }` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
+                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.id }` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
                       key={ subcategory.id }
                       idCategory={ subcategory.id }
                     />

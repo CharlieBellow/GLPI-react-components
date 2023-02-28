@@ -22,6 +22,7 @@ export const agency = /[0-9]{4}/g;
 
 export const account = /[0-9]{4,7}/;
 
+export const patrimony = /[^\W_]*/g
 
 
 //criar uma máscara pra ele aceitar só 8 ou 10 números
@@ -179,13 +180,13 @@ export const validationSchema = {
     .min( 2, "Apenas duas letras maiúsculas" )
     .max( 2, "Apenas duas letras maiúsculas" )
     .required( "É obrigatório informar o estado" ),
-  cep: yup
+    cep: yup
     .string()
     .matches( cep, "Deve conter 8 números" )
     .required( "É obrigatório informar seu CEP" )
     .min( 8, "No mínimo 11 números." )
     .max( 8, "Apenas 11 números" ),
-  bank: yup
+    bank: yup
     .string()
     .required( "É obrigatório informar o banco" )
     .matches( bank, "Digite apenas 5 ou 9 números." )
@@ -198,35 +199,36 @@ export const validationSchema = {
     .min( 3, "No mínimo 3 números." )
     .max( 3, "Apenas 3 números" ),
   agency: yup
-    .string()
-    .matches( agency, "Digite apenas 4 números." )
-    .required( "É obrigatório informar a agência" )
-    .min( 4, "No mínimo 4 números." )
-    .max( 4, "Apenas 4 números" ),
+  .string()
+  .matches( agency, "Digite apenas 4 números." )
+  .required( "É obrigatório informar a agência" )
+  .min( 4, "No mínimo 4 números." )
+  .max( 4, "Apenas 4 números" ),
   account: yup
-    .string()
-    .matches( account, "Digite apenas 5 ou 9 números." )
-    .required( "É obrigatório informar o Nº da conta" )
-    .min( 5, "No mínimo 5 números." )
-    .max( 9, "Apenas 9 números" ),
+  .string()
+  .matches( account, "Digite apenas 5 ou 9 números." )
+  .required( "É obrigatório informar o Nº da conta" )
+  .min( 5, "No mínimo 5 números." )
+  .max( 9, "Apenas 9 números" ),
   titleCategory: yup
-    .string()
-    .min( 3, "No mínimo 3 caracteres" )
-    .max( 50, "No máximo 50 caracteres" )
-    .required( "É obrigatório informar o nome da Categoria" ),
+  .string()
+  .min( 3, "No mínimo 3 caracteres" )
+  .max( 50, "No máximo 50 caracteres" )
+  .required( "É obrigatório informar o nome da Categoria" ),
   titleSubcategory: yup
-    .string()
-    .min( 3, "No mínimo 3 caracteres" )
-    .max( 50, "No máximo 50 caracteres" )
-    .required( "É obrigatório informar o nome da Subcategoria" ),
+  .string()
+  .min( 3, "No mínimo 3 caracteres" )
+  .max( 50, "No máximo 50 caracteres" )
+  .required( "É obrigatório informar o nome da Subcategoria" ),
   services: yup
-    .string()
-    .oneOf( serviceOrderModel.map( serviceName => { return serviceName.serviceLetter.title; } ), "Escolha entre essas opções:" )
-    .required( "É obrigatório informar o serviço" ),
+  .string()
+  .oneOf( serviceOrderModel.map( serviceName => { return serviceName.serviceLetter.title; } ), "Escolha entre essas opções:" )
+  .required( "É obrigatório informar o serviço" ),
   category: yup
-    .string()
-    .oneOf( categoryModel.map( categoryName => { return categoryName.titleCategory; } ), "Escolha entre essas opções:" )
-    .required( "É obrigatório informar o serviço" ),
+  .string()
+  .oneOf( categoryModel.map( categoryName => { return categoryName.titleCategory; } ), "Escolha entre essas opções:" )
+  .required( "É obrigatório informar o serviço" ),
+  patrimony: yup.string().matches(patrimony, "Digite apenas números e letras").min( 3, "No mínimo 3 caracteres" ).max( 100, "No máximo 100 caracteres" ).required("Digite o número de série do patrimônio ao qual o serviço está sendo solicitado"),
 };
 
 export const validations = yup.object().shape( validationSchema );
