@@ -25,10 +25,11 @@ const Subcategory = (  ) => {
 //a página renderiza o nome mas não aparece de imediato, é necessário criar um state ou um contexto para salvar o nome da categoria em tempo real
 const [myCategory, setMyCategory] = useState(category)
   
+useEffect(() => {
   getCategory( router.query.subcategory );
-getAllSubcategories(router.query.subcategory)
+  getAllSubcategories(router.query.subcategory)
 
-
+   }, [])
 
     console.log( "category", category )
 

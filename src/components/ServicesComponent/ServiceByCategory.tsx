@@ -1,7 +1,9 @@
 import axios from "axios";
+import {useEffect} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {getAllServices, listServices, getSubcategory, subCategory} from "../../Utils/server/getInfo"
+import {getAllServices, listServices, getSubcategory, subCategory} from "../../Utils/server/getInfo";
+
 
 
 const ServiceByCategory = ( ) => {
@@ -11,10 +13,10 @@ const ServiceByCategory = ( ) => {
   console.log("router" , router.query);
   const {subcategory, service, serviceorder} = router.query
 
-
+ useEffect(() => {
   getSubcategory(router.query.service)
   getAllServices(router.query.service)
-
+ }, [])
 
 	return (
 	

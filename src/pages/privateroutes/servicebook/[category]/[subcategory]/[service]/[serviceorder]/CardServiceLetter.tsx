@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import { service, getService } from '../../../../../../../Utils/server/getInfo';
 
-
+//nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
 export default function CardServiceLetter ( ) {
   const [ floatingButton, setFloatingButton ] = useState( false );
@@ -46,8 +46,11 @@ export default function CardServiceLetter ( ) {
     //} )
     
     const router = useRouter();
+
+     useEffect(() => {
     getService(router.query.serviceorder)
     console.log(router.query.serviceorder)
+     }, [])
 
   console.log( "router", router.query );
 
@@ -73,7 +76,7 @@ export default function CardServiceLetter ( ) {
   return (
     <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
       <div className="lg:flex lg:justify-between lg:items-baseline">
-        <h3 className="pt-4 font-medium ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
+        <h3 className="pt-4 font-bold ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
           { service.title }
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">

@@ -52,7 +52,7 @@ export const campusList = [
   "Centro de Engenharia e Ciências Agrárias",
 ];
 
-export const bondList = [ "Aluno", "Técnico", "Professor", "Servidor", "outro", "Administrador" ];
+export const bondList = [ "Docente", "Técnico", "Discente", "outro" ];
 
 export const genderList = [
   "Homem",

@@ -6,7 +6,7 @@ import { Page } from "./Page";
 import { useContext } from 'react';
 import { RoutesContext } from '../Contexts/RouteContext';
 import { useRouter } from "next/router";
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
 import * as Icon from 'phosphor-react'
 import {getAllCategories, listCategories} from "../Utils/server/getInfo"
 
@@ -15,7 +15,11 @@ export default function Category () {
 const router = useRouter()
   const {category} = router.query
 
- getAllCategories()
+  useEffect(() => {
+    getAllCategories()
+
+  },[])
+  
 
 
 

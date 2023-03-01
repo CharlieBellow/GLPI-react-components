@@ -11,13 +11,14 @@ import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 import { servicesList } from "../ServicesComponent/Service";
 import {
+  bondList,
 	blocList,
 	validationSchema,
 	
 } from "../../Utils/validations";
 
-
-import fetchApiData from "../../Utils/fetchApiData";
+import {getService, service} from "../../Utils/server/getInfo"
+//import fetchApiData from "../../Utils/fetchApiData";
 
 import { useServiceContext } from "../../Contexts/ServiceContext";
 import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
@@ -33,7 +34,8 @@ const validate = yup.object().shape({
 	aplicantsName: validationSchema.name,
 	title: validationSchema.title,
 	description: validationSchema.description,
-	serviceLocal: validationSchema.serviceLocal,
+  serviceLocal: validationSchema.serviceLocal,
+  patrimony: validationSchema.patrimony,
 });
 
 
@@ -55,48 +57,18 @@ const validate = yup.object().shape({
 
 export const CardCreateService = () => {
 	
-//	const { addInfoService, infoService } = useServiceContext()
-//	
-//	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
-//	
-//	const [ services, setServices ] = useState( serviceOrderModel );
-//
-//	useEffect(() => {
-//		const servicesStorage = localStorage.getItem("services");
-//
-//		if (servicesStorage) {
-//			setServices(JSON.parse(servicesStorage));
-//		}
-//		console.log("lista: ", servicesStorage);
-//	}, []);
-//
-//	useEffect(() => {
-//		localStorage.setItem("services", JSON.stringify(services));
-//	}, [services]);
+
+  const router = useRouter()
+  console.log("serviceorder", router.query.serviceorder)
+
+useEffect(() => {
+  getService(router.query.serviceorder)
+
+}, [])
 
 
-  
-
-const router = useRouter()
-
-
-var myIndex;
-  const indexService = () => {
-    serviceModel.map( ( service, index ) => {
-
-      if ( service.id == router.query.serviceorder ) {
-
-        myIndex = index
-        return myIndex;
-      }
-    } );
-
-  };
-
-  indexService();
-
-
-
+// precisa criar um select onde dê pra selecionar vários e quardar em um array. por hora pede para colocar separado por vígula ou faz um checkbox com as opções
+// criar um toggle par que possa pegar a opção de sim ou não do patrimônio 
 
 	return (
 		<div className="mx-4">
@@ -113,68 +85,20 @@ var myIndex;
 				</div>
 				<Formik
 					initialValues={ {
-            updatedAt: new Date()
-            .toLocaleTimeString("pt-br", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "numeric",
-            })
-            .toString()
-            .replace(":", "")
-            .replace(":", "")
-            .replace("/", "")
-            .replace("/", "")
-            .replace(" ", ""),
-            createdAt: new Date()
-            .toLocaleTimeString("pt-br", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "numeric",
-            })
-            .toString()
-            .replace(":", "")
-            .replace(":", "")
-            .replace("/", "")
-            .replace("/", "")
-            .replace(" ", ""),
-            id: new Date()
-            .toLocaleTimeString("pt-br", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "numeric",
-            })
-            .toString()
-            .replace(":", "")
-            .replace(":", "")
-            .replace("/", "")
-            .replace("/", "")
-            .replace(" ", ""),
-            serviceLocal: "",
+            serviceSubGroupId: service.serviceSubGroupId,
+            title: "service.title",
             description: "",
-            aplicantsName: "",
-            serviceSubGroupId: serviceModel[myIndex].id,
-            title: serviceModel[myIndex].title,
-            patrimony: "",
-            personType: 0,
+            definition: "",
+            personType: [],
+            aplicantsName: "user.fullName",
+            serviceLocal: "",
+            isPatromonyIdRequired: false,
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							//setServices([...services, values]);
-							//console.log("services:", services);
-              //addInfoService( [ values  ] )
-							
-							//console.log( "infos:", infoServiceLetter )
+						
 
 							toast.success("Serviço criado com sucesso!");
 						
@@ -188,12 +112,12 @@ var myIndex;
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
 									<CardLabelInput
-										label="Nome"
+										label="Nome Completo"
 										name="aplicantsName"
 										type="text"
 										width="w-full"
 										inputid="title"
-									
+									disabled
 									/>
 								</div>
 
@@ -204,6 +128,8 @@ var myIndex;
 										type="text"
 										width="w-full"
 										inputid="title"
+                    disabled
+                   
 									/>
 								</div>
 
@@ -216,7 +142,7 @@ var myIndex;
                     />
 								</div>
                   <div>
-                    { serviceModel[ myIndex ].isPatromonyIdRequired ? 
+                    { service.isPatromonyIdRequired ? 
                     <CardLabelInput
                       label="Patrimônio"
                       name="patrimony"
@@ -230,8 +156,16 @@ var myIndex;
 									<FieldSelect
 										label="serviceLocal"
 										name="serviceLocal"
-										default="Selecione"
+										default="Selecione o bloco"
 										listitems={blocList}
+									/>
+								</div>
+								<div className="">
+									<FieldSelect
+										label="bond"
+										name="bond"
+										default="Selecione o vínculo"
+										listitems={bondList}
 									/>
 								</div>
 							</div>
@@ -244,7 +178,7 @@ var myIndex;
 									disabled={isSubmitting || !isValid}
 								/>
                 {/*<Link href={"/"}>*/}
-                  <Button title="Cancelar" theme="secondaryAction" type="button" onClick={fetchApiData()} />
+                  <Button title="Cancelar" theme="secondaryAction" type="button" onClick={} />
                 {/*</Link>*/}
 							</div>
 						</Form>
