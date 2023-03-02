@@ -2,8 +2,8 @@ import axios from "axios";
 
 const baseURL = "http://172.27.12.171:3333"
 
-export async function postCategory ( values, token ) {
-  const postCategory = await axios( {
+export function postCategory ( values, token ) {
+  axios( {
     method: 'post',
     baseURL: baseURL,
     url: `/servicebook/group/`,
@@ -14,8 +14,8 @@ export async function postCategory ( values, token ) {
 
 }
 
-export async function postSubcategory ( values, token ) {
-  const postCategory = await axios( {
+export function postSubcategory ( values, token ) {
+  caxios( {
     method: 'post',
     baseURL: baseURL,
     url: `/servicebook/subgroup/`,
@@ -26,11 +26,22 @@ export async function postSubcategory ( values, token ) {
 }
 
 
-export async function postService ( values, token ) {
-  const postCategory = await axios( {
+export function postService ( values, token ) {
+  axios( {
     method: 'post',
     baseURL: baseURL,
     url: `/servicebook/service/`,
+    data: values,
+    headers: { authorization: `Bearer ${ token }` }
+  } );
+
+}
+
+export function postServiceOrder ( values, token ) {
+  axios( {
+    method: 'post',
+    baseURL: baseURL,
+    url: `/servicebook/serviceorder/`,
     data: values,
     headers: { authorization: `Bearer ${ token }` }
   } );

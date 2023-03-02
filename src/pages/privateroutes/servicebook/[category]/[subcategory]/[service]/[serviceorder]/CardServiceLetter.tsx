@@ -81,7 +81,7 @@ export default function CardServiceLetter ( ) {
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 
-          <Link href={ `/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${ router.query.serviceorder }/createservice` }>
+          <Link href={ `/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${ router.query.serviceorder }/createserviceorder` }>
             <Button
               title={ floatingButton ? "" : changeButtonName() }
               theme="withIcon"
