@@ -3,7 +3,7 @@ import { Field, FieldHookConfig, useField } from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 
 interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
-	label: string;
+	label: string | boolean;
 	type: string;
 	inputid?: string;
 	width: string;

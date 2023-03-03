@@ -1,6 +1,8 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
 import { usersList } from "../../../components/Cards/CardUser/User";
+
+import { Field, FieldHookConfig, useField } from "formik";
 import {
 	validationSchema,
 	//blocList,
@@ -9,13 +11,14 @@ import {
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import { Button } from "../../../components/Buttons/Button";
-import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
+import { CardLabelInput, CardLabel } from "../../../components/Inputs/CardLabelInput";
 import { CardTitle } from "../../../components/Cards/CardTitle";
 import { CardLine } from "../../../components/Cards/CardLine";
 
 const validate = yup.object().shape({
 	name: validationSchema.name,
-	email: validationSchema.email,
+   personType: validationSchema.personType,
+   
 });
 
 const BasicForm = () => {
@@ -53,35 +56,15 @@ const BasicForm = () => {
 				<Formik
 					initialValues={{
 						name: "",
-						email: "",
-						date: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-							})
-							.substr(0, 10)
-							//.replace(new RegExp("/", 'g'),"-" )
-							.toString(),
-						time: new Date()
-							.toLocaleTimeString("pt-br", {
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "2-digit",
-							})
-							.toString(),
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								second: "2-digit",
-							})
-							.toString(),
+						isPatromonyIdRequired: false,
+           persontype: [],
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
 
-							setUsers([...users, values]);
+							//setUsers([...users, values]);
 							console.log("users: ", users);
 
 							toast.success("Chamado criado com sucesso!");
@@ -90,7 +73,7 @@ const BasicForm = () => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting, isValid }) => (
+					{({ isSubmitting, isValid, values }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -102,15 +85,45 @@ const BasicForm = () => {
 										inputid="name"
 									/>
 								</div>
-								<div className="">
+							
+
+                 <div className="">
 									<CardLabelInput
-										label="email"
-										name="email"
-										type="email"
+										label={values.isPatromonyIdRequired}
+										name="isPatromonyIdRequired"
+										type="checkbox"
 										width="w-full"
-										inputid="email"
+										inputid="isPatromonyIdRequired"
+                    value={false}
+                   
+                   
 									/>
-								</div>
+                  </div>
+
+                  <label>
+            <Field type="checkbox" name="isPatromonyIdRequid" />
+            
+            
+                  {`${values.sPatromonyIdRequired}`}
+          </label>
+
+
+           <div className="">
+									<CardLabelInput
+										label="Discente"
+										name="persontype"
+										type="checkbox"
+										width="w-full"
+										inputid="persontype"
+                   
+                   
+									/>
+                  </div>
+                  
+                <label className={""}>
+                    <Field type="checkbox" name="persontype" value="Discente" />
+                    Discente
+                  </label>
 							</div>
 
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">

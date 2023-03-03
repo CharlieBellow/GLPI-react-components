@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 //import { AuthContext } from "../../Contexts/AuthContext";
 import { useAuth } from '../../Contexts/AuthContext';
@@ -20,7 +21,7 @@ const validate = yup.object().shape({
 
 export function CardLogin () {
 	
-  const axios = require("axios").default
+
   const { auth, changeAuth, changeToken, token } = useAuth()
 
 	const router = useRouter();

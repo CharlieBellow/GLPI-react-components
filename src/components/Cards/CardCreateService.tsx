@@ -29,8 +29,10 @@ const validate = yup.object().shape({
 	aplicantsName: validationSchema.name,
 	title: validationSchema.title,
 	description: validationSchema.description,
+  personType: validationSchema.personType,
   //serviceLocal: validationSchema.serviceLocal,
   //patrimony: validationSchema.patrimony,
+
 });
 
 
@@ -165,10 +167,14 @@ useEffect(() => {
 				</div>
 				<Formik
 					initialValues={ {
+              isPatromonyIdRequired: false,
+           persontype: [],
+
             serviceId: myservice.id,
             title: myservice.title,
             description: "",
             status: "Aberto",
+
               estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
                 month: "2-digit",
                 day: "2-digit",
@@ -221,7 +227,7 @@ useEffect(() => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting, isValid }) => (
+					{({ isSubmitting, isValid, values }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -245,7 +251,43 @@ useEffect(() => {
                     disabled
                    
 									/>
-								</div>
+                  </div>
+
+                  <div className="">
+									<CardLabelInput
+										label={values.isPatromonyIdRequired}
+										name="isPatromonyIdRequired"
+										type="checkbox"
+										width="w-full"
+										inputid="isPatromonyIdRequired"
+                   
+                   
+									/>
+                  </div>
+
+                  <label>
+            <Field type="checkbox" name="isPatromonyIdRequired" />
+            
+                  {`${values.isPatromonyIdRequired}`}
+          </label>
+
+
+           <div className="">
+									<CardLabelInput
+										label="Discente"
+										name="persontype"
+										type="checkbox"
+										width="w-full"
+										inputid="persontype"
+                   
+                   
+									/>
+                  </div>
+                  
+                  <label>
+                    <Field type="checkbox" name="persontype" value="Discente" />
+                    Discente
+                  </label>
 
 								<div className="">
 									<CardLabelTextarea

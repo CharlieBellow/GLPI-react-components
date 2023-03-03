@@ -10,7 +10,7 @@ function Teste() {
 				pagetitle={"Página de Teste"}
 				contentpage={
 					<>
-						{/*<BasicForm />*/ }
+						<BasicForm />
 						{/*<ContextTest/>*/}
 					
 					</>

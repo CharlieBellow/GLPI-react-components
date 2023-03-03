@@ -69,6 +69,16 @@ export const genderList = [
   "prefiro não informar",
 ];
 
+
+export const personType = [
+  "Técnico Administrativo",
+    "Docente",
+    "Discente",
+    "Discente Pós-Graduação",
+    "Terceirizado",
+]
+
+
 export const servicesList = services.map( service => {
   return (
     service.title
@@ -113,6 +123,10 @@ export const validationSchema = {
     .string()
     .oneOf( blocList, "Escolha entre essas opções:" )
     .required( "É obrigatório escolher um local" ),
+  personType: yup
+    .string()
+    .oneOf( personType, "Escolha entre essas opções:" )
+    .required( "É obrigatório escolher pelo menos um" ),
 
   phone: yup.string().matches( phoneNumber ),
 
