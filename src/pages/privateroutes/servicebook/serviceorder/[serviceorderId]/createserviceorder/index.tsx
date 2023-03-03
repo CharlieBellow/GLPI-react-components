@@ -5,7 +5,7 @@ function ServiceDescription () {
   return (
     <>
       <Page
-        pagetitle={ "Abertura de Chamados - GLPI" }
+        pagetitle={ "Criar serviço" }
         contentpage={ <CardCreateServiceOrder /> }
       />
     </>

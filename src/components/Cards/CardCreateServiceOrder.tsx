@@ -154,7 +154,7 @@ useEffect(() => {
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
-					<CardTitle title="Solicitar Serviço" />
+					<CardTitle title="Abrir ordem de serviço" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
