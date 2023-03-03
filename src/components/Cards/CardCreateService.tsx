@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link"
+import React, { useEffect} from "react";
+
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
@@ -9,10 +9,8 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
-import { servicesList } from "../ServicesComponent/Service";
 import {
-  bondList,
-	blocList,
+
 	validationSchema,
 	
 } from "../../Utils/validations";
@@ -20,14 +18,9 @@ import {
 import {postServiceOrder} from "../../Utils/server/postInfo"
 
 import {getService, service} from "../../Utils/server/getInfo"
-//import fetchApiData from "../../Utils/fetchApiData";
+
 import {useAuth} from "../../Contexts/AuthContext"
 
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
-
-import FieldSelect from "../Inputs/FieldSelect";
-import {  serviceModel } from "../../Utils/ServiceModels";
 
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -62,7 +55,7 @@ idServiceOrder:  14ebb57f-5c74-4a71-9192-3c609aa310d6
 
 */
 
-export const CardCreateServiceOrder = () => {
+export const CardCreateService = () => {
 	
 const myuser = {
 	id: "972e1f58-95c6-4582-ac05-fb385dbb557b",
@@ -122,8 +115,7 @@ const createserviceorder =
 
   const { token } = useAuth()
   
-  
-  
+ 
   const router = useRouter()
   console.log("serviceorder", router.query.serviceorder)
 
@@ -132,6 +124,29 @@ useEffect(() => {
 
 }, [])
 
+
+  const postService = {
+    "serviceSubGroupId": "a095c66f-711b-4187-a27f-55a3d66bf9ae",
+    "title": "teste 2",
+    "description": "Acessar perfil.ufal.br, ",
+    "definition": "Etapas para criação do email institucional",
+    "personType": [
+      "Discente",
+      "Docente"
+    ],
+    "isPatromonyIdRequired": "true"
+  }
+
+  //persontype: checar se usuário pode criar serviço
+//  //export enum LinkType {
+//  TECNICO = "Técnico Administrativo",
+//    DOCENTE = "Docente",
+//    DISCENTE = "Discente",
+//    DISCENTEPOS = "Discente Pós-Graduação",
+//    TERCEIRIZADO = "Terceirizado",
+//}
+// precisa criar um select onde dê pra selecionar vários e quardar em um array. por hora pede para colocar separado por vígula ou faz um checkbox com as opções
+// criar um toggle par que possa pegar a opção de sim ou não do patrimônio 
 
 
   return (
@@ -282,4 +297,4 @@ useEffect(() => {
 	);
 };
 
-export default CardCreateServiceOrder;
+export default CardCreateService;
