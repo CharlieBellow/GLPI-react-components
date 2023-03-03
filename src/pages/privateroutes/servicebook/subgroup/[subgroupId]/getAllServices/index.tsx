@@ -6,7 +6,7 @@ import ServiceByCategory from "../../../../../../components/ServicesComponent/Se
 const ServicesByCategory = () => {
   return (
     <Page
-      pagetitle={ "Subcategorias" }
+      pagetitle={ "Lista de Serviços" }
       contentpage={
         <ServiceByCategory />
       }

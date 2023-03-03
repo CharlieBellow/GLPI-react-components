@@ -7,7 +7,7 @@ import * as Icon from "phosphor-react"
 import { Page } from "../../../../../components/Page";
 import CardCategory from "../../../../../components/CardCategory";
 //import { useParams } from "react-router-dom";
-import { categoryModel, subcategoryModel } from "../../../../../Utils/ServiceModels";
+
 import { RoutesContext } from "../../../../../Contexts/RouteContext";
 
 import { getCategory, getAllSubcategories, listSubcategories, category} from "../../../../../Utils/server/getInfo"
@@ -18,47 +18,16 @@ const Subcategory = (  ) => {
 
   const router = useRouter()
 
-  //const [subcategoriesList, setSubcategoriesList] = useState([])
-  //const url = `http://172.27.12.171:3333/servicebook/${router.query.subcategory}/` 
-  
-
-//a página renderiza o nome mas não aparece de imediato, é necessário criar um state ou um contexto para salvar o nome da categoria em tempo real
-const [myCategory, setMyCategory] = useState(category)
   
 useEffect(() => {
-  getCategory( router.query.subcategory );
-  getAllSubcategories(router.query.subcategory)
+  getCategory( router.query.subgroupId );
+  getAllSubcategories(router.query.subgroupId)
 
    }, [])
 
-    console.log( "category", category )
 
+//get server render
 
-
-//  async function getSubcategories() {
-//    await axios.get(url)
-  //.then(response => {
-    //setSubcategoryList(response.data)
-  //})
-  //.catch( error => console.log(error))
-//
-//  } 
-//getSubcategories()
-
-//const nameCategory = axios.get(`http://172.27.12.171:3333/servicebook/group/${router.query.subcategory}`)
-
-
-async function postCategory(values) {
-  const nameCategory = await axios({
-                method: 'get',
-                baseURL: "http://172.27.12.171:3333",
-                url: `/servicebook/group/${router.query.subcategory}`,
-              }) 
-              .then(response => console.log("response", response))
-    }
-
-
-console.log("router", router.query.subcategory)
 
   return (
 		<Page
@@ -78,7 +47,7 @@ console.log("router", router.query.subcategory)
                 
                 return (
                   
-                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.id }` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
+                    <CardCategory link={ `/privateroutes/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
                       key={ subcategory.id }
                       idCategory={ subcategory.id }
                     />

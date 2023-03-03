@@ -86,7 +86,8 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
               <><Icon.Target size={ 26 } weight="bold" /></>
               <h3 className="lg:text-3xl text-base font-semibold">Público-Alvo</h3>
            </div>
-          {/* pega esses tipos e faz um if else pra exibir os ícones corretamente */}
+          {/* pega esses tipos e faz um if else pra exibir os ícones corretamente */ }
+          {/* fazer um map e renderizar cada string */}
           <p>{ props.infos.personType }</p>
           <p>Discentes, docentes e Técnicos</p>
         </div>

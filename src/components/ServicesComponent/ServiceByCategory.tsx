@@ -1,9 +1,7 @@
-import axios from "axios";
 import {useEffect} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {getAllServices, listServices, getSubcategory, subCategory} from "../../Utils/server/getInfo";
-
 
 
 const ServiceByCategory = ( ) => {
@@ -14,10 +12,11 @@ const ServiceByCategory = ( ) => {
   const {subcategory, service, serviceorder} = router.query
 
  useEffect(() => {
-  getSubcategory(router.query.service)
-  getAllServices(router.query.service)
+  getSubcategory(router.query.subgroupId)
+  getAllServices(router.query.subgroupId)
  }, [])
 
+ console.log(router.query.subgroupId)
 	return (
 	
 				<>
@@ -27,12 +26,12 @@ const ServiceByCategory = ( ) => {
 
 					<h5 className="text-xl font-bold m-8">Serviços disponíveis: </h5>
 					<div className="lg:w-[59.5rem] m-15 flex flex-col gap-x-10  gap-y-6 mt-0" >
-				{ listServices.map( ( service: any, index ) => {
+				{ listServices.map( ( service: any ) => {
           return (
             <>
 							<Link
 								id={ service.title }
-								href={ `/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${service.id}` }
+								href={ `/privateroutes/servicebook/service/${ service.id }` }
 								key={ service.id }
 								className="text-blue-ufal font-bold text-xl hover:underline hover:underline-offset-2"
 									>

@@ -62,7 +62,7 @@ idServiceOrder:  14ebb57f-5c74-4a71-9192-3c609aa310d6
 
 */
 
-export const CardCreateService = () => {
+export const CardCreateServiceOrder = () => {
 	
 const myuser = {
 	id: "972e1f58-95c6-4582-ac05-fb385dbb557b",
@@ -132,6 +132,14 @@ useEffect(() => {
 
 }, [])
 
+//  servicebook/idGroup/Grpup/idSubgroup/subgroup
+//as   servicebook / Grpup / subgroup
+//  servicebook / NTI / Redes / Criaremailinstitucional / createserviceorder
+//  
+//  const params = {
+//    [ GROPUP ]: "idGroup", 
+//     
+//  }
 
 // precisa criar um select onde dê pra selecionar vários e quardar em um array. por hora pede para colocar separado por vígula ou faz um checkbox com as opções
 // criar um toggle par que possa pegar a opção de sim ou não do patrimônio 
@@ -285,4 +293,4 @@ useEffect(() => {
 	);
 };
 
-export default CardCreateService;
+export default CardCreateServiceOrder;
