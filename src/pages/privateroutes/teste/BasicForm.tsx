@@ -2,7 +2,7 @@ import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
 import { usersList } from "../../../components/Cards/CardUser/User";
 
-import { Field, FieldHookConfig, useField } from "formik";
+import { Field} from "formik";
 import {
 	validationSchema,
 	//blocList,
@@ -11,13 +11,14 @@ import {
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import { Button } from "../../../components/Buttons/Button";
-import { CardLabelInput, CardLabel } from "../../../components/Inputs/CardLabelInput";
+import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
+import { CardLabelInputCheckbox } from "../../../components/Inputs/CardLabelInputCheckbox";
 import { CardTitle } from "../../../components/Cards/CardTitle";
 import { CardLine } from "../../../components/Cards/CardLine";
 
 const validate = yup.object().shape({
 	name: validationSchema.name,
-   personType: validationSchema.personType,
+  personType: validationSchema.personType,
    
 });
 
@@ -57,7 +58,7 @@ const BasicForm = () => {
 					initialValues={{
 						name: "",
 						isPatromonyIdRequired: false,
-           persontype: [],
+           personType: [],
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
@@ -73,7 +74,7 @@ const BasicForm = () => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting, isValid, values }) => (
+					{({ isSubmitting, isValid, values, errors }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -87,43 +88,40 @@ const BasicForm = () => {
 								</div>
 							
 
-                 <div className="">
-									<CardLabelInput
-										label={values.isPatromonyIdRequired}
-										name="isPatromonyIdRequired"
-										type="checkbox"
-										width="w-full"
-										inputid="isPatromonyIdRequired"
-                    value={false}
-                   
-                   
-									/>
-                  </div>
-
                   <label>
-            <Field type="checkbox" name="isPatromonyIdRequid" />
+                  <Field type="checkbox" name="isPatromonyIdRequired" className="mr-1"/>
             
             
-                  {`${values.sPatromonyIdRequired}`}
+                  {`${values.isPatromonyIdRequired ? "Sim" : "Não"}`}
           </label>
 
 
-           <div className="">
-									<CardLabelInput
-										label="Discente"
-										name="persontype"
-										type="checkbox"
-										width="w-full"
-										inputid="persontype"
-                   
-                   
-									/>
-                  </div>
-                  
-                <label className={""}>
-                    <Field type="checkbox" name="persontype" value="Discente" />
-                    Discente
+        
+                  <div className="gap-2 flex">
+
+                <CardLabelInputCheckbox name="personType" value="Discente"/>
+
+
+
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Técnico Administrativo" />
+                    Técnico Administrativo
                   </label>
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Docente" />
+                   Docente
+                  </label>
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Discente Pós-Graduação" />
+                   Discente Pós-Graduação
+                  </label>
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Terceirizado" />
+                   Terceirizado
+                  </label>
+
+                  </div>
+                 
 							</div>
 
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">

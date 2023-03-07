@@ -119,13 +119,18 @@ export const validationSchema = {
     .min( 50, "No mínimo 50 caracteres" )
     .max( 500, "No máximo 500 caracteres" )
     .required( "É obrigatório descrever o motivo" ),
+  descriptionService: yup
+    .string()
+    .min( 50, "No mínimo 50 caracteres" )
+    .max( 5000, "No máximo 500 caracteres" )
+    .required( "É obrigatório descrever o motivo" ),
   serviceLocal: yup
     .string()
     .oneOf( blocList, "Escolha entre essas opções:" )
     .required( "É obrigatório escolher um local" ),
   personType: yup
-    .string()
-    .oneOf( personType, "Escolha entre essas opções:" )
+    .array()
+    .min(1, "Você precisa marcar pelo menos um.")
     .required( "É obrigatório escolher pelo menos um" ),
 
   phone: yup.string().matches( phoneNumber ),
