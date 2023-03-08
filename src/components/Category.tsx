@@ -16,12 +16,12 @@ const router = useRouter()
   const {category} = router.query
 
   useEffect(() => {
-    getAllCategories()
-
+    
   },[])
+  getAllCategories()
   
   
-
+  console.log( listCategories )
 
 
   return (

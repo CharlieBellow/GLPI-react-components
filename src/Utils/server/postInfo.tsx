@@ -15,7 +15,7 @@ export function postCategory ( values, token ) {
 }
 
 export function postSubcategory ( values, token ) {
-  caxios( {
+  axios( {
     method: 'post',
     baseURL: baseURL,
     url: `/servicebook/subgroup/`,

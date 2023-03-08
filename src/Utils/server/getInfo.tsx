@@ -21,7 +21,7 @@ export let category = []
 
 export let listCategories = []
  export async function getAllCategories() {
-  const getCategory = await axios({
+  const getAllCategories = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: "/servicebook/group",
@@ -35,7 +35,7 @@ export let listCategories = []
 
     export let listSubcategories = []
 export async function getAllSubcategories ( idCategory ) {
-  const getCategory = await axios({
+  const getAllSubcategories = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: `/servicebook/group/${idCategory}/subgroup`,
@@ -49,7 +49,7 @@ export async function getAllSubcategories ( idCategory ) {
 
     export let subCategory = []
     export async function getSubcategory(id) {
-      const getCategory = await axios({
+      const getSubcategory = await axios({
         method: 'get',
         baseURL: baseURL,
         url: `/servicebook/subgroup/${id}`,
@@ -65,7 +65,7 @@ export async function getAllSubcategories ( idCategory ) {
     
     export let listServices = []
      export async function getAllServices(idSubgroup) {
-  const getCategory = await axios({
+       const getAllServices = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: `/servicebook/subgroup/${idSubgroup}/service`,
@@ -78,7 +78,7 @@ export async function getAllSubcategories ( idCategory ) {
 
         export let service = []
     export async function getService(id) {
-  const getCategory = await axios({
+  const getService = await axios({
                 method: 'get',
                 baseURL: baseURL,
                 url: `/servicebook/service/${id}`,
@@ -90,3 +90,19 @@ export async function getAllSubcategories ( idCategory ) {
               )
 
     }
+
+
+export let user = [];
+export async function getUser ( id ) {
+  const getUser = await axios( {
+    method: 'get',
+    baseURL: baseURL,
+    url: `/servicebook/service/${ id }`,
+  } )
+    .then(
+      response => {
+        service = response.data;
+      }
+    );
+
+}

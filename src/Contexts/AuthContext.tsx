@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import React, {createContext, useContext, useState, useEffect} from 'react';
 
 interface AuthContextProps {
@@ -7,7 +9,6 @@ interface AuthContextProps {
   changeToken: (token: string) => void;
 }
 
-
 interface AuthProviderProps {
   children: React.ReactNode;
 }
@@ -16,6 +17,7 @@ interface AuthProviderProps {
 export const AuthContext = createContext( {} as AuthContextProps );
 
 export function AuthProvider ( { children }: AuthProviderProps ) {
+ 
   // Depois mudar o valor inicial para false
   const [ auth, setAuth ] = useState<boolean>(false)
   const [ token, setToken ] = useState<string>("")
@@ -24,19 +26,44 @@ export function AuthProvider ( { children }: AuthProviderProps ) {
     setAuth(!auth)
   }
 
-  function changeToken(token: string) {
+  function changeToken ( token: string ) {
     setToken(token)
   }
 
-  useEffect( () => {
-    const tokenAuth = localStorage.getItem( "token" );
 
-    if ( tokenAuth !== "undefined" ) {
-      changeToken(  tokenAuth );
+   const baseURL = "http://172.27.12.171:3333"
+
+  async function getToken (values: any ) {
+    const token = axios( {
+      method: 'post',
+      baseURL: baseURL, 
+      url: "/sessions",
+      data: values,
+    } )
+    .then(response => {
+     
+    const token = response.data.token
+
+    if ( token !== undefined ) {
+      
+      changeToken(  token );
       setAuth(true)
-
-      console.log( "tokenAuth: ", tokenAuth );
+     
+  
     }
+  
+    return token
+  })
+
+      
+  }
+
+
+  useEffect( () => {
+    //const tokenAuth = localStorage.getItem( "token" );
+
+   getToken( { email: "ud@arapiraca.ufal.br", password: "admin" } )
+    //
   }, [] );
 
 
@@ -52,3 +79,5 @@ export function useAuth () {
 
   return authContext;
 }
+
+
