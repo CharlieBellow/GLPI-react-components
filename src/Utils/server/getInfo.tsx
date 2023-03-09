@@ -4,7 +4,7 @@ const baseURL = "http://172.27.12.171:3333"
 
 // criar erros
 export let category = []
- export async function getCategory(id) {
+ export async function getCategory(id: any) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -34,7 +34,7 @@ export let listCategories = []
     }
 
     export let listSubcategories = []
-export async function getAllSubcategories ( idCategory ) {
+export async function getAllSubcategories ( idCategory: string ) {
   const getAllSubcategories = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -48,7 +48,7 @@ export async function getAllSubcategories ( idCategory ) {
     }
 
     export let subCategory = []
-    export async function getSubcategory(id) {
+    export async function getSubcategory(id: string) {
       const getSubcategory = await axios({
         method: 'get',
         baseURL: baseURL,
@@ -64,7 +64,7 @@ export async function getAllSubcategories ( idCategory ) {
     }
     
     export let listServices = []
-     export async function getAllServices(idSubgroup) {
+     export async function getAllServices(idSubgroup: string) {
        const getAllServices = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -77,7 +77,7 @@ export async function getAllSubcategories ( idCategory ) {
     }
 
         export let service = []
-    export async function getService(id) {
+    export async function getService(id: any) {
   const getService = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -93,7 +93,7 @@ export async function getAllSubcategories ( idCategory ) {
 
 
 export let user = [];
-export async function getUser ( id ) {
+export async function getUser ( id: string) {
   const getUser = await axios( {
     method: 'get',
     baseURL: baseURL,

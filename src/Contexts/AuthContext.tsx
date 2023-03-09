@@ -48,7 +48,7 @@ export function AuthProvider ( { children }: AuthProviderProps ) {
       
       changeToken(  token );
       setAuth(true)
-     
+    // salvar o token nos cookies: usar ferramenta própria do nextJs
   
     }
   
@@ -60,10 +60,9 @@ export function AuthProvider ( { children }: AuthProviderProps ) {
 
 
   useEffect( () => {
-    //const tokenAuth = localStorage.getItem( "token" );
-
+   
    getToken( { email: "ud@arapiraca.ufal.br", password: "admin" } )
-    //
+    
   }, [] );
 
 

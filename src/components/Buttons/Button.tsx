@@ -102,8 +102,10 @@ export function Button({ isSubmitting = false, ...props }: ButtonProps) {
 				}
 			`}
 		>
-			<>{props.icon}</>
-			{isSubmitting ? <Spinner size="md" /> : props.title}
+      <>
+  			{isSubmitting ? <Spinner size="md" /> : props.title}
+  			<>{props.icon}</>
+      </>
 		</button>
 	);
 }

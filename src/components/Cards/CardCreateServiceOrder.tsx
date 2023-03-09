@@ -88,7 +88,7 @@ const myservice = {
 	serviceLocation: null,
 	requiredDocuments: null,
 	contactInfo: null,
-	isPatromonyIdRequired: false,
+	isPatromonyIdRequired: true,
 	glpiSla: null,
 	createdAt: "2023-02-23T13:32:49.880Z",
 	updatedAt: "2023-02-23T13:32:49.880Z"
@@ -241,7 +241,7 @@ useEffect(() => {
                     />
 								</div>
                   <div>
-                    { service.isPatromonyIdRequired ? 
+                    { myservice.isPatromonyIdRequired ? 
                     <CardLabelInput
                       label="Patrimônio"
                       name="patrimonyId"

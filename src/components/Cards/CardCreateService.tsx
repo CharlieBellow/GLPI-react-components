@@ -85,7 +85,7 @@ export const CardCreateService = () => {
 					{({ isSubmitting, isValid, values,  touched, errors }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
-
+               <>  
 								<div className="">
 									<CardLabelInput
 										label="Título"
@@ -108,7 +108,7 @@ export const CardCreateService = () => {
 									/>
 								</div>
 
-<div className="">
+                <div className="">
 									<CardLabelTextarea
 										label="Descrição"
 										type="textarea"
@@ -117,11 +117,11 @@ export const CardCreateService = () => {
                     />
 								</div>
 
-            <div className="">
+                <div className="">
                   <CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
-           </div>        
-                  
-<div>
+               </div>        
+                </>  
+              <div>
 
                 <p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
                <div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
@@ -134,10 +134,10 @@ export const CardCreateService = () => {
                 
                   </div>
                   {errors.personType && touched.personType ? (
-      <span className="text-red-ufal text-sm">{errors.personType}</span>
-    ) : null}
-</div>
-{console.log("errors", errors.personType)}
+                <span className="text-red-ufal text-sm">{errors.personType}</span>
+              ) : null}
+          </div>
+
 
 
 							</div>
@@ -149,8 +149,6 @@ export const CardCreateService = () => {
 									type="submit"
 									disabled={isSubmitting || !isValid}
 								/>
-                {console.log("sub", isSubmitting)}
-                {console.log("val", isValid)}
                 {/*<Link href={"/"}>*/}
                   <Button title="Cancelar" theme="secondaryAction" type="button"  />
                 {/*</Link>*/}

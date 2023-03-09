@@ -24,28 +24,34 @@ export function CardLogin () {
 
   const { auth, changeAuth, changeToken, token } = useAuth()
 
-	const router = useRouter();
+  const router = useRouter();
+  
+  const baseURL = "http://172.27.12.171:3333"
+  async function getToken ( values: any ) {
+    const token = axios( {
+      method: 'post',
+      baseURL: baseURL,
+      url: "/sessions",
+      data: values,
+    } )
+      .then( response => {
 
-        async function getToken( values) {
-                const token = await axios.post( "http://172.27.12.171:3333/sessions", values )
-                .then(response => {
-                  changeToken(response.data.token)
-                 
-                  console.log(response.data.token)
-                  localStorage.setItem( "token",  response.data.token );
-                })
+        const token = response.data.token;
+
+        if ( token !== undefined ) {
+
+          changeToken( token );
+     
+          // salvar o token nos cookies: usar ferramenta própria do nextJs
+
+        }
+
+        return token;
+      } );
+
+
   }
 
-  
-    useEffect( () => {
-    const tokenAuth = localStorage.getItem( "token" );
-
-    if ( tokenAuth !== "undefined" ) {
-      changeToken(  tokenAuth );
-
-      console.log( "tokenAuth: ", tokenAuth );
-    }
-  }, [] );
 
 	
 	return (

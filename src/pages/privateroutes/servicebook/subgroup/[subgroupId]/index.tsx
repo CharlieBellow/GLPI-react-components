@@ -16,14 +16,15 @@ import { getCategory, getAllSubcategories, listSubcategories, category} from "..
 
 const Subcategory = (  ) => {
 
-  const router = useRouter()
 
   
-useEffect(() => {
-  getCategory( router.query.subgroupId );
-  getAllSubcategories(router.query.subgroupId)
+  const router = useRouter()
 
-   }, [])
+  useEffect( () => {
+    getCategory( router.query.subgroupId );
+    getAllSubcategories( router.query.subgroupId );
+
+  }, [] )
 
 
 //get server render
@@ -53,9 +54,13 @@ useEffect(() => {
                     />
 
                 );
-              } ) }
+              } ) 
+              
+            }
 
-							
+					
+
+
 						
 						{/*
             
@@ -139,3 +144,35 @@ useEffect(() => {
 }
  
 export default Subcategory;
+
+
+let meuarray = []
+export async function getStaticProps( { params } ) {
+   console.log(params)
+   const api = await  axios({
+                method: 'get',
+                baseURL: baseURL,
+                url: `/servicebook/group/${params.id}/subgroup`,
+
+  } ) 
+    .then( response => {
+      meuarray = response.data;
+      return meuarray.json()
+
+    } )
+}
+
+export async function getStaticPaths() {
+
+  return(
+    
+    paths: [
+
+      listSubcategories.map(item => {
+        {params: {id: item.id,},
+      })
+    ]
+    
+    
+  )
+}

@@ -13,7 +13,7 @@ import {getAllCategories, listCategories} from "../Utils/server/getInfo"
 
 export default function Category () {
 const router = useRouter()
-  const {category} = router.query
+  const { category } = router.query
 
   useEffect(() => {
     
