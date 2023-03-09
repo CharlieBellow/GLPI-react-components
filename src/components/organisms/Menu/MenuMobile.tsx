@@ -1,9 +1,10 @@
 import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent,  DrawerHeader, DrawerOverlay, Stack, useDisclosure } from "@chakra-ui/react";
+import Image from "next/image";
 import { List } from "phosphor-react";
 import React from "react";
 
 
-import logoUfal from "../../../assets/brasao-ufal.png";
+import logoUfal from "../../../../public/images/brasao-ufal.png";
 import AccordionMenu from "../../Accordions/AccordionMenu";
 import { AccordionMenuHelp } from "../../Accordions/AccordionMenuHelp";
 
@@ -35,10 +36,11 @@ export function MenuMobile() {
 				>
 					<DrawerCloseButton />
 					<DrawerHeader>
-						<img
+						<Image
 							src={logoUfal}
 							alt="logo da ufal"
-							className={"w-14 h-24 mt-7 mx-auto mb-3"}
+              className={ "w-14 h-24 mt-7 mx-auto mb-3" }
+              width={224} height={384}
 						/>
 					</DrawerHeader>
 
@@ -48,7 +50,7 @@ export function MenuMobile() {
 								<h4 className="text-white-100 font-bold text-sm text-invisible ">
 									Geral
 								</h4>
-								<AccordionMenu />
+          			<AccordionMenu /> 
 							</Box>
 
 							<Box>

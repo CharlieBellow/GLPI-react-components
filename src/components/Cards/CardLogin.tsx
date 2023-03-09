@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 //import { AuthContext } from "../../Contexts/AuthContext";
 import { useAuth } from '../../Contexts/AuthContext';
@@ -14,14 +15,36 @@ import { useMessage } from "../../Contexts/MessageContext";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
-	password: validationSchema.password,
+	//password: validationSchema.password,
 });
 
 export function CardLogin () {
 	
-  const { auth, changeAuth } = useAuth()
+
+  const { auth, changeAuth, changeToken, token } = useAuth()
   const {errorMessage, successMessage} = useMessage()
 	const router = useRouter();
+
+        async function getToken( values) {
+                const token = await axios.post( "http://172.27.12.171:3333/sessions", values )
+                .then(response => {
+                  changeToken(response.data.token)
+                 
+                  console.log(response.data.token)
+                  localStorage.setItem( "token",  response.data.token );
+                })
+  }
+
+  
+    useEffect( () => {
+    const tokenAuth = localStorage.getItem( "token" );
+
+    if ( tokenAuth !== "undefined" ) {
+      changeToken(  tokenAuth );
+
+      console.log( "tokenAuth: ", tokenAuth );
+    }
+  }, [] );
 
 	
 	return (
@@ -35,13 +58,15 @@ export function CardLogin () {
 				onSubmit={(values, actions) => {
 					setTimeout(() => {
 						console.log( "submit:", values );
-						if ( values.email === "admin@admin.com" && values.password === "Admin123" ) {
+            if ( values.email === "ud@arapiraca.ufal.br" && values.password === "admin" ) {
               console.log( "auth login 2", auth );
               changeAuth( auth )
               console.log( "auth login 3", auth );
+
+        getToken( values);
 		
 			  successMessage("Login realizado com sucesso!");
-              router.push( "../privateroutes/dashboard", "/" )
+              router.push( "../privateroutes", "/" )
 							
 						} else {
 						errorMessage("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");

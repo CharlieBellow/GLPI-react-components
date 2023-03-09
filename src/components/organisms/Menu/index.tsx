@@ -3,10 +3,11 @@ import { AccordionMenuHelp } from "../../Accordions/AccordionMenuHelp";
 
 import { List } from "phosphor-react";
 
-import logoUfal from "../../../assets/brasao-ufal.png";
+import logoUfal from "../../../../public/images/brasao-ufal.png";
 import { ReactNode } from "react";
 import { MenuMobile } from "./MenuMobile";
 import { useMenu } from '../../../Contexts/MenuContext';
+import Image  from 'next/image';
 
 interface MenuProps extends React.HTMLAttributes<HTMLElement> {
 	accordionMenu?: ReactNode;
@@ -47,10 +48,11 @@ export function Menu ( props: MenuProps ) {
 					<MenuMobile />
 				</div>
 
-				<img
+				<Image
 					src={logoUfal}
 					alt="logo da ufal"
 					className={"w-14 h-24 mt-7 mx-auto mb-3 mobile-hidden"}
+          width={224} height={384}
 				/>
 				<div className="flex flex-col pl-6 pr-5 pb-px  pt-2 lg:pt-5 mobile-hidden">
 					<h4 className="text-white-100 font-bold text-sm text-invisible ">

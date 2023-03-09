@@ -4,20 +4,20 @@ import { usersList } from "../../../components/Cards/CardUser/User";
 import {
 	validationSchema,
 	//blocList,
-} from "../../Utils/validations";
+} from "../../../Utils/validations";
 
 import * as yup from "yup";
-import { Button } from "../../../components/Buttons/Button";
-import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
-import { CardTitle } from "../../../components/Cards/CardTitle";
-import { CardLine } from "../../../components/Cards/CardLine";
+import { Button } from "../../../../components/Buttons/Button";
+import { CardLabelInput } from "../../../../components/Inputs/CardLabelInput";
+import { CardTitle } from "../../../../components/Cards/CardTitle";
+import { CardLine } from "../../../../components/Cards/CardLine";
 import { useMessage } from "../../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,
 	email: validationSchema.email,
 });
 
-export const BasicForm = () => {
+const BasicForm = () => {
 	const [users, setUsers] = useState(usersList);
 	const {errorMessage, successMessage} = useMessage()
 
@@ -129,3 +129,4 @@ export const BasicForm = () => {
 		</div>
 	);
 };
+export default BasicForm;

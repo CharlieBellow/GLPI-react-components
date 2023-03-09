@@ -1,54 +1,35 @@
+import * as yup from "yup";
+
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 import { CardLine } from "../Cards/CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
-import { categoryModel, serviceModel, subcategoryModel } from '../../Utils/ServiceModels'
+import {useAuth} from "../../Contexts/AuthContext"
+import { useMessage } from "../../Contexts/MessageContext";
+import { postSubcategory } from "../../Utils/server/postInfo"
+
+import { listCategory, getAllCategory } from "../../Utils/server/getInfo"
+
 import {
 	validationSchema,
-	servicesList,
-	categoriesList,
+
 } from "../../Utils/validations";
-import * as yup from "yup";
-//import { services, ServicesList } from "../Pages/ServiceLetter/ServicesList";
-import { useEffect, useState } from "react";
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
-import { useMessage } from "../../Contexts/MessageContext";
+
 
 const validate = yup.object().shape({
-	titleSubcategory: validationSchema.titleSubcategory,
-	description: validationSchema.description,
-	category: validationSchema.category,
-	services: validationSchema.services,
+	description: validationSchema.titleSubcategory,
 });
 
 export const CardCreateSubcategory = () => {
 
-	const { addInfoService, infoService } = useServiceContext()
-	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
-	const {errorMessage, successMessage} = useMessage()
-	
-	console.log( "infoServiceLetter:", infoServiceLetter )
-	const [ subcategories, setSubcategories ] = useState( subcategoryModel );
+  getAllCategory()
 
-	useEffect(() => {
-		const subcategoryStorage = localStorage.getItem("subcategories");
-
-		if (subcategoryStorage) {
-			setSubcategories(JSON.parse(subcategoryStorage));
-
-			//console.log("subcategories: ", subcategoryStorage);
-		}
-	}, [] );
-
-	useEffect(() => {
-		localStorage.setItem("subcategories", JSON.stringify(subcategories));
-	} );
+  const {token} = useAuth()
+  const {errorMessage, successMessage} = useMessage()
 	
 	return (
 		<div className="mx-4">
@@ -65,40 +46,17 @@ export const CardCreateSubcategory = () => {
 				</div>
 				<Formik
 					initialValues={{
-						titleSubcategory: "",
+						serviceGroupId: "",
 						description: "",
-						category: categoryModel[ 0 ],
-						//services: [],
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
+						
 					}}
-					//validationSchema={validations}
+				
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							setSubcategories([...subcategories, values]);
-							console.log("subcategory:", subcategories);
-						console.log("values:", values);
-						
-						
-							addInfoServiceLetter( [ { subcategory: values, id: "0" } ] )
-							console.log( "infoServiceLetter:", infoServiceLetter )
-							successMessage("Serviço criado com sucesso!");
-					
+						  postSubcategory( values, token )
+						  successMessage("Serviço criado com sucesso!");
 							actions.resetForm();
 						
 						}, 400);
@@ -110,58 +68,30 @@ export const CardCreateSubcategory = () => {
 								<div className="">
 									<CardLabelInput
 										label="Nome da Subcategoria"
-										name="titleSubcategory"
+										name="description"
 										type="text"
 										width="w-full"
 										inputid="title"
 									/>
 								</div>
 
-								<div className="">
-									<CardLabelTextarea
-										label="Descrição"
-										type="textarea"
-										name="description"
-										textareaid="description"
-									/>
-								</div>
-								<div className="">
-									<FieldSelect
-										label="services"
-										name="services"
-										default="Selecione o serviço"
-										listitems={ serviceModel.map( service => {
-											return (
-												service.serviceLetter.title
-											);
-										}
-										) }
-									/>
-								</div>
-								<div className="">
-									<FieldSelect
-										label="category"
-										name="category"
-										default="Selecione a categoria"
-										listitems={ 
-											categoryModel.map( (category) => {
-												return (
-													category.titleCategory
-												);
-											}
-											)
-} 
-									/>
-								</div>
+                <div className="">
+                  <FieldSelect
+                    label="serviceGroupId"
+                    name="serviceGroupId"
+                    default="Selecione a categoria a qual ela pertence"
+                    listitems={listCategory} 
+                  />
+                </div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
-									title="Solicitar"
+									title={isSubmitting ? <Spinner size="md" /> : "Solicitar" }
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}
-								/>
+                  
+                  />
 								<Button title="Cancelar" theme="secondaryAction" />
 							</div>
 						</Form>

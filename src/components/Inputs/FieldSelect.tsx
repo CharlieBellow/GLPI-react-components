@@ -2,7 +2,7 @@ import { Field, FieldHookConfig, useField} from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 
 interface FieldSelectProps {
-  listitems: string[]; 
+  listitems: object[] | string[]; 
   label: string;
   name: string;
   default: string;
@@ -37,8 +37,9 @@ export default function FieldSelect(
 				</option>
 				{props.listitems.map(item => {
 					return (
-						<option key={item} value={item} className="font-bold ">
-							{item}
+						<option key={item.id} value={item.id} className="font-bold ">
+              {item.description || item}
+						
 						</option>
 					);
 				})}

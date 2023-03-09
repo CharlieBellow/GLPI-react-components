@@ -103,7 +103,7 @@ export function Button({ isSubmitting = false, ...props }: ButtonProps) {
 			`}
 		>
 			<>{props.icon}</>
-			{isSubmitting ? <Spinner size="xl" /> : props.title}
+			{isSubmitting ? <Spinner size="md" /> : props.title}
 		</button>
 	);
 }

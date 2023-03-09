@@ -1,7 +1,9 @@
+"use client"
+
 import { Page } from "../../../components/Page";
 import TableList from "../../../components/TableList";
 import { useEffect, useState } from "react";
-
+import {userModel} from "../../../Utils/UserModel"
 
 const ItemSelect = [
 	"Tudo",
@@ -13,24 +15,23 @@ const ItemSelect = [
 ];
 
 
+
 export default function List() {
   const [lista, setLista] = useState([]);
   
-  useEffect( () => {
-    
-  })
+
 	
   
   useEffect( () => {
+    
     if (localStorage.getItem("users") !== null) {
-      
       const usersStorage = localStorage.getItem("users");
-			const listas = JSON.parse(usersStorage)!;
-			console.log("lista:", lista);
-			setLista(listas);
-			console.log(listas);
+      const listas = JSON.parse(usersStorage)!;
+      console.log("lista:", lista);
+      setLista(listas);
+      console.log(listas);
 		}
-	}, []);
+  }, [ lista ]);
 
 	console.log(lista);
 	return (
@@ -38,7 +39,7 @@ export default function List() {
 			<Page
 				pagetitle={"Tabela"}
 				contentpage={
-					<TableList itemlist={lista} listselecbutton={ItemSelect} />
+          <TableList itemlist={ userModel } listselecbutton={ItemSelect} />
 				}
 			/>
 		</>

@@ -9,7 +9,7 @@ export default function RenderCompleted () {
     return () => {
       setMounted(false)
     }
-  } );
+  }, [ mounted ] );
 
   return mounted;
 }

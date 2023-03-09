@@ -1,23 +1,32 @@
-import { Page } from "../../../../../components/Page";
+import axios from "axios";
+import {useEffect, useState, useContext} from "react";
+import { useRouter } from "next/router";
 import * as Icon from "phosphor-react"
 
+
+import { Page } from "../../../../../components/Page";
 import CardCategory from "../../../../../components/CardCategory";
 //import { useParams } from "react-router-dom";
-import { categoryModel, subcategoryModel } from "../../../../../Utils/ServiceModels";
+
 import { RoutesContext } from "../../../../../Contexts/RouteContext";
-import { useContext } from "react";
-import { useRouter } from "next/router"
 
-//interface CategoriaProps {
-//	categoryId?: string;
-//}
+import { getCategory, getAllSubcategories, listSubcategories, category} from "../../../../../Utils/server/getInfo"
 
-//{ categoryId }: CategoriaProps
+
 
 const Subcategory = (  ) => {
 
   const router = useRouter()
 
+  
+useEffect(() => {
+  getCategory( router.query.subgroupId );
+  getAllSubcategories(router.query.subgroupId)
+
+   }, [])
+
+
+//get server render
 
 
   return (
@@ -29,37 +38,30 @@ const Subcategory = (  ) => {
 						Subcategorias
 					</h4>
 
-					<h5 className="text-xl font-bold m-8">GTI</h5>
+          <h5 className="text-xl font-bold m-8">{category.description}</h5>
 					<div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
-						{/*<div className="flex flex-col gap-4 ">*/}
-						<div>
+					
+					
 
-              { subcategoryModel.map( ( subcategory, index ) => {
+            { listSubcategories.map( ( subcategory ) => {
                 
                 return (
-                  <>
-
-                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.titleSubcategory }` } Name={ subcategory.titleSubcategory } Icon={ subcategory.icon }
+                  
+                    <CardCategory link={ `/privateroutes/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
                       key={ subcategory.id }
                       idCategory={ subcategory.id }
                     />
 
-                  </>
                 );
               } ) }
 
-							{/*<CardCategory
-								link={`/servicebook/category/${ category }/${ subcategoryModel[ 0 ].titleSubcategory }` }
-								Name={ subcategoryModel[ 0 ].titleSubcategory }
-								Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }
-								
-							/>
-							<p>*/}
-								Clique no card para solicitar um serviço relacionado a Rede de
-								internet
-							{/*</p>*/}
-						</div>
-						{/*<CardCategory
+							
+						
+						{/*
+            
+            criar mais categorias dessa no serviceMod
+            
+            <CardCategory
 							link="/ListServices"
 							Name={ "Sistemas" }
 							Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }						/>

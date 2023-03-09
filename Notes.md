@@ -47,3 +47,34 @@ coloca uma tabela só com thead dentro de uma div e outra div só com tbody, dep
 mobile: acordion menu > fechamento de tag p
 
 
+
+
+
+
+
+# GetStaticProps()
+    - pegar dados dinâmicos (das rotas)
+    - é pra usar na pagina que em que vai exibir os dados
+    - retorna um objeto com os dados que estamos esperando para poderem ser usados nessa página
+    - renderiza antes do acesso do usuário Pre-rendering
+    - 
+
+- (SG) STATIC GENERATION: 
+  * executa apenas 1x no buid (serve para páginas que não mudam frequentemente.) 
+  * Obs: é possível estipular um tempo para que a página possa ser gerada novamente dentro de um espaço de tempo determinado.
+
+
+- (SSR) SERVER SIDE RENDERING:
+  * Executa a cada requisição.
+  * O processo é feito no servidor;
+  * 
+  
+  - (CSR) CLIENT SIDE RENDERING:
+  - Executa a cada requisição.
+  - O processo é feito no navegador (client);
+  -
+  
+
+
+sonacu - avaliar desempenho do cádigo
+

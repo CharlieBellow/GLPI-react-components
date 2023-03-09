@@ -1,62 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
+import { Field} from "formik";
+import {postService} from "../../Utils/server/postInfo"
+
+import { Formik, Form } from "formik";
+import { toast } from "react-toastify";
+import * as yup from "yup";
+import {useRouter} from "next/router"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { CardLabelInputCheckbox } from "../Inputs/CardLabelInputCheckbox";
+import { CardLabelInputCheckBoolean } from "../Inputs/CardLabelInputCheckBoolean";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
-import { servicesList } from "../ServicesComponent/Service";
 import {
-	blocList,
+
 	validationSchema,
 	
 } from "../../Utils/validations";
 import { CardLabelInputFile } from "./CardLabelInputFile";
 import { Eye, UploadSimple } from "phosphor-react";
 
-import * as yup from "yup";
+import {postServiceOrder} from "../../Utils/server/postInfo"
 
-import { Formik, Form } from "formik";
-import FieldSelect from "../Inputs/FieldSelect";
-import { categoryModel, serviceModel, subcategoryModel, serviceLetterModel } from "../../Utils/ServiceModels";
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 import { useMessage } from "../../Contexts/MessageContext";
-
+import {useAuth} from "../../Contexts/AuthContext"
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
 const validate = yup.object().shape({
-	name: validationSchema.name,
 	title: validationSchema.title,
-	description: validationSchema.description,
-	serviceLocal: validationSchema.serviceLocal,
-	addFile: validationSchema.file,
+	definition: validationSchema.title,
+	description: validationSchema.descriptionService,
+  personType: validationSchema.personType,
+
 });
+
 
 export const CardCreateService = () => {
 	
-	const { addInfoService, infoService } = useServiceContext()
+  const router = useRouter();
 
-	const {errorMessage, successMessage} = useMessage()
-	
-	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
-	
-	const [ services, setServices ] = useState( serviceModel );
-
-	useEffect(() => {
-		const servicesStorage = localStorage.getItem("services");
-
-		if (servicesStorage) {
-			setServices(JSON.parse(servicesStorage));
-		}
-		console.log("lista: ", servicesStorage);
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem("services", JSON.stringify(services));
-	}, [services]);
-
-	return (
+  console.log("router", router.query.subgroupId)
+  const { token } = useAuth()
+  const {errorMessage, successMessage} = useMessage()
+  return (
+    <>
 		<div className="mx-4">
 			<div
 				className="mt-18 mx-auto mb-80 flex flex-col lg:block
@@ -64,64 +53,40 @@ export const CardCreateService = () => {
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
-					<CardTitle title="Solicitar Serviço" />
+					<CardTitle title="Criar serviço" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
 				</div>
 				<Formik
+        validateOnMount={true}
 					initialValues={ {
-						serviceLetter: serviceLetterModel[0],
-						patrimonio: "",
-						description: "",
-						serviceLocal: "",
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
+            serviceSubGroupId: router.query.subgroupId,
+            title:"",
+            description: "",
+            personType: [],
+            isPatromonyIdRequired: false,
+            definition: "",
+
+          
 					}}
-					//validationSchema={validations}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							setServices([...services, values]);
-							console.log("services:", services);
-							addInfoService( [ { ...values, serviceLetter: infoServiceLetter } ] )
-							
-							console.log( "infos:", infoServiceLetter )
-
-							successMessage("Serviço criado com sucesso!");
+						
+              				postService( values, token )
+              
+			  				successMessage("Serviço criado com sucesso!");
 						
 							actions.resetForm();
 							
 						}, 400);
 					}}
 				>
-					{({ isSubmitting, isValid }) => (
+					{({ isSubmitting, isValid, values,  touched, errors }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
-								<div className="">
-									<CardLabelInput
-										label="Nome"
-										name="aplicantsName"
-										type="text"
-										width="w-full"
-										inputid="title"
-									
-									/>
-								</div>
 
 								<div className="">
 									<CardLabelInput
@@ -130,6 +95,18 @@ export const CardCreateService = () => {
 										type="text"
 										width="w-full"
 										inputid="title"
+                  
+                   
+									/>
+                  </div>
+								<div className="">
+									<CardLabelInput
+										label="Definição"
+										name="definition"
+										type="text"
+										width="w-full"
+										inputid="definition"
+									
 									/>
 								</div>
 								<div className="">
@@ -148,16 +125,32 @@ export const CardCreateService = () => {
 										type="textarea"
 										name="description"
 										textareaid="description"
-									/>
+                    />
 								</div>
-								<div className="">
-									<FieldSelect
-										label="serviceLocal"
-										name="serviceLocal"
-										default="Selecione"
-										listitems={blocList}
-									/>
-								</div>
+
+            <div className="">
+                  <CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
+           </div>        
+                  
+<div>
+
+                <p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
+               <div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
+
+                <CardLabelInputCheckbox name="personType" value="Discente" checkArray={values.personType}/>
+                <CardLabelInputCheckbox name="personType" value="Técnico Administrativo" checkArray={values.personType}/>
+                <CardLabelInputCheckbox name="personType" value="Docente" checkArray={values.personType}/>
+                <CardLabelInputCheckbox name="personType" value="Discente Pós-Graduação" checkArray={values.personType}/>
+                <CardLabelInputCheckbox name="personType" value="Terceirizado" checkArray={values.personType}/>
+                
+                  </div>
+                  {errors.personType && touched.personType ? (
+      <span className="text-red-ufal text-sm">{errors.personType}</span>
+    ) : null}
+</div>
+{console.log("errors", errors.personType)}
+
+
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 								<Button
@@ -167,13 +160,18 @@ export const CardCreateService = () => {
 									type="submit"
 									disabled={isSubmitting || !isValid}
 								/>
-								<Button title="Cancelar" theme="secondaryAction" />
+                {console.log("sub", isSubmitting)}
+                {console.log("val", isValid)}
+                {/*<Link href={"/"}>*/}
+                  <Button title="Cancelar" theme="secondaryAction" type="button"  />
+                {/*</Link>*/}
 							</div>
 						</Form>
 					)}
 				</Formik>
 			</div>
-		</div>
+      </div>
+    </>
 	);
 };
 

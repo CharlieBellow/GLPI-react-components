@@ -1,6 +1,8 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
 import { usersList } from "../../../components/Cards/CardUser/User";
+
+import { Field} from "formik";
 import {
 	validationSchema,
 	//blocList,
@@ -9,15 +11,17 @@ import {
 import * as yup from "yup";
 import { Button } from "../../../components/Buttons/Button";
 import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
+import { CardLabelInputCheckbox } from "../../../components/Inputs/CardLabelInputCheckbox";
 import { CardTitle } from "../../../components/Cards/CardTitle";
 import { CardLine } from "../../../components/Cards/CardLine";
 import { useMessage } from "../../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,
-	email: validationSchema.email,
+  personType: validationSchema.personType,
+   
 });
 
-export const BasicForm = () => {
+const BasicForm = () => {
 	const [users, setUsers] = useState(usersList);
 	const {errorMessage, successMessage} = useMessage()
 
@@ -53,35 +57,15 @@ export const BasicForm = () => {
 				<Formik
 					initialValues={{
 						name: "",
-						email: "",
-						date: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-							})
-							.substr(0, 10)
-							//.replace(new RegExp("/", 'g'),"-" )
-							.toString(),
-						time: new Date()
-							.toLocaleTimeString("pt-br", {
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "2-digit",
-							})
-							.toString(),
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								second: "2-digit",
-							})
-							.toString(),
+						isPatromonyIdRequired: false,
+           personType: [],
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
 
-							setUsers([...users, values]);
+							//setUsers([...users, values]);
 							console.log("users: ", users);
 
 							successMessage("Chamado criado com sucesso!");
@@ -90,7 +74,7 @@ export const BasicForm = () => {
 						}, 400);
 					}}
 				>
-					{({ isSubmitting, isValid }) => (
+					{({ isSubmitting, isValid, values, errors }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div className="">
@@ -102,15 +86,42 @@ export const BasicForm = () => {
 										inputid="name"
 									/>
 								</div>
-								<div className="">
-									<CardLabelInput
-										label="email"
-										name="email"
-										type="email"
-										width="w-full"
-										inputid="email"
-									/>
-								</div>
+							
+
+                  <label>
+                  <Field type="checkbox" name="isPatromonyIdRequired" className="mr-1"/>
+            
+            
+                  {`${values.isPatromonyIdRequired ? "Sim" : "Não"}`}
+          </label>
+
+
+        
+                  <div className="gap-2 flex">
+
+                <CardLabelInputCheckbox name="personType" value="Discente"/>
+
+
+
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Técnico Administrativo" />
+                    Técnico Administrativo
+                  </label>
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Docente" />
+                   Docente
+                  </label>
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Discente Pós-Graduação" />
+                   Discente Pós-Graduação
+                  </label>
+                <label className={"flex gap-1"}>
+                    <Field type="checkbox" name="personType" value="Terceirizado" />
+                   Terceirizado
+                  </label>
+
+                  </div>
+                 
 							</div>
 
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
@@ -129,3 +140,4 @@ export const BasicForm = () => {
 		</div>
 	);
 };
+export default BasicForm;

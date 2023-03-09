@@ -1,5 +1,5 @@
 import { CaretLeft, CaretRight } from "phosphor-react";
-import { Link } from 'react-router-dom'
+import Link  from 'next/link'
 
 export default function PaginationTable() {
   return (
@@ -7,13 +7,13 @@ export default function PaginationTable() {
 			<div className="flex items-center flex-col lg:flex-row justify-between border-t border-gray-text lg:bg-white-100 px-4 mt-6 py-3 sm:px-6">
 				<div className="flex-1 justify-between hidden">
 					<Link
-						to="#"
+						href="#"
 						className="relative inline-flex items-center rounded-md border border-gray-text bg-gray-medium px-4 py-2 text-sm font-medium text-light-bg hover:bg-gray-dark"
 					>
 						Previous
 					</Link>
 					<Link
-						to="#"
+						href="#"
 						className="relative ml-3 inline-flex items-center rounded-md border border-gray-text bg-gray-medium px-4 py-2 text-sm font-medium text-gray-text hover:bg-gray-dark"
 					>
 						Next
@@ -33,7 +33,7 @@ export default function PaginationTable() {
 							aria-label="Pagination"
 						>
 							<Link
-								to="#"
+								href="#"
 								className="relative inline-flex items-center rounded-l-md border border-gray-text bg-gray-medium px-2 py-2 text-sm font-bold text-light-bg hover:bg-gray-dark focus:z-20"
 							>
 								<span className="sr-only">Previous</span>
@@ -41,20 +41,20 @@ export default function PaginationTable() {
 							</Link>
 
 							<Link
-								to="#"
+								href="#"
 								aria-current="page"
 								className="relative z-10 inline-flex items-center border border-gray-text bg-blue-ufal px-4 py-2 text-sm font-bold text-white-100 focus:z-20"
 							>
 								1
 							</Link>
 							<Link
-								to="#"
+								href="#"
 								className="relative inline-flex items-center border border-gray-text bg-gray-medium px-4 py-2 text-sm font-bold text-light-bg hover:bg-white-100 focus:z-20"
 							>
 								2
 							</Link>
 							<Link
-								to="#"
+								href="#"
 								className="relative hidden items-center border border-gray-text bg-gray-medium px-4 py-2 text-sm font-bold text-light-bg hover:bg-white-100 focus:z-20 md:inline-flex"
 							>
 								3
@@ -63,25 +63,25 @@ export default function PaginationTable() {
 								...
 							</span>
 							<Link
-								to="#"
+								href="#"
 								className="relative hidden items-center border border-gray-text bg-gray-medium px-4 py-2 text-sm font-bold text-light-bg hover:bg-white-100 focus:z-20 md:inline-flex"
 							>
 								8
 							</Link>
 							<Link
-								to="#"
+								href="#"
 								className="relative inline-flex items-center border border-gray-text bg-gray-medium px-4 py-2 text-sm font-bold text-light-bg hover:bg-white-100 focus:z-20"
 							>
 								9
 							</Link>
 							<Link
-								to="#"
+								href="#"
 								className="relative inline-flex items-center border border-gray-text bg-gray-medium px-4 py-2 text-sm font-bold text-light-bg hover:bg-white-100 focus:z-20"
 							>
 								10
 							</Link>
 							<Link
-								to="#"
+								href="#"
 								className="relative inline-flex items-center rounded-r-md border border-gray-text bg-gray-medium px-2 py-2 text-sm font-bold text-light-bg hover:bg-white-100 focus:z-20"
 							>
 								<span className="sr-only">Next</span>

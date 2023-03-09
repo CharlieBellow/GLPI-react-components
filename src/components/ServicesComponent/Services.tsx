@@ -18,7 +18,7 @@ export default function Services () {
       
       
     }
-  }, [])
+  }, [ listServices, servicesStorage ])
 
       //console.log  ("servicesList: ", servicesList);
 

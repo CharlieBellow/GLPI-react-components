@@ -2,6 +2,8 @@
 import React from 'react'
 import * as Icon from 'phosphor-react'
 
+import ServicesList from "./ServicesList"
+
 const sizeIcon = 27
 const classIcon = ""
 
@@ -73,7 +75,14 @@ export const subcategoryModel = [
   {
   id: "02",
   titleSubcategory: "Redes",
-  description: "",
+  description: "oi",
+  category: categoryModel[0],
+  icon: categoryIcons[3].icon,
+  },
+  {
+  id: "04",
+  titleSubcategory: "Redes",
+  description: "osdfsd",
   category: categoryModel[0],
   icon: categoryIcons[3].icon,
   }
@@ -86,12 +95,14 @@ export const serviceModel = [
     category: categoryModel[0],
     subcategory: subcategoryModel[0],
     title: "titulo do serviço clicado na lista de subcategorias",
-    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
+    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo - boolean",
     description:
     "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
+  serviceDescription: ServicesList,
+  isPatromonyIdRequired: true
 
 },
   {
@@ -105,6 +116,8 @@ export const serviceModel = [
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
+  serviceDescription: ServicesList,
+  isPatromonyIdRequired: false
 
 },
 

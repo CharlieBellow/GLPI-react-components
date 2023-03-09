@@ -1,18 +1,18 @@
  import { createContext, useContext, useState } from "react";
-import { serviceLetterModel, serviceModel } from "../Utils/ServiceModels";
 
-interface ServiceLetterProps {
 
-  id: string,
-  category: object,
-  subcategory: object,
-  title: string,
-  patrimonio: string,
-  description: string,
-  applicantsName: string,
-  publicoAlvo: string,
-  tempoDeEspera: string,
+const ServiceLetterProps = {
 
+  id: "",
+  category: "",
+  subcategory: "",
+  title: "",
+  patrimonio: "",
+  description: "",
+  applicantsName: "",
+  publicoAlvo: "",
+  tempoDeEspera: "",
+  serviceDescription: [{}],
 
 }
 
@@ -29,7 +29,7 @@ export const ServiceLetterContext = createContext( {} as ServiceLetterContextPro
 
 export const ServiceLetterProvider = ( { children }: ServiceLetterProviderProps ) => {
 
-  const [ infoServicesLetter, setInfoServicesLetter ] = useState<object>(  [{}] );
+  const [ infoServicesLetter, setInfoServicesLetter ] = useState<object>( ServiceLetterProps );
 
 
   function addInfoServiceLetter ( infoServiceLetter: Array<object> ) {
