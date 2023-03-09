@@ -13,8 +13,21 @@ import { RoutesContext } from "../../../../../Contexts/RouteContext";
 import { getCategory, getAllSubcategories, listSubcategories, category} from "../../../../../Utils/server/getInfo"
 
 
+export async function getStaticProps () {
 
-const Subcategory = (  ) => {
+  let listCategories = [];
+  const baseURL = "http://172.27.12.171:3333";
+  const data = await axios.get( `http://172.27.12.171:3333/servicebook/group/${idCategory}/subgroup` ).then( ( response ) => {
+    const teste = response.data;
+  } );
+
+  return {
+    props: { teste, },
+  };
+
+}
+
+const Subcategory = (  {teste}) => {
 
 
   
@@ -44,7 +57,7 @@ const Subcategory = (  ) => {
 					
 					
 
-            { listSubcategories.map( ( subcategory ) => {
+            { teste.map( ( subcategory ) => {
                 
                 return (
                   
@@ -146,33 +159,35 @@ const Subcategory = (  ) => {
 export default Subcategory;
 
 
-let meuarray = []
-export async function getStaticProps( { params } ) {
-   console.log(params)
-   const api = await  axios({
-                method: 'get',
-                baseURL: baseURL,
-                url: `/servicebook/group/${params.id}/subgroup`,
-
-  } ) 
-    .then( response => {
-      meuarray = response.data;
-      return meuarray.json()
-
-    } )
-}
-
-export async function getStaticPaths() {
-
-  return(
-    
-    paths: [
-
-      listSubcategories.map(item => {
-        {params: {id: item.id,},
-      })
-    ]
-    
-    
-  )
-}
+//let meuarray = []
+//export async function getStaticProps( { params } ) {
+//   console.log(params)
+//   const api = await  axios({
+//                method: 'get',
+//                baseURL: baseURL,
+//                url: `/servicebook/group/${params.id}/subgroup`,
+//
+//  } ) 
+//    .then( response => {
+//      meuarray = response.data;
+//      return meuarray.json()
+//
+//    } )
+//}
+//
+//export async function getStaticPaths () {
+//
+//  return {
+//    paths: [
+//      listSubcategories.map( item => {
+//        return (
+//          { params: { id: `${ item.id }`, }, },
+//
+//        );
+//      }
+//    ],
+//    fallback: false,
+//    
+//    
+//  };
+//}
