@@ -6,23 +6,28 @@ import { Page } from "./Page";
 import { useContext } from 'react';
 import { RoutesContext } from '../Contexts/RouteContext';
 import { useRouter } from "next/router";
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
 import * as Icon from 'phosphor-react'
-import {getAllCategories, listCategories} from "../Utils/server/getInfo"
+import {getAllCategories} from "../Utils/server/getInfo"
+import { Group } from '../Utils/server/types';
 
 
 export default function Category () {
-const router = useRouter()
+  const router = useRouter()
   const {category} = router.query
+  const [categories, setCategories] = useState<Group[]>([])
 
   useEffect(() => {
-    
-  },[])
-  getAllCategories()
-  
-  
-  console.log( listCategories )
 
+    const fetchData = async () => {
+      const response = await getAllCategories()
+      setCategories(response);      
+    }
+
+    fetchData();
+      
+  },[]);
+    
 
   return (
 
@@ -30,11 +35,11 @@ const router = useRouter()
       <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Categorias</h4>
       <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0">
 
-        { listCategories.map( ( category ) => {
+        {categories && categories.map( ( category ) => {
           return (
               <CardCategory link={ `/privateroutes/servicebook/subgroup/${ category.id }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
                 key={ category.id }
-                idCategory={ category }
+                idCategory={ category.id }
               />
 
           );
