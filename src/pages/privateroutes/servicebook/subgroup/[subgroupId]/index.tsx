@@ -20,8 +20,8 @@ const Subcategory = (  ) => {
 
   
 useEffect(() => {
-  getCategory( router.query.subgroupId );
-  getAllSubcategories(router.query.subgroupId)
+  getCategory( router.query.subgroupId as string);
+  getAllSubcategories(router.query.subgroupId as string)
 
    }, [])
 

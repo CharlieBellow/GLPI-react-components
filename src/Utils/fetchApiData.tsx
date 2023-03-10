@@ -3,7 +3,7 @@ export default function fetchApiData () {
   // get: pega datos
   fetch( "http://172.27.12.171:3333/sessions", 
   {method: "POST", 
-  body: {"email": "ud@arapiraca.ufal.br", "password": "admin"}
+  body: JSON.stringify({"email": "ud@arapiraca.ufal.br", "password": "admin"})
 } )
     .then( ( response ) => {
       console.log("response", response);

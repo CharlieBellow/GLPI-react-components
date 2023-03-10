@@ -126,7 +126,7 @@ export const CardCreateCategory = () => {
 								</div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
+								{isSubmitting ?  <Spinner size="xl" /> : null}
 								<Button
 									title="Solicitar"
 									theme="primaryAction"

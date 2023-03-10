@@ -7,10 +7,10 @@ import {
 } from "../../../Utils/validations";
 
 import * as yup from "yup";
-import { Button } from "../../../../components/Buttons/Button";
-import { CardLabelInput } from "../../../../components/Inputs/CardLabelInput";
-import { CardTitle } from "../../../../components/Cards/CardTitle";
-import { CardLine } from "../../../../components/Cards/CardLine";
+import { Button } from "../../../components/Buttons/Button";
+import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
+import { CardTitle } from "../../../components/Cards/CardTitle";
+import { CardLine } from "../../../components/Cards/CardLine";
 import { useMessage } from "../../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,

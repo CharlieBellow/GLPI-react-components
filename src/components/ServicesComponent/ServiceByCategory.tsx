@@ -12,8 +12,8 @@ const ServiceByCategory = ( ) => {
   const {subcategory, service, serviceorder} = router.query
 
  useEffect(() => {
-  getSubcategory(router.query.subgroupId)
-  getAllServices(router.query.subgroupId)
+  getSubcategory(router.query.subgroupId as string)
+  getAllServices(router.query.subgroupId as string)
  }, [])
 
  console.log(router.query.subgroupId)

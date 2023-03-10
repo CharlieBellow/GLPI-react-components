@@ -48,7 +48,7 @@ export default function CardServiceDescription () {
   const router = useRouter();
 
   useEffect( () => {
-    getService( router.query.serviceId );
+    getService( router.query.serviceId as string);
     console.log( router.query.serviceId );
   }, [] );
 

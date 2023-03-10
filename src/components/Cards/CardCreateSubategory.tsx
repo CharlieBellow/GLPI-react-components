@@ -12,7 +12,7 @@ import {useAuth} from "../../Contexts/AuthContext"
 import { useMessage } from "../../Contexts/MessageContext";
 import { postSubcategory } from "../../Utils/server/postInfo"
 
-import { listCategory, getAllCategory } from "../../Utils/server/getInfo"
+import { listCategories, getAllCategories } from "../../Utils/server/getInfo";
 
 import {
 	validationSchema,
@@ -26,7 +26,7 @@ const validate = yup.object().shape({
 
 export const CardCreateSubcategory = () => {
 
-  getAllCategory()
+	getAllCategories()
 
   const {token} = useAuth()
   const {errorMessage, successMessage} = useMessage()
@@ -80,13 +80,13 @@ export const CardCreateSubcategory = () => {
                     label="serviceGroupId"
                     name="serviceGroupId"
                     default="Selecione a categoria a qual ela pertence"
-                    listitems={listCategory} 
+                    listitems={listCategories} 
                   />
                 </div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Solicitar" }
+									title="Solicitar"
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

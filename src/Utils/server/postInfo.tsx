@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL = "http://172.27.12.171:3333"
 
-export function postCategory ( values, token ) {
+export function postCategory ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,
@@ -14,7 +14,7 @@ export function postCategory ( values, token ) {
 
 }
 
-export function postSubcategory ( values, token ) {
+export function postSubcategory ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,
@@ -26,7 +26,7 @@ export function postSubcategory ( values, token ) {
 }
 
 
-export function postService ( values, token ) {
+export function postService ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,
@@ -37,7 +37,7 @@ export function postService ( values, token ) {
 
 }
 
-export function postServiceOrder ( values, token ) {
+export function postServiceOrder ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,

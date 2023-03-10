@@ -1,10 +1,10 @@
 import axios from "axios";
-
+import { Group, Service, SubGroup } from "./types";
 const baseURL = "http://172.27.12.171:3333"
 
 // criar erros
-export let category = []
- export async function getCategory(id) {
+export let category: Group
+ export async function getCategory(id : string) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -19,22 +19,18 @@ export let category = []
     }
 
 
-export let listCategories = []
- export async function getAllCategories() {
-  const getAllCategories = await axios({
-                method: 'get',
-                baseURL: baseURL,
-                url: "/servicebook/group",
-              })
-              .then(response => {
-                listCategories = response.data
-                
-              })
+export async function getAllCategories() {
+  const response= await axios({
+                  method: 'get',
+                  baseURL: baseURL,
+                  url: "/servicebook/group",
+                  });
+              
+  return response.data;                
+}
 
-    }
-
-    export let listSubcategories = []
-export async function getAllSubcategories ( idCategory ) {
+    export let listSubcategories: Array<SubGroup>
+export async function getAllSubcategories ( idCategory: string ) {
   const getAllSubcategories = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -47,8 +43,8 @@ export async function getAllSubcategories ( idCategory ) {
     } )
     }
 
-    export let subCategory = []
-    export async function getSubcategory(id) {
+    export let subCategory: SubGroup
+    export async function getSubcategory(id : string) {
       const getSubcategory = await axios({
         method: 'get',
         baseURL: baseURL,
@@ -63,8 +59,8 @@ export async function getAllSubcategories ( idCategory ) {
       
     }
     
-    export let listServices = []
-     export async function getAllServices(idSubgroup) {
+    export let listServices: Array<Service>
+     export async function getAllServices(idSubgroup : string) {
        const getAllServices = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -76,8 +72,8 @@ export async function getAllSubcategories ( idCategory ) {
     } )
     }
 
-        export let service = []
-    export async function getService(id) {
+    export let service: Service
+    export async function getService(id : string) {
   const getService = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -93,7 +89,7 @@ export async function getAllSubcategories ( idCategory ) {
 
 
 export let user = [];
-export async function getUser ( id ) {
+export async function getUser ( id : string) {
   const getUser = await axios( {
     method: 'get',
     baseURL: baseURL,

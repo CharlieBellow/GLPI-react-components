@@ -1,9 +1,9 @@
 
 import * as Icon from 'phosphor-react';
-
+import { Service } from '../../Utils/server/types'
 interface InfosServiceItemProps {
 	icon?: Icon.IconProps;
-	infos: Object,
+	infos: Service,
 }
 
 
@@ -88,7 +88,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
            </div>
           {/* pega esses tipos e faz um if else pra exibir os ícones corretamente */ }
           {/* fazer um map e renderizar cada string */}
-          <p>{ props.infos.personType }</p>
+          <p>{ props.infos.personType as string[]}</p>
           <p>Discentes, docentes e Técnicos</p>
         </div>
         <div className="border-b-2 border-gray-text"></div>
@@ -99,7 +99,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
               <><Icon.HourglassHigh size={ 26 } weight="bold" /></>
               <h3 className="lg:text-3xl text-base font-semibold">Tempo de Espera</h3>
             </div>
-            <p>{ props.infos.waitingTime }</p>
+            <p>{ props.infos.waitingTime as any}</p>
             <p> 24 horas</p>
           </div>
         <div className="border-b-2 border-gray-text"></div>
@@ -110,7 +110,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <><Icon.Watch size={ 26 } weight="bold" /></>
           <h3 className="lg:text-3xl text-base font-semibold">Tempo necessário para execução</h3>
         </div>
-          <p>{ props.infos.deadline }</p>
+          <p>{ props.infos.deadline as any}</p>
           <p> 2 horas</p>
         </div>
         <div className="border-b-2 border-gray-text"></div>
@@ -119,7 +119,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <><Icon.Clock size={ 26 } weight="bold" /></>
           <h3 className="lg:text-3xl text-base font-semibold">Horário de atendimento</h3>
           </div>
-          <p>{ props.infos.openningHours }</p>
+          <p>{ props.infos.openningHours as any}</p>
           <p> seg a sex das 8:00 às 17:00h </p>
         </div>
         <div className="border-b-2 border-gray-text"></div>

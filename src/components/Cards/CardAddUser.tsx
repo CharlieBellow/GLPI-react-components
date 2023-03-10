@@ -80,7 +80,6 @@ const validate = yup.object().shape({
 //
 //	//handleBlur(e);
 //}
-const {errorMessage, successMessage} = useMessage()
 const CardAddUser = () => (
 	
 	<div className="mx-4">
@@ -115,7 +114,7 @@ const CardAddUser = () => (
 						console.log("submit", values);
 						console.log("cep", values.cep);
 
-						successMessage("Usuário criado com sucesso!");
+						//successMessage("Usuário criado com sucesso!");
 						//alert(JSON.stringify(values, null, 2));
 						setSubmitting(false);
 					}, 400);
