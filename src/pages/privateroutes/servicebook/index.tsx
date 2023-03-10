@@ -1,6 +1,6 @@
 import { Page } from "../../../components/Page";
-import Category from "../../../components/Category";
+import GroupList from "../../../components/GroupList";
 
 export default function Servicebook () {
-  return <Page pagetitle={ "Categorias" } contentpage={ <Category /> } />;
+  return <Page pagetitle={ "Categorias" } contentpage={ <GroupList /> } />;
 }

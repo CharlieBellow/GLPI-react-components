@@ -2,10 +2,10 @@ import * as React from 'react';
 import { createContext, useState } from 'react';
 
 interface RoutesContextProps {
-  category: string;
-  setCategory: ( category: string ) => void;
-  subcategory: string;
-  setSubcategory: ( subcategory: string ) => void;
+  group: string;
+  setGroup: ( group: string ) => void;
+  subgroup: string;
+  setSubgroup: ( subgroup: string ) => void;
   service: string;
   setService: ( service: string ) => void;
   serviceOrder: string;
@@ -19,14 +19,14 @@ interface RoutesProviderProps {
 export const RoutesContext = createContext( {} as RoutesContextProps );
 
 export default function RoutesProvider ( { children }: RoutesProviderProps ) {
-  const [ category, setCategory ] = useState( "" )
-  const [ subcategory, setSubcategory ] = useState( "" )
+  const [ group, setGroup ] = useState( "" )
+  const [ subgroup, setSubgroup ] = useState( "" )
   const [ service, setService ] = useState( "" )
   const [ serviceOrder, setServiceOrder ] = useState( "" )
   
 
   return (
-    <RoutesContext.Provider value={ { category, setCategory, subcategory, setSubcategory, service, setService, serviceOrder, setServiceOrder } }>
+    <RoutesContext.Provider value={ { group, setGroup, subgroup, setSubgroup, service, setService, serviceOrder, setServiceOrder } }>
       {children}
     </RoutesContext.Provider>
   )

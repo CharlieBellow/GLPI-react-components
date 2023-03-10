@@ -36,7 +36,7 @@ export default function FieldSelect(
 				<option value="" className="">
 					{props.default}
 				</option>
-				{props.listitems.map(item => {
+				{props.listitems && props.listitems.map(item => {
 					return (
 						<option key={typeof item === 'string' ? item : item.id} value={typeof item === 'string' ? item : item.id} className="font-bold ">
               			{typeof item === 'string' ? item : item.description}

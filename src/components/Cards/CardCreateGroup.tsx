@@ -3,43 +3,44 @@ import { Form, Formik } from "formik";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
-import { CardLine } from "../Cards/CardLine";
+import { CardLine } from "./CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 import { validationSchema, servicesList } from "../../Utils/validations";
 import * as yup from "yup";
 //import { services, ServicesList } from '../Pages/ServiceLetter/ServicesList';
 import { useEffect, useState } from "react";
-import { useCategoryContext } from '../../Contexts/CategoryContext';
-import { categoryIcons, categoryModel } from "../../Utils/ServiceModels";
+import { useGroupContext } from '../../Contexts/GroupContext';
+import { groupIcons, groupModel } from "../../Utils/ServiceModels";
 import { useMessage } from "../../Contexts/MessageContext";
+import { Group } from "../../Utils/server/types";
 
 
 
 const validate = yup.object().shape({
-	titleCategory: validationSchema.titleCategory,
+	titleCategory: validationSchema.titleGroup,
 	description: validationSchema.description,
 	services: validationSchema.services,
 	link: validationSchema.link,
 });
 
-export const CardCreateCategory = () => {
+export const CardCreateGroup = () => {
 
 	//const {category} = useCategoryContext()
-	const [ categories, setCategories ] = useState( categoryModel );
+	const [ groups, setGroups ] = useState<Group[]>([]);
 	const {errorMessage, successMessage} = useMessage()
 	useEffect(() => {
-		const categoryStorage = localStorage.getItem("categories");
+		const groupStorage = localStorage.getItem("groups");
 
-		if (categoryStorage) {
-			setCategories(JSON.parse(categoryStorage));
+		if (groupStorage) {
+			setGroups(JSON.parse(groupStorage));
 
-			console.log("categories: ", categoryStorage);
+			console.log("groups: ", groupStorage);
 		}
 	}, []);
 
 	useEffect(() => {
-		localStorage.setItem("categories", JSON.stringify(categories));
+		localStorage.setItem("groups", JSON.stringify(groups));
 	});
 
 
@@ -85,9 +86,9 @@ export const CardCreateCategory = () => {
 						setTimeout(() => {
 							console.log("submit:", values);
 							//setCategories([...categories, values]);
-							console.log("category:", categories);
+							console.log("group:", groups);
 
-							successMessage("Categoria criada com sucesso!");
+							successMessage("Grupo criado com sucesso!");
 							
 							actions.resetForm();
 					

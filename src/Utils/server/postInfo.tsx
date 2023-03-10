@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const baseURL = "http://172.27.12.171:3333"
-
-export function postCategory ( values: object, token: string ) {
+// TODO manage errors
+export function postGroup ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,
@@ -14,7 +14,7 @@ export function postCategory ( values: object, token: string ) {
 
 }
 
-export function postSubcategory ( values: object, token: string ) {
+export function postSubGroup ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,

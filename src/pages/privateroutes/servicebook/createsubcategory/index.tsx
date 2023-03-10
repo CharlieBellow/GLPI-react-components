@@ -1,4 +1,4 @@
-import { CardCreateSubcategory } from "../../../../components/Cards/CardCreateSubategory";
+import { CardCreateSubcategory } from "../../../../components/Cards/CardCreateSubGroup";
 import { Page } from "../../../../components/Page";
 
 export default function CreateSubcategory() {

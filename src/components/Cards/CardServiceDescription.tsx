@@ -6,7 +6,8 @@ import { Button } from "../Buttons/Button";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { service, getService } from '../../Utils/server/getInfo';
+import { getService } from '../../Utils/server/getInfo';
+import { Service } from "../../Utils/server/types";
 
 //nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
@@ -24,16 +25,6 @@ export default function CardServiceDescription () {
     }
   };
 
-  const changeButtonName = () => {
-    if ( typeof window !== "undefined" ) {
-
-      if ( window.screen.width < 1024 ) {
-        return "Abrir chamado";
-      } else {
-        return "Solicitar serviço";
-      }
-    }
-  };
 
 
 
@@ -46,13 +37,17 @@ export default function CardServiceDescription () {
   //} )
 
   const router = useRouter();
+  const [service, setService] = useState<Service>()
 
   useEffect( () => {
-    getService( router.query.serviceId as string);
-    console.log( router.query.serviceId );
+    const fetchData = async () => {
+      console.log(router.query.serviceId as string);
+      const response = await getService(router.query.serviceId as string)
+      setService(response);      
+    }
+    fetchData();
   }, [] );
 
-  console.log( "router", router.query );
 
   //  var myIndex;
   //  const indexService = () => {
@@ -77,13 +72,13 @@ export default function CardServiceDescription () {
     <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
       <div className="lg:flex lg:justify-between lg:items-baseline">
         <h3 className="pt-4 font-bold ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
-          { service.title }
+          {service && service.title }
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 
           <Link href={ `/privateroutes/servicebook/serviceorder/${ router.query.serviceId }/createserviceorder` }>
             <Button
-              title={ floatingButton ? "" : changeButtonName() }
+              title={ floatingButton ? "" : "Solicitar Serviço" }
               theme="withIcon"
               icon={ <Icon.PhoneOutgoing size={ 24 } /> }
             />
@@ -91,7 +86,7 @@ export default function CardServiceDescription () {
         </div>
       </div>
 
-      <InfoServiceItem infos={ service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
+      <InfoServiceItem infos={ service as Service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
 
 
       <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">

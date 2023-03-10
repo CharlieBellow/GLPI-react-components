@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-import { categoryModel, serviceModel, serviceOrderModel, subcategoryModel } from './ServiceModels';
+import { groupModel, serviceModel, serviceOrderModel, subgroupModel } from './ServiceModels';
 
 import  services  from '../Utils/ServicesList';
 
@@ -234,12 +234,12 @@ export const validationSchema = {
   .required( "É obrigatório informar o Nº da conta" )
   .min( 5, "No mínimo 5 números." )
   .max( 9, "Apenas 9 números" ),
-  titleCategory: yup
+  titleGroup: yup
   .string()
   .min( 3, "No mínimo 3 caracteres" )
   .max( 50, "No máximo 50 caracteres" )
   .required( "É obrigatório informar o nome da Categoria" ),
-  titleSubcategory: yup
+  titleSubgroup: yup
   .string()
   .min( 3, "No mínimo 3 caracteres" )
   .max( 50, "No máximo 50 caracteres" )
@@ -248,9 +248,9 @@ export const validationSchema = {
   .string()
   .oneOf( serviceOrderModel.map( serviceName => { return serviceName.serviceLetter.title; } ), "Escolha entre essas opções:" )
   .required( "É obrigatório informar o serviço" ),
-  category: yup
+  group: yup
   .string()
-  .oneOf( categoryModel.map( categoryName => { return categoryName.titleCategory; } ), "Escolha entre essas opções:" )
+  .oneOf( groupModel.map( groupName => { return groupName.titleGroup; } ), "Escolha entre essas opções:" )
   .required( "É obrigatório informar o serviço" ),
   patrimony: yup.string().matches(patrimony, "Digite apenas números e letras").min( 3, "No mínimo 3 caracteres" ).max( 100, "No máximo 100 caracteres" ).required("Digite o número de série do patrimônio ao qual o serviço está sendo solicitado"),
 };

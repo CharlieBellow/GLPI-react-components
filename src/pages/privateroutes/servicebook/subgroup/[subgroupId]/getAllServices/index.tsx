@@ -1,17 +1,17 @@
 import { Page } from "../../../../../../components/Page";
 
 
-import ServiceByCategory from "../../../../../../components/ServicesComponent/ServiceByCategory";
+import ServiceByGroup from "../../../../../../components/ServicesComponent/ServiceByGroup";
 
-const ServicesByCategory = () => {
+const ServicesBySubgroup = () => {
   return (
     <Page
       pagetitle={ "Lista de Serviços" }
       contentpage={
-        <ServiceByCategory />
+        <ServiceByGroup />
       }
     />
   );
 };
 
-export default ServicesByCategory;
+export default ServicesBySubgroup;

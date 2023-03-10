@@ -5,27 +5,35 @@ import * as Icon from "phosphor-react"
 
 
 import { Page } from "../../../../../components/Page";
-import CardCategory from "../../../../../components/CardCategory";
+import CardGroup from "../../../../../components/CardGroup";
 //import { useParams } from "react-router-dom";
 
 import { RoutesContext } from "../../../../../Contexts/RouteContext";
 
-import { getCategory, getAllSubcategories, listSubcategories, category} from "../../../../../Utils/server/getInfo"
+import { getGroup, getAllSubGroups} from "../../../../../Utils/server/getInfo"
+import { Group, SubGroup } from "../../../../../Utils/server/types";
 
 
 
 const Subcategory = (  ) => {
 
   const router = useRouter()
+  const [subgroups, setSubgroups] = useState<SubGroup[]>([])
+  const [group, setGroup] = useState<Group>()
+  useEffect(() => {
 
+    const fetchData = async () => {
+		
+      const groupResponse = await getGroup(router.query.subgroupId as string)
+      setGroup(groupResponse);      
+      const subgroupsResponse = await getAllSubGroups(groupResponse.id)
+      setSubgroups(subgroupsResponse);      
+    }
+
+    fetchData();
+      
+  },[]);
   
-useEffect(() => {
-  getCategory( router.query.subgroupId as string);
-  getAllSubcategories(router.query.subgroupId as string)
-
-   }, [])
-
-
 //get server render
 
 
@@ -38,18 +46,18 @@ useEffect(() => {
 						Subcategorias
 					</h4>
 
-          <h5 className="text-xl font-bold m-8">{category.description}</h5>
+          <h5 className="text-xl font-bold m-8">{group && group.description}</h5>
 					<div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
 					
 					
 
-            { listSubcategories.map( ( subcategory ) => {
+            {subgroups && subgroups.map( ( subgroup ) => {
                 
                 return (
                   
-                    <CardCategory link={ `/privateroutes/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 }/> }
-                      key={ subcategory.id }
-                      idCategory={ subcategory.id }
+                    <CardGroup link={ `/privateroutes/servicebook/subgroup/${ subgroup.id }/getAllServices` } Name={ subgroup.description } Icon={ <Icon.Archive size={ 27 }/> }
+                      key={ subgroup.id }
+                      idGroup={ subgroup.id }
                     />
 
                 );

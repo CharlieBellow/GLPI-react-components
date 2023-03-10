@@ -4,32 +4,45 @@ import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLine } from "../Cards/CardLine";
+import { CardLine } from "./CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
 import {useAuth} from "../../Contexts/AuthContext"
 import { useMessage } from "../../Contexts/MessageContext";
-import { postSubcategory } from "../../Utils/server/postInfo"
+import { postSubGroup } from "../../Utils/server/postInfo"
 
-import { listCategories, getAllCategories } from "../../Utils/server/getInfo";
+import { getAllGroups } from "../../Utils/server/getInfo";
 
 import {
 	validationSchema,
 
 } from "../../Utils/validations";
+import { Group } from "../../Utils/server/types";
+import { useEffect, useState } from "react";
 
 
 const validate = yup.object().shape({
-	description: validationSchema.titleSubcategory,
+	description: validationSchema.titleSubgroup,
 });
 
-export const CardCreateSubcategory = () => {
+export const CardCreateSubGroup = () => {
 
-	getAllCategories()
 
   const {token} = useAuth()
   const {errorMessage, successMessage} = useMessage()
+  const [groups, setGroups] = useState<Group[]>([])
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      const response = await getAllGroups()
+      setGroups(response);      
+    }
+
+    fetchData();
+      
+  },[]);
 	
 	return (
 		<div className="mx-4">
@@ -55,8 +68,8 @@ export const CardCreateSubcategory = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-						  postSubcategory( values, token )
-						  successMessage("Serviço criado com sucesso!");
+							postSubGroup( values, token )
+						  	successMessage("Subgrupo criado com sucesso!");
 							actions.resetForm();
 						
 						}, 400);
@@ -80,7 +93,7 @@ export const CardCreateSubcategory = () => {
                     label="serviceGroupId"
                     name="serviceGroupId"
                     default="Selecione a categoria a qual ela pertence"
-                    listitems={listCategories} 
+                    listitems={groups} 
                   />
                 </div>
 							</div>

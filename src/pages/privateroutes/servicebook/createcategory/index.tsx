@@ -1,4 +1,4 @@
-import { CardCreateCategory } from "../../../../components/Cards/CardCreateCategory";
+import { CardCreateGroup } from "../../../../components/Cards/CardCreateGroup";
 import { Page } from "../../../../components/Page";
 
 export default function CreateCategory() {
@@ -6,7 +6,7 @@ export default function CreateCategory() {
 		<>
 			<Page
 				pagetitle={"Abertura de Chamados - GLPI"}
-				contentpage={<CardCreateCategory />}
+				contentpage={<CardCreateGroup />}
 			/>
 		</>
 	);

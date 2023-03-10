@@ -19,7 +19,7 @@ import {
 
 import {postServiceOrder} from "../../Utils/server/postInfo"
 
-import {getService, service} from "../../Utils/server/getInfo"
+import {getService} from "../../Utils/server/getInfo"
 //import fetchApiData from "../../Utils/fetchApiData";
 import {useAuth} from "../../Contexts/AuthContext"
 
@@ -28,6 +28,7 @@ import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
 
 import FieldSelect from "../Inputs/FieldSelect";
 import {  serviceModel } from "../../Utils/ServiceModels";
+import { Service } from "../../Utils/server/types";
 
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -128,10 +129,21 @@ const createserviceorder =
   console.log("serviceorder", router.query.serviceorder)
 
 useEffect(() => {
-  //getService(router.query.serviceorder)
+  
 
 }, [])
+const [service, setService] = useState<Service>()
 
+useEffect(() => {
+
+  const fetchData = async () => {
+	const response = await getService(router.query.serviceorder as string)
+	setService(response);      
+  }
+
+  fetchData();
+	
+},[]);
 
 
   return (
@@ -197,7 +209,7 @@ useEffect(() => {
 						setTimeout(() => {
 							console.log("submit:", values);
 						
-              postServiceOrder( values, token )
+             				 postServiceOrder( values, token )
               
 							toast.success("Serviço criado com sucesso!");
 						
@@ -241,7 +253,7 @@ useEffect(() => {
                     />
 								</div>
                   <div>
-                    { service.isPatromonyIdRequired ? 
+                    { service && service.isPatromonyIdRequired ? 
                     <CardLabelInput
                       label="Patrimônio"
                       name="patrimonyId"

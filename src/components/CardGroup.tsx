@@ -1,19 +1,19 @@
 import * as Icon from "phosphor-react";
 import Link from "next/link";
-import { categoryModel } from "../Utils/ServiceModels";
+import { groupModel } from "../Utils/ServiceModels";
 
-interface categoriaProps {
+interface groupProps {
 	Name: String;
 	Icon: Icon.IconProps;
 	link: string;
-	idCategory: string
+	idGroup: string
 }
 
-export default function CardCategory ( props: categoriaProps ) {
+export default function CardGroup( props: groupProps ) {
 	
-  const id = categoryModel.map( category =>
-    category.id === props.idCategory
-      ? category.titleCategory 
+  const id = groupModel.map( group =>
+    group.id === props.idGroup
+      ? group.titleGroup 
       :  "" 
   );
 

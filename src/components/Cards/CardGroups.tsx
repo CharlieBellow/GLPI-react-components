@@ -1,18 +1,19 @@
 import * as  Icon from "phosphor-react";
+import CardGroup from "../CardGroup";
 //import { Link } from "react-router-dom";
-import CardCategory from "../CardCategory";
+import CardCategory from "../CardGroup";
 
-const CardCategories = () => {
+const CardGroups = () => {
 	return (
 		<>
 			<div className="bg-white-ice w-auto h-auto py-4 px-4 rounded-lg shadow-card box-border">
-				<h4 className="text-4xl mb-8 font-bold">Categorias</h4>
+				<h4 className="text-4xl mb-8 font-bold">Grupos</h4>
 				<div className="grid grid-cols-2">
 					{/*<Link to="/PageCategoriaHome">*/}
-						<CardCategory
+						<CardGroup
 							link="/"
 							Name={ "Biblioteca" }
-							Icon={ <Icon.BookOpen size={ 27 } /> } idCategory={ "" }						/>
+							Icon={ <Icon.BookOpen size={ 27 } /> } idGroup={ "" }						/>
 					{/*</Link>*/}
 					<div className="gap-3 grid grid-cols-2">
 						{/*<Link to="/">Dashboard</Link>*/}
@@ -41,4 +42,4 @@ const CardCategories = () => {
 	);
 };
 
-export default CardCategories;
+export default CardGroups;
