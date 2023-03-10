@@ -1,9 +1,16 @@
 import { Field, FieldHookConfig, useField} from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
+<<<<<<< HEAD
 import { categoryProps } from "../../Utils/server/getInfo"
 
 interface FieldSelectProps {
   listitems: string[] | categoryProps[] ; 
+=======
+import { string } from "yup/lib/locale";
+import { Group } from "../../Utils/server/types";
+interface FieldSelectProps {
+  listitems: string[] | Group[]; 
+>>>>>>> arthwrvl-main
   label: string;
   name: string;
   default: string;
@@ -39,8 +46,8 @@ export default function FieldSelect(
         { props.listitems.map( item => {
           console.log(item)
 					return (
-            <option key={ typeof item === "string" ? item : item.id } value={ typeof item ===  "string" ? item : item.id} className="font-bold ">
-              { typeof item === "string" ? item : item.description}
+						<option key={typeof item === 'string' ? item : item.id} value={typeof item === 'string' ? item : item.id} className="font-bold ">
+              			{typeof item === 'string' ? item : item.description}
 						
 						</option>
 					);

@@ -7,9 +7,9 @@ import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 
 import * as yup from "yup";
-import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { useMessage } from "../../Contexts/MessageContext";
 import Link from "next/link";
 
 const validate = yup.object().shape({
@@ -23,6 +23,7 @@ const validate = yup.object().shape({
 export function CardSignUp () {
 	
 	const { auth, setAuth }: any = useContext( AuthContext )
+	const {errorMessage, successMessage} = useMessage()
 	console.log( "auth", auth );
 
 	return (
@@ -46,10 +47,10 @@ export function CardSignUp () {
 						if ( values  ) {
 							setAuth( true );
 						
-							toast.success("Conta criada com sucesso!");
+							successMessage("Conta criada com sucesso!");
 							
 						} else {
-							toast.error("Algo deu errado, tente novamente inserindo outros dados");
+							errorMessage("Algo deu errado, tente novamente inserindo outros dados");
 
 						}
 					

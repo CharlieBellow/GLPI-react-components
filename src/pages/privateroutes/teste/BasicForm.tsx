@@ -9,13 +9,12 @@ import {
 } from "../../../Utils/validations";
 
 import * as yup from "yup";
-import { toast } from "react-toastify";
 import { Button } from "../../../components/Buttons/Button";
 import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
 import { CardLabelInputCheckbox } from "../../../components/Inputs/CardLabelInputCheckbox";
 import { CardTitle } from "../../../components/Cards/CardTitle";
 import { CardLine } from "../../../components/Cards/CardLine";
-
+import { useMessage } from "../../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,
   personType: validationSchema.personType,
@@ -24,6 +23,7 @@ const validate = yup.object().shape({
 
 const BasicForm = () => {
 	const [users, setUsers] = useState(usersList);
+	const {errorMessage, successMessage} = useMessage()
 
 	useEffect(() => {
 		const usersStorage = localStorage.getItem("users");
@@ -68,7 +68,7 @@ const BasicForm = () => {
 							//setUsers([...users, values]);
 							console.log("users: ", users);
 
-							toast.success("Chamado criado com sucesso!");
+							successMessage("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 						}, 400);

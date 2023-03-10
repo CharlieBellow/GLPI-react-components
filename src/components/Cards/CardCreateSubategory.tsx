@@ -2,7 +2,6 @@ import * as yup from "yup";
 
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLine } from "../Cards/CardLine";
@@ -10,10 +9,10 @@ import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
 import {useAuth} from "../../Contexts/AuthContext"
-
+import { useMessage } from "../../Contexts/MessageContext";
 import { postSubcategory } from "../../Utils/server/postInfo"
 
-import { listCategories, getAllCategories } from "../../Utils/server/getInfo"
+import { listCategories, getAllCategories } from "../../Utils/server/getInfo";
 
 import {
 	validationSchema,
@@ -27,10 +26,10 @@ const validate = yup.object().shape({
 
 export const CardCreateSubcategory = () => {
 
-  getAllCategories()
+	getAllCategories()
 
   const {token} = useAuth()
-
+  const {errorMessage, successMessage} = useMessage()
 	
 	return (
 		<div className="mx-4">
@@ -57,7 +56,7 @@ export const CardCreateSubcategory = () => {
 						setTimeout(() => {
 							console.log("submit:", values);
 						  postSubcategory( values, token )
-							toast.success("Serviço criado com sucesso!");
+						  successMessage("Serviço criado com sucesso!");
 							actions.resetForm();
 						
 						}, 400);
@@ -81,13 +80,13 @@ export const CardCreateSubcategory = () => {
                     label="serviceGroupId"
                     name="serviceGroupId"
                     default="Selecione a categoria a qual ela pertence"
-                    listitems={ listCategories } 
+                    listitems={listCategories} 
                   />
                 </div>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 								<Button
-									title={ "Solicitar" }
+									title="Solicitar"
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

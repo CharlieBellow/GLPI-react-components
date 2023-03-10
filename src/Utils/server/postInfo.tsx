@@ -14,7 +14,7 @@ export function postCategory ( values: object, token: string ) {
 
 }
 
-export function postSubcategory ( values: object, token : string) {
+export function postSubcategory ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,
@@ -26,7 +26,7 @@ export function postSubcategory ( values: object, token : string) {
 }
 
 
-export function postService ( values: object, token : string) {
+export function postService ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,
@@ -37,7 +37,7 @@ export function postService ( values: object, token : string) {
 
 }
 
-export function postServiceOrder ( values: object, token : string) {
+export function postServiceOrder ( values: object, token: string ) {
   axios( {
     method: 'post',
     baseURL: baseURL,

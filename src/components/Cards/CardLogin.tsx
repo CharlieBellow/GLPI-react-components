@@ -9,10 +9,9 @@ import { Eye } from "phosphor-react";
 import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
-import { toast } from "react-toastify";
 import Link from "next/link";
 import {useRouter} from "next/router"
-
+import { useMessage } from "../../Contexts/MessageContext";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
@@ -23,35 +22,29 @@ export function CardLogin () {
 	
 
   const { auth, changeAuth, changeToken, token } = useAuth()
+  const {errorMessage, successMessage} = useMessage()
+	const router = useRouter();
 
-  const router = useRouter();
-  
-  const baseURL = "http://172.27.12.171:3333"
-  async function getToken ( values: any ) {
-    const token = axios( {
-      method: 'post',
-      baseURL: baseURL,
-      url: "/sessions",
-      data: values,
-    } )
-      .then( response => {
-
-        const token = response.data.token;
-
-        if ( token !== undefined ) {
-
-          changeToken( token );
-     
-          // salvar o token nos cookies: usar ferramenta própria do nextJs
-
-        }
-
-        return token;
-      } );
-
-
+        async function getToken( values: object) {
+                const token = await axios.post( "http://172.27.12.171:3333/sessions", values )
+                .then(response => {
+                  changeToken(response.data.token)
+                 
+                  console.log(response.data.token)
+                  localStorage.setItem( "token",  response.data.token );
+                })
   }
 
+  
+    useEffect( () => {
+    const tokenAuth = localStorage.getItem( "token" );
+
+    if ( tokenAuth !== "undefined" ) {
+      changeToken(  tokenAuth as string);
+
+      console.log( "tokenAuth: ", tokenAuth );
+    }
+  }, [] );
 
 	
 	return (
@@ -72,11 +65,11 @@ export function CardLogin () {
 
         getToken( values);
 		
-							toast.success("Login realizado com sucesso!");
+			  successMessage("Login realizado com sucesso!");
               router.push( "../privateroutes", "/" )
 							
 						} else {
-						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
+						errorMessage("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
 
 						}
 						actions.resetForm();

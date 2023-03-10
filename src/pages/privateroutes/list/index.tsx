@@ -26,7 +26,7 @@ export default function List() {
     
     if (localStorage.getItem("users") !== null) {
       const usersStorage = localStorage.getItem("users");
-      const listas = JSON.parse(usersStorage)!;
+      const listas = JSON.parse(usersStorage as string)!;
       console.log("lista:", lista);
       setLista(listas);
       console.log(listas);

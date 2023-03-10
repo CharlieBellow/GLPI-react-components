@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { Group, Service, SubGroup } from "./types";
 const baseURL = "http://172.27.12.171:3333"
 
 export interface categoryProps {
@@ -9,8 +9,8 @@ export interface categoryProps {
   updatedAt: Date;
 }
 // criar erros
-export let category: categoryProps
- export async function getCategory(id: string) {
+export let category: Group
+ export async function getCategory(id : string) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -25,21 +25,17 @@ export let category: categoryProps
     }
 
 
-export let listCategories: Array<categoryProps>
- export async function getAllCategories() {
-  const getAllCategories = await axios({
-                method: 'get',
-                baseURL: baseURL,
-                url: "/servicebook/group",
-              })
-              .then(response => {
-                listCategories = response.data
-                
-              })
+export async function getAllCategories() {
+  const response= await axios({
+                  method: 'get',
+                  baseURL: baseURL,
+                  url: "/servicebook/group",
+                  });
+              
+  return response.data;                
+}
 
-    }
-
-    export let listSubcategories = []
+    export let listSubcategories: Array<SubGroup>
 export async function getAllSubcategories ( idCategory: string ) {
   const getAllSubcategories = await axios({
                 method: 'get',
@@ -53,8 +49,8 @@ export async function getAllSubcategories ( idCategory: string ) {
     } )
     }
 
-    export let subCategory = []
-    export async function getSubcategory(id: string) {
+    export let subCategory: SubGroup
+    export async function getSubcategory(id : string) {
       const getSubcategory = await axios({
         method: 'get',
         baseURL: baseURL,
@@ -68,30 +64,9 @@ export async function getAllSubcategories ( idCategory: string ) {
       
       
     }
-
-export interface serviceProps {
-
-
-  id: string,
-  description: string,
-  title: string,
-  definition: string,
-  serviceSubGroupId: string,
-  personType: object[],
-  waitingTime: null | Date,
-  deadline: null | Date,
-  openningHours: null | Date,
-  isPrioritaryService: boolean,
-  serviceLocation: null | string,
-  requiredDocuments: null | boolean,
-  contactInfo: null | string,
-  isPatromonyIdRequired: boolean,
-  updatedAt: Date;
-}
-
     
-export let listServices:  Array<serviceProps>
-     export async function getAllServices(idSubgroup: string) {
+    export let listServices = []
+     export async function getAllServices(idSubgroup) {
        const getAllServices = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -103,10 +78,8 @@ export let listServices:  Array<serviceProps>
     } )
     }
 
-
-    
-        export let service: serviceProps
-    export async function getService(id: any, ) {
+    export let service: Service
+    export async function getService(id : string) {
   const getService = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -122,7 +95,7 @@ export let listServices:  Array<serviceProps>
 
 
 export let user = [];
-export async function getUser ( id: string) {
+export async function getUser ( id : string) {
   const getUser = await axios( {
     method: 'get',
     baseURL: baseURL,

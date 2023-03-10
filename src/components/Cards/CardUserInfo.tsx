@@ -5,8 +5,8 @@ import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
 import { Spinner } from "@chakra-ui/react";
+import { useMessage } from "../../Contexts/MessageContext";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -16,6 +16,7 @@ const validate = yup.object().shape({
 });
 
 function CardUserInfo() {
+	const {errorMessage, successMessage} = useMessage()
 	return (
 		<div className="mx-4">
 			<div
@@ -41,7 +42,7 @@ function CardUserInfo() {
 						setTimeout(() => {
 							console.log("submit:", values);
 
-							toast.success("Chamado criado com sucesso!");
+							successMessage("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 							//setSubmitting(false);

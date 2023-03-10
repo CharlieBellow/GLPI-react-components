@@ -31,7 +31,9 @@ const Subcategory = ( paramsId ) => {
 
 
   
-  const router = useRouter()
+useEffect(() => {
+  getCategory( router.query.subgroupId as string);
+  getAllSubcategories(router.query.subgroupId as string)
 
   useEffect( () => {
     getCategory( router.query.subgroupId );
