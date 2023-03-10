@@ -27,7 +27,7 @@ export async function getStaticProps () {
 
 }
 
-const Subcategory = (  {teste}) => {
+const Subcategory = ( paramsId ) => {
 
 
   
@@ -57,7 +57,7 @@ const Subcategory = (  {teste}) => {
 					
 					
 
-            { teste.map( ( subcategory ) => {
+            { paramsId.map( ( subcategory ) => {
                 
                 return (
                   
@@ -157,6 +157,35 @@ const Subcategory = (  {teste}) => {
 }
  
 export default Subcategory;
+
+export function getCategories () {
+  const list = getAllCategories();
+
+  return list.map( ( idCategory ) => {
+    return {
+      params: {
+        subgroupId: idCategory.id
+      },
+    };
+  } );
+}
+
+export async function getStaticPaths () {
+  const paths = getCategories();
+  return {
+    paths,
+    fallback: false
+  }
+}
+export async function getStaticProps ({params}) {
+  const paramsId = Subcategory(params);
+  return {
+    props: {
+      paramsId,
+    },
+ 
+  }
+}
 
 
 //let meuarray = []

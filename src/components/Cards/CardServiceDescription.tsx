@@ -10,7 +10,10 @@ import { service, getService } from '../../Utils/server/getInfo';
 
 //nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
-export default function CardServiceDescription () {
+interface CardServiceDescriptionProps{
+  title: string;
+} 
+export default function CardServiceDescription ( props: CardServiceDescriptionProps ) {
   const [ floatingButton, setFloatingButton ] = useState( false );
 
   const changeFloatingButton = () => {

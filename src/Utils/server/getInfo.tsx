@@ -2,9 +2,15 @@ import axios from "axios";
 
 const baseURL = "http://172.27.12.171:3333"
 
+export interface categoryProps {
+  id: string,
+  description: string,
+  createdAt: Date;
+  updatedAt: Date;
+}
 // criar erros
-export let category = []
- export async function getCategory(id: any) {
+export let category: categoryProps
+ export async function getCategory(id: string) {
   const getCategory = await axios({
                 method: 'get',
                 baseURL: baseURL,
@@ -19,7 +25,7 @@ export let category = []
     }
 
 
-export let listCategories = []
+export let listCategories: Array<categoryProps>
  export async function getAllCategories() {
   const getAllCategories = await axios({
                 method: 'get',
@@ -62,8 +68,29 @@ export async function getAllSubcategories ( idCategory: string ) {
       
       
     }
+
+export interface serviceProps {
+
+
+  id: string,
+  description: string,
+  title: string,
+  definition: string,
+  serviceSubGroupId: string,
+  personType: object[],
+  waitingTime: null | Date,
+  deadline: null | Date,
+  openningHours: null | Date,
+  isPrioritaryService: boolean,
+  serviceLocation: null | string,
+  requiredDocuments: null | boolean,
+  contactInfo: null | string,
+  isPatromonyIdRequired: boolean,
+  updatedAt: Date;
+}
+
     
-    export let listServices = []
+export let listServices:  Array<serviceProps>
      export async function getAllServices(idSubgroup: string) {
        const getAllServices = await axios({
                 method: 'get',
@@ -76,8 +103,10 @@ export async function getAllSubcategories ( idCategory: string ) {
     } )
     }
 
-        export let service = []
-    export async function getService(id: any) {
+
+    
+        export let service: serviceProps
+    export async function getService(id: any, ) {
   const getService = await axios({
                 method: 'get',
                 baseURL: baseURL,

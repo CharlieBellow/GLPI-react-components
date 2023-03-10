@@ -8,32 +8,20 @@ import { RoutesContext } from '../Contexts/RouteContext';
 import { useRouter } from "next/router";
 import {useEffect} from "react"
 import * as Icon from 'phosphor-react'
-import {getAllCategories} from "../Utils/server/getInfo";
-
-export async function getServerSideProps () {
-
-  let listCategories = []
-  const baseURL = "http://172.27.12.171:3333"
-  const data = await axios.get( "http://172.27.12.171:3333/servicebook/group" ).then((response) => {
-    const teste = response.data
-  })
-  
-  return {
-    props: { teste,},
-  }
-  
-}
+import { getAllCategories, listCategories } from "../Utils/server/getInfo";
 
 
 
-export default function Category ( { teste }) {
+
+
+export default function Category ( ) {
 const router = useRouter()
   const { category } = router.query
 
   useEffect(() => {
     
   },[])
-  //getAllCategories()
+  getAllCategories()
   
   
   //console.log( listCategories )
@@ -45,11 +33,11 @@ const router = useRouter()
       <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Categorias</h4>
       <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0">
 
-        { teste.map( ( category ) => {
+        { listCategories.map( ( category ) => {
           return (
               <CardCategory link={ `/privateroutes/servicebook/subgroup/${ category.id }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
                 key={ category.id }
-                idCategory={ category }
+                idCategory={ category.id }
               />
 
           );
