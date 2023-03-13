@@ -63,7 +63,7 @@ export function AuthProvider ( { children }: AuthProviderProps ) {
    
    getToken( { email: "ud@arapiraca.ufal.br", password: "admin" } )
     
-  }, [] );
+  });
 
 
   return (

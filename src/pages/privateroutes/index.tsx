@@ -4,8 +4,7 @@ import { Page } from "../../components/Page";
 import HomeScreen from "../../components/HomeScreen";
 import { useAuth } from "../../Contexts/AuthContext"
 export default function Dashboard () {
-<<<<<<< HEAD
-=======
+
 
 const {changeToken} = useAuth()
 
@@ -20,7 +19,7 @@ const {changeToken} = useAuth()
   }
 
   getToken( { email: "ud@arapiraca.ufal.br", password: "admin" } )
->>>>>>> arthwrvl-main
+
   
   return (
     <Page

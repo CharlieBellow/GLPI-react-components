@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link"
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import {useRouter} from "next/router"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
@@ -17,10 +17,12 @@ import {
 	
 } from "../../Utils/validations";
 
+import {Service} from "../../Utils/server/types"
+
 import {postServiceOrder} from "../../Utils/server/postInfo"
 
-import {getService, service} from "../../Utils/server/getInfo"
-//import fetchApiData from "../../Utils/fetchApiData";
+import {getService} from "../../Utils/server/getInfo"
+
 import {useAuth} from "../../Contexts/AuthContext"
 
 import { useServiceContext } from "../../Contexts/ServiceContext";
@@ -40,27 +42,6 @@ const validate = yup.object().shape({
   //patrimony: validationSchema.patrimony,
 });
 
-
-/* 
-
-{
-	"serviceSubGroupId": "446ba367-8c8e-4f11-b920-413ef6e9e836",
-	"title": "Criar email institucional",
-	"description": "Acessar perfil.ufal.br, ",
-	"definition": "Etapas para criação do email institucional",
-	"personType": [
-		"Discente",
-		"Docente"
-	],
-	"isPatromonyIdRequired": "true"
-
-
-  idPerson: 972e1f58-95c6-4582-ac05-fb385dbb557b
-
-idServiceOrder:  14ebb57f-5c74-4a71-9192-3c609aa310d6
-}
-
-*/
 
 export const CardCreateServiceOrder = () => {
 	
@@ -95,77 +76,59 @@ const myservice = {
 }
 
 
-  const myserviceorder =  {
-  id: "14ebb57f-5c74-4a71-9192-3c609aa310d6",
-	status: "Aberto",
-	description: "minha ordem de serviço",
-	closedAt: "2023-03-02T17:09:25.173Z",
-	patrimonyId: "123456",
-	requesterId: "972e1f58-95c6-4582-ac05-fb385dbb557b",
-	serviceId: "eff33f67-0d9d-402f-baa3-96a30df953f1",
-	createdAt: "2023-03-02T20:09:23.962Z",
-	updatedAt: "2023-03-02T20:09:23.962Z",
-}
-
-
-const createserviceorder =
-{
-	"description": "minha ordem de serviço",
-	"status": "Aberto",
-	"estimetadAt": "{% now 'iso-8601', '' %}",
-	"closedAt": "{% now 'iso-8601', '' %}",
-	"patrimonyId": "123456",
-	"respponsibleId": "972e1f58-95c6-4582-ac05-fb385dbb557b",
-	"requesterId": "972e1f58-95c6-4582-ac05-fb385dbb557b",
-	"serviceId": "eff33f67-0d9d-402f-baa3-96a30df953f1"
-}
-
   const { token } = useAuth()
   
   
-  
-  const router = useRouter()
-  console.log("serviceorder", router.query.serviceorder)
+  const router = useRouter();
+
+  const [serviceInfo, setServiceInfo] = useState<Service>()
 
 useEffect(() => {
-  //getService(router.query.serviceorder)
+  const fetchData = async () => {
+    const response = await getService( router.query.serviceorderId )
 
+    setServiceInfo(response)
+    
+  }
+  fetchData()
+  
 }, [])
 
 
-
-  return (
-    <>
+const string = "serviceInfo"
+return (
+  <>
 		<div className="mx-4">
 			<div
 				className="mt-18 mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 				h-auto shadow-card"
-			>
+        >
 				<div className="pl-9 pt-8">
 					<CardTitle title="Abrir ordem de serviço" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
 				</div>
+        {console.log("response", serviceInfo)}
 				<Formik
 					initialValues={ {
-            serviceId: myservice.id,
-            title: myservice.title,
+            serviceId: serviceInfo.id,
+            title: serviceInfo.title,
             description: "",
             status: "Aberto",
-              estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
-                month: "2-digit",
-                day: "2-digit",
-                year: "numeric",
-               hour: "2-digit",
-								minute: "2-digit",
+            estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
+              month: "2-digit",
+              day: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
 								second: "2-digit",
               } )
                 .toString()
                 .replace(":", ":")
                 .replace(":", ":")
-                   .replace(",", " ")
+                .replace(",", " ")
                 .replace("/", "-")
                 .replace("/", "-"),
                 
@@ -226,7 +189,7 @@ useEffect(() => {
 										name="title"
 										type="text"
 										width="w-full"
-										inputid="title"
+                      inputid="title"
                     disabled
                    
 									/>
@@ -241,7 +204,7 @@ useEffect(() => {
                     />
 								</div>
                   <div>
-                    { myservice.isPatromonyIdRequired ? 
+                    { serviceInfo.isPatromonyIdRequired ? 
                     <CardLabelInput
                       label="Patrimônio"
                       name="patrimonyId"

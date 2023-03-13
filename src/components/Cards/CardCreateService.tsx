@@ -83,77 +83,6 @@ export const CardCreateService = () => {
 					>
 						{({ isSubmitting, isValid, values,  touched, errors }) => (
 						<Form autoComplete="on">
-<<<<<<< HEAD
-							<div className="flex flex-col gap-9 mx-14">
-               <>  
-								<div className="">
-									<CardLabelInput
-										label="Título"
-										name="title"
-										type="text"
-										width="w-full"
-										inputid="title"
-                  
-                   
-									/>
-                  </div>
-								<div className="">
-									<CardLabelInput
-										label="Definição"
-										name="definition"
-										type="text"
-										width="w-full"
-										inputid="definition"
-									
-									/>
-								</div>
-
-                <div className="">
-									<CardLabelTextarea
-										label="Descrição"
-										type="textarea"
-										name="description"
-										textareaid="description"
-                    />
-								</div>
-
-                <div className="">
-                  <CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
-               </div>        
-                </>  
-              <div>
-
-                <p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
-               <div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
-
-                <CardLabelInputCheckbox name="personType" value="Discente" checkArray={values.personType}/>
-                <CardLabelInputCheckbox name="personType" value="Técnico Administrativo" checkArray={values.personType}/>
-                <CardLabelInputCheckbox name="personType" value="Docente" checkArray={values.personType}/>
-                <CardLabelInputCheckbox name="personType" value="Discente Pós-Graduação" checkArray={values.personType}/>
-                <CardLabelInputCheckbox name="personType" value="Terceirizado" checkArray={values.personType}/>
-                
-                  </div>
-                  {errors.personType && touched.personType ? (
-                <span className="text-red-ufal text-sm">{errors.personType}</span>
-              ) : null}
-          </div>
-
-
-
-							</div>
-							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								<Button
-									isSubmitting={isSubmitting}
-									title="Solicitar"
-									theme="primaryAction"
-									type="submit"
-									disabled={isSubmitting || !isValid}
-								/>
-                {/*<Link href={"/"}>*/}
-                  <Button title="Cancelar" theme="secondaryAction" type="button"  />
-                {/*</Link>*/}
-							</div>
-=======
 								<div className="flex flex-col gap-9 mx-14">
 									<>
 									<div className="">
@@ -232,7 +161,6 @@ export const CardCreateService = () => {
 									</div>
 									</>
 								</div>
->>>>>>> arthwrvl-main
 						</Form>
 						)}
 					</Formik>

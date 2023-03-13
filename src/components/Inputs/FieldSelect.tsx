@@ -1,16 +1,10 @@
 import { Field, FieldHookConfig, useField} from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
-<<<<<<< HEAD
-import { categoryProps } from "../../Utils/server/getInfo"
 
-interface FieldSelectProps {
-  listitems: string[] | categoryProps[] ; 
-=======
 import { string } from "yup/lib/locale";
 import { Group } from "../../Utils/server/types";
 interface FieldSelectProps {
   listitems: string[] | Group[]; 
->>>>>>> arthwrvl-main
   label: string;
   name: string;
   default: string;

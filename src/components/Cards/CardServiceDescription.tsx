@@ -1,12 +1,13 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import InfoServiceItem from "../ServicesComponent/InfoService";
+import { getService } from '../../Utils/server/getInfo';
+import { Service } from '../../Utils/server/types';
+import Link from "next/link";
 import * as Icon from "phosphor-react";
 import { Button } from "../Buttons/Button";
 //import { ServicesList } from "./ServicesList";
-import { useEffect, useState } from "react";
-import Link from "next/link";
 
-import { service, getService } from '../../Utils/server/getInfo';
 
 //nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
@@ -31,7 +32,7 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
     if ( typeof window !== "undefined" ) {
 
       if ( window.screen.width < 1024 ) {
-        return "Abrir chamado";
+        return "";
       } else {
         return "Solicitar serviço";
       }
@@ -47,12 +48,20 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
 
   const router = useRouter();
 
+  const [serviceInfo, setServiceInfo] = useState<Service>({})
+
   useEffect( () => {
-    getService( router.query.serviceId as string);
-    console.log( router.query.serviceId );
+    const fetchData = async () => {
+      const response = await getService( router.query.serviceId );
+
+      console.log(response)
+      setServiceInfo(response)
+
+    }
+    fetchData()
   }, [] );
 
-  console.log( "router", router.query );
+  console.log( "router", serviceInfo);
  
 
   // construir as rotas dinâmicas. quando recarrega ele dá erro
@@ -62,7 +71,7 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
       <div className="lg:flex lg:justify-between lg:items-baseline">
         <h3 className="pt-4 font-bold ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
           
-          { service.title }
+          { serviceInfo.title }
           
         
         </h3>
@@ -78,7 +87,7 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
         </div>
       </div>
 
-      <InfoServiceItem infos={ service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
+      <InfoServiceItem infos={ serviceInfo } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
 
 
       <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">

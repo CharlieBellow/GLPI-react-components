@@ -1,10 +1,7 @@
 import * as React from 'react';
 import axios from "axios";
 import CardCategory from "./CardCategory";
-import { categoryModel } from "../Utils/ServiceModels";
-import { Page } from "./Page";
-import { useContext } from 'react';
-import { RoutesContext } from '../Contexts/RouteContext';
+
 import { useRouter } from "next/router";
 import {useEffect, useState} from "react"
 import * as Icon from 'phosphor-react'
@@ -14,7 +11,7 @@ import { Group } from '../Utils/server/types';
 
 export default function Category () {
   const router = useRouter()
-  const {category} = router.query
+
   const [categories, setCategories] = useState<Group[]>([])
 
   useEffect(() => {
