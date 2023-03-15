@@ -16,7 +16,7 @@ import { SubGroup } from '../../../../Utils/server/types';
 const baseURL = "http://172.27.12.171:3333";
 
 
-const Subcategory = ( props: SubGroup ) => {
+const Subcategory = ( ) => {
 
 
   const router = useRouter();
@@ -31,8 +31,8 @@ const Subcategory = ( props: SubGroup ) => {
     const fetchData = async () => {
       
 
-      const category = await getCategory( subGroupId);
-      const response = await getAllSubcategories( subGroupId );
+      const category = await getCategory( subGroupId as string);
+      const response = await getAllSubcategories( subGroupId as string);
       
       setGroupTitle( category.description );
       setSubgroups( response );
@@ -42,7 +42,7 @@ const Subcategory = ( props: SubGroup ) => {
 
     fetchData();
 
-  }, [router.isReady] );
+  }, [router.isReady, subGroupId] );
 
   const isAdmin = true
 
@@ -64,7 +64,7 @@ const Subcategory = ( props: SubGroup ) => {
 
               return (
 
-                <CardCategory link={ `/privateroutes/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 } /> }
+                <CardCategory link={ `/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 } /> }
                   key={ subcategory.id }
                   idCategory={ subcategory.id }
                 />

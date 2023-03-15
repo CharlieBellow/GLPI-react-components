@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
@@ -9,9 +8,8 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
-import { servicesList } from "../ServicesComponent/Service";
+
 import {
-  bondList,
 	blocList,
 	validationSchema,
 	
@@ -24,13 +22,7 @@ import {postServiceOrder} from "../../Utils/server/postInfo"
 import {getService} from "../../Utils/server/getInfo"
 
 import {useAuth} from "../../Contexts/AuthContext"
-
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
-
-import FieldSelect from "../Inputs/FieldSelect";
-import {  serviceModel } from "../../Utils/ServiceModels";
-
+import FieldSelect from "./../../components/Inputs/FieldSelect";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -38,8 +30,8 @@ const validate = yup.object().shape({
 	aplicantsName: validationSchema.name,
 	title: validationSchema.title,
 	description: validationSchema.description,
-  //serviceLocal: validationSchema.serviceLocal,
-  //patrimony: validationSchema.patrimony,
+  serviceLocal: validationSchema.serviceLocal,
+  // patrimony: validationSchema.patrimony,
 });
 
 
@@ -80,19 +72,23 @@ const myservice = {
   
   
   const router = useRouter();
+	const {serviceOrderId, titleServiceOrder} = router.query
 
-  const [serviceInfo, setServiceInfo] = useState<Service>()
+  const [serviceInfo, setServiceInfo] = useState<Service>({})
 
 useEffect(() => {
   const fetchData = async () => {
-    const response = await getService( router.query.serviceorderId )
+		if ( !router.isReady) return;
+    const response = await getService( serviceOrderId as string )
 
     setServiceInfo(response)
+		
     
   }
   fetchData()
   
-}, [])
+}, [router.isReady, serviceOrderId])
+
 
 
 const string = "serviceInfo"
@@ -113,8 +109,8 @@ return (
         {console.log("response", serviceInfo)}
 				<Formik
 					initialValues={ {
-            serviceId: serviceInfo.id,
-            title: serviceInfo.title,
+            serviceId: serviceOrderId,
+            title: titleServiceOrder,
             description: "",
             status: "Aberto",
             estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
@@ -149,17 +145,17 @@ return (
                 .replace("/", "-")
                 .replace("/", "-"),
                 
-            patrimonyId: "",
+            // patrimonyId: "",
             requesterId: myuser.id,
             respponsibleId: myuser.id,
             aplicantsName: myuser.name,
-            //serviceLocal: "",
+            serviceLocal: "",
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-						
+						// o post está retornando um erro 401? AxiosError: Request failed with status code 401
               postServiceOrder( values, token )
               
 							toast.success("Serviço criado com sucesso!");
@@ -189,7 +185,7 @@ return (
 										name="title"
 										type="text"
 										width="w-full"
-                      inputid="title"
+                    inputid="title"
                     disabled
                    
 									/>
@@ -204,24 +200,27 @@ return (
                     />
 								</div>
                   <div>
-                    { serviceInfo.isPatromonyIdRequired ? 
-                    <CardLabelInput
-                      label="Patrimônio"
-                      name="patrimonyId"
-                      type="text"
-                      width="w-full"
-                        inputid="patrimonyId"
-                    />
-                    : <></>}
+                  {/* {serviceInfo.isPatromonyIdRequired && 
+									<CardLabelInput
+									label="Patrimônio"
+									name="patrimonyId"
+									type="text"
+									width="w-full"
+									inputid="patrimonyId"
+									disabled={!serviceInfo.isPatromonyIdRequired }
+								/>
+									} */}
+                    
+                    
                   </div>
-								{/*<div className="">
+								<div className="">
 									<FieldSelect
 										label="serviceLocal"
 										name="serviceLocal"
 										default="Selecione o bloco"
 										listitems={blocList}
 									/>
-								</div>*/}
+								</div>
 								
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">

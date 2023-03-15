@@ -1,6 +1,6 @@
-import { Page } from "../../../../components/Page";
-import Category from "../../../../components/Category";
-import { ServiceContext } from "../../../../Contexts/ServiceContext";
+import { Page } from "../../../components/Page";
+import Category from "../../../components/Category";
+import { ServiceContext } from "../../../Contexts/ServiceContext";
 
 
 

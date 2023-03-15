@@ -36,7 +36,7 @@ export default function Category () {
 
         {categories && categories.map( ( category ) => {
           return (
-              <CardCategory link={ `/privateroutes/servicebook/subgroup/${ category.id }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
+              <CardCategory link={ `/servicebook/subgroup/${ category.id }` } Name={ category.description } Icon={ <Icon.Books size={ 27 }/> }
                 key={ category.id }
                 idCategory={ category.id }
               />

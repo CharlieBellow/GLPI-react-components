@@ -11,10 +11,8 @@ import { Button } from "../Buttons/Button";
 
 //nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
-interface CardServiceDescriptionProps{
-  title: string;
-} 
-export default function CardServiceDescription ( props: CardServiceDescriptionProps ) {
+
+export default function CardServiceDescription (  ) {
   const [ floatingButton, setFloatingButton ] = useState( false );
 
   const changeFloatingButton = () => {
@@ -47,19 +45,21 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
 
 
   const router = useRouter();
+  const {serviceId} = router.query
 
   const [serviceInfo, setServiceInfo] = useState<Service>({})
 
   useEffect( () => {
+    if (!router.isReady) return;
     const fetchData = async () => {
-      const response = await getService( router.query.serviceId );
+      const response = await getService( serviceId as string );
 
       console.log(response)
       setServiceInfo(response)
 
     }
     fetchData()
-  }, [] );
+  }, [router.isReady, serviceId] );
 
   console.log( "router", serviceInfo);
  
@@ -77,7 +77,7 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 
-          <Link href={ `/privateroutes/servicebook/serviceorder/${ router.query.serviceId }/createserviceorder` }>
+          <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder//${serviceInfo.title}` }>
             <Button
               title={ floatingButton ? "" : changeButtonName() }
               theme="withIcon"
@@ -91,7 +91,7 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
 
 
       <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">
-        <Link href={ `/privateroutes/servicebook/serviceorder/${ router.query.serviceId }/createserviceorder` }>
+        <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder` }>
           <Button
             title="Solicitar Serviço"
             theme="primaryActionWithIcon"

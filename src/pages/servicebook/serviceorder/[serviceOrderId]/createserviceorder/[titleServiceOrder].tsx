@@ -1,5 +1,5 @@
-import CardCreateServiceOrder from "../../../../../../components/Cards/CardCreateServiceOrder";
-import { Page } from "../../../../../../components/Page";
+import CardCreateServiceOrder from "../../../../../components/Cards/CardCreateServiceOrder";
+import { Page } from "../../../../../components/Page";
 
 function ServiceDescription () {
   return (
