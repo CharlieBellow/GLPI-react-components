@@ -1,5 +1,5 @@
 export interface Service{
-    id: string;
+  id: string;
 	description: string;
 	title: string;
 	definition: string;
@@ -17,7 +17,7 @@ export interface Service{
 	createdAt: Date;
 	updatedAt: Date;
 }
-export interface Group{
+export interface Group {
 	id: string;
 	description: string;
 	createdAt: Date;
@@ -26,7 +26,7 @@ export interface Group{
 export interface SubGroup{
 	id: string;
 	description: string;
-    serviceGroupId: string;
+  serviceGroupId: string;
 	createdAt: Date;
 	updatedAt: Date;
 }

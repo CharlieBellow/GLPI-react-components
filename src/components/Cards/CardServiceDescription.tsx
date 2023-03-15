@@ -1,17 +1,20 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import InfoServiceItem from "../ServicesComponent/InfoService";
+import { getService } from '../../Utils/server/getInfo';
+import { Service } from '../../Utils/server/types';
+import Link from "next/link";
 import * as Icon from "phosphor-react";
 import { Button } from "../Buttons/Button";
 //import { ServicesList } from "./ServicesList";
-import { useEffect, useState } from "react";
-import Link from "next/link";
 
-import { getService } from '../../Utils/server/getInfo';
-import { Service } from "../../Utils/server/types";
 
 //nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
-export default function CardServiceDescription () {
+interface CardServiceDescriptionProps{
+  title: string;
+} 
+export default function CardServiceDescription ( props: CardServiceDescriptionProps ) {
   const [ floatingButton, setFloatingButton ] = useState( false );
 
   const changeFloatingButton = () => {
@@ -25,16 +28,11 @@ export default function CardServiceDescription () {
     }
   };
 
-
-
-
-  //useEffect( () => {
-
   if ( typeof window !== "undefined" ) {
 
     window.addEventListener( "scroll", changeFloatingButton );
   }
-  //} )
+
 
   const router = useRouter();
   const [service, setService] = useState<Service>()
@@ -48,23 +46,8 @@ export default function CardServiceDescription () {
     fetchData();
   }, [] );
 
-
-  //  var myIndex;
-  //  const indexService = () => {
-  //    service.map( ( service, index ) => {
-  //
-  //      console.log( service.description );
-  //      if ( service.id == router.query.serviceorder ) {
-  //
-  //        myIndex = index;
-  //        return myIndex;
-  //      }
-  //    } );
-  //
-  //  };
-
-  //indexService();
-  //o myIndex (trocar nomme da variável) vai ser passado para a próxima página para que seja possível pegar a carta de serviço [(service)] e passar para o objeto que vai ser mandado no back-end com todas as informações captadas pelo fomik
+  console.log( "router", service);
+ 
 
   // construir as rotas dinâmicas. quando recarrega ele dá erro
 

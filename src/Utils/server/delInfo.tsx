@@ -13,15 +13,17 @@ export async function deleteGroup ( id: string, token: string ) {
 
 }
 
-export async function deleteSubGroup ( id: string, token: string ) {
-  const deleteSubGroup = await axios( {
-    method: 'del',
-    baseURL: baseURL,
-    url: `/servicebook/subgroup/${id}`,
-    headers: { authorization: `Bearer ${ token }` }
-  } );
 
-}
+
+  export async function deleteSubGroup ( id: string, token: string ) {
+    const deleteSubGroup = await axios( {
+      method: 'del',
+      baseURL: baseURL,
+      url: `/servicebook/subgroup/${id}`,
+      headers: { authorization: `Bearer ${ token }` }
+    } );
+  
+  }
 
 
 export async function deleteService( id: string, token: string) {

@@ -1,7 +1,13 @@
 import axios from "axios";
+import { Group, Service, SubGroup } from "./types";
 const baseURL = "http://172.27.12.171:3333"
 
-// TODO manage errors
+export interface categoryProps {
+  id: string,
+  description: string,
+  createdAt: Date;
+  updatedAt: Date;
+}
 // criar erros
  export async function getGroup(id : string) {
   const response = await axios({
@@ -63,8 +69,8 @@ export async function getUser ( id : string) {
   const response = await axios( {
     method: 'get',
     baseURL: baseURL,
-    // ! fix route
-    url: `/servicebook/service/${ id }`,
+    url: `/core/Person/${ id }`,
   } );
+
   return response.data;
 }

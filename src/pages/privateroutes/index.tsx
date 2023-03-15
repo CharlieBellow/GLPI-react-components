@@ -5,6 +5,7 @@ import HomeScreen from "../../components/HomeScreen";
 import { useAuth } from "../../Contexts/AuthContext"
 export default function Dashboard () {
 
+
 const {changeToken} = useAuth()
 
   async function getToken ( values : object) {
@@ -18,6 +19,7 @@ const {changeToken} = useAuth()
   }
 
   getToken( { email: "ud@arapiraca.ufal.br", password: "admin" } )
+
   
   return (
     <Page
