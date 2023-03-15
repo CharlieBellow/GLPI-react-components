@@ -97,65 +97,58 @@ useEffect(() => {
 
 
 
-  const string = "serviceInfo"
   return (
     <>
 		<div className="mx-4">
-			<div
-				className="mt-18 mx-auto mb-80 flex flex-col lg:block
+			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card"
-        >
-				<div className="pl-9 pt-8">
-					<CardTitle title="Abrir ordem de serviço" />
-				</div>
-				<div className="mx-9 mt-4 mb-10">
-					<CardLine />
-				</div>
-        {console.log("response", serviceInfo)}
-				<Formik
-					initialValues={ {
-            			serviceId: serviceInfo.id,
-            			title: serviceInfo.title,
-            			description: "",
-            			status: "Aberto",
-            			estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
-              month: "2-digit",
-              day: "2-digit",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
+				h-auto shadow-card">
+				<>
+					<div className="pl-9 pt-8">
+						<CardTitle title="Abrir ordem de serviço" />
+					</div>
+					<div className="mx-9 mt-4 mb-10">
+						<CardLine />
+					</div>
+        			{console.log("response", serviceInfo)}
+					<Formik
+						initialValues={ {
+            				serviceId:  serviceInfo ? serviceInfo.id : "",
+            				title:  serviceInfo ? serviceInfo.title : "",
+            				description: "",
+            				status: "Aberto",
+            				estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
+             				month: "2-digit",
+              				day: "2-digit",
+              				year: "numeric",
+              				hour: "2-digit",
+              				minute: "2-digit",
 								second: "2-digit",
-              } )
-                .toString()
-                .replace(":", ":")
-                .replace(":", ":")
-                .replace(",", " ")
-                .replace("/", "-")
-                .replace("/", "-"),
-                
-                
-              closedAt: new Date().toLocaleTimeString( "pt-BR", {
-                month: "2-digit",
-                day: "2-digit",
-                year: "numeric",
-                hour: "2-digit",
-								minute: "2-digit",
-								second: "2-digit",
-
-              } )
-                .toString()
-                .replace(":", ":")
-                .replace(":", ":")
-                .replace(",", " ")
-                .replace("/", "-")
-                .replace("/", "-"),
-                
-            patrimonyId: "",
-            requesterId: myuser.id,
-            respponsibleId: myuser.id,
-            aplicantsName: myuser.name,
-            //serviceLocal: "",
+              			} )
+                		.toString()
+                		.replace(":", ":")
+                		.replace(":", ":")
+                		.replace(",", " ")
+                		.replace("/", "-")
+                		.replace("/", "-"),  
+              			closedAt: new Date().toLocaleTimeString( "pt-BR", {
+							month: "2-digit",
+							day: "2-digit",
+							year: "numeric",
+							hour: "2-digit",
+							minute: "2-digit",
+							second: "2-digit",
+              			} )
+                		.toString()
+                		.replace(":", ":")
+                		.replace(":", ":")
+                		.replace(",", " ")
+                		.replace("/", "-")
+                		.replace("/", "-"),
+            			patrimonyId: "",
+            			requesterId: myuser.id,
+						respponsibleId: myuser.id,
+						aplicantsName: myuser.name, 
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
@@ -170,7 +163,7 @@ useEffect(() => {
 							
 						}, 400);
 					}}
-				>
+					>
 					{({ isSubmitting, isValid }) => (
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
@@ -191,56 +184,44 @@ useEffect(() => {
 										name="title"
 										type="text"
 										width="w-full"
-                      inputid="title"
-                    disabled
-                   
+										inputid="title"
+										disabled
 									/>
 								</div>
-
 								<div className="">
 									<CardLabelTextarea
 										label="Descrição"
 										type="textarea"
 										name="description"
 										textareaid="description"
-                    />
+                    				/>
 								</div>
-                  <div>
-                    { serserviceInfo.isPatromonyIdRequired ? 
-                    <CardLabelInput
-                      label="Patrimônio"
-                      name="patrimonyId"
-                      type="text"
-                      width="w-full"
-                        inputid="patrimonyId"
-                    />
-                    : <></>}
-                  </div>
-								{/*<div className="">
-									<FieldSelect
-										label="serviceLocal"
-										name="serviceLocal"
-										default="Selecione o bloco"
-										listitems={blocList}
+                  				<div>
+									{ serviceInfo && serviceInfo.isPatromonyIdRequired ? 
+									<CardLabelInput
+									label="Patrimônio"
+									name="patrimonyId"
+									type="text"
+									width="w-full"
+										inputid="patrimonyId"
 									/>
-								</div>*/}
-								
+									: <></>}
+								</div>									
 							</div>
-							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								<Button
-									isSubmitting={isSubmitting}
-									title="Solicitar"
-									theme="primaryAction"
-									type="submit"
-									disabled={isSubmitting || !isValid}
-								/>
-                {/*<Link href={"/"}>*/}
-                  <Button title="Cancelar" theme="secondaryAction" type="button"  />
-                {/*</Link>*/}
-							</div>
+								<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+									<Button
+										isSubmitting={isSubmitting}
+										title="Solicitar"
+										theme="primaryAction"
+										type="submit"
+										disabled={isSubmitting || !isValid}
+									/>
+									<Button title="Cancelar" theme="secondaryAction" type="button"  />
+								</div>
 						</Form>
 					)}
-				</Formik>
+					</Formik>
+				</>
 			</div>
       </div>
     </>
