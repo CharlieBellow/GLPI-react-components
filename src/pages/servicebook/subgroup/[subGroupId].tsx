@@ -1,36 +1,50 @@
-
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import axios from "axios";
+import Link from "next/link"
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 
 import * as Icon from "phosphor-react";
 
-import { Page } from "../../../../../components/Page";
-import CardCategory from "../../../../../components/CardCategory";
+import { Page } from "../../../../components/Page";
+import CardCategory from "../../../../components/CardCategory";
 
-import { getAllSubcategories, getCategory } from "../../../../../Utils/server/getInfo";
-import { SubGroup } from '../../../../../Utils/server/types';
+import { getAllSubcategories, getCategory } from "../../../../Utils/server/getInfo";
+import { SubGroup } from '../../../../Utils/server/types';
 
-const Subcategory = () => {
+
+const baseURL = "http://172.27.12.171:3333";
+
+
+const Subcategory = ( props: SubGroup ) => {
+
 
   const router = useRouter();
+  const { subGroupId } = router.query;
+
 
   const [ subgroups, setSubgroups ] = useState<SubGroup[]>( [] );
   const [ groupTitle, setGroupTitle ] = useState<string>( "" );
 
   useEffect( () => {
-
+    if ( !router.isReady ) return;
     const fetchData = async () => {
-      const groupTitles = await getCategory( router.query.subgroupId );
-      const response = await getAllSubcategories( router.query.subgroupId );
-      setGroupTitle( groupTitles.description );
+      
+
+      const category = await getCategory( subGroupId);
+      const response = await getAllSubcategories( subGroupId );
+      
+      setGroupTitle( category.description );
       setSubgroups( response );
 
-      return groupTitles;
+      return category;
     };
 
     fetchData();
 
-  }, [] );
+  }, [router.isReady] );
+
+  const isAdmin = true
 
   return (
     <Page
@@ -62,6 +76,10 @@ const Subcategory = () => {
 
 
           </div>
+
+           {isAdmin ? (<>
+      <Link href="./createsubcategory" className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar categoria</Link> 
+      </>): <></>}
         </>
       }
     />

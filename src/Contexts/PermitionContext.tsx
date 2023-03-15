@@ -1,40 +1,41 @@
+
+
+
+
+
+
 import axios from "axios";
 
 import React, {createContext, useContext, useState, useEffect} from 'react';
-import { getUser } from "../Utils/server/getInfo";
 
-interface AuthContextProps {
+interface PermitionContextProps {
   auth: boolean;
-  changeAuth: ( auth: boolean ) => void;
+  changePermition: ( permition: boolean ) => void;
   token: string;
   changeToken: (token: string) => void;
 }
 
-interface AuthProviderProps {
+interface PermitionProviderProps {
   children: React.ReactNode;
 }
 
 
-export const AuthContext = createContext( {} as AuthContextProps );
 
-export function AuthProvider ( { children }: AuthProviderProps ) {
+
+export const PermitionContext = createContext( {} as PermitionContextProps );
+
+export function PermitionProvider ( { children }: PermitionProviderProps ) {
  
   // Depois mudar o valor inicial para false
-  const [ auth, setAuth ] = useState<boolean>(false)
+  const [ permition, setPermition] = useState<boolean>(false)
   const [ token, setToken ] = useState<string>("")
 
-  function changeAuth (auth: boolean) {
-    setAuth(!auth)
-
+  function changePermition(permition: boolean) {
+    setPermition(!permition)
   }
 
   function changeToken ( token: string ) {
     setToken(token)
-    localStorage.setItem( "token",  token );
-    getUser(token).then( response => {
-      console.log(response[0])
-      localStorage.setItem("user", JSON.stringify(response[0]))
-    })
   }
 
 
@@ -54,7 +55,7 @@ export function AuthProvider ( { children }: AuthProviderProps ) {
     if ( token !== undefined ) {
       
       changeToken(  token );
-      setAuth(true)
+      setPermition(true)
     // salvar o token nos cookies: usar ferramenta própria do nextJs
   
     }
@@ -67,16 +68,16 @@ export function AuthProvider ( { children }: AuthProviderProps ) {
 
 
   return (
-    <AuthContext.Provider value={ { auth: auth, changeAuth: changeAuth, changeToken: changeToken, token: token }}>
+    <PermitionContext.Provider value={ { permition: permition, changePermition: changePermition, changeToken: changeToken, token: token }}>
       {children}
-    </AuthContext.Provider>
+    </PermitionContext.Provider>
   )
 }
 
 export function useAuth () {
-  const authContext = useContext( AuthContext )
+  const PermitionContext = useContext( PermitionContext )
 
-  return authContext;
+  return PermitionContext;
 }
 
 

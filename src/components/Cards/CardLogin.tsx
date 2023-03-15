@@ -29,9 +29,8 @@ export function CardLogin () {
                 const token = await axios.post( "http://172.27.12.171:3333/sessions", values )
                 .then(response => {
                   changeToken(response.data.token)
-                 
                   console.log(response.data.token)
-                  localStorage.setItem( "token",  response.data.token );
+                 
                 })
   }
 
@@ -66,7 +65,7 @@ export function CardLogin () {
         getToken( values);
 		
 			  successMessage("Login realizado com sucesso!");
-              router.push( "../privateroutes", "/" )
+              router.push( "/Dashboard")
 							
 						} else {
 						errorMessage("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");

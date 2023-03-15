@@ -1,31 +1,36 @@
 
 import { useContext } from 'react';
 import { useAuth }  from '../Contexts/AuthContext';
-
 import { useRouter } from "next/router";
+import { Page } from "../components/Page";
+import HomeScreen from "../components/HomeScreen";
 import {useEffect} from "react"
 
 
+
 export default function Home () {
-
-const router = useRouter();
-
+  const router = useRouter();
   const { auth } = useAuth();
 
-  console.log( "auth App", auth );
+   useEffect( () => {
 
-  useEffect( () => {
-    if ( auth ) {
-      router.push( "/privateroutes", "/" );
+    if ( !auth ) {
+      router.push( "/login" );
     } else {
-      router.push( "/publicroutes", "/login" );
+      router.push( "/Dashboard" );
     }
-  } )
+
+    
+
+   }, [] )
 
 
   return (
+    
     <>
-      
     </>
+    
+      
+   
   );
 }

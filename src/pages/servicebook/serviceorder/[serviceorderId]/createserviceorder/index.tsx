@@ -7,7 +7,9 @@ function ServiceDescription () {
       <Page
         pagetitle={ "Criar serviço" }
         contentpage={ <CardCreateServiceOrder /> }
-      />
+      >
+        <CardCreateServiceOrder />
+      </Page>
     </>
   );
 }

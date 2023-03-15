@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react"
 import * as yup from "yup";
 
 import { Spinner } from "@chakra-ui/react";
@@ -26,7 +27,20 @@ const validate = yup.object().shape({
 
 export const CardCreateSubcategory = () => {
 
-	getAllCategories()
+	const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    const fetchData =  async () =>{
+      const response = await getAllCategories()
+
+      setCategories(response)
+
+    }
+
+    fetchData()
+  })
+
+  
 
   const {token} = useAuth()
   const {errorMessage, successMessage} = useMessage()
@@ -80,7 +94,7 @@ export const CardCreateSubcategory = () => {
                     label="serviceGroupId"
                     name="serviceGroupId"
                     default="Selecione a categoria a qual ela pertence"
-                    listitems={listCategories} 
+                    listitems={categories} 
                   />
                 </div>
 							</div>
