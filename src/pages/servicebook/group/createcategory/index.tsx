@@ -2,7 +2,6 @@ import { CardCreateCategory } from "../../../../../components/Cards/CardCreateCa
 import { Page } from "../../../../../components/Page";
 
 export default function CreateCategory() {
-
 	
   return (
 		<>

@@ -10,18 +10,16 @@ import {useEffect} from "react"
 
 export default function Home () {
   const router = useRouter();
-  const { auth } = useAuth();
-
+  const { auth, user, verifyCookies } = useAuth();
+  
    useEffect( () => {
-
-    if ( !auth ) {
+    if(verifyCookies()){
+      //erro pq so atualiza na proxima chamada
+      if(user && user.isAdmin)
+        router.push( "/Dashboard" );
+    }else{
       router.push( "/login" );
-    } else {
-      router.push( "/Dashboard" );
     }
-
-    
-
    }, [] )
 
 
