@@ -18,7 +18,7 @@ interface AuthContextProps {
   token: string;
   changeToken: (token: string) => void;
   user: UserProps;
-  verifyCookies: () => boolean;
+  verifyCookies: () => void;
   // declarei aqui em cima
   getToken: (values: any) => void;
 }
@@ -43,11 +43,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   function changeToken(token: string) {
     setToken(token)
     localStorage.setItem("token", token);
-    const response = getUser(token)
-    // parece que não está entrando aqui
-    localStorage.setItem("user", JSON.stringify(response))
-    console.log("aqui", response);
-
+    getUser(token).then(response => {
+      localStorage.setItem("user", JSON.stringify(response[0]))
+      console.log("aqui", response[0]);
+    })
   }
 
   function changeUser(user: UserProps) {
@@ -57,22 +56,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
   function verifyCookies() {
     if (localStorage.getItem("token") !== undefined) {
-      //verificar validade
+      // TODO verificar validade
       console.log("trueeeeeeee")
-      setAuth(true)
-      const cookieUser = localStorage.getItem("user")
-      if (cookieUser) {
-        changeUser(JSON.parse(cookieUser))
-        console.log(JSON.parse(cookieUser))
+      if(!auth){
+        setAuth(true)
+        const cookieUser = localStorage.getItem("user")
+        if (cookieUser) {
+          changeUser(JSON.parse(cookieUser))
+          console.log(JSON.parse(cookieUser))
+        }
       }
-
-      return true
     } else {
       //sem token
       console.log("false")
       setAuth(false)
     }
-    return false
   }
 
   const baseURL = "http://172.27.12.171:3333"

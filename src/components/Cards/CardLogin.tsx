@@ -12,6 +12,7 @@ import * as yup from "yup";
 import Link from "next/link";
 import {useRouter} from "next/router"
 import { useMessage } from "../../Contexts/MessageContext";
+import { getUser } from "../../Utils/server/getInfo";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
@@ -32,7 +33,6 @@ export function CardLogin () {
                 .then(response => {
                   changeToken(response.data.token)
                   console.log(response.data.token)
-                 
                 })
   }
 

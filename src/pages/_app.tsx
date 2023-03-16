@@ -10,6 +10,7 @@ import { MessageProvider } from '../Contexts/MessageContext';
 import  {ServiceContext}  from '../Contexts/ServiceContext';
 
 export default function App({ Component, pageProps }: AppProps) {
+  
   return (
     <MessageProvider>
       <AuthProvider>
