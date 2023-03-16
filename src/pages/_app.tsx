@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { MessageProvider } from '../Contexts/MessageContext';
 import  {ServiceContext}  from '../Contexts/ServiceContext';
+import { PreviousPageProvider } from '../Contexts/PreviousPageContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   
@@ -16,11 +17,13 @@ export default function App({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <UserProvider>
           <MenuProvider>
-            <ChakraProvider> 
+            <ChakraProvider>
+              <PreviousPageProvider>       
               <>
                 <Component {...pageProps} />
                 <ToastContainer />
               </>
+              </PreviousPageProvider> 
             </ChakraProvider>
           </MenuProvider>
         </UserProvider>

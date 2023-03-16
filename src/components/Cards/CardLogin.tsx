@@ -13,6 +13,7 @@ import Link from "next/link";
 import {useRouter} from "next/router"
 import { useMessage } from "../../Contexts/MessageContext";
 import { getUser } from "../../Utils/server/getInfo";
+import { usePreviousPage } from "../../Contexts/PreviousPageContext";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
@@ -24,6 +25,7 @@ export function CardLogin () {
 
   const { auth, changeAuth, changeToken, token } = useAuth()
   const {errorMessage, successMessage} = useMessage()
+  const {page, changePage} = usePreviousPage()
 	const router = useRouter();
 
         async function getToken( values: object) {
@@ -64,7 +66,18 @@ export function CardLogin () {
         getToken( values);
 		
 			  successMessage("Login realizado com sucesso!");
-              router.push( "/Dashboard")
+
+			  // * checar se tem alguma página anterior
+			
+			  if(page !== ""){
+				// * se tiver remove
+				console.log("redirecting by context")
+				changePage("")
+				router.push(page)
+			  }else{
+				// * se não, redireciona pra dashboard
+				router.push( "/Dashboard")
+			  }
 							
 						} else {
 						errorMessage("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");

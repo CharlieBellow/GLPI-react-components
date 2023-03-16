@@ -1,9 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { Page } from "../components/Page";
 import HomeScreen from "../components/HomeScreen";
 import { useAuth } from "../Contexts/AuthContext"
 import {useRouter} from "next/router"
+import LoadingPage from "../components/LoadingPage";
+import { usePreviousPage } from "../Contexts/PreviousPageContext";
 
 
 export default function Dashboard () {
@@ -34,17 +36,42 @@ export default function Dashboard () {
   //   }
   // } )
   
-  return (
 
+  const router = useRouter();
+  const [loaded, setLoaded] = useState(false);
+  const { auth, user, verifyCookies } = useAuth()
+  const {changePage} = usePreviousPage()
 
- <Page
-    pagetitle={ "Dashboard" }
-    contentpage={ <HomeScreen /> }
-  />
-  
+    useEffect(() => {
+      if(loaded){
+        if(!auth){
+          //*salvar a página anterior pra quando o usuário fizer login, redirecionar para ela
+          changePage("/Dashboard")
+          router.push('/login')
+        }
+      }
 
-) 
- 
+    }, [loaded])
+    
+    useEffect(() => {
+      setTimeout(() => {
+        verifyCookies()
+        setLoaded(true)
+      }, 300);
+    }, [])
+
+  if(loaded && auth){
+    return (
+      <Page
+         pagetitle={ "Dashboard" }
+         contentpage={ <HomeScreen /> }
+       />
+       
+     ) 
+  }else{
+    return (<LoadingPage/>)
+  }
+
 }
 
 
