@@ -64,7 +64,7 @@ const Subcategory = ( ) => {
 
               <CardGroup link={ `/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 } /> }
                 key={ subcategory.id }
-                idCategory={ subcategory.id }
+                idGroup={ subcategory.id }
               />
 
             );

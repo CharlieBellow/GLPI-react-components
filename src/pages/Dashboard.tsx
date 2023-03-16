@@ -58,7 +58,7 @@ export default function Dashboard () {
         verifyCookies()
         setLoaded(true)
       }, 300);
-    }, [])
+    })
 
   if(loaded && auth){
     return (

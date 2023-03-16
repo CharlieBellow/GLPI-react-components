@@ -44,7 +44,7 @@ export function CardLogin () {
       changeToken(  tokenAuth as string);
       console.log( "tokenAuth: ", tokenAuth );
     }
-  }, [] );
+  } );
 
 	
 	return (

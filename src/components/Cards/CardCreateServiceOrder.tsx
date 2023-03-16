@@ -169,7 +169,6 @@ export const CardCreateServiceOrder = () => {
 						>
 							{({ isSubmitting, isValid }) => (
 								<Form autoComplete="on">
-									{console.log(isValid)}
 									<div className="flex flex-col gap-9 mx-14">
 										<div className="">
 											<CardLabelInput

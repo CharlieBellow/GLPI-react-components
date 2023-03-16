@@ -1,20 +1,20 @@
 import { Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
-import { usersList } from "../../../components/Cards/CardUser/User";
+import { usersList } from "../../components/Cards/CardUser/User";
 
 import { Field} from "formik";
 import {
 	validationSchema,
 	//blocList,
-} from "../../../Utils/validations";
+} from "../../Utils/validations";
 
 import * as yup from "yup";
-import { Button } from "../../../components/Buttons/Button";
-import { CardLabelInput } from "../../../components/Inputs/CardLabelInput";
-import { CardLabelInputCheckbox } from "../../../components/Inputs/CardLabelInputCheckbox";
-import { CardTitle } from "../../../components/Cards/CardTitle";
-import { CardLine } from "../../../components/Cards/CardLine";
-import { useMessage } from "../../../Contexts/MessageContext";
+import { Button } from "../../components/Buttons/Button";
+import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
+import { CardLabelInputCheckbox } from "../../components/Inputs/CardLabelInputCheckbox";
+import { CardTitle } from "../../components/Cards/CardTitle";
+import { CardLine } from "../../components/Cards/CardLine";
+import { useMessage } from "../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,
   personType: validationSchema.personType,
