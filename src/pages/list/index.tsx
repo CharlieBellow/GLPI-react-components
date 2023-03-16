@@ -1,9 +1,9 @@
 "use client"
 
-import { Page } from "../../../components/Page";
-import TableList from "../../../components/TableList";
+import { Page } from "../../components/Page";
+import TableList from "../../components/TableList";
 import { useEffect, useState } from "react";
-import {userModel} from "../../../Utils/UserModel"
+import {userModel} from "../../Utils/UserModel"
 
 const ItemSelect = [
 	"Tudo",

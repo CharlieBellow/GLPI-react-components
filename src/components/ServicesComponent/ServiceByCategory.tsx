@@ -1,14 +1,15 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getAllServices, listServices, getSubcategory, subCategory } from "../../Utils/server/getInfo";
+import { getAllServices, getSubcategory } from "../../Utils/server/getInfo";
 import {Service} from "../../Utils/server/types"
 
 
 const ServiceByCategory = ( ) => {
   
 
-  const router = useRouter()
+  const router = useRouter();
+  const {subGroupId} = router.query
   
   //const { subcategory, service, serviceorder, subgroupId  } = router.query
   //
@@ -17,13 +18,14 @@ const ServiceByCategory = ( ) => {
   
   
  useEffect(() => {
+  if(!router.isReady) return;
   const fetchData = async () => {
 
-    const subcategoryGet = await getSubcategory(router.query.subgroupId);
+    const subcategoryGet = await getSubcategory(subGroupId as string);
 
 
   
-    const response = await getAllServices(router.query.subgroupId);
+    const response = await getAllServices(subGroupId as string);
 
     setSubcategoryDescription(subcategoryGet.description)
     setListServices(response)
@@ -33,7 +35,7 @@ const ServiceByCategory = ( ) => {
   }
    
   fetchData()
-}, [] )
+}, [router.isReady, subGroupId] )
   
   
 
@@ -51,7 +53,7 @@ const ServiceByCategory = ( ) => {
             <>
 							<Link
 								id={ service.title }
-								href={ `/privateroutes/servicebook/service/${ service.id }` }
+								href={ `/servicebook/service/${ service.id }` }
 								key={ service.id }
 								className="text-blue-ufal font-bold text-xl hover:underline hover:underline-offset-2"
 									>

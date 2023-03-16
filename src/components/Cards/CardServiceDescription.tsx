@@ -11,10 +11,8 @@ import { Button } from "../Buttons/Button";
 
 //nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado) 
 
-interface CardServiceDescriptionProps{
-  title: string;
-} 
-export default function CardServiceDescription ( props: CardServiceDescriptionProps ) {
+
+export default function CardServiceDescription (  ) {
   const [ floatingButton, setFloatingButton ] = useState( false );
 
   const changeFloatingButton = () => {
@@ -35,18 +33,23 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
 
 
   const router = useRouter();
-  const [service, setService] = useState<Service>()
+  const {serviceId} = router.query
+
+  const [serviceInfo, setServiceInfo] = useState<Service>()
 
   useEffect( () => {
+    if (!router.isReady) return;
     const fetchData = async () => {
-      console.log(router.query.serviceId as string);
-      const response = await getService(router.query.serviceId as string)
-      setService(response);      
-    }
-    fetchData();
-  }, [] );
+      const response = await getService( serviceId as string );
 
-  console.log( "router", service);
+      console.log(response)
+      setServiceInfo(response)
+
+    }
+    fetchData()
+  }, [router.isReady, serviceId] );
+
+  console.log( "router", serviceInfo);
  
 
   // construir as rotas dinâmicas. quando recarrega ele dá erro
@@ -55,11 +58,11 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
     <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify">
       <div className="lg:flex lg:justify-between lg:items-baseline">
         <h3 className="pt-4 font-bold ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
-          {service && service.title }
+          {serviceInfo && serviceInfo.title }
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 
-          <Link href={ `/privateroutes/servicebook/serviceorder/${ router.query.serviceId }/createserviceorder` }>
+          <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder//${serviceInfo && serviceInfo.title}` }>
             <Button
               title={ floatingButton ? "" : "Solicitar Serviço" }
               theme="withIcon"
@@ -69,11 +72,11 @@ export default function CardServiceDescription ( props: CardServiceDescriptionPr
         </div>
       </div>
 
-      <InfoServiceItem infos={ service as Service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
+      <InfoServiceItem infos={ serviceInfo as Service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
 
 
       <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">
-        <Link href={ `/privateroutes/servicebook/serviceorder/${ router.query.serviceId }/createserviceorder` }>
+        <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder` }>
           <Button
             title="Solicitar Serviço"
             theme="primaryActionWithIcon"

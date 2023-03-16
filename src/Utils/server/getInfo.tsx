@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Group, Service, SubGroup } from "./types";
-const baseURL = "http://172.27.12.171:3333"
+export const baseURL = "http://172.27.12.171:3333"
 
-export interface categoryProps {
+export interface groupProps {
   id: string,
   description: string,
   createdAt: Date;
@@ -65,11 +65,23 @@ export async function getService(id : string) {
     }
 
 
-export async function getUser ( id : string) {
+
+const myuser = {
+	id: "972e1f58-95c6-4582-ac05-fb385dbb557b",
+	status: "Ativo",
+	cpf: "08551062476",
+	name: "Charlie Bellow de Oliveira",
+	birthDate: "2023-03-02T17:00:26.157Z",
+	gender: "M",
+	created_at: "2023-03-02T20:00:24.955Z",
+}
+
+export async function getUser ( token: string ) {
   const response = await axios( {
     method: 'get',
     baseURL: baseURL,
-    url: `/core/Person/${ id }`,
+    url: `/users`,
+    headers: { authorization: `Bearer ${ token }` }
   } );
 
   return response.data;

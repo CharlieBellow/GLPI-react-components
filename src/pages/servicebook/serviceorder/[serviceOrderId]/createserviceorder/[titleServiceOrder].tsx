@@ -1,5 +1,5 @@
-import CardCreateServiceOrder from "../../../../../../components/Cards/CardCreateServiceOrder";
-import { Page } from "../../../../../../components/Page";
+import CardCreateServiceOrder from "../../../../../components/Cards/CardCreateServiceOrder";
+import { Page } from "../../../../../components/Page";
 
 function ServiceDescription () {
   return (
@@ -7,7 +7,9 @@ function ServiceDescription () {
       <Page
         pagetitle={ "Criar serviço" }
         contentpage={ <CardCreateServiceOrder /> }
-      />
+      >
+        <CardCreateServiceOrder />
+      </Page>
     </>
   );
 }

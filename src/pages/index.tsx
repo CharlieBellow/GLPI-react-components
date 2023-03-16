@@ -1,31 +1,28 @@
 
-import { useContext } from 'react';
-import { useAuth }  from '../Contexts/AuthContext';
-
 import { useRouter } from "next/router";
-import {useEffect} from "react"
+import { useEffect } from "react"
+import { useAuth } from '../Contexts/AuthContext';
 
 
-export default function Home () {
+export default function Home() {
+  const router = useRouter();
+  const { auth, user, verifyCookies } = useAuth();
 
-const router = useRouter();
+  console.log(user)
 
-  const { auth } = useAuth();
-
-  console.log( "auth App", auth );
-
-  useEffect( () => {
-    if ( auth ) {
-      router.push( "/privateroutes", "/" );
+  useEffect(() => {
+    
+    if (!router.isReady) return;
+    if (verifyCookies()) {
+      //erro pq so atualiza na proxima chamada
+      if (user && user.isAdmin)
+        router.push("/Dashboard");
     } else {
-      router.push( "/publicroutes", "/login" );
+      router.push("/login");
     }
-  } )
+    return
+  }, [router.isReady, user])
 
 
-  return (
-    <>
-      
-    </>
-  );
+  return (<></>);
 }

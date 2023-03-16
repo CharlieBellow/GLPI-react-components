@@ -5,27 +5,28 @@ import Head from "next/head";
 interface PageProps extends React.HTMLAttributes<HTMLElement> {
 	pagetitle: string;
 	contentpage: any;
+  children?: React.ReactNode;
 }
 
-export function Page ( props: PageProps ) {
+export function Page ( {pagetitle, contentpage, children, ...rest }: PageProps ) {
 	return (
     <>
       <Head>
-        <title>{props.pagetitle}</title>
+        <title>{pagetitle}</title>
       </Head>
-			<div className="layout__menu-header bg-white-strong-ice" {...props}>
-				<div className="flex max-w-13xl mx-auto" {...props}>
-					<div className="flex" {...props}>
+			<div className="layout__menu-header bg-white-strong-ice" {...rest}>
+				<div className="flex max-w-13xl mx-auto" {...rest}>					<div className="flex" {...rest}>
 						<Menu />
 					</div>
 
-					<div className="pageContent w-full h-screen flex flex-col" {...props}>
-						<div { ...props } >
-							<Header page={props.pagetitle} />
-						</div>
+					<div className="pageContent w-full h-screen flex flex-col" {...rest}>
+						<div { ...rest } >
+							<Header page={pagetitle} />
+            </div>
 
-						<div {...props} className="content ">
-							{props.contentpage}
+
+						<div {...rest} className="content ">
+							{contentpage}
 						</div>
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-import { CardCreateSubcategory } from "../../../../components/Cards/CardCreateSubGroup";
+import { CardCreateSubGroup } from "../../../../components/Cards/CardCreateSubGroup";
 import { Page } from "../../../../components/Page";
 
 export default function CreateSubcategory() {
@@ -6,7 +6,7 @@ export default function CreateSubcategory() {
 		<>
 			<Page
 				pagetitle={"Abertura de Chamados - GLPI"}
-				contentpage={<CardCreateSubcategory />}
+				contentpage={<CardCreateSubGroup />}
 			/>
 		</>
 	);

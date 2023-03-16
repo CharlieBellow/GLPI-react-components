@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
 import { toast } from "react-toastify";
@@ -9,9 +8,8 @@ import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
-import { servicesList } from "../ServicesComponent/Service";
+
 import {
-  bondList,
 	blocList,
 	validationSchema,
 	
@@ -24,13 +22,7 @@ import {postServiceOrder} from "../../Utils/server/postInfo"
 import {getService} from "../../Utils/server/getInfo"
 
 import {useAuth} from "../../Contexts/AuthContext"
-
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
-
-import FieldSelect from "../Inputs/FieldSelect";
-import {  serviceModel } from "../../Utils/ServiceModels";
-
+import FieldSelect from "./../../components/Inputs/FieldSelect";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -38,8 +30,8 @@ const validate = yup.object().shape({
 	aplicantsName: validationSchema.name,
 	title: validationSchema.title,
 	description: validationSchema.description,
-  //serviceLocal: validationSchema.serviceLocal,
-  //patrimony: validationSchema.patrimony,
+  serviceLocal: validationSchema.serviceLocal,
+  // patrimony: validationSchema.patrimony,
 });
 
 
@@ -77,25 +69,20 @@ const myservice = {
 
 
   const { token } = useAuth()
-  
-  
   const router = useRouter();
-
+  const {serviceOrderId, titleServiceOrder} = router.query
   const [serviceInfo, setServiceInfo] = useState<Service>()
+
 
 
 useEffect(() => {
   const fetchData = async () => {
-    const response = await getService( router.query.serviceorderId as string)
-
-    setServiceInfo(response)
-    
+		if ( !router.isReady) return;
+    	const response = await getService( serviceOrderId as string )
+    	setServiceInfo(response)
   }
   fetchData()
-  
-}, [])
-
-
+}, [router.isReady, serviceOrderId])
 
   return (
     <>
