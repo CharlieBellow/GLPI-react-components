@@ -26,8 +26,6 @@ export function CardLogin () {
   const {errorMessage, successMessage} = useMessage()
 	const router = useRouter();
 
-
-
         async function getToken( values: object) {
                 const token = await axios.post( "http://172.27.12.171:3333/sessions", values )
                 .then(response => {
@@ -40,9 +38,8 @@ export function CardLogin () {
     useEffect( () => {
     const tokenAuth = localStorage.getItem( "token" );
 
-    if ( tokenAuth !== "undefined" ) {
+    if ( tokenAuth !== null && tokenAuth !== "null" ) {
       changeToken(  tokenAuth as string);
-
       console.log( "tokenAuth: ", tokenAuth );
     }
   }, [] );

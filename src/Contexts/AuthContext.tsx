@@ -55,17 +55,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     console.log(user)
   }
   function verifyCookies() {
-    if (localStorage.getItem("token") !== undefined) {
+    if (localStorage.getItem('token') !== "null" && localStorage.getItem('token') !== null) {
       // TODO verificar validade
-      console.log("trueeeeeeee")
-      if(!auth){
         setAuth(true)
         const cookieUser = localStorage.getItem("user")
         if (cookieUser) {
           changeUser(JSON.parse(cookieUser))
           console.log(JSON.parse(cookieUser))
         }
-      }
     } else {
       //sem token
       console.log("false")
@@ -88,7 +85,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
         const token = response.data.token
 
-        if (token !== undefined) {
+        if (token !== undefined || token !== null ) {
           changeToken(token);
           setAuth(true)
           // também não entra aqui

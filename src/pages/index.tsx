@@ -27,7 +27,7 @@ export default function Home() {
       setTimeout(() => {
         verifyCookies()
         setLoaded(true)
-      }, 200);
+      }, 300);
     }, [])
 
   return (<LoadingPage/>);
