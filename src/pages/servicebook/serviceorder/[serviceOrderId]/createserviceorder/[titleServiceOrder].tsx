@@ -4,10 +4,7 @@ import { Page } from "../../../../../components/Page";
 function ServiceDescription () {
   return (
     <>
-      <Page
-        pagetitle={ "Criar serviço" }
-        contentpage={ <CardCreateServiceOrder /> }
-      >
+      <Page pagetitle={ "Criar serviço" }>
         <CardCreateServiceOrder />
       </Page>
     </>

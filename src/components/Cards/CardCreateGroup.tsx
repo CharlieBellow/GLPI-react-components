@@ -26,7 +26,6 @@ const validate = yup.object().shape({
 
 export const CardCreateGroup = () => {
 
-	//const {category} = useCategoryContext()
 	const [ groups, setGroups ] = useState<Group[]>([]);
 	const {errorMessage, successMessage} = useMessage()
 	useEffect(() => {

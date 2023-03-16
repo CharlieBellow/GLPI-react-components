@@ -19,6 +19,7 @@ export default function GroupList () {
 
   useEffect(() => {
 
+    if (!router.isReady) return;
     const fetchData = async () => {
       const response = await getAllGroups()
       setGroups(response);      
@@ -26,7 +27,7 @@ export default function GroupList () {
 
     fetchData();
       
-  },[]);
+  },[router.isReady]);
     
 
   return (
@@ -37,7 +38,7 @@ export default function GroupList () {
 
         {groups && groups.map( ( group ) => {
           return (
-              <CardGroup link={ `/privateroutes/servicebook/subgroup/${ group.id }` } Name={ group.description } Icon={ <Icon.Books size={ 27 }/> }
+              <CardGroup link={ `/servicebook/subgroup/${ group.id }` } Name={ group.description } Icon={ <Icon.Books size={ 27 }/> }
                 key={ group.id }
                 idGroup={ group.id }
               />

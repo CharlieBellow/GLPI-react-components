@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import {subcategoryModel} from "../Utils/ServiceModels"
+import {subgroupModel} from "../Utils/ServiceModels"
 
 interface SubcategoryContextProps {
   subcategory: Array<object>;
@@ -13,7 +13,7 @@ interface SubcategoryProviderProps {
 export const SubcategoryContext = createContext({} as SubcategoryContextProps)
 
 export const SubcategoryProvider = ( { children }: SubcategoryProviderProps ) => {
-  const [ subcategories, setCategories ] = useState<Array<object>>( subcategoryModel ) 
+  const [ subcategories, setCategories ] = useState<Array<object>>( subgroupModel ) 
 
 
   function addSubcategory ( subcategory: Array<object> ) {

@@ -1,14 +1,11 @@
 import { Page } from "../../../components/Page";
-import Category from "../../../components/Category";
+import GroupList from "../../../components/GroupList";
 import { ServiceContext } from "../../../Contexts/ServiceContext";
 
 
 
 export default function CategoryHome () {
-  return <Page pagetitle={ "" } contentpage={
-  
-    
-      <Category />
-    
-  } />;
+  return <Page pagetitle={ "" } >
+    <GroupList />
+  </Page>;
 }

@@ -4,9 +4,8 @@ import services from '../../../../Utils/services';
 
 export default function ServiceLetter () {
   return (
-    <Page
-      pagetitle={ "Serviço" }
-      contentpage={ <CardServiceDescription /> }
-    />
+    <Page pagetitle={ "Serviço" }>
+      <CardServiceDescription />
+    </Page>
   );
 }
