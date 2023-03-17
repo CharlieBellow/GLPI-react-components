@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
+import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
@@ -21,16 +20,17 @@ import { postServiceOrder } from "../../Utils/server/postInfo"
 
 import { getService } from "../../Utils/server/getInfo"
 
-import { useAuth } from "../../Contexts/AuthContext"
-import FieldSelect from "./../../components/Inputs/FieldSelect";
+
+import { Spinner } from "@chakra-ui/react";
+import { useMessage } from "../../Contexts/MessageContext";
+import axios from "axios";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
 const validate = yup.object().shape({
-	aplicantsName: validationSchema.name,
-	// title: validationSchema.title,
 	description: validationSchema.description,
-	serviceLocal: validationSchema.serviceLocal,
+	// title: validationSchema.titleGroup,
+	// serviceLocal: validationSchema.serviceLocal,
 	// patrimony: validationSchema.patrimony,
 });
 
@@ -68,37 +68,45 @@ export const CardCreateServiceOrder = () => {
 	}
 
 
-	const { token } = useAuth()
+	const token = localStorage.getItem("token");
 	const router = useRouter();
 	const { serviceOrderId, titleServiceOrder } = router.query
-	const [serviceInfo, setServiceInfo] = useState<Service>()
+
+	const [serviceInfo, setServiceInfo] = useState<Service>({} as Service)
+
+	const { errorMessage, successMessage } = useMessage()
 
 	// nessa tela não conseguimos passar o títuo do serviço e nem o ID do serviço. por alguma razão não estamos conseguindo pegar o objeto de serviço e passar para esse formulário e validar
 
 	
 	useEffect(() => {
+		if (!router.isReady) return;
 		const fetchData = async () => {
-			if (!router.isReady) return;
+			
 			const response = await getService(serviceOrderId as string)
 			setServiceInfo(response)
 			
 		}
 		fetchData()
 		
-	}, [router.isReady, serviceOrderId])
+	}, [router.isReady])
 	
+	console.log("response", serviceInfo)
 	
-	// o formik não aceita validação condiriconal.;
-	let mytitle = ""
-	const  title = () => {
-		if (serviceInfo && serviceInfo.title) {
-			return mytitle = serviceInfo.title
-		} else {
-			return ""
-		}
-	}
-	title()
-	console.log("dssdsd", mytitle);
+	// o formik não aceita validação condicional.;
+	// let mytitle = ""
+	// const  title = () => {
+	// 	if (serviceInfo && serviceInfo.title) {
+	// 		return mytitle = serviceInfo.title
+	// 	} else {
+	// 		return ""
+	// 	}
+	// }
+	// title()
+	// console.log("dssdsd", mytitle);
+
+
+
 
 	return (
 		<>
@@ -108,123 +116,127 @@ export const CardCreateServiceOrder = () => {
 				h-auto shadow-card">
 					<>
 						<div className="pl-9 pt-8">
-							<CardTitle title="Abrir ordem de serviço" />
+							<CardTitle title="Criar ordem de serviço" />
 						</div>
 						<div className="mx-9 mt-4 mb-10">
 							<CardLine />
 						</div>
-						{console.log("response", serviceInfo)}
+						
+						{router.isReady ? 
 						<Formik
-							initialValues={{
-								serviceId: serviceInfo ? serviceInfo.id : "",
-								title: mytitle,
-								description: "",
-								status: "Aberto",
-								estimetadAt: new Date().toLocaleTimeString("pt-BR", {
-									month: "2-digit",
-									day: "2-digit",
-									year: "numeric",
-									hour: "2-digit",
-									minute: "2-digit",
-									second: "2-digit",
-								})
-									.toString()
-									.replace(":", ":")
-									.replace(":", ":")
-									.replace(",", " ")
-									.replace("/", "-")
-									.replace("/", "-"),
-								closedAt: new Date().toLocaleTimeString("pt-BR", {
-									month: "2-digit",
-									day: "2-digit",
-									year: "numeric",
-									hour: "2-digit",
-									minute: "2-digit",
-									second: "2-digit",
-								})
-									.toString()
-									.replace(":", ":")
-									.replace(":", ":")
-									.replace(",", " ")
-									.replace("/", "-")
-									.replace("/", "-"),
-								patrimonyId: "",
-								requesterId: myuser.id,
-								respponsibleId: myuser.id,
-								aplicantsName: myuser.name,
-							}}
-							validationSchema={validate}
-							onSubmit={(values, actions) => {
-								setTimeout(() => {
-									console.log("submit:", values);
+								initialValues={{
+							description: "",
+							serviceId: serviceInfo ? serviceInfo.id : "",
+							// patrimonyId: "",
+							requesterId: myuser.id,
+							respponsibleId: myuser.id,
+							// serviceLocal:"",
+							title: serviceInfo ? serviceInfo.title : "",
+							status: "Aberto",
+							estimetadAt: new Date().toLocaleTimeString("pt-br", {
+								month: "2-digit",
+								day: "2-digit",
+								year: "numeric",
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+							})
+								.toString()
+								.replace(":", ":")
+								.replace(":", ":")
+								.replace(",", "")
+								.replace("/", "-")
+								.replace("/", "-"),
+							closedAt: new Date().toLocaleTimeString("pt-br", {
+								month: "2-digit",
+								day: "2-digit",
+								year: "numeric",
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+							})
+								.toString()
+								.replace(":", ":")
+								.replace(":", ":")
+								.replace(",", "")
+								.replace("/", "-")
+								.replace("/", "-"),
+						
+						}}
+						validationSchema={validate}
+						onSubmit={(values, actions) => {
+							setTimeout(() => {
+								console.log("submit:", values);
 
+								if (token !== null) {
+									axios( {
+										method: 'post',
+										baseURL: "http://172.27.12.171:3333",
+										url: `/servicebook/serviceorder/`,
+										data: values,
+										headers: { authorization: `Bearer ${ token }` }
+									})
+									
+						
 
-									postServiceOrder(values, token)
-
-									toast.success("Serviço criado com sucesso!");
+									successMessage("Serviço criado com sucesso!");
 
 									actions.resetForm();
+								} else {
+									errorMessage("Algo deu errado. Tente novamente.")
+								}
 
-								}, 400);
-							}}
-						>
-							{({ isSubmitting, isValid }) => (
-								<Form autoComplete="on">
-									<div className="flex flex-col gap-9 mx-14">
-										<div className="">
-											<CardLabelInput
-												label="Nome Completo"
-												name="aplicantsName"
-												type="text"
-												width="w-full"
-												inputid="title"
-												disabled
-											/>
-										</div>
-
-										<div className="">
-											<CardLabelInput
-												label="Título"
-												name="title"
-												type="text"
-												width="w-full"
-												inputid="title"
-												disabled={serviceInfo ? true : false}
-											/>
-										</div>
-										<div className="">
-											<CardLabelTextarea
-												label="Descrição"
-												type="textarea"
-												name="description"
-												textareaid="description"
-											/>
-										</div>
-										<div>
-									{ serviceInfo && serviceInfo.isPatromonyIdRequired ? 
-									<CardLabelInput
-									label="Patrimônio"
-									name="patrimonyId"
-									type="text"
-									width="w-full"
-										inputid="patrimonyId"
-									/>
-									: <></>}
-								</div>									
-									</div>
-									<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-										<Button
-											isSubmitting={isSubmitting}
-											title="Solicitar"
-											theme="primaryAction"
-											type="submit"
-											disabled={isSubmitting || !isValid}
+							}, 400);
+						}}
+					>
+						{({ isSubmitting, isValid }) => (
+							<Form autoComplete="on">
+								<div className="flex flex-col gap-9 mx-14">
+									{/* <div className="">
+										<CardLabelInput
+											label="Título"
+											name="title"
+											type="text"
+											width="w-full"
+											inputid="title"
+											disabled={serviceInfo && serviceInfo.title ? true : false}
 										/>
-										<Button title="Cancelar" theme="secondaryAction" type="button" />
+									</div> */}
+									<div className="">
+										<CardLabelTextarea
+											label="Descrição"
+											type="textarea"
+											name="description"
+											textareaid="description"
+										/>
 									</div>
-								</Form>
-							)}
-						</Formik>
+									<div>
+								{/* { serviceInfo && serviceInfo.isPatromonyIdRequired ? 
+								<CardLabelInput
+								label="Patrimônio"
+								name="patrimonyId"
+								type="text"
+								width="w-full"
+									inputid="patrimonyId"
+								/>
+								: <></>} */}
+							</div>									
+								</div>
+								<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+									<Button
+										isSubmitting={isSubmitting}
+										title={isSubmitting ? <Spinner size="md" /> : "Criar"}
+										theme="primaryAction"
+										type="submit"
+										disabled={isSubmitting || !isValid}
+									/>
+									<Button title="Cancelar" theme="secondaryAction" type="button" />
+								</div>
+							</Form>
+						)}
+					</Formik>
+						: <Spinner size="md"/>}
+						
 					</>
 				</div>
 			</div>

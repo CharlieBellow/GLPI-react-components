@@ -82,9 +82,9 @@ export const CardCreateGroup = () => {
 							
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ?  <Spinner size="xl" /> : null}
+			
 								<Button
-									title="Solicitar"
+									title={isSubmitting ?  <Spinner size="md" /> : "Criar"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

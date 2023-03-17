@@ -18,7 +18,7 @@ export function Page ( {pagetitle, children, ...rest }: PageProps ) {
 						<Menu />
 					</div>
 
-					<div className="pageContent w-full h-screen flex flex-col" {...rest}>
+					<div className="pageContent w-full h-full flex flex-col" {...rest}>
 						<div { ...rest } >
 							<Header page={pagetitle} />
             </div>
