@@ -29,7 +29,7 @@ const validate = yup.object().shape({
 export const CardCreateSubGroup = () => {
 
 
-  const {token} = useAuth()
+  const token = localStorage.getItem("token");
   const {errorMessage, successMessage} = useMessage()
   const [groups, setGroups] = useState<Group[]>([])
 
@@ -68,9 +68,14 @@ export const CardCreateSubGroup = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							postSubGroup( values, token )
+							if (token !== null) {
+								postSubGroup( values, token )
 						  	successMessage("Subgrupo criado com sucesso!");
-							actions.resetForm();
+								actions.resetForm();
+
+							} else {
+								errorMessage("Algo deu errado, tente novamente.")
+							}
 						
 						}, 400);
 					}}

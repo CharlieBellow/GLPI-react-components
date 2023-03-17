@@ -11,6 +11,7 @@ import {useEffect, useState} from "react"
 import * as Icon from 'phosphor-react'
 import {getAllGroups} from "../Utils/server/getInfo"
 import { Group } from '../Utils/server/types';
+import Link from 'next/link';
 
 
 export default function GroupList () {
@@ -29,7 +30,7 @@ export default function GroupList () {
       
   },[router.isReady]);
     
-
+const isAdmin = true
   return (
 
     <>
@@ -46,6 +47,10 @@ export default function GroupList () {
           );
         } ) }
       </div>
+      
+      {isAdmin ? (<>
+    <Link href="servicebook/group/creategroup" className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar categoria</Link> 
+    </>): <></>}
     </>
   );
 };

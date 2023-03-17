@@ -89,15 +89,16 @@ export const CardCreateServiceOrder = () => {
 	
 	
 	// o formik não aceita validação condiriconal.;
+	let mytitle = ""
 	const  title = () => {
 		if (serviceInfo && serviceInfo.title) {
-			return serviceInfo.title
+			return mytitle = serviceInfo.title
 		} else {
 			return ""
 		}
 	}
-	
-	console.log("dssdsd", title());
+	title()
+	console.log("dssdsd", mytitle);
 
 	return (
 		<>
@@ -116,7 +117,7 @@ export const CardCreateServiceOrder = () => {
 						<Formik
 							initialValues={{
 								serviceId: serviceInfo ? serviceInfo.id : "",
-								title: title(),
+								title: mytitle,
 								description: "",
 								status: "Aberto",
 								estimetadAt: new Date().toLocaleTimeString("pt-BR", {
@@ -199,7 +200,7 @@ export const CardCreateServiceOrder = () => {
 												textareaid="description"
 											/>
 										</div>
-										{/* <div>
+										<div>
 									{ serviceInfo && serviceInfo.isPatromonyIdRequired ? 
 									<CardLabelInput
 									label="Patrimônio"
@@ -209,7 +210,7 @@ export const CardCreateServiceOrder = () => {
 										inputid="patrimonyId"
 									/>
 									: <></>}
-								</div>									 */}
+								</div>									
 									</div>
 									<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 										<Button

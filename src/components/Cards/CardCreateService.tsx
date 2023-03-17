@@ -25,6 +25,7 @@ import {postServiceOrder} from "../../Utils/server/postInfo"
 
 import { useMessage } from "../../Contexts/MessageContext";
 import {useAuth} from "../../Contexts/AuthContext"
+import { Spinner } from "@chakra-ui/react";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -39,11 +40,13 @@ const validate = yup.object().shape({
 
 export const CardCreateService = () => {
 	
-  const router = useRouter();
+	const router = useRouter();
+	const {subGroupId} = router.query
 
-  console.log("router", router.query.subgroupId)
-  const { token } = useAuth()
-  const {errorMessage, successMessage} = useMessage()
+  console.log("router", router.query.subGroupId)
+  const  token = localStorage.getItem("token");
+	const { errorMessage, successMessage } = useMessage()
+
 
   return (
     <>
@@ -57,10 +60,10 @@ export const CardCreateService = () => {
 					<div className="mx-9 mt-4 mb-10">
 						<CardLine />
 					</div>
-					<Formik
+					{router.isReady ? <Formik
         				validateOnMount={true}
 						initialValues={ {
-							serviceSubGroupId: router.query.subgroupId,
+							serviceSubGroupId: subGroupId,
 							title:"",
 							description: "",
 							personType: [],
@@ -71,12 +74,17 @@ export const CardCreateService = () => {
 						onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-						
-              				postService( values, token )
-              
-			  				successMessage("Serviço criado com sucesso!");
+							if (token !== null) {
+								
+								postService( values, token )
+							
+								successMessage("Serviço criado com sucesso!");
 						
 							actions.resetForm();
+							} else {
+								errorMessage("Algo deu errado, tente novamente")
+						}
+              
 							
 						}, 400);
 					}}
@@ -163,7 +171,8 @@ export const CardCreateService = () => {
 								</div>
 						</Form>
 						)}
-					</Formik>
+					</Formik> : <><Spinner size="md" /></>}
+					
 				</div>
       		</div>
     	</>

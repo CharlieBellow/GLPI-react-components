@@ -76,7 +76,7 @@ const Subcategory = ( ) => {
         </div>
 
          {isAdmin ? (<>
-    <Link href="./createsubcategory" className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar categoria</Link> 
+    <Link href="/servicebook/subgroup/createsubgroup" className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar categoria</Link> 
     </>): <></>}
       </>
       </Page>

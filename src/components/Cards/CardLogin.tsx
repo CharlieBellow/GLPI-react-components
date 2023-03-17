@@ -25,7 +25,7 @@ export function CardLogin () {
 
   const { auth, changeAuth, changeToken, token } = useAuth()
   const {errorMessage, successMessage} = useMessage()
-  const {page, changePage} = usePreviousPage()
+  const {page, changePage, changeLogged} = usePreviousPage()
 	const router = useRouter();
 
         async function getToken( values: object) {
@@ -68,7 +68,7 @@ export function CardLogin () {
 			  successMessage("Login realizado com sucesso!");
 
 			  // * checar se tem alguma página anterior
-			
+							changeLogged(true);
 			  if(page !== ""){
 				// * se tiver remove
 				console.log("redirecting by context")

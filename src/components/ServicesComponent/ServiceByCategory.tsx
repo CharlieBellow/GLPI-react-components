@@ -11,12 +11,11 @@ const ServiceByCategory = ( ) => {
   const router = useRouter();
   const {subGroupId} = router.query
   
-  //const { subcategory, service, serviceorder, subgroupId  } = router.query
-  //
   const [listServices, setListServices] = useState<Service[]>([])
   const [subcategoryDescription, setSubcategoryDescription] = useState<string>("")
   
-  
+  const isAdmin = true;
+
  useEffect(() => {
   if(!router.isReady) return;
   const fetchData = async () => {
@@ -36,8 +35,7 @@ const ServiceByCategory = ( ) => {
    
   fetchData()
 }, [router.isReady, subGroupId] )
-  
-  
+
 
 	return (
 	
@@ -63,7 +61,11 @@ const ServiceByCategory = ( ) => {
                
 					);
 						})}
-					</div>
+      </div>
+      {/* criar um component para esse botão de link */}
+      {isAdmin ? (<>
+    <Link href={`/servicebook/subgroup/${subGroupId}/getAllServices/createservice`} className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar Serviço</Link> 
+    </>): <></>}
 				</>
           )
 }
