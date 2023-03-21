@@ -43,10 +43,12 @@ const isAdmin = true
         } ) }
       {/* organizar esses botões na tela */}
         {isAdmin ? (
-          <>
-            <CardGroup link={`/servicebook/group/creategroup`} Name={"Criar Categoria"} Icon={<Icon.Plus size={27} />} idGroup={''} />
-            <CardGroup link={`/servicebook/group/deletegroup`} Name={"Deletar Categoria"} Icon={<Icon.Trash size={27} />} idGroup={''} />
+        
+            <>
+            <CardGroup link={`/servicebook/group/creategroup`} Name={"Criar Categoria"} Icon={<Icon.Plus size={27} />} idGroup={''} style={ "bg-blue-final-gradient"} />
+            <CardGroup link={`/servicebook/group/deletegroup`} Name={"Deletar Categoria"} Icon={<Icon.Trash size={27} />} idGroup={''} style={ "bg-red-ufal text-white-100 hover:border-red-500"}/>
             </>
+        
             ) : <></>}
         
       </div>
