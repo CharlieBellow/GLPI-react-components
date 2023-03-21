@@ -1,11 +1,11 @@
-import { Page } from "../../../../../../components/Page";
 import { CardCreateService } from "../../../../../../components/Cards/CardCreateService";
+import { Page } from "../../../../../../components/Page";
 
-export default function CreteService () {
+export default function CreateCategory() {
+	
   return (
-      <Page pagetitle={ "Abertura de Chamados - GLPI" }>
-        <CardCreateService />
-      </Page>
-   
-  );
+			<Page pagetitle={"Criar Serviço"}>
+				<CardCreateService />
+			</Page>
+	);
 }

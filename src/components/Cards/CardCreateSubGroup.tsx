@@ -8,7 +8,7 @@ import { CardLine } from "./CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
 
-import {useAuth} from "../../Contexts/AuthContext"
+
 import { useMessage } from "../../Contexts/MessageContext";
 import { postSubGroup } from "../../Utils/server/postInfo"
 
@@ -104,7 +104,7 @@ export const CardCreateSubGroup = () => {
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 								<Button
-									title="Solicitar"
+									title="Criar"
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

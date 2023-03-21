@@ -4,7 +4,7 @@ import { Page } from "../../../../components/Page";
 export default function CreateCategory() {
 	
   return (
-			<Page pagetitle={"Abertura de Chamados - GLPI"}>
+			<Page pagetitle={"Criar Grupo"}>
 				<CardCreateGroup />
 			</Page>
 	);

@@ -155,7 +155,7 @@ export const CardCreateService = () => {
 										<>
 											<Button
 												isSubmitting={isSubmitting}
-												title="Solicitar"
+												title="Criar"
 												theme="primaryAction"
 												type="submit"
 												disabled={isSubmitting || !isValid}

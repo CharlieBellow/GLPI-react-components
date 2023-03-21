@@ -45,7 +45,7 @@ const isAdmin = true
         {isAdmin ? (
           <>
             <CardGroup link={`/servicebook/group/creategroup`} Name={"Criar Categoria"} Icon={<Icon.Plus size={27} />} idGroup={''} />
-            <CardGroup link={`/servicebook/group/`} Name={"Deletar Categoria"} Icon={<Icon.Trash size={27} />} idGroup={''} />
+            <CardGroup link={`/servicebook/group/deletegroup`} Name={"Deletar Categoria"} Icon={<Icon.Trash size={27} />} idGroup={''} />
             </>
             ) : <></>}
         

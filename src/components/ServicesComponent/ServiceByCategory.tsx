@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { getAllServices, getSubGroup } from "../../Utils/server/getInfo";
 import {Service} from "../../Utils/server/types"
+import CardGroup from "../../components/CardGroup";
+import * as  Icon  from "phosphor-react";
 
 
 const ServiceByCategory = ( ) => {
@@ -60,12 +62,17 @@ const ServiceByCategory = ( ) => {
 						
                
 					);
-						})}
+        })}
+        
+        {isAdmin ? (
+          <div className="flex gap-8">
+            <CardGroup link={`/servicebook/subgroup/${subGroupId}/getAllServices/createservice`} Name={"Criar Serviço"} Icon={<Icon.Plus size={27} />} idGroup={''} />
+            <CardGroup link={`/servicebook/subgroup/${subGroupId}/getAllServices/deleteservice`} Name={"Deletar Serviço"} Icon={<Icon.Trash size={27} />} idGroup={''} />
+            </div>
+            ) : <></>}
       </div>
-      {/* criar um component para esse botão de link */}
-      {isAdmin ? (<>
-    <Link href={`/servicebook/subgroup/${subGroupId}/getAllServices/createservice`} className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar Serviço</Link> 
-    </>): <></>}
+
+    
 				</>
           )
 }
