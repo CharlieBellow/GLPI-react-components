@@ -30,3 +30,18 @@ export interface SubGroup{
 	createdAt: Date;
 	updatedAt: Date;
 }
+
+export interface ServiceOrder {
+	id: string;
+	status: string;
+	description: string;
+	patrimonyId: string;
+	estimatedAt: Date;
+	closedAt: Date;
+	createdAt: Date;
+	updatedAt: Date;
+	responsibleId: string,
+	requesterId: string,
+	serviceId: string,
+	service: Service
+}

@@ -1,9 +1,16 @@
-import { Page } from "../../../components/Page";
 
-export default function  MyServices() {
+import { Page } from "../../../components/Page";
+import ServicesOrder from "../../../components/ServicesComponent/ServicesOrder";
+
+
+export default function MyServices() {
+
   return (
-    <Page>
-<></>
+    <Page pagetitle="Meus Serviços">
+
+      <div className="m-8">
+        <ServicesOrder />
+      </div>
     </Page>
   )
 }

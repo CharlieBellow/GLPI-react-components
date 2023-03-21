@@ -59,7 +59,29 @@ export async function getService(id : string) {
   const response = await axios({
                 method: 'get',
                 baseURL: baseURL,
-                url: `/servicebook/service/${id}`,
+    url: `/servicebook/service/${id}`,
+    headers: { authorization: `Bearer ${ token }` }
+              });
+  return response.data;
+}
+    
+export async function getRequesterService(id : string, token: string) {
+  const response = await axios({
+                method: 'get',
+                baseURL: baseURL,
+    url: `servicebook/serviceorder/requester/${id}`,
+    headers: { authorization: `Bearer ${ token }` }
+              });
+  return response.data;
+}
+    
+
+export async function getResponsibleService(id : string, token: string) {
+  const response = await axios({
+                method: 'get',
+                baseURL: baseURL,
+                url: `/servicebook/serviceorder/responsible/${id}`,
+                headers: { authorization: `Bearer ${ token }` }
               });
   return response.data;
     }
