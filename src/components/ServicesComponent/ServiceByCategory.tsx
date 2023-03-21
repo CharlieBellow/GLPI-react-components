@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getAllServices, getSubcategory } from "../../Utils/server/getInfo";
+import { getAllServices, getSubGroup } from "../../Utils/server/getInfo";
 import {Service} from "../../Utils/server/types"
 
 
@@ -21,7 +21,7 @@ const ServiceByCategory = ( ) => {
   if(!router.isReady) return;
   const fetchData = async () => {
 
-    const subcategoryGet = await getSubcategory(subGroupId as string);
+    const subcategoryGet = await getSubGroup(subGroupId as string);
 
 
   

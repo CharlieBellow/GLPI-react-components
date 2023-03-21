@@ -1,3 +1,5 @@
+import {useAuth} from "../../Contexts/AuthContext"
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
@@ -21,8 +23,8 @@ import {postServiceOrder} from "../../Utils/server/postInfo"
 
 import {getService} from "../../Utils/server/getInfo"
 
-import {useAuth} from "../../Contexts/AuthContext"
 import FieldSelect from "./../../components/Inputs/FieldSelect";
+import { Spinner } from "@chakra-ui/react";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -30,7 +32,7 @@ const validate = yup.object().shape({
 	aplicantsName: validationSchema.name,
 	title: validationSchema.title,
 	description: validationSchema.description,
-  serviceLocal: validationSchema.serviceLocal,
+  	//serviceLocal: validationSchema.serviceLocal,
   // patrimony: validationSchema.patrimony,
 });
 
@@ -68,21 +70,23 @@ const myservice = {
 }
 
 
-  const { token } = useAuth()
+
   const router = useRouter();
   const {serviceOrderId, titleServiceOrder} = router.query
   const [serviceInfo, setServiceInfo] = useState<Service>()
-
-
+  let token = "";
 
 useEffect(() => {
-  const fetchData = async () => {
+	token = localStorage.getItem("token") as string
+  	const fetchData = async () => {
 		if ( !router.isReady) return;
+		console.log(serviceInfo)
+		if(serviceInfo !== undefined) return;
     	const response = await getService( serviceOrderId as string )
     	setServiceInfo(response)
   }
   fetchData()
-}, [router.isReady, serviceOrderId])
+}, [router.isReady, serviceInfo])
 
   return (
     <>
@@ -97,11 +101,11 @@ useEffect(() => {
 					<div className="mx-9 mt-4 mb-10">
 						<CardLine />
 					</div>
-        			{console.log("response", serviceInfo)}
+        			{serviceInfo !== undefined ?  
 					<Formik
 						initialValues={ {
-            				serviceId:  serviceInfo ? serviceInfo.id : "",
-            				title:  serviceInfo ? serviceInfo.title : "",
+            				serviceId:  serviceInfo.id,
+            				title:  serviceInfo.title,
             				description: "",
             				status: "Aberto",
             				estimetadAt: new Date().toLocaleTimeString( "pt-BR", {
@@ -140,9 +144,9 @@ useEffect(() => {
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
-							console.log("submit:", values);
-						
-             				 postServiceOrder( values, token )
+							console.log("submit:", values);		
+							if(token !== "" && token !== "null")				
+             					postServiceOrder( values, token )
               
 							toast.success("Serviço criado com sucesso!");
 						
@@ -207,7 +211,10 @@ useEffect(() => {
 								</div>
 						</Form>
 					)}
-					</Formik>
+					</Formik>: 
+						<div className="grid h-full place-items-center">
+							<Spinner size={'md'}></Spinner>
+						</div>}
 				</>
 			</div>
       </div>

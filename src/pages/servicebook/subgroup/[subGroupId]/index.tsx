@@ -7,9 +7,9 @@ import { useRouter } from "next/router";
 import * as Icon from "phosphor-react";
 
 import { Page } from "../../../../components/Page";
-import CardCategory from "../../../../components/CardCategory";
+import CardGroup from "../../../../components/CardGroup";
 
-import { getAllSubcategories, getCategory } from "../../../../Utils/server/getInfo";
+import { getAllSubGroups, getGroup } from "../../../../Utils/server/getInfo";
 import { SubGroup } from '../../../../Utils/server/types';
 
 
@@ -31,8 +31,8 @@ const Subcategory = ( ) => {
     const fetchData = async () => {
       
 
-      const category = await getCategory( subGroupId as string);
-      const response = await getAllSubcategories( subGroupId as string);
+      const category = await getGroup( subGroupId as string);
+      const response = await getAllSubGroups( subGroupId as string);
       
       setGroupTitle( category.description );
       setSubgroups( response );
@@ -60,13 +60,13 @@ const Subcategory = ( ) => {
 
 
 
-            { subgroups && subgroups.map( ( subcategory ) => {
+            { subgroups && subgroups.map( ( subgroup ) => {
 
               return (
 
-                <CardCategory link={ `/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 } /> }
-                  key={ subcategory.id }
-                  idCategory={ subcategory.id }
+                <CardGroup link={ `/servicebook/subgroup/${ subgroup.id }/getAllServices` } Name={ subgroup.description } Icon={ <Icon.Archive size={ 27 } /> }
+                  key={ subgroup.id }
+                  idGroup={ subgroup.id }
                 />
 
               );

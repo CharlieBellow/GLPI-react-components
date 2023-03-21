@@ -39,9 +39,9 @@ export default function Dashboard () {
 
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
-  const { auth, user, verifyCookies } = useAuth()
+  const { auth, user, verifyCookies, token } = useAuth()
   const {changePage} = usePreviousPage()
-
+  console.log("token", token)
     useEffect(() => {
       if(loaded){
         if(!auth){
