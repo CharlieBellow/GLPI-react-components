@@ -45,3 +45,16 @@ export interface ServiceOrder {
 	serviceId: string,
 	service: Service
 }
+
+export interface User {
+	id: string;
+	name: string;
+	password: string;
+	email: string;
+	avatar: any;
+	isAdmin: boolean;
+	created_at: string;
+	permissions: Array<any>;
+	roles: Array<any>;
+	
+}

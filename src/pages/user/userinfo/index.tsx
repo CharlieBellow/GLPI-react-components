@@ -1,5 +1,5 @@
-import { Page } from "../../../../components/Page";
-import CardUserInfo from "../../../../components/Cards/CardUserInfo";
+import { Page } from "../../../components/Page";
+import CardUserInfo from "../../../components/Cards/CardUserInfo";
 
 function FormUserInfo() {
 
@@ -7,8 +7,9 @@ function FormUserInfo() {
 		<>
 			<Page
 				pagetitle={"Cadastro de Usuários - GLPI"}
-				contentpage={<CardUserInfo />}
-			/>
+			>
+				<CardUserInfo />
+				</Page>
 		</>
 	);
 }

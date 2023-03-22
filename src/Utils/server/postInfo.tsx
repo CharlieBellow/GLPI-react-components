@@ -47,3 +47,15 @@ export function postServiceOrder ( values: object, token: string ) {
   } );
 
 }
+
+
+export function postUser ( values: object, token: string ) {
+  axios( {
+    method: 'post',
+    baseURL: baseURL,
+    url: `/users`,
+    data: values,
+    headers: { authorization: `Bearer ${ token }` }
+  } );
+
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import * as  Icon from "phosphor-react";
 import CardGroup from "../CardGroup";
 //import { Link } from "react-router-dom";
@@ -15,6 +16,9 @@ const CardGroups = () => {
 							Name={ "Biblioteca" }
 							Icon={ <Icon.BookOpen size={ 27 } /> } idGroup={ "" }						/>
 					{/*</Link>*/}
+					<div className="hover:cursor-pointer hover:text-blue-ufal-hover">
+						<Link href="/servicebook/myservices">Meus Serviços</Link>
+					</div>
 					<div className="gap-3 grid grid-cols-2">
 						{/*<Link to="/">Dashboard</Link>*/}
 						{/*<Link to="/service/letter">Carta de Serviço</Link>*/}

@@ -1,9 +1,16 @@
 
-import CardServiceOrder from "./CardServiceOrder";
+import * as React from 'react';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
+import * as Icon from "phosphor-react";
 
+
+import CardServiceOrder from "./CardServiceOrder";
 import { useEffect, useState } from "react";
 import { ServiceOrder } from "../../Utils/server/types";
 import { getRequesterService, getResponsibleService  } from "../../Utils/server/getInfo";
+import { Spinner } from "@chakra-ui/react";
+import {CardLabelInputCheckbox} from "../../components/Inputs/CardLabelInputCheckbox"
+import { Formik, FormikHelpers, FormikValues } from "formik";
 
 
 
@@ -19,79 +26,101 @@ const myuser = {
 }
 export default function ServicesOrder () {
  
-/* closedAt
-: 
-"2023-03-02T17:09:25.173Z"
-createdAt
-: 
-"2023-03-02T20:09:23.962Z"
-description
-: 
-"minha ordem de serviço"
-estimatedAt
-: 
-null
-id
-: 
-"14ebb57f-5c74-4a71-9192-3c609aa310d6"
-patrimonyId
-: 
-"123456"
-requesterId
-: 
-"972e1f58-95c6-4582-ac05-fb385dbb557b"
-responsibleId
-: 
-null
-service
-: 
-{id: 'eff33f67-0d9d-402f-baa3-96a30df953f1', description: 'Acessar perfil.ufal.br, ', title: 'Criar email institucional', definition: 'Etapas para criação do email institucional', serviceSubGroupId: '446ba367-8c8e-4f11-b920-413ef6e9e836', …}
-serviceId
-: 
-"eff33f67-0d9d-402f-baa3-96a30df953f1"
-status
-: 
-"Aberto"
-updatedAt
-: 
-"2023-03-02T20:09:23.962Z" */
 	
 	const [requesterList, setRequesterList] = useState<ServiceOrder[]>([])
 	const [responsibleList, setResponsibleList] = useState<ServiceOrder[]>([])
 	const [servicesList, setServicesList] = useState<ServiceOrder[]>([])
+	const [servicesStatus, setServicesStatus] = useState<ServiceOrder[]>([])
 	
 	
 	const token = localStorage.getItem("token");
   
 	useEffect(() => {
-		
-
-	
     const fetchData = async () => {
 			const responseRequester = await getRequesterService(myuser.id, token);
 			const responseResponsible = await getResponsibleService(myuser.id, token );
-			console.log(responseRequester);
+			// console.log(responseRequester);
 			
 
       setRequesterList(responseRequester)
       setResponsibleList(responseResponsible)
-			setServicesList([responseResponsible, responseRequester])
+			setServicesList([...responseRequester, responseResponsible])
+			// setServicesStatus(servicesList)
     }
     fetchData()
   }, [servicesList, requesterList, responsibleList, token])
 
-console.log("requesterList", requesterList);
+	console.log("servicesList", servicesList);
+	console.log("atribuído", responsibleList);
+	console.log("proprietário", requesterList);
+
 
 	const toogle = "responsible"
+	const [value, setValue] = useState<ServiceOrder[]>([])
 
   return (
 		<>
-			<div className="m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl">
-				<h2 className="text-5xl font-bold">Meus Serviços</h2>
-				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2">
+			<div className="lg:m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl">
+				<h2 className="lg:text-5xl text-2xl font-bold">Meus Serviços</h2>
+				
+				<div className='flex flex-col items-center '>
+					<p className="text-lg">Filtro:</p>
+					<ToggleGroup.Root
+						type="single"
+						className='flex sm:flex-row flex-col border-2 border-blue-ufal rounded-lg '
+						value={value}
+						defaultValue={"todos"}
+						onValueChange={(value) => {
+							if (value === "atribuido") {
+								setValue(responsibleList)
+								console.log("chamou atribuido");
+							} else
+								if (value === "proprietario") {
+								setValue(requesterList)
+								console.log("chamou proprietario");
+								}
+								else if (value === "status") {
+									servicesList.map(item => {
+										if (item.status === "Aberto")
+										return (
+											setServicesStatus([... servicesStatus, item])
+										)
+									})
+									
+								setValue(servicesStatus)
+								console.log("chamou proprietario");
+								}
+								else {
+								
+								console.log("chamou todos");
+								setValue(servicesList)
+							}
+			}}
+    >
+      <ToggleGroup.Item value="atribuido" className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tl-sm focus:rounded-bl-sm hover:rounded-tl-md hover:rounded-bl-md">
+							<Icon.UserList size={26} />
+							Atribuído a mim
+      </ToggleGroup.Item>  
+      <ToggleGroup.Item value="proprietario"className="flex items-center gap-2  p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal ">
+							<Icon.User size={26} />
+							Proprietário
+      </ToggleGroup.Item> 
+      <ToggleGroup.Item value="status"className="flex items-center gap-2  p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal ">
+							<Icon.EnvelopeSimpleOpen size={26} />
+							Status
+      </ToggleGroup.Item> 
+      <ToggleGroup.Item value="todos"className="flex items-center gap-2 p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tr-sm focus:rounded-br-sm hover:rounded-tr-md hover:rounded-br-md">
+							<Icon.ListBullets size={26} />
+							Todos
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
+
+</div>
+				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
 					<>
 						
-						{requesterList.map((item: any) => {
+						{value ?
+								value.map((item: any) => {
 							return (
 								<CardServiceOrder
 			
@@ -110,8 +139,7 @@ console.log("requesterList", requesterList);
 									key={item.id}
 								/>
 							);
-						})}
-						{console.log("listServices", servicesList)}
+						}): <div className="flex justify-center"><Spinner size="lg" /></div>}
 					</>
 				</div>
 			</div>
