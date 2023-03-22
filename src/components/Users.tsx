@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Spinner } from "@chakra-ui/react";
 import CardUsers from './CardUsers';
 
-import { getUserId } from "../Utils/server/getInfo";
+import { getAllUsers } from "../Utils/server/getInfo";
 import {User} from "../Utils/server/types"
 
 const myuser = {
@@ -17,25 +17,25 @@ const myuser = {
 	gender: "M",
 	created_at: "2023-03-02T20:00:24.955Z",
 }
-export default function Users () {
+export default function AllUsers () {
  
 	
 	const token = localStorage.getItem("token");
   
-	const [user, setUser] = useState<User>({} as User)
+	const [users, setUsers] = useState<User[]>([])
 
 
   useEffect(() => {
     const fetchData = async ()  => {
-      const response = await getUserId(myuser.id, token as string)
+      const response = await getAllUsers(token as string)
       console.log(response);
-      setUser(response)
+      setUsers(response)
       
   
     }
     fetchData()
     
-  }, [token, user])
+  }, [token, users])
 	
 
   return (
@@ -46,9 +46,15 @@ export default function Users () {
 				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
 					<>
 						
-						{user ? (<CardUsers
-                  id={user.id}
-                  key={user.id} name={user.name} password={user.password} email={user.email} avatar={undefined} isAdmin={false} created_at={''} permissions={[]} roles={[]}	/>) : <div><Spinner size="lg"/></div>}
+						{users ? (users.map( user => {
+							return (
+								<CardUsers
+									id={user.id}
+									key={user.id} name={user.name} password={user.password} email={user.email} avatar={undefined} isAdmin={false} created_at={''} permissions={[]} roles={[]} />
+
+							)
+						} ) )
+						: <div><Spinner size="lg" /></div>}
 								
 						
 					</>
