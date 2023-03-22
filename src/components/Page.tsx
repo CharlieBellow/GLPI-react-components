@@ -4,11 +4,10 @@ import { Header } from "../components/organisms/Header";
 import Head from "next/head";
 interface PageProps extends React.HTMLAttributes<HTMLElement> {
 	pagetitle: string;
-	contentpage: any;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export function Page ( {pagetitle, contentpage, children, ...rest }: PageProps ) {
+export function Page ( {pagetitle, children, ...rest }: PageProps ) {
 	return (
     <>
       <Head>
@@ -19,14 +18,14 @@ export function Page ( {pagetitle, contentpage, children, ...rest }: PageProps )
 						<Menu />
 					</div>
 
-					<div className="pageContent w-full h-screen flex flex-col" {...rest}>
+					<div className="pageContent w-full h-full flex flex-col" {...rest}>
 						<div { ...rest } >
 							<Header page={pagetitle} />
             </div>
 
 
 						<div {...rest} className="content ">
-							{contentpage}
+							{children}
 						</div>
 					</div>
 				</div>

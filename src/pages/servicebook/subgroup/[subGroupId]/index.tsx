@@ -9,7 +9,7 @@ import * as Icon from "phosphor-react";
 import { Page } from "../../../../components/Page";
 import CardGroup from "../../../../components/CardGroup";
 
-import { getAllSubGroups, getGroup } from "../../../../Utils/server/getInfo";
+import { getAllSubGroups , getGroup } from "../../../../Utils/server/getInfo";
 import { SubGroup } from '../../../../Utils/server/types';
 
 
@@ -32,7 +32,7 @@ const Subcategory = ( ) => {
       
 
       const category = await getGroup( subGroupId as string);
-      const response = await getAllSubGroups( subGroupId as string);
+      const response = await getAllSubGroups ( subGroupId as string);
       
       setGroupTitle( category.description );
       setSubgroups( response );
@@ -47,42 +47,39 @@ const Subcategory = ( ) => {
   const isAdmin = true
 
   return (
-    <Page
-      pagetitle={ "Subcategorias" }
-      contentpage={
-        <>
-          <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">
-            Subcategorias
-          </h4>
+    <Page pagetitle={ "Subcategorias" }>
+      <>
+        <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">
+          Subcategorias
+        </h4>
 
-          <h5 className="text-xl font-bold m-8">{ groupTitle }</h5>
-          <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
+        <h5 className="text-xl font-bold m-8">{ groupTitle }</h5>
+        <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
 
 
 
-            { subgroups && subgroups.map( ( subgroup ) => {
+          { subgroups && subgroups.map( ( subcategory ) => {
 
-              return (
+            return (
 
-                <CardGroup link={ `/servicebook/subgroup/${ subgroup.id }/getAllServices` } Name={ subgroup.description } Icon={ <Icon.Archive size={ 27 } /> }
-                  key={ subgroup.id }
-                  idGroup={ subgroup.id }
-                />
+              <CardGroup link={ `/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 } /> }
+                key={ subcategory.id }
+                idGroup={ subcategory.id }
+              />
 
-              );
-            } )
+            );
+          } )
 
-            }
+          }
 
 
-          </div>
+        </div>
 
-           {isAdmin ? (<>
-      <Link href="./createsubcategory" className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar categoria</Link> 
-      </>): <></>}
-        </>
-      }
-    />
+         {isAdmin ? (<>
+    <Link href="/servicebook/subgroup/createsubgroup" className="text-blue-ufal hover:underline-offset-1 hover:opacity-7  flex justify-end items-end content-end mr-12">+ Criar categoria</Link> 
+    </>): <></>}
+      </>
+      </Page>
   );
 };
 

@@ -1,5 +1,5 @@
 
-import { CardSignUp } from '../../../components/Cards/CardSignUp';
+import { CardSignUp } from '../../components/Cards/CardSignUp';
 import Head from "next/head"
 
 function SignUp() {

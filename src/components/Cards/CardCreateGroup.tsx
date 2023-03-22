@@ -6,44 +6,25 @@ import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 import { CardLine } from "./CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
-import { validationSchema, servicesList } from "../../Utils/validations";
+import { validationSchema, servicesList,  } from "../../Utils/validations";
 import * as yup from "yup";
-//import { services, ServicesList } from '../Pages/ServiceLetter/ServicesList';
-import { useEffect, useState } from "react";
-import { useGroupContext } from '../../Contexts/GroupContext';
-import { groupIcons, groupModel } from "../../Utils/ServiceModels";
+
 import { useMessage } from "../../Contexts/MessageContext";
-import { Group } from "../../Utils/server/types";
+
+import { postGroup } from "../../Utils/server/postInfo";
 
 
 
 const validate = yup.object().shape({
-	titleCategory: validationSchema.titleGroup,
-	description: validationSchema.description,
-	services: validationSchema.services,
-	link: validationSchema.link,
+	description: validationSchema.titleGroup,
 });
 
 export const CardCreateGroup = () => {
 
-	//const {category} = useCategoryContext()
-	const [ groups, setGroups ] = useState<Group[]>([]);
-	const {errorMessage, successMessage} = useMessage()
-	useEffect(() => {
-		const groupStorage = localStorage.getItem("groups");
+	const { errorMessage, successMessage } = useMessage();
 
-		if (groupStorage) {
-			setGroups(JSON.parse(groupStorage));
-
-			console.log("groups: ", groupStorage);
-		}
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem("groups", JSON.stringify(groups));
-	});
-
-
+	const token = localStorage.getItem("token");
+		
 	return (
 		<div className="mx-4">
 			<div
@@ -57,40 +38,26 @@ export const CardCreateGroup = () => {
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
 				</div>
+				{}
 				<Formik
 					initialValues={{
-						titleCategory: "",
 						description: "",
-						//services: [],
-						//icon: categoryIcons[ 3 ].icon,
-						link: "",
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
+						// icon: groupIcons[ 3 ].icon,
 					}}
-					//validationSchema={validations}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							//setCategories([...categories, values]);
-							console.log("group:", groups);
-
-							successMessage("Grupo criado com sucesso!");
+							const token = localStorage.getItem("token");
+							if (values && token) {
+								postGroup(values, token)
+								successMessage("Grupo criado com sucesso!");
+								actions.resetForm();
+								
+							} else {
+								errorMessage("Algo deu errado. Tente Novamente.")
+							}
 							
-							actions.resetForm();
 					
 						}, 400);
 					}}
@@ -101,35 +68,23 @@ export const CardCreateGroup = () => {
 								<div className="">
 									<CardLabelInput
 										label="Nome da Categoria"
-										name="titleCategory"
-										type="text"
-										width="w-full"
-										inputid="title"
-									/>
-								</div>
-
-								<div className="">
-									<CardLabelTextarea
-										label="Descrição"
-										type="textarea"
 										name="description"
-										textareaid="description"
-									/>
-								</div>
-								<div className="">
-									<CardLabelInput
-										label="link"
-										name="link"
 										type="text"
 										width="w-full"
-										inputid="title"
+										inputid="description"
 									/>
 								</div>
+								{/* <FieldSelect listitems={groupIcons } 
+  label="Ícone"
+  name="icon"
+  default="icone"/> */}
+
+							
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								{isSubmitting ?  <Spinner size="xl" /> : null}
+			
 								<Button
-									title="Solicitar"
+									title={isSubmitting ?  <Spinner size="md" /> : "Criar"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

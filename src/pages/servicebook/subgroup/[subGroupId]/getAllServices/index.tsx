@@ -5,12 +5,9 @@ import ServiceByCategory from "../../../../../components/ServicesComponent/Servi
 
 const ServicesByCategory = () => {
   return (
-    <Page
-      pagetitle={ "Lista de Serviços" }
-      contentpage={
-        <ServiceByCategory />
-      }
-    />
+    <Page pagetitle={ "Lista de Serviços" }>
+      <ServiceByCategory />
+    </Page>
   );
 };
 

@@ -4,7 +4,7 @@ import { ClassAttributes, InputHTMLAttributes } from "react";
 import { string } from "yup/lib/locale";
 import { Group } from "../../Utils/server/types";
 interface FieldSelectProps {
-  listitems: string[] | Group[]; 
+  listitems: string[] | Group[] | object[]
   label: string;
   name: string;
   default: string;

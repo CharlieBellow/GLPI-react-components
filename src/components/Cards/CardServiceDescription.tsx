@@ -50,8 +50,8 @@ export default function CardServiceDescription (  ) {
   }, [router.isReady, serviceId] );
 
   console.log( "router", serviceInfo);
- 
 
+  
   // construir as rotas dinâmicas. quando recarrega ele dá erro
 
   return (
@@ -62,7 +62,7 @@ export default function CardServiceDescription (  ) {
         </h3>
         <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
 
-          <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder//${serviceInfo && serviceInfo.title}` }>
+          <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder/${serviceInfo && serviceInfo.title}` }>
             <Button
               title={ floatingButton ? "" : "Solicitar Serviço" }
               theme="withIcon"

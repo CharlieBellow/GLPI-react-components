@@ -35,14 +35,9 @@ export default function List() {
 
 	console.log(lista);
 	return (
-		<>
-			<Page
-				pagetitle={"Tabela"}
-				contentpage={
-          <TableList itemlist={ userModel } listselecbutton={ItemSelect} />
-				}
-			/>
-		</>
+			<Page pagetitle={"Tabela"}>
+				<TableList itemlist={userModel} listselecbutton={ItemSelect}/>
+			</Page>
 	);
 }
 

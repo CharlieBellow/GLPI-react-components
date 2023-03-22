@@ -4,10 +4,9 @@ import HomeScreen from "../../../components/HomeScreen";
 
 export default function Dashboard () {
   return (
-    <Page
-      pagetitle={ "Dashboard" }
-      contentpage={ <HomeScreen /> }
-    />
+    <Page pagetitle={ "Dashboard" }>
+        <HomeScreen />
+    </Page>
   );
 }
 

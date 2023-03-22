@@ -1,16 +1,12 @@
 
 import * as React from 'react';
-import axios from "axios";
 import CardGroup from "./CardGroup";
-import { groupModel } from "../Utils/ServiceModels";
-import { Page } from "./Page";
-import { useContext } from 'react';
-import { RoutesContext } from '../Contexts/RouteContext';
 import { useRouter } from "next/router";
 import {useEffect, useState} from "react"
 import * as Icon from 'phosphor-react'
 import {getAllGroups} from "../Utils/server/getInfo"
 import { Group } from '../Utils/server/types';
+import Link from 'next/link';
 
 
 export default function GroupList () {
@@ -19,6 +15,7 @@ export default function GroupList () {
 
   useEffect(() => {
 
+    if (!router.isReady) return;
     const fetchData = async () => {
       const response = await getAllGroups()
       setGroups(response);      
@@ -26,9 +23,9 @@ export default function GroupList () {
 
     fetchData();
       
-  },[]);
+  },[router.isReady]);
     
-
+const isAdmin = true
   return (
 
     <>
@@ -44,23 +41,16 @@ export default function GroupList () {
 
           );
         } ) }
+      {/* organizar esses botões na tela */}
+        {isAdmin ? (
+          <>
+            <CardGroup link={`/servicebook/group/creategroup`} Name={"Criar Categoria"} Icon={<Icon.Plus size={27} />} idGroup={''} />
+            <CardGroup link={`/servicebook/group/`} Name={"Deletar Categoria"} Icon={<Icon.Trash size={27} />} idGroup={''} />
+            </>
+            ) : <></>}
+        
       </div>
     </>
   );
 };
-
-// TODO criar esses cards lá no banco
-{/*<CardCategory link="/Subcategorias" Name={"Biblioteca"} Icon={<Icon.BookOpen  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"NTI"} Icon={<Icon.Cpu  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"Manutenção"} Icon={<Icon.Wrench  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"NTI"} Icon={<Icon.FileText  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"Manutenção"} Icon={<Icon.Wrench  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"NTI"} Icon={<Icon.User  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"CRCA"} Icon={<Icon.Users  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"NAE"} Icon={<Icon.User  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"CRCA"} Icon={<Icon.Users  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"NAE"} Icon={<Icon.User  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"Outros"} Icon={<Icon.CrosshairSimple  size={27}/>} />
-                <CardCategory link="/Subcategorias" Name={"DAP"} Icon={<Icon.Stack  size={27}/>} />*/}
-
 

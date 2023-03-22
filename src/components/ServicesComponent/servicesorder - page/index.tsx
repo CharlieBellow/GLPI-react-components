@@ -4,14 +4,8 @@ import Services from "../Services";
 
 export default function ServicesOrder() {
   return (
-		<>
-			<Page
-				pagetitle={"Services"}
-				contentpage={
-					
-					<Services />
-				}
-			/>
-		</>
+		<Page pagetitle={"Services"}>
+			<Services />
+		</Page>
 	);
 }

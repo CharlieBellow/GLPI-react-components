@@ -24,7 +24,7 @@ const ServiceByGroup = ( ) => {
     }
 
     fetchData(); 
-  },[]);
+  });
 
  console.log(router.query.subgroupId)
 	return (

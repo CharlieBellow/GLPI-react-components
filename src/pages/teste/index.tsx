@@ -5,18 +5,10 @@ import  BasicForm  from "./BasicForm";
 
 function Teste() {
 	return (
-		<>
-			<Page
-				pagetitle={"Página de Teste"}
-				contentpage={
-					<>
-						<BasicForm />
-						{/*<ContextTest/>*/}
-					
-					</>
-				}
-			/>
-		</>
+			<Page pagetitle={"Página de Teste"}>
+				<BasicForm />
+				{/*<ContextTest/>*/}
+				</Page>
 	);
 }
 
