@@ -239,12 +239,12 @@ export const validationSchema = {
   titleGroup: yup
   .string()
   .min( 3, "No mínimo 3 caracteres" )
-  .max( 50, "No máximo 50 caracteres" )
+  .max( 18, "No máximo 18 caracteres" )
   .required( "É obrigatório informar o nome da Categoria" ),
   titleSubgroup: yup
   .string()
   .min( 3, "No mínimo 3 caracteres" )
-  .max( 50, "No máximo 50 caracteres" )
+  .max( 18, "No máximo 18 caracteres" )
   .required( "É obrigatório informar o nome da Subcategoria" ),
   services: yup
   .string()

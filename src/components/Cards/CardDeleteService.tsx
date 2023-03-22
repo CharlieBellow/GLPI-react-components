@@ -1,20 +1,20 @@
 
 import { useEffect, useState } from "react";
 import * as yup from "yup";
-import { getAllGroups } from "../../Utils/server/getInfo";
+import { getAllServices } from "../../Utils/server/getInfo";
 import { Group } from "../../Utils/server/types";
-import { deleteGroup } from "../../Utils/server/delInfo";
+import { deleteService } from "../../Utils/server/delInfo";
 import { Icon, Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { Button } from "../Buttons/Button";
-import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
+
 import { CardLine } from "./CardLine";
 import { CardTitle } from "./CardTitle";
 import FieldSelect from "../Inputs/FieldSelect";
-import { validationSchema, servicesList,  } from "../../Utils/validations";
+
 
 import { useMessage } from "../../Contexts/MessageContext";
+import { useRouter } from "next/router";
 
 
 
@@ -23,21 +23,25 @@ const validate = yup.object().shape({
 	
 });
 
-export const CardDeleteGroup = () => {
-
+export const CardDeleteService = () => {
+	
 	const { errorMessage, successMessage } = useMessage();
-
+	
 	const token = localStorage.getItem("token");
-
-const [listGroup, setListGroup] = useState<Group[]>([])
+	const router = useRouter()
+	const {subGroupId} = router.query
+	
+	const [listService, setListService] = useState<Group[]>([])
 	useEffect(() => {
+		if (!router.isReady) return;
 		const fetchData = async () => {
-			const response = await getAllGroups()
-			setListGroup(response)
+			const response = await getAllServices(subGroupId)
+			setListService(response)
 		}
 		fetchData()
-	}, [listGroup])
-		
+	}, [router.isReady, listService, subGroupId])
+	
+	// console.log("aqui", listService[0].title);
 	return (
 		<div className="mx-4">
 			<div
@@ -46,12 +50,12 @@ const [listGroup, setListGroup] = useState<Group[]>([])
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
-					<CardTitle title="Excluir Categoria" />
+					<CardTitle title="Excluir Serviço" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
 				</div>
-				{}
+			
 				<Formik
 					initialValues={{
 						description: "",
@@ -64,7 +68,7 @@ const [listGroup, setListGroup] = useState<Group[]>([])
 							if (values && token) {
 						console.log("values", values.description)
 
-								deleteGroup(values.description, token)
+						deleteService(values.description, token)
 								successMessage("Grupo deletado com sucesso!");
 								actions.resetForm();
 								
@@ -80,7 +84,7 @@ const [listGroup, setListGroup] = useState<Group[]>([])
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div>
-									<FieldSelect label="description" listitems={listGroup} default="selecione o grupo a ser deletado" name="description" />
+									<FieldSelect label="description" listitems={listService} default="selecione o serviço a ser deletado" name="description" />
 								</div>
 
 								<div className="">

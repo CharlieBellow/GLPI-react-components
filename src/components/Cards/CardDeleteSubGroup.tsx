@@ -50,7 +50,7 @@ export const CardDeleteSubGroup = () => {
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
-					<CardTitle title="Deletar Subcategoria" />
+					<CardTitle title="Excluir Subcategoria" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -102,7 +102,7 @@ export const CardDeleteSubGroup = () => {
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 			
 								<Button
-									title={isSubmitting ?  <Spinner size="md" /> : "Deletar"}
+									title={isSubmitting ?  <Spinner size="md" /> : "Excluir"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}
