@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Page } from "../../../../../components/Page";
 
 
@@ -5,9 +6,12 @@ import ServiceByCategory from "../../../../../components/ServicesComponent/Servi
 
 const ServicesByCategory = () => {
   return (
-    <Page pagetitle={ "Lista de Serviços" }>
+    <>
+      <Head>
+        <title>{"Lista de Serviços"}</title>
+      </Head>
       <ServiceByCategory />
-    </Page>
+    </>
   );
 };
 

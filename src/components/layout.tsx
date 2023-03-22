@@ -4,6 +4,9 @@ import { useAuth } from "../Contexts/AuthContext"
 import { useRouter } from "next/router";
 import LoadingPage from "../components/LoadingPage";
 import { usePreviousPage } from "../Contexts/PreviousPageContext";
+import Sidebar from "./Sidebar/Sidebar";
+import { SidebarProvider } from "./Sidebar/SidebarContext";
+import CardMenu from "./Cards/CardMenu";
 
 
 export default function Layout({ children }: any) {
@@ -41,15 +44,24 @@ export default function Layout({ children }: any) {
       setLoaded(true)
     }, 300);
   }, [])
-
-  if (loaded && ((router.asPath.includes("login") && !auth) || (!router.asPath.includes("login") && auth))) {
-    console.log(router.asPath.includes("login"))
-    return (
+  if (loaded && (router.asPath.includes("login"))) {
+    return(
       <main>
         {children}
       </main>
-
-
+    )
+  }else if (loaded && (!router.asPath.includes("login") && auth)){
+    return (
+      <SidebarProvider>
+        <Sidebar>
+          <>
+            <div className="bg-slate-200 h-full">
+                <CardMenu pagetitle="Dashboard"/>
+                {children}
+            </div>
+            </>
+        </Sidebar>
+      </SidebarProvider>
     )
   } else {
     return (<LoadingPage />)

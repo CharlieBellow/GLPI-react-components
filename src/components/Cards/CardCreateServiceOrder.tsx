@@ -227,7 +227,7 @@ export const CardCreateServiceOrder = () => {
 								<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 									<Button
 										isSubmitting={isSubmitting}
-										title={isSubmitting ? <Spinner size="md" /> : "Criar"}
+										title="Criar"
 										theme="primaryAction"
 										type="submit"
 										disabled={isSubmitting || !isValid}

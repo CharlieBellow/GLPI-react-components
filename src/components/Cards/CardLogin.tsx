@@ -59,16 +59,12 @@ export function CardLogin () {
 					setTimeout(() => {
 						console.log( "submit:", values );
             if ( values.email === "ud@arapiraca.ufal.br" && values.password === "admin" ) {
-              console.log( "auth login 2", auth );
-              changeAuth( auth )
-              console.log( "auth login 3", auth );
+             	console.log( "auth login 2", auth );
+              	changeAuth( auth )
+              	console.log( "auth login 3", auth );
+        		getToken( values);
 
-        getToken( values);
-		
-			  successMessage("Login realizado com sucesso!");
-
-			  // * checar se tem alguma página anterior
-							changeLogged(true);
+				changeLogged(true);
 			  if(page !== ""){
 				// * se tiver remove
 				console.log("redirecting by context")
@@ -76,8 +72,12 @@ export function CardLogin () {
 				router.push(page)
 			  }else{
 				// * se não, redireciona pra dashboard
-				router.push( "/Dashboard")
+				router.push("/Dashboard")
 			  }
+			  successMessage("Login realizado com sucesso!");
+
+			  // * checar se tem alguma página anterior
+
 							
 						} else {
 						errorMessage("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
