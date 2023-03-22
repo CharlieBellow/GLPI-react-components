@@ -9,7 +9,7 @@ function Teste() {
 			<Page pagetitle={"Página de Teste"}>
 				{/* <BasicForm /> */}
 			{/*<ContextTest/>*/}
-			<Users/>
+			{/* <Users/> */}
 				</Page>
 	);
 }

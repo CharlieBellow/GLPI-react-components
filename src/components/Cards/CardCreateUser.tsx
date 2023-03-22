@@ -1,22 +1,24 @@
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
-import { CardLine } from "../Cards/CardLine";
+import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
 import { Spinner } from "@chakra-ui/react";
 import { useMessage } from "../../Contexts/MessageContext";
+import { postUser } from "../../Utils/server/postInfo";
 
 const validate = yup.object().shape({
-	fullName: validationSchema.fullName,
+	name: validationSchema.fullName,
 	email: validationSchema.email,
 	password: validationSchema.password,
 	confirmPassword: validationSchema.confirmPassword,
 });
 
-function CardUserInfo() {
-	const {errorMessage, successMessage} = useMessage()
+function CardCreateUser() {
+	const { errorMessage, successMessage } = useMessage()
+	const token = localStorage.getItem("token");
 	return (
 		<div className="mx-4">
 			<div
@@ -25,23 +27,23 @@ function CardUserInfo() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9 pt-8">
-					<CardTitle title="Informações do Usuário" />
+					<CardTitle title="Criar Usuário" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
 				</div>
 				<Formik
 					initialValues={{
-						fullName: "",
+						name: "",
 						email: "",
 						password: "",
-						confirmPassword: "",
+						confirmPassword: ""
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-
+							postUser(values, token as string)
 							successMessage("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
@@ -54,7 +56,7 @@ function CardUserInfo() {
 							<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
 								<CardLabelInput
 									label="Nome Completo"
-									name="fullName"
+									name="name"
 									type="text"
 									inputid="name"
 									width="lg:w-80 w-full"
@@ -84,9 +86,8 @@ function CardUserInfo() {
 								/>
 							</div>
 							<div className="flex justify-end gap-x-3.5 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
 								<Button
-									title="Salvar"
+									title={isSubmitting ? <Spinner size="md" /> : "Criar"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}
@@ -101,4 +102,4 @@ function CardUserInfo() {
 	);
 }
 
-export default CardUserInfo;
+export default CardCreateUser;
