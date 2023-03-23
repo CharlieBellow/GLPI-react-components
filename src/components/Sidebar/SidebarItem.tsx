@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 interface Item extends React.HTMLAttributes<HTMLElement> {
     item: any;
 }
-function SidebarItem(props: Item){
+function    SidebarItem(props: Item){
     const [selected, setSelected] = useState(false);
     const [hover, setHover] = useState(false);
     const { open } = useContext(SidebarContext);
@@ -20,16 +20,24 @@ function SidebarItem(props: Item){
         }
     }, [router.isReady])
     const selectItem = () => {
-        if(open){
+        if(open && !props.item.path){
             setSelected(!selected);
         }else{
             setSelected(false);
         }    
+
+        if(props.item.path){
+            if(router.asPath === props.item.path){
+                setSelected(true)
+            }else{
+                setSelected(false)
+            }
+        }
     }
     return (
         <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
             <Link href={props.item.path? props.item.path : "#"} className={`flex flex-col w-full justify-center`} onClick={() => selectItem()} >
-                <div  className={`flex flex-row justify-between items-center text-white-100 mx-2 my-2 py-2 gap-4 rounded-lg ease-in-out duration-300 hover:bg-blue-700 cursor-pointer ${selected && props.item.path ? "bg-blue-700" : "bg-blue-600"}`}>
+                <div  className={`flex flex-row justify-between items-center  mx-2 my-2 py-2 gap-4 rounded-lg ease-in-out duration-300 hover:bg-sky-300 cursor-pointer ${selected && props.item.path ? "bg-white-ice text-blue-ufal" : "text-white-100"}`}>
                    <div className="flex flex-row items-center gap-2">
                         <div className="pl-2">
                             {props.item.icon}
@@ -44,7 +52,7 @@ function SidebarItem(props: Item){
             </Link>
             <div className="flex flex-col w-full relative">                
                     {open && selected && props.item.children ? props.item.children.map((child : Item, index : number) => {
-                        return <div className={`text-white-100 flex flex-col mx-2 px-6 py-2 gap-4 rounded-lg items-start ease-in-out duration-300 hover:bg-blue-700 cursor-pointer`}>
+                        return <div className={`text-white-100 flex flex-col mx-2 px-6 py-2 gap-4 rounded-lg items-start ease-in-out duration-300 hover:bg-sky-300 cursor-pointer`}>
                             <Link href={child.dir? child.dir : "#"} key={index}>{child.title}</Link>
                         </div>
                     }) : <></>} 

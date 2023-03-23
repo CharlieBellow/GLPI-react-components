@@ -7,6 +7,12 @@ import CardMenu from "../Cards/CardMenu";
 import Image from "next/image";
 function Sidebar({children} :any){
 
+    // ! erro na permanência do item selecionado
+    // ! pegar o título do documento
+    // ! adicionar a estilização anterior > adicionar imagem
+    // ! adicionar as demais opções no menu
+    // ! consertar responsividade
+
     const { open } = useContext(SidebarContext);
     const { openMenu } = useContext(SidebarContext);
 
@@ -33,7 +39,7 @@ function Sidebar({children} :any){
     ];
     return(
         <div className="flex w-full h-full">
-            <div className={`${open ? "w-[45rem] shadow-2xl lg:w-48 shadow-none" : "w-0 lg:w-16"} bg-blue-600 ease-in-out duration-300 lg:block`}>
+            <div className={`${open ? "w-[20rem] shadow-2xl lg:w-48 shadow-lg" : "w-0 lg:w-16"} fixed h-full overflow-x-hidden bg-blue-final-gradient ease-in-out duration-300 before:bg-gradient-to-r  before:-z-10 lg:static lg:block lg:h-auto`}>
                 <div className="flex flex-row w-full justify-center mb-4">
                     <Image className="mt-4 max-w-[6rem]" src={ufalLogo} alt="logo"/>
                 </div>   

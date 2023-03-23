@@ -7,9 +7,12 @@ import { usePreviousPage } from "../Contexts/PreviousPageContext";
 import Sidebar from "./Sidebar/Sidebar";
 import { SidebarProvider } from "./Sidebar/SidebarContext";
 import CardMenu from "./Cards/CardMenu";
+interface PageProps extends React.HTMLAttributes<HTMLElement> {
+	pagetitle: string;
+  children: React.ReactNode;
+}
 
-
-export default function Layout({ children }: any) {
+export default function Layout({ children, ...rest }: PageProps) {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const { auth, user, verifyCookies } = useAuth()
@@ -57,7 +60,9 @@ export default function Layout({ children }: any) {
           <>
             <div className="bg-slate-200 h-full">
                 <CardMenu pagetitle="Dashboard"/>
-                {children}
+                <div {...rest} className="content ">
+							    {children}
+						    </div>
             </div>
             </>
         </Sidebar>
