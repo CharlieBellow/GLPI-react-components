@@ -8,7 +8,6 @@ import Sidebar from "./Sidebar/Sidebar";
 import { SidebarProvider } from "./Sidebar/SidebarContext";
 import CardMenu from "./Cards/CardMenu";
 interface PageProps extends React.HTMLAttributes<HTMLElement> {
-	pagetitle: string;
   children: React.ReactNode;
 }
 

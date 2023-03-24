@@ -11,6 +11,7 @@ import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
 import { Divide } from "phosphor-react";
+import Link from "next/link";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -32,21 +33,22 @@ const myuser = {
 	roles: []
 }
 
+// ! criar rota pra alterar senha / esquecer
 function CardUserInfo() {
 	const { errorMessage, successMessage } = useMessage()
-	const [user, setUser] = useState<User>({} as User)
+	const [user, setUser] = useState<User>()
 	
 	const token = localStorage.getItem("token");
 // entender pq não tá pegando o usuario
 	useEffect(() => {
-		if(typeof window !== "undefined") return 
 		const fetchData = async () => {
 			const response = await getUserId(myuser.id, token as string)
 			console.log("myuser", response)
-
 			setUser(response)
 		} 
-	})
+
+		fetchData()
+	}, [])
 
 	return (
 		<div className="mx-4">
@@ -63,7 +65,7 @@ function CardUserInfo() {
 				</div>
 				{user  ? (<Formik
 					initialValues={{
-						name: myuser.name,
+						name: user.name,
 						email: user.email,
 						password: user.password,
 					}}
@@ -99,23 +101,18 @@ function CardUserInfo() {
 									disabled={user.name ? true : false}
 								/>
 							</div>
-							<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
-								<CardLabelInput
-									label="Senha"
-									type="password"
-									name="password"
-									inputid="password"
-									width="lg:w-80 w-full"
-									disabled={user.name ? true : false}
-								/>
-								<CardLabelInput
-									label="Confirmar Senha"
-									type="password"
-									name="confirmPassword"
-									inputid="cpassword"
-									width="lg:w-80 w-full"
-									disabled={user.name ? true : false}
-								/>
+							<div className="flex flex-col lg:flex-row justify-between lg:gap-x-13 gap-9 text-blue-ufal underline text-base">
+								<Link href="">
+									<div >
+										<span>Alterar Senha</span>
+									</div>
+								</Link>
+								// TODO link para recuperar senha (enviar por email)
+								<Link href="">
+									<div >
+										<span>Esqueci minha senha</span>
+									</div>
+								</Link>
 							</div>
 							{/* <div className="flex justify-end gap-x-3.5 mt-10">
 								{isSubmitting ? <Spinner size="xl" /> : null}

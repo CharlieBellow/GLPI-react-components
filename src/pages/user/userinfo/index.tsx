@@ -1,15 +1,14 @@
 import { Page } from "../../../components/Page";
 import CardUserInfo from "../../../components/Cards/CardUserInfo";
+import Head from "next/head";
 
 function FormUserInfo() {
-
 	return (
 		<>
-			<Page
-				pagetitle={"Informações do Usuário"}
-			>
-				<CardUserInfo />
-				</Page>
+			<Head>
+				<title>{"Informações do Usuário"}</title>
+			</Head>
+			<CardUserInfo />
 		</>
 	);
 }
