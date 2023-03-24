@@ -1,5 +1,4 @@
 import React from "react";
-import { Page } from "../components/Page";
 import HomeScreen from "../components/HomeScreen";
 import Head from "next/head";
 
@@ -13,11 +12,6 @@ export default function Dashboard () {
          </Head>
          <HomeScreen /> 
       </>
-      //<Page
-       //  pagetitle={ "Dashboard" }
-       //  >
-
-    //  </Page>
      ) 
   
 
