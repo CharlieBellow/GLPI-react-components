@@ -15,8 +15,6 @@ function    SidebarItem(props: Item){
         if(!router.isReady) return;
         if(router.asPath === props.item.path){
             setSelected(true)
-        }else{
-            setSelected(false)
         }
     }, [router.isReady])
     const selectItem = () => {
@@ -25,13 +23,8 @@ function    SidebarItem(props: Item){
         }else{
             setSelected(false);
         }    
-
         if(props.item.path){
-            if(router.asPath === props.item.path){
-                setSelected(true)
-            }else{
-                setSelected(false)
-            }
+            setSelected(true)
         }
     }
     return (
@@ -57,9 +50,9 @@ function    SidebarItem(props: Item){
                         </div>
                     }) : <></>} 
                     {!open && props.item.children ? 
-                    <div className="bg-blue-600 text-white-100 absolute left-14 -bottom-2 w-40 rounded-md z-10">
+                    <div className="bg-blue-final-gradient text-white-100 absolute left-14 -bottom-2 w-40 rounded-md z-10">
                         {props.item.children.map((child: Item, index : number) => {
-                            return <Link href={child.dir? child.dir : "#"} key={index} className={`hover:bg-blue-700 rounded-md p-2 ${hover ? "block" : "hidden"}`}>{child.title}</Link>
+                            return <Link href={child.dir? child.dir : "#"} key={index} className={`hover:bg-sky-300 rounded-md p-2 ${hover ? "block" : "hidden"}`}>{child.title}</Link>
                         })}
                     </div> 
                     : <></>}
