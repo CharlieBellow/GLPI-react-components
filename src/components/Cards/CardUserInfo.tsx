@@ -34,19 +34,17 @@ const myuser = {
 
 function CardUserInfo() {
 	const { errorMessage, successMessage } = useMessage()
-	const [user, setUser] = useState<User>({} as User)
+	const [user, setUser] = useState<User>()
 	
 	const token = localStorage.getItem("token");
 // entender pq não tá pegando o usuario
 	useEffect(() => {
-		if(typeof window !== "undefined") return 
 		const fetchData = async () => {
 			const response = await getUserId(myuser.id, token as string)
-			console.log("myuser", response)
-
 			setUser(response)
 		} 
-	})
+		fetchData()
+	},)
 
 	return (
 		<div className="mx-4">
@@ -63,7 +61,7 @@ function CardUserInfo() {
 				</div>
 				{user  ? (<Formik
 					initialValues={{
-						name: myuser.name,
+						name: user.name,
 						email: user.email,
 						password: user.password,
 					}}
@@ -129,7 +127,7 @@ function CardUserInfo() {
 							</div> */}
 						</Form>
 					)}
-				</Formik>) : <div><Spinner size="lg"/></div>}
+				</Formik>) : <div  className="flex justify-center"><Spinner size="lg"/></div>}
 				
 			</div>
 		</div>

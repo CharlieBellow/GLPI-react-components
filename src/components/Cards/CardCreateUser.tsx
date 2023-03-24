@@ -16,7 +16,7 @@ const validate = yup.object().shape({
 	confirmPassword: validationSchema.confirmPassword,
 });
 
-function CardCreateUser() {
+function CardUpdateUser() {
 	const { errorMessage, successMessage } = useMessage()
 	const token = localStorage.getItem("token");
 	return (
