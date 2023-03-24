@@ -28,10 +28,17 @@ import { useMessage } from "../../Contexts/MessageContext";
 import axios from "axios";
 
 export const lettersOnly = /[^a-zA-Z]/g;
-
+let requiredValidation
 const validate = yup.object().shape({
 	description: validationSchema.description,
-	// title: validationSchema.titleGroup,
+	title: validationSchema.titleGroup,
+	// serviceLocal: validationSchema.serviceLocal,
+	patrimonyId: validationSchema.patrimony,
+});
+
+const validateWhitOutPatrimony = yup.object().shape({
+	description: validationSchema.description,
+	title: validationSchema.titleGroup,
 	// serviceLocal: validationSchema.serviceLocal,
 	// patrimony: validationSchema.patrimony,
 });
@@ -74,7 +81,7 @@ export const CardCreateServiceOrder = () => {
 	const router = useRouter();
 	const { serviceOrderId, titleServiceOrder } = router.query
 
-	const [serviceInfo, setServiceInfo] = useState<Service>({} as Service)
+	const [serviceInfo, setServiceInfo] = useState<Service>()
 
 	const { errorMessage, successMessage } = useMessage()
 
@@ -87,6 +94,9 @@ export const CardCreateServiceOrder = () => {
 			
 			const response = await getService(serviceOrderId as string)
 			setServiceInfo(response)
+			if (response.isPatromonyIdRequired) {
+				requiredValidation = validationSchema.patrimony
+			}
 			
 		}
 		fetchData()
@@ -95,20 +105,6 @@ export const CardCreateServiceOrder = () => {
 	
 	console.log("response", serviceInfo)
 	
-	// o formik não aceita validação condicional.;
-	// let mytitle = ""
-	// const  title = () => {
-	// 	if (serviceInfo && serviceInfo.title) {
-	// 		return mytitle = serviceInfo.title
-	// 	} else {
-	// 		return ""
-	// 	}
-	// }
-	// title()
-	// console.log("dssdsd", mytitle);
-
-
-
 
 	return (
 		<>
@@ -124,69 +120,43 @@ export const CardCreateServiceOrder = () => {
 							<CardLine />
 						</div>
 						
-						{router.isReady ? 
-						<Formik
+						{router.isReady && serviceInfo ?
+							<Formik
+								validateOnMount={true}
 								initialValues={{
-							description: "",
-							serviceId: serviceInfo ? serviceInfo.id : "",
-							// patrimonyId: "",
-							requesterId: myuser.id,
-							respponsibleId: myuser.id,
-							// serviceLocal:"",
-							title: serviceInfo ? serviceInfo.title : "",
-							status: "Aberto",
-							estimetadAt: new Date().toLocaleTimeString("pt-br", {
-								month: "2-digit",
-								day: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "2-digit",
-							})
-								.toString()
-								.replace(":", ":")
-								.replace(":", ":")
-								.replace(",", "")
-								.replace("/", "-")
-								.replace("/", "-"),
-							closedAt: new Date().toLocaleTimeString("pt-br", {
-								month: "2-digit",
-								day: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "2-digit",
-							})
-								.toString()
-								.replace(":", ":")
-								.replace(":", ":")
-								.replace(",", "")
-								.replace("/", "-")
-								.replace("/", "-"),
-						
-						}}
-						validationSchema={validate}
-						onSubmit={(values, actions) => {
-							setTimeout(() => {
-								console.log("submit:", values);
+									description: "",
+									serviceId: serviceInfo.id,
+									patrimonyId: serviceInfo.isPatromonyIdRequired ? "" : "notrequired",
+									requesterId: myuser.id,
+									respponsibleId: myuser.id,
+									// serviceLocal:"",
+									title: serviceInfo.title,
+									status: "Aberto",
+									estimetadAt: new Date(),
+									closedAt: new Date()
+								}}
+								validationSchema={validate}
+								onSubmit={(values, actions) => {
+									setTimeout(() => {
+										console.log("submit:", values);
 
-								if (token !== null) {
-									axios( {
-										method: 'post',
-										baseURL: "http://172.27.12.171:3333",
-										url: `/servicebook/serviceorder/`,
-										data: values,
-										headers: { authorization: `Bearer ${ token }` }
-									})
+										if (token !== null) {
+											axios({
+												method: 'post',
+												baseURL: "http://172.27.12.171:3333",
+												url: `/servicebook/serviceorder/`,
+												data: values,
+												headers: { authorization: `Bearer ${token}` }
+											})
 									
 						
 
-									successMessage("Serviço criado com sucesso!");
+											successMessage("Serviço criado com sucesso!");
 
-									actions.resetForm();
-								} else {
-									errorMessage("Algo deu errado. Tente novamente.")
-								}
+											actions.resetForm();
+										} else {
+											errorMessage("Algo deu errado. Tente novamente.")
+										}
 
 							}, 400);
 						}}

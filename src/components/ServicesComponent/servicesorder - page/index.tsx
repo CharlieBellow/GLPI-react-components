@@ -1,5 +1,5 @@
 import { Page } from "../../Page";
-import Services from "../Services";
+import Services from "../ServicesOrder";
 
 
 export default function ServicesOrder() {

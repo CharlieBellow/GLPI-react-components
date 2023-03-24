@@ -14,7 +14,7 @@ export function Page ( {pagetitle, children, ...rest }: PageProps ) {
         <title>{pagetitle}</title>
       </Head>
 			<div className="layout__menu-header bg-white-strong-ice" {...rest}>
-				<div className="flex max-w-13xl mx-auto" {...rest}>					<div className="flex" {...rest}>
+				<div className="flex max-w-13xl mx-auto lg:h-content" {...rest}>					<div className="flex" {...rest}>
 						<Menu />
 					</div>
 

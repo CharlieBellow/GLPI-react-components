@@ -20,6 +20,20 @@ export default function FieldSelect(
 ) {
 	const [field, meta] = useField(props);
 
+	const getSelect = (item) =>{
+
+		if (typeof item === 'string') {
+			return item;
+
+		} else if (item.title) {
+			return item.title;
+
+		} else {
+			return item.description;
+
+		}
+	}
+ 
 	return (
 		<div
 			className={`w-full relative flex items-start flex-col  ${props.theme}`}
@@ -38,10 +52,11 @@ export default function FieldSelect(
 					{props.default}
 				</option>
         { props.listitems.map( item => {
-          console.log(item)
 					return (
 						<option key={typeof item === 'string' ? item : item.id} value={typeof item === 'string' ? item : item.id} className="font-bold ">
-              			{typeof item === 'string' ? item : item.description}
+							
+							{
+							getSelect(item)}
 						
 						</option>
 					);

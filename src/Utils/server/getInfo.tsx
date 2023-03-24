@@ -59,7 +59,29 @@ export async function getService(id : string) {
   const response = await axios({
                 method: 'get',
                 baseURL: baseURL,
-                url: `/servicebook/service/${id}`,
+    url: `/servicebook/service/${id}`,
+    headers: { authorization: `Bearer ${ token }` }
+              });
+  return response.data;
+}
+    
+export async function getRequesterService(id : string, token: string) {
+  const response = await axios({
+                method: 'get',
+                baseURL: baseURL,
+    url: `servicebook/serviceorder/requester/${id}`,
+    headers: { authorization: `Bearer ${ token }` }
+              });
+  return response.data;
+}
+    
+
+export async function getResponsibleService(id : string, token: string) {
+  const response = await axios({
+                method: 'get',
+                baseURL: baseURL,
+                url: `/servicebook/serviceorder/responsible/${id}`,
+                headers: { authorization: `Bearer ${ token }` }
               });
   return response.data;
     }
@@ -76,7 +98,30 @@ const myuser = {
 	created_at: "2023-03-02T20:00:24.955Z",
 }
 
-export async function getUser ( token: string ) {
+export async function getUserId ( id: string, token: string ) {
+  const response = await axios( {
+    method: 'get',
+    baseURL: baseURL,
+    url: `/users/${id}`,
+    headers: { authorization: `Bearer ${ token }` }
+  } );
+
+  return response.data;
+}
+
+export async function getUserByEmail ( email: object, token: string ) {
+  const response = await axios( {
+    method: 'get',
+    baseURL: baseURL,
+    url: `/users/find`,
+    data: email,
+    headers: { authorization: `Bearer ${ token }` }
+  } );
+
+  return response.data;
+}
+
+export async function getAllUsers ( token: string ) {
   const response = await axios( {
     method: 'get',
     baseURL: baseURL,

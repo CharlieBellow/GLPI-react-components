@@ -1,14 +1,14 @@
 import { Page } from "../../../components/Page";
-import CardUserInfo from "../../../components/Cards/CardUserInfo";
+import CardCreateUser from "../../../components/Cards/CardCreateUser";
 
 function FormUserInfo() {
 
 	return (
 		<>
 			<Page
-				pagetitle={"Informações do Usuário"}
+				pagetitle={"Criar Usuário"}
 			>
-				<CardUserInfo />
+				<CardCreateUser />
 				</Page>
 		</>
 	);
