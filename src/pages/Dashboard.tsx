@@ -1,17 +1,23 @@
 import React from "react";
 import { Page } from "../components/Page";
 import HomeScreen from "../components/HomeScreen";
+import Head from "next/head";
 
 
 export default function Dashboard () {
   
     return (
-      <Page
-         pagetitle={ "Dashboard" }
-         >
+      <>
+         <Head>
+            <title>{"Dashboard"}</title>
+         </Head>
          <HomeScreen /> 
-      </Page>
-       
+      </>
+      //<Page
+       //  pagetitle={ "Dashboard" }
+       //  >
+
+    //  </Page>
      ) 
   
 

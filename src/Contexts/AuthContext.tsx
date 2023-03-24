@@ -33,7 +33,7 @@ export const AuthContext = createContext({} as AuthContextProps);
 export function AuthProvider({ children }: AuthProviderProps) {
 
   const [auth, setAuth] = useState<boolean>(false)
-  const [token, setToken] = useState<string>("")
+  const [token, setToken] = useState("")
   // coloquei um objeto vazio para iniciar o useState
   const [user, setUser] = useState<UserProps>({} as UserProps)
   function changeAuth(auth: boolean) {
@@ -41,7 +41,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   function changeToken(token: string) {
-    setToken(token)
+    setToken(token);
     localStorage.setItem("token", token);
     getUser(token).then(response => {
       localStorage.setItem("user", JSON.stringify(response[0]))

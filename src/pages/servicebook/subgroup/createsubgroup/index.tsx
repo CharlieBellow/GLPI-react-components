@@ -1,16 +1,14 @@
 import Head from "next/head";
-import { CardCreateGroup } from "../../../../components/Cards/CardCreateGroup";
+import { CardCreateSubGroup } from "../../../../components/Cards/CardCreateSubGroup";
 import { Page } from "../../../../components/Page";
 
-export default function CreateCategory() {
-	
-  return (
+export default function CreateSubcategory() {
+	return (
 		<>
 			<Head>
 				<title>{"Abertura de Chamados - GLPI"}</title>
 			</Head>
-			<CardCreateGroup />
+			<CardCreateSubGroup />
 		</>
-
 	);
 }

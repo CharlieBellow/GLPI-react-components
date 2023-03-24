@@ -1,3 +1,5 @@
+import {useAuth} from "../../Contexts/AuthContext"
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Formik, Form, ErrorMessage } from "formik";

@@ -11,6 +11,7 @@ import CardGroup from "../../../../components/CardGroup";
 
 import { getAllSubGroups , getGroup } from "../../../../Utils/server/getInfo";
 import { SubGroup } from '../../../../Utils/server/types';
+import Head from "next/head";
 
 
 const baseURL = "http://172.27.12.171:3333";
@@ -47,7 +48,10 @@ const Subcategory = ( ) => {
   const isAdmin = true
 
   return (
-    <Page pagetitle={ "Subcategorias" }>
+    <>
+    <Head>
+      <title>{"Subgrupos"}</title>
+    </Head>
       <>
         <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">
           Subcategorias
@@ -81,7 +85,7 @@ const Subcategory = ( ) => {
         </div>
        
       </>
-      </Page>
+      </>
   );
 };
 

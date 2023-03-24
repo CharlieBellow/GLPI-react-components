@@ -80,7 +80,7 @@ module.exports = {
 
 			backgroundImage: {
 				gradient:
-					"linear-gradient(90.18deg, rgba(1, 149, 218, 0.67) 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
+					"linear-gradient(90.18deg, #4FB4E4 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
 				"ufalBackground":
 					"url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
 			},

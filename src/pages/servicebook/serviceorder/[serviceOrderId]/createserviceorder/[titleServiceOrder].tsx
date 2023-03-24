@@ -1,12 +1,14 @@
+import Head from "next/head";
 import CardCreateServiceOrder from "../../../../../components/Cards/CardCreateServiceOrder";
 import { Page } from "../../../../../components/Page";
 
 function ServiceDescription () {
   return (
     <>
-      <Page pagetitle={ "Criar serviço" }>
+      <Head>
+        <title>{"Criar Serviço"}</title>
+      </Head>
         <CardCreateServiceOrder />
-      </Page>
     </>
   );
 }
