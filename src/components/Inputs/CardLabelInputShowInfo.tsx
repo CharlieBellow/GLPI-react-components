@@ -2,7 +2,7 @@ import * as Icon from "phosphor-react";
 import { Field, FieldHookConfig, useField } from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 
-interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
+interface CardLabelInputShowInfoProps extends React.HTMLAttributes<HTMLElement> {
 	label: string | boolean;
 	type: string;
 	inputid?: string;
@@ -13,12 +13,12 @@ interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
 	
 }
 
-function CardLabel ( props: CardLabelInputProps ) {
+function CardLabelShowInfo ( props: CardLabelInputShowInfoProps ) {
 	return (
 		<label
 			{...props}
 			htmlFor={props.inputid}
-			className="absolute text-base peer-focus:bg-white-ice text-light-bg duration-300 transform
+			className="absolute text-sm peer-focus:bg-white-ice text-light-bg duration-300 transform
       -translate-y-5 scale-100 -top-1 origin-[0] peer-focus:px-2 peer-focus:text-blue-ufal
       peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
       peer-focus:peer-placeholder-shown:-translate-x-0 peer-placeholder-shown:translate-x-1.5
@@ -29,7 +29,7 @@ function CardLabel ( props: CardLabelInputProps ) {
 	);
 }
 
-export function CardLabelInput ( props: CardLabelInputProps &InputHTMLAttributes<HTMLInputElement> &
+export function CardLabelInputShowInfo ( props: CardLabelInputShowInfoProps &InputHTMLAttributes<HTMLInputElement> &
 ClassAttributes<HTMLInputElement> &
 FieldHookConfig<string> ) {
 	const [field, meta] = useField(props);
@@ -40,7 +40,7 @@ FieldHookConfig<string> ) {
 				{...field}
 				type={props.type}
 				pattern={props.pattern}
-				className={`block px-2.5 py-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
+				className={`block px-2.5 py-2.5 text-base text-light-bg border-gray-medium focus:bg-transparent border-2
           max-h-11 rounded-lg appearance-none focus:outline-none
           focus:ring-0 focus:border-2  peer ${
 						meta.error ? " border-red-ufal" : "focus:border-blue-ufal"
@@ -49,7 +49,7 @@ FieldHookConfig<string> ) {
 			/>
 			<>{props.icon}</>
 
-			<CardLabel
+			<CardLabelShowInfo
 				label={ props.label }
 				name={props.name}
 				type={props.type}

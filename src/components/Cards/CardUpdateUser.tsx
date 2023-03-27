@@ -1,7 +1,8 @@
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
-import { CardLine } from "../Cards/CardLine";
+import { CardLine } from "./CardLine";
 import { CardLabelInputShowInfo } from "../Inputs/CardLabelInputShowInfo";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
@@ -11,9 +12,6 @@ import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
 import { Divide } from "phosphor-react";
-import Navigate from "../../Utils/navigate";
-import { useRouter } from "next/router";
-import Link from "next/link";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -35,7 +33,7 @@ const myuser = {
 	roles: []
 }
 
-function CardUserInfo() {
+function CardUpdateUser() {
 	const { errorMessage, successMessage } = useMessage()
 	const [user, setUser] = useState<User>()
 	
@@ -51,8 +49,6 @@ function CardUserInfo() {
 
 	const isAdmin = true
 
-	const router = useRouter()
-
 	return (
 		<div className="mx-4">
 			<div
@@ -61,7 +57,7 @@ function CardUserInfo() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" src={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={ 86} height={ 86} type="image"/>
+					<CardTitle title="Informações do Usuário" src={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={86} height={86} type="image" />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -70,7 +66,8 @@ function CardUserInfo() {
 					initialValues={{
 						name: user.name,
 						email: user.email,
-						password: "********",
+						password: "",
+						confirmPassword: ""
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
@@ -78,9 +75,11 @@ function CardUserInfo() {
 							console.log("submit:", values);
 
 							successMessage("Chamado criado com sucesso!");
-							//alert(JSON.stringify(values, null, 2));
+
+
+				// falta a função de alterar usuário
 							actions.resetForm();
-							//setSubmitting(false);
+						
 						}, 400);
 					}}
 				>
@@ -105,25 +104,31 @@ function CardUserInfo() {
 								/>
 							</div>
 							<div className="flex flex-col lg:flex-row lg:gap-x-13 gap-9">
-								<CardLabelInputShowInfo
+								<CardLabelInput
 									label="Senha"
 									type="password"
 									name="password"
-									inputid="****"
+									inputid="password"
 									width="lg:w-80 w-full"
-									disabled={user.name ? true : false}
+					
+								/>
+								<CardLabelInput
+									label="Senha"
+									type="password"
+									name="confirmPassword"
+									inputid="confirmPassword"
+									width="lg:w-80 w-full"
+							
 								/>
 						
 							</div>
 							<div className="flex justify-end gap-x-3.5 mt-10 ">
-								<Link href="./updateuser">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Alterar senha"}
+									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
 									theme="primaryAction"
-									type="button"
-						
+									type="submit"
+									disabled={isSubmitting || !isValid}
 								/>
-								</Link>
 								{isAdmin ? <Button title="Excluir" theme="secondaryAction" /> : <></>}
 								
 							</div>
@@ -137,4 +142,4 @@ function CardUserInfo() {
 	);
 }
 
-export default CardUserInfo;
+export default CardUpdateUser;
