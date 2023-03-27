@@ -11,6 +11,7 @@ import { getRequesterService, getResponsibleService  } from "../../Utils/server/
 import { Spinner } from "@chakra-ui/react";
 import {CardLabelInputCheckbox} from "../../components/Inputs/CardLabelInputCheckbox"
 import { Formik, FormikHelpers, FormikValues } from "formik";
+import { TextAlignCenterIcon, TextAlignLeftIcon, TextAlignRightIcon } from '@radix-ui/react-icons';
 
 
 
@@ -31,24 +32,26 @@ export default function ServicesOrder () {
 	const [responsibleList, setResponsibleList] = useState<ServiceOrder[]>([])
 	const [servicesList, setServicesList] = useState<ServiceOrder[]>([])
 	const [servicesStatus, setServicesStatus] = useState<ServiceOrder[]>([])
-	
+
+	 const [value, setValue] = useState('todos')
+	const [orderList, setOrderList] = useState<ServiceOrder[]>()
 	
 	const token = localStorage.getItem("token");
   
 	useEffect(() => {
-    const fetchData = async () => {
-			const responseRequester = await getRequesterService(myuser.id, token as string);
-			const responseResponsible = await getResponsibleService(myuser.id, token as string);
+		const fetchData = async () => {
+				const responseRequester = await getRequesterService(myuser.id, token as string);
+				const responseResponsible = await getResponsibleService(myuser.id, token as string);
 
-			// console.log(responseRequester);
-      		setRequesterList(responseRequester)
-      		setResponsibleList(responseResponsible)
-			setServicesList([...responseRequester, responseResponsible])
-			// setServicesStatus(servicesList)
-			setValue(servicesList)
-    }
-    fetchData()
-  }, [])
+				// console.log(responseRequester);
+				setRequesterList(responseRequester)
+				setResponsibleList(responseResponsible)
+				setServicesList([...responseRequester, responseResponsible])
+				// setServicesStatus(servicesList)
+				setOrderList([...responseRequester, responseResponsible])
+		}
+		fetchData()
+  	}, [])
 
 	console.log("servicesList", servicesList);
 	console.log("atribuído", responsibleList);
@@ -56,12 +59,15 @@ export default function ServicesOrder () {
 
 
 	const toogle = "responsible"
-	const [value, setValue] = useState<ServiceOrder[]>([])
+	const toggleGroupItemClasses =
+  		'flex items-center gap-2 p-2 rounded-lg bg-slate-50 text-slate-500 ToggleGroupItem hover:bg-gray-medium data-[state=on]:bg-violet6 data-[state=on]:text-violet12';
+
 
   return (
 		<>
 			<div className="lg:m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl">
-				<div className='flex flex-row justify-between items-center px-10'>
+				
+			<div className='flex flex-row justify-between items-center px-10'>
 					<h2 className="lg:text-4xl text-2xl font-bold">Minhas ordens de serviço</h2>	
 					<div className='flex flex-col items-center '>
 						<p className="text-lg">Filtro:</p>
@@ -69,14 +75,15 @@ export default function ServicesOrder () {
 							type="single"
 							className='flex sm:flex-row flex-col gap-2'
 							value={value as any}
-							defaultValue="todos"
+							defaultValue={"todos"}
 							onValueChange={(value) => {
+								setValue(value)
 								if (value === "atribuido") {
-									setValue(responsibleList)
+									setOrderList(responsibleList)
 									console.log("chamou atribuido");
 								} else
 								if (value === "proprietario") {
-									setValue(requesterList)
+									setOrderList(requesterList)
 									console.log("chamou proprietario");
 								}
 								else if (value === "status") {
@@ -87,13 +94,12 @@ export default function ServicesOrder () {
 									)
 									})
 										
-									setValue(servicesStatus)
+									setOrderList(servicesStatus)
 									console.log("chamou proprietario");
 								}
-									else {
-									
+									else {						
 									console.log("chamou todos");
-									setValue(servicesList)
+									setOrderList(servicesList)
 								}
 							}}
 						>
@@ -109,20 +115,20 @@ export default function ServicesOrder () {
 							<Icon.EnvelopeSimpleOpen size={26} />
 								Status
 						</ToggleGroup.Item> 
-						<ToggleGroup.Item value="todos" className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 text-slate-500 ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:text-white-100  ">
+						<ToggleGroup.Item value="todos" className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 text-slate-500 ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:text-white-100 data-[state=on]:bg-blue-ufal data-[state=on]:text-white-100">
 							<Icon.ListBullets size={26} />
 								Todos
 						</ToggleGroup.Item>
 						</ToggleGroup.Root>
 
 					</div>
-				</div>
+				</div> 
 				
-				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
+				<div className="lg:grid lg:w-full flex-wrap mx-auto px-4x justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
 					<>
 						
-						{value ?
-								value.map((item: any) => {
+						{orderList !== undefined ?
+								orderList.map((item: any) => {
 							return (
 								<CardServiceOrder
 			
@@ -147,4 +153,4 @@ export default function ServicesOrder () {
 			</div>
 		</>
 	);
-}
+} 

@@ -59,8 +59,8 @@ export async function getService(id : string) {
   const response = await axios({
                 method: 'get',
                 baseURL: baseURL,
-    url: `/servicebook/service/${id}`,
-    headers: { authorization: `Bearer ${ token }` }
+                url: `/servicebook/service/${id}`,
+               // headers: { authorization: `Bearer ${ token }` }
               });
   return response.data;
 }
@@ -85,7 +85,15 @@ export async function getResponsibleService(id : string, token: string) {
               });
   return response.data;
     }
-
+export async function getServiceOrder(id : string, token:string) {
+  const response = await axios({
+                method: 'get',
+                baseURL: baseURL,
+                url: `/servicebook/serviceorder/${id}`,
+                headers: { authorization: `Bearer ${ token }` }
+              });
+  return response.data;
+}
 
 
 const myuser = {

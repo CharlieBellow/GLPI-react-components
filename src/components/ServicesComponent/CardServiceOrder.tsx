@@ -2,6 +2,7 @@ import { useBreakpointValue } from "@chakra-ui/react";
 import { Pencil, Trash } from "phosphor-react";
 import { Button } from "../Buttons/Button";
 import { deleteServiceOrder } from "../../Utils/server/delInfo";
+import Link from "next/link";
 
 export const servicesList = [
 	{
@@ -38,8 +39,12 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 	const token = localStorage.getItem("token");
 	
 	// não exclui por algum erro no servidor
-	async function delService (id) {
-		const del = await deleteServiceOrder(id, token as string)
+	async function delServiceOrder (id: string) {
+		try{
+			const del = await deleteServiceOrder(id, token as string)
+		}catch(err){
+			console.log(err)
+		}
 	}
 	const createdAtDate = new Date(props.createdAt)
 	const updatedAt = new Date(props.updatedAt)
@@ -129,20 +134,30 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				
 			</div>
 			<div className="pt-3 w-fit flex flex-row gap-4">
-			<Button
-					className="flex"
-					icon={<Pencil className="" weight="bold" size={20} />}
-					title={isWideVersion ? "Editar" : ""}
-					theme={"primary"}
-					onClick={() => delService(props.id)}
-				/>
+				<Link href={`serviceorder/${props.id}/edit`}>
+					<Button
+							className="flex"
+							icon={<Pencil className="" weight="bold" size={20} />}
+							title={isWideVersion ? "Editar" : ""}
+							theme={"primary"}
+							// TODO criar rota para editar ordem de serviço
+						/>
+				</Link>
 				<Button
 					className="flex"
 					icon={<Trash className="" weight="bold" size={20} />}
 					title={isWideVersion ? "Excluir" : ""}
 					theme={"secondary"}
-					// TODO criar rota para editar ordem de serviço
-					onClick={() => {}}
+					onClick={() => {
+						console.log(props.id)
+						try{
+							deleteServiceOrder(props.id, token as string)
+							window.location.reload();
+							
+						}catch(err){
+							console.log(err)
+						}
+					}}
 				/>
 
 			</div>
