@@ -57,7 +57,7 @@ function CardUpdateUser() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" src={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={86} height={86} type="image" />
+					<CardTitle title="Informações do Usuário" src={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={86} height={86} type="image" editImage="true"/>
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -72,7 +72,7 @@ function CardUpdateUser() {
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
-							console.log("submit:", values);
+							
 
 							successMessage("Chamado criado com sucesso!");
 
@@ -129,7 +129,7 @@ function CardUpdateUser() {
 									type="submit"
 									disabled={isSubmitting || !isValid}
 								/>
-								{isAdmin ? <Button title="Excluir" theme="secondaryAction" /> : <></>}
+								{isAdmin ? <Button title="Excluir" theme="secondaryAction" /> : <Link href="../"><Button title="Cancelar" theme="secondaryAction" /></Link>}
 								
 							</div>
 							

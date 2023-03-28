@@ -118,7 +118,7 @@ function CardUserInfo() {
 							<div className="flex justify-end gap-x-3.5 mt-10 ">
 								<Link href="./updateuser">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Alterar senha"}
+									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
 									theme="primaryAction"
 									type="button"
 						

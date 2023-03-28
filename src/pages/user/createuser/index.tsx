@@ -1,15 +1,16 @@
-import { Page } from "../../../components/Page";
+
 import CardCreateUser from "../../../components/Cards/CardCreateUser";
+import Head from "next/head";
 
 function FormUserInfo() {
 
 	return (
 		<>
-			<Page
-				pagetitle={"Criar Usuário"}
-			>
+			<Head>
+			<title>Criar Usuário</title>
+			</Head>
+		
 				<CardCreateUser />
-				</Page>
 		</>
 	);
 }
