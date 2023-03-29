@@ -65,7 +65,7 @@ export default function ServicesOrder () {
 
   return (
 		<>
-			<div className="lg:m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl">
+			<div className="lg:m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl h-full">
 				
 			<div className='flex flex-row justify-between items-center px-10'>
 					<h2 className="lg:text-4xl text-2xl font-bold">Minhas ordens de serviço</h2>	
@@ -124,7 +124,7 @@ export default function ServicesOrder () {
 					</div>
 				</div> 
 				
-				<div className="lg:grid lg:w-full flex-wrap mx-auto px-4x justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
+				<div className="lg:grid lg:w-full h-full flex-wrap mx-auto px-4x justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
 					<>
 						
 						{orderList !== undefined ?
@@ -139,10 +139,11 @@ export default function ServicesOrder () {
 									status={item.status}
 									createdAt={item.createdAt}
 									estimatedAt={item.estimatedAt}
+									closedAt={item.closedAt}
 									requesterId={item.requesterId}
 									responsibleId={item.responsibleId}
 									updatedAt={item.updatedAt}
-						
+									serviceId={item.serviceId}
 									id={item.id}
 									key={item.id}
 								/>

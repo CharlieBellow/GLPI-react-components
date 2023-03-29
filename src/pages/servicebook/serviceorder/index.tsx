@@ -11,7 +11,9 @@ export default function MyServices() {
       <Head>
         <title>{"Minhas ordens de serviço"}</title>
       </Head>
-      <ServicesOrder />
+      <div className="h-full">
+        <ServicesOrder/>
+      </div>
     </>
 
   )

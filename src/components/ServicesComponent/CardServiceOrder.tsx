@@ -3,6 +3,7 @@ import { Pencil, Trash } from "phosphor-react";
 import { Button } from "../Buttons/Button";
 import { deleteServiceOrder } from "../../Utils/server/delInfo";
 import Link from "next/link";
+import { ServiceOrder } from "../../Utils/server/types";
 
 export const servicesList = [
 	{
@@ -15,22 +16,9 @@ export const servicesList = [
 	},
 ];
 
-interface ServiceOrderProps {
-	servicelocal?: string;
-	description?: string;
-	id: string;
-	patrimonyId: string;
-	service: object;
-	status: string;
-	createdAt: string;
-	estimatedAt: string;
-	responsibleId: string;
-	requesterId: string;
-	updatedAt: string
-	
-}
 
-export default function CardServiceOrder(props: ServiceOrderProps) {
+
+export default function CardServiceOrder(props: ServiceOrder) {
 	const isWideVersion = useBreakpointValue({
 		base: false,
 		lg: true,
@@ -60,26 +48,26 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 		>
 			<div>
 				<div>
-					<p className="text-xs mt-3 font-medium lg:text-xl">
-						<strong>Descrição: </strong>
+					<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Descrição: </strong>
 						{props.description}
 					</p>
 				</div>
 				<div>
-					{props.patrimonyId ? props.patrimonyId === "notrequired" ? <></> : (<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Patrimônio: </strong>
+					{props.patrimonyId ? props.patrimonyId === "notrequired" ? <></> : (<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Patrimônio: </strong>
 						{props.patrimonyId}	
 						</p> )
 					:  <></>  }
 					
 				</div>
 				<div>
-					{props.service ? (<p className="text-xs mt-3 font-medium lg:text-xl">
-						<strong>Serviço: </strong>
+					{props.service ? (<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Serviço: </strong>
 
 						{props.service.title}
-					</p>) : (<p className="text-xs mt-3 font-medium lg:text-xl">
-						<strong>Serviço: </strong>
+					</p>) : (<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Serviço: </strong>
 
 						{ props.service   }
 					</p>)}
@@ -93,8 +81,8 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				</div> */}
 
 				{props.responsibleId ? <div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Responsável pelo serviço: </strong>
+					<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Responsável pelo serviço: </strong>
 						{props.responsibleId}
 					</p>
 				</div> : <></>}
@@ -108,16 +96,16 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				</div>
 				*/}
 				<div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
+					<p className="text-sm mt-3  font-medium lg:text-xl">
 						<strong>Status: </strong>
-						<span className={`${props.status === "Aberto" ? "text-amber-500" :  props.status === "Fechado" ? "text-green-600" : ""}`}>{props.status}</span>
+						<span className={`${props.status === "Aberto" ? "text-red-500" :  props.status === "Fechado" ? "text-blue-ufal" : props.status === "Em Execução" ? "text-green-500" : "text-amber-500"}`}>{props.status}</span>
 
 					</p>
 				</div>
 				<div className="flex flex-row gap-20">
 					<div>
-						<p className="text-sm mt-3 font-medium lg:text-xl">
-							<strong>Criado: </strong>
+						<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+							<strong className="text-black">Criado: </strong>
 							{createdAtDate.toLocaleDateString()}
 						</p>
 					</div>
@@ -128,8 +116,8 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 						</p>
 					</div> */}
 					<div>
-						<p className="text-sm mt-3 font-medium lg:text-xl">
-							<strong>Atualizado em: </strong>
+						<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+							<strong className="text-black">Atualizado em: </strong>
 							{updatedAt.toLocaleDateString()}
 						</p>
 					</div>

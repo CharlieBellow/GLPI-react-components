@@ -8,10 +8,12 @@ import { CardLabelTextarea } from "../../components/Inputs/CardLabelTextarea";
 import { Button } from "../../components/Buttons/Button";
 import router from "next/router";
 import { useEffect, useState } from "react";
-import { getService, getServiceOrder } from "../../Utils/server/getInfo";
-import { ServiceOrder } from "../../Utils/server/types";
+import { getAllUsers, getService, getServiceOrder } from "../../Utils/server/getInfo";
+import { ServiceOrder, User } from "../../Utils/server/types";
 import { Spinner } from "@chakra-ui/react";
 import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
+import FieldSelect from "../Inputs/FieldSelect";
+
 
 let requiredValidation
 const validate = yup.object().shape({
@@ -33,12 +35,16 @@ function CardUpdateServiceOrder(){
 
 	const { serviceOrderId, titleServiceOrder } = router.query
     const [serviceOrderInfo, setServiceOrderInfo] = useState<ServiceOrder>()
+	const [users, setUsers] = useState<User[]>([])
+	const status = ["Aberto", "Em Execução", "Aguardando Peças", "Fechado"]
     useEffect(() => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
 			
 			const response = await getServiceOrder(serviceOrderId as string, token as string)
 			setServiceOrderInfo(response)
+			const userResponse = await getAllUsers(token as string)
+			setUsers(userResponse)
 			if (response.isPatromonyIdRequired) {
 				requiredValidation = validationSchema.patrimony
 			}
@@ -76,6 +82,7 @@ function CardUpdateServiceOrder(){
 								onSubmit={(values, actions) => {
 									setTimeout(() => {
 										console.log("submit:", values);
+										
 
 							}, 400);
 						}}
@@ -114,24 +121,19 @@ function CardUpdateServiceOrder(){
 									</div>	
 									<div>
 									{  serviceOrderInfo && user.isAdmin ? 
-									<CardLabelInput
+									<FieldSelect
 									label="Responsável"
 									name="respponsibleId"
-									type="text"
-									width="w-full"
-									inputid="respponsibleId"
-									/>
-									: <></> }
+									default={serviceOrderInfo.responsibleId ? "" : "Selecione o usuário responsável"}
+									listitems={users}/>
+									: <></> }	
 									</div>
 									<div>
 									{  serviceOrderInfo && user.isAdmin ? 
-									<CardLabelInput
+									<FieldSelect
 									label="status"
 									name="status"
-									type="text"
-									width="w-full"
-									inputid="status"
-									/>
+									listitems={status}/>
 									: <></> }	
 									</div>
 							
