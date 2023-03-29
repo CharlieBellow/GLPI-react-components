@@ -16,14 +16,12 @@ import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
 let requiredValidation
 const validate = yup.object().shape({
     description: validationSchema.description,
-    title: validationSchema.titleGroup,
     // serviceLocal: validationSchema.serviceLocal,
     patrimonyId: validationSchema.patrimony,
 });
 
 const validateWhitOutPatrimony = yup.object().shape({
     description: validationSchema.description,
-    title: validationSchema.titleGroup,
     // serviceLocal: validationSchema.serviceLocal,
 });     
 
@@ -31,7 +29,7 @@ const validateWhitOutPatrimony = yup.object().shape({
 function CardUpdateServiceOrder(){
 
 	const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user") as string);
 
 	const { serviceOrderId, titleServiceOrder } = router.query
     const [serviceOrderInfo, setServiceOrderInfo] = useState<ServiceOrder>()
@@ -57,7 +55,7 @@ function CardUpdateServiceOrder(){
 				h-auto shadow-card">
 					<>
 						<div className="pl-9 pt-8">
-							<CardTitle title="Criar ordem de serviço" />
+							<CardTitle title="Editar ordem de serviço" />
 						</div>
 						<div className="mx-9 mt-4 mb-10">
 							<CardLine />
@@ -67,15 +65,12 @@ function CardUpdateServiceOrder(){
 								validateOnMount={true}
 								initialValues={{
 									description: serviceOrderInfo?.description,
-									serviceId: serviceOrderInfo?.serviceId,
-									patrimonyId: serviceOrderInfo?.service.isPatromonyIdRequired ? "" : "notrequired",
-									requesterId: serviceOrderInfo?.requesterId,
+									id: serviceOrderInfo?.id,
+									patrimonyId: serviceOrderInfo?.service.isPatromonyIdRequired ? serviceOrderInfo.patrimonyId : "notrequired",
 									respponsibleId: serviceOrderInfo?.responsibleId,
-									// serviceLocal:"",
-									title: serviceOrderInfo?.service.title,
 									status: serviceOrderInfo?.status,
 									estimetadAt: serviceOrderInfo?.estimatedAt,
-									closedAt: serviceOrderInfo?.createdAt
+									//closedAt: serviceOrderInfo?.createdAt
 								}}
 								validationSchema={validate}
 								onSubmit={(values, actions) => {
@@ -107,21 +102,44 @@ function CardUpdateServiceOrder(){
 										/>
 									</div>
 									<div>
-								{  serviceOrderInfo && serviceOrderInfo.service.isPatromonyIdRequired ? 
-								<CardLabelInput
-								label="Patrimônio"
-								name="patrimonyId"
-								type="text"
-								width="w-full"
-									inputid="patrimonyId"
-								/>
-								: <></> }
-							</div>									
+									{  serviceOrderInfo && serviceOrderInfo.service.isPatromonyIdRequired ? 
+									<CardLabelInput
+									label="Patrimônio"
+									name="patrimonyId"
+									type="text"
+									width="w-full"
+										inputid="patrimonyId"
+									/>
+									: <></> }
+									</div>	
+									<div>
+									{  serviceOrderInfo && user.isAdmin ? 
+									<CardLabelInput
+									label="Responsável"
+									name="respponsibleId"
+									type="text"
+									width="w-full"
+									inputid="respponsibleId"
+									/>
+									: <></> }
+									</div>
+									<div>
+									{  serviceOrderInfo && user.isAdmin ? 
+									<CardLabelInput
+									label="status"
+									name="status"
+									type="text"
+									width="w-full"
+									inputid="status"
+									/>
+									: <></> }	
+									</div>
+							
 								</div>
 								<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 									<Button
 										isSubmitting={isSubmitting}
-										title="Criar"
+										title="Salvar"
 										theme="primaryAction"
 										type="submit"
 										disabled={isSubmitting || !isValid}

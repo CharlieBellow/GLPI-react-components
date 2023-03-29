@@ -66,10 +66,11 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 					</p>
 				</div>
 				<div>
-					{props.patrimonyId ? (<p className="text-sm mt-3 font-medium lg:text-xl">
+					{props.patrimonyId ? props.patrimonyId === "notrequired" ? <></> : (<p className="text-sm mt-3 font-medium lg:text-xl">
 						<strong>Patrimônio: </strong>
-						{props.patrimonyId}
-					</p> ): <></>}
+						{props.patrimonyId}	
+						</p> )
+					:  <></>  }
 					
 				</div>
 				<div>
@@ -90,12 +91,14 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 						{props.servicelocal}
 					</p>
 				</div> */}
-				<div>
+
+				{props.responsibleId ? <div>
 					<p className="text-sm mt-3 font-medium lg:text-xl">
 						<strong>Responsável pelo serviço: </strong>
 						{props.responsibleId}
 					</p>
-				</div>
+				</div> : <></>}
+				
 				{/*
 				<div>
 					<p className="text-sm mt-3 font-medium lg:text-xl">
