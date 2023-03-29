@@ -39,9 +39,12 @@ function Sidebar({children} :any){
                 <div className="flex flex-row w-full justify-center mb-4">
                     <Image className="mt-4 max-w-[6rem]" src={ufalLogo} alt="logo"/>
                 </div>   
+                <div className="sticky top-0">
                 {Menus.map((item, index) => {
                     return <SidebarItem item={item} key={index}/>
                 })} 
+                </div>
+
             </div>       
             <div className="text-2xl font-semibold w-full h-screen h-fit">
                 {children}

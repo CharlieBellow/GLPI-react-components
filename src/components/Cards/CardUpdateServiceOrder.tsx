@@ -13,6 +13,8 @@ import { ServiceOrder, User } from "../../Utils/server/types";
 import { Spinner } from "@chakra-ui/react";
 import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
 import FieldSelect from "../Inputs/FieldSelect";
+import { updateServiceOrder } from "../../Utils/server/updateInfo";
+import { useMessage } from "../../Contexts/MessageContext";
 
 
 let requiredValidation
@@ -32,6 +34,7 @@ function CardUpdateServiceOrder(){
 
 	const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user") as string);
+	const {errorMessage, successMessage} = useMessage()
 
 	const { serviceOrderId, titleServiceOrder } = router.query
     const [serviceOrderInfo, setServiceOrderInfo] = useState<ServiceOrder>()
@@ -82,7 +85,15 @@ function CardUpdateServiceOrder(){
 								onSubmit={(values, actions) => {
 									setTimeout(() => {
 										console.log("submit:", values);
-										
+										if (token !== null) {
+											// ! alterar as informações que são passadas/recebidas no servidor
+											updateServiceOrder(values, token, serviceOrderId as string)
+										  	successMessage("Oredem de serviço atualizada com sucesso");
+											router.back()
+			
+										} else {
+											errorMessage("Algo deu errado, tente novamente.")
+										}
 
 							}, 400);
 						}}
@@ -146,7 +157,7 @@ function CardUpdateServiceOrder(){
 										type="submit"
 										disabled={isSubmitting || !isValid}
 									/>
-									<Button title="Cancelar" theme="secondaryAction" type="button" />
+									<Button title="Cancelar" theme="secondaryAction" type="button" onClick={() => router.back()}/>
 								</div>
 						</Form>
 					)}
