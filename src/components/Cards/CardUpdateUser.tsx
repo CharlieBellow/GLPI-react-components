@@ -26,7 +26,7 @@ const myuser = {
 	name: "Charlie Bellow",
 	password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
 	email: "email@email.com",
-	avatar: null,
+	avatar: "https://www.github.com/arthwrvl.png",
 	isAdmin: false,
 	created_at: "2023-03-22T16:19:14.843Z",
 	permissions: [],
@@ -49,6 +49,10 @@ function CardUpdateUser() {
 
 	const isAdmin = true
 
+
+
+
+
 	return (
 		<div className="mx-4">
 			<div
@@ -57,7 +61,7 @@ function CardUpdateUser() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" src={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={86} height={86} type="image" editImage="true"/>
+					<CardTitle title="Informações do Usuário" srcimage={myuser.avatar} alt={"Imagem de perfil"} width={86} height={86} type="image" editImage={true}  />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
