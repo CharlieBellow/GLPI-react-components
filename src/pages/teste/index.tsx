@@ -1,16 +1,23 @@
 //rfc
-import { Page } from "../../components/Page";
 import  BasicForm  from "./BasicForm";
 import Users from "../../components/Users";
+import Head from "next/head";
+import CardFloat from "../../components/Cards/CardFloat"
 //import ContextTest from "../../Contexts/ContextTest";
 
 function Teste() {
 	return (
-			<Page pagetitle={"Página de Teste"}>
-				{/* <BasicForm /> */}
-			{/*<ContextTest/>*/}
-			{/* <Users/> */}
-				</Page>
+
+	<>
+		<Head>
+				<title>Página de Teste</title>
+		</Head>
+
+			<CardFloat>
+				<div>conteudo</div>
+				
+			</CardFloat>
+	</>
 	);
 }
 

@@ -59,3 +59,15 @@ export function putUser ( values: object, token: string ) {
   } );
 
 }
+
+// ver como faz no exios para mandar arquivos
+export function putAvatar ( values: object, token: string ) {
+  axios( {
+    method: 'patch',
+    baseURL: baseURL,
+    url: `/users/avatar`,
+    data: values,
+    headers: { authorization: `Bearer ${ token }` }
+  } );
+
+}

@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Icon from 'phosphor-react';
 import { Form, Formik } from 'formik';
-import { CardLabelInput } from './Inputs/CardLabelInput';
 import { Button } from './Buttons/Button';
-import Link from 'next/link';
+
 import { validationSchema } from "../Utils/validations";
 import { useMessage } from "../Contexts/MessageContext";
 import * as yup from "yup";

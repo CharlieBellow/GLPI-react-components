@@ -1,12 +1,16 @@
 import { CardDeleteSubGroup } from "../../../../../components/Cards/CardDeleteSubGroup";
-import { Page } from "../../../../../components/Page";
+import Head  from "next/head";
 
 
 export default function CreateCategory() {
 	
-  return (
-			<Page pagetitle={"Deletar Subcategoria"}>
-				<CardDeleteSubGroup />
-			</Page>
+	return (
+		<>
+			<Head>
+				<title>Deletar Subcategoria</title>
+		</Head>
+			<CardDeleteSubGroup />
+		</>
+		
 	);
 }
