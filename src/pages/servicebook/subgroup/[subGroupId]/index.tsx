@@ -75,13 +75,6 @@ const Subcategory = ( ) => {
           } )
 
           }
-
-{isAdmin ? (
-          <>
-            <CardGroup link={`/servicebook/subgroup/${subGroupId}/createsubgroup`} Name={"Criar Subcategoria"} Icon={<Icon.Plus size={27} />} idGroup={''} style={ "bg-blue-final-gradient"} />
-            <CardGroup link={`/servicebook/subgroup/${subGroupId}/deletesubgroup`} Name={"Excl. Subcategoria"} Icon={<Icon.Trash size={27} />} idGroup={''} style={ "bg-red-ufal text-white-100 hover:border-red-500"}/>
-            </>
-            ) : <></>}
         </div>
        
       </>

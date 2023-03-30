@@ -63,13 +63,6 @@ const ServiceByCategory = ( ) => {
                
 					);
         })}
-        
-        {isAdmin ? (
-          <div className="flex gap-8">
-            <CardGroup link={`/servicebook/subgroup/${subGroupId}/getAllServices/createservice`} Name={"Criar Serviço"} Icon={<Icon.Plus size={27} />} idGroup={''} style={ "bg-blue-final-gradient"}/>
-            <CardGroup link={`/servicebook/subgroup/${subGroupId}/getAllServices/deleteservice`} Name={"Excluir Serviço"} Icon={<Icon.Trash size={27} />} idGroup={''} style={ "bg-red-ufal text-white-100 hover:border-red-500"}/>
-            </div>
-            ) : <></>}
       </div>
 
     
