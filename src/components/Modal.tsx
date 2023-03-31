@@ -9,10 +9,9 @@ import { useMessage } from "../Contexts/MessageContext";
 import * as yup from "yup";
 import { Spinner } from '@chakra-ui/react';
 import { CardLabelInputFile } from './Inputs/CardLabelInputFile';
+import { patchAvatar2 } from '../Utils/server/putInfo';
 
-interface ModalProps{
-  handle: Function;
-}
+
 
 
 
@@ -21,13 +20,13 @@ const validate = yup.object().shape({
 
 });
 
-export default function Modal(props: ModalProps) {
+export default function Modal() {
 
   const { errorMessage, successMessage } = useMessage()
   const [isActive, setIsActive] = useState(false)
 
 
-  
+  const token = localStorage.getItem("token");
 
   return (
 
@@ -53,7 +52,15 @@ export default function Modal(props: ModalProps) {
 							
 
               console.log(values)
-              props.handle(values)
+
+              // const formData = new FormData();
+              // formData.append(values, blob);
+              // const res = await axios.post("http://172.27.12.171:3333/users/avatar", formData, {'Content-Type': 'multipart/form-data'})
+
+              
+          
+              patchAvatar2(values.avatar, token as string)
+              console.log("foi")
 							successMessage("Imagem alterada com sucesso!");
 
 							actions.resetForm();

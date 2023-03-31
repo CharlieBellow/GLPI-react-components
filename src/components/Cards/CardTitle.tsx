@@ -14,25 +14,27 @@ interface CardTitleColorProps extends React.HTMLAttributes<HTMLElement>{
   coloricon: Icon.IconProps;
 }
 
-interface CardTitleProps extends React.HTMLAttributes<HTMLElement>{
+interface CardTitleProps extends React.HTMLAttributes<HTMLElement>, CardTitleImageProps, CardTitleColorProps{
   title: string;
-  type: CardTitleImageProps | CardTitleColorProps | "none";
-  alt: string
+  // type: CardTitleImageProps | CardTitleColorProps | "none";
+  alt: string;
 }
 
 export function CardTitle(props: CardTitleProps ) {
 
   const [newImage, setNewImage] = useState(props.srcimage)
   
-  function handleImg(srcImg: any) {
-    console.log("mudar imagem")
-    // afunção chamada pelo formulário quee pede o caminho da nova imagem. aí quando submeter ele vai trocar a imagem no banco 
+//   function handleImg(srcImg: any) {
+//     console.log("mudar imagem")
+//     // afunção chamada pelo formulário quee pede o caminho da nova imagem. aí quando submeter ele vai trocar a imagem no banco 
   
-    console.log("srcImg", srcImg)
+
+   
+//     console.log("srcImg", srcImg)
     
-    setNewImage(srcImg)
+//     setNewImage(srcImg)
 		
-}
+// }
 
   
 /* 
@@ -60,7 +62,7 @@ export function CardTitle(props: CardTitleProps ) {
       {props.srcimage ? (<div className="flex item-center">
         <Image src={newImage} width={86} height={86} alt={props.alt} className="rounded-xl -top-7 -ml-3 relative " />
         {props.editImage ? (
-          <Modal handle={ handleImg} />
+          <Modal  />
         ) : <></>}     
       </div>) : (props.colorcard ? <div className={`${props.colorcard ? props.colorcard :""} w-22 h-22 -top-7 rounded-xl -ml-3 relative`}>{props.coloricon ? <div><>{ props.coloricon}</></div> : <></>}</div> : <div className="pb-8"></div>)}
     <h2 className="text-light-bg font-normal text-base flex items-center justify-end mr-6" {...props}>

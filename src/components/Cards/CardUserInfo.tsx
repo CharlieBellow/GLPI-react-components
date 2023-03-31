@@ -61,7 +61,7 @@ function CardUserInfo() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" src={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={ 86} height={ 86} type="image"/>
+					<CardTitle title="Informações do Usuário" srcimage={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"}    />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
