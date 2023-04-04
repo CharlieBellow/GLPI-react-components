@@ -26,6 +26,12 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
   const token = localStorage.getItem("token")
   
   const [edit, setEdit] = useState(false)
+
+  function updateInput(id) {
+    setEdit(false)
+
+    // chamar a função que altera a categoria
+  }
   
   return (
     <>
@@ -37,10 +43,10 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
         
         props.list.map(item => {
           return (
-            <>
+            
               <div className='py-2' key={item.id}>
               <div  className='flex justify-between py-3 items-center'>
-                  <div className='w-1/2'>
+                  <div className='w-1/2 flex'>
                     
                   <Formik
 				initialValues={{ description: item.description }}
@@ -64,21 +70,21 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
 								label="Título"
 								name="description"
 								width="w-full"
-                              type="text"
-                              onClick={() => setEdit(true)}
+                type="text"
+                onClick={() => setEdit(true)}
 							/>
 						</div>
 						
-                  <div className='flex gap-4'>
+                  <div className='flex gap-4' key={item.id}>
                             <Button
                               theme={'primary'}
                               title="Alterar"
                               icon={<Icon.ArrowsClockwise size={24} />} type="submit"
                               disabled={!edit}
-                              onClick={() => setEdit(false)}
+                              onClick={() => updateInput(item.id)}
                             />
                     
-                    <Button theme={'primary'} title="Excluir" icon={<Icon.Trash size={24} />} onClick={() => { deleteGroup(item.id, token as string) }} />
+                    <Button theme={'secondary'} title="Excluir" icon={<Icon.Trash size={24} />} onClick={() => { deleteGroup(item.id, token as string) }} />
                 </div>
 					</Form>
 				)}
@@ -87,7 +93,7 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
               </div>
 
               </div>
-            </>
+          
           )
         })
 
