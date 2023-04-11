@@ -1,0 +1,25 @@
+-servicebook   
+    - group 
+        - create
+            - index.tsx -> criar grupos
+        - delete
+            - index.tsx -> deletar grupos
+        - ? precisa editar grupos?
+        - index.tsx -> principal, lista de grupos -> clicar leva para '/subgroup/[id:grupo]'
+    - subgroup
+        -create
+            - index.tsx -> criar subgrupo {seleciona o grupo a qual pertence no momento de criar}
+        - [id:grupo || id:subgroup]
+            - services {id:subgroup}
+                -index.tsx -> exibir todos os serviços desse subgrupo -> clicar leva para '/service/[id:service]'
+            - delete {id: grupo}
+                -index.tsx -> deletar o subgrupo {seleciona qual no momento de deletar}
+            - index.tsx {id:grupo} -> exibir todos os subgrupos desse grupo -> clicar leva para '/subgroup/[id:subgroup]/services'
+    - service
+        -[id:service]
+            -create -> criar ordem de serviço
+            -delete -> criar ordem de serviço
+            -index.tsx -> exibir a carta de serviço
+    - serviceorder
+    - Admin
+    - index.tsx -> principal, ou seja grupos -> '/subgroup/[id:grupo]'

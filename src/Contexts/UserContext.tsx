@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { userModel } from "../Utils/UserModel";
 
+// * contexto de usuários
 interface UserProps {
   user: Array<object>;
   addUser: ( user: Array<object> ) => void;
