@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import {groupModel} from "../Utils/ServiceModels"
 import { Group } from "../Utils/server/types";
+
 
 interface GroupContextProps {
   group: Array<Group>;
@@ -13,13 +13,14 @@ interface GroupProviderProps {
 
 export const GroupContext = createContext({} as GroupContextProps)
 
-export const groupProvider = ( { children }: GroupProviderProps ) => {
+export const GroupProvider = ( { children }: GroupProviderProps ) => {
   const [ groups, setGroups ] = useState<Group[]>([]) 
 
 
   function addGroup ( group: Group ) {
     setGroups([...groups, group])
   }
+
 
   return (
     <GroupContext.Provider value={ { addGroup: addGroup, group: groups } }>

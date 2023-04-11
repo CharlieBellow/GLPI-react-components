@@ -1,5 +1,3 @@
-import {useAuth} from "../../Contexts/AuthContext"
-
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Formik, Form, ErrorMessage } from "formik";
@@ -10,11 +8,7 @@ import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 
-import {
-	blocList,
-	validationSchema,
-
-} from "../../Utils/validations";
+import {validationSchema} from "../../Utils/validations";
 
 import { Service } from "../../Utils/server/types"
 
@@ -92,7 +86,7 @@ export const CardCreateServiceOrder = () => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
 			
-			const response = await getService(serviceOrderId as string)
+			const response = await getService(serviceOrderId as string, token as string)
 			setServiceInfo(response)
 			if (response.isPatromonyIdRequired) {
 				requiredValidation = validationSchema.patrimony
@@ -101,7 +95,7 @@ export const CardCreateServiceOrder = () => {
 		}
 		fetchData()
 		
-	}, [router.isReady])
+	}, [router.isReady, serviceOrderId, token])
 	
 	console.log("response", serviceInfo)
 	
@@ -197,7 +191,7 @@ export const CardCreateServiceOrder = () => {
 										<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 											<Button
 												isSubmitting={isSubmitting}
-												title={isSubmitting ? <Spinner size="md" /> : "Criar"}
+												title={"Criar"}
 												theme="primaryAction"
 												type="submit"
 												disabled={isSubmitting || !isValid}

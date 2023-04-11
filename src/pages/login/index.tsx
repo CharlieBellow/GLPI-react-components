@@ -16,7 +16,7 @@ export function Login () {
       verifyCookies()
       setLoaded(true)
     }, 300);
-  }, [])
+  }, [verifyCookies])
 
   useEffect(() => {
     if(loaded){
@@ -24,7 +24,7 @@ export function Login () {
         router.push("/Dashboard")
       }
     }
-  }, [loaded])
+  }, [auth, loaded, router])
 
   if(loaded && !auth){
     return (

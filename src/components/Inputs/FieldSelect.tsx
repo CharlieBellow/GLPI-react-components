@@ -20,7 +20,7 @@ export default function FieldSelect(
 ) {
 	const [field, meta] = useField(props);
 
-	const getSelect = (item) =>{
+	const getSelect = (item: string | object | Group) =>{
 
 		if (typeof item === 'string') {
 			return item;

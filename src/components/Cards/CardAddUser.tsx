@@ -123,7 +123,7 @@ const CardAddUser = () => (
 				{({ isSubmitting, setFieldValue, isValid }) => (
 					<TabsPrimitive.Root defaultValue="tab1">
 						<div className="pl-9 pt-8">
-							<CardTitle title="Adicionar Usuário" />
+							<CardTitle title="Adicionar Usuário"  />
 						</div>
 						<div className="mx-9 mt-4 mb-6">
 							<CardLine />

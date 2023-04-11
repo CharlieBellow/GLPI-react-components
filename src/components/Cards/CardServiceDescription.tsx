@@ -31,7 +31,7 @@ export default function CardServiceDescription (  ) {
     window.addEventListener( "scroll", changeFloatingButton );
   }
 
-
+  const token = localStorage.getItem("token");
   const router = useRouter();
   const {serviceId} = router.query
 
@@ -40,14 +40,14 @@ export default function CardServiceDescription (  ) {
   useEffect( () => {
     if (!router.isReady) return;
     const fetchData = async () => {
-      const response = await getService( serviceId as string );
+      const response = await getService( serviceId as string, token as string);
 
       console.log(response)
       setServiceInfo(response)
 
     }
     fetchData()
-  }, [router.isReady, serviceId] );
+  }, [router.isReady, serviceId, token] );
 
   console.log( "router", serviceInfo);
 

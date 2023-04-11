@@ -19,11 +19,11 @@ function CardMenu(props: CardMenuProps){
             }, 300);
             
         }
-      }, [document.readyState])
+      }, [])
     useEffect(() => {
         setTitle(document.title);
         setLoaded(false)
-      }, [loaded, document.title])
+      }, [loaded])
 
     return(
         <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300`}>

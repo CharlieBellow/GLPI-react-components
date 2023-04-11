@@ -1,5 +1,5 @@
 import { Button } from "../Buttons/Button";
-import { CardTitle } from "./CardTitle";
+import { CardTitleImage } from "./CardTitleImage";
 import { CardLine } from "./CardLine";
 import { CardLabelInputShowInfo } from "../Inputs/CardLabelInputShowInfo";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
@@ -12,6 +12,7 @@ import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
 import { Divide } from "phosphor-react";
+import Link from "next/link";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,
@@ -61,7 +62,7 @@ function CardUpdateUser() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" srcimage={myuser.avatar} alt={"Imagem de perfil"} width={86} height={86} type="image" editImage={true}  />
+					<CardTitleImage title="Informações do Usuário" srcimage={myuser.avatar} alt={"Imagem de perfil"} editImage={true}  />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -128,7 +129,7 @@ function CardUpdateUser() {
 							</div>
 							<div className="flex justify-end gap-x-3.5 mt-10 ">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
+									title={"Alterar"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

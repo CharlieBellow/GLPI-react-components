@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { useState, useContext, ReactNode, useEffect } from "react"
+import { useState, useContext, useEffect } from "react"
 import SidebarContext from "./SidebarContext";
 import * as Icon from "phosphor-react";
 import { useRouter } from "next/router";
 interface Item extends React.HTMLAttributes<HTMLElement> {
     item: any;
 }
-function    SidebarItem(props: Item){
+function SidebarItem(props: Item){
     const [selected, setSelected] = useState(false);
     const [hover, setHover] = useState(false);
     const { open } = useContext(SidebarContext);
@@ -16,7 +16,7 @@ function    SidebarItem(props: Item){
         if(router.asPath === props.item.path){
             setSelected(true)
         }
-    }, [router.isReady])
+    }, [props.item.path, router.asPath, router.isReady])
     const selectItem = () => {
         if(open && !props.item.path){
             setSelected(!selected);
@@ -45,7 +45,7 @@ function    SidebarItem(props: Item){
             </Link>
             <div className="flex flex-col w-full relative">                
                     {open && selected && props.item.children ? props.item.children.map((child : Item, index : number) => {
-                        return <div className={`text-white-100 flex flex-col mx-2 px-6 py-2 gap-4 rounded-lg items-start ease-in-out duration-300 hover:bg-sky-300 cursor-pointer`}>
+                        return <div key={index} className={`text-white-100 flex flex-col mx-2 px-6 py-2 gap-4 rounded-lg items-start ease-in-out duration-300 hover:bg-sky-300 cursor-pointer`}>
                             <Link href={child.dir? child.dir : "#"} key={index}>{child.title}</Link>
                         </div>
                     }) : <></>} 

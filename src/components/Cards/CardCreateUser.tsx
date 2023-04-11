@@ -16,7 +16,7 @@ const validate = yup.object().shape({
 	confirmPassword: validationSchema.confirmPassword,
 });
 
-function CardUpdateUser() {
+function CardCreateUser() {
 	const { errorMessage, successMessage } = useMessage()
 	const token = localStorage.getItem("token");
 	return (
@@ -87,7 +87,7 @@ function CardUpdateUser() {
 							</div>
 							<div className="flex justify-end gap-x-3.5 mt-10">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Criar"}
+									title={"Criar"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

@@ -2,7 +2,6 @@ import Head  from 'next/head';
 import React, { useEffect, useState } from 'react'
 import AdminServiceBookTypeList from './AdminServicebookTypeList';
 import { getAllGroups } from '../../../Utils/server/getInfo';
-import { getAllSubGroups } from '../../../Utils/server/getInfo';
 import { useRouter } from 'next/router';
 
 interface AdminProps {
@@ -25,7 +24,7 @@ export default function AdminServiceBook(props: AdminProps) {
     }
     fetchData()
     console.log(list)
-  }, [router.isReady])
+  }, [router.isReady, list])
   
   
   return (

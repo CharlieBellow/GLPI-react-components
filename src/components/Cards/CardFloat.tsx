@@ -1,5 +1,5 @@
 
-import { CardTitle } from "./CardTitle";
+import { CardTitleImage } from "./CardTitleImage";
 import { CardLine } from "./CardLine";
 import { ReactNode } from "react";
 
@@ -8,7 +8,7 @@ interface CardFloatProps {
 	children: React.ReactNode;
 }
 
-function CardFloat({children}: ReactNode) {
+function CardFloat({children}: CardFloatProps) {
 
 	return (
 		<div className="mx-4">
@@ -18,7 +18,7 @@ function CardFloat({children}: ReactNode) {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" srcimage={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} width={ 86} height={ 86} colorcard="bg-gray-text"/>
+					<CardTitleImage title="Informações do Usuário" srcimage={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"} />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />

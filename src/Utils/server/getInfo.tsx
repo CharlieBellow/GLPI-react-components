@@ -98,6 +98,16 @@ const myuser = {
 	created_at: "2023-03-02T20:00:24.955Z",
 }
 
+export async function getUser (token: string ) {
+  const response = await axios( {
+    method: 'get',
+    baseURL: baseURL,
+    url: `/users/`,
+    headers: { authorization: `Bearer ${ token }` }
+  } );
+
+  return response.data;
+}
 export async function getUserId ( id: string, token: string ) {
   const response = await axios( {
     method: 'get',

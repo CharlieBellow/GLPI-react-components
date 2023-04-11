@@ -1,5 +1,5 @@
 import { Button } from "../Buttons/Button";
-import { CardTitle } from "./CardTitle";
+import { CardTitleImage } from "./CardTitleImage";
 import { CardLine } from "../Cards/CardLine";
 import { CardLabelInputShowInfo } from "../Inputs/CardLabelInputShowInfo";
 import { validationSchema } from "../../Utils/validations";
@@ -61,7 +61,7 @@ function CardUserInfo() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitle title="Informações do Usuário" srcimage={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"}    />
+					<CardTitleImage title="Informações do Usuário" srcimage={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"}    />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -118,7 +118,7 @@ function CardUserInfo() {
 							<div className="flex justify-end gap-x-3.5 mt-10 ">
 								<Link href="./updateuser">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
+									title={"Alterar"}
 									theme="primaryAction"
 									type="button"
 						

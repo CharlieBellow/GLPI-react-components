@@ -73,14 +73,14 @@ export function patchAvatar ( values: object, token: string ) {
 }
 
 
-export async function patchAvatar2(values: string, token: string) {
-  const formData = new FormData();
-  formData.append(values, blob);
-  const res = await axios.post("http://172.27.12.171:3333/users/avatar", formData, {
-    headers: { authorization: `Bearer ${ token }`, 'Content-Type': 'multipart/form-data' }
+// export async function patchAvatar2(values: string, token: string) {
+//   const formData = new FormData();
+//   formData.append(values, Blob);
+//   const res = await axios.post("http://172.27.12.171:3333/users/avatar", formData, {
+//     headers: { authorization: `Bearer ${ token }`, 'Content-Type': 'multipart/form-data' }
                 
-              })
+//               })
   
-  } ;
+//   } ;
 
 

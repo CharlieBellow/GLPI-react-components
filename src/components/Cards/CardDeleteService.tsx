@@ -35,7 +35,7 @@ export const CardDeleteService = () => {
 	useEffect(() => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
-			const response = await getAllServices(subGroupId)
+			const response = await getAllServices(subGroupId as string)
 			setListService(response)
 		}
 		fetchData()
@@ -102,7 +102,7 @@ export const CardDeleteService = () => {
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 			
 								<Button
-									title={isSubmitting ?  <Spinner size="md" /> : "Excluir"}
+									title={"Excluir"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}
