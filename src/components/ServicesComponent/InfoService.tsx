@@ -39,7 +39,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
 									<strong className="noShow hover:opacity-70">
 										Mostrar menos
 									</strong>
-									<div className="border-b-2 border-gray-text"></div>
+									<div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
 								</div>
 							</label>
         </div>
@@ -76,7 +76,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
               <strong className="noShow hover:opacity-70">
                 Mostrar menos
               </strong>
-              <div className="border-b-2 border-gray-text"></div>
+              <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
             </div>
           </label>
         </div>
@@ -91,7 +91,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <p>{ props.infos && props.infos.personType as string[]}</p>
           <p>Discentes, docentes e Técnicos</p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
         {/*{ props.infos.waitingTime ?*/}
         {/*<>*/}
           <div className="flex gap-2 flex-col my-2">
@@ -102,7 +102,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
             <p>{props.infos &&  props.infos.waitingTime as any}</p>
             <p> 24 horas</p>
           </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
           {/*</>*/}
           {/*: "" }*/}
         <div className="flex gap-2 flex-col">
@@ -113,7 +113,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <p>{props.infos &&  props.infos.deadline as any}</p>
           <p> 2 horas</p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
         <div className="flex gap-2 flex-col">
           <div className="flex gap-2 flex-row my-2">
           <><Icon.Clock size={ 26 } weight="bold" /></>
@@ -122,7 +122,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <p>{props.infos &&  props.infos.openningHours as any}</p>
           <p> seg a sex das 8:00 às 17:00h </p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
         <div className="flex gap-2 flex-col">
           <div className="flex gap-2 flex-row my-2">
           <><Icon.BookmarkSimple size={ 26 } weight="bold" /></>
@@ -131,7 +131,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <p>{props.infos &&  props.infos.isPrioritaryService }</p>
           <p> Sim</p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
         <div className="flex gap-2 flex-col">
           <div className="flex gap-2 flex-row my-2">
           <><Icon.FilePlus size={ 26 } weight="bold" /></>
@@ -140,7 +140,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <p>{props.infos &&  props.infos.requiredDocuments }</p>
           <p> RG, CPF, Cpomprovante de matrícula</p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
         <div className="flex gap-2 flex-col">
           <div className="flex gap-2 flex-row my-2">
           <><Icon.Phone size={ 26 } weight="bold" /></>
@@ -150,7 +150,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           <p>{props.infos &&  props.infos.contactInfo }</p>
           <p> (82) 3214-1001 CENTRAL TELEFÔNICA CAMPUS DE ARAPIRACA - CENTRAL TELEFÔNICA</p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
         <div className="flex gap-2 flex-col">
           <div className="flex gap-2 flex-row my-2">
           <><Icon.ComputerTower size={ 26 } weight="bold" /></>
@@ -158,7 +158,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
           </div>
           <p>{props.infos &&  props.infos.isPatromonyIdRequired ? "Sim" : "Não" }</p>
         </div>
-        <div className="border-b-2 border-gray-text"></div>
+        <div className="border-b-2 border-gray-text bg-gradient-to-r from-transparent from-50% via-gray-text via-50% to-transparent to-50% opacity-40"></div>
 
         
 					</div>

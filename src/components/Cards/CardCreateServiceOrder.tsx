@@ -158,62 +158,60 @@ export const CardCreateServiceOrder = () => {
 											errorMessage("Algo deu errado. Tente novamente.")
 										}
 
-							}, 400);
-						}}
-					>
-						{({ isSubmitting, isValid }) => (
-							<Form autoComplete="on">
-								<div className="flex flex-col gap-9 mx-14">
-									{/* <div className="">
-										<CardLabelInput
-											label="Título"
-											name="title"
-											type="text"
-											width="w-full"
-											inputid="title"
-											disabled={serviceInfo && serviceInfo.title ? true : false}
-										/>
-									</div> */}
-									<div className="">
-										<CardLabelTextarea
-											label="Descrição"
-											type="textarea"
-											name="description"
-											textareaid="description"
-										/>
-									</div>
-									<div>
-								{/* { serviceInfo && serviceInfo.isPatromonyIdRequired ? 
-								<CardLabelInput
-								label="Patrimônio"
-								name="patrimonyId"
-								type="text"
-								width="w-full"
-									inputid="patrimonyId"
-								/>
-								: <></>} */}
-							</div>									
-								</div>
-								<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-									<Button
-										isSubmitting={isSubmitting}
-										title="Criar"
-										theme="primaryAction"
-										type="submit"
-										disabled={isSubmitting || !isValid}
-									/>
-									<Button title="Cancelar" theme="secondaryAction" type="button" />
-								</div>
-						</Form>
-					)}
-					</Formik>: 
-						<div className="grid h-full place-items-center">
-							<Spinner size={'md'}></Spinner>
-						</div>}
-				</>
+									}, 400);
+								}}
+							>
+								{({ isSubmitting, isValid }) => (
+									<Form autoComplete="on">
+										<div className="flex flex-col gap-9 mx-14">
+											<div className="">
+												<CardLabelInput
+													label="Título"
+													name="title"
+													type="text"
+													width="w-full"
+													inputid="title"
+													disabled={serviceInfo && serviceInfo.title ? true : false}
+												/>
+											</div>
+											<div className="">
+												<CardLabelTextarea
+													label="Descrição"
+													type="textarea"
+													name="description"
+													textareaid="description"
+												/>
+											</div>
+											<div>
+												{serviceInfo && serviceInfo.isPatromonyIdRequired ?
+													<CardLabelInput
+														label="Patrimônio"
+														name="patrimonyId"
+														type="text"
+														width="w-full"
+														inputid="patrimonyId"
+													/>
+													: <></>}
+											</div>
+										</div>
+										<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+											<Button
+												isSubmitting={isSubmitting}
+												title={isSubmitting ? <Spinner size="md" /> : "Criar"}
+												theme="primaryAction"
+												type="submit"
+												disabled={isSubmitting || !isValid}
+											/>
+											<Button title="Cancelar" theme="secondaryAction" type="button" />
+										</div>
+									</Form>
+								)}
+							</Formik>
+							: <div className="flex justify-center"><Spinner size="lg" /></div>}
+					</>
+				</div>
 			</div>
-      </div>
-    </>
+		</>
 	);
 };
 

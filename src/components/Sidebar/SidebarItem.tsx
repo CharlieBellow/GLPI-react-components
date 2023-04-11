@@ -30,7 +30,7 @@ function    SidebarItem(props: Item){
     return (
         <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
             <Link href={props.item.path? props.item.path : "#"} className={`flex flex-col w-full justify-center`} onClick={() => selectItem()} >
-                <div  className={`flex flex-row justify-between items-center  mx-2 my-2 py-2 gap-4 rounded-lg ease-in-out duration-300 hover:bg-sky-300 cursor-pointer ${selected && props.item.path ? "bg-white-ice text-blue-ufal" : "text-white-100"}`}>
+                <div  className={`flex flex-row justify-between items-center  mx-2 my-2 py-2 gap-4 rounded-lg ease-in-out duration-300 hover:bg-sky-300 cursor-pointer ${selected && props.item.path ? " text-blue-ufal" : "text-white-100"}`}>
                    <div className="flex flex-row items-center gap-2">
                         <div className="pl-2">
                             {props.item.icon}

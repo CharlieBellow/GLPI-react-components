@@ -1,14 +1,13 @@
+import Head from "next/head";
 import CardAddUser from "../../../components/Cards/CardAddUser";
-import { Page } from "../../../components/Page";
 
 function FormUserInfo() {
 	return (
 		<>
-			<Page
-				pagetitle={"Cadastro de Usuários - GLPI"}
-			>
+			<Head>
+				<title>Cadastro de Usuários - GLPI</title>
+				</Head>
 				<CardAddUser />
-				</Page>
 		</>
 	);
 }

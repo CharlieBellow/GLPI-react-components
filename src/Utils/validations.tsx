@@ -25,6 +25,7 @@ export const agency = /[0-9]{4}/g;
 export const account = /[0-9]{4,7}/;
 
 export const fileExtension = /\.(doc|pdf|jpe?g|png)$/i;
+export const photoExtension = /\.(jpeg|png)$/i;
 export const patrimony = /[^\W_]*/g
 
 
@@ -138,7 +139,11 @@ export const validationSchema = {
   file: yup
 		.string()
 		.required("Você precisa anexar um documento")
-		.matches(fileExtension, "Insira um arquivo válido"),
+    .matches(fileExtension, "Insira um arquivo válido"),
+  avatar: yup
+		.string()
+		.required("Você precisa anexar um documento")
+    .matches(photoExtension, "Insira um arquivo válido"),
 
   phone: yup.string().matches( phoneNumber ),
 

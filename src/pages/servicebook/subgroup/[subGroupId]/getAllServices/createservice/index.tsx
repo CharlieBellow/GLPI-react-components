@@ -1,7 +1,7 @@
 import { CardCreateService } from "../../../../../../components/Cards/CardCreateService";
 import Head from "next/head";
 
-export default function CreteService () {
+export default function CreateService () {
   return (
     <>
       <Head>

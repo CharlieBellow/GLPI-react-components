@@ -1,12 +1,15 @@
 import React from "react";
-import { Page } from "../../../components/Page";
+import Head from "next/head";
 import HomeScreen from "../../../components/HomeScreen";
 
 export default function Dashboard () {
   return (
-    <Page pagetitle={ "Dashboard" }>
+    <>
+    <Head>
+      <title>Dashboard</title>
+    </Head>
         <HomeScreen />
-    </Page>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "../Cards/CardLine";
-import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { CardLabelInputShowInfo } from "../Inputs/CardLabelInputShowInfo";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
@@ -11,6 +11,8 @@ import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
 import { Divide } from "phosphor-react";
+import Navigate from "../../Utils/navigate";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 const validate = yup.object().shape({
@@ -43,12 +45,14 @@ function CardUserInfo() {
 	useEffect(() => {
 		const fetchData = async () => {
 			const response = await getUserId(myuser.id, token as string)
-			console.log("myuser", response)
 			setUser(response)
 		} 
-
 		fetchData()
 	}, [])
+
+	const isAdmin = true
+
+	const router = useRouter()
 
 	return (
 		<div className="mx-4">
@@ -57,8 +61,8 @@ function CardUserInfo() {
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 				h-auto shadow-card"
 			>
-				<div className="pl-9 pt-8">
-					<CardTitle title="Informações do Usuário" />
+				<div className="pl-9">
+					<CardTitle title="Informações do Usuário" srcimage={"https://www.github.com/arthwrvl.png"} alt={"Imagem de perfil"}    />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -67,7 +71,7 @@ function CardUserInfo() {
 					initialValues={{
 						name: user.name,
 						email: user.email,
-						password: user.password,
+						password: "********",
 					}}
 					validationSchema={validate}
 					onSubmit={(values, actions) => {
@@ -84,7 +88,7 @@ function CardUserInfo() {
 					{({ isSubmitting, isValid }) => (
 						<Form action="" className="flex flex-col gap-9 mx-14">
 							<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
-								<CardLabelInput
+								<CardLabelInputShowInfo
 									label="Nome Completo"
 									name="name"
 									type="text"
@@ -92,7 +96,7 @@ function CardUserInfo() {
 									width="lg:w-80 w-full"
 									disabled={user.name ? true : false}
 								/>
-								<CardLabelInput
+								<CardLabelInputShowInfo
 									label="E-mail"
 									type="email"
 									name="email"
@@ -101,32 +105,33 @@ function CardUserInfo() {
 									disabled={user.name ? true : false}
 								/>
 							</div>
-							<div className="flex flex-col lg:flex-row justify-between lg:gap-x-13 gap-9 text-blue-ufal underline text-base">
-								<Link href="">
-									<div >
-										<span>Alterar Senha</span>
-									</div>
-								</Link>
-								// TODO link para recuperar senha (enviar por email)
-								<Link href="">
-									<div >
-										<span>Esqueci minha senha</span>
-									</div>
-								</Link>
-							</div>
-							{/* <div className="flex justify-end gap-x-3.5 mt-10">
-								{isSubmitting ? <Spinner size="xl" /> : null}
-								<Button
-									title="Salvar"
-									theme="primaryAction"
-									type="submit"
-									disabled={isSubmitting || !isValid}
+							<div className="flex flex-col lg:flex-row lg:gap-x-13 gap-9">
+								<CardLabelInputShowInfo
+									label="Senha"
+									type="password"
+									name="password"
+									inputid="****"
+									width="lg:w-80 w-full"
+									disabled={user.name ? true : false}
 								/>
-								<Button title="Cancelar" theme="secondaryAction" />
-							</div> */}
+						
+							</div>
+							<div className="flex justify-end gap-x-3.5 mt-10 ">
+								<Link href="./updateuser">
+								<Button
+									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
+									theme="primaryAction"
+									type="button"
+						
+								/>
+								</Link>
+								{isAdmin ? <Button title="Excluir" theme="secondaryAction" /> : <></>}
+								
+							</div>
+							
 						</Form>
 					)}
-				</Formik>) : <div><Spinner size="lg"/></div>}
+				</Formik>) : <div  className="flex justify-center"><Spinner size="lg"/></div>}
 				
 			</div>
 		</div>

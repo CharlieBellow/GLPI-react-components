@@ -8,7 +8,7 @@ const nextConfig = {
           protocol: 'https',
           hostname: 'www.github.com',
           port: '',
-          pathname: '/charliebellow**',
+          pathname: '/**',
         },
       ],
   },

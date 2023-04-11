@@ -1,12 +1,16 @@
 
 import { Page } from "../../../../../components/Page";
 import CardCreateService from "../../../../../components/Cards/CardCreateService";
+import Head from "next/head";
 
 export default function CreateService() {
 	
-  return (
-			<Page pagetitle={"Criar Grupo"}>
+	return (
+		<>
+			<Head>
+			<title>Criar Serviço</title>
+			</Head>
 				<CardCreateService />
-			</Page>
+		</>
 	);
 }

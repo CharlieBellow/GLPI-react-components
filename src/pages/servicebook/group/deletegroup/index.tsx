@@ -1,11 +1,15 @@
+import Head from "next/head";
 import { CardDeleteGroup } from "../../../../components/Cards/CardDeleteGroup";
 import { Page } from "../../../../components/Page";
 
-export default function CreateCategory() {
+export default function DeleteCategory() {
 	
-  return (
-			<Page pagetitle={"Deletar Grupo"}>
+	return (
+		<>
+			<Head>
+			<title>Excluir Categoria</title>
+			</Head>
 				<CardDeleteGroup />
-			</Page>
+		</>
 	);
 }

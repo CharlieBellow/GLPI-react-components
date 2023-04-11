@@ -1,9 +1,9 @@
 "use client"
 
-import { Page } from "../../components/Page";
 import TableList from "../../components/TableList";
 import { useEffect, useState } from "react";
 import {userModel} from "../../Utils/UserModel"
+import Head from "next/head";
 
 const ItemSelect = [
 	"Tudo",
@@ -35,9 +35,12 @@ export default function List() {
 
 	console.log(lista);
 	return (
-			<Page pagetitle={"Tabela"}>
+		<>
+			<Head>
+				<title>Tabela</title>
+			</Head>
 				<TableList itemlist={userModel} listselecbutton={ItemSelect}/>
-			</Page>
+		</>
 	);
 }
 

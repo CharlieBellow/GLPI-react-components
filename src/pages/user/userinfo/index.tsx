@@ -1,6 +1,5 @@
-import { Page } from "../../../components/Page";
+import Head  from "next/head";
 import CardUserInfo from "../../../components/Cards/CardUserInfo";
-import Head from "next/head";
 
 function FormUserInfo() {
 	return (

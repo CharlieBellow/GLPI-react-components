@@ -55,7 +55,7 @@ export async function getAllServices(idSubgroup : string) {
   return response.data;
 }
 
-export async function getService(id : string) {
+export async function getService(id : string, token: string) {
   const response = await axios({
                 method: 'get',
                 baseURL: baseURL,

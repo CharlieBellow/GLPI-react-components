@@ -1,12 +1,16 @@
 import { CardDeleteSubGroup } from "../../../../../components/Cards/CardDeleteSubGroup";
-import { Page } from "../../../../../components/Page";
+import Head  from "next/head";
 
 
 export default function DeleteService() {
 	
-  return (
-			<Page pagetitle={"Deletar SubGrupo"}>
-				<CardDeleteSubGroup />
-			</Page>
+	return (
+		<>
+			<Head>
+				<title>Deletar SubGrupo</title>
+		</Head>
+			<CardDeleteSubGroup />
+		
+		</>
 	);
 }

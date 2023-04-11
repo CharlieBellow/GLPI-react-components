@@ -23,14 +23,39 @@ function Sidebar({children} :any){
             icon: <Icon.User size={32}/>,
             children: [
                 {
-                    title: "Alterar Dados",
-                    dir: "/AlterarLogin/",
+                    title: "Alterar Perfil",
+                    dir: "/user/updateuser",
                 },
                 {
-                    title: "Editar Perfil",
-                    dir: "/EditarPerfil/",
+                    title: "Visualizar Perfil",
+                    dir: "/user/userinfo/",
                 }
             ]
+        },
+        {
+            title: 'Carta de Serviço',
+            icon: <Icon.Signpost size={32}/>,
+            children: [
+                {
+                    title: "Catregorias",
+                    dir: "/servicebook/",
+                },
+                {
+                    title: "Lista de Categorias (Admin)",
+                    dir: "/servicebook/group/creategroup/",
+                }
+            ]
+        },
+        {
+            title: 'RU',
+            icon: <Icon.CookingPot size={32}/>,
+            path: "/Dashboard/"
+        },
+        {
+            title: 'Configurações',
+            icon: <Icon.SlidersHorizontal size={32}/>,
+            path: "/Dashboard/"
+            // aqui tem que abrir o modal de configurações 
         },
     ];
     return(
