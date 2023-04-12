@@ -73,7 +73,7 @@ export function Button({ isSubmitting = false, ...props }: ButtonProps) {
 				}
 				${
 					props.theme === "withIcon"
-						? `flex items-center justify-center gap-2 bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg lg:py-6 lg:px-3 py-4 px-4 min-w-[3.75rem]
+						? `flex flex-row-reverse items-center justify-center gap-2 bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg lg:py-6 lg:px-3 py-4 px-4 min-w-[3.75rem]
 					lg:h-10 h-15 lg:rounded-md rounded-full text-base text-white-100 shadow-button relative ${props.className}`
 						: ""
 				}

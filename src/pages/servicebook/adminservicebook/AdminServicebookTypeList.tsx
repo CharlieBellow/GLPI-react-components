@@ -35,10 +35,15 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
   
   return (
     <>
-      <div className="bg-white-ice rounded-xl m-4">
-        <h1 className="p-4 font-medium text-lg">Categorias</h1>
-        <div className="p-6">
-        <GroupCard/>
+      <div className="bg-white-ice rounded-xl m-8 p-12">
+        <div className='flex flex-row pb-8 justify-between'>
+            <h1 className="p-4 text-black-text font-bold text-md">Administrar Servicebook</h1>
+            <Button title="Novo Grupo" theme='withIcon' icon={<Icon.Plus size={24}/>}/>
+        </div>
+        <div className='px-4'>
+          <GroupCard/>
+
+        </div>
       {/*
         
         props.list.map(item => {
@@ -99,7 +104,6 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
       */}
         </div>
 
-      </div>
     </>
   )
 }

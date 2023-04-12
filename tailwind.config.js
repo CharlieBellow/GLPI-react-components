@@ -59,7 +59,7 @@ module.exports = {
 				"red-ufal": "#ED1C24",
 
 				black: {
-					text: "333849",
+					text: "#333849",
 				},
 				white: {
 					100: "#FFFFFF",
