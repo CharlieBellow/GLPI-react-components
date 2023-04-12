@@ -55,7 +55,7 @@ function CardUpdateServiceOrder(){
 		}
 		fetchData()
 		
-	}, [router.isReady])
+	}, [serviceOrderId, token])
     return(
         <>
 			<div className="mx-4">
@@ -136,7 +136,7 @@ function CardUpdateServiceOrder(){
 									label="Responsável"
 									name="respponsibleId"
 									default={serviceOrderInfo.responsibleId ? "" : "Selecione o usuário responsável"}
-									listitems={users}/>
+									listitems={users.map(user => user.name)}/>
 									: <></> }	
 									</div>
 									<div>
@@ -157,7 +157,7 @@ function CardUpdateServiceOrder(){
 										type="submit"
 										disabled={isSubmitting || !isValid}
 									/>
-									<Button title="Cancelar" theme="secondaryAction" type="button" onClick={() => router.back()}/>
+									<Button title="Cancelar" theme="secondaryAction" type="button" onClick={() => router.back()} isSubmitting={false}/>
 								</div>
 						</Form>
 					)}

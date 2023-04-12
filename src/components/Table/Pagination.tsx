@@ -101,7 +101,7 @@ function Pagination(props : Table){
             router.push('1');
             warnMessage("página inexistente")
         }
-    }, [])
+    }, [props.currentPage, props.table, router, size, warnMessage])
 
     return(
         <div className="flex flex-col w-full items-end px-8">
@@ -122,10 +122,10 @@ function Pagination(props : Table){
             }   
                 {paginationRange.map((e, i) => {
                     if(e === -1){
-                        return <li className="border text-sm p-4 font-bold bg-slate-300 text-[#333849]">...</li>
+                        return <li key={i} className="border text-sm p-4 font-bold bg-slate-300 text-[#333849]">...</li>
                     }
                     return (
-                        <Link href={`${e}`}>
+                        <Link href={`${e}`} key={i}>
                             <li className={`${props.table.getState().pagination.pageIndex === e-1 ? "bg-blue-ufal text-white-100" : "bg-slate-300 text-[#333849]"} border text-sm p-4 font-bold ${e == 1 ? "rounded-l-md" : ""}  ${i + 1 == paginationRange.length ? "rounded-r-md" : ""} cursor-pointer`} key={i} onClick={() => props.table.setPageIndex(e-1)}>{e}</li>
                         </Link>
                         

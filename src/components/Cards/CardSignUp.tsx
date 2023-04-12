@@ -109,8 +109,7 @@ export function CardSignUp () {
 								title="Cadastrar"
 								theme="primary"
 								type="submit"
-								disabled={isSubmitting || !isValid}
-							/>
+								disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}							/>
 							<Link href="/publicroutes/login" className="text-blue-ufal text-center font-semibold text-base py-5">Fazer login</Link>
 						</div>
 					</Form>

@@ -48,7 +48,7 @@ function CardUserInfo() {
 			setUser(response)
 		} 
 		fetchData()
-	}, [])
+	}, [token])
 
 	const isAdmin = true
 

@@ -12,7 +12,7 @@ function PlayerList(){
             <Head>
                 <title>{"Usuários"}</title>
             </Head>
-            <DataTable columns={columns} data={data} currentPage={parseInt(index.index)}/>
+            <DataTable columns={columns} data={data} currentPage={parseInt(index.index as string)}/>
         </>     
     );
 }

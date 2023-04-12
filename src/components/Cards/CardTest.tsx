@@ -26,13 +26,12 @@ export function CardTest() {
 					</div>
 					
 					<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />} />
+						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={ false} />
 						<Button
 							title="Abrir chamado"
 							theme="withIcon"
-							icon={<Icon.PhoneOutgoing size={24} />}
-						/>
-						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />} />
+							icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false}						/>
+						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false} />
 					</div>
 				</div>
 			</div>

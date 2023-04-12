@@ -323,14 +323,12 @@ const CardAddUser = () => (
 									</div>
 								</div>
 								<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
-									{isSubmitting ? <Spinner size="xl" /> : null}
 									<Button
 										title="Adicionar"
 										theme="primaryAction"
 										type="submit"
-										disabled={isSubmitting || !isValid}
-									/>
-									<Button title="Cancelar" theme="secondaryAction" />
+										disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}									/>
+									<Button title="Cancelar" theme="secondaryAction" isSubmitting={false} />
 								</div>
 							</TabsPrimitive.Content>
 						</Form>

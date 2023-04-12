@@ -113,13 +113,12 @@ export function CardLogin () {
 								title="Entrar"
 								theme="primary"
 								type="submit"
-								disabled={ isSubmitting || !isValid }
-								
+								disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}								
 							/>
 							
 						
 								
-							<Button title="Esqueci a senha" theme="textOnly" />
+							<Button title="Esqueci a senha" theme="textOnly" isSubmitting={false} />
 							<Link href="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
 							
 						</div>

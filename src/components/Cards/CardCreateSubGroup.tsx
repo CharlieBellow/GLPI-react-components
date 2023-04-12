@@ -107,10 +107,9 @@ export const CardCreateSubGroup = () => {
 									title="Criar"
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting || !isValid}
-                  
+									disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}                  
                   />
-								<Button title="Cancelar" theme="secondaryAction" />
+								<Button title="Cancelar" theme="secondaryAction" isSubmitting={false} />
 							</div>
 						</Form>
 					)}

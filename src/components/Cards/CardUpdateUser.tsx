@@ -132,8 +132,7 @@ function CardUpdateUser() {
 									title={"Alterar"}
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting || !isValid}
-								/>
+									disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}								/>
 								{isAdmin ? <Button title="Excluir" theme="secondaryAction" /> : <Link href="../"><Button title="Cancelar" theme="secondaryAction" /></Link>}
 								
 							</div>

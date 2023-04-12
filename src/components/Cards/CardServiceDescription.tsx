@@ -64,10 +64,9 @@ export default function CardServiceDescription (  ) {
 
           <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder/${serviceInfo && serviceInfo.title}` }>
             <Button
-              title={ floatingButton ? "" : "Solicitar Serviço" }
+              title={floatingButton ? "" : "Solicitar Serviço"}
               theme="withIcon"
-              icon={ <Icon.PhoneOutgoing size={ 24 } /> }
-            />
+              icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false}            />
           </Link>
         </div>
       </div>
@@ -80,19 +79,16 @@ export default function CardServiceDescription (  ) {
           <Button
             title="Solicitar Serviço"
             theme="primaryActionWithIcon"
-            icon={ <Icon.PhoneOutgoing size={ 24 } /> }
-          />
+            icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false}          />
         </Link>
         <Button
           title="Esclarecer Dúvidas"
           theme="secondaryActionWithIcon"
-          icon={ <Icon.Question size={ 24 } /> }
-        />
+          icon={<Icon.Question size={24} />} isSubmitting={false}        />
         <Button
           title="Relatar Problema"
           theme="tertiaryActionWithIcon"
-          icon={ <Icon.Warning size={ 24 } /> }
-        />
+          icon={<Icon.Warning size={24} />} isSubmitting={false}        />
       </div>
     </div>
   );
