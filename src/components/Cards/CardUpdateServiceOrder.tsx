@@ -13,7 +13,7 @@ import { ServiceOrder, User } from "../../Utils/server/types";
 import { Spinner } from "@chakra-ui/react";
 import { CardLabelInput } from "../../components/Inputs/CardLabelInput";
 import FieldSelect from "../Inputs/FieldSelect";
-import { updateServiceOrder } from "../../Utils/server/updateInfo";
+import { putServiceOrder } from "../../Utils/server/putInfo";
 import { useMessage } from "../../Contexts/MessageContext";
 
 
@@ -87,7 +87,7 @@ function CardUpdateServiceOrder(){
 										console.log("submit:", values);
 										if (token !== null) {
 											// ! alterar as informações que são passadas/recebidas no servidor
-											updateServiceOrder(values, token, serviceOrderId as string)
+											putServiceOrder(values, token as string)
 										  	successMessage("Oredem de serviço atualizada com sucesso");
 											router.back()
 			

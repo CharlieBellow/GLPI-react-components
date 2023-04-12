@@ -42,7 +42,7 @@ function GroupCard(){
             </div>
             {open ? <div className='pt-4'><CardLine/></div> : <></>}
             {open ? list.map(subgroup => {
-                return <SubgroupCard/>
+                return <SubgroupCard key={ subgroup} />
             }) : <></>}
         </div>
     );

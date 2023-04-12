@@ -40,7 +40,7 @@ function SubgroupCard(){
             </div>
             {open ? <div className='pt-4'><CardLine/></div> : <></>}
             {open ? list.map(subgroup => {
-                return <div>
+                return <div key={subgroup}>
                     <ServiceCard/>
                     <CardLine/>
                     </div>
