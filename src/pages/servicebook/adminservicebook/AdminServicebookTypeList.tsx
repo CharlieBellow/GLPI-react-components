@@ -4,11 +4,11 @@ import { Button } from '../../../components/Buttons/Button';
 import * as Icon from "phosphor-react";
 import { deleteGroup } from '../../../Utils/server/delInfo';
 
-import Modal from '../../../components/Modal';
 import { CardLabelInput } from '../../../components/Inputs/CardLabelInput';
 import { validationSchema } from '../../../Utils/validations';
 import { Form, Formik } from 'formik';
 import {useMessage} from "../../../Contexts/MessageContext"
+import GroupCard from '../../../components/Cards/CardAdmin/GroupCard';
 
 interface AdminProps {
   list: any[];
@@ -27,19 +27,19 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
   
   const [edit, setEdit] = useState(false)
 
-  function updateInput(id) {
+  function updateInput(id: string) {
     setEdit(false)
 
-    // chamar a função que altera a categoria
+    // TODO chamar a função que altera a categoria
   }
   
   return (
     <>
-      <div className="bg-white-100 rounded-xl m-4">
+      <div className="bg-white-ice rounded-xl m-4">
         <h1 className="p-4 font-medium text-lg">Categorias</h1>
         <div className="p-6">
-
-      {
+        <GroupCard/>
+      {/*
         
         props.list.map(item => {
           return (
@@ -53,8 +53,7 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
 				validationSchema={validate}
 				onSubmit={(values, actions) => {
 					setTimeout(() => {
-						console.log( "submit:", values );
-            // colocar a função que altera o título da categoria
+            // TODO colocar a função que altera o título da categoria
 			  successMessage("Login realizado com sucesso!");
 
 	
@@ -97,7 +96,7 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
           )
         })
 
-      }
+      */}
         </div>
 
       </div>

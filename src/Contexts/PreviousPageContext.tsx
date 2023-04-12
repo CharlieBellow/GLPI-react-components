@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// * contexto para armazenar a página anterior, que foi bloqueada pois o usuário não estava logado
+
 interface PreviousPageContextProps {
     page: string;
     changePage: (page: string) => void;

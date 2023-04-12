@@ -1,7 +1,11 @@
 import axios from "axios";
 
 const baseURL = "http://172.27.12.171:3333";
-// TODO manage errors
+
+// * funções de deletar do servidor 
+
+// TODO: falta gerenciar erros nas requisições
+
 export async function deleteGroup ( id: string, token: string ) {
   const deleteGroup = await axios( {
     method: 'del',

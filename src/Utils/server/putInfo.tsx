@@ -1,7 +1,7 @@
 import axios from "axios";
-
+// * funções de update no servidor 
 const baseURL = "http://172.27.12.171:3333"
-// TODO manage errors
+// TODO: falta gerenciar erros nas requisições
 export function putGroup ( values: object, token: string ) {
   axios( {
     method: 'put',
@@ -75,7 +75,7 @@ export function patchAvatar ( values: object, token: string ) {
 
 export async function patchAvatar2(values: string, token: string) {
   const formData = new FormData();
-  formData.append(values, blob);
+  formData.append(values, blob); // ! blob?
   const res = await axios.post("http://172.27.12.171:3333/users/avatar", formData, {
     headers: { authorization: `Bearer ${ token }`, 'Content-Type': 'multipart/form-data' }
                 

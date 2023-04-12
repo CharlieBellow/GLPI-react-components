@@ -3,14 +3,12 @@ import Head  from "next/head";
 
 
 export default function DeleteService() {
-	
 	return (
 		<>
 			<Head>
-				<title>Deletar SubGrupo</title>
-		</Head>
+				<title>Deletar Serviço</title>
+			</Head>
 			<CardDeleteSubGroup />
-		
 		</>
 	);
 }

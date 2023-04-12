@@ -1,5 +1,5 @@
 // http://localhost:3000/privateroutes/servicebook/serviceorder/f24e3a7a-c022-40bf-8ed0-fe55d7c074bd/createserviceorder/
-
+// * Validações do YUP e Regex que utilizamos
 import * as yup from "yup";
 
 import { groupModel, serviceModel, serviceOrderModel, subgroupModel } from './ServiceModels';

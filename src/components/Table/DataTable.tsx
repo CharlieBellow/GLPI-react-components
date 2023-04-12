@@ -27,6 +27,9 @@ export type DataTableProps<Data extends object> = {
     currentPage: number
 };
 
+// TODO estilizar a tabela como no figma
+
+
 function DataTable<Data extends object>({
     data,
     columns,

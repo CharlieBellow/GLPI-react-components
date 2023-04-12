@@ -1,11 +1,11 @@
 
 import { CardLogin } from '../../components/Cards/CardLogin';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../Contexts/AuthContext';
 import Head from "next/head"
 import LoadingPage from '../../components/LoadingPage';
 import { useRouter } from 'next/router';
-
+// * tela de login '/login'
 export function Login () {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false)

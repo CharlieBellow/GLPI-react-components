@@ -6,6 +6,7 @@ interface TicketsHomeProps{
     numeros: number;
     data: string;
 }
+// * tickets que aparecem na dashboard
 
 function TicketsHome(props :TicketsHomeProps){
     return(

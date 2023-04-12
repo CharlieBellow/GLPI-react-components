@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from "react";
 import {groupModel} from "../Utils/ServiceModels"
 import { Group } from "../Utils/server/types";
 
+
+// * contexto de grupos
 interface GroupContextProps {
   group: Array<Group>;
   addGroup: ( group: Group ) => void;

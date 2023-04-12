@@ -10,7 +10,7 @@ interface FieldSelectProps {
   default?: string;
   theme?: string
 }
-
+// ! id não existe no tipo 'object', tem que consertar pra poder fazer o build
 // transformar esse select em um component select do radix ui para aproveitar a acessibilidade 
 export default function FieldSelect(
 	props: FieldSelectProps &

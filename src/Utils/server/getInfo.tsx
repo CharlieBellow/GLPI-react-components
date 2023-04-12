@@ -2,13 +2,16 @@ import axios from "axios";
 import { Group, Service, SubGroup } from "./types";
 export const baseURL = "http://172.27.12.171:3333"
 
+// * funções de resgatar do servidor 
+
+
 export interface groupProps {
   id: string,
   description: string,
   createdAt: Date;
   updatedAt: Date;
 }
-// criar erros
+// TODO: falta gerenciar erros nas requisições
  export async function getGroup(id : string) {
   const response = await axios({
                 method: 'get',
@@ -60,7 +63,6 @@ export async function getService(id : string, token: string) {
                 method: 'get',
                 baseURL: baseURL,
                 url: `/servicebook/service/${id}`,
-               // headers: { authorization: `Bearer ${ token }` }
               });
   return response.data;
 }

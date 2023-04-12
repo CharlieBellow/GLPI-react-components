@@ -1,12 +1,8 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import axios from "axios";
-import Link from "next/link"
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import * as Icon from "phosphor-react";
 
-import { Page } from "../../../../components/Page";
 import CardGroup from "../../../../components/CardGroup";
 
 import { getAllSubGroups , getGroup } from "../../../../Utils/server/getInfo";
@@ -16,8 +12,9 @@ import Head from "next/head";
 
 const baseURL = "http://172.27.12.171:3333";
 
+// * tela subgrupos de um grupo 'servicebook/subgroup/[id:grupo]'
 
-const Subcategory = ( ) => {
+const Subgroups = ( ) => {
 
 
   const router = useRouter();
@@ -30,15 +27,15 @@ const Subcategory = ( ) => {
   useEffect( () => {
     if ( !router.isReady ) return;
     const fetchData = async () => {
-      
-
-      const category = await getGroup( subGroupId as string);
-      const response = await getAllSubGroups ( subGroupId as string);
-      
-      setGroupTitle( category.description );
+      const [group, response] = await Promise.all([
+          getGroup( subGroupId as string),
+          getAllSubGroups ( subGroupId as string)]
+      );
+        
+      setGroupTitle( group.description );
       setSubgroups( response );
 
-      return category;
+      return group;
     };
 
     fetchData();
@@ -46,7 +43,6 @@ const Subcategory = ( ) => {
   }, [router.isReady, subGroupId] );
 
   const isAdmin = true
-
   return (
     <>
     <Head>
@@ -54,33 +50,23 @@ const Subcategory = ( ) => {
     </Head>
       <>
         <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">
-          Subcategorias
+          Subgrupos
         </h4>
-
         <h5 className="text-xl font-bold m-8">{ groupTitle }</h5>
         <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
-
-
-
-          { subgroups && subgroups.map( ( subcategory ) => {
-
+          { subgroups && subgroups.map( ( subgroup ) => {
             return (
-
-              <CardGroup link={ `/servicebook/subgroup/${ subcategory.id }/getAllServices` } Name={ subcategory.description } Icon={ <Icon.Archive size={ 27 } /> }
-                key={ subcategory.id }
-                idGroup={ subcategory.id }
+              <CardGroup link={ `/servicebook/subgroup/${ subgroup.id }/getAllServices` } Name={ subgroup.description } Icon={ <Icon.Archive size={ 27 } /> }
+                key={ subgroup.id }
+                idGroup={ subgroup.id }
               />
-
             );
-          } )
-
-          }
-        </div>
-       
+          })}
+        </div>   
       </>
-      </>
+    </>
   );
 };
 
 
-export default Subcategory;
+export default Subgroups;

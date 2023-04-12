@@ -10,6 +10,8 @@ interface groupProps {
 	style?: string
 }
 
+// * card de cada grupo a ser exibido em groupList
+
 export default function CardGroup( props: groupProps ) {
 	
   const id = groupModel.map( group =>

@@ -11,7 +11,7 @@ interface AdminProps {
 }
 
 export default function AdminServiceBook(props: AdminProps) {
-//  fazer a requisição de todos os grupos, subgrupos e serviços
+// TODO fazer a requisição de todos os grupos, subgrupos e serviços
   const [list, setList] = useState<[]>([])
   const router = useRouter()
 
@@ -19,12 +19,10 @@ export default function AdminServiceBook(props: AdminProps) {
    
     if (!router.isReady) return;
     const fetchData = async () => {
-
       const groups = await getAllGroups()
       setList(groups)
     }
     fetchData()
-    console.log(list)
   }, [router.isReady])
   
   

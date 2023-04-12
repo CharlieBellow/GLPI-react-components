@@ -17,7 +17,7 @@ export const servicesList = [
 ];
 
 
-
+// * card de cada ordem de serviço do usuário
 export default function CardServiceOrder(props: ServiceOrder) {
 	const isWideVersion = useBreakpointValue({
 		base: false,

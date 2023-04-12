@@ -92,7 +92,7 @@ export const CardCreateServiceOrder = () => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
 			
-			const response = await getService(serviceOrderId as string)
+			const response = await getService(serviceOrderId as string, token as string)
 			setServiceInfo(response)
 			if (response.isPatromonyIdRequired) {
 				requiredValidation = validationSchema.patrimony
@@ -197,7 +197,7 @@ export const CardCreateServiceOrder = () => {
 										<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 											<Button
 												isSubmitting={isSubmitting}
-												title={isSubmitting ? <Spinner size="md" /> : "Criar"}
+												title={"Criar"}
 												theme="primaryAction"
 												type="submit"
 												disabled={isSubmitting || !isValid}

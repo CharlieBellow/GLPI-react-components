@@ -1,11 +1,14 @@
-import { Page } from "../../Page";
+import Head from "next/head";
 import Services from "../ServicesOrder";
 
 
 export default function ServicesOrder() {
   return (
-		<Page pagetitle={"Services"}>
+		<>
+			<Head>
+				<title>{"Services"}</title>
+			</Head>
 			<Services />
-		</Page>
+		</>
 	);
 }

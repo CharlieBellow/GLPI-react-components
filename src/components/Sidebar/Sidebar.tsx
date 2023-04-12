@@ -1,16 +1,14 @@
 import * as Icon from "phosphor-react"
 import ufalLogo from "../../../public/images/ufal-sigla-branca-fundo-transparente.png"
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import SidebarContext from "./SidebarContext";
 import SidebarItem from "./SidebarItem";
-import CardMenu from "../Cards/CardMenu";
 import Image from "next/image";
 function Sidebar({children} :any){
 
-    // ! adicionar as demais opções no menu
+    // TODO adicionar as demais opções no menu
 
     const { open } = useContext(SidebarContext);
-    const { openMenu } = useContext(SidebarContext);
 
     const Menus = [
         {
@@ -55,7 +53,7 @@ function Sidebar({children} :any){
             title: 'Configurações',
             icon: <Icon.SlidersHorizontal size={32}/>,
             path: "/Dashboard/"
-            // aqui tem que abrir o modal de configurações 
+            // TODO aqui tem que abrir o modal de configurações 
         },
     ];
     return(

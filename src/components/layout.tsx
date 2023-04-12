@@ -11,6 +11,7 @@ interface PageProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
+// * layout padrão das páginas
 export default function Layout({ children, ...rest }: PageProps) {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);

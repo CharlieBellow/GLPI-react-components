@@ -31,15 +31,15 @@ export const CardDeleteSubGroup = () => {
 	const router = useRouter()
 	const {subGroupId} = router.query
 	
-	const [listService, setListService] = useState<Group[]>([])
+	const [listSubGroup, setListSubGroup] = useState<Group[]>([])
 	useEffect(() => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
-			const response = await getAllServices(subGroupId)
-			setListService(response)
+			const response = await getAllServices(subGroupId as string)
+			setListSubGroup(response)
 		}
 		fetchData()
-	}, [router.isReady, listService, subGroupId])
+	}, [router.isReady, subGroupId])
 	
 	// console.log("aqui", listService[0].title);
 	return (
@@ -84,7 +84,7 @@ export const CardDeleteSubGroup = () => {
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div>
-									<FieldSelect label="description" listitems={listService} default="selecione a subcategoria a ser deletada" name="description" />
+									<FieldSelect label="description" listitems={listSubGroup} default="selecione a subcategoria a ser deletada" name="description" />
 								</div>
 
 								<div className="">
@@ -102,7 +102,7 @@ export const CardDeleteSubGroup = () => {
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 			
 								<Button
-									title={isSubmitting ?  <Spinner size="md" /> : "Excluir"}
+									title={"Excluir"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

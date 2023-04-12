@@ -57,9 +57,10 @@ module.exports = {
 				bg: "#212532",
 				"light-bg": "#333849",
 				"red-ufal": "#ED1C24",
-				
 
-
+				black: {
+					text: "333849",
+				},
 				white: {
 					100: "#FFFFFF",
 					ice: "#F7FAFC",
@@ -75,7 +76,7 @@ module.exports = {
 
 				gray: {
 					text: "#797D9A",
-					medium: "#DEE2E6",
+					medium: "#EDF2F7",
 					dark: "#D9D9D9",
 				},
 			},

@@ -10,8 +10,6 @@ import { useMessage } from "../../Contexts/MessageContext";
 import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
-import { Divide } from "phosphor-react";
-import Navigate from "../../Utils/navigate";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -119,7 +117,7 @@ function CardUserInfo() {
 							<div className="flex justify-end gap-x-3.5 mt-10 ">
 								<Link href="./updateuser">
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
+									title={"Alterar"}
 									theme="primaryAction"
 									type="button"
 						

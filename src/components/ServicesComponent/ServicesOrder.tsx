@@ -9,13 +9,9 @@ import { useEffect, useState } from "react";
 import { ServiceOrder } from "../../Utils/server/types";
 import { getRequesterService, getResponsibleService  } from "../../Utils/server/getInfo";
 import { Spinner } from "@chakra-ui/react";
-import {CardLabelInputCheckbox} from "../../components/Inputs/CardLabelInputCheckbox"
-import { Formik, FormikHelpers, FormikValues } from "formik";
-import { TextAlignCenterIcon, TextAlignLeftIcon, TextAlignRightIcon } from '@radix-ui/react-icons';
 
 
-
-
+// * todas as ordens de serviço de um usuário. Podem ser filtradas po status, se é responsável ou requisitante
 const myuser = {
 	id: "972e1f58-95c6-4582-ac05-fb385dbb557b",
 	status: "Ativo",
@@ -40,14 +36,15 @@ export default function ServicesOrder () {
   
 	useEffect(() => {
 		const fetchData = async () => {
-				const responseRequester = await getRequesterService(myuser.id, token as string);
-				const responseResponsible = await getResponsibleService(myuser.id, token as string);
 
-				// console.log(responseRequester);
+				const [responseRequester, responseResponsible] = await Promise.all([
+					getRequesterService(myuser.id, token as string),
+					getResponsibleService(myuser.id, token as string)
+				]);
+
 				setRequesterList(responseRequester)
 				setResponsibleList(responseResponsible)
 				setServicesList([...responseRequester, responseResponsible])
-				// setServicesStatus(servicesList)
 				setOrderList([...responseRequester, responseResponsible])
 		}
 		fetchData()
@@ -80,11 +77,9 @@ export default function ServicesOrder () {
 								setValue(value)
 								if (value === "atribuido") {
 									setOrderList(responsibleList)
-									console.log("chamou atribuido");
 								} else
 								if (value === "proprietario") {
 									setOrderList(requesterList)
-									console.log("chamou proprietario");
 								}
 								else if (value === "status") {
 										servicesList.map(item => {
@@ -95,10 +90,8 @@ export default function ServicesOrder () {
 									})
 										
 									setOrderList(servicesStatus)
-									console.log("chamou proprietario");
 								}
 									else {						
-									console.log("chamou todos");
 									setOrderList(servicesList)
 								}
 							}}

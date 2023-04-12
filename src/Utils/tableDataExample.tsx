@@ -1,5 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table";
 
+// * criado somente para testar a tabela com paginação
+
 type UnitConversion = {
     fromUnit: string;
     toUnit: string;

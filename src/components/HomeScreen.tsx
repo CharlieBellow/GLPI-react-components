@@ -7,6 +7,8 @@ import CardTicketSummary from "./Cards/CardTicketSummary";
 import CardServices from "./Cards/CardServices";
 import CardGroups from "./Cards/CardGroups";
 
+// * página inicial é exibida em '/' ou '/Dashboard'
+
 function HomeScreen () {
 	return (
 		<div className="w-full h-screen">
