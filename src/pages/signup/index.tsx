@@ -2,6 +2,8 @@
 import { CardSignUp } from '../../components/Cards/CardSignUp';
 import Head from "next/head"
 
+// * tela de cadastro '/signup'
+
 function SignUp() {
 
   return (

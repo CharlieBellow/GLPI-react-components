@@ -4,6 +4,7 @@ interface User extends React.HTMLAttributes<HTMLElement> {
     date: string
 }
 
+// TODO estilizar a tabela como a versão mobile
 function MobileTableElement(props: User){
     return(
         <div className="flex flex-row items-center">

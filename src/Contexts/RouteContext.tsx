@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { createContext, useState } from 'react';
 
+// * contexto de rotas
+
 interface RoutesContextProps {
   group: string;
   setGroup: ( group: string ) => void;

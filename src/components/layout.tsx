@@ -11,6 +11,7 @@ interface PageProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
+// * layout padrão das páginas
 export default function Layout({ children, ...rest }: PageProps) {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
@@ -45,7 +46,7 @@ export default function Layout({ children, ...rest }: PageProps) {
       verifyCookies()
       setLoaded(true)
     }, 300);
-  }, [verifyCookies])
+  }, [])
   if (loaded && (router.asPath.includes("login"))) {
     return(
       <main>

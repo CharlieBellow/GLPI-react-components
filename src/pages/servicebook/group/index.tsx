@@ -1,11 +1,9 @@
-import { Page } from "../../../components/Page";
 import GroupList from "../../../components/GroupList";
-import { ServiceContext } from "../../../Contexts/ServiceContext";
 import Head from "next/head";
 
+// * tela de grupos 'servicebook/group'
 
-
-export default function CategoryHome () {
+export default function GroupHome () {
   return (
   <>
   <Head>

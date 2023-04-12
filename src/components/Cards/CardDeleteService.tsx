@@ -66,9 +66,7 @@ export const CardDeleteService = () => {
 							console.log("submit:", values);
 							const token = localStorage.getItem("token");
 							if (values && token) {
-						console.log("values", values.description)
-
-						deleteService(values.description, token)
+								deleteService(values.description, token)
 								successMessage("Grupo deletado com sucesso!");
 								actions.resetForm();
 								

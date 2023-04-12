@@ -6,10 +6,9 @@ interface InfosServiceItemProps {
 	infos: Service,
 }
 
-
+// * informações do serviço
 export default function InfoServiceItem ( props: InfosServiceItemProps ) {
-  
-  console.log("inffos", props.infos);
+
 
 	return (
     <>

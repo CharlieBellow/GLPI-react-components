@@ -6,7 +6,9 @@ import {useEffect, useState} from "react"
 import * as Icon from 'phosphor-react'
 import {getAllGroups} from "../Utils/server/getInfo"
 import { Group } from '../Utils/server/types';
-import Link from 'next/link';
+
+
+// * lista de grupos, é exibido em '/servicebook/' ou '/servicebook/group'
 
 
 export default function GroupList () {
@@ -29,7 +31,7 @@ const isAdmin = true
   return (
 
     <>
-      <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Categorias</h4>
+      <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Grupos</h4>
       <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0">
 
         {groups && groups.map( ( group ) => {
@@ -41,7 +43,6 @@ const isAdmin = true
 
           );
         } ) }
-      {/* organizar esses botões na tela */}
         
       </div>
     </>

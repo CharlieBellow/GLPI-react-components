@@ -1,3 +1,5 @@
+// * lista de tipos de dados que utilizamos
+
 export interface Service{
   id: string;
 	description: string;

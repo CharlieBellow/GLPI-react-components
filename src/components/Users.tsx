@@ -17,6 +17,8 @@ const myuser = {
 	gender: "M",
 	created_at: "2023-03-02T20:00:24.955Z",
 }
+
+// * exibir todos os usuários em cards
 export default function AllUsers () {
  
 	

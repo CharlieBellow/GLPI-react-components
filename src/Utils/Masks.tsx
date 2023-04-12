@@ -1,3 +1,5 @@
+// * máscaras para usar nos inputs
+
 export const PhoneMask = ( value: string | undefined ) => {
   if ( !value ) return ""
   

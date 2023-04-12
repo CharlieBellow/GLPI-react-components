@@ -1,5 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify"
+
+// * contexto para exibir mensagens toast para o usuário
 interface MessageContextProps {
     errorMessage: (message: string) => void;
     successMessage: (message: string) => void;

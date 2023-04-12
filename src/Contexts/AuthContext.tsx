@@ -1,8 +1,10 @@
 import axios from "axios";
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { getUser } from "../Utils/server/getInfo";
 
+// * contexto de autenticação
+// ! FIX: getUser pelo token
 interface UserProps {
   id: string,
   name: string,
@@ -54,6 +56,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser(user)
     console.log(user)
   }
+  
   function verifyCookies() {
     if (localStorage.getItem('token') !== "null" && localStorage.getItem('token') !== null) {
       // TODO verificar validade

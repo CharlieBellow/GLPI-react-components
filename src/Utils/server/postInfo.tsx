@@ -1,7 +1,8 @@
 import axios from "axios";
+// * funções de adicionar no servidor 
 
 const baseURL = "http://172.27.12.171:3333"
-// TODO manage errors
+// TODO: falta gerenciar erros nas requisições
 export function postGroup ( values: object, token: string ) {
   axios( {
     method: 'post',

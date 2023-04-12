@@ -10,8 +10,6 @@ import { useMessage } from "../../Contexts/MessageContext";
 import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
-import { Divide } from "phosphor-react";
-import Navigate from "../../Utils/navigate";
 import { useRouter } from "next/router";
 import Link from "next/link";
 

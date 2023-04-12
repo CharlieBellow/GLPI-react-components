@@ -1,9 +1,11 @@
 import  Head  from "next/head";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import DataTable from "../../../components/Table/DataTable";
 import { columns, data } from "../../../Utils/tableDataExample";
 
-function PlayerList(){
+// * Lista de usuários na tabela '/users/[número da pagina]'
+
+function UserList(){
     const router = useRouter()
     const index = router.query
 
@@ -17,4 +19,4 @@ function PlayerList(){
     );
 }
 
-export default PlayerList;
+export default UserList;

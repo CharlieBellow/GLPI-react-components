@@ -1,9 +1,8 @@
 
 import Head from "next/head";
-import { Page } from "../../../components/Page";
 import ServicesOrder from "../../../components/ServicesComponent/ServicesOrder";
 
-
+// * ordens de serviço do usuário '/servicebook/serviceorder'
 export default function MyServices() {
 
   return (

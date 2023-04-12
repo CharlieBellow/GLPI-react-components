@@ -1,8 +1,9 @@
 import Head from "next/head";
-import { Page } from "../../../../../components/Page";
 import CardUpdateServiceOrder from "../../../../../components/Cards/CardUpdateServiceOrder";
 
-function EditService () {
+// * editar ordem de serviço 'serviceorder/[id:serviceorder]/edit'
+
+function EditServiceOrder () {
   return (
     <>
       <Head>
@@ -13,4 +14,4 @@ function EditService () {
   );
 }
 
-export default EditService;
+export default EditServiceOrder;

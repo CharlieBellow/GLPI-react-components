@@ -7,12 +7,8 @@ import { Button } from './Buttons/Button';
 import { validationSchema } from "../Utils/validations";
 import { useMessage } from "../Contexts/MessageContext";
 import * as yup from "yup";
-import { Spinner } from '@chakra-ui/react';
 import { CardLabelInputFile } from './Inputs/CardLabelInputFile';
 // import { patchAvatar2 } from '../Utils/server/putInfo';
-
-
-
 
 
 const validate = yup.object().shape({

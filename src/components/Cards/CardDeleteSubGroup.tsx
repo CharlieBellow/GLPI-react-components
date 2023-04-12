@@ -31,15 +31,15 @@ export const CardDeleteSubGroup = () => {
 	const router = useRouter()
 	const {subGroupId} = router.query
 	
-	const [listService, setListService] = useState<Group[]>([])
+	const [listSubGroup, setListSubGroup] = useState<Group[]>([])
 	useEffect(() => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
 			const response = await getAllServices(subGroupId as string)
-			setListService(response)
+			setListSubGroup(response)
 		}
 		fetchData()
-	}, [router.isReady, listService, subGroupId])
+	}, [router.isReady, subGroupId])
 	
 	// console.log("aqui", listService[0].title);
 	return (

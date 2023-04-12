@@ -1,9 +1,10 @@
 import { useBreakpointValue } from "@chakra-ui/react";
 import { Trash } from "phosphor-react";
 import { Button } from "./Buttons/Button";
-import { getUserId } from "../Utils/server/getInfo";
-import { useEffect, useState } from "react";
 import {User} from "../Utils/server/types"
+
+
+// * card de usuário para ser exibida na lista de usuários
 
 const myuser = {
 	id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
