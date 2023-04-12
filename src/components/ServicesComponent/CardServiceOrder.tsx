@@ -2,6 +2,7 @@ import { useBreakpointValue } from "@chakra-ui/react";
 import { Trash } from "phosphor-react";
 import { Button } from "../Buttons/Button";
 import { deleteServiceOrder } from "../../Utils/server/delInfo";
+import {Service} from "../../Utils/server/types"
 
 export const servicesList = [
 	{
@@ -19,7 +20,7 @@ interface ServiceOrderProps {
 	description?: string;
 	id: string;
 	patrimonyId: string;
-	service: object;
+	service: Service;
 	status: string;
 	createdAt: string;
 	estimatedAt: string;
@@ -38,8 +39,8 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 	const token = localStorage.getItem("token");
 	
 	// não exclui por algum erro no servidor
-	async function delService (id) {
-		const del = await deleteServiceOrder(id, token)
+	async function delService (id: string) {
+		const del = await deleteServiceOrder(id, token as string)
 	}
 	
 	
@@ -70,6 +71,7 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 						<strong>Serviço: </strong>
 
 						{props.service.title}
+						{props.service.description}
 					</p>) : (<p className="text-xs mt-3 font-medium lg:text-xl">
 						<strong>Serviço: </strong>
 

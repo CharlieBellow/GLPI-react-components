@@ -4,7 +4,7 @@ import { ClassAttributes, InputHTMLAttributes } from "react";
 import { string } from "yup/lib/locale";
 import { Group } from "../../Utils/server/types";
 interface FieldSelectProps {
-  listitems: string[] | Group[] | object[]
+  listitems: string[]
   label: string;
   name: string;
   default: string;
@@ -20,20 +20,13 @@ export default function FieldSelect(
 ) {
 	const [field, meta] = useField(props);
 
-	const getSelect = (item: string | object | Group) =>{
+	const getSelect = (item: string) =>{
 
-		if (typeof item === 'string') {
 			return item;
 
-		} else if (item.title) {
-			return item.title;
-
-		} else {
-			return item.description;
-
-		}
+			
 	}
- 
+
 	return (
 		<div
 			className={`w-full relative flex items-start flex-col  ${props.theme}`}
@@ -53,7 +46,7 @@ export default function FieldSelect(
 				</option>
         { props.listitems.map( item => {
 					return (
-						<option key={typeof item === 'string' ? item : item.id} value={typeof item === 'string' ? item : item.id} className="font-bold ">
+						<option key={item} value={item} className="font-bold ">
 							
 							{
 							getSelect(item)}

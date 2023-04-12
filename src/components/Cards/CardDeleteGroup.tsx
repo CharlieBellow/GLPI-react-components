@@ -80,7 +80,7 @@ const [listGroup, setListGroup] = useState<Group[]>([])
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div>
-									<FieldSelect label="description" listitems={listGroup} default="selecione o grupo a ser deletado" name="description" />
+									<FieldSelect label="description" listitems={listGroup.map(group => group.description)} default="selecione o grupo a ser deletado" name="description" />
 								</div>
 
 								<div className="">

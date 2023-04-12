@@ -98,7 +98,7 @@ export const CardCreateSubGroup = () => {
                     label="serviceGroupId"
                     name="serviceGroupId"
                     default="Selecione a categoria a qual ela pertence"
-                    listitems={groups} 
+                    listitems={groups.map( group => group.description)} 
                   />
                 </div>
 							</div>

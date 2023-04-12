@@ -9,7 +9,7 @@ import { useMessage } from "../Contexts/MessageContext";
 import * as yup from "yup";
 import { Spinner } from '@chakra-ui/react';
 import { CardLabelInputFile } from './Inputs/CardLabelInputFile';
-import { patchAvatar2 } from '../Utils/server/putInfo';
+// import { patchAvatar2 } from '../Utils/server/putInfo';
 
 
 
@@ -59,7 +59,7 @@ export default function Modal() {
 
               
           
-              patchAvatar2(values.avatar, token as string)
+              // patchAvatar2(values.avatar, token as string)
               console.log("foi")
 							successMessage("Imagem alterada com sucesso!");
 
@@ -91,7 +91,7 @@ export default function Modal() {
 			
                   <div className='flex justify-end w-full'>
 								<Button
-									title={isSubmitting ? <Spinner size="md" /> : "Alterar"}
+									title={"Alterar"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}

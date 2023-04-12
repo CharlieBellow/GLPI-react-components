@@ -84,7 +84,7 @@ export const CardDeleteService = () => {
 						<Form autoComplete="on">
 							<div className="flex flex-col gap-9 mx-14">
 								<div>
-									<FieldSelect label="description" listitems={listService} default="selecione o serviço a ser deletado" name="description" />
+									<FieldSelect label="description" listitems={listService.map(service => service.description)} default="selecione o serviço a ser deletado" name="description" />
 								</div>
 
 								<div className="">

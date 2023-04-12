@@ -37,8 +37,8 @@ export default function ServicesOrder () {
   
 	useEffect(() => {
     const fetchData = async () => {
-			const responseRequester = await getRequesterService(myuser.id, token);
-			const responseResponsible = await getResponsibleService(myuser.id, token );
+			const responseRequester = await getRequesterService(myuser.id, token as string);
+			const responseResponsible = await getResponsibleService(myuser.id, token as string);
 			// console.log(responseRequester);
 			
 
@@ -50,13 +50,11 @@ export default function ServicesOrder () {
     fetchData()
   }, [servicesList, requesterList, responsibleList, token])
 
-	console.log("servicesList", servicesList);
-	console.log("atribuído", responsibleList);
-	console.log("proprietário", requesterList);
 
 
 	const toogle = "responsible"
-	const [value, setValue] = useState<ServiceOrder[]>([])
+	const value = "";
+	const [values, setValues] = useState<ServiceOrder[]>([])
 
   return (
 		<>
@@ -72,11 +70,11 @@ export default function ServicesOrder () {
 						defaultValue={"todos"}
 						onValueChange={(value) => {
 							if (value === "atribuido") {
-								setValue(responsibleList)
+								setValues(responsibleList)
 								console.log("chamou atribuido");
 							} else
 								if (value === "proprietario") {
-								setValue(requesterList)
+									setValues(requesterList)
 								console.log("chamou proprietario");
 								}
 								else if (value === "status") {
@@ -87,13 +85,13 @@ export default function ServicesOrder () {
 										)
 									})
 									
-								setValue(servicesStatus)
+									setValues(servicesStatus)
 								console.log("chamou proprietario");
 								}
 								else {
 								
 								console.log("chamou todos");
-								setValue(servicesList)
+								setValues(servicesList)
 							}
 			}}
     >
@@ -119,8 +117,8 @@ export default function ServicesOrder () {
 				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
 					<>
 						
-						{value ?
-								value.map((item: any) => {
+						{values ?
+								values.map((item: any) => {
 							return (
 								<CardServiceOrder
 			

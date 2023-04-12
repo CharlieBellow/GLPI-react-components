@@ -27,7 +27,7 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
   
   const [edit, setEdit] = useState(false)
 
-  function updateInput(id) {
+  function updateInput(id: string) {
     setEdit(false)
 
     // chamar a função que altera a categoria
