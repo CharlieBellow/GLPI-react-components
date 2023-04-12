@@ -30,8 +30,8 @@ export function CardTest() {
 						<Button
 							title="Abrir chamado"
 							theme="withIcon"
-							icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false}						/>
-						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false} />
+							icon={<Icon.PhoneOutgoing size={24} />} />
+						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />}  />
 					</div>
 				</div>
 			</div>

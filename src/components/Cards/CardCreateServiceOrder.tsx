@@ -196,7 +196,7 @@ export const CardCreateServiceOrder = () => {
 												type="submit"
 												disabled={isSubmitting || !isValid}
 											/>
-											<Button title="Cancelar" theme="secondaryAction" type="button" isSubmitting={isSubmitting} />
+											<Button title="Cancelar" theme="secondaryAction" type="button" isSubmitting={false} />
 										</div>
 									</Form>
 								)}

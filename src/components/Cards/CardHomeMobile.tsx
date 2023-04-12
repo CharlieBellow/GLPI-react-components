@@ -31,13 +31,13 @@ function CardHomeMobile() {
 					</div>
 				</div>
 				<div className="flex justify-between mt-5 lg:hidden">
-					<Button title={"Botão principal"} theme={"tertiaryMobile"} isSubmitting={false} />
-					<Button title={"Botão principal"} theme={"primaryMobile"} isSubmitting={false} />
+					<Button title={"Botão principal"} theme={"tertiaryMobile"} />
+					<Button title={"Botão principal"} theme={"primaryMobile"} />
 				</div>
 
 				<div className="justify-between hidden lg:flex mt-10 gap-4 text-base">
-					<Button title={"Meus Chamados"} theme={"tertiary"} isSubmitting={false} />
-					<Button title={"Abrir Chamados"} theme={"primary"} isSubmitting={false} />
+					<Button title={"Meus Chamados"} theme={"tertiary"} />
+					<Button title={"Abrir Chamados"} theme={"primary"} />
 				</div>
 			</div>
 		</>

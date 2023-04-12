@@ -66,7 +66,7 @@ export default function CardServiceDescription (  ) {
             <Button
               title={floatingButton ? "" : "Solicitar Serviço"}
               theme="withIcon"
-              icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false}            />
+              icon={<Icon.PhoneOutgoing size={24} />} />
           </Link>
         </div>
       </div>
@@ -79,16 +79,16 @@ export default function CardServiceDescription (  ) {
           <Button
             title="Solicitar Serviço"
             theme="primaryActionWithIcon"
-            icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={false}          />
+            icon={<Icon.PhoneOutgoing size={24} />} />
         </Link>
         <Button
           title="Esclarecer Dúvidas"
           theme="secondaryActionWithIcon"
-          icon={<Icon.Question size={24} />} isSubmitting={false}        />
+          icon={<Icon.Question size={24} />} />
         <Button
           title="Relatar Problema"
           theme="tertiaryActionWithIcon"
-          icon={<Icon.Warning size={24} />} isSubmitting={false}        />
+          icon={<Icon.Warning size={24} />} />
       </div>
     </div>
   );

@@ -56,7 +56,7 @@ const Subgroups = ( ) => {
         <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
           { subgroups && subgroups.map( ( subgroup ) => {
             return (
-              <CardGroup link={ `/servicebook/subgroup/${ subgroup.id }/getAllServices` } Name={ subgroup.description } Icon={ <Icon.Archive size={ 27 } /> }
+              <CardGroup link={ `/servicebook/subgroup/${ subgroup.id }/services` } Name={ subgroup.description } Icon={ <Icon.Archive size={ 27 } /> }
                 key={ subgroup.id }
                 idGroup={ subgroup.id }
               />

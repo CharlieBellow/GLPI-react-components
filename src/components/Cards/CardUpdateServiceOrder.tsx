@@ -157,7 +157,7 @@ function CardUpdateServiceOrder(){
 										type="submit"
 										disabled={isSubmitting || !isValid}
 									/>
-									<Button title="Cancelar" theme="secondaryAction" type="button" onClick={() => router.back()} isSubmitting={false}/>
+									<Button title="Cancelar" theme="secondaryAction" type="button" onClick={() => router.back()} />
 								</div>
 						</Form>
 					)}

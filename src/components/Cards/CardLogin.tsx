@@ -118,7 +118,7 @@ export function CardLogin () {
 							
 						
 								
-							<Button title="Esqueci a senha" theme="textOnly" isSubmitting={false} />
+							<Button title="Esqueci a senha" theme="textOnly" />
 							<Link href="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
 							
 						</div>

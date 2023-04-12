@@ -78,7 +78,7 @@ export default function CardUser(props: User) {
 					className="flex"
 					icon={<Trash className="" weight="bold" size={20} />}
 					title={isWideVersion ? "Excluir" : ""}
-					theme={"primary"} isSubmitting={false}
+					theme={"primary"}
 				/>
 			</div>
 		</div>

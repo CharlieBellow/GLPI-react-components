@@ -4,7 +4,6 @@ import { Spinner } from "@chakra-ui/react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	title?: string;
-	//type: "button" | "submit" | "reset" | undefined;
 	icon?: Icon.IconProps;
 	theme:
 		| "primary"
@@ -23,7 +22,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	isSubmitting?: boolean;
 }
 
-export function Button({ isSubmitting = false, ...props }: ButtonProps) {
+export function Button({ isSubmitting, ...props }: ButtonProps) {
 	return (
 		<button
 			{...props}

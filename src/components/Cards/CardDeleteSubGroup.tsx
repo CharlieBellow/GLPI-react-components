@@ -106,7 +106,7 @@ export const CardDeleteSubGroup = () => {
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}								/>
-								<Button title="Cancelar" theme="secondaryAction" isSubmitting={false} />
+								<Button title="Cancelar" theme="secondaryAction"  />
 							</div>
 						</Form>
 					)}
