@@ -8,7 +8,6 @@ import Sidebar from "./Sidebar/Sidebar";
 import { SidebarProvider } from "./Sidebar/SidebarContext";
 import CardMenu from "./Cards/CardMenu";
 interface PageProps extends React.HTMLAttributes<HTMLElement> {
-	pagetitle: string;
   children: React.ReactNode;
 }
 
@@ -58,9 +57,9 @@ export default function Layout({ children, ...rest }: PageProps) {
       <SidebarProvider>
         <Sidebar>
           <>
-            <div className="bg-slate-200 h-full">
+            <div className="bg-slate-200 h-full flex flex-col">
                 <CardMenu pagetitle="Dashboard"/>
-                <div {...rest} className="content ">
+                <div {...rest} className="content h-full">
 							    {children}
 						    </div>
             </div>

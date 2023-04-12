@@ -42,9 +42,7 @@ export const CardCreateService = () => {
 	
 	const router = useRouter();
 	const {subGroupId} = router.query
-
-  console.log("router", router.query.subGroupId)
-  const  token = localStorage.getItem("token");
+  	const  token = localStorage.getItem("token");
 	const { errorMessage, successMessage } = useMessage()
 
 

@@ -35,6 +35,7 @@ const myuser = {
 	roles: []
 }
 
+// ! criar rota pra alterar senha / esquecer
 function CardUserInfo() {
 	const { errorMessage, successMessage } = useMessage()
 	const [user, setUser] = useState<User>()
@@ -47,7 +48,7 @@ function CardUserInfo() {
 			setUser(response)
 		} 
 		fetchData()
-	},)
+	}, [])
 
 	const isAdmin = true
 

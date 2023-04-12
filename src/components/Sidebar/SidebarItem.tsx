@@ -50,9 +50,9 @@ function SidebarItem(props: Item){
                         </div>
                     }) : <></>} 
                     {!open && props.item.children ? 
-                    <div className="bg-blue-final-gradient text-white-100 absolute left-14 -bottom-2 w-40 rounded-md z-10">
+                    <div className="bg-blue-ufal flex flex-col gap-[0.1rem] text-white-100 absolute left-14 -bottom-2 w-40 rounded-lg z-10 overflow-hidden shadow-lg">
                         {props.item.children.map((child: Item, index : number) => {
-                            return <Link href={child.dir? child.dir : "#"} key={index} className={`hover:bg-sky-300 rounded-md p-2 ${hover ? "block" : "hidden"}`}>{child.title}</Link>
+                            return <Link href={child.dir? child.dir : "#"} key={index} className={`hover:bg-sky-300 bg-blue-final-gradient pl-4 pb-2 p-2 ${hover ? "block" : "hidden"}`}>{child.title}</Link>
                         })}
                     </div> 
                     : <></>}

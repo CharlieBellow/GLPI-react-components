@@ -27,7 +27,7 @@ function CardMenu(props: CardMenuProps){
 
     return(
         <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300`}>
-            <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[18vw] -mt-[10rem] bg-cover h-64 absolute"></div>
+            <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div>
             <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row items-center gap-4 w-[15rem]">
                     <List size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>
@@ -51,7 +51,7 @@ function CardMenu(props: CardMenuProps){
 					<div className="flex items-center relative">
 						<div className="lg:flex flex-col pr-3 items-end hidden">
 							<p className="text-blue-ufal no-underline hover:opacity-70">
-								<Link href="/privateroutes/user/userinfo">Nome Completo</Link>
+								<Link href="/user/userinfo">Nome Completo</Link>
 							</p>
 							<span>email@email.com</span>
 						</div>
@@ -61,7 +61,7 @@ function CardMenu(props: CardMenuProps){
 									<Question size={24} weight="bold" />
 								</div>
 								<div className="flex-1 flex">
-									<Link href="/privateroutes/user/userinfo">
+									<Link href="/user/userinfo">
 										<Image
 											src="https://www.github.com/charliebellow.png"
 											alt="favicon"

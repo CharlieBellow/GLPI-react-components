@@ -1,8 +1,10 @@
 import { useBreakpointValue } from "@chakra-ui/react";
-import { Trash } from "phosphor-react";
+import { Pencil, Trash } from "phosphor-react";
 import { Button } from "../Buttons/Button";
 import { deleteServiceOrder } from "../../Utils/server/delInfo";
 import {Service} from "../../Utils/server/types"
+import Link from "next/link";
+import { ServiceOrder } from "../../Utils/server/types";
 
 export const servicesList = [
 	{
@@ -39,11 +41,17 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 	const token = localStorage.getItem("token");
 	
 	// não exclui por algum erro no servidor
-	async function delService (id: string) {
-		const del = await deleteServiceOrder(id, token as string)
+	async function delServiceOrder (id: string) {
+		try{
+			const del = await deleteServiceOrder(id, token as string)
+		}catch(err){
+			console.log(err)
+		}
 	}
-	
-	
+	const createdAtDate = new Date(props.createdAt)
+	const updatedAt = new Date(props.updatedAt)
+
+	console.log()
 
 	return (
 		<div
@@ -54,21 +62,22 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 		>
 			<div>
 				<div>
-					<p className="text-xs mt-3 font-medium lg:text-xl">
-						<strong>Descrição: </strong>
+					<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Descrição: </strong>
 						{props.description}
 					</p>
 				</div>
 				<div>
-					{props.patrimonyId ? (<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Patrimônio: </strong>
-						{props.patrimonyId}
-					</p> ): <></>}
+					{props.patrimonyId ? props.patrimonyId === "notrequired" ? <></> : (<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Patrimônio: </strong>
+						{props.patrimonyId}	
+						</p> )
+					:  <></>  }
 					
 				</div>
 				<div>
-					{props.service ? (<p className="text-xs mt-3 font-medium lg:text-xl">
-						<strong>Serviço: </strong>
+					{props.service ? (<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Serviço: </strong>
 
 						{props.service.title}
 						{props.service.description}
@@ -79,57 +88,84 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 					</p>)}
 				
 				</div>
-				<div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Status: </strong>
-						{props.status}
-					</p>
-				</div>
 				{/* <div>
 					<p className="text-sm mt-3 font-medium lg:text-xl">
 						<strong>Local: </strong>
 						{props.servicelocal}
 					</p>
 				</div> */}
-				<div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Responsável pelo serviço: </strong>
+
+				{props.responsibleId ? <div>
+					<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+						<strong className="text-black">Responsável pelo serviço: </strong>
 						{props.responsibleId}
 					</p>
-				</div>
+				</div> : <></>}
+				
+				{/*
 				<div>
 					<p className="text-sm mt-3 font-medium lg:text-xl">
 						<strong>Solicitante: </strong>
 						{props.requesterId}
 					</p>
 				</div>
+				*/}
 				<div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Criado: </strong>
-						{props.createdAt}
+					<p className="text-sm mt-3  font-medium lg:text-xl">
+						<strong>Status: </strong>
+						<span className={`${props.status === "Aberto" ? "text-red-500" :  props.status === "Fechado" ? "text-blue-ufal" : props.status === "Em Execução" ? "text-green-500" : "text-amber-500"}`}>{props.status}</span>
+
 					</p>
 				</div>
-				{/* <div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Estimativa de Conclusão: </strong>
-						{props.estimatedAt}
-					</p>
-				</div> */}
-				<div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
-						<strong>Atualizado em: </strong>
-						{props.updatedAt}
-					</p>
+				<div className="flex flex-row gap-20">
+					<div>
+						<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+							<strong className="text-black">Criado: </strong>
+							{createdAtDate.toLocaleDateString()}
+						</p>
+					</div>
+					{/* <div>
+						<p className="text-sm mt-3 font-medium lg:text-xl">
+							<strong>Estimativa de Conclusão: </strong>
+							{props.estimatedAt}
+						</p>
+					</div> */}
+					<div>
+						<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+							<strong className="text-black">Atualizado em: </strong>
+							{updatedAt.toLocaleDateString()}
+						</p>
+					</div>
 				</div>
+				
 			</div>
-			<div className="pt-3 w-fit">
+			<div className="pt-3 w-fit flex flex-row gap-4">
+				<Link href={`serviceorder/${props.id}/edit`}>
+					<Button
+							className="flex"
+							icon={<Pencil className="" weight="bold" size={20} />}
+							title={isWideVersion ? "Editar" : ""}
+							theme={"primary"}
+							// TODO criar rota para editar ordem de serviço
+						/>
+				</Link>
 				<Button
 					className="flex"
 					icon={<Trash className="" weight="bold" size={20} />}
 					title={isWideVersion ? "Excluir" : ""}
-					theme={"primary"}
-					onClick={() => delService(props.id)}
+					theme={"secondary"}
+					onClick={() => {
+						console.log(props.id)
+						try{
+							deleteServiceOrder(props.id, token as string)
+							window.location.reload();
+							
+						}catch(err){
+							console.log(err)
+						}
+					}}
 				/>
+
 			</div>
 		</div>
 	);

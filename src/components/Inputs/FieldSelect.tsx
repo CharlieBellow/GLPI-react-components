@@ -2,12 +2,12 @@ import { Field, FieldHookConfig, useField} from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 
 import { string } from "yup/lib/locale";
-import { Group } from "../../Utils/server/types";
+import { Group, User } from "../../Utils/server/types";
 interface FieldSelectProps {
   listitems: string[]
   label: string;
   name: string;
-  default: string;
+  default?: string;
   theme?: string
 }
 
@@ -41,9 +41,12 @@ export default function FieldSelect(
 				${meta.touched && meta.error ? " border-red-ufal" : "focus:border-blue-ufal"}
 				`}
 			>
-				<option value="" className="">
-					{props.default}
-				</option>
+				{props.default ? 
+								<option value="" className="">
+								{props.default}
+							</option> : <></>
+				}
+
         { props.listitems.map( item => {
 					return (
 						<option key={item} value={item} className="font-bold ">

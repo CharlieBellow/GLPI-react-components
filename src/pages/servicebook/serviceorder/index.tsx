@@ -1,4 +1,5 @@
 
+import Head from "next/head";
 import { Page } from "../../../components/Page";
 import ServicesOrder from "../../../components/ServicesComponent/ServicesOrder";
 
@@ -6,11 +7,14 @@ import ServicesOrder from "../../../components/ServicesComponent/ServicesOrder";
 export default function MyServices() {
 
   return (
-    <Page pagetitle="Meus Serviços">
-
-      <div className="m-8">
-        <ServicesOrder />
+    <>
+      <Head>
+        <title>{"Minhas ordens de serviço"}</title>
+      </Head>
+      <div className="h-full">
+        <ServicesOrder/>
       </div>
-    </Page>
+    </>
+
   )
 }

@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+// * acho que esse arquivo pode apagar
 export const lettersOnly = /[^a-zA-Z]/g
 
 export const phoneNumber = /\([0-9]{2}\) 9[0-9]\d{3}-\d{4}/;
