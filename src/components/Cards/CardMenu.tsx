@@ -61,7 +61,7 @@ function CardMenu(props: CardMenuProps){
 									<Question size={24} weight="bold" />
 								</div>
 								<div className="flex-1 flex">
-									<Link href="/user/userinfo">
+									<Link href="/user/info">
 										<Image
 											src="https://www.github.com/charliebellow.png"
 											alt="favicon"

@@ -17,7 +17,7 @@ import { usePreviousPage } from "../../Contexts/PreviousPageContext";
 
 const validate = yup.object().shape({
 	email: validationSchema.email,
-	//password: validationSchema.password,
+	// password: validationSchema.password,
 });
 
 export function CardLogin () {
@@ -119,6 +119,8 @@ export function CardLogin () {
 						
 								
 							<Button title="Esqueci a senha" theme="textOnly" />
+
+							{/* não tá redirecionando para a tela de Novo cadastro  */}
 							<Link href="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
 							
 						</div>
