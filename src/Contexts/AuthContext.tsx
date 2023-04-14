@@ -68,7 +68,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         }
     } else {
       //sem token
-      console.log("false")
+      // console.log("false")
       setAuth(false)
     }
   }

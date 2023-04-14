@@ -115,7 +115,7 @@ function CardUserInfo() {
 						
 							</div>
 							<div className="flex justify-end gap-x-3.5 mt-10 ">
-								<Link href="./updateuser">
+								<Link href="./update">
 								<Button
 									title={"Alterar"}
 									theme="primaryAction"

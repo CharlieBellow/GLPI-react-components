@@ -10,12 +10,10 @@ const CardGroups = () => {
 			<div className="bg-white-ice w-auto h-auto py-4 px-4 rounded-lg shadow-card box-border">
 				<h4 className="text-4xl mb-8 font-bold">Grupos</h4>
 				<div className="grid grid-cols-2">
-					{/*<Link to="/PageCategoriaHome">*/}
 						<CardGroup
-							link="/"
+							link="/servicebook"
 							Name={ "Biblioteca" }
-							Icon={ <Icon.BookOpen size={ 27 } /> } idGroup={ "" }						/>
-					{/*</Link>*/}
+							Icon={ <Icon.BookOpen size={ 27 } /> } idGroup={ "" }	/>
 					<div className="hover:cursor-pointer hover:text-blue-ufal-hover">
 						<Link href="/servicebook/myservices">Meus Serviços</Link>
 					</div>

@@ -15,8 +15,8 @@ import { Divide } from "phosphor-react";
 import Link from "next/link";
 
 const validate = yup.object().shape({
-	fullName: validationSchema.fullName,
-	email: validationSchema.email,
+	// fullName: validationSchema.fullName,
+	// email: validationSchema.email,
 	password: validationSchema.password,
 	confirmPassword: validationSchema.confirmPassword,
 });
@@ -62,7 +62,7 @@ function CardUpdateUser() {
 				h-auto shadow-card"
 			>
 				<div className="pl-9">
-					<CardTitleImage title="Informações do Usuário" srcimage={myuser.avatar} alt={"Imagem de perfil"} editImage={true}  />
+					<CardTitleImage title="Alterar Informações do Usuário" srcimage={myuser.avatar} alt={"Imagem de perfil"} editImage={true}  />
 				</div>
 				<div className="mx-9 mt-4 mb-10">
 					<CardLine />
@@ -118,7 +118,7 @@ function CardUpdateUser() {
 					
 								/>
 								<CardLabelInput
-									label="Senha"
+									label="Confirme sua senha"
 									type="password"
 									name="confirmPassword"
 									inputid="confirmPassword"
@@ -132,8 +132,8 @@ function CardUpdateUser() {
 									title={"Alterar"}
 									theme="primaryAction"
 									type="submit"
-									disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}								/>
-								{isAdmin ? <Button title="Excluir" theme="secondaryAction" /> : <Link href="../"><Button title="Cancelar" theme="secondaryAction" /></Link>}
+									disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}	/>
+								{isAdmin ? <Button title="Excluir" type="button" theme="secondaryAction" /> : <Link href="./"><Button title="Cancelar" theme="secondaryAction" /></Link>}
 								
 							</div>
 							

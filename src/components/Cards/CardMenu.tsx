@@ -51,7 +51,7 @@ function CardMenu(props: CardMenuProps){
 					<div className="flex items-center relative">
 						<div className="lg:flex flex-col pr-3 items-end hidden">
 							<p className="text-blue-ufal no-underline hover:opacity-70">
-								<Link href="/user/userinfo">Nome Completo</Link>
+								<Link href="/user/info">Nome Completo</Link>
 							</p>
 							<span>email@email.com</span>
 						</div>

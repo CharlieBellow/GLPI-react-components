@@ -22,11 +22,11 @@ function Sidebar({children} :any){
             children: [
                 {
                     title: "Alterar Perfil",
-                    dir: "/user/updateuser",
+                    dir: "/user/update",
                 },
                 {
                     title: "Visualizar Perfil",
-                    dir: "/user/userinfo/",
+                    dir: "/user/info/",
                 }
             ]
         },
@@ -47,12 +47,12 @@ function Sidebar({children} :any){
         {
             title: 'RU',
             icon: <Icon.CookingPot size={32}/>,
-            path: "/Dashboard/"
+            path: "/"
         },
         {
             title: 'Configurações',
             icon: <Icon.SlidersHorizontal size={32}/>,
-            path: "/Dashboard/"
+            path: "/"
             // TODO aqui tem que abrir o modal de configurações 
         },
     ];
