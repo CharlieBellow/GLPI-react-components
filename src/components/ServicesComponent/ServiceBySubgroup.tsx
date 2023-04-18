@@ -38,7 +38,7 @@ const ServicesBySubgroup = ( ) => {
 	return (
 	
 				<>
-					<h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">
+					<h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg ">
             {subcategoryDescription}
 					</h4>
 

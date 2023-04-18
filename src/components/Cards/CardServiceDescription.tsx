@@ -55,7 +55,7 @@ export default function CardServiceDescription (  ) {
   // construir as rotas dinâmicas. quando recarrega ele dá erro
 
   return (
-    <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify mx-3 rounded-lg h-fit">
+    <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify mx-3 rounded-lg ">
       <div className="lg:flex lg:justify-between lg:items-baseline">
         <h3 className="pt-4 font-bold ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
           {serviceInfo && serviceInfo.title }

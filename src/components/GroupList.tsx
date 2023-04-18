@@ -30,7 +30,7 @@ export default function GroupList () {
 const isAdmin = true
   return (
 
-    <div className="h-auto">
+    <div className="">
       <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Grupos</h4>
       <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0 mb-12">
 
@@ -45,7 +45,7 @@ const isAdmin = true
         } ) }
         
       </div>
-    </>
+    </div>
   );
 };
 

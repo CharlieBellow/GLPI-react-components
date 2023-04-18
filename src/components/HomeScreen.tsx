@@ -11,9 +11,9 @@ import CardGroups from "./Cards/CardGroups";
 
 function HomeScreen () {
 	return (
-		<div className="w-full lg:h-screen">
-			<div className="pt-20 lg:hidden h-screen">
-				<div className=" flex flex-col mx-2 gap-6 items-center">
+		<div className="w-full h-screen lg:h-fit">
+			<div className="pt-20 lg:hidden ">
+				<div className="flex flex-col mx-2 gap-6 items-center">
 					<CardHomeMobile />
 					<Search placeholder={ "O que está procurando?" } />
 				</div>
@@ -49,7 +49,7 @@ function HomeScreen () {
 				</div>
 			</div>
 
-			<div className="hidden lg:grid w-auto lg:grid-cols-2 items-center h-auto gap-4 m-4 lg:mx-5 tv:mx-auto tv:max-w-[75rem] mx-auto">
+			<div className="hidden lg:grid w-auto lg:grid-cols-2 items-center gap-4 m-4 lg:mx-5 tv:mx-auto tv:max-w-[75rem] mx-auto">
 				<CardHomeMobile />
 				<CardGroups />
 				<CardServices />
