@@ -7,10 +7,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #EDF2F7;
+  
+
+}
+
+p, span, strong, div {
+  font-size: 14px;
+  font-weight: normal;
 }
 
 @media (max-width: 480px) {
-  p, span, strong {
+  p, span, strong, div {
     font-size: 14px;
     font-weight: normal;
   }
