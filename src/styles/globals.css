@@ -9,6 +9,13 @@ body {
   background-color: #EDF2F7;
 }
 
+@media (max-width: 480px) {
+  p, span, strong {
+    font-size: 14px;
+    font-weight: normal;
+  }
+}
+
 @layer components {
 
 }

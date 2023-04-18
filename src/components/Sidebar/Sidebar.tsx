@@ -57,8 +57,8 @@ function Sidebar({children} :any){
         },
     ];
     return(
-        <div className="flex w-full h-full">
-            <div className={`${open ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"} z-40 fixed h-fit-content overflow-x-hidden bg-blue-final-gradient ease-in-out duration-300 before:bg-gradient-to-r  before:-z-10 lg:static lg:block lg:h-auto lg:overflow-x-visible`}>
+        <div className="flex w-full h-full ">
+            <div className={`${open ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"} z-40 fixed h-full overflow-x-hidden bg-blue-final-gradient ease-in-out duration-300 before:bg-gradient-to-r  before:-z-10 lg:static lg:block lg:h-auto lg:overflow-x-visible`}>
                 <div className="flex flex-row w-full justify-center mb-4">
                     <Image className="mt-4 max-w-[6rem]" src={ufalLogo} alt="logo"/>
                 </div>   

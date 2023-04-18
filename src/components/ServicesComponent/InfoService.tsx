@@ -12,9 +12,9 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
 
 	return (
     <>
-      <div className="mt-9 mx-4" key={props.infos && props.infos.title}>
-        <div className="flex gap-2 flex-col">
-          <div className="flex gap-2">
+      <div className="my-9 mx-4 pt-6 font-normal" key={props.infos && props.infos.title}>
+        <div className="flex gap-2 flex-col ">
+          <div className="flex gap-2 ">
             <><Icon.ArticleMedium size={ 26 } weight="bold" /></>
             <h3 className="lg:text-3xl text-base font-semibold">Descrição</h3>
           </div>

@@ -58,9 +58,9 @@ export default function Layout({ children, ...rest }: PageProps) {
       <SidebarProvider>
         <Sidebar>
           <>
-            <div className="bg-slate-200 flex flex-col">
+            <div className="bg-slate-200 flex flex-col h-screen">
                 <CardMenu pagetitle="Dashboard"/>
-                <div {...rest} className="content lg:h-screen">
+                <div {...rest} className="content  h-">
 							    {children}
 						    </div>
             </div>
