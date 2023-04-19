@@ -1,6 +1,5 @@
 import * as Icon from "phosphor-react";
 import Link from "next/link";
-import { groupModel } from "../Utils/ServiceModels";
 
 interface groupProps {
 	Name: String;
@@ -13,12 +12,6 @@ interface groupProps {
 // * card de cada grupo a ser exibido em groupList
 
 export default function CardGroup( props: groupProps ) {
-	
-  const id = groupModel.map( group =>
-    group.id === props.idGroup
-      ? group.titleGroup 
-      :  "" 
-  );
 
 	return (
     <Link href={props.link}>

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import CardGroup from "./CardGroup";
+import CardGroup from "./CardGroup/CardGroup";
 import { useRouter } from "next/router";
 import {useEffect, useState} from "react"
 import * as Icon from 'phosphor-react'

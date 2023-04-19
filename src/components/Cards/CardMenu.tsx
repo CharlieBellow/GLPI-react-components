@@ -29,8 +29,8 @@ function CardMenu(props: CardMenuProps){
         <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300`}>
             <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div>
             <div className="flex flex-row justify-between items-center">
-                <div className="flex flex-row items-center gap-4 w-[15rem]">
-                    <List size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>
+                <div data-testid="butao" onClick={() => openMenu()} className="flex flex-row items-center gap-4 w-[15rem]">
+                    <List size={32}  className="cursor-pointer z-10"/>
                     <h3 className="hidden text-white lg:block"></h3>
                 </div>
                 <div className="hidden justify-self-center lg:block">

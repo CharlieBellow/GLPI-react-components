@@ -1,8 +1,8 @@
 import Link from "next/link";
 import * as  Icon from "phosphor-react";
-import CardGroup from "../CardGroup";
+import CardGroup from "../CardGroup/CardGroup";
 //import { Link } from "react-router-dom";
-import CardCategory from "../CardGroup";
+import CardCategory from "../CardGroup/CardGroup";
 
 const CardGroups = () => {
 	return (

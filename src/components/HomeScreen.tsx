@@ -1,5 +1,5 @@
 import CardHomeMobile from "./Cards/CardHomeMobile";
-import CardCategory from "./CardGroup";
+import CardCategory from "./CardGroup/CardGroup";
 import * as Icon from "phosphor-react";
 import Search from "./Inputs/Search";
 

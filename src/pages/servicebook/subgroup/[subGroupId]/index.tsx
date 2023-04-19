@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import * as Icon from "phosphor-react";
 
-import CardGroup from "../../../../components/CardGroup";
+import CardGroup from "../../../../components/CardGroup/CardGroup";
 
 import { getAllSubGroups , getGroup } from "../../../../Utils/server/getInfo";
 import { SubGroup } from '../../../../Utils/server/types';
