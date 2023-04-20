@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useRef} from "react";
 import { Field} from "formik";
 import {postService} from "../../Utils/server/postInfo"
 
@@ -26,6 +26,7 @@ import {postServiceOrder} from "../../Utils/server/postInfo"
 import { useMessage } from "../../Contexts/MessageContext";
 import {useAuth} from "../../Contexts/AuthContext"
 import { Spinner } from "@chakra-ui/react";
+import { Editor } from "@tinymce/tinymce-react";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -44,6 +45,13 @@ export const CardCreateService = () => {
 	const {subGroupId} = router.query
   	const  token = localStorage.getItem("token");
 	const { errorMessage, successMessage } = useMessage()
+
+	const editorRef = useRef(null);
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+    }
+  };
 
 
   return (
@@ -121,6 +129,25 @@ export const CardCreateService = () => {
 										/>
 									</div>
 									<div className="">
+
+									<Editor apiKey="3enajksx9oylqgylfxulwceq3qb751gxke444j4ld79w9rz1"
+												onInit={(evt, editor) => editorRef.current = editor}
+												initialValue="<p>Utilize as opções acima para editar seu texto com formatação.</p>"
+												init={{
+													height: 500,
+													menubar: false,
+													plugins: [
+														'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+														'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+														'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+													],
+													toolbar: 'undo redo | blocks | ' +
+														'bold italic | alignleft aligncenter ' +
+														'alignright alignjustify | bullist numlist outdent indent | ' +
+														'removeformat | help',
+													content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+												}}
+											/>
 										<CardLabelTextarea
 											label="Descrição"
 											type="textarea"
@@ -129,7 +156,7 @@ export const CardCreateService = () => {
 										/>
 									</div>
 
-									<div className="">
+									<div className="font-">
 										<CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
 									</div>        
 					

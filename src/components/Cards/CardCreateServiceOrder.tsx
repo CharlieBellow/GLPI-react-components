@@ -8,6 +8,8 @@ import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
 
+import { Editor } from "@tinymce/tinymce-react";
+
 import {validationSchema} from "../../Utils/validations";
 
 import { Service } from "../../Utils/server/types"

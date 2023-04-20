@@ -1,4 +1,4 @@
-import CardCreateService from "../../../../../components/Cards/CardCreateService";
+import CardCreateService from "../../../../components/Cards/CardCreateService";
 import Head from "next/head";
 
 export default function CreateService() {
