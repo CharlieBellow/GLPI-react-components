@@ -6,13 +6,13 @@ export interface Service{
 	title: string;
 	definition: string;
 	serviceSubGroupId: string;
-	personType: Array<Object>;
+	personType: string;
 	waitingTime: null | Date;
 	deadline: null | Date;
 	openningHours: null | Date;
 	isPrioritaryService: boolean;
 	serviceLocation: null | string;
-	requiredDocuments: null | boolean;
+	requiredDocuments: null | string;
 	contactInfo: null | string;
 	isPatromonyIdRequired: boolean;
 	glpiSla: null;
