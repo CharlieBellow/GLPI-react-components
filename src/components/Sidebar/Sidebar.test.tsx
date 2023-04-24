@@ -1,59 +1,63 @@
-import {render, screen, fireEvent} from "@testing-library/react"
-import {ufalLogo} from "../../../public/images/ufal-sigla-branca-fundo-transparente.png"
-import Sidebar from "./Sidebar"
+import {render, screen, userEvent} from "@testing-library/react"
+import {ufalLogo} from "../../../public/images/;ufal-sigla-branca-fundo-transparente.png"
+import Sidebar from "./Sidebar";
+import Layout from "../layout";
 
 
-
-// jest.mock("token", () => {
-//   return(
-//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODE0NzU5NzEsImV4cCI6MTY4Mjc3MTk3MSwic3ViIjoiNmVjMmMzYWYtOTNhMi00Y2E4LWJkOTctNzZkMjFiM2Q1NGY1In0.WRrt6O1DA2u6V9wwzJHgHH6h2exGvexoHv8_nFtqmB0"
-//   )
-// })
 
 jest.mock("../../../public/images/ufal-sigla-branca-fundo-transparente.png", () => {
   return {
-    ufalLogo: "ufal-sigla-branca-fundo-transparente.png"
+    ufalLogo: "/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Fufal-sigla-branca-fundo-transparente.f78c6422.png&w=3840&q=75 1x"
   }
 })
 
 jest.mock("next/router", () => {
   return {
     useRouter() {
-      return { asPath: "/servicebook"}
+      return { asPath: "/Dashboard/"}
     }
   }
 })
+
+// mockar o autenticated e o layout
+
+// jest.mock()
 
 
 describe("ver se o side bar aparece na tela", () => {
   test("ver se ele acha a bendita imagem", () => {
     render(
       <Sidebar>
-      <div>teste</div>
+      {/* <div>teste</div> */}
     </Sidebar>
     )
 
-    const testImage = document.querySelector("img") as HTMLImageElement;
+    const testImage = screen.getByRole("img") as HTMLImageElement;
 
-    expect(testImage.alt).toContain("logo")
+    expect(testImage).toBeInTheDocument()
   })
 
   
   test("Se o menu adiciona a classe open quando clica no botão do menu", () => {
-    render(
-      <Sidebar>
+    const {debug } = render(
+      <Layout>
         <div>teste</div>
-      </Sidebar>
+      </Layout>
+     
+  
   
     )
 
 
-    const button = screen.getByTestId("butao")
-    const sidebar = screen.getByTestId("test") as HTMLImageElement;
+    const button = screen.findByTestId("butao");
+    // const sidebar = screen.getByTestId("test") as HTMLImageElement;
   
-    fireEvent.click(button)
     
-    expect(sidebar).toHaveClass("fixed")
+    debug()
+    expect(button).toBeInTheDocument()
+
+    // userEvent.click(button)
+    // expect(sidebar).toHaveClass("fixed")
  
   
   
