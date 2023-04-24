@@ -50,9 +50,8 @@ const Subgroups = ( ) => {
     </Head>
       <>
         <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">
-          Subgrupos
+        { groupTitle }
         </h4>
-        <h5 className="text-xl font-bold m-8">{ groupTitle }</h5>
         <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
           { subgroups && subgroups.map( ( subgroup ) => {
             return (
