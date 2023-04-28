@@ -3,7 +3,7 @@ import  CreateServiceOrder  from "../../../pages/servicebook/serviceorder/[servi
 import { getService } from "../../../Utils/server/getInfo";
 import { updateJsxText } from "typescript";
 import axios from "axios";
-import { mocked } from "ts-jest/utils";
+import { mocked } from "jest-mock";
 
 jest.mock("next/router", () => {
   return {
@@ -65,27 +65,28 @@ describe("card de ordem de serviço", () => {
       
     const getServiceMocked = mocked(getService)
     
+    const obj = {
+      id: "55901ad6-15e3-4e90-96c3-91e9307ffe0f",
+      description: "Acessar perfil.ufal.br, ",
+      title: "Criar email institucional",
+      definition: "Etapas para criação do email institucional",
+      serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836",
+      personType: "{Discente,Docente}",
+      waitingTime: null,
+      deadline: null,
+      openningHours: null,
+      isPrioritaryService: false,
+      serviceLocation: null,
+      requiredDocuments: null,
+      contactInfo: null,
+      isPatromonyIdRequired: false,
+      glpiSla: null,
+      createdAt: "2023-02-23T13:32:49.880Z",
+      updatedAt: "2023-02-23T13:32:49.880Z"
+    }
 
     getServiceMocked.mockedResolvedValueOnce(
-      {
-        "id": "55901ad6-15e3-4e90-96c3-91e9307ffe0f",
-        "description": "Acessar perfil.ufal.br, ",
-        "title": "Criar email institucional",
-        "definition": "Etapas para criação do email institucional",
-        "serviceSubGroupId": "446ba367-8c8e-4f11-b920-413ef6e9e836",
-        "personType": "{Discente,Docente}",
-        "waitingTime": null,
-        "deadline": null,
-        "openningHours": null,
-        "isPrioritaryService": false,
-        "serviceLocation": null,
-        "requiredDocuments": null,
-        "contactInfo": null,
-        "isPatromonyIdRequired": false,
-        "glpiSla": null,
-        "createdAt": "2023-02-23T13:32:49.880Z",
-        "updatedAt": "2023-02-23T13:32:49.880Z"
-      }
+     obj
 )
 
     
