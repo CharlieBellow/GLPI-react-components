@@ -23,6 +23,8 @@ jest.mock("next/router", () => {
 
 jest.mock("axios")
 
+axios.get = jest.fn()
+
 jest.mock("../../../Utils/server/getInfo")
   
 
@@ -63,7 +65,7 @@ describe("card de ordem de serviço", () => {
       
       )
       
-    const getServiceMocked = mocked(getService)
+    const getServiceMocked = jest.mocked(getService)
     
     const obj = {
       id: "55901ad6-15e3-4e90-96c3-91e9307ffe0f",
@@ -85,7 +87,7 @@ describe("card de ordem de serviço", () => {
       updatedAt: "2023-02-23T13:32:49.880Z"
     }
 
-    getServiceMocked.mockedResolvedValueOnce(
+    (getServiceMocked as jest.Mock).mockedResolvedValueOnce(
      obj
 )
 
