@@ -55,7 +55,8 @@ function CardUpdateServiceOrder(){
 		}
 		fetchData()
 		
-	}, [serviceOrderId, token])
+		}, [serviceOrderId, token])
+
     return(
         <>
 			<div className="mx-4">

@@ -26,8 +26,8 @@ function CardMenu(props: CardMenuProps){
       }, [loaded])
 
     return(
-        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300`}>
-            <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div>
+        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300 `}>
+            <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 "></div>
             <div className="flex flex-row justify-between items-center">
                 <div  className="flex flex-row items-center gap-4 w-[15rem]">
                     <List data-testid="butao" size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>
