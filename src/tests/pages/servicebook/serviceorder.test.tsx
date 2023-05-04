@@ -1,9 +1,9 @@
 import {render, screen, userEvent, debug} from "@testing-library/react"
 import  CreateServiceOrder  from "../../../pages/servicebook/serviceorder/[serviceOrderId]/createserviceorder/"
-import { getService } from "../../../Utils/server/getInfo";
 import { updateJsxText } from "typescript";
-import axios from "axios";
+import mockAxios from "jest-mock-axios";
 import { mocked } from "jest-mock";
+import { getService } from "../../../Utils/server/getInfo";
 
 jest.mock("next/router", () => {
   return {
@@ -21,15 +21,20 @@ jest.mock("next/router", () => {
   }
 })
 
+
 jest.mock("axios")
 
-axios.get = jest.fn()
+      // axios.get = jest.fn()
 
 jest.mock("../../../Utils/server/getInfo")
   
 
 describe("card de ordem de serviço", () => {
  
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
 
 
 
@@ -59,7 +64,7 @@ describe("card de ordem de serviço", () => {
     return fetchData()
   }, 10000)
   
-  test("ver se o card renderiza o formulário", () => {
+  test("ver se o card renderiza o formulário", async () => {
     const {debug} = render(
       <CreateServiceOrder/>
       
@@ -85,12 +90,19 @@ describe("card de ordem de serviço", () => {
       glpiSla: null,
       createdAt: "2023-02-23T13:32:49.880Z",
       updatedAt: "2023-02-23T13:32:49.880Z"
-    }
+    };
 
-    (getServiceMocked as jest.Mock).mockedResolvedValueOnce(
-     obj
-)
 
+    mockAxios.get.mockResolvedValueOnce(obj)
+
+    const token = localStorage.getItem("token");
+    const response = await getService("09c9fbee-2cb7-4a50-a7f7-9d0f3f01bca2", token as string)
+    // expect(mockAxios.get).toHaveBeenCalledWith("09c9fbee-2cb7-4a50-a7f7-9d0f3f01bca2", token as string)
+    expect(response).toEqual(obj)
+
+
+    //   (getServiceMocked as jest.Mock).mockedResolvedValueOnce(
+    //  obj)
     
     const InputTitle = screen.queryByLabelText("Título")
     

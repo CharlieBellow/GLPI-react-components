@@ -35,6 +35,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^9.0.1",
     "jest-mock": "^29.5.0",
+    "jest-mock-axios": "^4.7.1",
     "next": "13.1.6",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
