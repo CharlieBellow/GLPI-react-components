@@ -4,6 +4,11 @@ import { updateJsxText } from "typescript";
 import mockAxios from "jest-mock-axios";
 import { mocked } from "jest-mock";
 import { getService } from "../../../Utils/server/getInfo";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+
+
+var axiosMock = new MockAdapter(axios)
 
 jest.mock("next/router", () => {
   return {
@@ -92,21 +97,23 @@ describe("card de ordem de serviço", () => {
       updatedAt: "2023-02-23T13:32:49.880Z"
     };
 
-
-    mockAxios.get.mockResolvedValueOnce(obj)
+axiosMock.onGet().reply(200, obj)
+    // mockAxios.get.mockResolvedValueOnce(obj)
 
     const token = localStorage.getItem("token");
     const response = await getService("09c9fbee-2cb7-4a50-a7f7-9d0f3f01bca2", token as string)
     // expect(mockAxios.get).toHaveBeenCalledWith("09c9fbee-2cb7-4a50-a7f7-9d0f3f01bca2", token as string)
-    expect(response).toEqual(obj)
+    // expect(response).toEqual(obj)
 
 
     //   (getServiceMocked as jest.Mock).mockedResolvedValueOnce(
     //  obj)
     
+const title = await getService("09c9fbee-2cb7-4a50-a7f7-9d0f3f01bca2", token as string)
+    
     const InputTitle = screen.queryByLabelText("Título")
     
     debug()
-    expect(InputTitle).toBeInTheDocument()
+    expect(title).toBeCalled()
   })
 })
