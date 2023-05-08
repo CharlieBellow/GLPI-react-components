@@ -6,10 +6,10 @@ export default function Home() {
  
   return (
     <>
-       <Head>
-          <title>{"Dashboard"}</title>
-       </Head>
-       <HomeScreen /> 
+      <Head>
+        <title>{"Dashboard"}</title>
+      </Head>
+      <HomeScreen /> 
     </>
   )
 }

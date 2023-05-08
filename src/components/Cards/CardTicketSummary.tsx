@@ -3,7 +3,7 @@ import * as Icon from "phosphor-react"
 const TicketSummary = () => {
   return (
 		<>
-			<div className="bg-white-ice w-auto h-auto pt-4 px-6 rounded-lg shadow-card box-border">
+			<div className="bg-white-ice w-full h-auto pt-4 px-6 rounded-lg shadow-card box-border">
 				<h4 className="text-2xl mb-4 font-bold">Resumo de Tickets</h4>
 				<div>
 					<TicketsHome
