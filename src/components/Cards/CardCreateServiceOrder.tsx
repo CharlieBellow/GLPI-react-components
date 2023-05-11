@@ -6,15 +6,15 @@ import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
+import { CardLabelTextareaTiny } from "../Inputs/CardLabelTextareaTiny";
+import { Field, FieldHookConfig, useField } from "formik";
 
-import { Editor } from "@tinymce/tinymce-react";
 
 import {validationSchema} from "../../Utils/validations";
 
 import { Service } from "../../Utils/server/types"
 
-import { postServiceOrder } from "../../Utils/server/postInfo"
+
 
 import { getService } from "../../Utils/server/getInfo"
 
@@ -100,7 +100,7 @@ export const CardCreateServiceOrder = () => {
 	}, [router.isReady, serviceOrderId, token])
 	
 	console.log("response", serviceInfo)
-	
+
 
 	return (
 		<>
@@ -133,6 +133,7 @@ export const CardCreateServiceOrder = () => {
 								}}
 								validationSchema={validate}
 								onSubmit={(values, actions) => {
+									console.log("submetendo formulário")
 									setTimeout(() => {
 										console.log("submit:", values);
 
@@ -157,7 +158,7 @@ export const CardCreateServiceOrder = () => {
 									}, 400);
 								}}
 							>
-								{({ isSubmitting, isValid }) => (
+								{({ isSubmitting, isValid, errors, touched }) => (
 									<Form autoComplete="on">
 										<div className="flex flex-col gap-9 mx-14">
 											<div className="">
@@ -171,12 +172,16 @@ export const CardCreateServiceOrder = () => {
 												/>
 											</div>
 											<div className="">
-												<CardLabelTextarea
+												<CardLabelTextareaTiny
 													label="Descrição"
 													type="textarea"
 													name="description"
 													textareaid="description"
 												/>
+
+{errors.description && touched.description ? (
+				<span className="text-red-ufal text-sm">{errors.description}</span>
+			): null }
 											</div>
 											<div>
 												{serviceInfo && serviceInfo.isPatromonyIdRequired ?
