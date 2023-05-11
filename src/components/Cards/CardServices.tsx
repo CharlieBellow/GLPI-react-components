@@ -8,7 +8,6 @@ const CardServices = () => {
 		<>
 			<div className="bg-white-ice w-full h-auto py-4 px-6 rounded-lg shadow-card box-border">
 			<div>
-					<CardTitleColor title="Chamados" colorcard={"bg-green-500"} alt={"Imagem de perfil"}  coloricon={<Icon.Clock size={28} weight={"bold"} className="text-white-100" />}  />
 				</div>
 				{/* <h4 className="text-2xl mb-4 font-bold">Chamados</h4> */}
 				<div className="mx-9 mt-4 mb-10">
