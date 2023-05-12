@@ -15,7 +15,7 @@ export default function InfoServiceItem ( props: InfosServiceItemProps ) {
 	return (
     <>
       
-      <InfoServiceSeparator icon={<Icon.ArticleMedium size={26}/>} title="Descrição" content={props.infos && props.infos.description} expandable={true}/>
+      <InfoServiceSeparator icon={<Icon.ArticleMedium size={26}/>} title="Descrição" content={props.infos && <div dangerouslySetInnerHTML={{__html:props.infos.description}}/>} expandable={true}/>
       <InfoServiceSeparator icon={<Icon.ListBullets size={26}/>} title="Definição" content={ props.infos && props.infos.definition} expandable={true}/>
       
       <div className='grid grid-cols-2 grid-flow-row'>
