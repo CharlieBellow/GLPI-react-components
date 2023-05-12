@@ -2,7 +2,7 @@ import React, { useEffect, useRef} from "react";
 import { Field} from "formik";
 import {postService} from "../../Utils/server/postInfo"
 
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormik, FormikProvider } from "formik";
 
 import * as yup from "yup";
 import {useRouter} from "next/router"
@@ -27,6 +27,7 @@ import { useMessage } from "../../Contexts/MessageContext";
 import {useAuth} from "../../Contexts/AuthContext"
 import { Spinner } from "@chakra-ui/react";
 import { Editor } from "@tinymce/tinymce-react";
+import EditorField from "../../components/Inputs/EditorField";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -45,13 +46,36 @@ export const CardCreateService = () => {
 	const {subGroupId} = router.query
   	const  token = localStorage.getItem("token");
 	const { errorMessage, successMessage } = useMessage()
+	const formikProps = useFormik({
+		initialValues: {
+			serviceSubGroupId: subGroupId,
+			title:"",
+			description: "",
+			personType: [],
+			isPatromonyIdRequired: false,
+			definition: "",
+		},
+		onSubmit(values, actions) {
+			setTimeout(() => {
+				console.log("submit:", values);
+				if (token !== null) {
+					
+					postService( values, token )
+				
+					successMessage("Serviço criado com sucesso!");
+			
+				actions.resetForm();
+				} else {
+					errorMessage("Algo deu errado, tente novamente")
+			}
+  
+				
+			}, 400);
+		},
+		validationSchema: validate,
+		validateOnMount: true,
+	})
 
-	const editorRef = useRef(null);
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-    }
-  };
 
 
   return (
@@ -59,145 +83,53 @@ export const CardCreateService = () => {
 		<div className="mx-4">
 			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card">
+				h-auto shadow-card px-8">
 					<div className="pl-9 pt-8">
 						<CardTitle title="Criar serviço" />
 					</div>
 					<div className="mx-9 mt-4 mb-10">
 						<CardLine />
 					</div>
-					{router.isReady ? <Formik
-        				validateOnMount={true}
-						initialValues={ {
-							serviceSubGroupId: subGroupId,
-							title:"",
-							description: "",
-							personType: [],
-							isPatromonyIdRequired: false,
-							definition: "",
-						}}
-						validationSchema={validate}
-						onSubmit={(values, actions) => {
-						setTimeout(() => {
-							console.log("submit:", values);
-							if (token !== null) {
-								
-								postService( values, token )
-							
-								successMessage("Serviço criado com sucesso!");
-						
-							actions.resetForm();
-							} else {
-								errorMessage("Algo deu errado, tente novamente")
-						}
-              
-							
-						}, 400);
-					}}
-					>
-						{({ isSubmitting, isValid, values,  touched, errors }) => (
-						<Form autoComplete="on">
-								<div className="flex flex-col gap-9 mx-14">
-									<>
-									<div className="">
-										<CardLabelInput
-											label="Título"
-											name="title"
-											type="text"
-											width="w-full"
-											inputid="title"
-										/>
-									</div>
-									<div className="">
-										<CardLabelInput
-											label="Definição"
-											name="definition"
-											type="text"
-											width="w-full"
-											inputid="definition"
-										
-										/>
-									</div>
-									<div className="">
-										<CardLabelInputFile
-											label="Adicionar Documento"
-											name="addFile"
-											type="file"
-											width="w-full"
-											inputid="title"
-											icon={<UploadSimple className="absolute flex mr-4" weight="bold" />}
-										/>
-									</div>
-									<div className="">
-
-									<Editor apiKey="3enajksx9oylqgylfxulwceq3qb751gxke444j4ld79w9rz1"
-												onInit={(evt, editor) => editorRef.current = editor}
-												initialValue="<p>Utilize as opções acima para editar seu texto com formatação.</p>"
-												init={{
-													height: 500,
-													menubar: false,
-													plugins: [
-														'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-														'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-														'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
-													],
-													toolbar: 'undo redo | blocks | ' +
-														'bold italic | alignleft aligncenter ' +
-														'alignright alignjustify | bullist numlist outdent indent | ' +
-														'removeformat | help',
-													content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-												}}
-											/>
-										<CardLabelTextarea
-											label="Descrição"
-											type="textarea"
-											name="description"
-											textareaid="description"
-										/>
-									</div>
-
-									<div className="font-">
-										<CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
-									</div>        
-					
-									<div>
-										<p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
-										<div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
-
-											<CardLabelInputCheckbox name="personType" value="Discente" checkArray={values.personType}/>
-											<CardLabelInputCheckbox name="personType" value="Técnico Administrativo" checkArray={values.personType}/>
-											<CardLabelInputCheckbox name="personType" value="Docente" checkArray={values.personType}/>
-											<CardLabelInputCheckbox name="personType" value="Discente Pós-Graduação" checkArray={values.personType}/>
-											<CardLabelInputCheckbox name="personType" value="Terceirizado" checkArray={values.personType}/>
-											
-										</div>
-										{errors.personType && touched.personType ? (
-											<span className="text-red-ufal text-sm">{errors.personType}</span>
-											) : <></>}
-									</div>
-									{console.log("errors", errors.personType)}
-									<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-										<>
-											<Button
-												isSubmitting={isSubmitting}
-												title="Criar"
-												theme="primaryAction"
-												type="submit"
-												disabled={isSubmitting || !isValid}
-											/>
-											{console.log("sub", isSubmitting)}
-											{console.log("val", isValid)}
-											{/*<Link href={"/"}>*/}
-												<Button title="Cancelar" theme="secondaryAction" type="button" isSubmitting={false} />
-											{/*</Link>*/}
-										</>
-									</div>
-									</>
+					{router.isReady ? <FormikProvider value={formikProps}>
+						<form className="flex flex-col gap-4" onSubmit={formikProps.handleSubmit}>
+							<div className="">
+								<CardLabelInput label="Título" name="title" type="text" width="w-full" inputid="title"/>
+							</div>
+							<div>
+								<CardLabelInput label="Definição" name="definition"	type="text"	width="w-full"	inputid="definition"/>
+							</div>
+							<div>
+								<CardLabelInputFile	label="Adicionar Documento"	name="addFile"	type="file"	width="w-full"	inputid="title"	icon={<UploadSimple className="absolute flex mr-4" weight="bold" />}/>
+							</div>
+							<div className="">
+								<EditorField name='description'/>
+							</div>
+							<div className="font-">
+								<CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
+							</div> 
+												
+							<div>
+								<p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
+								<div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
+									<CardLabelInputCheckbox name="personType" value="Discente" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Técnico Administrativo" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Docente" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Discente Pós-Graduação" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Terceirizado" checkArray={formikProps.values.personType}/>	
 								</div>
-						</Form>
-						)}
-					</Formik> : <><Spinner size="md" /></>}
-					
+								{formikProps.errors.personType && formikProps.touched.personType ? (
+									<span className="text-red-ufal text-sm">{formikProps.errors.personType}</span>) : 
+									<></>}
+							</div>
+							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+								<>
+									<Button isSubmitting={formikProps.isSubmitting}	title="Criar" theme="primaryAction" type="submit" disabled={formikProps.isSubmitting || !formikProps.isValid}/>
+									<Button title="Cancelar" theme="secondaryAction" type="button" isSubmitting={false} />
+								</>
+							</div>
+						</form>
+					</FormikProvider> : <><Spinner size="md" /></>}
+	
 				</div>
       		</div>
     	</>
