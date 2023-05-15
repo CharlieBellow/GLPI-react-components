@@ -69,7 +69,7 @@ function Sidebar({children} :any){
                 </div>
 
             </div>       
-            <div className="text-2xl font-semibold w-full">
+            <div className="text-2xl font-semibold w-full bg-gray-medium">
                 {children}
             </div>
         </div>
