@@ -1,7 +1,7 @@
 import { Editor, IAllProps } from "@tinymce/tinymce-react";
 import { useField } from "formik";
 import { Editor as TinyMCEEditor } from 'tinymce';
-import { TinyAPIKEY, TinySCRIPT } from "config";
+// import { TinyAPIKEY, TinySCRIPT } from "config";
 interface EditorFieldProps extends IAllProps {
     label?: string;
     name: string;
@@ -23,8 +23,8 @@ interface EditorFieldProps extends IAllProps {
         {label && <label>{label}</label>}
         <div className="bg-gray-medium rounded-lg">
         <Editor 
-        apiKey={TinyAPIKEY}
-        tinymceScriptSrc={TinySCRIPT}
+        apiKey="3enajksx9oylqgylfxulwceq3qb751gxke444j4ld79w9rz1"
+        tinymceScriptSrc="https://cdn.tiny.cloud/1/3enajksx9oylqgylfxulwceq3qb751gxke444j4ld79w9rz1/tinymce/6/tinymce.min.js"
         init={{
             skin: "snow",
             icons: "thin",
