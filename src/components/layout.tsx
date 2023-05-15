@@ -60,7 +60,7 @@ export default function Layout({ children, ...rest }: PageProps) {
           <>
             <div className="bg-slate-200 flex flex-col ">
                 <CardMenu pagetitle="Dashboard"/>
-                <div {...rest} className="content ">
+                <div {...rest} className="content bg-gray-medium">
 							    {children}
 						    </div>
             </div>

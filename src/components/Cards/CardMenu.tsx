@@ -26,8 +26,12 @@ function CardMenu(props: CardMenuProps){
       }, [loaded])
 
     return(
-        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300 `}>
-            <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 "></div>
+        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300`}>
+            <div className=" relative flex justify-center -top-36 ">
+                {/* ⠀⠀⠀⠀⠀⠀⠀⠀⠀ */}
+            <Image src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width={300} height={0} alt="logo" className=" lg:box-content  ml-35 absolute " />
+            </div>
+            {/* <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div> */}
             <div className="flex flex-row justify-between items-center">
                 <div  className="flex flex-row items-center gap-4 w-[15rem]">
                     <List data-testid="butao" size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>
@@ -38,6 +42,8 @@ function CardMenu(props: CardMenuProps){
                         theme="outline-gray"
                         placeholder="o que você está buscando?"
                         />
+            <div className="relative">
+                        </div>
                 </div>
                 <div className="flex row items-center text-sm">
 					<div className="lg:flex ml-6 mr-7 border-r-2 pr-6 hidden">
