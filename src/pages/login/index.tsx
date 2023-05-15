@@ -13,18 +13,20 @@ export function Login () {
 
   useEffect(() => {
     setTimeout(() => {
+      console.log("cookies");
       verifyCookies()
       setLoaded(true)
     }, 300);
-  }, [verifyCookies])
+  }, [])
 
   useEffect(() => {
+    console.log("auth");
     if(loaded){
       if(auth){
         router.push("/Dashboard")
       }
     }
-  }, [auth, loaded, router])
+  }, [])
 
   if(loaded && !auth){
     return (

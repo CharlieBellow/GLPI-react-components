@@ -1,6 +1,6 @@
 "use client"
 
-// import TableList from "../../components/TableList";
+import CardServiceDescription from "../../components/Cards/CardServiceDescription";
 import { useEffect, useState } from "react";
 import {userModel} from "../../Utils/UserModel"
 import Head from "next/head";
@@ -39,7 +39,7 @@ export default function List() {
 			<Head>
 				<title>Tabela</title>
 			</Head>
-				{/* <TableList itemlist={userModel} listselecbutton={ItemSelect}/> */}
+				<CardServiceDescription />
 		</>
 	);
 }
