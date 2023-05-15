@@ -81,6 +81,13 @@ export const CardCreateService = () => {
   return (
     <>
 		<div className="mx-4">
+		<ul>
+<li>fdsfdsfdsfsdf</li>
+<li>dsfds</li>
+<li>fds</li>
+<li>dsf</li>
+<li>&nbsp;</li>
+</ul>
 			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
 				h-auto shadow-card px-8">
