@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import AdminServiceBookTypeList from './AdminServicebookTypeList';
 import { getAllGroups } from '../../../Utils/server/getInfo';
 import { useRouter } from 'next/router';
+import { Layout } from "../../../components/Layout";
 
 interface AdminProps {
   list: any[];
@@ -27,11 +28,11 @@ export default function AdminServiceBook(props: AdminProps) {
   
   
   return (
-    <>
+    <Layout>
       <Head>
         <title>Administrar servicebook</title>
       </Head>
       <AdminServiceBookTypeList list={list} title={"Grupos"} />
-    </>
+    </Layout>
   )
 }

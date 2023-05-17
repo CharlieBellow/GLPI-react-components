@@ -4,6 +4,7 @@ import CardServiceDescription from "../../components/Cards/CardServiceDescriptio
 import { useEffect, useState } from "react";
 import {userModel} from "../../Utils/UserModel"
 import Head from "next/head";
+import { Layout } from "../../components/Layout";
 
 const ItemSelect = [
 	"Tudo",
@@ -35,12 +36,12 @@ export default function List() {
 
 	console.log(lista);
 	return (
-		<>
+		<Layout>
 			<Head>
 				<title>Tabela</title>
 			</Head>
 				<CardServiceDescription />
-		</>
+		</Layout>
 	);
 }
 

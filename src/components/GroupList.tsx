@@ -30,9 +30,9 @@ export default function GroupList () {
 const isAdmin = true
   return (
 
-    <div className="">
+    <div className="flex justify-center flex-col">
       <h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg">Grupos</h4>
-      <div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0 mb-12">
+      <div className="lg:w-[59.5rem] m-15 grid tv:grid-cols-6 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10 gap-y-6 mt-0 mb-12">
 
         {groups && groups.map( ( group ) => {
           return (

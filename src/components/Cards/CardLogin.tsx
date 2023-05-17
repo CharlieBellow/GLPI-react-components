@@ -37,14 +37,14 @@ export function CardLogin () {
   }
 
   
-    useEffect( () => {
+ /* useEffect( () => {
     const tokenAuth = localStorage.getItem( "token" );
 
     if ( tokenAuth !== null && tokenAuth !== "null" ) {
       changeToken(  tokenAuth as string);
       console.log( "tokenAuth: ", tokenAuth );
     }
-  } );
+  },[] );*/
 
 	
 	return (

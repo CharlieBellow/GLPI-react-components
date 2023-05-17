@@ -1,18 +1,18 @@
 
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../Contexts/AuthContext"
+import { useAuth } from "../../Contexts/AuthContext"
 import { useRouter } from "next/router";
-import LoadingPage from "../components/LoadingPage";
-import { usePreviousPage } from "../Contexts/PreviousPageContext";
-import Sidebar from "./Sidebar/Sidebar";
-import { SidebarProvider } from "./Sidebar/SidebarContext";
-import CardMenu from "./Cards/CardMenu";
+import LoadingPage from "../LoadingPage";
+import { usePreviousPage } from "../../Contexts/PreviousPageContext";
+import Sidebar from "../Sidebar/Sidebar";
+import { SidebarProvider } from "../Sidebar/SidebarContext";
+import CardMenu from "../Cards/CardMenu";
 interface PageProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
 // * layout padrão das páginas
-export default function Layout({ children, ...rest }: PageProps) {
+export function Layout({ children, ...rest }: PageProps) {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const { auth, user, verifyCookies } = useAuth()
@@ -21,7 +21,7 @@ export default function Layout({ children, ...rest }: PageProps) {
   useEffect(() => {
     if (loaded) {
       if (!auth) {
-        //*salvar a página anterior pra quando o usuário fizer login, redirecionar para ela
+        
         changePage(router.asPath)
         router.push('/login')
       } else {

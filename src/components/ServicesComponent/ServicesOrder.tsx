@@ -31,6 +31,8 @@ export default function ServicesOrder () {
 	const [responsibleList, setResponsibleList] = useState<ServiceOrder[]>([])
 	const [servicesList, setServicesList] = useState<ServiceOrder[]>([])
 	const [servicesStatus, setServicesStatus] = useState<ServiceOrder[]>([])
+
+	const [value, setValue] = React.useState('');
 	
 	
 	const token = localStorage.getItem("token");
@@ -48,11 +50,39 @@ export default function ServicesOrder () {
 			// setServicesStatus(servicesList)
     }
     fetchData()
-  }, [servicesList, requesterList, responsibleList, token])
+
+		setValue('todos')
+  }, [])
+
+	useEffect(()=>{
+		if (value === "atribuido") {
+			setValues(responsibleList)
+			console.log("chamou atribuido");
+		} else
+			if (value === "proprietario") {
+				setValues(requesterList)
+			console.log("chamou proprietario");
+			}
+			else if (value === "status") {
+				servicesList.map(item => {
+					if (item.status === "Aberto")
+					return (
+						setServicesStatus([... servicesStatus, item])
+					)
+				})
+				
+				setValues(servicesStatus)
+			console.log("chamou proprietario");
+			}
+			else {
+			
+			console.log("chamou todos");
+			setValues(servicesList)
+		}
+	},[value])
 
 
-	const toogle = "responsible"
-	const value = "";
+	const toogle = "responsible";	
 	const [values, setValues] = useState<ServiceOrder[]>([])
 
   return (
@@ -68,37 +98,16 @@ export default function ServicesOrder () {
 						value={value}
 						defaultValue={"todos"}
 						onValueChange={(value) => {
-							if (value === "atribuido") {
-								setValues(responsibleList)
-								console.log("chamou atribuido");
-							} else
-								if (value === "proprietario") {
-									setValues(requesterList)
-								console.log("chamou proprietario");
-								}
-								else if (value === "status") {
-									servicesList.map(item => {
-										if (item.status === "Aberto")
-										return (
-											setServicesStatus([... servicesStatus, item])
-										)
-									})
-									
-									setValues(servicesStatus)
-								console.log("chamou proprietario");
-								}
-								else {
-								
-								console.log("chamou todos");
-								setValues(servicesList)
-							}
+							setValue(value);
 			}}
     >
-      <ToggleGroup.Item value="atribuido" className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tl-sm focus:rounded-bl-sm hover:rounded-tl-md hover:rounded-bl-lg rounded-bl-sm rounded-tl-sm">
+      <ToggleGroup.Item value="atribuido" className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tl-sm focus:rounded-bl-sm hover:rounded-tl-md hover:rounded-bl-lg rounded-bl-sm rounded-tl-sm
+			data-[state=on]:bg-red-500 
+			" >
 							<Icon.UserList size={26} />
 							Atribuído a mim
       </ToggleGroup.Item>  
-      <ToggleGroup.Item value="proprietario"className="flex items-center gap-2  p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal ">
+      <ToggleGroup.Item value="proprietario"className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:shadow-blue-ufal focus:bg-blue-ufal  focus:relative">
 							<Icon.User size={26} />
 							Proprietário
       </ToggleGroup.Item> 

@@ -10,6 +10,7 @@ export function Login () {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false)
   const {auth, verifyCookies} = useAuth()
+  
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,9 +27,9 @@ export function Login () {
         router.push("/Dashboard")
       }
     }
-  }, [])
+  }, [loaded, auth])
 
-  if(loaded && !auth){
+if(loaded && !auth){
     return (
       <>
       <Head>

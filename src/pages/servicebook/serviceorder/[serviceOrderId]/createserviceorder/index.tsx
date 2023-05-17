@@ -1,6 +1,7 @@
 import Head from "next/head";
 import CardCreateServiceOrder from "../../../../../components/Cards/CardCreateServiceOrder";
-import {useEffect} from "react"
+import { useEffect } from "react"
+import { Layout } from "../../../../../components/Layout";
 
 // * criar ordem de serviço 'serviceorder/[id:serviceorder]/create'
 
@@ -17,12 +18,12 @@ function CreateServiceOrder() {
     document.body.appendChild(script)
   })
   return (
-    <>
+    <Layout>
       <Head>
         <title>{"Criar Serviço"}</title>
       </Head>
         <CardCreateServiceOrder />
-    </>
+    </Layout>
   );
 }
 

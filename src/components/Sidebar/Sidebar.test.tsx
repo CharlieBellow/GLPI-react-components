@@ -1,7 +1,7 @@
 import {render, screen, userEvent} from "@testing-library/react"
 import {ufalLogo} from "../../../public/images/;ufal-sigla-branca-fundo-transparente.png"
 import Sidebar from "./Sidebar";
-import Layout from "../layout";
+import Layout from "../Layout";
 
 
 
