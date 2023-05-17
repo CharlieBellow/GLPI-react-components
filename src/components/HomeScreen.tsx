@@ -50,13 +50,8 @@ function HomeScreen() {
 				</div>
 			</div>
 
-			<div className="flex pt-8 justify-between gap-6">
-		
-				
-				
+			<div className="hidden lg:flex pt-8 justify-between gap-6 ">
 				<CardServices />
-			
-				
 				<CardTicketSummary />
 				<CardServices />
 				<CardTicketSummary />

@@ -94,7 +94,7 @@ export default function ServicesOrder () {
 							}
 			}}
     >
-      <ToggleGroup.Item value="atribuido" className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tl-sm focus:rounded-bl-sm hover:rounded-tl-md hover:rounded-bl-md">
+      <ToggleGroup.Item value="atribuido" className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tl-sm focus:rounded-bl-sm hover:rounded-tl-md hover:rounded-bl-lg rounded-bl-sm rounded-tl-sm">
 							<Icon.UserList size={26} />
 							Atribuído a mim
       </ToggleGroup.Item>  
@@ -106,7 +106,7 @@ export default function ServicesOrder () {
 							<Icon.EnvelopeSimpleOpen size={26} />
 							Status
       </ToggleGroup.Item> 
-      <ToggleGroup.Item value="todos"className="flex items-center gap-2 p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tr-sm focus:rounded-br-sm hover:rounded-tr-md hover:rounded-br-md">
+      <ToggleGroup.Item value="todos"className="flex items-center gap-2 p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tr-sm focus:rounded-br-sm hover:rounded-tr-md hover:rounded-br-md rounded-br-sm rounded-tr-sm">
 							<Icon.ListBullets size={26} />
 							Todos
       </ToggleGroup.Item>

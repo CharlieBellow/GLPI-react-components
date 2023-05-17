@@ -26,10 +26,10 @@ function CardMenu(props: CardMenuProps){
       }, [loaded])
 
     return(
-        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white relative z-0 lg:pt-16 ease-in-out duration-300`}>
-            <div className=" relative flex justify-center -top-36 ">
-                {/* ⠀⠀⠀⠀⠀⠀⠀⠀⠀ */}
-            <Image src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width={350} height={300} alt="logo" className=" lg:box-content  ml-35 absolute " priority={true}/>
+        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white  z-0 lg:pt-16 ease-in-out duration-300 bg-cover `}>
+            <div className=" relative flex justify-center bg-cover">
+                
+            <Image src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width={350} height={300} alt="logo" className="  absolute -top-36  " priority={true}/>
             </div>
             {/* <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div> */}
             <div className="flex flex-row justify-between items-center">

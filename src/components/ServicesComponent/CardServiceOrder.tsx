@@ -95,21 +95,21 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 					</p>
 				</div> */}
 
-				{props.responsibleId ? <div>
+				{!props.responsibleId ? <div>
 					<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
 						<strong className="text-black">Responsável pelo serviço: </strong>
 						{props.responsibleId}
 					</p>
 				</div> : <></>}
 				
-				{/*
+				
 				<div>
 					<p className="text-sm mt-3 font-medium lg:text-xl">
 						<strong>Solicitante: </strong>
 						{props.requesterId}
 					</p>
 				</div>
-				*/}
+				
 				<div>
 					<p className="text-sm mt-3  font-medium lg:text-xl">
 						<strong>Status: </strong>
