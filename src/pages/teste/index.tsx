@@ -6,6 +6,7 @@ import {userModel} from "../../Utils/UserModel"
 import Head from "next/head";
 import { Layout } from "../../components/Layout";
 import DataTable from "../../components/Table/DataTable";
+import {Teste} from "./teste"
 
 const ItemSelect = [
 	"Tudo",
@@ -18,31 +19,16 @@ const ItemSelect = [
 
 
 
-export default function List() {
-  const [lista, setLista] = useState([]);
-  
+export default function TestePage() {
 
-	
-  
-  useEffect( () => {
-    
-    if (localStorage.getItem("users") !== null) {
-      const usersStorage = localStorage.getItem("users");
-      const listas = JSON.parse(usersStorage as string)!;
-      console.log("lista:", lista);
-      setLista(listas);
-      console.log(listas);
-		}
-  }, [ lista ]);
 
-	console.log(lista);
 	return (
 		<Layout>
 			<Head>
 				<title>Tabela</title>
 			</Head>
-			<CardServiceDescription />
-			{/* <DataTable data={lista} columns={["Nome", "data", "açoes"]} currentPage={0}/> */}
+			<Teste />
+			
 		</Layout>
 	);
 }
