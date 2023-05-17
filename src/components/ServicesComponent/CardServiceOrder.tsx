@@ -51,7 +51,7 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 	const createdAtDate = new Date(props.createdAt)
 	const updatedAt = new Date(props.updatedAt)
 
-	console.log()
+
 
 	return (
 		<div

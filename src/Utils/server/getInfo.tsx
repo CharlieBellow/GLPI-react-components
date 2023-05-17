@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Group, Service, SubGroup } from "./types";
+import { log } from "console";
 export const baseURL = "http://172.27.12.171:3333"
 
 // * funções de resgatar do servidor 

@@ -51,7 +51,6 @@ export default function ServicesOrder () {
   }, [servicesList, requesterList, responsibleList, token])
 
 
-
 	const toogle = "responsible"
 	const value = "";
 	const [values, setValues] = useState<ServiceOrder[]>([])
@@ -119,7 +118,7 @@ export default function ServicesOrder () {
 						
 						{values ?
 								values.map((item: any) => {
-							return (
+									return (
 								<CardServiceOrder
 			
 						

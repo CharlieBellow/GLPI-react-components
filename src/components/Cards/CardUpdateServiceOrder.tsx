@@ -39,13 +39,19 @@ function CardUpdateServiceOrder(){
 	const { serviceOrderId, titleServiceOrder } = router.query
     const [serviceOrderInfo, setServiceOrderInfo] = useState<ServiceOrder>()
 	const [users, setUsers] = useState<User[]>([])
-	const status = ["Aberto", "Em Execução", "Aguardando Peças", "Fechado"]
+	const [newStatus, setNewStatus] = useState<string>("") //console.log("info", serviceOrderInfo)
+
+
+	const status = ["Aberto", "Pendente", "Em Execução", "Aguardando Peças", "Fechado"]
+
+
     useEffect(() => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
 			
 			const response = await getServiceOrder(serviceOrderId as string, token as string)
 			setServiceOrderInfo(response)
+			// é necessário passar um lista de usuários que podem ser atibuídos aqui, no caso, cada adm do setor vá ter uma lista de subordinados que ele pode atribuir tarefas
 			const userResponse = await getAllUsers(token as string)
 			setUsers(userResponse)
 			if (response.isPatromonyIdRequired) {
@@ -56,6 +62,8 @@ function CardUpdateServiceOrder(){
 		fetchData()
 		
 		}, [serviceOrderId, token])
+
+		console.log("infos", users)
 
     return(
         <>
@@ -132,16 +140,21 @@ function CardUpdateServiceOrder(){
 									: <></> }
 									</div>	
 									<div>
-									{  serviceOrderInfo && user.isAdmin ? 
+									{  serviceOrderInfo 
+									// && user.isAdmin 
+									? 
 									<FieldSelect
 									label="Responsável"
 									name="respponsibleId"
 									default={serviceOrderInfo.responsibleId ? "" : "Selecione o usuário responsável"}
+									// é necessário passar um lista de usuários que podem ser atibuídos aqui, no caso, cada adm do setor vá ter uma lista de subordinados que ele pode atribuir tarefas
 									listitems={users.map(user => user.name)}/>
 									: <></> }	
 									</div>
 									<div>
-									{  serviceOrderInfo && user.isAdmin ? 
+									{  serviceOrderInfo.status 
+									// && user.isAdmin 
+									? 
 									<FieldSelect
 									label="status"
 									name="status"
