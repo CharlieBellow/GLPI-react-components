@@ -22,8 +22,16 @@ import Search from '../../components/Inputs/Search'
 import {Button} from '../../components/Buttons/Button'
 import Pagination from "../../components/Table/Pagination";
 import { getAllUsers } from "../../Utils/server/getInfo";
+import { CardLabelInputCheckbox } from "../../components/Inputs/CardLabelInputCheckbox";
+
+import {validationSchema} from "../../Utils/validations";
+
+const validateWhitOutPatrimony = yup.object().shape({
+	id: validationSchema.
+});
 
 
+// inserir a base do formik para colocar o checkbox na tabela
 
 export type DataTableProps<Data extends object> = {
     data: Data[];
@@ -34,6 +42,8 @@ export type DataTableProps<Data extends object> = {
 // TODO estilizar a tabela como no figma
 
 // colocar o filtro da tela de serviços aqui
+
+// adicionar botão togle para o filtro
 
 const headerTitle = ["nome", "data", "açoes"]
 
@@ -65,7 +75,7 @@ fetchData()
 console.log("lista", lista);
 
     return(
-        <div className="flex flex-col items-center font-thin">
+        <div className="flex flex-col items-center font-thin ">
             <div className=" lg:py-10 lg:px-[6rem] w-full">
                 <div className="lg:bg-slate-100 rounded-lg h-[45.06rem] lg:shadow-lg">
                     <div className="flex flex-row lg:flex-row gap-4 justify-center lg:items-center lg:justify-between">
@@ -82,6 +92,39 @@ console.log("lista", lista);
                             </div>
                         </div>
                     </div>
+
+                    <Formik
+                    validateOnMount={true}
+                    initialValues={{
+                        id: "",
+                    }}
+                    validationSchema={validate}
+                    onSubmit={(values, actions) => {
+                        console.log("submetendo formulário")
+                        setTimeout(() => {
+                            console.log("submit:", values);
+
+                            if (token !== null) {
+                                axios({
+                                    method: 'post',
+                                    baseURL: "http://172.27.12.171:3333",
+                                    url: `/servicebook/serviceorder/`,
+                                    data: values,
+                                    headers: { authorization: `Bearer ${token}` }
+                                })
+                        
+            
+
+                                successMessage("Serviço criado com sucesso!");
+
+                                actions.resetForm();
+                            } else {
+                                errorMessage("Algo deu errado. Tente novamente.")
+                            }
+
+                        }, 400);
+                    }}
+                    >
                     <Table variant={"unstyled"}>
                         <Thead>
                                 <Tr  className="flex flex-row ">
@@ -93,6 +136,7 @@ console.log("lista", lista);
                                         
                                         >
                                             {headerGroup}
+                                            {/* <CardLabelInputCheckbox name={""} value={""} /> */}
                                         </Th>
                                         
                                     
@@ -107,7 +151,8 @@ console.log("lista", lista);
                                 <Tr key={row.id}>
                                 
                                   
-                                    <Td key={row.id} className="flex flex-col w-100">
+                                        <Td key={row.id} className="flex flex-col w-100">
+                                            <div><CardLabelInputCheckbox name={lista.id} value={lista.id}/></div>
                                         <div>{row.name}</div>
                                         <div>{row.email}</div>
                                     </Td>
@@ -146,7 +191,8 @@ console.log("lista", lista);
                     </Table>
                     <div className="hidden lg:block">
                         {/* <Pagination table={table} currentPage={currentPage}/> */}
-                    </div>
+                        </div>
+                        </Formik>
                 </div>
             </div>
         </div>

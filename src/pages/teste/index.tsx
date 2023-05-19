@@ -6,7 +6,8 @@ import {userModel} from "../../Utils/UserModel"
 import Head from "next/head";
 import { Layout } from "../../components/Layout";
 import DataTable from "../../components/Table/DataTable";
-import {Teste} from "./teste"
+// import {Teste} from "./teste"
+import {data, columns} from "./../../Utils/tableDataExample"
 
 const ItemSelect = [
 	"Tudo",
@@ -23,13 +24,14 @@ export default function TestePage() {
 
 
 	return (
-		<Layout>
+		<div>
 			<Head>
 				<title>Tabela</title>
 			</Head>
-			<Teste />
+			{/* <Teste /> */}
+			<DataTable data={ data} table />
 			
-		</Layout>
+		</div>
 	);
 }
 
