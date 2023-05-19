@@ -5,11 +5,11 @@ import Link from 'next/link';
 const NotFoundPage = () => {
   return (
     <>
-      <div className="flex items-center flex-col w-full h-screen mx-auto justify-center bg-gradient">
-        <div className="pb-8 items-center flex flex-col -top-[300px] w-screen h-screen ">
-            <div className="bg-ufalBackground w-screen h-full absolute mr-100">
+      <div className="flex items-center flex-col w-screen h- mx-auto justify-center bg-gradient relative">
+            <div className="bg-ufalBackground w-screen h-full absolute  bg-cover bg-no-repeat -left-118 -top-64">
 
             </div>
+        <div className="pb-8 items-center flex flex-col -top-[300px] w-screen h-screen">
           {/* <div className="absolute w-screen  -top-100  flex right-40"> */}
             {/* <Image src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width={1500} height={1000} alt="imagem não encontrada" className="right-40 bg-cover -top-40"/> */}
           {/* </div> */}
