@@ -53,9 +53,9 @@ function DataTable<Data extends object>({
         },
     });
     return(
-        <div className="flex flex-col items-center font-thin">
-            <div className=" lg:py-10 lg:px-[6rem] w-full  m-8 mr-5 pr-4 right-7">
-                <div className="lg:bg-white-100 rounded-lg h-[45.06rem] lg:shadow-lg m-8 pb-6 right-7">
+        <div className="flex flex-col items-center font-thin w-auto">
+            <div className=" lg:py-10 lg:px-[6rem] w-full">
+                <div className="lg:bg-white-100 rounded-lg h-[45.06rem] lg:shadow-lg m-8 pb-6 pr-8">
                     <div className="flex flex-row lg:flex-row gap-4 justify-center lg:items-center lg:justify-between pr-5">
                         <div className="py-6 px-8 hidden lg:block">
                             <h3>Lista de Usuários</h3>
@@ -70,14 +70,14 @@ function DataTable<Data extends object>({
                             </div>
                         </div>
                     </div>
-                    <Table variant={"striped"} className="mx-5 mr-5 right-7">
+                    <Table variant={"striped"} className="mx-4 ">
                         <Thead>
                             {isWideVersion && table.getHeaderGroups().map((headerGroup : any) => (
-                                <Tr key={headerGroup.id} className="pr-10">
+                                <Tr key={headerGroup.id} className="">
                                     {headerGroup.headers.map((header : any) => {
                                         const meta: any = header.column.columnDef.meta;
                                         return(
-                                            <Th className="pr-12 right-7"
+                                            <Th className=""
                                                 key={header.id}
                                                 onClick={header.column.getToggleSortingHandler()}
                                                 isNumeric={meta?.isNumeric}
