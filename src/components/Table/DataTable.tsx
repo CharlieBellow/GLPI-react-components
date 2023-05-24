@@ -13,6 +13,9 @@ import {
     chakra,
     useBreakpointValue,
   } from '@chakra-ui/react'
+import * as Icon from "phosphor-react"
+
+import ButtonDropdownMenu from "../Buttons/ButtonDropDownMenu"
 
 import { Column, flexRender, PaginationState, useReactTable, ColumnDef, getPaginationRowModel, SortingState, getCoreRowModel, getSortedRowModel} from '@tanstack/react-table'
 
@@ -28,6 +31,8 @@ export type DataTableProps<Data extends object> = {
 };
 
 // TODO estilizar a tabela como no figma
+
+const columnsTitle = ["Usuários", "Data", "Ações"]
 
 
 function DataTable<Data extends object>({
@@ -65,8 +70,9 @@ function DataTable<Data extends object>({
                             <div className=" py-8 lg:py-0">
                                 <Search placeholder="pesquisar dado desejado"/>
                             </div>
+                                <ButtonDropdownMenu />
                             <div className="hidden lg:block">
-                                <Button theme="primary"/>
+                                <Button theme="primary" title="Adicionar" icon={<Icon.Plus size={20} />} />
                             </div>
                         </div>
                     </div>

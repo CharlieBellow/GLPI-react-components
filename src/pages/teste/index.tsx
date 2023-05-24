@@ -29,7 +29,7 @@ export default function TestePage() {
 				<title>Tabela</title>
 			</Head>
 			{/* <Teste /> */}
-			<DataTable data={ data} table />
+			<DataTable data={ data}  />
 			
 		</div>
 	);

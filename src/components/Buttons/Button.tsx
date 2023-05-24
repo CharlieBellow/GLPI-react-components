@@ -14,6 +14,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 		| "textOnly"
 		| "primaryMobile"
 		| "withIcon"
+		| "dropdowMenu"
 		| "primaryActionWithIcon"
 		| "secondaryActionWithIcon"
 		| "tertiaryMobile"
@@ -77,6 +78,12 @@ export function Button({ isSubmitting, ...props }: ButtonProps) {
 						: ""
 				}
 				${
+					props.theme === "dropdowMenu"
+						? `flex flex-row-reverse items-center justify-center gap-2 bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg lg:py-6 lg:px-3 py-4 px-4 min-w-[3.75rem]
+					lg:h-10 h-15 lg:rounded-full rounded-full text-base text-white-100 shadow-button relative ${props.className}`
+						: ""
+				}
+				${
 					props.theme === "primaryActionWithIcon"
 						? `flex items-center justify-center gap-2 bg-blue-ufal hover:bg-blue-ufal-hover focus:outline-light-bg py-4 px-4 text-xl font-bold
 					text-white-100 shadow-button`
@@ -102,8 +109,8 @@ export function Button({ isSubmitting, ...props }: ButtonProps) {
 			`}
 		>
       <>
-  			{isSubmitting ? <Spinner size="md" /> : props.title}
   			<>{props.icon}</>
+  			{isSubmitting ? <Spinner size="md" /> : props.title}
       </>
 		</button>
 	);

@@ -4,6 +4,7 @@ import SidebarContext from "../Sidebar/SidebarContext";
 import Image from "next/image"
 import Search from "../../components/Inputs/Search";
 import Link from "next/link";
+import ufalLogo from "../../../public/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
 interface CardMenuProps extends React.HTMLAttributes<HTMLElement> {
 	pagetitle: string;
 }
@@ -26,10 +27,10 @@ function CardMenu(props: CardMenuProps){
       }, [loaded])
 
     return(
-        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white  z-0 lg:pt-16 ease-in-out duration-300 bg-cover `}>
-            <div className=" relative flex justify-center bg-cover">
+        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white   lg:pt-16 ease-in-out duration-300   `}>
+            <div className=" relative z-10   flex justify-center ">
                 
-            <Image src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width={350} height={300} alt="logo" className="  absolute -top-36  " priority={true}/>
+            <Image src={ufalLogo} width={350} height={300} alt="logo" className="  bg-cover  absolute -top-36 z-10  " priority={true}/>
             </div>
             {/* <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div> */}
             <div className="flex flex-row justify-between items-center">
