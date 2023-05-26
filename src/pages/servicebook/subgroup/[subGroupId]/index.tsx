@@ -63,7 +63,7 @@ const Subgroups = ( ) => {
           })}
         </div>   
       </>
-    </>
+    </Layout>
   );
 };
 

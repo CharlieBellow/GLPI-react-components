@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     Table,
     Thead,
@@ -16,6 +16,7 @@ import {
 import * as Icon from "phosphor-react"
 
 import ButtonDropdownMenu from "../Buttons/ButtonDropDownMenu"
+import {gettAllUsers} from "../../Utils/server/getInfo"
 
 import { Column, flexRender, PaginationState, useReactTable, ColumnDef, getPaginationRowModel, SortingState, getCoreRowModel, getSortedRowModel} from '@tanstack/react-table'
 
@@ -46,17 +47,26 @@ function DataTable<Data extends object>({
 		base: false,
 		lg: true,
 	});
-    const table = useReactTable({
-        columns,
-        data,
-        getCoreRowModel: getCoreRowModel(),
-        onSortingChange: setSorting,
-        getSortedRowModel: getSortedRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
-        state: {
-            sorting
-        },
-    });
+    // const table = useReactTable({
+    //     columns,
+    //     data,
+    //     getCoreRowModel: getCoreRowModel(),
+    //     onSortingChange: setSorting,
+    //     getSortedRowModel: getSortedRowModel(),
+    //     getPaginationRowModel: getPaginationRowModel(),
+    //     state: {
+    //         sorting
+    //     },
+    // });
+
+    const [table, setTable] = useState<object[]>([{}])
+useEffect(() => {
+
+
+
+})
+
+
     return(
         <div className="flex flex-col items-center font-thin w-auto">
             <div className=" lg:py-10 lg:px-[6rem] w-full">

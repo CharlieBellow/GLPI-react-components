@@ -12,7 +12,7 @@ import CardGroups from "./Cards/CardGroups";
 
 function HomeScreen() {
 	return (
-		<div className="w-full h-screen lg:h-screen px-6">
+		<div className="w-full h-screen lg:h-screen px-12">
 			<div className="pt-20 lg:hidden ">
 				<div className="flex flex-col mx-2 gap-6 items-center">
 					<CardHomeMobile />
