@@ -16,7 +16,7 @@ import {
 import * as Icon from "phosphor-react"
 
 import ButtonDropdownMenu from "../Buttons/ButtonDropDownMenu"
-import {gettAllUsers} from "../../Utils/server/getInfo"
+import {getAllUsers, gettAllUsers} from "../../Utils/server/getInfo"
 
 import { Column, flexRender, PaginationState, useReactTable, ColumnDef, getPaginationRowModel, SortingState, getCoreRowModel, getSortedRowModel} from '@tanstack/react-table'
 
@@ -24,6 +24,7 @@ import Search from '../../components/Inputs/Search'
 import {Button} from '../../components/Buttons/Button'
 import Pagination from "./Pagination";
 import MobileTableElement from "./MobileTableElement";
+import { log } from "console";
 
 export type DataTableProps<Data extends object> = {
     data: Data[];
@@ -60,11 +61,22 @@ function DataTable<Data extends object>({
     // });
 
     const [table, setTable] = useState<object[]>([{}])
+
+    const token = localStorage.getItem("token")
+
 useEffect(() => {
 
+    const fetchData = async () => {
+        
+        const response = await getAllUsers(token as string)
+        console.log("response", response);
 
+        setTable(response)
+        
+    }
+    fetchData()
 
-})
+}, [token, table])
 
 
     return(
@@ -88,29 +100,35 @@ useEffect(() => {
                     </div>
                     <Table variant={"striped"} className="mx-4 ">
                         <Thead>
-                            {isWideVersion && table.getHeaderGroups().map((headerGroup : any) => (
-                                <Tr key={headerGroup.id} className="">
-                                    {headerGroup.headers.map((header : any) => {
-                                        const meta: any = header.column.columnDef.meta;
-                                        return(
+                            {isWideVersion && columnsTitle.map(
+                                (
+                                    headerGroup: string) => (
+                                // <Tr key={headerGroup} className="">
+                                //     {headerGroup.headers.map((header : any) => {
+                                //         const meta: any = header.column.columnDef.meta;
+                                //         return(
                                             <Th className=""
-                                                key={header.id}
-                                                onClick={header.column.getToggleSortingHandler()}
-                                                isNumeric={meta?.isNumeric}
+                                                key={headerGroup}
+                                                // onClick={header.column.getToggleSortingHandler()}
+                                                // isNumeric={meta?.isNumeric}
                                                 >
-                                                {flexRender(
-                                                    header.column.columnDef.header,
-                                                    header.getContext()
-                                                )}
+                                    {
+                                    headerGroup
+                                    // flexRender(
+                                        //             header.column.columnDef.header,
+                                        //             header.getContext()
+                                        // )
+                                    }
                                             </Th>
-                                        );
-                                    })}
-                                </Tr>
-                            ))}
+                                        ))
+                                    }
+                                    {/* // )} */}
+                                {/* // </Tr> */}
+                            
                             {!isWideVersion && <Th></Th>}
                         </Thead>    
                         <Tbody className="mr-10 right-7">
-                            {isWideVersion && table.getRowModel().rows.map((row : any) => (
+                            {isWideVersion && table.map((row : any) => (
                             <Tr key={row.id} className="mr-10 right-7">
                                 {row.getVisibleCells().map((cell : any) => {
                                     const meta: any = cell.column.columnDef.meta;
@@ -129,7 +147,7 @@ useEffect(() => {
                         </Tbody>
                     </Table>
                     <div className="hidden lg:block">
-                        <Pagination table={table} currentPage={currentPage}/>
+                        {/* <Pagination table={table} currentPage={currentPage}/> */}
                     </div>
                 </div>
             </div>
