@@ -70,11 +70,10 @@ export function TableRows<T extends ItemWithID, K extends keyof T>() {
         onOpen();
     }
 
-    console.log(columns)
 
     const rows = dataContext?.map((row, index) => {
         return (
-            <Tr key={`row-${index}`}>
+            <Tr key={`row-${index}`} className="">
                 <Td px={["4", "4", "6"]}>
                     <Checkbox colorScheme="gray" className="border-gray-text"></Checkbox>
                 </Td>

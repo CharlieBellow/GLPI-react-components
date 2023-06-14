@@ -17,13 +17,12 @@ export function ActionMenu({ id, isWideVersion, editPath, handleCurrentRegister 
         Opções
       </MenuButton>
       <MenuList bgColor={"#0095DA"}>
-        <MenuGroup title='Opções' bgColor={"#0095DA"}>
+        <MenuGroup title='Opções' bgColor={"#0095DA"} className="text-white">
           <MenuItem
             as={NextLink}
             bgColor={"#0095DA"}
             _hover={{ bgColor: "#33AAE1" }}
             href={editPath}
-            className="text-white-100"
             icon={<Icon as={RiPencilLine}  />}>{isWideVersion ? 'Editar' : ''}
           </MenuItem>
           <MenuItem

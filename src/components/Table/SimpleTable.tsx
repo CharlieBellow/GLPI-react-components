@@ -44,7 +44,7 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
             <Box
                 flex="1"
                 borderRadius="8"
-                className="bg-gray-medium m-10 shadow-card"
+                className="bg-gray-medium m-10 shadow-card w-auto"
                 p={isDetail ? "0" : "8"}
                 
             >
@@ -53,7 +53,8 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
                     justify="space-between"
                     align="center"
                 >
-                    <Heading size={isDetail ? "sm" : "lg"} fontWeight="normal">
+                    <Heading size={isDetail ? "sm" : "lg"} fontWeight="normal"
+                    className="">
                         {title}
                         {!isLoading && isFetching && <Spinner size="sm" className="text-gray-text" ml="4" />}
                     </Heading>
@@ -82,7 +83,7 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
                     </Flex>
                 ) : (
                     <>
-                        <ChakraTable colorScheme="whiteAlpha">
+                        <ChakraTable colorScheme="whiteAlpha" className="">
                             <Thead>
                                 <Tr>
                                     <Th px={["4", "4", "6"]} color="gray.300" width="8">

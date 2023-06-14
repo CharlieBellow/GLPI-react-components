@@ -14,12 +14,12 @@ import { ColumnDefinitionType } from "../../../components/Table/types";
 import { usePagination } from "../../../hooks/usePagination";
 import { PaginationResponse } from "../../../components/Table/types/paginationresponse";
 // import { useSession } from "next-auth/react";
-import { PartnerCategory } from "../../../components/Table/core/partner-category.entity";
+import { User } from "../../../Utils/types";
 import { deleteEntity, getPaginationData } from "../../../components/Table/partnercategory";
 import { TableContextProvider } from "../../../Contexts/TableContext";
 import { SimpleTable } from "../../../components/Table/SimpleTable";
 
-const columns: ColumnDefinitionType<PartnerCategory, keyof PartnerCategory>[] = [
+const columns: ColumnDefinitionType<User, keyof User>[] = [
     {
         key: 'name',
         header: 'Nome',
@@ -37,14 +37,10 @@ const columns: ColumnDefinitionType<PartnerCategory, keyof PartnerCategory>[] = 
 
 
 function UserList(){
-    const router = useRouter()
-    const index = router.query
+
     
     const [users, setUsers] = useState();
-    
-    // const { data: session } = useSession();
-    // ? session?.tokens.accessToken
-    // : "";
+
     
     const teste = [
         {
@@ -128,51 +124,7 @@ function UserList(){
             name: "Charlie Bellow",
             password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
         },
-        {
-            avatar: null,
-            created_at: "2023-03-22T16:19:14.843Z",
-            email: "email@email.com",
-            id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-            isAdmin: false,
-            name: "Charlie Bellow",
-            password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-        },
-        {
-            avatar: null,
-            created_at: "2023-03-22T16:19:14.843Z",
-            email: "email@email.com",
-            id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-            isAdmin: false,
-            name: "Charlie Bellow",
-            password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-        },
-        {
-            avatar: null,
-            created_at: "2023-03-22T16:19:14.843Z",
-            email: "email@email.com",
-            id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-            isAdmin: false,
-            name: "Charlie Bellow",
-            password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-        },
-        {
-            avatar: null,
-            created_at: "2023-03-22T16:19:14.843Z",
-            email: "email@email.com",
-            id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-            isAdmin: false,
-            name: "Charlie Bellow",
-            password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-        },
-        {
-            avatar: null,
-            created_at: "2023-03-22T16:19:14.843Z",
-            email: "email@email.com",
-            id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-            isAdmin: false,
-            name: "Charlie Bellow",
-            password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-        },
+       
     ]
 
    const [test, setTest] = useState(teste);
@@ -189,6 +141,7 @@ function UserList(){
             try {
                 const response = await getAllUsers(token);
                 setUsers(response)
+            
                 console.log("res", response)
                 
                 //const { docs } = response.data;
@@ -210,7 +163,7 @@ function UserList(){
 
 
 
-    const { list, setPage, page, setFilter, refetch } = usePagination<PaginationResponse<PartnerCategory>>({
+    const { list, setPage, page, setFilter, refetch } = usePagination<PaginationResponse<User>>({
         fetchData: getPaginationData,
         // token
     });
@@ -222,8 +175,8 @@ console.log(list)
                 <title>{"Usuários"}</title>
             </Head>
             <TableContextProvider
-                title={"Categoria Conveniado"}
-                resource={"/core/partnercategory"}
+                title={"Lista de Usuários"}
+                resource={"/users/"}
                 columns={columns}
                 data={test}
                 deleteRegister={deleteEntity}
