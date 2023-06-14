@@ -38,9 +38,11 @@ export const CardCreateSubGroup = () => {
     const fetchData = async () => {
       const response = await getAllGroups()
       setGroups(response);      
+			
     }
 
     fetchData();
+
       
   },[]);
 	

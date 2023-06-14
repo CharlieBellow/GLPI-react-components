@@ -44,9 +44,9 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
             <Box
                 flex="1"
                 borderRadius="8"
-                bg="gray.800"
+                className="bg-gray-medium m-10 shadow-card"
                 p={isDetail ? "0" : "8"}
-                boxShadow={isDetail ? 'none' : 'dark-lg'}
+                
             >
                 <Flex
                     mb="8"
@@ -55,14 +55,15 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
                 >
                     <Heading size={isDetail ? "sm" : "lg"} fontWeight="normal">
                         {title}
-                        {!isLoading && isFetching && <Spinner size="sm" color="gray.500" ml="4" />}
+                        {!isLoading && isFetching && <Spinner size="sm" className="text-gray-text" ml="4" />}
                     </Heading>
 
                     <NextLink href={openModalForm ? '' : `${resource}/create`} passHref >
                         <Button
                             size="sm"
                             fontSize="sm"
-                            colorScheme="green"
+                            colorScheme=""
+                            className="bg-gray-text"
                             leftIcon={<Icon as={RiAddLine} fontSize="20" />}
                             onClick={openModalForm}
                         >
@@ -85,7 +86,7 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
                             <Thead>
                                 <Tr>
                                     <Th px={["4", "4", "6"]} color="gray.300" width="8">
-                                        <Checkbox colorScheme="green"></Checkbox>
+                                        <Checkbox colorScheme="gray" className="border-gray-text"></Checkbox>
                                     </Th>
                                     <TableHeader />
                                     <Th w="6">Ações</Th>

@@ -3,8 +3,9 @@ import { Checkbox, Tbody, Td, Text, Tr } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { ActionMenu } from "./ActionMenu";
 import { ItemWithID, useTableContext } from "../../Contexts/TableContext";
+import { useMessage } from "../../Contexts/MessageContext";
 import { AlertDialog } from "../AlertDialog";
-import { useMessageContext } from "../../Contexts/MessageContext";
+
 // import { useSession } from "next-auth/react";
 
 /*type TableRowsProps<T extends { id: string }, K extends keyof T> = {
@@ -34,12 +35,14 @@ export function TableRows<T extends ItemWithID, K extends keyof T>() {
         refetch
     } = useTableContext<T, K>();
 
-    const { successMessage, errorMessage } = useMessageContext();
+    const {errorMessage, successMessage} = useMessage()
 
     // const { data: session, status } = useSession();
-    const token = session?.tokens.accessToken
-        ? session?.tokens.accessToken
-        : "";
+    // const token = session?.tokens.accessToken
+    //     ? session?.tokens.accessToken
+    //     : "";
+
+    const token = localStorage.getItem("token");
 
     async function handleDeleteCurrentRegister() {
         if (deleteRegister){
@@ -67,11 +70,13 @@ export function TableRows<T extends ItemWithID, K extends keyof T>() {
         onOpen();
     }
 
+    console.log(columns)
+
     const rows = dataContext?.map((row, index) => {
         return (
             <Tr key={`row-${index}`}>
                 <Td px={["4", "4", "6"]}>
-                    <Checkbox colorScheme="green"></Checkbox>
+                    <Checkbox colorScheme="gray" className="border-gray-text"></Checkbox>
                 </Td>
                 {
                     columns.map((column, index2) => {

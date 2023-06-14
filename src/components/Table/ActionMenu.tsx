@@ -12,23 +12,24 @@ interface ActionMenuProps {
 
 export function ActionMenu({ id, isWideVersion, editPath, handleCurrentRegister }: ActionMenuProps) {
   return (
-    <Menu colorScheme={'purple'} >
-      <MenuButton as={Button} colorScheme='purple' size="sm" fontSize="sm" rightIcon={<Icon as={BsChevronDown} />}>
+    <Menu colorScheme={'blue'} className="text-white-100" >
+      <MenuButton as={Button} colorScheme='' className="bg-blue-ufal" size="sm" fontSize="sm" rightIcon={<Icon as={BsChevronDown} />}>
         Opções
       </MenuButton>
-      <MenuList bgColor={"purple.500"} >
-        <MenuGroup title='Opções' bgColor={"purple.500"} >
+      <MenuList bgColor={"#0095DA"}>
+        <MenuGroup title='Opções' bgColor={"#0095DA"}>
           <MenuItem
             as={NextLink}
-            bgColor={"purple.500"}
-            _hover={{ bgColor: "purple.600" }}
+            bgColor={"#0095DA"}
+            _hover={{ bgColor: "#33AAE1" }}
             href={editPath}
-            icon={<Icon as={RiPencilLine} />}>{isWideVersion ? 'Editar' : ''}
+            className="text-white-100"
+            icon={<Icon as={RiPencilLine}  />}>{isWideVersion ? 'Editar' : ''}
           </MenuItem>
           <MenuItem
             onClick={() => handleCurrentRegister(id)}
-            bgColor={"purple.500"}
-            _hover={{ bgColor: "purple.600" }}
+            bgColor={"#0095DA"}
+            _hover={{ bgColor: "#33AAE1" }}
             icon={<Icon as={BsTrash} />}>
             {isWideVersion ? 'Excluir' : ''}
           </MenuItem>

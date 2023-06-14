@@ -30,11 +30,10 @@ export function TableFilter() {
         <Input
           name="filter"
           focusBorderColor="green.500"
-          bg="gray.900"
+          bg=""
+          className="bg-white-100 hover:bg-white-ice"
           variant="filled"
-          _hover={{
-            bgColor: "gray.900"
-          }}
+          _hover=""
           size="lg"
           placeholder="Filtro"
           type={"text"}
