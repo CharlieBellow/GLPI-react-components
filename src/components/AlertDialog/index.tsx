@@ -27,7 +27,7 @@ export function AlertDialog({ title, isOpen, onClose, deleteRegister }: AlertDia
                 onClose={onClose}
             >
                 <AlertDialogOverlay>
-                    <AlertDialogContent bg={"gray.900"}>
+                    <AlertDialogContent className="bg-gray-medium" bg="">
                         <AlertDialogHeader fontSize='lg' fontWeight='bold'>
                             {`Excluir ${title} `}
                         </AlertDialogHeader>
@@ -43,7 +43,7 @@ export function AlertDialog({ title, isOpen, onClose, deleteRegister }: AlertDia
                             }} ml={3}>
                                 Excluir
                             </Button>
-                            <Button colorScheme={'whiteAlpha'} ref={cancelRef} onClick={onClose}>
+                            <Button colorScheme='' className="bg-gray-text" ref={cancelRef} onClick={onClose}>
                                 Cancelar
                             </Button>
                         </AlertDialogFooter>
