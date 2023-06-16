@@ -1,3 +1,4 @@
+import {useEffect} from "react"
 import { ColumnDefinitionType } from "../../components/Table/types";
 import { Checkbox, Tbody, Td, Text, Tr } from "@chakra-ui/react";
 import { ReactNode } from "react";
@@ -6,14 +7,14 @@ import { ItemWithID, useTableContext } from "../../Contexts/TableContext";
 import { useMessage } from "../../Contexts/MessageContext";
 import { AlertDialog } from "../AlertDialog";
 
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
-/*type TableRowsProps<T extends { id: string }, K extends keyof T> = {
+type TableRowsProps<T extends { id: string }, K extends keyof T> = {
     data: Array<T>;
     resource: string;
     columns: Array<ColumnDefinitionType<T, K>>;
     handleCurrentRegister: (id: string) => void;
-}*/
+}
 
 
 // Type guard for the primitive types which will support printing
@@ -42,6 +43,7 @@ export function TableRows<T extends ItemWithID, K extends keyof T>() {
     //     ? session?.tokens.accessToken
     //     : "";
 
+    
     const token = localStorage.getItem("token");
 
     async function handleDeleteCurrentRegister() {

@@ -1,4 +1,4 @@
-import { useMessageContext } from "@/contexts/MessageContext";
+import { useMessage } from "../../Contexts/MessageContext";
 import {
     Box,
     Button,
@@ -23,7 +23,7 @@ import { TableProps } from "./types";
 import NextLink from "next/link";
 import TableHeader from "./TableHeader";
 import { TableRows } from "./TableRow";
-import { Pagination } from "../Pagination";
+import { Pagination } from "./Pagination";
 import { TableFilter } from "./TableFilter";
 
 export function Table<T extends { id: string }, K extends keyof T>({
@@ -48,7 +48,7 @@ export function Table<T extends { id: string }, K extends keyof T>({
         : "";
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { successMessage, errorMessage } = useMessageContext();
+    const { successMessage, errorMessage } = useMessage();
     const [currentRegister, setCurrentRegister] = useState<string>("");
 
     const isWideVersion = useBreakpointValue({

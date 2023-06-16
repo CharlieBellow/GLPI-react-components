@@ -27,7 +27,7 @@ function CardMenu(props: CardMenuProps){
       }, [loaded])
 
     return(
-        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-none lg:text-white   lg:pt-16 ease-in-out duration-300   `}>
+        <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-br-lg lg:text-white   lg:pt-16 ease-in-out duration-300  rounded-b-lg lg:rounded-bl-none `}>
             <div className=" relative z-10  hidden lg:flex justify-center ">
                 
             <Image src={ufalLogo} width={350} height={300} alt="logo" className="  bg-cover  absolute -top-36 z-10  " priority={true}/>

@@ -14,7 +14,7 @@ import { ColumnDefinitionType } from "../../../components/Table/types";
 import { usePagination } from "../../../hooks/usePagination";
 import { PaginationResponse } from "../../../components/Table/types/paginationresponse";
 // import { useSession } from "next-auth/react";
-import { User } from "../../../Utils/types";
+import { User } from "../../../Utils/server/types";
 import { deleteEntity, getPaginationData } from "../../../components/Table/partnercategory";
 import { TableContextProvider } from "../../../Contexts/TableContext";
 import { SimpleTable } from "../../../components/Table/SimpleTable";
@@ -132,7 +132,6 @@ function UserList(){
     /* colocar função que vai pegar todos os usuários */
     // const categories = list?.data;
     useEffect(() => {
-        const token = localStorage.getItem('token') as string
         
         const fetchData = async () => {
             // const response = await getAllUsers(token)
@@ -141,7 +140,7 @@ function UserList(){
             try {
                 const response = await getAllUsers(token);
                 setUsers(response)
-            
+                
                 console.log("res", response)
                 
                 //const { docs } = response.data;
@@ -160,15 +159,16 @@ function UserList(){
 
 
     
-
-
+    
+    
+    const token = localStorage.getItem('token') as string
 
     const { list, setPage, page, setFilter, refetch } = usePagination<PaginationResponse<User>>({
         fetchData: getPaginationData,
-        // token
+        token
     });
 
-console.log(list)
+console.log("list", list)
     return (
         <Layout>
             <Head>
