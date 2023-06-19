@@ -1,4 +1,4 @@
-import { Bell, UserPlus, Question, List } from "phosphor-react";
+import { Bell, UserPlus, Question, List, X } from "phosphor-react";
 import { useState, useContext, useEffect } from "react";
 import SidebarContext from "../Sidebar/SidebarContext";
 import Image from "next/image"
@@ -9,7 +9,7 @@ interface CardMenuProps extends React.HTMLAttributes<HTMLElement> {
 	pagetitle: string;
 }
 function CardMenu(props: CardMenuProps){
-    const { openMenu, open } = useContext(SidebarContext);
+    const { openMenu, open, hidden } = useContext(SidebarContext);
     const [title, setTitle] = useState("");
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
@@ -35,7 +35,9 @@ function CardMenu(props: CardMenuProps){
             {/* <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div> */}
             <div className="flex flex-row justify-between items-center">
                 <div  className="flex flex-row items-center gap-4 w-[15rem]">
-                    <List data-testid="butao" size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>
+                    {hidden ? (<List data-testid="butao" size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>) : 
+                    (<X data-testid="butao" size={32} onClick={() => openMenu()} className={`cursor-pointer z-10 ${hidden ? "hidden" : ""}`}/>)
+                    }
                     <h3 className="hidden text-white lg:block"></h3>
                 </div>
                 <div className="hidden justify-self-center lg:block">

@@ -18,6 +18,7 @@ import { User } from "../../../Utils/server/types";
 import { deleteEntity, getPaginationData } from "../../../components/Table/partnercategory";
 import { TableContextProvider } from "../../../Contexts/TableContext";
 import { SimpleTable } from "../../../components/Table/SimpleTable";
+import { PaginationRequest } from "./components/Table/types/paginationrequest";
 
 const columns: ColumnDefinitionType<User, keyof User>[] = [
     {
@@ -36,12 +37,8 @@ const columns: ColumnDefinitionType<User, keyof User>[] = [
 
 
 
-function UserList(){
+function UserList() {
 
-    
-    const [users, setUsers] = useState();
-
-    
     const teste = [
         {
             avatar: null,
@@ -126,13 +123,30 @@ function UserList(){
         },
        
     ]
+    
+    async function getUserPaginationData({
+        page,
+        params,
+        token
+    }: PaginationRequest): Promise<PaginationResponse<User>>{
+      return {
+        data: teste,
+        totalCount:30
+      }  
+    }
+
+    
+    const [users, setUsers] = useState();
+
+    
+   
 
    const [test, setTest] = useState(teste);
     
     /* colocar função que vai pegar todos os usuários */
     // const categories = list?.data;
     useEffect(() => {
-        
+       
         const fetchData = async () => {
             // const response = await getAllUsers(token)
 
@@ -161,11 +175,12 @@ function UserList(){
     
     
     
-    const token = localStorage.getItem('token') as string
 
+    
+    
     const { list, setPage, page, setFilter, refetch } = usePagination<PaginationResponse<User>>({
-        fetchData: getPaginationData,
-        token
+        fetchData: getUserPaginationData,
+        // token
     });
 
 console.log("list", list)

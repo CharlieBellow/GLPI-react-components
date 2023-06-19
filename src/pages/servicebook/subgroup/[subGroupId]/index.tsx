@@ -14,6 +14,12 @@ const baseURL = "http://172.27.12.171:3333";
 
 // * tela subgrupos de um grupo 'servicebook/subgroup/[id:grupo]'
 
+const subgroups = [
+  {createdAt: "2023-02-17T17:24:21.797Z", description: "Sistemas", id: "446ba367-8c8e-4f11-b920-413ef6e9e836", serviceGroupId: "35be846f-55ba-48d0-a752-d22a9a82eb47", updatedAt: "2023-02-17T17:24:21.797Z"},
+  {createdAt: "2023-02-17T17:24:21.797Z", description: "Redes", id: "446ba367-8c8e-4f11-b920-413ef6e9e836", serviceGroupId: "35be846f-55ba-48d0-a752-d22a9a82eb47", updatedAt: "2023-02-17T17:24:21.797Z"},
+  {createdAt: "2023-02-17T17:24:21.797Z", description: "Manutenção", id: "446ba367-8c8e-4f11-b920-413ef6e9e836", serviceGroupId: "35be846f-55ba-48d0-a752-d22a9a82eb47", updatedAt: "2023-02-17T17:24:21.797Z"},
+]
+
 const Subgroups = ( ) => {
 
 
@@ -21,7 +27,7 @@ const Subgroups = ( ) => {
   const { subGroupId } = router.query;
 
 
-  const [ subgroups, setSubgroups ] = useState<SubGroup[]>( [] );
+  // const [ subgroups, setSubgroups ] = useState<SubGroup[]>( [] );
   const [ groupTitle, setGroupTitle ] = useState<string>( "" );
 
   useEffect( () => {
@@ -33,7 +39,8 @@ const Subgroups = ( ) => {
       );
         
       setGroupTitle( group.description );
-      setSubgroups( response );
+      // setSubgroups( response );
+      // console.log(response)
 
       return group;
     };

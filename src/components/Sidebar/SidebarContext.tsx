@@ -14,12 +14,14 @@ const SidebarContext = createContext<SidebarContextType>({} as SidebarContextTyp
 
 export function SidebarProvider({children }: SidebarContextProps){
     const [open, setOpen] = useState(false);
+    const [hidden, setHidden] = useState(true);
     const [title, setTitle] = useState("");
     const openMenu = () => {
         setOpen(!open);
+        setHidden(!hidden);
     }
     return(
-        <SidebarContext.Provider value={{open, openMenu, title}}>
+        <SidebarContext.Provider value={{open, openMenu, title, hidden}}>
             {children}
         </SidebarContext.Provider>
     );

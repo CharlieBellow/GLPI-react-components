@@ -9,7 +9,22 @@ import { Group } from '../Utils/server/types';
 
 
 // * lista de grupos, é exibido em '/servicebook/' ou '/servicebook/group'
-
+// const groups = [
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "GTI",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "Biblioteca",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "GTI",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "CRCA",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "Direção",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "NAE",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "Saúde",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "COINFRA",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "CORH",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "Transporte",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "Secretarias",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "COPLAN",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+//   {createdAt: "2023-02-17T17:23:59.579Z",description: "COGRAD",id: "35be846f-55ba-48d0-a752-d22a9a82eb47",updatedAt: "2023-02-17T17:23:59.579Z"},
+  
+// ]
 
 export default function GroupList () {
   const router = useRouter()
@@ -20,7 +35,7 @@ export default function GroupList () {
     if (!router.isReady) return;
     const fetchData = async () => {
       const response = await getAllGroups()
-      setGroups(response);      
+      setGroups(response);     
     }
 
     fetchData();

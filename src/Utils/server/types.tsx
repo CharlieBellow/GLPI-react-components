@@ -56,7 +56,7 @@ export interface User {
 	avatar: any;
 	isAdmin: boolean;
 	created_at: string;
-	permissions: Array<any>;
-	roles: Array<any>;
+	permissions?: Array<any>;
+	roles?: Array<any>;
 	
 }
