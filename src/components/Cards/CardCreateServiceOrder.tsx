@@ -40,6 +40,7 @@ const validateWhitOutPatrimony = yup.object().shape({
 });
 
 
+
 export const CardCreateServiceOrder = () => {
 
 	const myuser = {

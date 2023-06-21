@@ -42,7 +42,6 @@ export default function CardServiceDescription (  ) {
     const fetchData = async () => {
       const response = await getService( serviceId as string, token as string);
 
-      console.log(response)
       setServiceInfo(response)
 
     }
@@ -51,9 +50,8 @@ export default function CardServiceDescription (  ) {
 
   console.log( "router", serviceInfo);
 
-  // preencher isso com os dados do serviço do RU
-  const teste = { contactInfo :  "", createdAt :  "2023-02-17T14:31:38.105Z", deadline :  null, definition :  "Consiste no acesso ao restaurante pela comunidade universitária, almoço e jantar, pagando preços mais acessíveis", description :  "Concessão feita à comunidade acadêmica para almoçar e jantar pagando preços acessíveis., ", glpiSla :  null, id :  "eff33f67-0d9d-402f-baa3-96a30df953f1", isPatromonyIdRequired :  false ,isPrioritaryService :  false, openningHours :  null, personType :  "{Discente,Docente,Técnico Administrativo,Discente Pós-Graduação,Terceirizado}", requiredDocuments :  null, serviceLocation :  null, serviceSubGroupId :  "446ba367-8c8e-4f11-b920-413ef6e9e836", title :  "Criar email institucional", updatedAt :  "2023-02-17T14:31:38.105Z", waitingTime :  null
-}
+
+
 
   
   // construir as rotas dinâmicas. quando recarrega ele dá erro
@@ -75,7 +73,7 @@ export default function CardServiceDescription (  ) {
         </div>
       </div>
 
-      <InfoServiceItem infos={ teste as Service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
+      <InfoServiceItem infos={ serviceInfo as Service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
 
 
       <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">

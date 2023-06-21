@@ -8,13 +8,7 @@ import {CardList} from "../../components/Cards/CardList"
 
 // * lista de serviços de um subgrupo, exibida em '/subgroup/[id:subgroup]/services'
 
-const listServices = [
-  {contactInfo: null, createdAt: "2023-02-17T14:31:38.105Z", deadline: null, definition: "Etapas para criação do email institucional", description: "Acessar perfil.ufal.br", glpiSla: null, id: "eff33f67-0d9d-402f-baa3-96a30df953f1", isPatromonyIdRequired: false, isPrioritaryService: false, openningHours: null, personType: "{Discente,Docente}", requiredDocuments: null, serviceLocation: null, serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836", title: "Criar email institucional", updatedAt: "2023-02-17T14:31:38.105Z", waitingTime: null},
-  {contactInfo: null, createdAt: "2023-02-17T14:31:38.105Z", deadline: null, definition: "Etapas para criação do email institucional", description: "Acessar perfil.ufal.br", glpiSla: null, id: "eff33f67-0d9d-402f-baa3-96a30df953f1", isPatromonyIdRequired: false, isPrioritaryService: false, openningHours: null, personType: "{Discente,Docente}", requiredDocuments: null, serviceLocation: null, serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836", title: "Alterar email institucional", updatedAt: "2023-02-17T14:31:38.105Z", waitingTime: null},
-  {contactInfo: null, createdAt: "2023-02-17T14:31:38.105Z", deadline: null, definition: "Etapas para criação do email institucional", description: "Acessar perfil.ufal.br", glpiSla: null, id: "eff33f67-0d9d-402f-baa3-96a30df953f1", isPatromonyIdRequired: false, isPrioritaryService: false, openningHours: null, personType: "{Discente,Docente}", requiredDocuments: null, serviceLocation: null, serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836", title: "Criar perfil de acesso ao RU", updatedAt: "2023-02-17T14:31:38.105Z", waitingTime: null},
-  {contactInfo: null, createdAt: "2023-02-17T14:31:38.105Z", deadline: null, definition: "Etapas para criação do email institucional", description: "Acessar perfil.ufal.br", glpiSla: null, id: "eff33f67-0d9d-402f-baa3-96a30df953f1", isPatromonyIdRequired: false, isPrioritaryService: false, openningHours: null, personType: "{Discente,Docente}", requiredDocuments: null, serviceLocation: null, serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836", title: "Cadastrar Bolsistas e estagiários", updatedAt: "2023-02-17T14:31:38.105Z", waitingTime: null},
-  {contactInfo: null, createdAt: "2023-02-17T14:31:38.105Z", deadline: null, definition: "Etapas para criação do email institucional", description: "Acessar perfil.ufal.br", glpiSla: null, id: "eff33f67-0d9d-402f-baa3-96a30df953f1", isPatromonyIdRequired: false, isPrioritaryService: false, openningHours: null, personType: "{Discente,Docente}", requiredDocuments: null, serviceLocation: null, serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836", title: "Problemas no acesso ao sistema", updatedAt: "2023-02-17T14:31:38.105Z", waitingTime: null},
-]
+
 
 const ServicesBySubgroup = ( ) => {
   
@@ -22,7 +16,7 @@ const ServicesBySubgroup = ( ) => {
   const router = useRouter();
   const {subGroupId} = router.query
   
-  // const [listServices, setListServices] = useState<Service[]>([])
+  const [listServices, setListServices] = useState<Service[]>([])
   const [subcategoryDescription, setSubcategoryDescription] = useState<string>("")
   
   const isAdmin = true;
@@ -36,7 +30,7 @@ const ServicesBySubgroup = ( ) => {
       getAllServices(subGroupId as string)
     ]);
     setSubcategoryDescription(subgroups.description)
-    // setListServices(services)
+    setListServices(services)
     console.log(listServices)
     return subgroups;
 

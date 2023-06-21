@@ -9,7 +9,7 @@ interface CardMenuProps extends React.HTMLAttributes<HTMLElement> {
 	pagetitle: string;
 }
 function CardMenu(props: CardMenuProps){
-    const { openMenu, open, hidden } = useContext(SidebarContext);
+    const { openMenu, open } = useContext(SidebarContext);
     const [title, setTitle] = useState("");
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
@@ -18,13 +18,13 @@ function CardMenu(props: CardMenuProps){
             setTimeout(() => {
                 setLoaded(true)
             }, 300);
-            
         }
       }, [])
     useEffect(() => {
         setTitle(document.title);
         setLoaded(false)
       }, [loaded])
+
 
     return(
         <div className={`${open ? "ml-[20rem] lg:ml-0" : "ml-0"} w-full bg-gradient text-white-100 h-[10rem] p-6 lg:rounded-br-lg lg:text-white   lg:pt-16 ease-in-out duration-300  rounded-b-lg lg:rounded-bl-none `}>
@@ -35,8 +35,8 @@ function CardMenu(props: CardMenuProps){
             {/* <div className="bg-ufalBackground lg:box-content lg:w-[24rem] right-[29vw] -mt-[10rem] bg-cover h-64 absolute"></div> */}
             <div className="flex flex-row justify-between items-center">
                 <div  className="flex flex-row items-center gap-4 w-[15rem]">
-                    {hidden ? (<List data-testid="butao" size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>) : 
-                    (<X data-testid="butao" size={32} onClick={() => openMenu()} className={`cursor-pointer z-10 ${hidden ? "hidden" : ""}`}/>)
+                    {open ? (<X data-testid="butao" size={32} onClick={() => openMenu()} className={`cursor-pointer z-10`}/>) : 
+                    (<List data-testid="butao" size={32} onClick={() => openMenu()} className="cursor-pointer z-10"/>)
                     }
                     <h3 className="hidden text-white lg:block"></h3>
                 </div>

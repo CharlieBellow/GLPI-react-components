@@ -5,6 +5,8 @@ import { Layout } from "../../../components/Layout";
 // * tela de grupos 'servicebook/group'
 
 export default function GroupHome () {
+
+
   return (
   <Layout>
   <Head>
