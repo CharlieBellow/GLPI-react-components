@@ -1,8 +1,8 @@
-
+import {useState} from "react"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { Eye } from "phosphor-react";
+import { Eye, EyeSlash } from "phosphor-react";
 import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 
@@ -26,9 +26,15 @@ export function CardSignUp () {
 	const {errorMessage, successMessage} = useMessage()
 	console.log( "auth", auth );
 
+	const [showInput, setShowInput] = useState(true)
+	function handleInput() {
+
+		setShowInput(!showInput)
+	}
+
 	return (
 		<div className="container w-100 h-auto my-auto  mx-auto bg-white-ice rounded-lg shadow-card">
-			<div className="pt-7 pb-8 text-center">
+			<div className="pt-7 pb-8 text-center pl-6">
 				<CardTitle title="Criar Conta" />
 			</div>
 			<Formik
@@ -90,8 +96,8 @@ export function CardSignUp () {
 								label="Senha"
 								name="password"
 								width="w-full"
-								type="password"
-								icon={<Eye className="absolute flex ml-72" weight="bold" />}
+								type={showInput ? "text" : "password"}
+								icon={showInput ? <EyeSlash onClick={handleInput} className="absolute flex ml-72" weight="bold" /> : <Eye className="absolute flex ml-72" weight="bold" onClick={handleInput} />}
 							/>
 						</div>
 						<div className="mb-6 px-10">
@@ -99,8 +105,8 @@ export function CardSignUp () {
 								label="Confirme sua Senha"
 								name="confirmPassword"
 								width="w-full"
-								type="password"
-								icon={<Eye className="absolute flex ml-72" weight="bold" />}
+								type={showInput ? "text" : "password"}
+								icon={showInput ? <EyeSlash onClick={handleInput} className="absolute flex ml-72" weight="bold" /> : <Eye className="absolute flex ml-72" weight="bold" onClick={handleInput} />}
 							/>
 						</div>
 

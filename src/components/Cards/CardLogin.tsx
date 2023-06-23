@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 //import { AuthContext } from "../../Contexts/AuthContext";
 import { useAuth } from '../../Contexts/AuthContext';
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { Eye } from "phosphor-react";
+import { Eye, EyeSlash } from "phosphor-react";
 import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
@@ -46,10 +46,17 @@ export function CardLogin () {
     }
   },[] );*/
 
+	const [showInput, setShowInput] = useState(false)
+	
+	function handlePass() {
+
+		setShowInput(!showInput)
+	}
+
 	
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
-			<div className="pt-16 pb-9 text-center">
+			<div className="pt-16 pb-10 text-center pl-6">
 				<CardTitle title="Fazer Login" />
 			</div>
 			<Formik
@@ -102,8 +109,8 @@ export function CardLogin () {
 								label="Senha"
 								name="password"
 								width="w-full"
-								type="password"
-								icon={<Eye className="absolute flex ml-72" weight="bold" />}
+								type={showInput ? "text" : "password"}
+								icon={showInput ? <EyeSlash className="absolute flex ml-72" weight="bold" onClick={handlePass}/> : <Eye className="absolute flex ml-72" weight="bold" onClick={handlePass}/>}
 							/>
 						</div>
 
