@@ -35,9 +35,9 @@ if(loaded && !auth){
       <Head>
           <title> Login - GLPI </title>
         </Head>
-      <div className="flex items-center  flex-col w-screen h-screen mx-auto justify-center bg-gradient  gap-8">
-        <div className="w-full h-screen relative right-128">
-          <img className=" fixed -bottom-118 h-auto" src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width="1300" height="500"/>
+      <div className="flex items-center  flex-col w-screen h-screen mx-auto justify-center bg-gradient  gap-8 ">
+        <div className="w-full lg:w-auto lg:mr-202 h-screen relative tv:right-118 lg:right-202 md:right-68 md:mr-68  sm:mr-0 sm:right-100 -left-57 -ml-22 lg:left-0 lg:ml-0 ">
+          <img className=" fixed tv:-bottom-118 lg:-bottom-118 h-auto sm:-bottom-32 bottom-28" src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png" width="1300" height="500"/>
         </div>
 
           <div className="w-full h-full absolute flex ">
