@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Metadata } from "next";
 import { ReactNode } from "react";
