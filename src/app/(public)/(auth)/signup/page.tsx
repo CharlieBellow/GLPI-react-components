@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
+import { FormSignUp } from "./components/FormSignUp";
+
 export const metadata: Metadata = {
   title: "Cadastro",
 };
@@ -17,7 +19,9 @@ export default function SignUpPage() {
           alt="brasão da UFAL com fundo transparente"
         />
       </div>
-      <div className="absolute flex h-full w-full" />
+      <div className="absolute flex h-full w-full">
+        <FormSignUp />
+      </div>
     </div>
   );
 }

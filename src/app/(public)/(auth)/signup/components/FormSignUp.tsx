@@ -22,7 +22,7 @@ const validate = yup.object().shape({
 
 type FormValues = yup.InferType<typeof validate>;
 
-export function CardSignUp() {
+export function FormSignUp() {
   const [showInput, setShowInput] = useState(true);
 
   const handleShowPass = () => setShowInput((prev) => !prev);
