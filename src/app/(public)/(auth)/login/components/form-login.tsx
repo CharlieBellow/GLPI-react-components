@@ -20,6 +20,8 @@ export function FormLogin() {
 
   const handleShowPass = () => setShowInput((prev) => !prev);
 
+  const handleSubmit = (_values: yup.InferType<typeof formSchema>) => {};
+
   return (
     <div className="container m-auto h-128 w-100 rounded-lg bg-white-ice shadow-card">
       <div className="pb-10 pl-6 pt-16 text-center">
@@ -29,7 +31,7 @@ export function FormLogin() {
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={formSchema}
-        onSubmit={() => {}}
+        onSubmit={handleSubmit}
       >
         {({ isSubmitting, isValid }) => (
           <Form>
