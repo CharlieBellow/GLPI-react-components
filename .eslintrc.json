@@ -5,7 +5,13 @@
   ],
   "rules": {
     "tailwindcss/no-custom-classname": "off",
-    "no-unused-vars": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "react/self-closing-comp": "error"
   },
   "settings": {
