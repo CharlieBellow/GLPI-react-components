@@ -1,14 +1,18 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
+
+import * as yup from "yup";
+import { Form, Formik } from "formik";
+import { signIn } from "next-auth/react";
+import { Eye, EyeSlash } from "phosphor-react";
+
 import { validationSchema } from "@/Utils/validations";
 import { Button } from "@/components/Buttons/Button";
 import { CardTitle } from "@/components/Cards/CardTitle";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
-import { Form, Formik } from "formik";
-import Link from "next/link";
-import { Eye, EyeSlash } from "phosphor-react";
-import { useState } from "react";
-import * as yup from "yup";
+import { useMessage } from "@/Contexts/MessageContext";
 
 const formSchema = yup.object().shape({
   email: validationSchema.email,
@@ -16,11 +20,20 @@ const formSchema = yup.object().shape({
 });
 
 export function FormLogin() {
+  const { successMessage, errorMessage } = useMessage();
   const [showInput, setShowInput] = useState(false);
 
   const handleShowPass = () => setShowInput((prev) => !prev);
 
-  const handleSubmit = (_values: yup.InferType<typeof formSchema>) => {};
+  const handleSubmit = async (values: yup.InferType<typeof formSchema>) => {
+    await signIn("credentials", { ...values, redirect: false }).then((res) => {
+      if (res && res.error) {
+        errorMessage(res.error!);
+      }
+
+      successMessage("Login realizado com sucesso! Você será redirecionado.");
+    });
+  };
 
   return (
     <div className="container m-auto h-128 w-100 rounded-lg bg-white-ice shadow-card">
