@@ -14,8 +14,8 @@ import { UserProvider } from "@/Contexts/UserContext";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <MessageProvider>
-      <SessionProvider>
+    <SessionProvider>
+      <MessageProvider>
         <UserProvider>
           <MenuProvider>
             <ChakraProvider>
@@ -26,7 +26,7 @@ export function Providers({ children }: { children: ReactNode }) {
             </ChakraProvider>
           </MenuProvider>
         </UserProvider>
-      </SessionProvider>
-    </MessageProvider>
+      </MessageProvider>
+    </SessionProvider>
   );
 }
