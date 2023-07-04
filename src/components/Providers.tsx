@@ -20,10 +20,8 @@ export function Providers({ children }: { children: ReactNode }) {
           <MenuProvider>
             <ChakraProvider>
               <PreviousPageProvider>
-                <>
-                  {children}
-                  <ToastContainer />
-                </>
+                {children}
+                <ToastContainer />
               </PreviousPageProvider>
             </ChakraProvider>
           </MenuProvider>
