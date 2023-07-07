@@ -7,17 +7,17 @@ import {
 } from "../../Utils/validations";
 
 import * as yup from "yup";
-import { toast } from "react-toastify";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardTitle } from "../Cards/CardTitle";
 import { CardLine } from "../Cards/CardLine";
-
+import { useMessage } from "../../Contexts/MessageContext";
 const validate = yup.object().shape({
 	name: validationSchema.name,
 });
 
 export const BasicForm = () => {
+	const {errorMessage, successMessage} = useMessage()
 	return (
 		<div className="mx-4">
 			<div
@@ -41,7 +41,7 @@ export const BasicForm = () => {
 					onSubmit={(values, actions) => {
 						setTimeout(() => {
 							console.log("submit:", values);
-							toast.success("Chamado criado com sucesso!");
+							successMessage("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 						}, 400);

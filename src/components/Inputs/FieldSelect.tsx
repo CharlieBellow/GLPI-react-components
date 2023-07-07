@@ -1,14 +1,16 @@
 import { Field, FieldHookConfig, useField} from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 
+import { string } from "yup/lib/locale";
+import { Group, User } from "../../Utils/server/types";
 interface FieldSelectProps {
-  listitems: string[]; 
+  listitems: string[]
   label: string;
   name: string;
-  default: string;
+  default?: string;
   theme?: string
 }
-
+// ! id não existe no tipo 'object', tem que consertar pra poder fazer o build
 // transformar esse select em um component select do radix ui para aproveitar a acessibilidade 
 export default function FieldSelect(
 	props: FieldSelectProps &
@@ -17,6 +19,13 @@ export default function FieldSelect(
 		FieldHookConfig<string>
 ) {
 	const [field, meta] = useField(props);
+
+	const getSelect = (item: string) =>{
+
+			return item;
+
+			
+	}
 
 	return (
 		<div
@@ -32,13 +41,19 @@ export default function FieldSelect(
 				${meta.touched && meta.error ? " border-red-ufal" : "focus:border-blue-ufal"}
 				`}
 			>
-				<option value="" className="">
-					{props.default}
-				</option>
-				{props.listitems.map(item => {
+				{props.default ? 
+								<option value="" className="">
+								{props.default}
+							</option> : <></>
+				}
+
+        { props.listitems.map( item => {
 					return (
 						<option key={item} value={item} className="font-bold ">
-							{item}
+							
+							{
+							getSelect(item)}
+						
 						</option>
 					);
 				})}

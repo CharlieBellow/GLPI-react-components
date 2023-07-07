@@ -1,15 +1,15 @@
-
+import {useState} from "react"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { Eye } from "phosphor-react";
+import { Eye, EyeSlash } from "phosphor-react";
 import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 
 import * as yup from "yup";
-import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { useMessage } from "../../Contexts/MessageContext";
 import Link from "next/link";
 
 const validate = yup.object().shape({
@@ -23,11 +23,18 @@ const validate = yup.object().shape({
 export function CardSignUp () {
 	
 	const { auth, setAuth }: any = useContext( AuthContext )
+	const {errorMessage, successMessage} = useMessage()
 	console.log( "auth", auth );
+
+	const [showInput, setShowInput] = useState(true)
+	function handleInput() {
+
+		setShowInput(!showInput)
+	}
 
 	return (
 		<div className="container w-100 h-auto my-auto  mx-auto bg-white-ice rounded-lg shadow-card">
-			<div className="pt-7 pb-8 text-center">
+			<div className="pt-7 pb-8 text-center pl-6">
 				<CardTitle title="Criar Conta" />
 			</div>
 			<Formik
@@ -46,10 +53,10 @@ export function CardSignUp () {
 						if ( values  ) {
 							setAuth( true );
 						
-							toast.success("Conta criada com sucesso!");
+							successMessage("Conta criada com sucesso!");
 							
 						} else {
-							toast.error("Algo deu errado, tente novamente inserindo outros dados");
+							errorMessage("Algo deu errado, tente novamente inserindo outros dados");
 
 						}
 					
@@ -89,8 +96,8 @@ export function CardSignUp () {
 								label="Senha"
 								name="password"
 								width="w-full"
-								type="password"
-								icon={<Eye className="absolute flex ml-72" weight="bold" />}
+								type={showInput ? "text" : "password"}
+								icon={showInput ? <EyeSlash onClick={handleInput} className="absolute flex ml-72" weight="bold" /> : <Eye className="absolute flex ml-72" weight="bold" onClick={handleInput} />}
 							/>
 						</div>
 						<div className="mb-6 px-10">
@@ -98,8 +105,8 @@ export function CardSignUp () {
 								label="Confirme sua Senha"
 								name="confirmPassword"
 								width="w-full"
-								type="password"
-								icon={<Eye className="absolute flex ml-72" weight="bold" />}
+								type={showInput ? "text" : "password"}
+								icon={showInput ? <EyeSlash onClick={handleInput} className="absolute flex ml-72" weight="bold" /> : <Eye className="absolute flex ml-72" weight="bold" onClick={handleInput} />}
 							/>
 						</div>
 
@@ -108,8 +115,7 @@ export function CardSignUp () {
 								title="Cadastrar"
 								theme="primary"
 								type="submit"
-								disabled={isSubmitting || !isValid}
-							/>
+								disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}							/>
 							<Link href="/publicroutes/login" className="text-blue-ufal text-center font-semibold text-base py-5">Fazer login</Link>
 						</div>
 					</Form>

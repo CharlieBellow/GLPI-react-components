@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-
+// ? pode apagar?
 interface ServicesHomeProps{
     url: string;
     nome: string;

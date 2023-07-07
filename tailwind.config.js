@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
+	theme: {
 		screens: {
 			sm: "576px",
 			// => @media (min-width: 576px) { mobile }
@@ -30,6 +30,7 @@ module.exports = {
 				'53': '13.25rem',
 				'57': '14.25rem',
 				'68': '17rem',
+				'80': '20rem',
 				'100': '25rem',
 				'103': '25.75rem',
 				'118': '29.5rem',
@@ -58,6 +59,9 @@ module.exports = {
 				"light-bg": "#333849",
 				"red-ufal": "#ED1C24",
 
+				black: {
+					text: "#333849",
+				},
 				white: {
 					100: "#FFFFFF",
 					ice: "#F7FAFC",
@@ -73,16 +77,52 @@ module.exports = {
 
 				gray: {
 					text: "#797D9A",
-					medium: "#DEE2E6",
+					medium: "#EDF2F7",
 					dark: "#D9D9D9",
 				},
 			},
 
+			keyframes: {
+				overlayShow: {
+					from: { opacity: 0 },
+					to: { opacity: 1 },
+				},
+				contentShow: {
+					from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
+					to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+				},
+				slideDownAndFade: {
+          from: { opacity: 0, transform: 'translateY(-2px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
+        slideLeftAndFade: {
+          from: { opacity: 0, transform: 'translateX(2px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+        slideUpAndFade: {
+          from: { opacity: 0, transform: 'translateY(2px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
+        slideRightAndFade: {
+          from: { opacity: 0, transform: 'translateX(-2px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+			},
+			animation: {
+				overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+				contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+				slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+			},
+		
+
 			backgroundImage: {
 				gradient:
-					"linear-gradient(90.18deg, rgba(1, 149, 218, 0.67) 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
+					"linear-gradient(90.18deg, #4FB4E4 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
 				"ufalBackground":
-					"url('/src/assets/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
+					"url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
 			},
 
 			boxShadow: {

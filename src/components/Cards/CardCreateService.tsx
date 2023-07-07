@@ -1,165 +1,145 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef} from "react";
+import { Field} from "formik";
+import {postService} from "../../Utils/server/postInfo"
+
+import { Formik, Form, useFormik, FormikProvider } from "formik";
+
+import * as yup from "yup";
+import {useRouter} from "next/router"
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { CardLabelInputCheckbox } from "../Inputs/CardLabelInputCheckbox";
+import { CardLabelInputCheckBoolean } from "../Inputs/CardLabelInputCheckBoolean";
 import { CardLabelTextarea } from "../Inputs/CardLabelTextarea";
-import { servicesList } from "../ServicesComponent/Service";
 import {
-	blocList,
+
 	validationSchema,
 	
 } from "../../Utils/validations";
+import { CardLabelInputFile } from "../Inputs/CardLabelInputFile";
+import { Eye, UploadSimple } from "phosphor-react";
 
-import * as yup from "yup";
+import {postServiceOrder} from "../../Utils/server/postInfo"
 
-import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
-import FieldSelect from "../Inputs/FieldSelect";
-import { categoryModel, serviceOrderModel, subcategoryModel, serviceModel } from "../../Utils/ServiceModels";
-import { useServiceContext } from "../../Contexts/ServiceContext";
-import { useServiceLetterContext } from "../../Contexts/ServiceLetterContext";
-
+import { useMessage } from "../../Contexts/MessageContext";
+import {useAuth} from "../../Contexts/AuthContext"
+import { Spinner } from "@chakra-ui/react";
+import { Editor } from "@tinymce/tinymce-react";
+import EditorField from "../../components/Inputs/EditorField";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
 const validate = yup.object().shape({
-	name: validationSchema.name,
 	title: validationSchema.title,
-	description: validationSchema.description,
-	serviceLocal: validationSchema.serviceLocal,
+	definition: validationSchema.title,
+	description: validationSchema.descriptionService,
+  personType: validationSchema.personType,
+
 });
+
 
 export const CardCreateService = () => {
 	
-	const { addInfoService, infoService } = useServiceContext()
-	
-	const { addInfoServiceLetter, infoServiceLetter } = useServiceLetterContext()
-	
-	const [ services, setServices ] = useState( serviceOrderModel );
+	const router = useRouter();
+	const {subGroupId} = router.query
+  	const  token = localStorage.getItem("token");
+	const { errorMessage, successMessage } = useMessage()
+	const formikProps = useFormik({
+		initialValues: {
+			serviceSubGroupId: subGroupId,
+			title:"",
+			description: "",
+			personType: [],
+			isPatromonyIdRequired: false,
+			definition: "",
+		},
+		onSubmit(values, actions) {
+			setTimeout(() => {
+				console.log("submit:", values);
+				if (token !== null) {
+					
+					postService( values, token )
+				
+					successMessage("Serviço criado com sucesso!");
+			
+				actions.resetForm();
+				} else {
+					errorMessage("Algo deu errado, tente novamente")
+			}
+  
+				
+			}, 400);
+		},
+		validationSchema: validate,
+		validateOnMount: true,
+	})
 
-	useEffect(() => {
-		const servicesStorage = localStorage.getItem("services");
 
-		if (servicesStorage) {
-			setServices(JSON.parse(servicesStorage));
-		}
-		console.log("lista: ", servicesStorage);
-	}, []);
 
-	useEffect(() => {
-		localStorage.setItem("services", JSON.stringify(services));
-	}, [services]);
-
-	return (
+  return (
+    <>
 		<div className="mx-4">
-			<div
-				className="mt-18 mx-auto mb-80 flex flex-col lg:block
+		<ul>
+<li>fdsfdsfdsfsdf</li>
+<li>dsfds</li>
+<li>fds</li>
+<li>dsf</li>
+<li>&nbsp;</li>
+</ul>
+			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
 				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card"
-			>
-				<div className="pl-9 pt-8">
-					<CardTitle title="Solicitar Serviço" />
-				</div>
-				<div className="mx-9 mt-4 mb-10">
-					<CardLine />
-				</div>
-				<Formik
-					initialValues={ {
-						serviceLetter: serviceModel[0],
-						patrimonio: "",
-						description: "",
-						serviceLocal: "",
-						id: new Date()
-							.toLocaleTimeString("pt-br", {
-								day: "2-digit",
-								month: "2-digit",
-								year: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-								second: "numeric",
-							})
-							.toString()
-							.replace(":", "")
-							.replace(":", "")
-							.replace("/", "")
-							.replace("/", "")
-							.replace(" ", ""),
-					}}
-					//validationSchema={validations}
-					validationSchema={validate}
-					onSubmit={(values, actions) => {
-						setTimeout(() => {
-							console.log("submit:", values);
-							setServices([...services, values]);
-							console.log("services:", services);
-							addInfoService( [ { ...values, serviceLetter: infoServiceLetter } ] )
-							
-							console.log( "infos:", infoServiceLetter )
-
-							toast.success("Serviço criado com sucesso!");
-						
-							actions.resetForm();
-							
-						}, 400);
-					}}
-				>
-					{({ isSubmitting, isValid }) => (
-						<Form autoComplete="on">
-							<div className="flex flex-col gap-9 mx-14">
-								<div className="">
-									<CardLabelInput
-										label="Nome"
-										name="aplicantsName"
-										type="text"
-										width="w-full"
-										inputid="title"
-									
-									/>
+				h-auto shadow-card px-8">
+					<div className="pl-9 pt-8">
+						<CardTitle title="Criar serviço" />
+					</div>
+					<div className="mx-9 mt-4 mb-10">
+						<CardLine />
+					</div>
+					{router.isReady ? <FormikProvider value={formikProps}>
+						<form className="flex flex-col gap-4" onSubmit={formikProps.handleSubmit}>
+							<div className="">
+								<CardLabelInput label="Título" name="title" type="text" width="w-full" inputid="title"/>
+							</div>
+							<div>
+								<CardLabelInput label="Definição" name="definition"	type="text"	width="w-full"	inputid="definition"/>
+							</div>
+							<div>
+								<CardLabelInputFile	label="Adicionar Documento"	name="addFile"	type="file"	width="w-full"	inputid="title"	icon={<UploadSimple className="absolute flex mr-4" weight="bold" />}/>
+							</div>
+							<div className="">
+								<EditorField name='description'/>
+							</div>
+							<div className="font-">
+								<CardLabelInputCheckBoolean name="isPatromonyIdRequired" label="Requisitar patrimônio"/>
+							</div> 
+												
+							<div>
+								<p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
+								<div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
+									<CardLabelInputCheckbox name="personType" value="Discente" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Técnico Administrativo" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Docente" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Discente Pós-Graduação" checkArray={formikProps.values.personType}/>
+									<CardLabelInputCheckbox name="personType" value="Terceirizado" checkArray={formikProps.values.personType}/>	
 								</div>
-
-								<div className="">
-									<CardLabelInput
-										label="Título"
-										name="title"
-										type="text"
-										width="w-full"
-										inputid="title"
-									/>
-								</div>
-
-								<div className="">
-									<CardLabelTextarea
-										label="Descrição"
-										type="textarea"
-										name="description"
-										textareaid="description"
-									/>
-								</div>
-								<div className="">
-									<FieldSelect
-										label="serviceLocal"
-										name="serviceLocal"
-										default="Selecione"
-										listitems={blocList}
-									/>
-								</div>
+								{formikProps.errors.personType && formikProps.touched.personType ? (
+									<span className="text-red-ufal text-sm">{formikProps.errors.personType}</span>) : 
+									<></>}
 							</div>
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
-								<Button
-									isSubmitting={isSubmitting}
-									title="Solicitar"
-									theme="primaryAction"
-									type="submit"
-									disabled={isSubmitting || !isValid}
-								/>
-								<Button title="Cancelar" theme="secondaryAction" />
+								<>
+									<Button isSubmitting={formikProps.isSubmitting}	title="Criar" theme="primaryAction" type="submit" disabled={formikProps.isSubmitting || !formikProps.isValid}/>
+									<Button title="Cancelar" theme="secondaryAction" type="button" isSubmitting={false} />
+								</>
 							</div>
-						</Form>
-					)}
-				</Formik>
-			</div>
-		</div>
+						</form>
+					</FormikProvider> : <><Spinner size="md" /></>}
+	
+				</div>
+      		</div>
+    	</>
 	);
 };
 

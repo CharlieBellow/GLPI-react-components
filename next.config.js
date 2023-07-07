@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: true,
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -7,7 +8,7 @@ const nextConfig = {
           protocol: 'https',
           hostname: 'www.github.com',
           port: '',
-          pathname: '/charliebellow**',
+          pathname: '/**',
         },
       ],
   },

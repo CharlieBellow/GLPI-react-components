@@ -14,9 +14,9 @@ import {
 	genderList,
 } from "../../Utils/validations";
 import { Form, Formik } from "formik";
-import { toast } from "react-toastify";
 import FieldSelect from "../Inputs/FieldSelect";
 import { Spinner } from "@chakra-ui/react";
+import { useMessage } from "../../Contexts/MessageContext";
 
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
 	'&[data-state="active"]': {
@@ -80,8 +80,8 @@ const validate = yup.object().shape({
 //
 //	//handleBlur(e);
 //}
-
 const CardAddUser = () => (
+	
 	<div className="mx-4">
 		<div
 			className="mt-18 mx-auto mb-80 flex flex-col lg:block
@@ -114,7 +114,7 @@ const CardAddUser = () => (
 						console.log("submit", values);
 						console.log("cep", values.cep);
 
-						toast.success("Usuário criado com sucesso!");
+						//successMessage("Usuário criado com sucesso!");
 						//alert(JSON.stringify(values, null, 2));
 						setSubmitting(false);
 					}, 400);
@@ -123,7 +123,7 @@ const CardAddUser = () => (
 				{({ isSubmitting, setFieldValue, isValid }) => (
 					<TabsPrimitive.Root defaultValue="tab1">
 						<div className="pl-9 pt-8">
-							<CardTitle title="Adicionar Usuário" />
+							<CardTitle title="Adicionar Usuário"  />
 						</div>
 						<div className="mx-9 mt-4 mb-6">
 							<CardLine />
@@ -323,14 +323,12 @@ const CardAddUser = () => (
 									</div>
 								</div>
 								<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
-									{isSubmitting ? <Spinner size="xl" /> : null}
 									<Button
 										title="Adicionar"
 										theme="primaryAction"
 										type="submit"
-										disabled={isSubmitting || !isValid}
-									/>
-									<Button title="Cancelar" theme="secondaryAction" />
+										disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}									/>
+									<Button title="Cancelar" theme="secondaryAction"  />
 								</div>
 							</TabsPrimitive.Content>
 						</Form>

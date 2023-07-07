@@ -3,13 +3,14 @@ import { Field, FieldHookConfig, useField } from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 
 interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
-	label: string;
+	label: string | boolean;
 	type: string;
 	inputid?: string;
 	width: string;
 	pattern?: string;
 	icon?: Icon.IconProps;
 	name: string;
+	
 }
 
 function CardLabel ( props: CardLabelInputProps ) {
@@ -38,7 +39,6 @@ FieldHookConfig<string> ) {
 				{...props}
 				{...field}
 				type={props.type}
-				//name={props.name}
 				pattern={props.pattern}
 				className={`block px-2.5 py-2.5 text-base text-light-bg bg-gray-medium focus:bg-transparent
           max-h-11 rounded-lg appearance-none focus:outline-none
@@ -46,7 +46,6 @@ FieldHookConfig<string> ) {
 						meta.error ? " border-red-ufal" : "focus:border-blue-ufal"
 					} ${props.width}`}
 				placeholder=" "
-				//required
 			/>
 			<>{props.icon}</>
 

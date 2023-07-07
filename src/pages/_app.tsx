@@ -6,27 +6,27 @@ import { UserProvider } from '../Contexts/UserContext';
 import { MenuProvider } from '../Contexts/MenuContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import  {ServiceContext}  from '../Contexts/ServiceContext';
+import { MessageProvider } from '../Contexts/MessageContext';
+import { PreviousPageProvider } from '../Contexts/PreviousPageContext';
 
 export default function App({ Component, pageProps }: AppProps) {
+  
   return (
-
+    <MessageProvider>
     <AuthProvider>
-      <UserProvider>
-        <MenuProvider>
-
-          <ChakraProvider>
-          
-
-            <>
-              <Component {...pageProps} />
-              <ToastContainer />
-            </>
-         
-          </ChakraProvider>
-        </MenuProvider>
-      </UserProvider>
-    </AuthProvider>
-    
+    <UserProvider>
+      <MenuProvider>
+        <ChakraProvider>
+          <PreviousPageProvider>                       
+              <>
+                <Component {...pageProps} />
+                <ToastContainer />
+              </>
+          </PreviousPageProvider> 
+        </ChakraProvider>
+      </MenuProvider>
+    </UserProvider>
+  </AuthProvider>
+  </MessageProvider>
   ) 
 }

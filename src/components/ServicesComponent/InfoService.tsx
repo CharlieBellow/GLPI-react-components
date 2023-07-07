@@ -1,49 +1,31 @@
 
-//import { Icon, Target } from "phosphor-react";
-import * as Icon from 'phosphor-react'
-
-interface InfoServiceItemProps {
+import * as Icon from 'phosphor-react';
+import { Service } from '../../Utils/server/types'
+import InfoServiceLabel from './InfoServiceLabel';
+import InfoServiceSeparator from './InfoServiceSeparator';
+import RenderEnumAsLabels from './RenderEnumAsLabels';
+interface InfosServiceItemProps {
 	icon?: Icon.IconProps;
-	infos: Array<any>
+	infos: Service,
 }
 
+// * informações do serviço
+export default function InfoServiceItem ( props: InfosServiceItemProps ) {
 
-// estilizar o acordeon
-export default function InfoServiceItem(props: InfoServiceItemProps) {
-	//const altura =  height <= 70rem ? showButton : hideButton
 	return (
-		<>
-			{props.infos.map(info => {
-				return (
-					<div className="mt-9 mx-4" key={info.title}>
-						<div className="flex gap-2 items-center">
-							<>{info.icon}</>
-							<h3 className="lg:text-3xl text-base font-semibold">{info.title}</h3>
-						</div>
-						<input
-							type="checkbox"
-							name="moreText"
-							id={info.title}
-							className="hidden"
-						/>
-						<div className="toggleCheck mt-3">
-							<p className="check">{info.description}</p>
-
-							<label htmlFor={info.title} className="label ">
-								<div className="text-end text-blue-ufal  underline pt-1">
-									<strong className="show hover:opacity-70">
-										...Mostrar mais
-									</strong>
-									<strong className="noShow hover:opacity-70">
-										Mostrar menos
-									</strong>
-									<div className="border-b-2 border-gray-text"></div>
-								</div>
-							</label>
-						</div>
-					</div>
-				);
-	})}
+    <>
+      
+      <InfoServiceSeparator icon={<Icon.ArticleMedium size={26}/>} title="Descrição" content={props.infos && <div dangerouslySetInnerHTML={{__html:props.infos.description}}/>} expandable={true}/>
+      <InfoServiceSeparator icon={<Icon.ListBullets size={26}/>} title="Definição" content={ props.infos && props.infos.definition} expandable={true}/>
+      
+      <div className='grid grid-cols-2 grid-flow-row'>
+       <InfoServiceSeparator icon={<Icon.ListBullets size={26}/>} title="Público-Alvo" content={<RenderEnumAsLabels people={props.infos && props.infos.personType}/>} expandable={false}/><InfoServiceSeparator icon={<Icon.Watch size={26}/>} title="Tempo Necessário para execução" content={props.infos && <InfoServiceLabel content={props.infos.deadline as any}/>} expandable={false}/>
+        <InfoServiceSeparator icon={<Icon.Clock size={26}/>} title="Horário de Atendimento" content={props.infos && <InfoServiceLabel content={props.infos.openningHours as any}/>} expandable={false}/>
+        <InfoServiceSeparator icon={<Icon.FilePlus size={26}/>} title="Documentos Necessários" content={<RenderEnumAsLabels people={props.infos && props.infos.requiredDocuments as string}/>} expandable={false}/>
+        <InfoServiceSeparator icon={<Icon.Phone size={26}/>} title="Informações para contato" content={props.infos &&  props.infos.contactInfo as string} expandable={false}/>
+        {props.infos && props.infos.isPrioritaryService && <InfoServiceSeparator icon={<Icon.BookmarkSimple size={26}/>} title="Prioridade" content="" expandable={false}/>}  
+        {props.infos && props.infos.isPatromonyIdRequired && <InfoServiceSeparator icon={<Icon.ComputerTower size={26}/>} title="Patrimônio Solicitado" content="" expandable={false}/>  }
+      </div>
 		</>
 	);
 }

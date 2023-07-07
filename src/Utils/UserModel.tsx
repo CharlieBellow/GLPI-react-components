@@ -5,6 +5,7 @@ export const userModel = [ {
   id: "56"
 
 } ];
+// * modelo de usuário
 
 // informações do usuário
 //const infoUser = {

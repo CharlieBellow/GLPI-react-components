@@ -1,11 +1,16 @@
-interface CardTitleProps extends React.HTMLAttributes<HTMLElement>{
+
+interface CardTitleProps {
   title: string;
 }
 
-export function CardTitle(props: CardTitleProps) {
+export function CardTitle(props: CardTitleProps ) {
+
   return (
-    <h2 className="text-light-bg font-bold text-4xl" {...props}>
+    <>
+    <div className="pb-8"></div>
+    <h2 className="text-light-bg font-normal text-base flex items-center justify-start mr-6" {...props}>
       {props.title}
     </h2>
+    </>
   );
 }

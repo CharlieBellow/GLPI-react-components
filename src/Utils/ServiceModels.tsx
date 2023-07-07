@@ -2,10 +2,12 @@
 import React from 'react'
 import * as Icon from 'phosphor-react'
 
+import ServicesList from "./ServicesList"
+
 const sizeIcon = 27
 const classIcon = ""
 
-export const categoryIcons = [
+export const groupIcons = [
   { name: "Plus", icon: <Icon.Plus /> },
   { name: "DotsThreeVertical", icon: <Icon.DotsThreeVertical /> },
   { name: "AddressBook", icon: <Icon.DotsThreeVertical /> },
@@ -50,18 +52,18 @@ export const categoryIcons = [
 ]
 
 
-export const categoryModel = [
+export const groupModel = [
   {
   id: "00",
-    titleCategory: "Outros",
-    icon: categoryIcons[3].icon,
+    titleGroup: "Outros",
+    icon: groupIcons[3].icon,
     link: "/servicebook/:titleCategory/:titleSubcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
   },
   {
   id: "01",
     titleCategory: "NTI",
-    icon: categoryIcons[5].icon,
+    icon: groupIcons[5].icon,
     link: "/servicebook/:titleCategory/:titleSubcategory",
   description: "Quando um serviço é criado mas não se enquadra em nenhuma das outras categorias, essa categoria será atribuída.",
   },
@@ -69,13 +71,20 @@ export const categoryModel = [
 ];
 
 
-export const subcategoryModel = [
+export const subgroupModel = [
   {
   id: "02",
   titleSubcategory: "Redes",
-  description: "",
-  category: categoryModel[0],
-  icon: categoryIcons[3].icon,
+  description: "oi",
+  category: groupModel[0],
+  icon: groupIcons[3].icon,
+  },
+  {
+  id: "04",
+  titleSubcategory: "Redes",
+  description: "osdfsd",
+  category: groupModel[0],
+  icon: groupIcons[3].icon,
   }
 ];
 
@@ -83,21 +92,23 @@ export const subcategoryModel = [
 export const serviceModel = [ 
   {
     id: "005",
-    category: categoryModel[0],
-    subcategory: subcategoryModel[0],
+    category: groupModel[0],
+    subcategory: subgroupModel[0],
     title: "titulo do serviço clicado na lista de subcategorias",
-    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
+    patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo - boolean",
     description:
     "Infelizmente não dá pra gente ganhar todas, mas perder todas aparentemente dá sim.",
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
+  serviceDescription: ServicesList,
+  isPatromonyIdRequired: true
 
 },
   {
   id: "02456",
-  category: categoryModel[0],
-  subcategory: subcategoryModel[0],
+  category: groupModel[0],
+  subcategory: subgroupModel[0],
   title: "titulo do serviço 2",
     patrimonio: "opcional mas informado pelo usuário se precisa e de qual tipo",
     description:
@@ -105,6 +116,8 @@ export const serviceModel = [
   applicantsName: "select múltiplo pra dizer quem (aluno, professor, técnico) pode solicitar o serviço",
   publicoAlvo: "informado pelo usuário",
   tempoDeEspera: "input",
+  serviceDescription: ServicesList,
+  isPatromonyIdRequired: false
 
 },
 
