@@ -1,136 +1,153 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
-	theme: {
-		screens: {
-			sm: "576px",
-			// => @media (min-width: 576px) { mobile }
+  theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1.5rem",
+      },
+    },
+    screens: {
+      sm: "576px",
+      // => @media (min-width: 576px) { mobile }
 
-			md: "960px",
-			// => @media (min-width: 960px) { Tablet }
-			
-			lg: "1024px",
+      md: "960px",
+      // => @media (min-width: 960px) { Tablet }
 
-			// => @media (min-width: 1024px) { desktops pequenos }
-			
-			
-			tv: "1440px",
-			// => @media (min-width: 1440px) { monitores e TVs }
-		},
+      lg: "1024px",
 
-		extend: {
-			spacing: {
-				'13': '3.25rem',
-				'15': '3.75rem',
-				'18': '4.5rem',
-				'22': '5.5rem',
-				'25': '6.25rem',
-				'26': '6.5rem',
-				'31': '7.75rem',
-				'53': '13.25rem',
-				'57': '14.25rem',
-				'68': '17rem',
-				'80': '20rem',
-				'100': '25rem',
-				'103': '25.75rem',
-				'118': '29.5rem',
-				'128': '32rem',
-				'202': '50.5rem',
-			},
+      // => @media (min-width: 1024px) { desktops pequenos }
 
-			maxWidth: {
-				'13xl': '128rem',
-				card: '50.5rem',
-			},
+      tv: "1440px",
+      // => @media (min-width: 1440px) { monitores e TVs }
+    },
 
-			fontFamily: {
-				sans: 'Roboto, sans-serif'
-			},
+    extend: {
+      spacing: {
+        13: "3.25rem",
+        15: "3.75rem",
+        18: "4.5rem",
+        22: "5.5rem",
+        25: "6.25rem",
+        26: "6.5rem",
+        31: "7.75rem",
+        53: "13.25rem",
+        57: "14.25rem",
+        68: "17rem",
+        80: "20rem",
+        100: "25rem",
+        103: "25.75rem",
+        118: "29.5rem",
+        128: "32rem",
+        202: "50.5rem",
+      },
 
-			fontSize: {
-				base: ["16px", "24px"],
-				xl: ["20px", "32px"],
-				"3xl": "26px",
-				"4xl": ["32px", "52px"],
-			},
+      maxWidth: {
+        "13xl": "128rem",
+        card: "50.5rem",
+      },
 
-			colors: {
-				bg: "#212532",
-				"light-bg": "#333849",
-				"red-ufal": "#ED1C24",
+      fontFamily: {
+        sans: "Roboto, sans-serif",
+      },
 
-				black: {
-					text: "#333849",
-				},
-				white: {
-					100: "#FFFFFF",
-					ice: "#F7FAFC",
-					'strong-ice': "#EDF2F7",
-				},
+      fontSize: {
+        base: ["16px", "24px"],
+        xl: ["20px", "32px"],
+        "3xl": "26px",
+        "4xl": ["32px", "52px"],
+      },
 
-				blue: {
-					ufal: "#0095DA",
-					"ufal-hover": "#33AAE1",
-					"final-gradient": "#4FB4E4",
-					"dark-final-gradient": "#0B70A2",
-				},
+      colors: {
+        bg: "#212532",
+        "light-bg": "#333849",
+        "red-ufal": "#ED1C24",
 
-				gray: {
-					text: "#797D9A",
-					medium: "#EDF2F7",
-					dark: "#D9D9D9",
-				},
-			},
+        black: {
+          text: "#333849",
+        },
+        white: {
+          100: "#FFFFFF",
+          ice: "#F7FAFC",
+          "strong-ice": "#EDF2F7",
+        },
 
-			keyframes: {
-				overlayShow: {
-					from: { opacity: 0 },
-					to: { opacity: 1 },
-				},
-				contentShow: {
-					from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
-					to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-				},
-				slideDownAndFade: {
-          from: { opacity: 0, transform: 'translateY(-2px)' },
-          to: { opacity: 1, transform: 'translateY(0)' },
+        blue: {
+          ufal: "#0095DA",
+          "ufal-hover": "#33AAE1",
+          "final-gradient": "#4FB4E4",
+          "dark-final-gradient": "#0B70A2",
+        },
+
+        gray: {
+          text: "#797D9A",
+          medium: "#EDF2F7",
+          dark: "#D9D9D9",
+        },
+      },
+
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        overlayShow: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        contentShow: {
+          from: { opacity: 0, transform: "translate(-50%, -48%) scale(0.96)" },
+          to: { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
+        },
+        slideDownAndFade: {
+          from: { opacity: 0, transform: "translateY(-2px)" },
+          to: { opacity: 1, transform: "translateY(0)" },
         },
         slideLeftAndFade: {
-          from: { opacity: 0, transform: 'translateX(2px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: 0, transform: "translateX(2px)" },
+          to: { opacity: 1, transform: "translateX(0)" },
         },
         slideUpAndFade: {
-          from: { opacity: 0, transform: 'translateY(2px)' },
-          to: { opacity: 1, transform: 'translateY(0)' },
+          from: { opacity: 0, transform: "translateY(2px)" },
+          to: { opacity: 1, transform: "translateY(0)" },
         },
         slideRightAndFade: {
-          from: { opacity: 0, transform: 'translateX(-2px)' },
-          to: { opacity: 1, transform: 'translateX(0)' },
+          from: { opacity: 0, transform: "translateX(-2px)" },
+          to: { opacity: 1, transform: "translateX(0)" },
         },
-			},
-			animation: {
-				overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-				contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
-				slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-			},
-		
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        overlayShow: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        contentShow: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideDownAndFade:
+          "slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideLeftAndFade:
+          "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideUpAndFade: "slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideRightAndFade:
+          "slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+      },
 
-			backgroundImage: {
-				gradient:
-					"linear-gradient(90.18deg, #4FB4E4 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
-				"ufalBackground":
-					"url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
-			},
+      backgroundImage: {
+        gradient:
+          "linear-gradient(90.18deg, #4FB4E4 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
+        ufalBackground:
+          "url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
+      },
 
-			boxShadow: {
-				card: "0px 8px 16px rgba(0, 0, 0, 0.16)",
-				button: "0px 4px 4px rgba(0, 0, 0, 0.16)",
-				tab: "0 3px 0 0 #DEE2E6",
-			},
-		},
-	},
-	plugins: [],
-}
+      boxShadow: {
+        card: "0px 8px 16px rgba(0, 0, 0, 0.16)",
+        button: "0px 4px 4px rgba(0, 0, 0, 0.16)",
+        tab: "0 3px 0 0 #DEE2E6",
+      },
+    },
+  },
+  plugins: [],
+};
