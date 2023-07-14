@@ -85,6 +85,20 @@ module.exports = {
           medium: "#EDF2F7",
           dark: "#D9D9D9",
         },
+
+        primary: {
+          blue: "var(--primary-blue)",
+          red: "var(--primary-red)",
+        },
+        secondary: {
+          1: "var(--secondary-1)",
+          2: "var(--secondary-2)",
+        },
+        tertiary: {
+          1: "var(--tertiary-1)",
+          2: "var(--tertiary-2)",
+        },
+        destructive: "var(--destructive)",
       },
 
       keyframes: {
@@ -136,8 +150,7 @@ module.exports = {
       },
 
       backgroundImage: {
-        gradient:
-          "linear-gradient(90.18deg, #4FB4E4 16.29%, #0195DA 37.58%, #1B4BA8 99.89%)",
+        gradient: "var(--alternative-gradient)",
         ufalBackground:
           "url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
       },
