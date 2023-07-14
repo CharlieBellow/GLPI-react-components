@@ -3,32 +3,60 @@
 @tailwind utilities;
 
 @layer base {
-  ul, ol {
+  ul,
+  ol {
     list-style: revert;
   }
 }
-body {
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #EDF2F7;
-  
 
+:root {
+  --primary-blue: hsla(199, 100%, 43%, 1);
+  --primary-red: hsla(358, 85%, 52%, 1);
+  --secondary-1: hsla(204, 45%, 98%, 1);
+  --secondary-2: hsla(210, 14%, 89%, 1);
+  --tertiary-1: hsla(233, 14%, 54%, 1);
+  --tertiary-2: hsla(226, 18%, 24%, 1);
+  --alternative-gradient: linear-gradient(
+    90.18deg,
+    rgba(1, 149, 218, 0.67) 16.29%,
+    #0195da 37.58%,
+    #1b4ba8 99.89%
+  );
+  --white: hsla(0, 0%, 100%, 1);
+  --destructive: hsla(358, 85%, 52%, 1);
 }
 
-p, span, strong, div {
+html.dark {
+  --secondary-1: hsla(233, 14%, 54%, 1);
+  --secondary-2: hsla(226, 18%, 24%, 1);
+  --tertiary-1: hsla(0, 0%, 100%, 1);
+  --tertiary-2: hsla(233, 14%, 54%, 1);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #edf2f7;
+}
+
+p,
+span,
+strong,
+div {
   font-size: 14px;
   font-weight: normal;
 }
 
 @media (max-width: 480px) {
-  p, span, strong, div {
+  p,
+  span,
+  strong,
+  div {
     font-size: 14px;
     font-weight: normal;
   }
 }
 
 @layer components {
-
 }
-

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function SignUpPage() {
   return (
-    <div className="mx-auto flex  h-screen w-screen flex-col items-center justify-center gap-8  bg-gradient">
+    <div className="mx-auto flex  h-screen w-screen flex-col items-center justify-center gap-8">
       <div className="relative right-128 h-screen w-full">
         <Image
           className=" fixed -bottom-118 h-auto"
