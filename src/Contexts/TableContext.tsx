@@ -1,12 +1,10 @@
-import { ColumnDefinitionType } from "../components/Table/types";
-import { 
-  CreateOrUpdateRegisterDTO, 
-  DeleteRegisterRequest, 
-  DeleteRegisterResponse, 
-  GetRegisterResponse 
+import {
+  DeleteRegisterRequest,
+  DeleteRegisterResponse
 } from "@/pages/api/shared";
-import { useTable } from "../hooks/useTable";
 import { ReactNode, createContext, useContext } from "react";
+import { ColumnDefinitionType } from "../components/Table/types";
+import { useTable } from "../hooks/useTable";
 
 export type ItemWithID = { id: string };
 
@@ -27,12 +25,15 @@ interface TableContextType<T extends ItemWithID, K extends keyof T> {
   columns: ColumnDefinitionType<T, K>[];
   onOpen: () => void;
   onClose: () => void;
-  deleteRegister?: ({ header, id }: DeleteRegisterRequest) => Promise<DeleteRegisterResponse>;
+  deleteRegister?: ({
+    header,
+    id,
+  }: DeleteRegisterRequest) => Promise<DeleteRegisterResponse>;
   refetch?: () => void;
   totalCountOfRecord?: number;
   page?: number;
   setPage?: (page: number) => void;
-  openModalForm?: () => void;  
+  openModalForm?: () => void;
 }
 
 interface TableContextProps<T extends ItemWithID, K extends keyof T> {
@@ -41,16 +42,19 @@ interface TableContextProps<T extends ItemWithID, K extends keyof T> {
   columns: ColumnDefinitionType<T, K>[];
   children: ReactNode;
   data: Array<T>;
-  deleteRegister?: (data: DeleteRegisterRequest) => Promise<DeleteRegisterResponse>;
+  deleteRegister?: (
+    data: DeleteRegisterRequest
+  ) => Promise<DeleteRegisterResponse>;
   setFilter?: (value: string) => void;
   refetch?: () => void;
   totalCountOfRecord?: number;
   page?: number;
   setPage?: (page: number) => void;
-  openModalForm?: () => void;  
+  openModalForm?: () => void;
 }
-export const TableContext = createContext<TableContextType<ItemWithID, keyof ItemWithID>>({} as TableContextType<ItemWithID, keyof ItemWithID>);
-
+export const TableContext = createContext<
+  TableContextType<ItemWithID, keyof ItemWithID>
+>({} as TableContextType<ItemWithID, keyof ItemWithID>);
 
 export function TableContextProvider<T extends ItemWithID, K extends keyof T>({
   title,
@@ -64,9 +68,8 @@ export function TableContextProvider<T extends ItemWithID, K extends keyof T>({
   page,
   setPage,
   totalCountOfRecord,
-  openModalForm,  
+  openModalForm,
 }: TableContextProps<T, K>) {
-
   const {
     isOpen,
     onOpen,
@@ -78,50 +81,51 @@ export function TableContextProvider<T extends ItemWithID, K extends keyof T>({
     hasError,
     setHasError,
     currentRegister,
-    setCurrentRegister
+    setCurrentRegister,
   } = useTable<T, K>();
 
   return (
-    <TableContext.Provider value={{
-      isOpen,
-      onOpen,
-      onClose,
-      isLoading,
-      isFetching,
-      setIsLoading,
-      setIsFetching,
-      resource,
-      title,
-      deleteRegister,
-      setFilter,
-      columns,
-      data: tableData,
-      hasError,
-      setHasError,
-      currentRegister,
-      setCurrentRegister,
-      refetch,
-      page,
-      setPage,
-      totalCountOfRecord,
-      openModalForm      
-    }
-    }>
+    <TableContext.Provider
+      value={{
+        isOpen,
+        onOpen,
+        onClose,
+        isLoading,
+        isFetching,
+        setIsLoading,
+        setIsFetching,
+        resource,
+        title,
+        deleteRegister,
+        setFilter,
+        columns,
+        data: tableData,
+        hasError,
+        setHasError,
+        currentRegister,
+        setCurrentRegister,
+        refetch,
+        page,
+        setPage,
+        totalCountOfRecord,
+        openModalForm,
+      }}
+    >
       {children}
     </TableContext.Provider>
-  )
+  );
 }
 
-
-export function useTableContext<T extends ItemWithID, K extends keyof T>(): TableContextType<T, K> {
-
+export function useTableContext<
+  T extends ItemWithID,
+  K extends keyof T
+>(): TableContextType<T, K> {
   const context = useContext<TableContextType<T, K>>(
-    (TableContext as unknown) as React.Context<TableContextType<T, K>>
+    TableContext as unknown as React.Context<TableContextType<T, K>>
   );
 
   if (!context) {
-    throw new Error('useTableContext must be used under TableContextProvider');
+    throw new Error("useTableContext must be used under TableContextProvider");
   }
   return context;
-
 }
