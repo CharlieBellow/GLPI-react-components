@@ -6,6 +6,6 @@ type CategoryBannerProps = {
 
 export default function CategoryBannerActiveServicesCount({activeServicesCount}: CategoryBannerProps) {
   return (
-    <div className=" flex h-full w-full">Serviços disponíveis: {activeServicesCount}</div>
+    <div className=" flex  w-auto">Serviços disponíveis: {activeServicesCount}</div>
   )
 }

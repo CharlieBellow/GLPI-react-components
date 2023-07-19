@@ -1,11 +1,16 @@
-import React from 'react'
-
 type CategoryBannerProps = {
-  description: string;
+  children: React.ReactNode;
 };
 
-export default function CategoryBannerContent({description}: CategoryBannerProps) {
+export default function CategoryBannerContent({
+ children
+}: CategoryBannerProps) {
   return (
-    <div className="flex h-full w-full text-black-text">{description}</div>
-  )
+      <div className=" w-full text-black-text">
+        {children}
+    </div>
+      
+
+    
+  );
 }
