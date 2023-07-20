@@ -26,7 +26,7 @@
   --destructive: hsla(358, 85%, 52%, 1);
 }
 
-html.dark {
+.dark {
   --secondary-1: hsla(233, 14%, 54%, 1);
   --secondary-2: hsla(226, 18%, 24%, 1);
   --tertiary-1: hsla(0, 0%, 100%, 1);
