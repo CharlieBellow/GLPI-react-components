@@ -22,22 +22,22 @@ export default function CategoryBanner({
     >
       <div className="relative aspect-[4/2] w-full overflow-hidden sm:aspect-[3/1] md:aspect-[2/1]">
         <div className="flex h-full w-full justify-center bg-gray-text">
-        {bannerUrl ? (
-          <Image
-            src="/images/example-card.jpg"
-            alt="ufal logo"
-            fill
-            className="transition-transform hover:scale-105"
-          />
-        ) : (
+          {bannerUrl ? (
+            <Image
+              src="/images/example-card.jpg"
+              alt="ufal logo"
+              fill
+              className="transition-transform hover:scale-105"
+            />
+          ) : (
             <Image
               src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
               alt="ufal logo"
               width={100}
               height={100}
             />
-            )}
-            </div>
+          )}
+        </div>
       </div>
       <div className="flex flex-1 flex-col justify-between p-4 ">
         <Link

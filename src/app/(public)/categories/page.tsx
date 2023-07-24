@@ -1,9 +1,8 @@
 "use client";
-import { getAllGroups } from "@/Utils/server/getInfo";
-import CategoryBannerRoot from "./CategoryBannerPattern/CategoryBannerRoot";
 import CategoryBannerContent from "./CategoryBannerPattern/CategoryBannerContent";
 import CategoryBannerIcon from "./CategoryBannerPattern/CategoryBannerIcon";
 import CategoryBannerImage from "./CategoryBannerPattern/CategoryBannerImage";
+import CategoryBannerRoot from "./CategoryBannerPattern/CategoryBannerRoot";
 // import CategoryBanner from "@/components/CategoryBanner";
 import { Plus } from "phosphor-react";
 import CategoryBannerActiveServicesCount from "./CategoryBannerPattern/CategoryBannerActiveServicesCount";
@@ -44,19 +43,22 @@ export default async function CategoriesPage() {
       <h1 className="text-black  border-b border-gray-200  text-3xl font-bold">
         Selecione a categoria
       </h1>
-      <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 justify-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl lg:grid-cols-4 h-full">
+      <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 justify-center gap-12 sm:grid-cols-2 md:grid-cols-3 lg:max-w-4xl lg:grid-cols-4 ">
         {groups.map((group) => (
-          <CategoryBannerRoot key={group.id}>
-            <CategoryBannerImage bannerUrl={group.bannerUrl} alt="ufal logo" />
-            <CategoryBannerContent
-          
-            >
-            <CategoryBannerIcon icon={Plus} size={25} />
-              {group.description}
-            <CategoryBannerActiveServicesCount activeServicesCount={0} />
+          <div key={group.id} className=" flex justify-center">
+            <CategoryBannerRoot key={group.id}>
 
-            </CategoryBannerContent>
-          </CategoryBannerRoot>
+              <CategoryBannerContent>
+              <CategoryBannerImage
+                bannerUrl={group.bannerUrl}
+                alt="ufal logo"
+              />
+                <CategoryBannerIcon icon={Plus} size={25} />
+                {group.description}
+                <CategoryBannerActiveServicesCount activeServicesCount={0} />
+              </CategoryBannerContent>
+            </CategoryBannerRoot>
+          </div>
         ))}
       </div>
     </div>

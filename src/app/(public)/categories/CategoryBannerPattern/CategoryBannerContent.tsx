@@ -3,14 +3,7 @@ type CategoryBannerProps = {
 };
 
 export default function CategoryBannerContent({
- children
+  children,
 }: CategoryBannerProps) {
-  return (
-      <div className=" w-full text-black-text">
-        {children}
-    </div>
-      
-
-    
-  );
+  return <div className=" w-full text-black-text pb-3">{children}</div>;
 }
