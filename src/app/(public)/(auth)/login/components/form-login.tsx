@@ -31,7 +31,7 @@ export function FormLogin() {
         errorMessage(res.error!);
       }
 
-      successMessage("Login realizado com sucesso! Você será redirecionado.");
+      successMessage("Login realizado com sucesso! Estamos lhe redirecionando...");
     });
   };
 
