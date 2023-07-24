@@ -12,7 +12,7 @@ function InfoPill(props : InfoPillProps){
     const [showTitle, setShowTitle] = useState(false);
 
     return(
-        <div className={`flex flex-row p-2 gap-2 ${props.color} ease-in-out duration-200 rounded-full text-sm text-white-100 cursor-pointer items-center`} onMouseEnter={() => setShowTitle(true)} onMouseLeave={() => setShowTitle(false)}>
+        <div className={`flex flex-row gap-2 p-2 ${props.color} cursor-pointer items-center rounded-full text-sm text-white-100 duration-200 ease-in-out`} onMouseEnter={() => setShowTitle(true)} onMouseLeave={() => setShowTitle(false)}>
             {props.icon && props.icon} 
             { !props.icon || showTitle ? <div>{props.content}</div> : ""}
         </div>

@@ -36,7 +36,7 @@ interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 export function ButtonSelect(props: ButtonSelectProps) {
 	return (
 		<div
-			className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md`}
+			className={`rounded-md bg-gray-medium px-2.5 py-2 text-base font-bold text-gray-text`}
 			{...props}
 		>
 			<Select>
@@ -55,15 +55,15 @@ export function ButtonSelect(props: ButtonSelectProps) {
 					<SelectScrollUpButton>
 						<FiChevronUp size={24} className="pl-1" />
 					</SelectScrollUpButton>
-					<SelectViewport className="bg-gray-medium rounded-md border-2">
-						<SelectGroup className="px-1 py-1 h-full">
+					<SelectViewport className="rounded-md border-2 bg-gray-medium">
+						<SelectGroup className="h-full p-1">
 							<SelectLabel>{props.title}</SelectLabel>
 							{props.listselecbutton.map(selectItem => {
 								return (
 									<SelectItem
 										key={selectItem}
 										value={selectItem}
-										className="py-1 flex cursor-pointer hover:bg-blue-ufal outline-blue-ufal hover:text-white-100"
+										className="flex cursor-pointer py-1 outline-blue-ufal hover:bg-blue-ufal hover:text-white-100"
 										//ref={props.register}
 										//onChange={e => {
 										//	setSelectValue(e.target.value)

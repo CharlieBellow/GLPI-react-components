@@ -32,8 +32,8 @@ interface AccordionItemMenuProps {
 export const AccordionItemMenu = (props: AccordionItemMenuProps) => (
 	
 			<AccordionItem value={ props.value}>
-				<AccordionTrigger className="menu__itemOption w-full flex items-center justify-around mr-2 text-white-100 hover:text-blue-dark-final-gradient">
-					<div className="flex flex-row font-semibold text-sm content-start justify-start w-full my-5 mx-0 pr-1 aumentaIcone">
+				<AccordionTrigger className="menu__itemOption mr-2 flex w-full items-center justify-around text-white-100 hover:text-blue-dark-final-gradient">
+					<div className="aumentaIcone mx-0 my-5 flex w-full flex-row content-start justify-start pr-1 text-sm font-semibold">
 						<>{ props.icon}</>
 						<div className="text-hidden ml-2">{ props.title}</div>
 					</div>
@@ -43,7 +43,7 @@ export const AccordionItemMenu = (props: AccordionItemMenuProps) => (
 					return (
 						<>
 							<div className="text-hidden">
-								<AccordionPrimitive.AccordionContent className="flex items-center justify-start gap-1 text-white-100 hover:opacity-70 text-hidden">
+								<AccordionPrimitive.AccordionContent className="text-hidden flex items-center justify-start gap-1 text-white-100 hover:opacity-70">
                   <Link href={ item.LinkTo }>{ item.contentTitle }</Link>
                   
 								</AccordionPrimitive.AccordionContent>

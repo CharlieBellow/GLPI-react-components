@@ -9,20 +9,20 @@ interface SearchProps extends React.HTMLAttributes<HTMLElement>{
 export default function Search(props: SearchProps) {
   return (
 		<div
-			className={`flex bg-white-strong-ice rounded-xl shadow-card focus-within:ring-2 ring-blue-ufal ${props.theme === "outline-gray" ?  "ring-light-bg" : "" } items-center gap-1 px-2`}
+			className={`flex rounded-xl bg-white-strong-ice shadow-card ring-blue-ufal focus-within:ring-2 ${props.theme === "outline-gray" ?  "ring-light-bg" : "" } items-center gap-1 px-2`}
 			{...props}
 		>
 			<MagnifyingGlass
 				size={20}
 				className=" text-gray-text"
 			/>
-			<label {...props} htmlFor="search"></label>
+			<label {...props} htmlFor="search" />
 			<input
 				{...props}
 				type="text"
 				name="search"
 				placeholder={props.placeholder}
-				className="text-gray-text bg-white-strong-ice outline-none border-none  py-2 text-base font-normal lg:max-w-full lg:w-[20rem] max-w-[20rem]"
+				className="max-w-[20rem] border-none bg-white-strong-ice py-2  text-base font-normal text-gray-text outline-none lg:w-[20rem] lg:max-w-full"
 			/>
 		</div>
 	);

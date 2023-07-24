@@ -29,7 +29,7 @@ export default function FieldSelect(
 
 	return (
 		<div
-			className={`w-full relative flex items-start flex-col  ${props.theme}`}
+			className={`relative flex w-full flex-col items-start  ${props.theme}`}
 		>
 			<Field
 				{...props}
@@ -37,8 +37,7 @@ export default function FieldSelect(
 				as="select"
 				placeholder={props.default}
 				name={props.name}
-				className={`bg-gray-medium text-light-bg text-base px-2.5 py-2.5 rounded-md w-full max-h-11 focus:ring-0 focus:border-4  focus:outline-none 
-				${meta.touched && meta.error ? " border-red-ufal" : "focus:border-blue-ufal"}
+				className={`max-h-11 w-full rounded-md bg-gray-medium p-2.5 text-base text-light-bg focus:border-4 focus:outline-none focus:ring-0${meta.touched && meta.error ? " border-red-ufal" : "focus:border-blue-ufal"}
 				`}
 			>
 				{props.default ? 
@@ -60,7 +59,7 @@ export default function FieldSelect(
 			</Field>
 
 			{meta.error && meta.touched ? (
-				<span className="text-red-ufal text-sm">{meta.error}</span>
+				<span className="text-sm text-red-ufal">{meta.error}</span>
 			) : null}
 		</div>
 	);

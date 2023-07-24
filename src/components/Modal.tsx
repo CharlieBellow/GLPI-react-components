@@ -27,14 +27,14 @@ export default function Modal() {
   return (
 
       <Dialog.Root open={isActive} onOpenChange={setIsActive}>
-      <Dialog.Trigger className=" bg-blue-ufal rounded-full w-8 h-8 flex justify-center hover:cursor-pointer items-center text-white-100 relative top-10 -left-6 "><Icon.Camera size={ 22}/></Dialog.Trigger>
-      <Dialog.Portal className="bg-gray-500 h-45 w-45 flex">
-          <Dialog.Overlay  className=" backdrop-blur-sm bg-[rgba(0,0,0,0.2)] data-[state=open]:animate-overlayShow fixed inset-0 "></Dialog.Overlay>
-          <Dialog.Content className=" bg-white-100 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none ">
-          <Dialog.Title className="text-bg m-0 text-base font-bold">
+      <Dialog.Trigger className=" relative -left-6 top-10 flex h-8 w-8 items-center justify-center rounded-full bg-blue-ufal text-white-100 hover:cursor-pointer "><Icon.Camera size={ 22}/></Dialog.Trigger>
+      <Dialog.Portal className="h-45 w-45 flex bg-gray-500">
+          <Dialog.Overlay  className=" fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm data-[state=open]:animate-overlayShow " />
+          <Dialog.Content className=" bg-white fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white-100 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow ">
+          <Dialog.Title className="m-0 text-base font-bold text-bg">
           Alterar imagem
         </Dialog.Title>
-        <Dialog.Description className="text-bg mt-3 mb-5 text-base leading-normal">
+        <Dialog.Description className="mb-5 mt-3 text-base leading-normal text-bg">
           Escolha uma nova imagem para o seu perfil.
           </Dialog.Description>
           <Formik
@@ -65,8 +65,8 @@ export default function Modal() {
 					}}
 				>
 					{({ isSubmitting, isValid }) => (
-						<Form action="" className="flex flex-col gap-9 mx-14">
-                <div className='gap-4 flex flex-col'>
+						<Form action="" className="mx-14 flex flex-col gap-9">
+                <div className='flex flex-col gap-4'>
                   
 								{/* <CardLabelInput
 									label="Imagem"
@@ -82,10 +82,10 @@ export default function Modal() {
                 type="file"
                 width="w-full"
                 inputid="title"
-                icon={<Icon.UploadSimple className="absolute flex mr-4" weight="bold" />}
+                icon={<Icon.UploadSimple className="absolute mr-4 flex" weight="bold" />}
                 />
 			
-                  <div className='flex justify-end w-full'>
+                  <div className='flex w-full justify-end'>
 								<Button
 									title={"Alterar"}
 									theme="primaryAction"
@@ -101,7 +101,7 @@ export default function Modal() {
           
         <Dialog.Close asChild>
           <button
-            className="text-bg hover:bg-blue-ufal focus:shadow-text-black-500    absolute top-[10px] right-[10px] inline-flex h-6 w-6 appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+            className="focus:shadow-text-black-500 absolute right-[10px]    top-[10px] inline-flex h-6 w-6 appearance-none items-center justify-center rounded-full text-bg hover:bg-blue-ufal focus:shadow-[0_0_0_2px] focus:outline-none"
               aria-label="Close"
              
           >

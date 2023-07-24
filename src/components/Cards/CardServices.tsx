@@ -6,11 +6,10 @@ import * as Icon from "phosphor-react"
 const CardServices = () => {
   return (
 		<>
-			<div className="bg-white-ice w-full h-auto py-4 px-6 rounded-lg shadow-card box-border">
-			<div>
-				</div>
+			<div className="box-border h-auto w-full rounded-lg bg-white-ice px-6 py-4 shadow-card">
+			<div />
 				{/* <h4 className="text-2xl mb-4 font-bold">Chamados</h4> */}
-				<div className="mx-9 mt-4 mb-10">
+				<div className="mx-9 mb-10 mt-4">
 					<CardLine />
 				</div>
 				<div className="pt-2">

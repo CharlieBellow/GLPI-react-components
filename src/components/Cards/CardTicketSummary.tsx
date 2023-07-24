@@ -3,8 +3,8 @@ import * as Icon from "phosphor-react"
 const TicketSummary = () => {
   return (
 		<>
-			<div className="bg-white-ice w-full h-auto pt-4 px-6 rounded-lg shadow-card box-border">
-				<h4 className="text-2xl mb-4 font-bold">Resumo de Tickets</h4>
+			<div className="box-border h-auto w-full rounded-lg bg-white-ice px-6 pt-4 shadow-card">
+				<h4 className="mb-4 text-2xl font-bold">Resumo de Tickets</h4>
 				<div>
 					<TicketsHome
 						icon={<Icon.Medal size={18} />}

@@ -7,8 +7,8 @@ import CardCategory from "../CardGroup/CardGroup";
 const CardGroups = () => {
 	return (
 		<>
-			<div className="bg-white-ice w-auto h-auto py-4 px-4 rounded-lg shadow-card box-border">
-				<h4 className="text-4xl mb-8 font-bold">Grupos</h4>
+			<div className="box-border h-auto w-auto rounded-lg bg-white-ice p-4 shadow-card">
+				<h4 className="mb-8 text-4xl font-bold">Grupos</h4>
 				<div className="grid grid-cols-2">
 						<CardGroup
 							link="/servicebook"
@@ -17,7 +17,7 @@ const CardGroups = () => {
 					<div className="hover:cursor-pointer hover:text-blue-ufal-hover">
 						<Link href="/servicebook/myservices">Meus Serviços</Link>
 					</div>
-					<div className="gap-3 grid grid-cols-2">
+					<div className="grid grid-cols-2 gap-3">
 						{/*<Link to="/">Dashboard</Link>*/}
 						{/*<Link to="/service/letter">Carta de Serviço</Link>*/}
 						{/*<Link to="/service/create">Criar Serviço</Link>*/}

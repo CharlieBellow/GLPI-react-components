@@ -14,7 +14,7 @@ export function CardLabelInputCheckBoolean ( props: CardLabelInputCheckBooleanPr
 
 	return (
     <>
-		<label className={`flex gap-1 border-2 p-1 bg-gray-medium rounded-lg `}>
+		<label className={`flex gap-1 rounded-lg border-2 bg-gray-medium p-1 `}>
                     <Field type="checkbox" name={props.name} />
                    {props.label}
                   </label>

@@ -12,16 +12,16 @@ import CardGroups from "./Cards/CardGroups";
 
 function HomeScreen() {
 	return (
-		<div className="w-full h-screen lg:h-screen px-12">
+		<div className="h-screen w-full px-12 lg:h-screen">
 			<div className="pt-20 lg:hidden ">
-				<div className="flex flex-col mx-2 gap-6 items-center">
+				<div className="mx-2 flex flex-col items-center gap-6">
 					<CardHomeMobile />
 					<Search placeholder={"O que está procurando?"} />
 				</div>
 
-				<h1 className="font-semibold text-base my-6 ml-8">Categorias</h1>
+				<h1 className="my-6 ml-8 text-base font-semibold">Categorias</h1>
 
-				<div className="mx-auto flex flex-wrap gap-2 max-w-xl justify-center md:m-0">
+				<div className="mx-auto flex max-w-xl flex-wrap justify-center gap-2 md:m-0">
 					<CardCategory
 						link="/"
 						Name={"Biblioteca"}
@@ -50,13 +50,13 @@ function HomeScreen() {
 				</div>
 			</div>
 
-			<div className="hidden lg:flex pt-8 justify-between gap-6 ">
+			<div className="hidden justify-between gap-6 pt-8 lg:flex ">
 				<CardServices />
 				<CardTicketSummary />
 				<CardServices />
 				<CardTicketSummary />
 			</div>
-			<div className="hidden lg:grid w-auto lg:grid-cols-2 items-center gap-4 m-4 lg:mx-5 tv:mx-auto tv:max-w-[75rem] mx-auto">
+			<div className="m-4 mx-auto hidden w-auto items-center gap-4 lg:mx-5 lg:grid lg:grid-cols-2 tv:mx-auto tv:max-w-[75rem]">
 				<CardHomeMobile />
 				<CardGroups />
 			</div>

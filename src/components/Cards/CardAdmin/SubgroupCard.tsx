@@ -17,23 +17,23 @@ function SubgroupCard(){
     }
     const list = [1, 2]
     return(
-        <div className="bg-white-100 p-4 rounded-lg shadow-md ease-in-out duration-300 mt-4"> 
-            <div className="flex flex-row justify-between items-center">
-                <div className="flex flex-row text-black-text items-center gap-4 pl-2">
+        <div className="mt-4 rounded-lg bg-white-100 p-4 shadow-md duration-300 ease-in-out"> 
+            <div className="flex flex-row items-center justify-between">
+                <div className="flex flex-row items-center gap-4 pl-2 text-black-text">
                     <Icon.Airplane size={24}/>
                     <div className="flex flex-col">
-                        <h1 className="font-bold cursor-text">Subgrupo 1</h1>
-                        <h3 className="text-sm font-light cursor-text">2 Serviços</h3>
+                        <h1 className="cursor-text font-bold">Subgrupo 1</h1>
+                        <h3 className="cursor-text text-sm font-light">2 Serviços</h3>
                     </div>
                 </div>
                 <div className='flex flex-row items-center gap-4'>
-                    <div className="bg-blue-ufal p-2 rounded-lg text-white-100 z-10 cursor-pointer" onClick={editSubgroup}>
+                    <div className="z-10 cursor-pointer rounded-lg bg-blue-ufal p-2 text-white-100" onClick={editSubgroup}>
                         <Icon.Pencil size={24}/>
                     </div>
-                    <div className="bg-red-ufal p-2 rounded-lg text-white-100 z-10 cursor-pointer" onClick={deleteSubgroup}>
+                    <div className="z-10 cursor-pointer rounded-lg bg-red-ufal p-2 text-white-100" onClick={deleteSubgroup}>
                         <Icon.Trash size={24}/>
                     </div>
-                    <div className={`${open? "hover:bg-white-100"  : "hover:bg-gray-medium"} rounded-full p-4 cursor-pointer`} onClick={openCard}>
+                    <div className={`${open? "hover:bg-white-100"  : "hover:bg-gray-medium"} cursor-pointer rounded-full p-4`} onClick={openCard}>
                         {open ? <Icon.CaretUp size={24}/> : <Icon.CaretDown size={24}/>}
                     </div>
                 </div>

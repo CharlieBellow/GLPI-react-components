@@ -88,13 +88,13 @@ export const CardCreateService = () => {
 <li>dsf</li>
 <li>&nbsp;</li>
 </ul>
-			<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
-				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card px-8">
+			<div className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
+				flex-col rounded-lg bg-white-ice px-8 pb-9 shadow-card
+				lg:block lg:w-202 lg:max-w-card">
 					<div className="pl-9 pt-8">
 						<CardTitle title="Criar serviço" />
 					</div>
-					<div className="mx-9 mt-4 mb-10">
+					<div className="mx-9 mb-10 mt-4">
 						<CardLine />
 					</div>
 					{router.isReady ? <FormikProvider value={formikProps}>
@@ -106,7 +106,7 @@ export const CardCreateService = () => {
 								<CardLabelInput label="Definição" name="definition"	type="text"	width="w-full"	inputid="definition"/>
 							</div>
 							<div>
-								<CardLabelInputFile	label="Adicionar Documento"	name="addFile"	type="file"	width="w-full"	inputid="title"	icon={<UploadSimple className="absolute flex mr-4" weight="bold" />}/>
+								<CardLabelInputFile	label="Adicionar Documento"	name="addFile"	type="file"	width="w-full"	inputid="title"	icon={<UploadSimple className="absolute mr-4 flex" weight="bold" />}/>
 							</div>
 							<div className="">
 								<EditorField name='description'/>
@@ -117,7 +117,7 @@ export const CardCreateService = () => {
 												
 							<div>
 								<p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
-								<div className="gap-2 flex flex-col lg:grid lg:grid-cols-2 ">
+								<div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 ">
 									<CardLabelInputCheckbox name="personType" value="Discente" checkArray={formikProps.values.personType}/>
 									<CardLabelInputCheckbox name="personType" value="Técnico Administrativo" checkArray={formikProps.values.personType}/>
 									<CardLabelInputCheckbox name="personType" value="Docente" checkArray={formikProps.values.personType}/>
@@ -125,10 +125,10 @@ export const CardCreateService = () => {
 									<CardLabelInputCheckbox name="personType" value="Terceirizado" checkArray={formikProps.values.personType}/>	
 								</div>
 								{formikProps.errors.personType && formikProps.touched.personType ? (
-									<span className="text-red-ufal text-sm">{formikProps.errors.personType}</span>) : 
+									<span className="text-sm text-red-ufal">{formikProps.errors.personType}</span>) : 
 									<></>}
 							</div>
-							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+							<div className="mr-14 mt-10 flex justify-end gap-x-3.5">
 								<>
 									<Button isSubmitting={formikProps.isSubmitting}	title="Criar" theme="primaryAction" type="submit" disabled={formikProps.isSubmitting || !formikProps.isValid}/>
 									<Button title="Cancelar" theme="secondaryAction" type="button" isSubmitting={false} />

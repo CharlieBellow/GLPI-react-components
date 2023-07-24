@@ -18,7 +18,7 @@ export default function CategoryBanner({
   return (
     <div
       key={id}
-      className="flex flex-col overflow-hidden rounded-md shadow-md bg-blue-200"
+      className="flex flex-col overflow-hidden rounded-md bg-blue-200 shadow-md"
     >
       <div className="relative aspect-[4/2] w-full overflow-hidden sm:aspect-[3/1] md:aspect-[2/1]">
         <div className="flex h-full w-full justify-center bg-gray-text">

@@ -17,23 +17,23 @@ function GroupCard(){
     }
     const list = [1, 2, 3]
     return(
-        <div className={`${open? "bg-gray-medium" : "bg-white-100"} p-4 rounded-lg shadow-md ease-in-out duration-300 z-0`}>
-            <div className="flex flex-row justify-between items-center">
-                <div className="flex flex-row text-black-text items-center gap-4 pl-2">
+        <div className={`${open? "bg-gray-medium" : "bg-white-100"} z-0 rounded-lg p-4 shadow-md duration-300 ease-in-out`}>
+            <div className="flex flex-row items-center justify-between">
+                <div className="flex flex-row items-center gap-4 pl-2 text-black-text">
                     <Icon.Book size={32}/>
                     <div className="flex flex-col">
-                        <h1 className="font-bold cursor-text">Grupo 1</h1>
-                        <h3 className="text-sm font-light cursor-text">3 subgrupos</h3>
+                        <h1 className="cursor-text font-bold">Grupo 1</h1>
+                        <h3 className="cursor-text text-sm font-light">3 subgrupos</h3>
                     </div>
                 </div>
                 <div className='flex flex-row items-center gap-4'>
-                    <div className="bg-blue-ufal p-2 rounded-lg text-white-100 z-10 cursor-pointer" onClick={editGroup}>
+                    <div className="z-10 cursor-pointer rounded-lg bg-blue-ufal p-2 text-white-100" onClick={editGroup}>
                         <Icon.Pencil size={24}/>
                     </div>
-                    <div className="bg-red-ufal p-2 rounded-lg text-white-100 z-10 cursor-pointer" onClick={deleteGroup}>
+                    <div className="z-10 cursor-pointer rounded-lg bg-red-ufal p-2 text-white-100" onClick={deleteGroup}>
                         <Icon.Trash size={24}/>
                     </div>
-                    <div className={`${open? "hover:bg-white-100"  : "hover:bg-gray-medium"} rounded-full p-4 cursor-pointer`} onClick={openCard}>
+                    <div className={`${open? "hover:bg-white-100"  : "hover:bg-gray-medium"} cursor-pointer rounded-full p-4`} onClick={openCard}>
 
                         {open ? <Icon.CaretUp size={24}/> : <Icon.CaretDown size={24}/>}
 

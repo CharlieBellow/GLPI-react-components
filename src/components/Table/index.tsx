@@ -139,7 +139,7 @@ export function Table<T extends { id: string }, K extends keyof T>({
                             <Thead>
                                 <Tr>
                                     <Th px={["4", "4", "6"]} color="gray.300" width="8">
-                                        <Checkbox colorScheme="green"></Checkbox>
+                                        <Checkbox colorScheme="green" />
                                     </Th>
                                     <TableHeader columns={columns} />
                                     <Th w="6">Ações</Th>

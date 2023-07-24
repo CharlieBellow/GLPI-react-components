@@ -27,13 +27,13 @@ export function CardTitleImage(props: CardTitleImageProps ) {
   return (
     <>
       
-      <div className="flex item-center">
-        <Image src={newImage} width={86} height={86} alt={props.alt} className="rounded-xl -top-7 -ml-3 relative " />
+      <div className="item-center flex">
+        <Image src={newImage} width={86} height={86} alt={props.alt} className="relative -top-7 -ml-3 rounded-xl " />
         {props.editImage ? (
           <Modal  />
         ) : <></>}     
       </div>
-    <h2 className="text-light-bg font-normal text-base flex items-center justify-end mr-6" {...props}>
+    <h2 className="mr-6 flex items-center justify-end text-base font-normal text-light-bg" {...props}>
       {props.title}
     </h2>
     </>

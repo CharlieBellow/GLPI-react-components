@@ -11,21 +11,21 @@ export function CardTest() {
 	
 
 	return (
-		<div className="bg-gray-900 w-full absolute h-screen">
+		<div className="absolute h-screen w-full bg-gray-900">
 			<div className="mx-4">
 				<div
-					className="mt-18 mx-auto mb-80 flex flex-col lg:block
-          bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-          h-auto shadow-card"
+					className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
+          flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
+          lg:w-202 lg:max-w-card"
 				>
 					<div className="pl-9 pt-8">
 						<CardTitle title="Testes" />
 					</div>
-					<div className="mx-9 mt-4 mb-10">
+					<div className="mx-9 mb-10 mt-4">
 						<CardLine />
 					</div>
 					
-					<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+					<div className="mr-14 mt-10 flex justify-end gap-x-3.5">
 						<Button theme="withIcon" icon={<Icon.PhoneOutgoing size={24} />} isSubmitting={ false} />
 						<Button
 							title="Abrir chamado"

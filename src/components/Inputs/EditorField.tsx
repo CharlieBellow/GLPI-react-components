@@ -19,9 +19,9 @@ interface EditorFieldProps extends IAllProps {
       field.onBlur({ target: { name } });
     };
     return (
-      <div className="flex flex-col w-full">
+      <div className="flex w-full flex-col">
         {label && <label>{label}</label>}
-        <div className="bg-gray-medium rounded-lg">
+        <div className="rounded-lg bg-gray-medium">
         <Editor 
         apiKey="3enajksx9oylqgylfxulwceq3qb751gxke444j4ld79w9rz1"
         tinymceScriptSrc="https://cdn.tiny.cloud/1/3enajksx9oylqgylfxulwceq3qb751gxke444j4ld79w9rz1/tinymce/6/tinymce.min.js"
@@ -42,12 +42,12 @@ interface EditorFieldProps extends IAllProps {
                   textcolor_rows: "4",
                   toolbar:
                     "undo redo | bold italic strikethrough underline | fontsizeselect | bullist numlist | alignleft aligncenter alignright alignjustify | outdent indent | code"
-        }}{...otherProps} value={field.value} onEditorChange={handleEditorChange} onBlur={handleBlur}></Editor>
+        }}{...otherProps} value={field.value} onEditorChange={handleEditorChange} onBlur={handleBlur} />
 
 
         </div>
         {meta.touched && meta.error ? (
-          <div className="text-red-500 pl-4 pb-4">{meta.error}</div>
+          <div className="pb-4 pl-4 text-red-500">{meta.error}</div>
         ) : null}
       </div>
     );

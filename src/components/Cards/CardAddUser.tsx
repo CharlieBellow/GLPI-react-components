@@ -84,9 +84,9 @@ const CardAddUser = () => (
 	
 	<div className="mx-4">
 		<div
-			className="mt-18 mx-auto mb-80 flex flex-col lg:block
-			bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-			h-auto shadow-card"
+			className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
+			flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
+			lg:w-202 lg:max-w-card"
 		>
 			<Formik
 				initialValues={{
@@ -125,12 +125,12 @@ const CardAddUser = () => (
 						<div className="pl-9 pt-8">
 							<CardTitle title="Adicionar Usuário"  />
 						</div>
-						<div className="mx-9 mt-4 mb-6">
+						<div className="mx-9 mb-6 mt-4">
 							<CardLine />
 						</div>
 						<TabsPrimitive.List
-							className="shrink-0 mb-10 lg:mx-15 flex flex-col lg:flex-row
-					gap-2 lg:gap-0 mx-14 border-b border-b-gray-medium"
+							className="mx-14 mb-10 flex shrink-0 flex-col gap-2
+					border-b border-b-gray-medium lg:mx-15 lg:flex-row lg:gap-0"
 						>
 							<TabsTrigger className={tab} value="tab1">
 								Informações pessoais
@@ -142,7 +142,7 @@ const CardAddUser = () => (
 								Dados Bancários
 							</TabsTrigger>
 						</TabsPrimitive.List>
-						<Form className="flex flex-col gap-9 mx-14">
+						<Form className="mx-14 flex flex-col gap-9">
 							<TabsPrimitive.Content className="outline-none" value="tab1">
 								<div className="flex flex-col gap-9">
 									<div className="w-auto">
@@ -154,7 +154,7 @@ const CardAddUser = () => (
 											width="w-full"
 										/>
 									</div>
-									<div className=" flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+									<div className=" flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div>
 											<CardLabelInput
 												label="CPF"
@@ -175,7 +175,7 @@ const CardAddUser = () => (
 										</div>
 									</div>
 
-									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+									<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div>
 											<CardLabelInput
 												label="N° de matrícula"
@@ -185,7 +185,7 @@ const CardAddUser = () => (
 												width="lg:w-80 w-full"
 											/>
 										</div>
-										<div className="text-red-ufal text-sm lg:w-80">
+										<div className="text-sm text-red-ufal lg:w-80">
 											<FieldSelect
 												label="Vínculo"
 												name="bond"
@@ -194,7 +194,7 @@ const CardAddUser = () => (
 											/>
 										</div>
 									</div>
-									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+									<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div className="lg:w-80">
 											<FieldSelect
 												label="Campus"
@@ -217,7 +217,7 @@ const CardAddUser = () => (
 
 							<TabsPrimitive.Content className="outline-none" value="tab2">
 								<div className="flex flex-col gap-9">
-									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+									<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div>
 											<CardLabelInput
 												label="CEP"
@@ -239,7 +239,7 @@ const CardAddUser = () => (
 											/>
 										</div>
 									</div>
-									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+									<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div>
 											<CardLabelInput
 												label="Estado"
@@ -280,8 +280,8 @@ const CardAddUser = () => (
 								</div>
 							</TabsPrimitive.Content>
 							<TabsPrimitive.Content className="outline-none" value="tab3">
-								<div className="flex flex-col gap-9 mx-14">
-									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+								<div className="mx-14 flex flex-col gap-9">
+									<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div>
 											<CardLabelInput
 												label="Banco"
@@ -301,7 +301,7 @@ const CardAddUser = () => (
 											/>
 										</div>
 									</div>
-									<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+									<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 										<div>
 											<CardLabelInput
 												label="Conta"
@@ -322,7 +322,7 @@ const CardAddUser = () => (
 										</div>
 									</div>
 								</div>
-								<div className="flex justify-end gap-x-3.5 mt-10 mr-14">
+								<div className="mr-14 mt-10 flex justify-end gap-x-3.5">
 									<Button
 										title="Adicionar"
 										theme="primaryAction"

@@ -14,7 +14,7 @@ export function CardLabelInputCheckbox ( props: CardLabelInputCheckboxProps) {
 
 	return (
     <>
-		<label className={`flex gap-1 border-2 rounded-lg p-2 ${props.checkArray?.includes(props.value) ? "bg-gray-medium" : "hover:bg-white-strong-ice"}`}>
+		<label className={`flex gap-1 rounded-lg border-2 p-2 ${props.checkArray?.includes(props.value) ? "bg-gray-medium" : "hover:bg-white-strong-ice"}`}>
                     <Field type="checkbox" name={props.name} value={props.value}  />
                    {props.value}
                   </label>

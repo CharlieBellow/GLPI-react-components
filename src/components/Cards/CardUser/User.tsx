@@ -70,7 +70,7 @@ export const User = (props: UserProps) => {
 	return (
 		<>
 			<div
-				className="bg-white-100 w-1/2 p-3 m-4"
+				className="m-4 w-1/2 bg-white-100 p-3"
 				key={props.id}
 				//id={props.id}
 			>
