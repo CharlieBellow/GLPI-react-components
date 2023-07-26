@@ -1,18 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
   reactStrictMode: true,
   images: {
     remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'www.github.com',
-          port: '',
-          pathname: '/**',
-        },
-      ],
+      {
+        protocol: "https",
+        hostname: "www.github.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
+  experimental: {
+    typedRoutes: true,
   },
 };
 
-
-module.exports = nextConfig
+module.exports = nextConfig;
