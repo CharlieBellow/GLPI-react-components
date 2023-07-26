@@ -1,10 +1,10 @@
-import { Bell, UserPlus, Question, List, X } from "phosphor-react";
-import { useState, useContext, useEffect } from "react";
-import SidebarContext from "../Sidebar/SidebarContext";
-import Image from "next/image"
-import Search from "../../components/Inputs/Search";
+import { Bell, List, Question, UserPlus, X } from "@/components/icons";
+import Image from "next/image";
 import Link from "next/link";
-import ufalLogo from "../../../public/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
+import { useContext, useEffect, useState } from "react";
+import ufalLogo from "../../../public/images/ufal-sigla-branca-fundo-transparente-40por-cento.png";
+import Search from "../../components/Inputs/Search";
+import SidebarContext from "../Sidebar/SidebarContext";
 interface CardMenuProps extends React.HTMLAttributes<HTMLElement> {
 	pagetitle: string;
 }

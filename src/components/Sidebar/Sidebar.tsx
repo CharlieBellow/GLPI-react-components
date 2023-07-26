@@ -1,9 +1,9 @@
-import * as Icon from "phosphor-react"
-import ufalLogo from "../../../public/images/ufal-sigla-branca-fundo-transparente.png"
+import * as Icon from "@/components/icons";
+import Image from "next/image";
 import { useContext } from "react";
+import ufalLogo from "../../../public/images/ufal-sigla-branca-fundo-transparente.png";
 import SidebarContext from "./SidebarContext";
 import SidebarItem from "./SidebarItem";
-import Image from "next/image";
 function Sidebar({children} :any){
 
     // TODO adicionar as demais opções no menu

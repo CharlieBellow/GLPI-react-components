@@ -1,4 +1,4 @@
-import CategoryBannerSkeleton from "@/components/CategoryBannerSkeleton";
+import CategoryBannerSkeleton from "@/components/CategoryBannerPattern/CategoryBannerSkeleton";
 
 export default function Loading() {
   return (

@@ -1,56 +1,39 @@
-import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectIcon,
-	SelectItem,
-	SelectItemIndicator,
-	SelectItemText,
-	SelectLabel,
-	SelectScrollDownButton,
-	SelectScrollUpButton,
-	SelectSeparator,
-	SelectTrigger,
-	SelectValue,
-	SelectViewport,
-} from "@radix-ui/react-select";
-import * as Icon from "phosphor-react";
+import * as Icon from "@/components/icons";
 
 import { FieldHookConfig, useField } from "formik";
-import { ClassAttributes, InputHTMLAttributes, useState } from "react";
+import { ClassAttributes, InputHTMLAttributes } from "react";
 
 interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
-	className?: string;
-	listselecbutton: Array<any>;
-	title?: string;
-	placeholder?: any;
-	icon?: Icon.IconProps;
-	triggerWidth?: string;
-	iconSelectItemIndicator?: Icon.IconProps | "";
-	//register?: any;
-	selectValue?: string;
-	itemId?: number;
-	name?: string;
-	type?: string;
-	label?: string;
+  className?: string;
+  listselecbutton: Array<any>;
+  title?: string;
+  placeholder?: any;
+  icon?: Icon.IconProps;
+  triggerWidth?: string;
+  iconSelectItemIndicator?: Icon.IconProps | "";
+  //register?: any;
+  selectValue?: string;
+  itemId?: number;
+  name?: string;
+  type?: string;
+  label?: string;
 }
 
 export const MySelect = (
-	props: ButtonSelectProps &
-		InputHTMLAttributes<HTMLInputElement> &
-		ClassAttributes<HTMLInputElement> &
-		FieldHookConfig<string>
+  props: ButtonSelectProps &
+    InputHTMLAttributes<HTMLInputElement> &
+    ClassAttributes<HTMLInputElement> &
+    FieldHookConfig<string>
 ) => {
-	const [field, meta] = useField(props);
-	//console.log("FieldSelect: ", field);
-	//console.log("metaSelect: ", meta);
+  const [field, meta] = useField(props);
+  //console.log("FieldSelect: ", field);
+  //console.log("metaSelect: ", meta);
 
-	//const [value, setValue] = useState("");
+  //const [value, setValue] = useState("");
 
-	return (
-		<>
-			{/*<div
+  return (
+    <>
+      {/*<div
 				className={`bg-gray-medium text-gray-text font-bold text-base py-2 px-2.5 rounded-md   block m-1 p-2  w-full cursor-pointer border-2
               ${meta.touched && meta.error ? " border-red-ufal" : ""}
             `}
@@ -109,7 +92,7 @@ export const MySelect = (
 				</Select>
 			</div>
 			{meta.error ? <span className="text-red-ufal">{meta.error}</span> : null}*/}
-			{/*
+      {/*
 			<label>{props.label}</label>
 			<select
 				{...field}
@@ -119,6 +102,6 @@ export const MySelect = (
             `}
 			/>
 			{meta.error ? <span className="text-red-ufal">{meta.error}</span> : null}*/}
-		</>
-	);
+    </>
+  );
 };

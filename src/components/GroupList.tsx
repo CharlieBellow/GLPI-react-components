@@ -1,11 +1,10 @@
 
-import * as React from 'react';
-import CardGroup from "./CardGroup/CardGroup";
+import * as Icon from "@/components/icons";
 import { useRouter } from "next/router";
-import {useEffect, useState} from "react"
-import * as Icon from 'phosphor-react'
-import {getAllGroups} from "../Utils/server/getInfo"
+import { useEffect, useState } from "react";
+import { getAllGroups } from "../Utils/server/getInfo";
 import { Group } from '../Utils/server/types';
+import CardGroup from "./CardGroup/CardGroup";
 
 
 // * lista de grupos, é exibido em '/servicebook/' ou '/servicebook/group'

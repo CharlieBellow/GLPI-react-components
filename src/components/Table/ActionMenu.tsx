@@ -1,14 +1,13 @@
+import { SquaresFour } from "@/components/icons";
 import { Button, Icon, Menu, MenuButton, MenuGroup, MenuItem, MenuList } from "@chakra-ui/react";
-import Link from "next/link";
-import NextLink from "next/link";
+import {
+    Accordion,
+    AccordionItem,
+    AccordionTrigger
+} from "@radix-ui/react-accordion";
+import { default as Link, default as NextLink } from "next/link";
 import { BsChevronDown, BsTrash } from "react-icons/bs";
 import { RiPencilLine } from "react-icons/ri";
-import { SquaresFour, User, Wrench, Gear, ListDashes } from "phosphor-react";
-import {
-	Accordion,
-	AccordionItem,
-	AccordionTrigger
-} from "@radix-ui/react-accordion";
 
 interface ActionMenuProps {
   id: string;

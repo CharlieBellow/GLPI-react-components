@@ -1,42 +1,15 @@
-"use client";
-import CategoryBannerContent from "./CategoryBannerPattern/CategoryBannerContent";
-import CategoryBannerIcon from "./CategoryBannerPattern/CategoryBannerIcon";
-import CategoryBannerImage from "./CategoryBannerPattern/CategoryBannerImage";
-import CategoryBannerRoot from "./CategoryBannerPattern/CategoryBannerRoot";
-// import CategoryBanner from "@/components/CategoryBanner";
-import { Plus } from "phosphor-react";
-import CategoryBannerActiveServicesCount from "./CategoryBannerPattern/CategoryBannerActiveServicesCount";
+import { getAllGroups } from "@/Utils/server/getInfo";
+import { Route } from "next";
+import CategoryBannerActiveServicesCount from "@/components/CategoryBannerPattern/CategoryBannerActiveServicesCount";
+import CategoryBannerContent from "@/components/CategoryBannerPattern/CategoryBannerContent";
+import CategoryBannerDescription from "@/components/CategoryBannerPattern/CategoryBannerDescription";
+import CategoryBannerImage from "@/components/CategoryBannerPattern/CategoryBannerImage";
+import CategoryBannerRoot from "@/components/CategoryBannerPattern/CategoryBannerRoot";
 
 export const revalidate = 86400; // 24 hours
 
 export default async function CategoriesPage() {
-  // const groups = await getAllGroups();
-
-  const groups = [
-    {
-      id: "446ba367-8c8e-4f11-b920-413ef6e9e836",
-      description: "Sistemas",
-      createdAt: "2023-02-17T17:24:21.797Z",
-      updatedAt: "2023-02-17T17:24:21.797Z",
-      serviceGroupId: "35be846f-55ba-48d0-a752-d22a9a82eb47",
-    },
-    {
-      id: "446ba367-8c8e-4f11-b920-413ef6e9e836",
-      description: "Redes",
-      createdAt: "2023-02-17T17:24:21.797Z",
-      updatedAt: "2023-02-17T17:24:21.797Z",
-      serviceGroupId: "35be846f-55ba-48d0-a752-d22a9a82eb47",
-      bannerUrl: "/images/ufal-sigla-branca-fundo-transparente-40por-cento.png",
-    },
-
-    {
-      id: "446ba367-8c8e-4f11-b920-413ef6e9e836",
-      description: "Manutanção",
-      createdAt: "2023-02-17T17:24:21.797Z",
-      updatedAt: "2023-02-17T17:24:21.797Z",
-      serviceGroupId: "35be846f-55ba-48d0-a752-d22a9a82eb47",
-    },
-  ];
+  const groups = await getAllGroups();
 
   return (
     <div className="w-auto">
@@ -47,14 +20,18 @@ export default async function CategoriesPage() {
         {groups.map((group) => (
           <div key={group.id} className=" flex justify-center">
             <CategoryBannerRoot key={group.id}>
-
               <CategoryBannerContent>
-              <CategoryBannerImage
-                bannerUrl={group.bannerUrl}
-                alt="ufal logo"
-              />
-                <CategoryBannerIcon icon={Plus} size={25} />
-                {group.description}
+                <CategoryBannerImage
+                  bannerUrl={group?.bannerUrl}
+                  alt="ufal logo"
+                />
+                {/* <CategoryBannerIcon icon={Plus} size={25} /> */}
+                <CategoryBannerDescription
+                  href={`/servicebook/group/${group.id}` as Route}
+                  key={group.id}
+                >
+                  {group.description}
+                </CategoryBannerDescription>
                 <CategoryBannerActiveServicesCount activeServicesCount={0} />
               </CategoryBannerContent>
             </CategoryBannerRoot>

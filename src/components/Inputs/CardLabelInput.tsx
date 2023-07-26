@@ -1,4 +1,4 @@
-import * as Icon from "phosphor-react";
+import * as Icon from "@/components/icons";
 import { Field, FieldHookConfig, useField } from "formik";
 import { ClassAttributes, InputHTMLAttributes } from "react";
 

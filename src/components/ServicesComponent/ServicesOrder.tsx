@@ -1,16 +1,14 @@
 
-import * as React from 'react';
+import * as Icon from "@/components/icons";
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import * as Icon from "phosphor-react";
+import * as React from "react";
 
 
-import CardServiceOrder from "./CardServiceOrder";
-import { useEffect, useState } from "react";
-import { ServiceOrder } from "../../Utils/server/types";
-import { getRequesterService, getResponsibleService  } from "../../Utils/server/getInfo";
 import { Spinner } from "@chakra-ui/react";
-import {CardLabelInputCheckbox} from "../../components/Inputs/CardLabelInputCheckbox"
-import { Formik, FormikHelpers, FormikValues } from "formik";
+import { useEffect, useState } from "react";
+import { getRequesterService, getResponsibleService } from "../../Utils/server/getInfo";
+import { ServiceOrder } from "../../Utils/server/types";
+import CardServiceOrder from "./CardServiceOrder";
 
 
 

@@ -1,8 +1,8 @@
+import * as Icon from "@/components/icons";
 import Link from "next/link";
-import { useState, useContext, useEffect } from "react"
-import SidebarContext from "./SidebarContext";
-import * as Icon from "phosphor-react";
 import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import SidebarContext from "./SidebarContext";
 interface Item extends React.HTMLAttributes<HTMLElement> {
     item: any;
 }

@@ -1,9 +1,9 @@
 
 
+import * as Icon from "@/components/icons";
 import { Button } from "../Buttons/Button";
-import { CardTitle } from "./CardTitle";
 import { CardLine } from "./CardLine";
-import * as Icon from "phosphor-react";
+import { CardTitle } from "./CardTitle";
 
 
 

@@ -2,18 +2,13 @@
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
-import {
-	Accordion,
-	AccordionItem,
-	AccordionTrigger,
-} from "@radix-ui/react-accordion";
+import * as Icon from "@/components/icons";
+import { AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion";
 import Link from "next/link";
-import * as Icon from "phosphor-react";
 
 import { styled } from "@stitches/react";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
 const AccordionChevron = styled(ChevronDownIcon, {
 	transition: "transform 300ms ",
 

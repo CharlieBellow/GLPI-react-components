@@ -1,23 +1,21 @@
-import { FiChevronDown, FiChevronUp, FiCheck } from "react-icons/fi";
+import * as Icon from "@/components/icons";
 import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectIcon,
-	SelectItem,
-	SelectItemIndicator,
-	SelectItemText,
-	SelectLabel,
-	SelectScrollDownButton,
-	SelectScrollUpButton,
-	SelectSeparator,
-	SelectTrigger,
-	SelectValue,
-	SelectViewport,
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectIcon,
+    SelectItem,
+    SelectItemIndicator,
+    SelectItemText,
+    SelectLabel,
+    SelectScrollDownButton,
+    SelectScrollUpButton,
+    SelectSeparator,
+    SelectTrigger,
+    SelectValue,
+    SelectViewport,
 } from "@radix-ui/react-select";
-import * as Icon from "phosphor-react";
-import { Field } from "formik";
-import { string } from "yup/lib/locale";
+import { FiCheck, FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 interface ButtonSelectProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;

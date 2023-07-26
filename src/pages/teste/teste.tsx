@@ -1,30 +1,24 @@
-import { useState, useEffect } from "react";
 import {
     Table,
-    Thead,
     Tbody,
-    Tfoot,
-    Tr,
-    Th,
     Td,
-    TableCaption,
-    TableContainer,
-    Checkbox,
-    chakra,
-    useBreakpointValue,
-  } from '@chakra-ui/react'
+    Th,
+    Thead,
+    Tr,
+    useBreakpointValue
+} from '@chakra-ui/react';
+import { useEffect, useState } from "react";
 
-  import * as Icon from "phosphor-react"
+  import * as Icon from "@/components/icons";
 
 
 
-import Search from '../../components/Inputs/Search'
-import {Button} from '../../components/Buttons/Button'
-import Pagination from "../../components/Table/Pagination";
 import { getAllUsers } from "../../Utils/server/getInfo";
+import { Button } from '../../components/Buttons/Button';
 import { CardLabelInputCheckbox } from "../../components/Inputs/CardLabelInputCheckbox";
+import Search from '../../components/Inputs/Search';
 
-import {validationSchema} from "../../Utils/validations";
+import { validationSchema } from "../../Utils/validations";
 
 const validateWhitOutPatrimony = yup.object().shape({
 	id: validationSchema.

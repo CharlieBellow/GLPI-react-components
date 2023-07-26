@@ -1,5 +1,5 @@
 
-import * as Icon from  "phosphor-react"
+import * as Icon from "@/components/icons";
 
 
 interface CardTitleColorProps extends React.HTMLAttributes<HTMLElement>{

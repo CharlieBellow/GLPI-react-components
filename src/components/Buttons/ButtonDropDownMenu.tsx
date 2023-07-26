@@ -1,13 +1,9 @@
-import React from 'react';
+import * as Icon from "@/components/icons";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import * as Icon from "phosphor-react"
 import {
-  HamburgerMenuIcon,
-  DotFilledIcon,
-  CheckIcon,
-  ChevronRightIcon,
+    DotFilledIcon
 } from '@radix-ui/react-icons';
-import { Button } from './Button';
+import React from 'react';
 
 const ButtonDropdownMenu = () => {
  

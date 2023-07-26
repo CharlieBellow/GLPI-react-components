@@ -1,6 +1,6 @@
-import {render, screen } from "@testing-library/react"
+import * as Icon from "@/components/icons";
+import { render, screen } from "@testing-library/react";
 import CardGroup from "./CardGroup";
-import * as Icon from "phosphor-react"
 
 /* Para testar o componente que usa algo externo a ele, precisa fazer o mok para simular essa coisa externa. */
 

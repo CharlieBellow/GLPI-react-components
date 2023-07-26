@@ -1,7 +1,5 @@
 import ServicesHome from "../ServicesComponent/ServicesHome";
 import { CardLine } from "./CardLine";
-import { CardTitleColor } from "./CardTitleColor";
-import * as Icon from "phosphor-react"
 
 const CardServices = () => {
   return (

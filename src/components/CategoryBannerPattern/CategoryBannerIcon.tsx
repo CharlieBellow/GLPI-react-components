@@ -8,5 +8,5 @@ type CategoryBannerProps = {
 export default function CategoryBannerIcon({
   icon: Icon,
 }: CategoryBannerProps) {
-  return <Icon className="my-4 h-auto w-auto" size={24} />;
+  return <Icon size={24} />;
 }

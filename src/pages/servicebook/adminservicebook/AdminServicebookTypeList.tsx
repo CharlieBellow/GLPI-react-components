@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import * as Icon from "@/components/icons";
+import { useState } from "react";
 import * as yup from "yup";
-import { Button } from '../../../components/Buttons/Button';
-import * as Icon from "phosphor-react";
-import { deleteGroup } from '../../../Utils/server/delInfo';
+import { Button } from "../../../components/Buttons/Button";
 
-import { CardLabelInput } from '../../../components/Inputs/CardLabelInput';
-import { validationSchema } from '../../../Utils/validations';
-import { Form, Formik } from 'formik';
-import {useMessage} from "../../../Contexts/MessageContext"
-import GroupCard from '../../../components/Cards/CardAdmin/GroupCard';
+import { useMessage } from "../../../Contexts/MessageContext";
+import { validationSchema } from "../../../Utils/validations";
+import GroupCard from "../../../components/Cards/CardAdmin/GroupCard";
 
 interface AdminProps {
   list: any[];
@@ -16,35 +13,39 @@ interface AdminProps {
 }
 
 const validate = yup.object().shape({
-	description: validationSchema.titleGroup,
+  description: validationSchema.titleGroup,
 });
 
 export default function AdminServiceBookTypeList(props: AdminProps) {
-  
-  const { successMessage } = useMessage()
-  
-  const token = localStorage.getItem("token")
-  
-  const [edit, setEdit] = useState(false)
+  const { successMessage } = useMessage();
+
+  const token = localStorage.getItem("token");
+
+  const [edit, setEdit] = useState(false);
 
   function updateInput(id: string) {
-    setEdit(false)
+    setEdit(false);
 
     // TODO chamar a função que altera a categoria
   }
-  
+
   return (
     <>
       <div className="m-8 rounded-xl bg-white-ice p-12">
-        <div className='flex flex-row justify-between pb-8'>
-            <h1 className="text-md p-4 font-bold text-black-text">Administrar Servicebook</h1>
-            <Button title="Novo Grupo" theme='withIcon' icon={<Icon.Plus size={24}/>}/>
+        <div className="flex flex-row justify-between pb-8">
+          <h1 className="text-md p-4 font-bold text-black-text">
+            Administrar Servicebook
+          </h1>
+          <Button
+            title="Novo Grupo"
+            theme="withIcon"
+            icon={<Icon.Plus size={24} />}
+          />
         </div>
-        <div className='px-4'>
-          <GroupCard/>
-
+        <div className="px-4">
+          <GroupCard />
         </div>
-      {/*
+        {/*
         
         props.list.map(item => {
           return (
@@ -102,8 +103,7 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
         })
 
       */}
-        </div>
-
+      </div>
     </>
-  )
+  );
 }

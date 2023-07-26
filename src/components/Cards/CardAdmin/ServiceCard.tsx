@@ -1,5 +1,5 @@
+import * as Icon from '@/components/icons';
 import Link from 'next/link';
-import * as Icon from 'phosphor-react'
 
 function ServiceCard(){
     return(

@@ -1,6 +1,6 @@
-import * as Icon from 'phosphor-react'
+import * as Icon from '@/components/icons';
 import { ReactNode, useState } from 'react';
-import {CardLine} from "../../components/Cards/CardLine"
+import { CardLine } from "../../components/Cards/CardLine";
 
 interface InfoServiceSeparatorProps{
     icon: Icon.IconProps;

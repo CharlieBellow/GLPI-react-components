@@ -1,6 +1,5 @@
 
-import React from 'react'
-import * as Icon from 'phosphor-react'
+import * as Icon from "@/components/icons";
 
 import ServicesList from "./ServicesList"
 

@@ -1,12 +1,18 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
 import {
-	Accordion,
-	AccordionItem,
-	AccordionTrigger
+  Gear,
+  ListDashes,
+  SquaresFour,
+  User,
+  Wrench,
+} from "@/components/icons";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
 } from "@radix-ui/react-accordion";
 import Link from "next/link";
-import { SquaresFour, User, Wrench, Gear, ListDashes } from "phosphor-react";
 
 import { styled } from '@stitches/react';
 

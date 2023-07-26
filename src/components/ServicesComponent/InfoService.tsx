@@ -1,6 +1,6 @@
 
-import * as Icon from 'phosphor-react';
-import { Service } from '../../Utils/server/types'
+import * as Icon from "@/components/icons";
+import { Service } from "../../Utils/server/types";
 import InfoServiceLabel from './InfoServiceLabel';
 import InfoServiceSeparator from './InfoServiceSeparator';
 import RenderEnumAsLabels from './RenderEnumAsLabels';
