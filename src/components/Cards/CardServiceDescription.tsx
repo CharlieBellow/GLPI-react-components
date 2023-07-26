@@ -57,12 +57,12 @@ export default function CardServiceDescription (  ) {
   // construir as rotas dinâmicas. quando recarrega ele dá erro
 
   return (
-    <div className="lg:bg-white-100 bg-white-strong-ice lg:mx-10 lg:rounded-lg lg:px-8 lg:py-8 lg:my-8 md:mx-16 text-justify mx-3 rounded-lg ">
-      <div className="lg:flex lg:justify-between lg:items-baseline">
-        <h3 className="pt-4 font-bold ml-4 text-3xl lg:text-4xl lg:flex lg:visible hidden">
+    <div className="mx-3 rounded-lg bg-white-strong-ice text-justify md:mx-16 lg:mx-10 lg:my-8 lg:rounded-lg lg:bg-white-100 lg:p-8">
+      <div className="lg:flex lg:items-baseline lg:justify-between">
+        <h3 className="ml-4 hidden pt-4 text-3xl font-bold lg:visible lg:flex lg:text-4xl">
           {serviceInfo && serviceInfo.title }
         </h3>
-        <div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
+        <div className="fixed bottom-9 right-0 mr-4 lg:relative lg:right-0 lg:top-0 lg:flex lg:justify-end">
 
           <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder/` }>
             <Button
@@ -76,7 +76,7 @@ export default function CardServiceDescription (  ) {
       <InfoServiceItem infos={ serviceInfo as Service } icon={ <Icon.DotsThreeVertical size={ 24 } /> } />
 
 
-      <div className="ml-4 mt-9 gap-3.5 lg:flex hidden">
+      <div className="ml-4 mt-9 hidden gap-3.5 lg:flex">
         <Link href={ `/servicebook/serviceorder/${ serviceId }/createserviceorder` }>
           <Button
             title="Solicitar Serviço"

@@ -57,14 +57,14 @@ function CardUpdateUser() {
 	return (
 		<div className="mx-4">
 			<div
-				className="mt-18 mx-auto mb-80 flex flex-col lg:block
-				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card"
+				className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
+				flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
+				lg:w-202 lg:max-w-card"
 			>
 				<div className="pl-9">
 					<CardTitleImage title="Alterar Informações do Usuário" srcimage={myuser.avatar} alt={"Imagem de perfil"} editImage={true}  />
 				</div>
-				<div className="mx-9 mt-4 mb-10">
+				<div className="mx-9 mb-10 mt-4">
 					<CardLine />
 				</div>
 				{user  ? (<Formik
@@ -89,8 +89,8 @@ function CardUpdateUser() {
 					}}
 				>
 					{({ isSubmitting, isValid }) => (
-						<Form action="" className="flex flex-col gap-9 mx-14">
-							<div className="flex flex-col lg:flex-row justify-center lg:gap-x-13 gap-9">
+						<Form action="" className="mx-14 flex flex-col gap-9">
+							<div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
 								<CardLabelInputShowInfo
 									label="Nome Completo"
 									name="name"
@@ -108,7 +108,7 @@ function CardUpdateUser() {
 									disabled={user.name ? true : false}
 								/>
 							</div>
-							<div className="flex flex-col lg:flex-row lg:gap-x-13 gap-9">
+							<div className="flex flex-col gap-9 lg:flex-row lg:gap-x-13">
 								<CardLabelInput
 									label="Senha"
 									type="password"
@@ -127,7 +127,7 @@ function CardUpdateUser() {
 								/>
 						
 							</div>
-							<div className="flex justify-end gap-x-3.5 mt-10 ">
+							<div className="mt-10 flex justify-end gap-x-3.5 ">
 								<Button
 									title={"Alterar"}
 									theme="primaryAction"

@@ -29,8 +29,8 @@ function SidebarItem(props: Item){
     }
     return (
         <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-            <Link href={props.item.path? props.item.path : "#"} className={`flex flex-col w-full justify-center`} onClick={() => selectItem()} >
-                <div  className={`flex flex-row justify-between items-center  mx-2 my-2 py-2 gap-4 rounded-lg ease-in-out duration-300 hover:bg-sky-300 cursor-pointer ${selected && props.item.path ? " text-blue-ufal" : "text-white-100"}`}>
+            <Link href={props.item.path? props.item.path : "#"} className={`flex w-full flex-col justify-center`} onClick={() => selectItem()} >
+                <div  className={`m-2 flex cursor-pointer flex-row  items-center justify-between gap-4 rounded-lg py-2 duration-300 ease-in-out hover:bg-sky-300${selected && props.item.path ? " text-blue-ufal" : "text-white-100"}`}>
                    <div className="flex flex-row items-center gap-2">
                         <div className="pl-2">
                             {props.item.icon}
@@ -43,16 +43,16 @@ function SidebarItem(props: Item){
                     
                 </div>  
             </Link>
-            <div className="flex flex-col w-full relative">                
+            <div className="relative flex w-full flex-col">                
                     {open && selected && props.item.children ? props.item.children.map((child : Item, index : number) => {
-                        return <div key={index} className={`text-white-100 flex flex-col mx-2 px-6 py-2 gap-4 rounded-lg items-start ease-in-out duration-300 hover:bg-sky-300 cursor-pointer`}>
+                        return <div key={index} className={`mx-2 flex cursor-pointer flex-col items-start gap-4 rounded-lg px-6 py-2 text-white-100 duration-300 ease-in-out hover:bg-sky-300`}>
                             <Link href={child.dir? child.dir : "#"} key={index}>{child.title}</Link>
                         </div>
                     }) : <></>} 
                     {!open && props.item.children ? 
-                    <div className="bg-blue-ufal flex flex-col gap-[0.1rem] text-white-100 absolute left-14 -bottom-2 w-40 rounded-lg z-10 overflow-hidden shadow-lg">
+                    <div className="absolute -bottom-2 left-14 z-10 flex w-40 flex-col gap-[0.1rem] overflow-hidden rounded-lg bg-blue-ufal text-white-100 shadow-lg">
                         {props.item.children.map((child: Item, index : number) => {
-                            return <Link href={child.dir? child.dir : "#"} key={index} className={`hover:bg-sky-300 bg-blue-final-gradient pl-4 pb-2 p-2 ${hover ? "block" : "hidden"}`}>{child.title}</Link>
+                            return <Link href={child.dir? child.dir : "#"} key={index} className={`bg-blue-final-gradient p-2 pl-4 hover:bg-sky-300${hover ? "block" : "hidden"}`}>{child.title}</Link>
                         })}
                     </div> 
                     : <></>}

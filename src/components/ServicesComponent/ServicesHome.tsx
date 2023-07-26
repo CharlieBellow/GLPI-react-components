@@ -14,12 +14,12 @@ function ServicesHome(props :ServicesHomeProps){
             <Image
                 src={props.url}                
                 alt="favicon"
-          className="w-6 h-6 rounded-full mr-2"
+          className="mr-2 h-6 w-6 rounded-full"
           width={ 96 }
           height={96}
             />
-            <p className="w-full font-semibold text-base ">{props.nome}</p>
-            <p className="w-full flex font-medium text-base text-blue-ufal justify-center">{props.area}</p>
+            <p className="w-full text-base font-semibold ">{props.nome}</p>
+            <p className="flex w-full justify-center text-base font-medium text-blue-ufal">{props.area}</p>
             <p className=" text-sm">{props.data}</p>
         </div>
     )

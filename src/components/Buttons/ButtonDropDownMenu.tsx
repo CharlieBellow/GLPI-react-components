@@ -17,7 +17,7 @@ const ButtonDropdownMenu = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button
-          className="rounded-full w-[35px] h-[35px] inline-flex items-center justify-center text-white-100 bg-blue-ufal shadow-[0_2px_10px] shadow-black-text outline-none hover:bg-blue-ufal-hover focus:shadow-[0_0_0_2px] focus:shadow-black-text p-3"
+          className="inline-flex h-[35px] w-[35px] items-center justify-center rounded-full bg-blue-ufal p-3 text-white-100 shadow-[0_2px_10px] shadow-black-text outline-none hover:bg-blue-ufal-hover focus:shadow-[0_0_0_2px] focus:shadow-black-text"
           aria-label="Filter"
         >
           <Icon.Funnel size={20} />
@@ -28,12 +28,12 @@ const ButtonDropdownMenu = () => {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className=" bg-gray-dark rounded-md z-50 p-3 shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
+          className=" z-50 rounded-md bg-gray-dark p-3 shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade"
           sideOffset={5}
         >
           <DropdownMenu.RadioGroup value={filter} onValueChange={setFilter} className="">
             <DropdownMenu.RadioItem
-              className="text-[13px] leading-none text-black-text p-2 rounded-sm hover:bg-gray-medium rounded-[3px] flex items-center h-[25px]  select-none outline-none data-[disabled]:text-gray-text data-[disabled]:pointer-events-none hover:cursor-pinter data-[highlighted]:bg-gray-medium data-[highlighted]:text-text-blue-ufal justify-between"
+              className="hover:cursor-pinter data-[highlighted]:text-text-blue-ufal flex h-[25px] select-none items-center justify-between rounded-[3px] rounded-sm p-2  text-[13px] leading-none text-black-text outline-none hover:bg-gray-medium data-[disabled]:pointer-events-none data-[highlighted]:bg-gray-medium data-[disabled]:text-gray-text"
               value="todos"
             >
               Todos
@@ -42,7 +42,7 @@ const ButtonDropdownMenu = () => {
               </DropdownMenu.ItemIndicator>
             </DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem
-              className="text-[13px] leading-none text-black-text items-center p-2 rounded-sm hover:bg-gray-medium rounded-[3px] flex h-[25px] px-[5px]  pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 justify-between"
+              className="data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 flex h-[25px] select-none items-center justify-between rounded-[3px] rounded-sm p-2  px-[5px] pl-[25px] text-[13px] leading-none text-black-text outline-none hover:bg-gray-medium data-[disabled]:pointer-events-none"
               value="myServices"
             >
               Atribuídos a mim
@@ -51,7 +51,7 @@ const ButtonDropdownMenu = () => {
               </DropdownMenu.ItemIndicator>
             </DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem
-              className=" text-[13px] leading-none text-black-text p-2 rounded-sm hover:bg-gray-medium rounded-[3px] flex items-center h-[25px]  select-none outline-none data-[disabled]:text-gray-text data-[disabled]:pointer-events-none data-[highlighted]:bg-gray-medium data-[highlighted]:text-tex-blue-ufal justify-between"
+              className=" data-[highlighted]:text-tex-blue-ufal flex h-[25px] select-none items-center justify-between rounded-[3px] rounded-sm p-2 text-[13px]  leading-none text-black-text outline-none hover:bg-gray-medium data-[disabled]:pointer-events-none data-[highlighted]:bg-gray-medium data-[disabled]:text-gray-text"
               value="status"
             >
               Status

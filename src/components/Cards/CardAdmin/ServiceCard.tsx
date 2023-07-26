@@ -3,17 +3,17 @@ import * as Icon from 'phosphor-react'
 
 function ServiceCard(){
     return(
-        <div className="flex flex-row justify-between px-12 py-2 items-center">
-            <div className="text-blue-ufal font-bold text-lg hover:underline decoration-2">
+        <div className="flex flex-row items-center justify-between px-12 py-2">
+            <div className="text-lg font-bold text-blue-ufal decoration-2 hover:underline">
                 <Link href={"#"}>
                     <h1>Serviço1</h1>
                 </Link>
             </div>
             <div className="flex flex-row gap-4 pr-8">
-                <div className='text-blue-ufal cursor-pointer hover:bg-blue-ufal hover:text-white-100 rounded-full p-2 ease-in-out duration-300'>
+                <div className='cursor-pointer rounded-full p-2 text-blue-ufal duration-300 ease-in-out hover:bg-blue-ufal hover:text-white-100'>
                     <Icon.PencilSimple size={24}/>
                 </div>
-                <div className='text-red-ufal cursor-pointer  hover:bg-red-ufal hover:text-white-100 rounded-full p-2 ease-in-out duration-300'>
+                <div className='cursor-pointer rounded-full  p-2 text-red-ufal duration-300 ease-in-out hover:bg-red-ufal hover:text-white-100'>
                     <Icon.Trash size={24}/>
                 </div>
             </div>

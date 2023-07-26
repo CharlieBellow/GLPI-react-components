@@ -14,10 +14,10 @@ function CardLabel(props: CardLabelTextareaProps ) {
 		<label
 			{...props}
 			htmlFor={props.textareaid}
-			className="absolute text-base peer-focus:bg-white-ice text-light-bg duration-300 transform
-      -translate-y-5 scale-100 -top-1 origin-[0] peer-focus:px-2 peer-focus:text-blue-ufal
-      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:peer-placeholder-shown:-translate-x-0 peer-placeholder-shown:translate-x-1.5 peer-placeholder-shown:top-7
-      peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 left-1"
+			className="absolute -top-1 left-1 origin-[0] -translate-y-5 scale-100
+      text-base text-light-bg duration-300 peer-placeholder-shown:top-7 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:translate-x-1.5
+      peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:bg-white-ice
+      peer-focus:px-2 peer-focus:text-blue-ufal peer-focus:peer-placeholder-shown:-translate-x-0"
 		>
 			{props.label}
 		</label>
@@ -40,9 +40,9 @@ export function CardLabelTextarea(
 				name={props.name}
 				id={props.label}
 				type={props.type}
-				className={`block px-2.5 pb-2.5 pt-2.5 h-40 min-h-full max-h-40 w-full text-base
-          text-light-bg bg-gray-medium focus:bg-transparent rounded-lg appearance-none
-          focus:outline-none focus:ring-0 focus:border-2 peer ${
+				className={`peer block h-40 max-h-40 min-h-full w-full appearance-none rounded-lg bg-gray-medium
+          p-2.5 text-base text-light-bg focus:border-2 focus:bg-transparent
+          focus:outline-none focus:ring-0${
 						meta.error ? " border-red-ufal" : "focus:border-blue-ufal"
 					}`}
 				placeholder=" "
@@ -55,7 +55,7 @@ export function CardLabelTextarea(
 			/>
 
 			{meta.error && meta.touched ? (
-				<span className="text-red-ufal text-sm">{meta.error}</span>
+				<span className="text-sm text-red-ufal">{meta.error}</span>
 			) : null}
 		</div>
 	);

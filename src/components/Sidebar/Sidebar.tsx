@@ -57,9 +57,9 @@ function Sidebar({children} :any){
         },
     ];
     return(
-        <div className="flex w-full  justify-center m-auto ">
-            <div data-testid="test" className={`${open ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"} z-40 fixed overflow-x-hidden bg-blue-final-gradient ease-in-out duration-300 before:bg-gradient-to-r before:-z-10 lg:static lg:block lg:overflow-x-visible h-screen  h-auto tv:h-screen`}>
-                <div className="flex flex-row w-1/2 lg:w-20 justify-center mb-4">
+        <div className="m-auto flex  w-full justify-center ">
+            <div data-testid="test" className={`${open ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"} fixed z-40 h-auto h-screen overflow-x-hidden bg-blue-final-gradient duration-300 ease-in-out before:-z-10 before:bg-gradient-to-r lg:static lg:block  lg:overflow-x-visible tv:h-screen`}>
+                <div className="mb-4 flex w-1/2 flex-row justify-center lg:w-20">
                     <Image className="mt-4 max-w-[6rem]" src={ufalLogo} alt="logo"/>
                 </div>   
                 <div className="sticky top-0">
@@ -69,7 +69,7 @@ function Sidebar({children} :any){
                 </div>
 
             </div>       
-            <div className="text-2xl font-semibold w-full bg-gray-medium">
+            <div className="w-full bg-gray-medium text-2xl font-semibold">
                 {children}
             </div>
         </div>

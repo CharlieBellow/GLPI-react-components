@@ -87,42 +87,40 @@ export default function ServicesOrder () {
 
   return (
 		<>
-			<div className="lg:m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl">
-				<h2 className="lg:text-5xl text-2xl font-bold">Meus Serviços</h2>
+			<div className="flex flex-col gap-8 rounded-xl bg-white-100 px-4 py-6 lg:m-8">
+				<h2 className="text-2xl font-bold lg:text-5xl">Meus Serviços</h2>
 				
 				<div className='flex flex-col items-center '>
 					<p className="text-lg">Filtro:</p>
 					<ToggleGroup.Root
 						type="single"
-						className='flex sm:flex-row flex-col border-2 border-blue-ufal rounded-lg '
+						className='flex flex-col rounded-lg border-2 border-blue-ufal sm:flex-row '
 						value={value}
 						defaultValue={"todos"}
 						onValueChange={(value) => {
 							setValue(value);
 			}}
     >
-      <ToggleGroup.Item value="atribuido" className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tl-sm focus:rounded-bl-sm hover:rounded-tl-md hover:rounded-bl-lg rounded-bl-sm rounded-tl-sm
-			data-[state=on]:bg-red-500 
-			" >
+      <ToggleGroup.Item value="atribuido" className="ToggleGroupItem flex items-center  gap-2  rounded-l-sm p-2 hover:rounded-bl-lg hover:rounded-tl-md hover:bg-gray-medium focus:relative focus:rounded-l-sm focus:bg-blue-ufal focus:shadow-blue-ufal data-[state=on]:bg-red-500" >
 							<Icon.UserList size={26} />
 							Atribuído a mim
       </ToggleGroup.Item>  
-      <ToggleGroup.Item value="proprietario"className="flex items-center gap-2  p-2  ToggleGroupItem hover:bg-gray-medium focus:shadow-blue-ufal focus:bg-blue-ufal  focus:relative">
+      <ToggleGroup.Item value="proprietario"className="ToggleGroupItem flex items-center  gap-2  p-2 hover:bg-gray-medium focus:relative focus:bg-blue-ufal  focus:shadow-blue-ufal">
 							<Icon.User size={26} />
 							Proprietário
       </ToggleGroup.Item> 
-      <ToggleGroup.Item value="status"className="flex items-center gap-2  p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal ">
+      <ToggleGroup.Item value="status"className="ToggleGroupItem flex items-center  gap-2   p-2 hover:bg-gray-medium focus:relative focus:bg-blue-ufal focus:shadow-blue-ufal ">
 							<Icon.EnvelopeSimpleOpen size={26} />
 							Status
       </ToggleGroup.Item> 
-      <ToggleGroup.Item value="todos"className="flex items-center gap-2 p-2   ToggleGroupItem hover:bg-gray-medium focus:relative focus:shadow-blue-ufal focus:bg-blue-ufal focus:rounded-tr-sm focus:rounded-br-sm hover:rounded-tr-md hover:rounded-br-md rounded-br-sm rounded-tr-sm">
+      <ToggleGroup.Item value="todos"className="ToggleGroupItem flex items-center gap-2   rounded-r-sm p-2 hover:rounded-r-md hover:bg-gray-medium focus:relative focus:rounded-r-sm focus:bg-blue-ufal focus:shadow-blue-ufal">
 							<Icon.ListBullets size={26} />
 							Todos
       </ToggleGroup.Item>
     </ToggleGroup.Root>
 
 </div>
-				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
+				<div className="mx-auto w-full grid-cols-1 flex-wrap justify-around gap-9 lg:grid lg:w-full lg:grid-cols-2 tv:grid-cols-2">
 					<>
 						
 						{values ?

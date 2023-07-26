@@ -43,12 +43,12 @@ const ServicesBySubgroup = ( ) => {
 	return (
 	
 				<>
-					<h4 className="text-4xl m-15 font-semibold mb-9 text-light-bg ">
+					<h4 className="m-15 mb-9 text-4xl font-semibold text-light-bg ">
             {subcategoryDescription}
 					</h4>
 
-					<h5 className="text-xl font-bold m-8">Serviços disponíveis: </h5>
-					<div className="lg:w-[59.5rem] m-15 flex flex-col gap-x-10  gap-y-6 mt-0" >
+					<h5 className="m-8 text-xl font-bold">Serviços disponíveis: </h5>
+					<div className="m-15 mt-0 flex flex-col gap-x-10  gap-y-6 lg:w-[59.5rem]" >
         { listServices && listServices.map( ( service ) => {
           return (
             <Link

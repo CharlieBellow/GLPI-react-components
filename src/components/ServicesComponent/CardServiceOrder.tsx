@@ -55,20 +55,20 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 
 	return (
 		<div
-			className="text-light-bg w-full h-full bg-white-ice py-3 px-4 rounded-xl shadow-card lg:w-auto lg:h-auto flex flex-col lg:py-4 my-4 justify-between"
+			className="my-4 flex h-full w-full flex-col justify-between rounded-xl bg-white-ice px-4 py-3 text-light-bg shadow-card lg:h-auto lg:w-auto lg:py-4"
 			{...props}
 			key={props.id}
 			id={props.id}
 		>
 			<div>
 				<div>
-					<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+					<p className="mt-3 text-xs font-medium text-gray-600 lg:text-xl">
 						<strong className="text-black">Descrição: </strong>
 						{props.description}
 					</p>
 				</div>
 				<div>
-					{props.patrimonyId ? props.patrimonyId === "notrequired" ? <></> : (<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+					{props.patrimonyId ? props.patrimonyId === "notrequired" ? <></> : (<p className="mt-3 text-sm font-medium text-gray-600 lg:text-xl">
 						<strong className="text-black">Patrimônio: </strong>
 						{props.patrimonyId}	
 						</p> )
@@ -76,12 +76,12 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 					
 				</div>
 				<div>
-					{props.service ? (<p className="text-xs mt-3 text-gray-600 font-medium lg:text-xl">
+					{props.service ? (<p className="mt-3 text-xs font-medium text-gray-600 lg:text-xl">
 						<strong className="text-black">Serviço: </strong>
 
 						{props.service.title}
 						{props.service.description}
-					</p>) : (<p className="text-xs mt-3 font-medium lg:text-xl">
+					</p>) : (<p className="mt-3 text-xs font-medium lg:text-xl">
 						<strong>Serviço: </strong>
 
 						{ props.service   }
@@ -96,7 +96,7 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				</div> */}
 
 				{!props.responsibleId ? <div>
-					<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+					<p className="mt-3 text-sm font-medium text-gray-600 lg:text-xl">
 						<strong className="text-black">Responsável pelo serviço: </strong>
 						{props.responsibleId}
 					</p>
@@ -104,14 +104,14 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				
 				
 				<div>
-					<p className="text-sm mt-3 font-medium lg:text-xl">
+					<p className="mt-3 text-sm font-medium lg:text-xl">
 						<strong>Solicitante: </strong>
 						{props.requesterId}
 					</p>
 				</div>
 				
 				<div>
-					<p className="text-sm mt-3  font-medium lg:text-xl">
+					<p className="mt-3 text-sm  font-medium lg:text-xl">
 						<strong>Status: </strong>
 						<span className={`${props.status === "Aberto" ? "text-red-500" :  props.status === "Fechado" ? "text-blue-ufal" : props.status === "Em Execução" ? "text-green-500" : "text-amber-500"}`}>{props.status}</span>
 
@@ -119,7 +119,7 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				</div>
 				<div className="flex flex-row gap-20">
 					<div>
-						<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+						<p className="mt-3 text-sm font-medium text-gray-600 lg:text-xl">
 							<strong className="text-black">Criado: </strong>
 							{createdAtDate.toLocaleDateString()}
 						</p>
@@ -131,7 +131,7 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 						</p>
 					</div> */}
 					<div>
-						<p className="text-sm mt-3 text-gray-600 font-medium lg:text-xl">
+						<p className="mt-3 text-sm font-medium text-gray-600 lg:text-xl">
 							<strong className="text-black">Atualizado em: </strong>
 							{updatedAt.toLocaleDateString()}
 						</p>
@@ -139,7 +139,7 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
 				</div>
 				
 			</div>
-			<div className="pt-3 w-fit flex flex-row gap-4">
+			<div className="flex w-fit flex-row gap-4 pt-3">
 				<Link href={`serviceorder/${props.id}/edit`}>
 					<Button
 							className="flex"

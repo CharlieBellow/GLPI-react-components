@@ -106,14 +106,14 @@ export const CardCreateServiceOrder = () => {
 	return (
 		<>
 			<div className="mx-4">
-				<div className="mt-18 mx-auto mb-80 flex flex-col lg:block
-				bg-white-ice pb-9 rounded-lg max-w-2xl lg:max-w-card lg:w-202
-				h-auto shadow-card">
+				<div className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
+				flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
+				lg:w-202 lg:max-w-card">
 					<>
 						<div className="pl-9 pt-8">
 							<CardTitle title="Criar ordem de serviço" />
 						</div>
-						<div className="mx-9 mt-4 mb-10">
+						<div className="mx-9 mb-10 mt-4">
 							<CardLine />
 						</div>
 						
@@ -161,7 +161,7 @@ export const CardCreateServiceOrder = () => {
 							>
 								{({ isSubmitting, isValid, errors, touched }) => (
 									<Form autoComplete="on">
-										<div className="flex flex-col gap-9 mx-14">
+										<div className="mx-14 flex flex-col gap-9">
 											<div className="">
 												<CardLabelInput
 													label="Título"
@@ -181,7 +181,7 @@ export const CardCreateServiceOrder = () => {
 												/>
 
 {errors.description && touched.description ? (
-				<span className="text-red-ufal text-sm">{errors.description}</span>
+				<span className="text-sm text-red-ufal">{errors.description}</span>
 			): null }
 											</div>
 											<div>
@@ -196,7 +196,7 @@ export const CardCreateServiceOrder = () => {
 													: <></>}
 											</div>
 										</div>
-										<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
+										<div className="mr-14 mt-10 flex justify-end gap-x-3.5">
 											<Button
 												isSubmitting={isSubmitting}
 												title={"Criar"}

@@ -18,7 +18,7 @@ function RenderEnumAsLabels(props: RenderEnumAsLabelsProps){
 
     console.log(personType);
     return(
-        <div className="flex flex-row gap-2 mt-4">
+        <div className="mt-4 flex flex-row gap-2">
             {Array.isArray(personType) && personType.map((person) => {
                 return(
                     <div>

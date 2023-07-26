@@ -44,7 +44,7 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
             <Box
                 flex="1"
                 borderRadius="8"
-                className="bg-gray-medium m-10 shadow-card w-auto"
+                className="m-10 w-auto bg-gray-medium shadow-card"
                 p={isDetail ? "0" : "8"}
                 
             >
@@ -87,7 +87,7 @@ export function SimpleTable<T extends ItemWithID, K extends keyof T>({
                             <Thead>
                                 <Tr>
                                     <Th px={["4", "4", "6"]} color="gray.300" width="8">
-                                        <Checkbox colorScheme="blue" className="border-gray-text"></Checkbox>
+                                        <Checkbox colorScheme="blue" className="border-gray-text" />
                                     </Th>
                                     <TableHeader />
                                     <Th w="6">Ações</Th>

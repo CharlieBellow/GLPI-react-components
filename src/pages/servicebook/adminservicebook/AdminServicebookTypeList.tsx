@@ -35,9 +35,9 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
   
   return (
     <>
-      <div className="bg-white-ice rounded-xl m-8 p-12">
-        <div className='flex flex-row pb-8 justify-between'>
-            <h1 className="p-4 text-black-text font-bold text-md">Administrar Servicebook</h1>
+      <div className="m-8 rounded-xl bg-white-ice p-12">
+        <div className='flex flex-row justify-between pb-8'>
+            <h1 className="text-md p-4 font-bold text-black-text">Administrar Servicebook</h1>
             <Button title="Novo Grupo" theme='withIcon' icon={<Icon.Plus size={24}/>}/>
         </div>
         <div className='px-4'>

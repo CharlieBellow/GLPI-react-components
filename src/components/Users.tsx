@@ -42,10 +42,10 @@ export default function AllUsers () {
 
   return (
 		<>
-			<div className="lg:m-8 bg-white-100 gap-8 py-6 px-4 flex flex-col rounded-xl">
-				<h2 className="lg:text-5xl text-2xl font-bold">Meus Usuários</h2>
+			<div className="flex flex-col gap-8 rounded-xl bg-white-100 px-4 py-6 lg:m-8">
+				<h2 className="text-2xl font-bold lg:text-5xl">Meus Usuários</h2>
 				
-				<div className="lg:grid lg:w-full flex-wrap mx-auto justify-around gap-9 lg:grid-cols-2 tv:grid-cols-2 grid-cols-1 w-full">
+				<div className="mx-auto w-full grid-cols-1 flex-wrap justify-around gap-9 lg:grid lg:w-full lg:grid-cols-2 tv:grid-cols-2">
 					<>
 						
 						{users ? (users.map( user => {

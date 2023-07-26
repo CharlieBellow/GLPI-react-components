@@ -77,7 +77,7 @@ export function TableRows<T extends ItemWithID, K extends keyof T>() {
         return (
             <Tr key={`row-${index}`} className="">
                 <Td px={["4", "4", "6"]}>
-                    <Checkbox colorScheme="blue" className="border-gray-text"></Checkbox>
+                    <Checkbox colorScheme="blue" className="border-gray-text" />
                 </Td>
                 {
                     columns.map((column, index2) => {
