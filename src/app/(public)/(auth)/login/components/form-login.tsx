@@ -13,6 +13,7 @@ import { Button } from "@/components/Buttons/Button";
 import { CardTitle } from "@/components/Cards/CardTitle";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
 import { useMessage } from "@/Contexts/MessageContext";
+import { useRouter } from "next/navigation";
 
 const formSchema = yup.object().shape({
   email: validationSchema.email,
@@ -22,6 +23,7 @@ const formSchema = yup.object().shape({
 export function FormLogin() {
   const { successMessage, errorMessage } = useMessage();
   const [showInput, setShowInput] = useState(false);
+  const router = useRouter();
 
   const handleShowPass = () => setShowInput((prev) => !prev);
 
@@ -31,7 +33,11 @@ export function FormLogin() {
         errorMessage(res.error!);
       }
 
-      successMessage("Login realizado com sucesso! Estamos lhe redirecionando...");
+      successMessage(
+        "Login realizado com sucesso! Estamos lhe redirecionando..."
+      );
+
+      router.push("/Dashboard");
     });
   };
 
