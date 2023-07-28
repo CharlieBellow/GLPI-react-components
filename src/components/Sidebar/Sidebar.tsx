@@ -59,11 +59,17 @@ function Sidebar({ children }: { children: React.ReactNode }) {
       <div
         data-testid="test"
         className={`${
-          open ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"
-        } fixed z-40 h-auto h-screen overflow-x-hidden bg-blue-final-gradient duration-300 ease-in-out before:-z-10 before:bg-gradient-to-r lg:static lg:block  lg:overflow-x-visible tv:h-screen`}
+          isOpen ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"
+        } fixed z-40 h-auto overflow-x-hidden bg-blue-final-gradient duration-300 ease-in-out before:-z-10 before:bg-gradient-to-r lg:static lg:block  lg:overflow-x-visible tv:h-screen`}
       >
         <div className="mb-4 flex w-1/2 flex-row justify-center lg:w-20">
-          <Image className="mt-4 max-w-[6rem]" src={ufalLogo} alt="logo" />
+          <Image
+            className="mt-4 max-w-[6rem]"
+            src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
+            alt="logo"
+            width={200}
+            height={200}
+          />
         </div>
         <div className="sticky top-0">
           {Menus.map((item, index) => {
