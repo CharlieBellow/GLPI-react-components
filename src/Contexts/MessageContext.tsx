@@ -1,42 +1,22 @@
-import { createContext, useContext, useState } from "react";
-import { toast } from "react-toastify"
+import { useCallback } from "react";
+import { toast } from "react-toastify";
 
-// * contexto para exibir mensagens toast para o usuário
-interface MessageContextProps {
-    errorMessage: (message: string) => void;
-    successMessage: (message: string) => void;
-    warnMessage: (message: string) => void;
-    infoMessage: (message: string) => void;
-}
-interface MessageProviderProps {
-    children: React.ReactNode;
-  }
-  
+export function useMessage() {
+  const errorMessage = useCallback((message: string) => {
+    toast.error(message);
+  }, []);
 
-export const MessageContext = createContext({} as MessageContextProps);
+  const successMessage = useCallback((message: string) => {
+    toast.success(message);
+  }, []);
 
-export function MessageProvider( { children}: MessageProviderProps){
+  const warnMessage = useCallback((message: string) => {
+    toast.warn(message);
+  }, []);
 
-    function errorMessage(message: string): void{
-        toast.error(message);
-    }
-    function successMessage(message: string): void{
-        toast.success(message);
-    }
-    function warnMessage(message: string): void{
-        toast.warn(message);
-    }
-    function infoMessage(message: string): void{
-        toast.info(message);
-    }
-    return(
-        <MessageContext.Provider value={{errorMessage: errorMessage, successMessage: successMessage, infoMessage: infoMessage, warnMessage: warnMessage}}>
-            {children}
-        </MessageContext.Provider>
-    )
-}
-export function useMessage(){
-    const messageContext = useContext(MessageContext)
+  const infoMessage = useCallback((message: string) => {
+    toast.info(message);
+  }, []);
 
-    return messageContext;
+  return { errorMessage, successMessage, warnMessage, infoMessage };
 }
