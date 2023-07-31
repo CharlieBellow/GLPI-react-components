@@ -5,20 +5,43 @@ import FieldSelect from "@/components/Inputs/FieldSelect";
 import { Layout } from "@/components/Layout";
 import * as yup from "yup";
 import { CardGeneric } from "../../components/Cards/CardGeneric";
+import { getAllUsers } from "@/Utils/server/getInfo";
+import { useState } from "react";
+
+
+import {getAuthSession} from "@/Utils/auth"
+
+
+import {} from "next-auth"
 
 const validate = yup.object().shape({
   name: validationSchema.name,
 });
 
 const values = {
-  name: "",
+  serviceOrder: "",
 };
 
 const list = ["Aluno", "Técnico"];
 
-export default function Reponsible() {
+export default async function Reponsible() {
   // const token = localStorage.getItem("token");
-  // const users = getAllUsers(token)
+
+const auth = await getAuthSession()
+
+console.log("auth", auth);
+
+
+  // const [users, setUsers] = useState({})
+  // const resp = async () => {
+
+  //   const user = await getAllUsers(token)
+  //   console.log("resp", users);
+  //   setUsers(user)
+    
+    
+  // }
+  
 
   return (
     <Layout>
@@ -43,8 +66,8 @@ export default function Reponsible() {
                 formTitle={"Formulário Básico"}
               >
                 <CardLabelInput
-                  label="nome"
-                  name="name"
+                  label="Chamado"
+                  name="serviceOrder"
                   type="text"
                   width="100"
                 />
