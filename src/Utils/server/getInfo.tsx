@@ -20,7 +20,9 @@ type GetAllGroupsResponse = {
 };
 
 export async function getAllGroups() {
-  const response = await api.get<GetAllGroupsResponse[]>("/servicebook/group");
+  const response = await api.get<GetAllGroupsResponse[]>(
+    "/servicebook/group/all"
+  );
   return response.data;
 }
 
