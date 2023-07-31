@@ -10,7 +10,7 @@ export default function CategoryBannerImage({
   alt,
 }: CategoryBannerProps) {
   return (
-    <div className="item-center relative left-1/2 -mt-8 flex  h-[80px] w-full -translate-x-1/2 justify-center rounded-lg bg-red-300">
+    <div className="item-center relative left-1/2 -mt-8 flex  h-[80px] w-full -translate-x-1/2 justify-center rounded-lg bg-gray-medium">
       <Image
         src={
           bannerUrl

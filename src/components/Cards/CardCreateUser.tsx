@@ -17,7 +17,7 @@ const validate = yup.object().shape({
 });
 
 function CardCreateUser() {
-	const { errorMessage, successMessage } = useMessage()
+	// const { errorMessage, successMessage } = useMessage()
 	const token = localStorage.getItem("token");
 	return (
 		<div className="mx-4">
@@ -44,7 +44,7 @@ function CardCreateUser() {
 						setTimeout(() => {
 							console.log("submit:", values);
 							postUser(values, token as string)
-							successMessage("Chamado criado com sucesso!");
+							// successMessage("Chamado criado com sucesso!");
 							//alert(JSON.stringify(values, null, 2));
 							actions.resetForm();
 							//setSubmitting(false);

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
   images: {
     remotePatterns: [
       {
@@ -10,6 +11,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+    domains: ["github.com"],
   },
   experimental: {
     typedRoutes: true,

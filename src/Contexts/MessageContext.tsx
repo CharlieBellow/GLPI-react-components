@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+"use client"
+import { createContext, useContext } from "react";
 import { toast } from "react-toastify"
 
 // * contexto para exibir mensagens toast para o usuário
