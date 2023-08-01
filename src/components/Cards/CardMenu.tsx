@@ -1,32 +1,18 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-import { Bell, UserPlus, Question, List, X } from "phosphor-react";
+import { Bell, List, Question, UserPlus, X } from "phosphor-react";
+
+import Search from "@/components/Inputs/Search";
 
 import { useMenuStore } from "@/hooks/useMenuStore";
-import Search from "../../components/Inputs/Search";
 
-function CardMenu() {
+export default function CardMenu() {
   const { setIsOpen, isOpen } = useMenuStore();
 
   return (
-    <div
-      className={`${
-        isOpen ? "ml-[20rem] lg:ml-0" : "ml-0"
-      } lg:text-white h-[10rem] w-full rounded-b-lg bg-gradient p-6 text-white-100   duration-300 ease-in-out lg:rounded-bl-none  lg:rounded-br-lg lg:pt-16 `}
-    >
-      <div className=" relative z-10  hidden justify-center lg:flex ">
-        <Image
-          src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
-          width={350}
-          height={300}
-          alt="logo"
-          className="absolute -top-36 z-10 bg-cover"
-          priority={true}
-        />
-      </div>
-
-      <div className="flex flex-row items-center justify-between">
+    <div className="bg-gradient h-[10rem] w-full overflow-hidden rounded-b-lg p-6 text-white-100 md:rounded-none">
+      <div className="flex h-full items-center justify-between">
         <div className="flex w-[15rem] flex-row items-center gap-4">
           {isOpen ? (
             <X
@@ -45,7 +31,15 @@ function CardMenu() {
           )}
           <h3 className="text-white hidden lg:block" />
         </div>
-        <div className="hidden justify-self-center lg:block">
+        <div className="relative hidden h-full lg:flex lg:items-center lg:justify-center">
+          <Image
+            src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
+            width={350}
+            height={300}
+            alt="logo"
+            className="pointer-events-none absolute -top-14 left-1/2 z-[5] -translate-x-1/2"
+            priority={true}
+          />
           <Search
             theme="outline-gray"
             placeholder="o que você está buscando?"
@@ -93,5 +87,3 @@ function CardMenu() {
     </div>
   );
 }
-
-export default CardMenu;
