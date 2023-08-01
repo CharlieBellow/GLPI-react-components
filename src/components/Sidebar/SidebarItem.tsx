@@ -1,113 +1,117 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { ElementType } from "react";
 
-import * as Icon from "phosphor-react";
+import { usePathname } from "next/navigation";
 
-import { useMenuStore } from "@/hooks/useMenuStore";
-interface Item extends React.HTMLAttributes<HTMLElement> {
-  item: any;
-}
-function SidebarItem(props: Item) {
-  const [selected, setSelected] = useState(false);
-  const [hover, setHover] = useState(false);
-  const router = useRouter();
-  const { isOpen } = useMenuStore();
+import * as Accordion from "@radix-ui/react-accordion";
+import { CaretDown } from "phosphor-react";
 
-  useEffect(() => {
-    if (!router.isReady) return;
-    if (router.asPath === props.item.path) {
-      setSelected(true);
-    }
-  }, [props.item.path, router.asPath, router.isReady]);
+import { ActiveLink } from "@/components/ActiveLink";
 
-  const selectItem = () => {
-    if (isOpen && !props.item.path) {
-      setSelected(!selected);
-    } else {
-      setSelected(false);
-    }
-    if (props.item.path) {
-      setSelected(true);
+import { cn } from "@/Utils/cn";
+
+type SidebarItemProps = {
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+  label: string;
+  href: string;
+  icon?: ElementType;
+  subItems?: Array<Omit<SidebarItemProps, "icon" | "isOpen" | "setIsOpen">>;
+};
+
+export function SidebarItem({
+  label,
+  href,
+  icon: Icon,
+  subItems,
+  isOpen,
+  setIsOpen,
+}: SidebarItemProps) {
+  const pathname = usePathname();
+  const getFullHrefItem = (
+    item: Omit<SidebarItemProps, "icon" | "isOpen" | "setIsOpen">
+  ) => `${href}${item.href}`.replace(/\/\//g, "/");
+
+  const hasActiveLinkInSubItems = subItems?.some(
+    (item) => getFullHrefItem(item) === pathname
+  );
+
+  const onClick = () => {
+    if (!isOpen) {
+      setIsOpen(true);
     }
   };
 
   return (
-    <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <Link
-        href={props.item.path ? props.item.path : "#"}
-        className={`flex w-full flex-col justify-center`}
-        onClick={() => selectItem()}
-      >
-        <div
-          className={`m-2 flex cursor-pointer flex-row  items-center justify-between gap-4 rounded-lg py-2 duration-300 ease-in-out hover:bg-sky-300${
-            selected && props.item.path ? " text-blue-ufal" : "text-white-100"
-          }`}
+    <div className="px-4">
+      {!subItems && (
+        <ActiveLink
+          href={href}
+          title={label}
+          className={cn(
+            "flex w-full items-center gap-3 rounded-lg py-2 text-white-100 transition-colors hover:bg-blue-final-gradient data-[active=true]:bg-blue-ufal/70",
+            {
+              "px-2 justify-center": !isOpen,
+              "px-4": isOpen,
+            }
+          )}
         >
-          <div className="flex flex-row items-center gap-2">
-            <div className="pl-2">{props.item.icon}</div>
-            {isOpen ? <>{props.item.title}</> : <></>}
-          </div>
-          <div className="pr-2">
-            {!props.item.path && isOpen ? (
-              !selected ? (
-                <Icon.CaretDown
-                  size={24}
-                  className="flex flex-col justify-self-end"
-                />
-              ) : (
-                <Icon.CaretUp
-                  size={24}
-                  className="flex flex-col justify-self-end"
-                />
-              )
-            ) : (
-              <></>
+          {Icon && <Icon size={24} className="shrink-0" />}
+          <span className={cn("font-medium", isOpen ? "inline" : "hidden")}>
+            {label}
+          </span>
+        </ActiveLink>
+      )}
+
+      {subItems && subItems.length > 0 && (
+        <Accordion.Item value={label}>
+          <Accordion.Trigger
+            title={label}
+            className={cn(
+              "flex w-full items-center gap-3 rounded-md py-2 text-white-100 transition-colors hover:bg-blue-final-gradient group",
+              {
+                "px-2 justify-center": !isOpen,
+                "px-4 justify-between data-[state=open]:rounded-b-none": isOpen,
+                "bg-blue-ufal/70": hasActiveLinkInSubItems,
+                "data-[state=open]:bg-blue-final-gradient": isOpen,
+              }
             )}
-          </div>
-        </div>
-      </Link>
-      <div className="relative flex w-full flex-col">
-        {isOpen && selected && props.item.children ? (
-          props.item.children.map((child: Item, index: number) => {
-            return (
-              <div
-                key={index}
-                className={`mx-2 flex cursor-pointer flex-col items-start gap-4 rounded-lg px-6 py-2 text-white-100 duration-300 ease-in-out hover:bg-sky-300`}
-              >
-                <Link href={child.dir ? child.dir : "#"} key={index}>
-                  {child.title}
-                </Link>
-              </div>
-            );
-          })
-        ) : (
-          <></>
-        )}
-        {!isOpen && props.item.children ? (
-          <div className="absolute -bottom-2 left-14 z-10 flex w-40 flex-col gap-[0.1rem] overflow-hidden rounded-lg bg-blue-ufal text-white-100 shadow-lg">
-            {props.item.children.map((child: Item, index: number) => {
-              return (
-                <Link
-                  href={child.dir ? child.dir : "#"}
-                  key={index}
-                  className={`bg-blue-final-gradient p-2 pl-4 hover:bg-sky-300${
-                    hover ? "block" : "hidden"
-                  }`}
+            onClick={onClick}
+          >
+            <span className="flex space-x-2">
+              {Icon && <Icon size={24} className="shrink-0" />}
+              <span className={cn("font-medium", isOpen ? "inline" : "hidden")}>
+                {label}
+              </span>
+            </span>
+            <CaretDown
+              className={cn(
+                "h-4 w-4 shrink-0 group-data-[state=open]:rotate-180 transition-transform",
+                isOpen ? "inline" : "hidden"
+              )}
+            />
+          </Accordion.Trigger>
+          <Accordion.Content
+            className={cn(
+              "overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+              {
+                hidden: !isOpen,
+              }
+            )}
+          >
+            <div className="flex flex-col gap-3 rounded-b-md bg-blue-ufal/70">
+              {subItems.map((child) => (
+                <ActiveLink
+                  key={child.href}
+                  href={getFullHrefItem(child)}
+                  className="inline-block px-4 py-2 font-medium text-white-100 hover:text-white-strong-ice data-[active=true]:text-white-100/70"
                 >
-                  {child.title}
-                </Link>
-              );
-            })}
-          </div>
-        ) : (
-          <></>
-        )}
-      </div>
+                  {label}
+                </ActiveLink>
+              ))}
+            </div>
+          </Accordion.Content>
+        </Accordion.Item>
+      )}
     </div>
   );
 }
-export default SidebarItem;
