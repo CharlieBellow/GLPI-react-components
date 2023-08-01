@@ -20,9 +20,6 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "./*": [
-        "./src/*"
-      ],
       "@/*": [
         "./src/*"
       ],
@@ -37,7 +34,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "tailwind.config.js",
+    "next.config.js"
   ],
   "exclude": [
     "node_modules"
