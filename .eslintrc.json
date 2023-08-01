@@ -49,6 +49,9 @@
             "^@/hooks"
           ],
           [
+            "^@/services"
+          ],
+          [
             "^@/Utils"
           ],
           [
@@ -65,9 +68,10 @@
     "tailwindcss": {
       "calles": [
         "className",
-        "cn"
+        "cn",
+        "clsx"
       ],
-      "config": "./tailwind.config.js"
+      "config": "tailwind.config.js"
     }
   }
 }
