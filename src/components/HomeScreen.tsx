@@ -1,18 +1,17 @@
+import CardCategory from "@/components/CardGroup/CardGroup";
+import CardGroups from "@/components/Cards/CardGroups";
+import CardHomeMobile from "@/components/Cards/CardHomeMobile";
+import CardServices from "@/components/Cards/CardServices";
+import CardTicketSummary from "@/components/Cards/CardTicketSummary";
 import * as Icon from "@/components/icons";
-import CardCategory from "./CardGroup/CardGroup";
-import CardHomeMobile from "./Cards/CardHomeMobile";
-import Search from "./Inputs/Search";
-
-import CardGroups from "./Cards/CardGroups";
-import CardServices from "./Cards/CardServices";
-import CardTicketSummary from "./Cards/CardTicketSummary";
+import Search from "@/components/Inputs/Search";
 
 // * página inicial é exibida em '/' ou '/Dashboard'
 
 function HomeScreen() {
   return (
-    <div className="h-screen w-full px-12 lg:h-screen">
-      <div className="pt-20 lg:hidden ">
+    <div className="container h-full overflow-auto  py-12">
+      <div className="lg:hidden">
         <div className="mx-2 flex flex-col items-center gap-6">
           <CardHomeMobile />
           <Search placeholder={"O que está procurando?"} />
@@ -61,7 +60,7 @@ function HomeScreen() {
         </div>
       </div>
 
-      <div className="hidden justify-between gap-6 pt-8 lg:flex ">
+      <div className="hidden justify-between gap-6 lg:flex ">
         <CardServices />
         <CardTicketSummary />
         <CardServices />
