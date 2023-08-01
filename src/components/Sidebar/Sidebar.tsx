@@ -21,7 +21,7 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "w-full bg-gradient transition-all hidden md:block",
+        "w-full bg-gradient transition-all hidden md:block duration-300",
         isOpen ? "max-w-[280px]" : "max-w-[80px]"
       )}
       style={styles}
@@ -53,12 +53,12 @@ export default function Sidebar() {
             collapsible
             value={isOpen ? accordionValue : undefined}
             onValueChange={setAccordionValue}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-4"
           >
             <SidebarItem
               href="/"
               label="Home"
-              icon={Icon.SquaresFour}
+              icon={Icon.House}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
             />
@@ -66,7 +66,7 @@ export default function Sidebar() {
             <SidebarItem
               href="/"
               label="Dashboard"
-              icon={Icon.Signpost}
+              icon={Icon.SquaresFour}
               subItems={[
                 {
                   href: "/Dashboard",
@@ -78,13 +78,13 @@ export default function Sidebar() {
             />
 
             <SidebarItem
-              href="/servicebooks"
-              label="Servicess"
+              href="/servicebook"
+              label="Carta de Serviço"
               icon={Icon.Signpost}
               subItems={[
                 {
-                  href: "/group/creategroups",
-                  label: "Create Group",
+                  href: "/group/create",
+                  label: "Criar grupo",
                 },
               ]}
               isOpen={isOpen}
