@@ -55,8 +55,13 @@ export function SidebarItem({
             }
           )}
         >
-          {Icon && <Icon size={24} className="shrink-0" />}
-          <span className={cn("font-medium", isOpen ? "inline" : "hidden")}>
+          {Icon && <Icon size={28} className="shrink-0" />}
+          <span
+            className={cn(
+              "font-medium text-base/3",
+              isOpen ? "inline" : "hidden"
+            )}
+          >
             {label}
           </span>
         </ActiveLink>
@@ -77,15 +82,20 @@ export function SidebarItem({
             )}
             onClick={onClick}
           >
-            <span className="flex space-x-2">
-              {Icon && <Icon size={24} className="shrink-0" />}
-              <span className={cn("font-medium", isOpen ? "inline" : "hidden")}>
+            <span className="flex items-center gap-3">
+              {Icon && <Icon size={28} className="shrink-0" />}
+              <span
+                className={cn(
+                  "font-medium text-base/3",
+                  isOpen ? "inline" : "hidden"
+                )}
+              >
                 {label}
               </span>
             </span>
             <CaretDown
               className={cn(
-                "h-4 w-4 shrink-0 group-data-[state=open]:rotate-180 transition-transform",
+                "h-5 w-5 shrink-0 group-data-[state=open]:rotate-180 transition-transform",
                 isOpen ? "inline" : "hidden"
               )}
             />
@@ -98,12 +108,12 @@ export function SidebarItem({
               }
             )}
           >
-            <div className="flex flex-col gap-3 rounded-b-md bg-blue-ufal/70">
+            <div className="flex flex-col gap-3 rounded-b-md bg-blue-ufal/70 p-1">
               {subItems.map((child) => (
                 <ActiveLink
                   key={child.href}
                   href={getFullHrefItem(child)}
-                  className="inline-block px-4 py-2 font-medium text-white-100 hover:text-white-strong-ice data-[active=true]:text-white-100/70"
+                  className="inline-block px-4 py-2 font-medium text-white-100 hover:text-white-strong-ice hover:underline data-[active=true]:text-white-100/70"
                 >
                   {child.label}
                 </ActiveLink>
