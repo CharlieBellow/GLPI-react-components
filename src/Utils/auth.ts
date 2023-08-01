@@ -3,6 +3,7 @@ import { AuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { loginUser, refreshToken } from "@/services/users";
+
 import { UserModel } from "@/types";
 
 type TokenWithUserDetails = {
@@ -103,6 +104,9 @@ export const authOptions: AuthOptions = {
   },
 };
 
+/**
+ * @description Get the current session from the server, instead pass all the time authOptions
+ */
 export async function getAuthSession() {
   return await getServerSession(authOptions);
 }
