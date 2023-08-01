@@ -105,7 +105,7 @@ export function SidebarItem({
                   href={getFullHrefItem(child)}
                   className="inline-block px-4 py-2 font-medium text-white-100 hover:text-white-strong-ice data-[active=true]:text-white-100/70"
                 >
-                  {label}
+                  {child.label}
                 </ActiveLink>
               ))}
             </div>
