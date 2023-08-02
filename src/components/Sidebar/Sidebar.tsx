@@ -5,13 +5,13 @@ import { CSSProperties, useState } from "react";
 import Image from "next/image";
 
 import * as Accordion from "@radix-ui/react-accordion";
-import * as Icon from "phosphor-react";
+
+import { MenuItem } from "@/components/MenuItem";
 
 import { useMenuStore } from "@/hooks/useMenuStore";
 
 import { cn } from "@/Utils/cn";
-
-import { SidebarItem } from "./SidebarItem";
+import { routes } from "@/Utils/routes";
 
 export default function Sidebar() {
   const [accordionValue, setAccordionValue] = useState("");
@@ -21,12 +21,12 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "w-full bg-gradient transition-all hidden md:block duration-300",
+        "w-full bg-gradient transition-all hidden md:block duration-300 shrink-0",
         isOpen ? "max-w-[280px]" : "max-w-[80px]"
       )}
       style={styles}
     >
-      <div className="flex h-full flex-col">
+      <nav className="flex h-full flex-col">
         <div
           className={cn(
             "overflow-hidden py-4 h-[10rem] flex justify-center items-center",
@@ -53,46 +53,19 @@ export default function Sidebar() {
             collapsible
             value={isOpen ? accordionValue : undefined}
             onValueChange={setAccordionValue}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 px-4"
           >
-            <SidebarItem
-              href="/"
-              label="Home"
-              icon={Icon.House}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              href="/"
-              label="Dashboard"
-              icon={Icon.SquaresFour}
-              subItems={[
-                {
-                  href: "/Dashboard",
-                  label: "Create Group",
-                },
-              ]}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              href="/servicebook"
-              label="Carta de Serviço"
-              icon={Icon.Signpost}
-              subItems={[
-                {
-                  href: "/group/create",
-                  label: "Criar grupo",
-                },
-              ]}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-            />
+            {routes.map((route) => (
+              <MenuItem
+                key={route.href}
+                {...route}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
+            ))}
           </Accordion.Root>
         </div>
-      </div>
+      </nav>
     </aside>
   );
 }
