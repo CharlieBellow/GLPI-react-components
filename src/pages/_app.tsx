@@ -1,10 +1,11 @@
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/globals.css";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import type { AppProps as AppPropsNext } from "next/app";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import type { AppProps as AppPropsNext } from "next/app";
+
+import { ChakraProvider } from "@chakra-ui/react";
 import { ToastContainer } from "react-toastify";
 
 interface AppProps extends AppPropsNext {
@@ -16,6 +17,7 @@ export default function App({ Component, session, pageProps }: AppProps) {
     <SessionProvider session={session}>
       <ChakraProvider>
         <Component {...pageProps} />
+        <div id="portal" />
         <ToastContainer />
       </ChakraProvider>
     </SessionProvider>
