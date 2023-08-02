@@ -9,26 +9,26 @@ import { ActiveLink } from "@/components/ActiveLink";
 
 import { cn } from "@/Utils/cn";
 
-type SidebarItemProps = {
+type MenuItemProps = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   label: string;
   href: string;
   icon?: ElementType;
-  subItems?: Array<Omit<SidebarItemProps, "icon" | "isOpen" | "setIsOpen">>;
+  subItems?: Array<Omit<MenuItemProps, "icon" | "isOpen" | "setIsOpen">>;
 };
 
-export function SidebarItem({
+export function MenuItem({
   label,
   href,
   icon: Icon,
   subItems,
   isOpen,
   setIsOpen,
-}: SidebarItemProps) {
+}: MenuItemProps) {
   const pathname = usePathname();
   const getFullHrefItem = (
-    item: Omit<SidebarItemProps, "icon" | "isOpen" | "setIsOpen">
+    item: Omit<MenuItemProps, "icon" | "isOpen" | "setIsOpen">
   ) => `${href}${item.href}`.replace(/\/\//g, "/");
 
   const hasActiveLinkInSubItems = subItems?.some(
@@ -42,7 +42,7 @@ export function SidebarItem({
   };
 
   return (
-    <div className="px-4">
+    <div>
       {!subItems && (
         <ActiveLink
           href={href}
