@@ -1,86 +1,71 @@
 "use client";
 
-import * as Icon from "phosphor-react";
-import SidebarItem from "./SidebarItem";
+import { CSSProperties, useState } from "react";
+
 import Image from "next/image";
+
+import * as Accordion from "@radix-ui/react-accordion";
+
+import { MenuItem } from "@/components/MenuItem";
+
 import { useMenuStore } from "@/hooks/useMenuStore";
 
-function Sidebar({ children }: { children: React.ReactNode }) {
-  const { isOpen } = useMenuStore();
+import { cn } from "@/Utils/cn";
+import { routes } from "@/Utils/routes";
 
-  const Menus = [
-    {
-      title: "Dashboard",
-      path: "/Dashboard/",
-      icon: <Icon.SquaresFour size={32} />,
-    },
-    {
-      title: "Perfil",
-      icon: <Icon.User size={32} />,
-      children: [
-        {
-          title: "Alterar Perfil",
-          dir: "/user/update",
-        },
-        {
-          title: "Visualizar Perfil",
-          dir: "/user/info/",
-        },
-      ],
-    },
-    {
-      title: "Carta de Serviço",
-      icon: <Icon.Signpost size={32} />,
-      children: [
-        {
-          title: "Catregorias",
-          dir: "/servicebook/",
-        },
-        {
-          title: "Lista de Categorias (Admin)",
-          dir: "/servicebook/group/creategroup/",
-        },
-      ],
-    },
-    {
-      title: "RU",
-      icon: <Icon.CookingPot size={32} />,
-      path: "/",
-    },
-    {
-      title: "Configurações",
-      icon: <Icon.SlidersHorizontal size={32} />,
-      path: "/",
-      // TODO aqui tem que abrir o modal de configurações
-    },
-  ];
+export default function Sidebar() {
+  const [accordionValue, setAccordionValue] = useState("");
+  const { isOpen, setIsOpen } = useMenuStore();
+  const styles = { "--position-bg": "to bottom" } as CSSProperties;
+
   return (
-    <div className="m-auto flex  w-full justify-center ">
-      <div
-        data-testid="test"
-        className={`${
-          isOpen ? "w-[20rem] shadow-2xl lg:w-48 lg:shadow-none" : "w-0 lg:w-16"
-        } fixed z-40 h-auto overflow-x-hidden bg-blue-final-gradient duration-300 ease-in-out before:-z-10 before:bg-gradient-to-r lg:static lg:block  lg:overflow-x-visible tv:h-screen`}
-      >
-        <div className="mb-4 flex w-1/2 flex-row justify-center lg:w-20">
-          <Image
-            className="mt-4 max-w-[6rem]"
-            src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
-            alt="logo"
-            width={200}
-            height={200}
-          />
+    <aside
+      className={cn(
+        "w-full bg-gradient transition-all hidden md:block duration-300 shrink-0",
+        isOpen ? "max-w-[280px]" : "max-w-[80px]"
+      )}
+      style={styles}
+    >
+      <nav className="flex h-full flex-col">
+        <div
+          className={cn(
+            "overflow-hidden py-4 h-[10rem] flex justify-center items-center",
+            isOpen ? "w-full" : "w-[80px]"
+          )}
+        >
+          <div
+            className={cn("relative overflow-hidden", {
+              "w-full h-24": !isOpen,
+              "w-28 h-28": isOpen,
+            })}
+          >
+            <Image
+              className="max-w-full object-cover"
+              src="/images/ufal-sigla-branca-fundo-transparente-40por-cento.png"
+              alt="logo"
+              fill
+            />
+          </div>
         </div>
-        <div className="sticky top-0">
-          {Menus.map((item, index) => {
-            return <SidebarItem item={item} key={index} />;
-          })}
+        <div className="flex-1">
+          <Accordion.Root
+            type="single"
+            collapsible
+            value={isOpen ? accordionValue : undefined}
+            onValueChange={setAccordionValue}
+            className="flex flex-col gap-4 px-4"
+          >
+            {routes.map((route) => (
+              <MenuItem
+                key={route.href}
+                {...route}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
+            ))}
+          </Accordion.Root>
         </div>
-      </div>
-      <div className="w-full bg-gray-medium text-2xl font-semibold">
-        {children}
-      </div>
-    </div>
+      </nav>
+    </aside>
   );
 }
-export default Sidebar;

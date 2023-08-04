@@ -3,24 +3,79 @@
     "next/core-web-vitals",
     "plugin:tailwindcss/recommended"
   ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort"
+  ],
+  "parser": "@typescript-eslint/parser",
   "rules": {
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
     "tailwindcss/no-custom-classname": "off",
-    "no-unused-vars": [
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
       "error",
       {
         "varsIgnorePattern": "^_",
         "argsIgnorePattern": "^_"
       }
     ],
-    "react/self-closing-comp": "error"
+    "react/self-closing-comp": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^@/styles",
+            "\\w?(\\.css|\\.scss)$"
+          ],
+          [
+            "^react(-dom)?$"
+          ],
+          [
+            "^next/?(.*)"
+          ],
+          [
+            "^@?\\w"
+          ],
+          [
+            "^@/components"
+          ],
+          [
+            "^@/hooks"
+          ],
+          [
+            "^@/services"
+          ],
+          [
+            "^@/Utils"
+          ],
+          [
+            "^@/types"
+          ],
+          [
+            "^./\\w"
+          ]
+        ]
+      }
+    ]
   },
   "settings": {
     "tailwindcss": {
       "calles": [
         "className",
-        "cn"
+        "cn",
+        "clsx"
       ],
-      "config": "./tailwind.config.js"
+      "config": "tailwind.config.js"
     }
   }
 }

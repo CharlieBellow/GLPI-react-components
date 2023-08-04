@@ -15,6 +15,7 @@ const nextConfig = {
   },
   experimental: {
     typedRoutes: true,
+    domains: ["www.github.com"],
   },
 };
 

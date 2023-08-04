@@ -151,7 +151,6 @@ module.exports = {
       },
 
       backgroundImage: {
-        gradient: "var(--alternative-gradient)",
         ufalBackground:
           "url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
       },
@@ -163,5 +162,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
