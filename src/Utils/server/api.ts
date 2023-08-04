@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { getAuthSession } from "@/Utils/auth";
 
 export const api = axios.create({
