@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth, { DefaultSession, DefaultUser } from "next-auth";
 import { JWT } from "next-auth/jwt";
 
@@ -9,7 +9,9 @@ declare module "next-auth" {
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
-    user: DefaultSession["user"] & UserModel & Token & { error?: string };
+    user: DefaultSession["user"] &
+      UserModel &
+      Token & { error?: "RefreshTokenError" };
   }
 
   interface User extends DefaultUser, UserModel, Token {}

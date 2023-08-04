@@ -1,6 +1,10 @@
-import * as Icon from "@/components/icons";
-import { Spinner } from "@chakra-ui/react";
+"use client";
+
 import { ButtonHTMLAttributes } from "react";
+
+import { Spinner } from "@chakra-ui/react";
+
+import * as Icon from "@/components/icons";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   title?: string;
