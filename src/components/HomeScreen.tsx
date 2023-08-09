@@ -1,12 +1,17 @@
-import CardCategory from "@/components/CardGroup/CardGroup";
+import CardCategory from "@/components/CardGroup";
 import CardGroups from "@/components/Cards/CardGroups";
 import CardHomeMobile from "@/components/Cards/CardHomeMobile";
 import CardServices from "@/components/Cards/CardServices";
 import CardTicketSummary from "@/components/Cards/CardTicketSummary";
-import * as Icon from "@/components/icons";
+import {
+  BookOpen,
+  Cpu,
+  FileText,
+  User,
+  Users,
+  Wrench,
+} from "@/components/icons";
 import Search from "@/components/Inputs/Search";
-
-// * página inicial é exibida em '/' ou '/Dashboard'
 
 function HomeScreen() {
   return (
@@ -20,43 +25,12 @@ function HomeScreen() {
         <h1 className="my-6 ml-8 text-base font-semibold">Categorias</h1>
 
         <div className="mx-auto flex max-w-xl flex-wrap justify-center gap-2 md:m-0">
-          <CardCategory
-            link="/"
-            Name={"Biblioteca"}
-            Icon={<Icon.BookOpen size={18} />}
-            idGroup={""}
-          />
-          <CardCategory
-            link="/"
-            Name={"NTI"}
-            Icon={<Icon.Cpu size={18} />}
-            idGroup={""}
-          />
-          <CardCategory
-            link="/"
-            Name={"manutenção"}
-            Icon={<Icon.Wrench size={18} />}
-            idGroup={""}
-          />
-          <CardCategory
-            link="/"
-            Name={"Infraestrutura"}
-            Icon={<Icon.FileText size={18} />}
-            idGroup={""}
-          />
-          {/* Icon false */}
-          <CardCategory
-            link="/"
-            Name={"CRCA"}
-            Icon={<Icon.User size={18} />}
-            idGroup={""}
-          />
-          <CardCategory
-            link="/"
-            Name={"NAE"}
-            Icon={<Icon.Users size={18} />}
-            idGroup={""}
-          />
+          <CardCategory href="/" label="Biblioteca" icon={BookOpen} />
+          <CardCategory href="/" label="NTI" icon={Cpu} />
+          <CardCategory href="/" label="manutenção" icon={Wrench} />
+          <CardCategory href="/" label="Infraestrutura" icon={FileText} />
+          <CardCategory href="/" label="CRCA" icon={User} />
+          <CardCategory href="/" label="NAE" icon={Users} />
         </div>
       </div>
 
