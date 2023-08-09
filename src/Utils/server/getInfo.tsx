@@ -1,3 +1,7 @@
+import { SubGroup } from "@/Utils/server/types";
+
+import { Group, Service } from "@/types";
+
 import { api } from "./api";
 
 export interface groupProps {
@@ -8,27 +12,36 @@ export interface groupProps {
 }
 
 export async function getGroup(id: string) {
-  const response = await api.get(`/servicebook/group/${id}`);
+  const response = await api.get<Group>(`/servicebook/group/${id}`);
   return response.data;
 }
 
-type GetAllGroupsResponse = {
-  id: string;
-  description: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
+type GetAllGroupsResponse = Group[];
 
 export async function getAllGroups() {
-  const response = await api.get<GetAllGroupsResponse[]>(
+  const { data } = await api.get<GetAllGroupsResponse>(
     "/servicebook/group/all"
   );
-  return response.data;
+
+  return data?.map((group) => ({
+    ...group,
+    createdAt: new Date(group.createdAt),
+    updatedAt: new Date(group.updatedAt),
+  }));
 }
 
+type GetAllSubGroupsResponse = SubGroup[];
+
 export async function getAllSubGroups(idCategory: string) {
-  const response = await api.get(`/servicebook/group/${idCategory}/subgroup`);
-  return response.data;
+  const { data } = await api.get<GetAllSubGroupsResponse>(
+    `/servicebook/group/${idCategory}/subgroup`
+  );
+
+  return data?.map((subgroup) => ({
+    ...subgroup,
+    createdAt: new Date(subgroup.createdAt),
+    updatedAt: new Date(subgroup.updatedAt),
+  }));
 }
 
 export async function getSubGroup(id: string) {
@@ -37,8 +50,10 @@ export async function getSubGroup(id: string) {
 }
 
 export async function getAllServices(idSubgroup: string) {
-  const response = await api.get(`/servicebook/subgroup/${idSubgroup}/service`);
-  return response.data;
+  const { data } = await api.get<Service[]>(
+    `/servicebook/subgroup/${idSubgroup}/service`
+  );
+  return data;
 }
 
 export async function getService(id: string) {
@@ -49,7 +64,7 @@ export async function getService(id: string) {
 export async function getRequesterService(id: string, token: string) {
   const response = await api({
     method: "get",
-    url: `servicebook/serviceorder/requester/${id}`,
+    url: ``,
     headers: { authorization: `Bearer ${token}` },
   });
   return response.data;
