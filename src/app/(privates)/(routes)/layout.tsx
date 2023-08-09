@@ -10,7 +10,7 @@ export default function PrivateLayout({ children }: { children: ReactNode }) {
       <div className="flex flex-1 flex-col bg-slate-200">
         <CardMenu />
         <div className="h-full max-h-[calc(100vh-10rem)] overflow-y-auto bg-gray-medium">
-          {children}
+          <div className="container py-8">{children}</div>
         </div>
       </div>
     </main>

@@ -1,8 +1,9 @@
-import CardServiceDescription from '../../../../components/Cards/CardServiceDescription';
 import Head from "next/head";
+
+import CardServiceDescription from "../../../../components/Cards/CardServiceDescription";
 import { Layout } from "../../../../components/Layout";
 
-export default function ServiceLetter () {
+export default function ServiceLetter() {
   return (
     <Layout>
       <Head>
