@@ -1,6 +1,9 @@
-import * as Icon from "@/components/icons";
-import { Field, FieldHookConfig, useField } from "formik";
+"use client";
 import { ClassAttributes, InputHTMLAttributes } from "react";
+
+import { Field, FieldHookConfig, useField } from "formik";
+
+import * as Icon from "@/components/icons";
 
 interface CardLabelInputProps extends React.HTMLAttributes<HTMLElement> {
   label: string | boolean;

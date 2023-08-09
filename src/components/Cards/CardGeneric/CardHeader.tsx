@@ -1,5 +1,6 @@
-import { cn } from "@/Utils/cn";
 import { ReactNode } from "react";
+
+import { cn } from "@/Utils/cn";
 
 type CardHeaderPros = {
   children: ReactNode;

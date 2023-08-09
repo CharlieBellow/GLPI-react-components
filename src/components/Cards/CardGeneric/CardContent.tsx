@@ -1,5 +1,6 @@
-import { cn } from "@/Utils/cn";
 import React, { ReactNode } from "react";
+
+import { cn } from "@/Utils/cn";
 
 type CardContentProps = {
   children: ReactNode;

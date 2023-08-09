@@ -102,12 +102,8 @@ export async function getUserByEmail(email: object, token: string) {
   return response.data;
 }
 
-export async function getAllUsers(token: string) {
-  const response = await api({
-    method: "get",
-    url: `/users`,
-    headers: { authorization: `Bearer ${token}` },
-  });
+export async function getAllUsers() {
+  const response = await api.get("/users");
 
   return response.data;
 }

@@ -1,10 +1,12 @@
-import { getAllGroups } from "@/Utils/server/getInfo";
 import { Route } from "next";
+
 import CategoryBannerActiveServicesCount from "@/components/CategoryBannerPattern/CategoryBannerActiveServicesCount";
 import CategoryBannerContent from "@/components/CategoryBannerPattern/CategoryBannerContent";
 import CategoryBannerDescription from "@/components/CategoryBannerPattern/CategoryBannerDescription";
 import CategoryBannerImage from "@/components/CategoryBannerPattern/CategoryBannerImage";
 import CategoryBannerRoot from "@/components/CategoryBannerPattern/CategoryBannerRoot";
+
+import { getAllGroups } from "@/Utils/server/getInfo";
 
 export const revalidate = 86400; // 24 hours
 
