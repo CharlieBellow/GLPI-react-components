@@ -21,7 +21,7 @@ export default function CardMenu() {
             width={350}
             height={300}
             alt="logo"
-            className="pointer-events-none absolute -top-14 left-1/2 z-[5] -translate-x-1/2"
+            className="pointer-events-none absolute -top-28 left-1/2 z-[5] -translate-x-1/2"
             priority
           />
           <Search
