@@ -1,5 +1,5 @@
 import HomeScreen from "@/components/HomeScreen";
 
-export default function DashboardPage() {
+export default function HomePage() {
   return <HomeScreen />;
 }

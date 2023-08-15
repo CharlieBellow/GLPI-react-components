@@ -1,122 +1,105 @@
+"use client";
+
+import { Form, Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 
-import { Spinner } from "@chakra-ui/react";
-import { Form, Formik } from "formik";
-import { Button } from "../Buttons/Button";
-import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLine } from "./CardLine";
-import { CardTitle } from "./CardTitle";
-import FieldSelect from "../Inputs/FieldSelect";
+import { Button } from "@/components/Buttons/Button";
+import { CardLine } from "@/components/Cards/CardLine";
+import { CardTitle } from "@/components/Cards/CardTitle";
+import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
+import FieldSelect from "@/components/Inputs/FieldSelect";
 
+import { postSubGroup } from "@/Utils/server/postInfo";
+import { validationSchema } from "@/Utils/validations";
 
-import { useMessage } from "../../Contexts/MessageContext";
-import { postSubGroup } from "../../Utils/server/postInfo"
-
-import { getAllGroups } from "../../Utils/server/getInfo";
-
-import {
-	validationSchema,
-
-} from "../../Utils/validations";
-import { Group } from "../../Utils/server/types";
-import { useEffect, useState } from "react";
-
+import { useMessage } from "@/Contexts/MessageContext";
 
 const validate = yup.object().shape({
-	description: validationSchema.titleSubgroup,
+  serviceGroupId: yup.string().required("Selecione uma categoria"),
+  description: validationSchema.titleSubgroup,
 });
 
-export const CardCreateSubGroup = () => {
+type CardCreateSubGroupProps = {
+  groups: { id: string; label: string }[];
+};
 
+type FormValues = yup.InferType<typeof validate>;
 
-  const token = localStorage.getItem("token");
-  const {errorMessage, successMessage} = useMessage()
-  const [groups, setGroups] = useState<Group[]>([])
+export const CardCreateSubGroup = ({ groups }: CardCreateSubGroupProps) => {
+  const { errorMessage, successMessage } = useMessage();
 
-  useEffect(() => {
-
-    const fetchData = async () => {
-      const response = await getAllGroups()
-      setGroups(response);      
-			
+  const handleSubmit = async (
+    values: FormValues,
+    actions: FormikHelpers<FormValues>
+  ) => {
+    try {
+      await postSubGroup(values);
+      successMessage("Subgrupo criado com sucesso!");
+      actions.resetForm();
+    } catch (error) {
+      errorMessage("Algo deu errado, tente novamente.");
     }
+  };
 
-    fetchData();
-
-      
-  },[]);
-	
-	return (
-		<div className="mx-4">
-			<div
-				className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
+  return (
+    <div className="mx-4">
+      <div
+        className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
 				flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
 				lg:w-202 lg:max-w-card"
-			>
-				<div className="pl-9 pt-8">
-					<CardTitle title="Criar Subcategoria" />
-				</div>
-				<div className="mx-9 mb-10 mt-4">
-					<CardLine />
-				</div>
-				<Formik
-					initialValues={{
-						serviceGroupId: "",
-						description: "",
-						
-					}}
-				
-					validationSchema={validate}
-					onSubmit={(values, actions) => {
-						setTimeout(() => {
-							console.log("submit:", values);
-							if (token !== null) {
-								postSubGroup( values, token )
-						  	successMessage("Subgrupo criado com sucesso!");
-								actions.resetForm();
+      >
+        <div className="pl-9 pt-8">
+          <CardTitle title="Criar Subcategoria" />
+        </div>
+        <div className="mx-9 mb-10 mt-4">
+          <CardLine />
+        </div>
+        <Formik
+          initialValues={{
+            description: "",
+            serviceGroupId: "",
+          }}
+          validationSchema={validate}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, isValid }) => {
+            return (
+              <Form autoComplete="on">
+                <div className="mx-14 flex flex-col gap-9">
+                  <div className="">
+                    <CardLabelInput
+                      label="Nome da Subcategoria"
+                      name="description"
+                      type="text"
+                      width="w-full"
+                      inputid="title"
+                    />
+                  </div>
 
-							} else {
-								errorMessage("Algo deu errado, tente novamente.")
-							}
-						
-						}, 400);
-					}}
-				>
-					{({ isSubmitting, isValid }) => (
-						<Form autoComplete="on">
-							<div className="mx-14 flex flex-col gap-9">
-								<div className="">
-									<CardLabelInput
-										label="Nome da Subcategoria"
-										name="description"
-										type="text"
-										width="w-full"
-										inputid="title"
-									/>
-								</div>
-
-                <div className="">
-                  <FieldSelect
-                    label="serviceGroupId"
-                    name="serviceGroupId"
-                    default="Selecione a categoria a qual ela pertence"
-                    listitems={groups.map( group => group.description)} 
-                  />
+                  <div className="">
+                    <FieldSelect
+                      name="serviceGroupId"
+                      label="serviceGroupId"
+                      default="Selecione a categoria a qual ela pertence"
+                      listitems={groups}
+                    />
+                  </div>
                 </div>
-							</div>
-							<div className="mr-14 mt-10 flex justify-end gap-x-3.5">
-								<Button
-									title="Criar"
-									theme="primaryAction"
-									type="submit"
-									disabled={isSubmitting || !isValid} isSubmitting={isSubmitting}                  
+                <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
+                  <Button
+                    title="Criar"
+                    theme="primaryAction"
+                    type="submit"
+                    disabled={isSubmitting || !isValid}
+                    isSubmitting={isSubmitting}
                   />
-								<Button title="Cancelar" theme="secondaryAction"  />
-							</div>
-						</Form>
-					)}
-				</Formik>
-			</div>
-		</div>
-	);
+                  <Button title="Cancelar" theme="secondaryAction" />
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
+    </div>
+  );
 };
