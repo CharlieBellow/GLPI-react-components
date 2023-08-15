@@ -27,7 +27,7 @@ const CardGroup = forwardRef<HTMLAnchorElement, CardGroupProps>(
         )}
       >
         <Icon size={27} className="shrink-0" />
-        <p className="line-clamp-1 text-ellipsis text-sm font-medium lg:text-xl">
+        <p className="max-w-full truncate text-sm font-medium lg:text-xl">
           {label}
         </p>
       </Link>

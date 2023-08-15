@@ -1,19 +1,22 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
-import { Eye, EyeSlash } from "@/components/icons";
-import { Form, Formik } from "formik";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+
+import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import { useMessage } from "@/Contexts/MessageContext";
-import { validationSchema } from "@/Utils/validations";
 import { Button } from "@/components/Buttons/Button";
 import { CardTitle } from "@/components/Cards/CardTitle";
+import { Eye, EyeSlash } from "@/components/icons";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
-import { useRouter } from "next/navigation";
+
+import { validationSchema } from "@/Utils/validations";
+
+import { useMessage } from "@/Contexts/MessageContext";
 
 const formSchema = yup.object().shape({
   email: validationSchema.email,
@@ -37,7 +40,7 @@ export function FormLogin() {
         "Login realizado com sucesso! Estamos lhe redirecionando..."
       );
 
-      router.push("/Dashboard");
+      router.push("/dashboard");
     });
   };
 

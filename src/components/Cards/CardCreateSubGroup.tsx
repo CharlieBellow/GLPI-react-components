@@ -66,24 +66,19 @@ export const CardCreateSubGroup = ({ groups }: CardCreateSubGroupProps) => {
             return (
               <Form autoComplete="on">
                 <div className="mx-14 flex flex-col gap-9">
-                  <div className="">
-                    <CardLabelInput
-                      label="Nome da Subcategoria"
-                      name="description"
-                      type="text"
-                      width="w-full"
-                      inputid="title"
-                    />
-                  </div>
-
-                  <div className="">
-                    <FieldSelect
-                      name="serviceGroupId"
-                      label="serviceGroupId"
-                      default="Selecione a categoria a qual ela pertence"
-                      listitems={groups}
-                    />
-                  </div>
+                  <CardLabelInput
+                    label="Nome da Subcategoria"
+                    name="description"
+                    type="text"
+                    width="w-full"
+                    inputid="title"
+                  />
+                  <FieldSelect
+                    name="serviceGroupId"
+                    label="serviceGroupId"
+                    default="Selecione a categoria a qual ela pertence"
+                    listitems={groups}
+                  />
                 </div>
                 <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
                   <Button
@@ -93,7 +88,11 @@ export const CardCreateSubGroup = ({ groups }: CardCreateSubGroupProps) => {
                     disabled={isSubmitting || !isValid}
                     isSubmitting={isSubmitting}
                   />
-                  <Button title="Cancelar" theme="secondaryAction" />
+                  <Button
+                    type="button"
+                    title="Cancelar"
+                    theme="secondaryAction"
+                  />
                 </div>
               </Form>
             );
