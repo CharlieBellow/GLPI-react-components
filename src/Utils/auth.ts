@@ -20,14 +20,14 @@ async function refreshUserToken(
   tokenObj: TokenWithUserDetails
 ): Promise<TokenWithUserDetails> {
   try {
-    const data = await refreshToken(tokenObj.refresh_token);
+    const { refresh_token } = await refreshToken(tokenObj.refresh_token);
     const tokenExpiresIn = Date.now() + 7 * 60 * 60 * 1000; // 7 days
     const refreshTokenExpiresIn = Date.now() + 30 * 24 * 60 * 60 * 1000; // 30 days
 
     return {
       ...tokenObj,
-      token: data.refresh_token.token,
-      refresh_token: data.refresh_token.refresh_token,
+      token: refresh_token.token,
+      refresh_token: refresh_token.refresh_token,
       tokenExpiresIn,
       refreshTokenExpiresIn,
     };
@@ -86,7 +86,7 @@ export const authOptions: AuthOptions = {
           },
           token: user.token,
           refresh_token: user.refresh_token,
-          tokenExpiresIn: new Date(user.refreshTokenExpiresIn).getTime(),
+          tokenExpiresIn: new Date(user.tokenExpiresIn).getTime(),
           refreshTokenExpiresIn: new Date(user.refreshTokenExpiresIn).getTime(),
         };
       }
