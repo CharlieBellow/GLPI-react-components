@@ -1,6 +1,7 @@
-import { AxiosError } from "axios";
 import { AuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+import { AxiosError } from "axios";
 
 import { loginUser, refreshToken } from "@/services/users";
 
