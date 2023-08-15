@@ -61,3 +61,13 @@ div {
     #1b4ba8 99.89%
   );
 }
+
+.bg-gradient-sidebar {
+  --position-bg: 90deg;
+  background: linear-gradient(
+    var(--position-bg),
+    rgba(1, 149, 218, 0.67),
+    #0195da 74.58%,
+    #1b4ba8 99.89%
+  );
+}

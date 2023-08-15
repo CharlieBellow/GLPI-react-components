@@ -21,7 +21,7 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "w-full bg-gradient transition-all hidden md:block duration-300 shrink-0",
+        "w-full bg-gradient-sidebar transition-all hidden md:block duration-300 shrink-0",
         isOpen ? "max-w-[280px]" : "max-w-[80px]"
       )}
       style={styles}
