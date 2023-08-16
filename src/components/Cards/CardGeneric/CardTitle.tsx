@@ -1,5 +1,6 @@
-import { cn } from "@/Utils/cn";
 import React, { ReactNode } from "react";
+
+import { cn } from "@/Utils/cn";
 
 type CardTitleProps = {
   children: ReactNode;
@@ -14,10 +15,7 @@ export default function CardTitle({
 }: CardTitleProps) {
   const Comp = variant;
   return (
-    <Comp
-      {...rest}
-      className={cn("text-tertiary-2", className)}
-    >
+    <Comp {...rest} className={cn("text-tertiary-2", className)}>
       {children}
     </Comp>
   );

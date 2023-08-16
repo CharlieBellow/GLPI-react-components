@@ -16,7 +16,7 @@ export const routes = [
     icon: House,
   },
   {
-    href: "/Dashboard",
+    href: "/dashboard",
     label: "Dashboard",
     icon: SquaresFour,
   },
@@ -28,6 +28,10 @@ export const routes = [
       {
         href: "/group/create",
         label: "Criar Grupo",
+      },
+      {
+        href: "/admin",
+        label: "Admin. Servicebook",
       },
     ],
   },

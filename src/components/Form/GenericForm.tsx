@@ -22,7 +22,8 @@ type GenericFormProps = {
   validation: object;
   onSubmit: ReactNode;
   actionSubmit: string;
-  formTitle: string;
+  formTitle?: string;
+  button?: boolean;
 };
 export const GenericForm = ({
   children,
@@ -31,6 +32,7 @@ export const GenericForm = ({
   onSubmit,
   actionSubmit,
   formTitle,
+  button
 }: GenericFormProps & HtmlAttributes<HTMLElement>) => {
   const { errorMessage, successMessage } = useMessage();
   return (
@@ -65,7 +67,9 @@ export const GenericForm = ({
             <Form autoComplete="on">
               <div className="mx-14 flex flex-col gap-9">{children}</div>
 
-              <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
+                { button &&
+                  
+                  <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
                 <Button
                   title={actionSubmit}
                   theme="primaryAction"
@@ -74,6 +78,7 @@ export const GenericForm = ({
                 />
                 <Button title="Cancelar" theme="secondaryAction" />
               </div>
+                }
             </Form>
           )}
         </Formik>
