@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ReactNode } from "react";
 
 import { Metadata } from "next";
+import { Roboto } from "next/font/google";
 import { redirect } from "next/navigation";
 
 import { Providers } from "@/components/Providers";
@@ -17,6 +18,11 @@ export const metadata: Metadata = {
   },
 };
 
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
+
 export default async function RootLayout({
   children,
 }: {
@@ -29,7 +35,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html>
+    <html lang="pt-BR" className={roboto.className}>
       <body className="bg-gray-medium">
         <Providers>{children}</Providers>
       </body>
