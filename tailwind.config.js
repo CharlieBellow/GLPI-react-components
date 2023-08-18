@@ -13,17 +13,15 @@ module.exports = {
       sm: "576px",
       // => @media (min-width: 576px) { mobile }
 
-      md: "960px",
       // => @media (min-width: 960px) { Tablet }
-
-      lg: "1024px",
+      md: "960px",
 
       // => @media (min-width: 1024px) { desktops pequenos }
+      lg: "1024px",
 
-      tv: "1440px",
       // => @media (min-width: 1440px) { monitores e TVs }
+      tv: "1440px",
     },
-
     extend: {
       spacing: {
         13: "3.25rem",
@@ -43,16 +41,10 @@ module.exports = {
         128: "32rem",
         202: "50.5rem",
       },
-
       maxWidth: {
         "13xl": "128rem",
         card: "50.5rem",
       },
-
-      fontFamily: {
-        sans: "Roboto, sans-serif",
-      },
-
       fontSize: {
         base: ["16px", "24px"],
         xl: ["20px", "32px"],
@@ -64,7 +56,6 @@ module.exports = {
         bg: "#212532",
         "light-bg": "#333849",
         "red-ufal": "#ED1C24",
-
         black: {
           text: "#333849",
         },
@@ -73,20 +64,17 @@ module.exports = {
           ice: "#F7FAFC",
           "strong-ice": "#EDF2F7",
         },
-
         blue: {
           ufal: "#0095DA",
           "ufal-hover": "#33AAE1",
           "final-gradient": "#4FB4E4",
           "dark-final-gradient": "#0B70A2",
         },
-
         gray: {
           text: "#797D9A",
           medium: "#EDF2F7",
           dark: "#D9D9D9",
         },
-
         primary: {
           blue: "var(--primary-blue)",
           red: "var(--primary-red)",
@@ -101,7 +89,6 @@ module.exports = {
         },
         destructive: "var(--destructive)",
       },
-
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -149,12 +136,10 @@ module.exports = {
         slideRightAndFade:
           "slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
-
       backgroundImage: {
         ufalBackground:
           "url('/images/ufal-sigla-branca-fundo-transparente-40por-cento.png')",
       },
-
       boxShadow: {
         card: "0px 8px 16px rgba(0, 0, 0, 0.16)",
         button: "0px 4px 4px rgba(0, 0, 0, 0.16)",
