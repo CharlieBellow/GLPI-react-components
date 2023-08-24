@@ -1,10 +1,18 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-type CardProps = {
+import { cn } from "@/Utils/cn";
+
+type CardProps = React.HtmlHTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
 };
-export default function CardRoot({ children }: CardProps) {
+
+export default function CardRoot({ children, className, ...props }: CardProps) {
   return (
-    <div className="m-4 rounded-lg bg-white-100 p-4 shadow-lg">{children}</div>
+    <div
+      {...props}
+      className={cn("m-4 rounded-lg bg-white-100 p-4 shadow-lg", className)}
+    >
+      {children}
+    </div>
   );
 }

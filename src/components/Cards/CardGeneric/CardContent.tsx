@@ -12,7 +12,7 @@ export default function CardContent({
   ...rest
 }: CardContentProps) {
   return (
-    <div {...rest} className={cn("p-6 bg-secondary-2 rounded-lg", className)}>
+    <div {...rest} className={cn("p-6 rounded-lg", className)}>
       {children}
     </div>
   );

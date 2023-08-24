@@ -4,6 +4,7 @@ type CardImageProps = {
   url?: string;
   fallbackText: string;
 };
+
 export default function CardImage({ url, fallbackText }: CardImageProps) {
   return url ? (
     <Image
