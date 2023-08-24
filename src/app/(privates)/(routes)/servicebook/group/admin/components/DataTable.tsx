@@ -1,9 +1,12 @@
 "use client";
+import { useState } from "react";
 
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -18,6 +21,8 @@ import {
   TableRow,
 } from "@/components/ui/Table";
 
+import { CreateGroupDialog } from "./CreateGroupDialog";
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -27,20 +32,29 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
     initialState: {
       pagination: {
         pageSize: 8,
       },
     },
+    state: {
+      columnFilters,
+    },
   });
 
   return (
     <div>
+      <div className="flex w-full items-center justify-end py-4">
+        <CreateGroupDialog />
+      </div>
       <div className="overflow-hidden rounded-lg border border-secondary-2">
         <Table>
           <TableHeader>
@@ -92,19 +106,21 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
 
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="ml-auto flex w-max items-center justify-end gap-4 py-4">
         <Button
           theme="secondary"
-          title="Anterior"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-        />
+        >
+          Anterior
+        </Button>
         <Button
           theme="secondary"
-          title="          Próxima"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-        />
+        >
+          Próxima
+        </Button>
       </div>
     </div>
   );
