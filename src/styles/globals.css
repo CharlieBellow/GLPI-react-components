@@ -7,24 +7,25 @@
   ol {
     list-style: revert;
   }
-}
 
-:root {
-  --primary-blue: hsla(199, 100%, 43%, 1);
-  --primary-red: hsla(358, 85%, 52%, 1);
-  --secondary-1: hsla(204, 45%, 98%, 1);
-  --secondary-2: hsla(210, 14%, 89%, 1);
-  --tertiary-1: hsla(233, 14%, 54%, 1);
-  --tertiary-2: hsla(226, 18%, 24%, 1);
-  --white: hsla(0, 0%, 100%, 1);
-  --destructive: hsla(358, 85%, 52%, 1);
-}
+  :root {
+    --primary-blue: 199 100% 43%;
+    --primary-red: 358 85% 52%;
+    --secondary-1: 204 45% 98%;
+    --secondary-2: 210 14% 89%;
+    --tertiary-1: 233 14% 54%;
+    --tertiary-2: 226 18% 24%;
+    --white: 0 0% 100%;
+    --destructive: 358 85% 52%;
+    --danger: 45 100% 51%;
+  }
 
-.dark {
-  --secondary-1: hsla(233, 14%, 54%, 1);
-  --secondary-2: hsla(226, 18%, 24%, 1);
-  --tertiary-1: hsla(0, 0%, 100%, 1);
-  --tertiary-2: hsla(233, 14%, 54%, 1);
+  .dark {
+    --secondary-1: 233 14% 54%;
+    --secondary-2: 226 18% 24%;
+    --tertiary-1: 0 0% 100%;
+    --tertiary-2: 233 14% 54%;
+  }
 }
 
 body {

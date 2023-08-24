@@ -58,6 +58,7 @@ module.exports = {
         "red-ufal": "#ED1C24",
         black: {
           text: "#333849",
+          black: "#000000",
         },
         white: {
           100: "#FFFFFF",
@@ -76,18 +77,19 @@ module.exports = {
           dark: "#D9D9D9",
         },
         primary: {
-          blue: "var(--primary-blue)",
-          red: "var(--primary-red)",
+          blue: "hsl(var(--primary-blue))",
+          red: "hsl(var(--primary-red))",
         },
         secondary: {
-          1: "var(--secondary-1)",
-          2: "var(--secondary-2)",
+          1: "hsl(var(--secondary-1))",
+          2: "hsl(var(--secondary-2))",
         },
         tertiary: {
-          1: "var(--tertiary-1)",
-          2: "var(--tertiary-2)",
+          1: "hsl(var(--tertiary-1))",
+          2: "hsl(var(--tertiary-2))",
         },
-        destructive: "var(--destructive)",
+        danger: "hsl(var(--danger))",
+        destructive: "hsl(var(--destructive))",
       },
       keyframes: {
         "accordion-down": {
