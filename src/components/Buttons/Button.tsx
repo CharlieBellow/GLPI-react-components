@@ -43,8 +43,17 @@ const button = tv({
 type ButtonProps2 = ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof button> & {
     isLoading?: boolean;
+    /**
+     * @deprecated Use `isLoading` instead for same functionality
+     */
     isSubmitting?: boolean;
+    /**
+     * @deprecated pass children instead title
+     */
     title?: string;
+    /**
+     * @deprecated pass children instead icon
+     */
     icon?: Icon.IconProps;
   };
 
