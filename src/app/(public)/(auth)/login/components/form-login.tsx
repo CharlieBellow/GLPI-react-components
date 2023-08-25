@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import { Button } from "@/components/Buttons/Button";
+import { Button, button } from "@/components/Buttons/Button";
 import { CardTitle } from "@/components/Cards/CardTitle";
 import { Eye, EyeSlash } from "@/components/icons";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
@@ -95,16 +95,18 @@ export function FormLogin() {
                 theme="primary"
                 type="submit"
                 disabled={isSubmitting || !isValid}
-                isSubmitting={isSubmitting}
+                isLoading={isSubmitting}
               />
 
-              <Button title="Esqueci a senha" theme="textOnly" />
+              <Button theme="textOnly">Esqueci a senha</Button>
 
               <Link
                 href="/signup"
-                className="text-center text-base font-semibold text-blue-ufal"
+                className={button({
+                  theme: "textOnly",
+                })}
               >
-                Novo Cadastro
+                Não tem uma conta? Cadastre-se
               </Link>
             </div>
           </Form>

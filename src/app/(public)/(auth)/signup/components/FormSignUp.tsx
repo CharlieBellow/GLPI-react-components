@@ -1,16 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
-import { Eye, EyeSlash } from "@/components/icons";
+import Link from "next/link";
+
 import { Form, Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 
-import { validationSchema } from "@/Utils/validations";
-import { Button } from "@/components/Buttons/Button";
+import { Button, button } from "@/components/Buttons/Button";
 import { CardTitle } from "@/components/Cards/CardTitle";
+import { Eye, EyeSlash } from "@/components/icons";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
+
+import { validationSchema } from "@/Utils/validations";
 
 const validate = yup.object().shape({
   fullName: validationSchema.fullName,
@@ -125,17 +127,15 @@ export function FormSignUp() {
 
             <div className="mx-11 mt-8 flex  flex-col justify-center">
               <Button
-                title="Cadastrar"
                 theme="primary"
                 type="submit"
                 disabled={isSubmitting || !isValid}
-                isSubmitting={isSubmitting}
-              />
-              <Link
-                href="/signup"
-                className="py-5 text-center text-base font-semibold text-blue-ufal"
+                isLoading={isSubmitting}
               >
-                Fazer login
+                Cadastrar
+              </Button>
+              <Link href="/signup" className={button({ theme: "textOnly" })}>
+                Já tem uma conta ? Fazer login
               </Link>
             </div>
           </Form>
