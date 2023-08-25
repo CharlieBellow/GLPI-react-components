@@ -5,7 +5,7 @@ import { tv, VariantProps } from "tailwind-variants";
 import { Spinner } from "@/components/icons";
 import * as Icon from "@/components/icons";
 
-const button = tv({
+export const button = tv({
   base: "flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-bold shadow-button transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
   variants: {
     theme: {
@@ -16,7 +16,7 @@ const button = tv({
       tertiary:
         "bg-secondary-2 text-tertiary-1 hover:bg-secondary-2/80 focus-visible:outline-secondary-2",
       textOnly:
-        "text-primary-blue hover:bg-primary-blue/70 focus-visible:outline-none",
+        "text-primary-blue shadow-none hover:underline focus-visible:outline-none",
       warning:
         "bg-primary-red text-white-100 hover:bg-primary-red/80 focus-visible:outline-primary-red",
       danger:
@@ -48,7 +48,7 @@ type ButtonProps2 = ButtonHTMLAttributes<HTMLButtonElement> &
      */
     isSubmitting?: boolean;
     /**
-     * @deprecated pass children instead title
+     * @deprecated pass `children` instead title
      */
     title?: string;
     /**
@@ -72,6 +72,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps2>(
     },
     ref
   ) => {
+    const loading = isSubmitting || isLoading;
     return (
       <button
         {...props}
@@ -79,12 +80,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps2>(
         className={button({
           size,
           theme,
-          loading: isSubmitting || isLoading,
+          loading,
           disabled: disabled,
           className,
         })}
       >
-        {isSubmitting ? (
+        {loading ? (
           <Spinner size={20} className="animate-spin text-current" />
         ) : title ? (
           title
