@@ -26,12 +26,12 @@ export const routes = [
     icon: Signpost,
     subItems: [
       {
-        href: "/group/create",
-        label: "Criar Grupo",
+        href: "/group",
+        label: "Grupos",
       },
       {
-        href: "/admin",
-        label: "Admin. Servicebook",
+        href: "/group/admin",
+        label: "Admin. Grupos",
       },
     ],
   },
