@@ -6,6 +6,7 @@ import * as Yup from "yup";
 
 import { Button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
+import { Plus } from "@/components/icons";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
 import {
   Dialog,
@@ -56,6 +57,7 @@ export function CreateGroupDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button theme="primary" className="w-max">
+          <Plus size={20} className="text-current" />
           Criar categoria
         </Button>
       </DialogTrigger>
