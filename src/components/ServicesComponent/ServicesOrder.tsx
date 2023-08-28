@@ -1,4 +1,4 @@
-
+"use client"
 import * as Icon from "@/components/icons";
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import * as React from "react";
@@ -33,12 +33,12 @@ export default function ServicesOrder () {
 	const [value, setValue] = React.useState('');
 	
 	
-	const token = localStorage.getItem("token");
+	// const token = localStorage.getItem("token");
   
 	useEffect(() => {
     const fetchData = async () => {
-			const responseRequester = await getRequesterService(myuser.id, token as string);
-			const responseResponsible = await getResponsibleService(myuser.id, token as string);
+			const responseRequester = await getRequesterService(myuser.id);
+			const responseResponsible = await getResponsibleService(myuser.id);
 			// console.log(responseRequester);
 			
 

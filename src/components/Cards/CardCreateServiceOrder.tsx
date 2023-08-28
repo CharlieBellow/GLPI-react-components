@@ -10,17 +10,17 @@ import { CardLabelTextareaTiny } from "../Inputs/CardLabelTextareaTiny";
 import { Field, FieldHookConfig, useField } from "formik";
 
 
-import {validationSchema} from "../../Utils/validations";
+import {validationSchema} from "@/Utils/validations";
 
-import { Service } from "../../Utils/server/types"
+import { Service } from "@/Utils/server/types"
 
 
 
-import { getService } from "../../Utils/server/getInfo"
+import { getService } from "@/Utils/server/getInfo"
 
 
 import { Spinner } from "@chakra-ui/react";
-import { useMessage } from "../../Contexts/MessageContext";
+import { useMessage } from "@/Contexts/MessageContext";
 import axios from "axios";
 
 export const lettersOnly = /[^a-zA-Z]/g;
@@ -41,7 +41,7 @@ const validateWhitOutPatrimony = yup.object().shape({
 
 
 
-export const CardCreateServiceOrder = () => {
+export default async function CardCreateServiceOrder({params}: {params: {serviceOrderId2: string}}) {
 
 	const myuser = {
 		id: "972e1f58-95c6-4582-ac05-fb385dbb557b",
@@ -74,9 +74,8 @@ export const CardCreateServiceOrder = () => {
 	}
 
 
-	const token = localStorage.getItem("token");
-	const router = useRouter();
-	const { serviceOrderId, titleServiceOrder } = router.query
+
+	
 
 	const [serviceInfo, setServiceInfo] = useState<Service>()
 
@@ -84,23 +83,26 @@ export const CardCreateServiceOrder = () => {
 
 	// nessa tela não conseguimos passar o títuo do serviço e nem o ID do serviço. por alguma razão não estamos conseguindo pegar o objeto de serviço e passar para esse formulário e validar
 
+
 	
-	useEffect(() => {
-		if (!router.isReady) return;
-		const fetchData = async () => {
+
+	
+		// const fetchData = async () => {
 			
-			const response = await getService(serviceOrderId as string, token as string)
+			const response = await getService(params.serviceOrderId2)
+
+			
 			setServiceInfo(response)
 			if (response.isPatromonyIdRequired) {
 				requiredValidation = validationSchema.patrimony
 			}
 			
-		}
-		fetchData()
+		// }
+		// fetchData()
 		
-	}, [router.isReady, serviceOrderId, token])
+
 	
-	console.log("response", serviceInfo)
+
 
 
 	return (
@@ -117,7 +119,7 @@ export const CardCreateServiceOrder = () => {
 							<CardLine />
 						</div>
 						
-						{router.isReady && serviceInfo ?
+						{serviceInfo ?
 							<Formik
 								validateOnMount={true}
 								initialValues={{
@@ -217,4 +219,3 @@ export const CardCreateServiceOrder = () => {
 	);
 };
 
-export default CardCreateServiceOrder;

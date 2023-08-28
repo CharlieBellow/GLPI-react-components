@@ -1,87 +1,114 @@
-import * as Icon from "@/components/icons";
+"use client";
+
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { getService } from "../../Utils/server/getInfo";
-import { Service } from "../../Utils/server/types";
-import { Button } from "../Buttons/Button";
-import InfoServiceItem from "../ServicesComponent/InfoService";
-//import { ServicesList } from "./ServicesList";
 
-//nessa tela tem que pegar o tipo de usuário logado para saber se vai dar permissão para ele  criar chamado ou não: (se personType === user.bond (tipo de vínculo que o usuário tem) então libera o botão de abrir chamado, se não for o botão fica desabilidado)
+import { Button } from "@/components/Buttons/Button";
+import { CardGeneric } from "@/components/Cards/CardGeneric";
+import * as Icon from "@/components/icons";
 
-export default function CardServiceDescription() {
-  const [floatingButton, setFloatingButton] = useState(false);
+import { Service } from "@/types";
 
-  const changeFloatingButton = () => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY >= 80 && window.screen.width < 1024) {
-        setFloatingButton(true);
-      } else {
-        setFloatingButton(false);
-      }
-    }
-  };
+import InfoServiceLabel from "../ServicesComponent/InfoServiceLabel";
+import InfoServiceSeparator from "../ServicesComponent/InfoServiceSeparator";
+import RenderEnumAsLabels from "../ServicesComponent/RenderEnumAsLabels";
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", changeFloatingButton);
-  }
+type CardServiceDescriptionProps = Service;
 
-  const token = localStorage.getItem("token");
-  const router = useRouter();
-  const { serviceId } = router.query;
-
-  const [serviceInfo, setServiceInfo] = useState<Service>();
-
-  useEffect(() => {
-    if (!router.isReady) return;
-    const fetchData = async () => {
-      const response = await getService(serviceId as string, token as string);
-
-      setServiceInfo(response);
-    };
-    fetchData();
-  }, [router.isReady, serviceId, token]);
-
-  console.log("router", serviceInfo);
-
-  // construir as rotas dinâmicas. quando recarrega ele dá erro
+export default function CardServiceDescription({
+  contactInfo,
+  deadline,
+  definition,
+  description,
+  id,
+  isPatromonyIdRequired,
+  isPrioritaryService,
+  openningHours,
+  personType,
+  requiredDocuments,
+  title,
+}: CardServiceDescriptionProps) {
+  const floatingButton = false;
 
   return (
-    <div className="mx-3 rounded-lg bg-white-strong-ice text-justify md:mx-16 lg:mx-10 lg:my-8 lg:rounded-lg lg:bg-white-100 lg:p-8">
-      <div className="lg:flex lg:items-baseline lg:justify-between">
-        <h3 className="ml-4 hidden pt-4 text-3xl font-bold lg:visible lg:flex lg:text-4xl">
-          {serviceInfo && serviceInfo.title}
-        </h3>
+    <CardGeneric.Root>
+      <CardGeneric.Header className="flex items-center justify-between">
+        <CardGeneric.Title className="text-xl">{title}</CardGeneric.Title>
         <div className="fixed bottom-9 right-0 mr-4 lg:relative lg:right-0 lg:top-0 lg:flex lg:justify-end">
-          <Link
-            href={`/servicebook/serviceorder/${serviceId}/createserviceorder/`}
-          >
-            <Button
-              title={floatingButton ? "" : "Solicitar Serviço"}
-              theme="withIcon"
-              icon={<Icon.PhoneOutgoing size={24} />}
-            />
+          <Link href={`/servicebook/serviceorder/${id}/createserviceorder/`}>
+            <Button theme="primary">
+              {floatingButton ? "" : "Solicitar Serviço"}
+              <Icon.PhoneOutgoing size={24} />
+            </Button>
           </Link>
         </div>
-      </div>
+      </CardGeneric.Header>
 
-      <InfoServiceItem
-        infos={serviceInfo as Service}
-        icon={<Icon.DotsThreeVertical size={24} />}
+      <CardGeneric.Separator />
+
+      <InfoServiceSeparator
+        icon={<Icon.ArticleMedium size={24} />}
+        title="Descrição"
+        content={<div dangerouslySetInnerHTML={{ __html: description }} />}
+        expandable
+      />
+      <InfoServiceSeparator
+        icon={<Icon.ListBullets size={24} />}
+        title="Definição"
+        content={definition}
+        expandable
       />
 
-      <div className="ml-4 mt-9 hidden gap-3.5 lg:flex">
-        <Link
-          href={`/servicebook/serviceorder/${serviceId}/createserviceorder`}
-        >
-          <Button
-            title="Solicitar Serviço"
-            theme="primaryActionWithIcon"
-            icon={<Icon.PhoneOutgoing size={24} />}
+      <div className="grid grid-flow-row grid-cols-2">
+        <InfoServiceSeparator
+          icon={<Icon.ListBullets size={24} />}
+          title="Público-Alvo"
+          content={<RenderEnumAsLabels people={personType} />}
+          expandable={false}
+        />
+        <InfoServiceSeparator
+          icon={<Icon.Watch size={24} />}
+          title="Tempo Necessário para execução"
+          content={<InfoServiceLabel content={deadline} />}
+        />
+        <InfoServiceSeparator
+          icon={<Icon.Clock size={24} />}
+          title="Horário de Atendimento"
+          content={<InfoServiceLabel content={openningHours} />}
+        />
+        <InfoServiceSeparator
+          icon={<Icon.FilePlus size={24} />}
+          title="Documentos Necessários"
+          content={<RenderEnumAsLabels people={requiredDocuments as string} />}
+        />
+        <InfoServiceSeparator
+          icon={<Icon.Phone size={24} />}
+          title="Informações para contato"
+          content={contactInfo as string}
+        />
+        {isPrioritaryService && (
+          <InfoServiceSeparator
+            icon={<Icon.BookmarkSimple size={24} />}
+            title="Prioridade"
+            content={isPrioritaryService}
           />
+        )}
+        {isPatromonyIdRequired && (
+          <InfoServiceSeparator
+            icon={<Icon.ComputerTower size={24} />}
+            title="Patrimônio Solicitado"
+            content={isPatromonyIdRequired}
+          />
+        )}
+      </div>
+
+      <div className="ml-4 mt-9 hidden gap-3.5 lg:flex">
+        <Link href={`/servicebook/serviceorder/${id}/createserviceorder`}>
+          <Button theme="primary">
+            Solicitar Serviço
+            <Icon.PhoneOutgoing size={24} />
+          </Button>
         </Link>
       </div>
-    </div>
+    </CardGeneric.Root>
   );
 }

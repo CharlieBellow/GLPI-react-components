@@ -56,7 +56,7 @@ export async function getAllServices(idSubgroup: string) {
   return data;
 }
 
-export async function getService(id: string) {
+export async function getService(id: string): Promise<Service> {
   const response = await api.get(`/servicebook/service/${id}`);
   return response.data;
 }

@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
 import { Button, button } from "@/components/Buttons/Button";
-import { CardTitle } from "@/components/Cards/CardTitle";
+import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
 
@@ -45,73 +45,75 @@ export function FormLogin() {
   };
 
   return (
-    <div className="container m-auto h-128 w-100 rounded-lg bg-white-ice shadow-card">
-      <div className="pb-10 pl-6 pt-16 text-center">
-        <CardTitle title="Fazer Login" />
-      </div>
+    <CardGeneric.Root className=" m-auto">
+      <CardGeneric.Header className="mt-4">
+        <CardGeneric.Title>Fazer Login</CardGeneric.Title>
+      </CardGeneric.Header>
 
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={formSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting, isValid }) => (
-          <Form>
-            <div className="mb-6 px-10">
-              <CardLabelInput
-                label="Email"
-                name="email"
-                width="w-full"
-                type="email"
-              />
-            </div>
-            <div className="mb-6 px-10">
-              <CardLabelInput
-                label="Senha"
-                name="password"
-                width="w-full"
-                type={showInput ? "text" : "password"}
-                icon={
-                  showInput ? (
-                    <EyeSlash
-                      className="absolute right-2 top-1/2 inline-block -translate-y-1/2"
-                      weight="bold"
-                      onClick={handleShowPass}
-                    />
-                  ) : (
-                    <Eye
-                      className="absolute right-2 top-1/2 inline-block -translate-y-1/2"
-                      weight="bold"
-                      onClick={handleShowPass}
-                    />
-                  )
-                }
-              />
-            </div>
+      <CardGeneric.Content>
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={formSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, isValid }) => (
+            <Form>
+              <div className="mb-6 px-10">
+                <CardLabelInput
+                  label="Email"
+                  name="email"
+                  width="w-full"
+                  type="email"
+                />
+              </div>
+              <div className="mb-6 px-10">
+                <CardLabelInput
+                  label="Senha"
+                  name="password"
+                  width="w-full"
+                  type={showInput ? "text" : "password"}
+                  icon={
+                    showInput ? (
+                      <EyeSlash
+                        className="absolute right-2 top-1/2 inline-block -translate-y-1/2"
+                        weight="bold"
+                        onClick={handleShowPass}
+                      />
+                    ) : (
+                      <Eye
+                        className="absolute right-2 top-1/2 inline-block -translate-y-1/2"
+                        weight="bold"
+                        onClick={handleShowPass}
+                      />
+                    )
+                  }
+                />
+              </div>
 
-            <div className="mx-11 mt-13 flex flex-col justify-center">
-              <Button
-                title="Entrar"
-                theme="primary"
-                type="submit"
-                disabled={isSubmitting || !isValid}
-                isLoading={isSubmitting}
-              />
+              <div className="mx-11 mt-13 flex flex-col justify-center">
+                <Button
+                  title="Entrar"
+                  theme="primary"
+                  type="submit"
+                  disabled={isSubmitting || !isValid}
+                  isLoading={isSubmitting}
+                />
 
-              <Button theme="textOnly">Esqueci a senha</Button>
+                <Button theme="textOnly">Esqueci a senha</Button>
 
-              <Link
-                href="/signup"
-                className={button({
-                  theme: "textOnly",
-                })}
-              >
-                Não tem uma conta? Cadastre-se
-              </Link>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+                <Link
+                  href="/signup"
+                  className={button({
+                    theme: "textOnly",
+                  })}
+                >
+                  Não tem uma conta? Cadastre-se
+                </Link>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </CardGeneric.Content>
+    </CardGeneric.Root>
   );
 }
