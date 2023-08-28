@@ -17,9 +17,9 @@ export const button = tv({
         "bg-secondary-2 text-tertiary-1 hover:bg-secondary-2/80 focus-visible:outline-secondary-2",
       textOnly:
         "text-primary-blue shadow-none hover:underline focus-visible:outline-none",
-      warning:
-        "bg-primary-red text-white-100 hover:bg-primary-red/80 focus-visible:outline-primary-red",
       danger:
+        "bg-primary-red text-white-100 hover:bg-primary-red/80 focus-visible:outline-primary-red",
+      warning:
         "bg-danger text-tertiary-2 hover:bg-danger/80 focus-visible:outline-danger",
     },
     loading: {

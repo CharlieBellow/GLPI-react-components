@@ -1,0 +1,91 @@
+import React, { forwardRef, useId } from "react";
+
+import { cn } from "@/Utils/cn";
+
+type InputProps = React.HtmlHTMLAttributes<HTMLInputElement> & {
+  /**
+   * @description this work as placeholder and label, similar to Material UI
+   */
+  label: string;
+  renderStartIcon?: (className: string) => React.JSX.Element;
+  renderEndIcon?: (className: string) => React.JSX.Element;
+  errorMessage?: string;
+};
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      className: _className,
+      errorMessage,
+      label,
+      renderStartIcon,
+      renderEndIcon,
+      ...props
+    },
+    ref
+  ) => {
+    const randomId = useId();
+    const inputId = props.id ?? randomId;
+
+    const startIcon = renderStartIcon;
+    const endIcon = renderEndIcon;
+
+    const defaultIconsClassName = "h-5 w-5 shrink-0 px-px text-current";
+
+    return (
+      <div className="flex flex-col gap-1">
+        <div
+          className={cn(
+            "flex items-center rounded px-2 ring-1 ring-offset-2 ring-offset-secondary-1 h-10",
+            {
+              "focus-within:ring-primary-red ring-primary-red text-primary-red":
+                errorMessage,
+              "focus-within:ring-primary-blue ring-secondary-2 text-black-text":
+                !errorMessage,
+            }
+          )}
+        >
+          {startIcon && (
+            <span className="h-5 w-5 shrink-0 px-px text-current">
+              {startIcon(defaultIconsClassName)}
+            </span>
+          )}
+
+          <div className="relative h-full flex-1">
+            <input
+              {...props}
+              id={inputId}
+              ref={ref}
+              className="peer h-full w-full px-2 placeholder:text-transparent focus-visible:outline-none"
+              placeholder={label}
+            />
+            <label
+              htmlFor={inputId}
+              className={cn(
+                "absolute -top-3.5 left-1 z-10 cursor-pointer bg-secondary-1 px-1 text-sm transition-all ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-focus-visible:-top-3.5 peer-focus-visible:translate-y-0 peer-focus-visible:text-sm",
+                {
+                  "text-primary-red": errorMessage,
+                  "peer-placeholder-shown:text-black-text/80": !errorMessage,
+                }
+              )}
+            >
+              {label}
+            </label>
+          </div>
+
+          {endIcon && (
+            <span className="h-5 w-5 shrink-0 px-px text-current">
+              {endIcon(defaultIconsClassName)}
+            </span>
+          )}
+        </div>
+
+        {errorMessage && (
+          <span className="px-1 text-primary-red">{errorMessage}</span>
+        )}
+      </div>
+    );
+  }
+);
+
+Input.displayName = "Input";
