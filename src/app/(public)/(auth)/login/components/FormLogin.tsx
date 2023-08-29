@@ -62,9 +62,11 @@ export function FormLogin() {
 
   return (
     <CardGeneric.Root className="z-10 w-full max-w-md p-8">
-      <CardGeneric.Header className="mb-8 justify-center">
-        <CardGeneric.Title>Fazer Login</CardGeneric.Title>
+      <CardGeneric.Header>
+        <CardGeneric.Title>Login</CardGeneric.Title>
       </CardGeneric.Header>
+
+      <CardGeneric.Separator className="mb-8" />
 
       <CardGeneric.Content className="p-0">
         <form onSubmit={handleSubmit(onSubmit)}>

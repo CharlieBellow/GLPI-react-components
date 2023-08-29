@@ -72,9 +72,12 @@ export function FormSignUp() {
 
   return (
     <CardGeneric.Root className="z-10 w-full max-w-md p-8">
-      <CardGeneric.Header className="mb-8 justify-center">
+      <CardGeneric.Header>
         <CardGeneric.Title>Criar Conta</CardGeneric.Title>
       </CardGeneric.Header>
+
+      <CardGeneric.Separator className="mb-8" />
+
       <CardGeneric.Content className="p-0">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6">

@@ -17,7 +17,7 @@ export default function CardTitle({
   return (
     <Comp
       {...rest}
-      className={cn("text-tertiary-2 font-bold text-xl", className)}
+      className={cn("text-tertiary-2 font-bold text-2xl", className)}
     >
       {children}
     </Comp>
