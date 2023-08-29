@@ -1,6 +1,6 @@
-import { Token } from "@/types";
-import { UserModel } from "@/types";
 import { api } from "@/Utils/server/api";
+
+import { Token, UserModel } from "@/types";
 
 type LoginUserInput = {
   email: string;
@@ -25,4 +25,14 @@ export async function refreshToken(refreshToken: string) {
     },
   });
   return data;
+}
+
+type CreateUserInput = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+export async function createUser(input: CreateUserInput) {
+  return await api.post("/users", input);
 }
