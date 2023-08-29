@@ -1,14 +1,13 @@
 "use client";
 
-import { Form, Formik, FormikHelpers } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
 import { CardGeneric } from "@/components/Cards/CardGeneric";
-import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
-import { Button } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -49,14 +48,29 @@ export function EditGroupDialog({
   const { successMessage } = useMessage();
   const handleApiError = useHandleApiError();
 
-  const handleSubmit = async (
-    values: FormValues,
-    actions: FormikHelpers<FormValues>
-  ) => {
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<FormValues>({
+    defaultValues: {
+      description,
+    },
+    mode: "onTouched",
+    resolver: yupResolver(formSchema),
+  });
+
+  const handleCancel = () => {
+    reset();
+    handleDialogItemOpenChange(false);
+  };
+
+  const onSubmit = async (values: FormValues) => {
     try {
       await updateGroup({ id, ...values });
       successMessage("Categoria atualizado com sucesso!");
-      actions.resetForm();
+      reset();
       handleDialogItemOpenChange(false);
     } catch (error) {
       handleApiError(error);
@@ -77,39 +91,31 @@ export function EditGroupDialog({
           </DialogHeader>
           <CardGeneric.Root className="m-0 bg-transparent p-0 shadow-none">
             <CardGeneric.Content className="mt-8 p-0">
-              <Formik
-                initialValues={{
-                  description,
-                }}
-                validationSchema={formSchema}
-                onSubmit={handleSubmit}
-              >
-                {({ isSubmitting, isValid }) => (
-                  <Form className="flex flex-col gap-4">
-                    <CardLabelInput
-                      type="text"
-                      label="Nome do categoria"
-                      name="description"
-                      width="w-full"
-                    />
-                    <div className="ml-auto mt-10 flex w-2/4 items-center gap-3">
-                      <DialogClose asChild>
-                        <Button theme="secondary" disabled={isSubmitting}>
-                          Cancelar
-                        </Button>
-                      </DialogClose>
-                      <Button
-                        type="submit"
-                        theme="primary"
-                        disabled={isSubmitting || !isValid}
-                        isLoading={isSubmitting}
-                      >
-                        Salvar
-                      </Button>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Input
+                  type="text"
+                  label="Nome do categoria"
+                  {...register("description")}
+                  errorMessage={errors.description?.message}
+                />
+                <div className="ml-auto mt-10 flex w-2/4 items-center gap-3">
+                  <Button
+                    onClick={handleCancel}
+                    theme="secondary"
+                    disabled={isSubmitting}
+                  >
+                    Cancelar
+                  </Button>
+                  <Button
+                    type="submit"
+                    theme="primary"
+                    disabled={isSubmitting || !isValid}
+                    isLoading={isSubmitting}
+                  >
+                    Salvar
+                  </Button>
+                </div>
+              </form>
             </CardGeneric.Content>
           </CardGeneric.Root>
         </DialogContent>
