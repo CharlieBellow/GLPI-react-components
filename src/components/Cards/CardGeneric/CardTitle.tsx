@@ -15,7 +15,10 @@ export default function CardTitle({
 }: CardTitleProps) {
   const Comp = variant;
   return (
-    <Comp {...rest} className={cn("text-tertiary-2", className)}>
+    <Comp
+      {...rest}
+      className={cn("text-tertiary-2 font-bold text-xl", className)}
+    >
       {children}
     </Comp>
   );
