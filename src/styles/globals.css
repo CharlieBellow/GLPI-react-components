@@ -72,3 +72,8 @@ div {
     #1b4ba8 99.89%
   );
 }
+
+.floating-label {
+  transition: all 100ms ease-in-out;
+  transform-origin: center top;
+}
