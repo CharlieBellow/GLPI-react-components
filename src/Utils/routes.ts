@@ -30,7 +30,7 @@ export const routes = [
         label: "Grupos",
       },
       {
-        href: "/group/admin",
+        href: "/adminservicebook",
         label: "Admin. Grupos",
       },
     ],

@@ -2,12 +2,13 @@ import { useState } from "react";
 
 import * as yup from "yup";
 
+import { Button } from "@/components/Buttons/Button";
+import GroupCard from "@/components/Cards/CardAdmin/GroupCard";
 import * as Icon from "@/components/icons";
 
-import { Button } from "../../../components/Buttons/Button";
-import GroupCard from "../../../components/Cards/CardAdmin/GroupCard";
-import { useMessage } from "../../../Contexts/MessageContext";
-import { validationSchema } from "../../../Utils/validations";
+import { validationSchema } from "@/Utils/validations";
+
+import { useMessage } from "@/Contexts/MessageContext";
 
 interface AdminProps {
   list: any[];

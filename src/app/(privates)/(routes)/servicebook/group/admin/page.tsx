@@ -1,6 +1,6 @@
 import { getAllGroups } from "@/Utils/server/getInfo";
 
-import { columns } from "./components/Columns";
+import { columns } from "./components/columns";
 import { DataTable } from "./components/DataTable";
 
 export default async function AdminServiceBook() {
