@@ -42,18 +42,17 @@ export function CreateGroupDialog() {
     register,
     reset,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     defaultValues: {
       description: "",
     },
-    mode: "onTouched",
     resolver: yupResolver(formSchema),
   });
 
   const handleCancel = () => {
-    reset();
     setIsOpen(false);
+    reset();
   };
 
   const onSubmit = async (values: FormValues) => {
@@ -92,16 +91,16 @@ export function CreateGroupDialog() {
                 />
                 <div className="ml-auto mt-10 flex w-2/4 items-center gap-3">
                   <Button
-                    onClick={handleCancel}
                     theme="secondary"
                     disabled={isSubmitting}
+                    onClick={handleCancel}
                   >
                     Cancelar
                   </Button>
                   <Button
                     type="submit"
                     theme="primary"
-                    disabled={isSubmitting || !isValid}
+                    disabled={isSubmitting}
                     isLoading={isSubmitting}
                   >
                     Confirmar

@@ -100,9 +100,9 @@ export function EditGroupDialog({
                 />
                 <div className="ml-auto mt-10 flex w-2/4 items-center gap-3">
                   <Button
-                    onClick={handleCancel}
                     theme="secondary"
                     disabled={isSubmitting}
+                    onClick={handleCancel}
                   >
                     Cancelar
                   </Button>
