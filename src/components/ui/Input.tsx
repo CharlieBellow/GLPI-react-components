@@ -2,7 +2,7 @@ import React, { forwardRef, useId } from "react";
 
 import { cn } from "@/Utils/cn";
 
-type InputProps = React.HtmlHTMLAttributes<HTMLInputElement> & {
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   /**
    * @description this work as placeholder and label, similar to Material UI
    */
@@ -45,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="flex flex-col gap-1">
         <div
           className={cn(
-            "flex items-center rounded px-2 ring-1 ring-offset-2 ring-offset-secondary-1 h-10",
+            "flex items-center rounded px-2 ring-1 ring-offset-2 focus-within:ring-offset-white-100 h-10 transition-colors",
             {
               "focus-within:ring-primary-red ring-primary-red text-primary-red":
                 errorMessage,
@@ -61,13 +61,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               {...props}
               id={inputId}
               ref={ref}
-              className="peer h-full w-full px-2 placeholder:text-transparent focus-visible:outline-none"
+              className="peer h-full w-full bg-transparent px-2 placeholder:text-transparent focus-visible:outline-none"
               placeholder={label}
             />
             <label
               htmlFor={inputId}
               className={cn(
-                "absolute -top-3.5 left-1 z-10 cursor-pointer bg-secondary-1 px-1 text-sm transition-all ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-focus-visible:-top-3.5 peer-focus-visible:translate-y-0 peer-focus-visible:text-sm",
+                "absolute -top-3.5 left-1 z-10 cursor-pointer peer-placeholder-shown:bg-transparent bg-white-100 px-1 text-sm transition-all ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-focus-visible:-top-3.5 peer-focus-visible:translate-y-0 peer-focus-visible:text-sm peer-focus-visible:bg-white-100",
                 {
                   "text-primary-red": errorMessage,
                   "peer-placeholder-shown:text-black-text/80": !errorMessage,
