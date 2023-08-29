@@ -7,8 +7,17 @@ type InputProps = React.HtmlHTMLAttributes<HTMLInputElement> & {
    * @description this work as placeholder and label, similar to Material UI
    */
   label: string;
+  /**
+   * @description this function receive a className and return a React JSX Element in left side of input
+   */
   renderStartIcon?: (className: string) => React.JSX.Element;
+  /**
+   * @description this function receive a className and return a React JSX Element in right side of input
+   */
   renderEndIcon?: (className: string) => React.JSX.Element;
+  /**
+   * @description this is the error message that will be displayed below the input
+   */
   errorMessage?: string;
 };
 
@@ -45,11 +54,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             }
           )}
         >
-          {startIcon && (
-            <span className="h-5 w-5 shrink-0 px-px text-current">
-              {startIcon(defaultIconsClassName)}
-            </span>
-          )}
+          {startIcon && startIcon(defaultIconsClassName)}
 
           <div className="relative h-full flex-1">
             <input
@@ -73,11 +78,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </label>
           </div>
 
-          {endIcon && (
-            <span className="h-5 w-5 shrink-0 px-px text-current">
-              {endIcon(defaultIconsClassName)}
-            </span>
-          )}
+          {endIcon && endIcon(defaultIconsClassName)}
         </div>
 
         {errorMessage && (
