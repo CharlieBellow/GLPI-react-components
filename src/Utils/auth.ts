@@ -1,11 +1,11 @@
 import { AuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { AxiosError } from "axios";
-
 import { loginUser, refreshToken } from "@/services/users";
 
 import { UserModel } from "@/types";
+
+import { HttpError } from "@/exceptions/http-error";
 
 type TokenWithUserDetails = {
   token: string;
@@ -56,7 +56,7 @@ export const authOptions: AuthOptions = {
           const { user, ...rest } = data;
           return { ...rest, ...user };
         } catch (error) {
-          if (error instanceof AxiosError) {
+          if (error instanceof HttpError) {
             return Promise.reject(new Error(error.message));
           }
           return Promise.reject(new Error("Ocorreu um erro inesperado"));
