@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 
-import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
-import { Form, Formik } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { Button, button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
-import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
+import { Input } from "@/components/ui";
 
 import { validationSchema } from "@/Utils/validations";
 
@@ -23,17 +24,33 @@ const formSchema = yup.object().shape({
   password: yup.string().required("Senha é obrigatória"),
 });
 
+type FormValues = yup.InferType<typeof formSchema>;
+
 export function FormLogin() {
   const { successMessage, errorMessage } = useMessage();
   const [showInput, setShowInput] = useState(false);
+
   const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<FormValues>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: yupResolver(formSchema),
+  });
 
   const handleShowPass = () => setShowInput((prev) => !prev);
 
-  const handleSubmit = async (values: yup.InferType<typeof formSchema>) => {
+  const onSubmit = async (values: FormValues) => {
     await signIn("credentials", { ...values, redirect: false }).then((res) => {
       if (res && res.error) {
         errorMessage(res.error!);
+        return;
       }
 
       successMessage(
@@ -45,73 +62,65 @@ export function FormLogin() {
   };
 
   return (
-    <CardGeneric.Root className=" m-auto">
-      <CardGeneric.Header className="mt-4">
+    <CardGeneric.Root className="z-10 w-full max-w-md p-8">
+      <CardGeneric.Header className="mb-8 justify-center">
         <CardGeneric.Title>Fazer Login</CardGeneric.Title>
       </CardGeneric.Header>
 
-      <CardGeneric.Content>
-        <Formik
-          initialValues={{ email: "", password: "" }}
-          validationSchema={formSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting, isValid }) => (
-            <Form>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Email"
-                  name="email"
-                  width="w-full"
-                  type="email"
-                />
-              </div>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Senha"
-                  name="password"
-                  width="w-full"
-                  type={showInput ? "text" : "password"}
-                  icon={
-                    showInput ? (
-                      <EyeSlash
-                        className="absolute right-2 top-1/2 inline-block -translate-y-1/2"
-                        weight="bold"
-                        onClick={handleShowPass}
-                      />
-                    ) : (
-                      <Eye
-                        className="absolute right-2 top-1/2 inline-block -translate-y-1/2"
-                        weight="bold"
-                        onClick={handleShowPass}
-                      />
-                    )
-                  }
-                />
-              </div>
-
-              <div className="mx-11 mt-13 flex flex-col justify-center">
+      <CardGeneric.Content className="p-0">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-8">
+            <Input
+              {...register("email")}
+              type="email"
+              label="Email"
+              errorMessage={errors.email?.message}
+            />
+          </div>
+          <div className="mb-8">
+            <Input
+              {...register("password")}
+              type={showInput ? "text" : "password"}
+              label="Senha"
+              errorMessage={errors.password?.message}
+              renderEndIcon={(className) => (
                 <Button
-                  theme="primary"
-                  type="submit"
-                  disabled={isSubmitting || !isValid}
-                  isLoading={isSubmitting}
-                >Entrar</Button>
-
-                <Button theme="textOnly">Esqueci a senha</Button>
-
-                <Link
-                  href="/signup"
-                  className={button({
-                    theme: "textOnly",
-                  })}
+                  type="button"
+                  theme="textOnly"
+                  className={`${className} px-0`}
+                  onClick={handleShowPass}
                 >
-                  Não tem uma conta? Cadastre-se
-                </Link>
-              </div>
-            </Form>
-          )}
-        </Formik>
+                  {showInput ? (
+                    <EyeSlash className={className} />
+                  ) : (
+                    <Eye className={className} />
+                  )}
+                </Button>
+              )}
+            />
+          </div>
+          <div className="flex flex-col justify-center">
+            <Button
+              theme="primary"
+              type="submit"
+              disabled={isSubmitting || !isValid}
+              isLoading={isSubmitting}
+            >
+              Entrar
+            </Button>
+
+            <Button theme="textOnly">Esqueci a senha</Button>
+
+            <Link
+              href="/signup"
+              className={button({
+                theme: "textOnly",
+              })}
+            >
+              Não tem uma conta? Cadastre-se
+            </Link>
+          </div>
+        </form>
       </CardGeneric.Content>
     </CardGeneric.Root>
   );

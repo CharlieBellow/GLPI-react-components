@@ -3,145 +3,165 @@
 import { useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { Form, Formik, FormikHelpers } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { Button, button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
-import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
+import { Button, button, Input } from "@/components/ui";
+
+import { useHandleApiError } from "@/hooks/useHandleApiError";
+
+import { createUser } from "@/services/users";
 
 import { validationSchema } from "@/Utils/validations";
 
-const validate = yup.object().shape({
+import { useMessage } from "@/Contexts/MessageContext";
+
+const formSchema = yup.object().shape({
   fullName: validationSchema.fullName,
   email: validationSchema.email,
-  confirmEmail: validationSchema.confirmEmail,
   password: validationSchema.password,
+  confirmEmail: validationSchema.confirmEmail,
   confirmPassword: validationSchema.confirmPassword,
 });
 
-type FormValues = yup.InferType<typeof validate>;
+type FormValues = yup.InferType<typeof formSchema>;
 
 export function FormSignUp() {
-  const [showInput, setShowInput] = useState(true);
+  const [showInput, setShowInput] = useState(false);
+
+  const router = useRouter();
+
+  const { successMessage } = useMessage();
+  const handleApiError = useHandleApiError();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      fullName: "",
+      password: "",
+      email: "",
+      confirmEmail: "",
+      confirmPassword: "",
+    },
+    resolver: yupResolver(formSchema),
+  });
 
   const handleShowPass = () => setShowInput((prev) => !prev);
 
-  const handleSubmit = (
-    _values: FormValues,
-    _actions: FormikHelpers<FormValues>
-  ) => {
-    // TODO: submit form data to server and handle response
+  const onSubmit = async (values: FormValues) => {
+    try {
+      await createUser({
+        email: values.email,
+        password: values.password,
+        name: values.fullName,
+      });
+
+      successMessage(
+        "Usuário criado com sucesso!, redirecionando para login..."
+      );
+      router.push("/login");
+    } catch (err) {
+      handleApiError(err);
+    }
   };
 
   return (
-    <CardGeneric.Root className="m-auto">
-      <CardGeneric.Header className="mt-4">
+    <CardGeneric.Root className="z-10 w-full max-w-md p-8">
+      <CardGeneric.Header className="mb-8 justify-center">
         <CardGeneric.Title>Criar Conta</CardGeneric.Title>
       </CardGeneric.Header>
-      <CardGeneric.Content>
-        <Formik
-          initialValues={{
-            fullName: "",
-            email: "",
-            confirmEmail: "",
-            password: "",
-            confirmPassword: "",
-          }}
-          validationSchema={validate}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting, isValid }) => (
-            <Form>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Nome Completo"
-                  name="fullName"
-                  width="w-full"
-                  type="name"
-                />
-              </div>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Email"
-                  name="email"
-                  width="w-full"
-                  type="email"
-                />
-              </div>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Confirme seu Email"
-                  name="confirmEmail"
-                  width="w-full"
-                  type="email"
-                />
-              </div>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Senha"
-                  name="password"
-                  width="w-full"
-                  type={showInput ? "text" : "password"}
-                  icon={
-                    showInput ? (
-                      <EyeSlash
-                        onClick={handleShowPass}
-                        className="absolute ml-72 flex"
-                        weight="bold"
-                      />
-                    ) : (
-                      <Eye
-                        className="absolute ml-72 flex"
-                        weight="bold"
-                        onClick={handleShowPass}
-                      />
-                    )
-                  }
-                />
-              </div>
-              <div className="mb-6 px-10">
-                <CardLabelInput
-                  label="Confirme sua Senha"
-                  name="confirmPassword"
-                  width="w-full"
-                  type={showInput ? "text" : "password"}
-                  icon={
-                    showInput ? (
-                      <EyeSlash
-                        onClick={handleShowPass}
-                        className="absolute ml-72 flex"
-                        weight="bold"
-                      />
-                    ) : (
-                      <Eye
-                        className="absolute ml-72 flex"
-                        weight="bold"
-                        onClick={handleShowPass}
-                      />
-                    )
-                  }
-                />
-              </div>
-
-              <div className="mx-11 mt-8 flex  flex-col justify-center">
+      <CardGeneric.Content className="p-0">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-6">
+            <Input
+              {...register("fullName")}
+              type="text"
+              label="Nome completo"
+              errorMessage={errors.fullName?.message}
+            />
+          </div>
+          <div className="mb-6">
+            <Input
+              {...register("email")}
+              type="email"
+              label="Email"
+              errorMessage={errors.email?.message}
+            />
+          </div>
+          <div className="mb-6">
+            <Input
+              {...register("confirmEmail")}
+              type="email"
+              label="Confirme seu email"
+              errorMessage={errors.confirmEmail?.message}
+            />
+          </div>
+          <div className="mb-6">
+            <Input
+              {...register("password")}
+              type={showInput ? "text" : "password"}
+              label="Senha"
+              errorMessage={errors.password?.message}
+              renderEndIcon={(className) => (
                 <Button
-                  theme="primary"
-                  type="submit"
-                  disabled={isSubmitting || !isValid}
-                  isLoading={isSubmitting}
+                  type="button"
+                  theme="textOnly"
+                  className={`${className} px-0`}
+                  onClick={handleShowPass}
                 >
-                  Cadastrar
+                  {showInput ? (
+                    <EyeSlash className={className} />
+                  ) : (
+                    <Eye className={className} />
+                  )}
                 </Button>
-                <Link href="/signup" className={button({ theme: "textOnly" })}>
-                  Já tem uma conta ? Fazer login
-                </Link>
-              </div>
-            </Form>
-          )}
-        </Formik>
+              )}
+            />
+          </div>
+          <div className="mb-6">
+            <Input
+              {...register("confirmPassword")}
+              type={showInput ? "text" : "password"}
+              label="Confirmar senha"
+              errorMessage={errors.password?.message}
+              renderEndIcon={(className) => (
+                <Button
+                  type="button"
+                  theme="textOnly"
+                  className={`${className} px-0`}
+                  onClick={handleShowPass}
+                >
+                  {showInput ? (
+                    <EyeSlash className={className} />
+                  ) : (
+                    <Eye className={className} />
+                  )}
+                </Button>
+              )}
+            />
+          </div>
+
+          <div className="mx-11 mt-8 flex  flex-col justify-center">
+            <Button
+              theme="primary"
+              type="submit"
+              disabled={isSubmitting}
+              isLoading={isSubmitting}
+            >
+              Cadastrar
+            </Button>
+            <Link href="/login" className={button({ theme: "textOnly" })}>
+              Já tem uma conta ? Fazer login
+            </Link>
+          </div>
+        </form>
       </CardGeneric.Content>
     </CardGeneric.Root>
   );
