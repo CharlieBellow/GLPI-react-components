@@ -4,15 +4,15 @@ mport { Formik, Form } from "formik";
 
 import {
 	validationSchema,
-	//blocList,
 } from "../../Utils/validations";
 
 import * as yup from "yup";
-import { Button } from "../Buttons/Button";
-import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardTitle } from "../Cards/CardTitle";
-import { CardLine } from "../Cards/CardLine";
 import { useMessage } from "../../Contexts/MessageContext";
+import { Button } from "../Buttons/Button";
+import { CardLine } from "../Cards/CardLine";
+import { CardTitle } from "../Cards/CardTitle";
+import { CardLabelInput } from "../Inputs/CardLabelInput";
+import { Formik, Form } from "formik";
 const validate = yup.object().shape({
 	name: validationSchema.name,
 });
@@ -64,12 +64,11 @@ export const BasicForm = () => {
 
 							<div className="mr-14 mt-10 flex justify-end gap-x-3.5">
 								<Button
-									title="Solicitar"
-									theme="primaryAction"
+									theme="primary"
 									type="submit"
 									disabled={isSubmitting}
-								/>
-								<Button title="Cancelar" theme="secondaryAction" />
+								>Solicitar</Button>
+								<Button theme="secondary" >Cancelar</Button>
 							</div>
 						</Form>
 					)}

@@ -79,17 +79,16 @@ export const CardCreateSubGroup = ({ groups }: CardCreateSubGroupProps) => {
                   </div>
                   <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
                     <Button
-                      title="Criar"
-                      theme="primaryAction"
+                      theme="primary"
                       type="submit"
                       disabled={isSubmitting || !isValid}
-                      isSubmitting={isSubmitting}
-                    />
-                    <Button
-                      type="button"
-                      title="Cancelar"
-                      theme="secondaryAction"
-                    />
+                      isLoading={isSubmitting}
+                    >
+                      Criar
+                    </Button>
+                    <Button type="button" theme="secondary">
+                      Cancelar
+                    </Button>
                   </div>
                 </Form>
               );

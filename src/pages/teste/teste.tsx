@@ -19,6 +19,9 @@ import { CardLabelInputCheckbox } from "../../components/Inputs/CardLabelInputCh
 import Search from '../../components/Inputs/Search';
 
 import { validationSchema } from "../../Utils/validations";
+import { ColumnDef } from '@tanstack/react-table';
+import axios from 'axios';
+import { Formik } from 'formik';
 
 const validateWhitOutPatrimony = yup.object().shape({
 	id: validationSchema.
@@ -168,8 +171,8 @@ console.log("lista", lista);
                                         <Td key={row.id} >
                                             <div className="flex gap-3">
 
-                                        <Button title="editar" icon={<Icon.Plus size={20}/>} theme="primary"/>
-                                        <Button title="editar" icon={<Icon.Plus size={20}/>} theme="primary"/>
+                                        <Button theme="primary">Editar <Icon.Plus size={20}/></Button>
+                                        <Button theme="primary">Editar <Icon.Plus size={20}/></Button>
                                             </div>
                                     </Td>
                                     

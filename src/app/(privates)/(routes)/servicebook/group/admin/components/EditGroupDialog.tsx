@@ -102,7 +102,7 @@ export function EditGroupDialog({
                         type="submit"
                         theme="primary"
                         disabled={isSubmitting || !isValid}
-                        isSubmitting={isSubmitting}
+                        isLoading={isSubmitting}
                       >
                         Salvar
                       </Button>

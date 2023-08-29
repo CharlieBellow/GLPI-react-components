@@ -92,12 +92,11 @@ export function FormLogin() {
 
               <div className="mx-11 mt-13 flex flex-col justify-center">
                 <Button
-                  title="Entrar"
                   theme="primary"
                   type="submit"
                   disabled={isSubmitting || !isValid}
                   isLoading={isSubmitting}
-                />
+                >Entrar</Button>
 
                 <Button theme="textOnly">Esqueci a senha</Button>
 

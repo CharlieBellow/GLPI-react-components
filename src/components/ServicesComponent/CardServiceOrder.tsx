@@ -1,6 +1,9 @@
-import { Pencil, Trash } from "@/components/icons";
-import { useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
+
+import { useBreakpointValue } from "@chakra-ui/react";
+
+import { Pencil, Trash } from "@/components/icons";
+
 import { deleteServiceOrder } from "../../Utils/server/delInfo";
 import { Service } from "../../Utils/server/types";
 import { Button } from "../Buttons/Button";
@@ -159,18 +162,13 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
       </div>
       <div className="flex w-fit flex-row gap-4 pt-3">
         <Link href={`serviceorder/${props.id}/edit`}>
-          <Button
-            className="flex"
-            icon={<Pencil className="" weight="bold" size={20} />}
-            title={isWideVersion ? "Editar" : ""}
-            theme={"primary"}
-            // TODO criar rota para editar ordem de serviço
-          />
+          <Button className="flex" theme={"primary"}>
+            {isWideVersion ? "Editar" : ""}
+            <Pencil className="" weight="bold" size={20} />
+          </Button>
         </Link>
         <Button
           className="flex"
-          icon={<Trash className="" weight="bold" size={20} />}
-          title={isWideVersion ? "Excluir" : ""}
           theme={"secondary"}
           onClick={() => {
             console.log(props.id);
@@ -181,7 +179,10 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
               console.log(err);
             }
           }}
-        />
+        >
+          {isWideVersion ? "Excluir" : ""}
+          <Trash className="" weight="bold" size={20} />
+        </Button>
       </div>
     </div>
   );

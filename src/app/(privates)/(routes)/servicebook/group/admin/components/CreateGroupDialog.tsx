@@ -94,7 +94,7 @@ export function CreateGroupDialog() {
                         type="submit"
                         theme="primary"
                         disabled={isSubmitting || !isValid}
-                        isSubmitting={isSubmitting}
+                        
                       >
                         Confirmar
                       </Button>

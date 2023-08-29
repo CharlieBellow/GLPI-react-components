@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
+
+import Link from "next/link";
+
 import { Spinner } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import * as yup from "yup";
+
 import { useMessage } from "../../Contexts/MessageContext";
 import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
@@ -60,7 +63,7 @@ function CardUpdateUser() {
             title="Alterar Informações do Usuário"
             srcimage={myuser.avatar}
             alt={"Imagem de perfil"}
-            editImage={true}
+            editImage
           />
         </div>
         <div className="mx-9 mb-10 mt-4">
@@ -123,20 +126,18 @@ function CardUpdateUser() {
                 <div className="mt-10 flex justify-end gap-x-3.5 ">
                   <Button
                     title={"Alterar"}
-                    theme="primaryAction"
+                    theme="primary"
                     type="submit"
                     disabled={isSubmitting || !isValid}
-                    isSubmitting={isSubmitting}
+                    isLoading={isSubmitting}
                   />
                   {isAdmin ? (
-                    <Button
-                      title="Excluir"
-                      type="button"
-                      theme="secondaryAction"
-                    />
+                    <Button type="button" theme="secondary">
+                      Excluir
+                    </Button>
                   ) : (
                     <Link href="./">
-                      <Button title="Cancelar" theme="secondaryAction" />
+                      <Button theme="secondary">Cancelar</Button>
                     </Link>
                   )}
                 </div>

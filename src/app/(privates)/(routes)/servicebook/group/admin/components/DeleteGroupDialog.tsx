@@ -74,7 +74,7 @@ export function DeleteGroupDialog({
                 <Button
                   theme="warning"
                   onClick={handleDelete}
-                  isSubmitting={isLoading}
+                  isLoading={isLoading}
                 >
                   Confirmar
                 </Button>

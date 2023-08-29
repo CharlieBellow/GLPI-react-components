@@ -1,12 +1,14 @@
-import * as Icon from "@/components/icons";
+import { useState } from "react";
+
 import * as Dialog from "@radix-ui/react-dialog";
 import { Form, Formik } from "formik";
-import { useState } from "react";
-import { Button } from "./Buttons/Button";
-
 import * as yup from "yup";
+
+import * as Icon from "@/components/icons";
+
 import { useMessage } from "../Contexts/MessageContext";
 import { validationSchema } from "../Utils/validations";
+import { Button } from "./Buttons/Button";
 import { CardLabelInputFile } from "./Inputs/CardLabelInputFile";
 // import { patchAvatar2 } from '../Utils/server/putInfo';
 
@@ -82,11 +84,12 @@ export default function Modal() {
 
                   <div className="flex w-full justify-end">
                     <Button
-                      title={"Alterar"}
-                      theme="primaryAction"
+                      theme="primary"
                       type="submit"
                       disabled={isSubmitting || !isValid}
-                    />
+                    >
+                      Alterar
+                    </Button>
                   </div>
                 </div>
               </Form>

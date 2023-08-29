@@ -66,17 +66,14 @@ export default function CreateGroupForm() {
                 </div>
                 <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
                   <Button
-                    title={"Criar"}
-                    theme="primaryAction"
+                    theme="primary"
                     type="submit"
+                    isLoading={isSubmitting}
                     disabled={isSubmitting || !isValid}
-                    isSubmitting={isSubmitting}
-                  />
+                  >Criar</Button>
                   <Button
-                    title="Cancelar"
-                    theme="secondaryAction"
-                    isSubmitting={false}
-                  />
+                    theme="secondary"
+                  >Cancelar</Button>
                 </div>
               </Form>
             )}

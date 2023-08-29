@@ -1,5 +1,7 @@
-import { Trash } from "@/components/icons";
 import { useBreakpointValue } from "@chakra-ui/react";
+
+import { Trash } from "@/components/icons";
+
 import { User } from "../Utils/server/types";
 import { Button } from "./Buttons/Button";
 
@@ -71,10 +73,11 @@ export default function CardUser(props: User) {
       <div className="w-fit pt-3">
         <Button
           className="flex"
-          icon={<Trash className="" weight="bold" size={20} />}
-          title={isWideVersion ? "Excluir" : ""}
           theme={"primary"}
-        />
+        >
+          {isWideVersion ? "Excluir" : ""}
+          <Trash className="" weight="bold" size={20} />
+        </Button>
       </div>
     </div>
   );

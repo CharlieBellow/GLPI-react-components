@@ -1,10 +1,14 @@
-import { postService } from "../../Utils/server/postInfo";
+import { useRouter } from "next/router";
 
+import { Spinner } from "@chakra-ui/react";
 import { FormikProvider, useFormik } from "formik";
+import * as yup from "yup";
 
 import { UploadSimple } from "@/components/icons";
-import { useRouter } from "next/router";
-import * as yup from "yup";
+
+import EditorField from "../../components/Inputs/EditorField";
+import { useMessage } from "../../Contexts/MessageContext";
+import { postService } from "../../Utils/server/postInfo";
 import { validationSchema } from "../../Utils/validations";
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
@@ -13,10 +17,6 @@ import { CardLabelInputCheckbox } from "../Inputs/CardLabelInputCheckbox";
 import { CardLabelInputFile } from "../Inputs/CardLabelInputFile";
 import { CardLine } from "./CardLine";
 import { CardTitle } from "./CardTitle";
-
-import { Spinner } from "@chakra-ui/react";
-import { useMessage } from "../../Contexts/MessageContext";
-import EditorField from "../../components/Inputs/EditorField";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -170,20 +170,18 @@ export const CardCreateService = () => {
                 <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
                   <>
                     <Button
-                      isSubmitting={formikProps.isSubmitting}
-                      title="Criar"
-                      theme="primaryAction"
+                      isLoading={formikProps.isSubmitting}
+                      theme="primary"
                       type="submit"
                       disabled={
                         formikProps.isSubmitting || !formikProps.isValid
                       }
-                    />
+                    >Criar</Button>
                     <Button
-                      title="Cancelar"
-                      theme="secondaryAction"
+                      theme="secondary"
                       type="button"
-                      isSubmitting={false}
-                    />
+                      isLoading={false}
+                    >Cancelar</Button>
                   </>
                 </div>
               </form>

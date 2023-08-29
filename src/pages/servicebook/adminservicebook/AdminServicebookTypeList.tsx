@@ -1,11 +1,13 @@
-import * as Icon from "@/components/icons";
 import { useState } from "react";
-import * as yup from "yup";
-import { Button } from "../../../components/Buttons/Button";
 
+import * as yup from "yup";
+
+import * as Icon from "@/components/icons";
+
+import { Button } from "../../../components/Buttons/Button";
+import GroupCard from "../../../components/Cards/CardAdmin/GroupCard";
 import { useMessage } from "../../../Contexts/MessageContext";
 import { validationSchema } from "../../../Utils/validations";
-import GroupCard from "../../../components/Cards/CardAdmin/GroupCard";
 
 interface AdminProps {
   list: any[];
@@ -36,11 +38,10 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
           <h1 className="text-md p-4 font-bold text-black-text">
             Administrar Servicebook
           </h1>
-          <Button
-            title="Novo Grupo"
-            theme="withIcon"
-            icon={<Icon.Plus size={24} />}
-          />
+          <Button title="Novo Grupo" theme="primary">
+            <Icon.Plus size={24} />
+            Novo Grupo
+          </Button>
         </div>
         <div className="px-4">
           <GroupCard />
