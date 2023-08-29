@@ -2,10 +2,6 @@ import { useCallback } from "react";
 
 import { toast } from "react-toastify";
 
-/**
- *
- * @deprecated import this hook from `@/hooks/useMessage` instead of this file for consistency purposes
- */
 export function useMessage() {
   const errorMessage = useCallback((message: string) => {
     toast.error(message);
