@@ -2,6 +2,25 @@ import { api } from "@/Utils/server/api";
 
 import { Group } from "@/types";
 
+export async function getGroup(id: string) {
+  const response = await api.get<Group>(`/servicebook/group/${id}`);
+  return response.data;
+}
+
+type GetAllGroupsResponse = Group[];
+
+export async function getAllGroups() {
+  const { data } = await api.get<GetAllGroupsResponse>(
+    "/servicebook/group/all"
+  );
+
+  return data?.map((group) => ({
+    ...group,
+    createdAt: new Date(group.createdAt),
+    updatedAt: new Date(group.updatedAt),
+  }));
+}
+
 type UpdateGroupInput = Pick<Group, "id" | "description">;
 
 export async function updateGroup({
