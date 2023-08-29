@@ -34,7 +34,7 @@ export default function CardServiceDescription({
       <CardGeneric.Header className="flex items-center justify-between">
         <CardGeneric.Title className="text-xl">{title}</CardGeneric.Title>
         <div className="fixed bottom-9 right-0 mr-4 lg:relative lg:right-0 lg:top-0 lg:flex lg:justify-end">
-          <Link href={`/servicebook/serviceorder2/${id}/createserviceorder2/`}>
+          <Link href={`/servicebook/serviceorder/${id}/createserviceorder/`}>
             <Button theme="primary">
               {floatingButton ? "" : "Solicitar Serviço"}
               <Icon.PhoneOutgoing size={24} />

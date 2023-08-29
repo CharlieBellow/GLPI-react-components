@@ -1,18 +1,16 @@
-import { Spinner } from "@chakra-ui/react";
-import axios from "axios";
+"use client";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import { getService } from "@/Utils/server/getInfo";
 import { validationSchema } from "@/Utils/validations";
+
+import { Service } from "@/types";
 
 import { useMessage } from "@/Contexts/MessageContext";
 
 import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelTextareaTiny } from "../Inputs/CardLabelTextareaTiny";
-import { CardLine } from "./CardLine";
-import { CardTitle } from "./CardTitle";
+import { CardGeneric } from "./CardGeneric";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 let requiredValidation;
@@ -30,11 +28,12 @@ const validateWhitOutPatrimony = yup.object().shape({
   // patrimony: validationSchema.patrimony,
 });
 
-export default async function CardCreateServiceOrder({
-  params,
-}: {
-  params: { serviceOrderId2: string };
-}) {
+type CardCreateServiceOrderProps = {
+  service: Service;
+};
+export default function CardCreateServiceOrder({
+  service,
+}: CardCreateServiceOrderProps) {
   const myuser = {
     id: "972e1f58-95c6-4582-ac05-fb385dbb557b",
     status: "Ativo",
@@ -45,114 +44,56 @@ export default async function CardCreateServiceOrder({
     created_at: "2023-03-02T20:00:24.955Z",
   };
 
-  const myservice = {
-    id: "55901ad6-15e3-4e90-96c3-91e9307ffe0f",
-    description: "Acessar perfil.ufal.br, ",
-    title: "Criar email institucional",
-    definition: "Etapas para criação do email institucional",
-    serviceSubGroupId: "446ba367-8c8e-4f11-b920-413ef6e9e836",
-    personType: "{Discente,Docente}",
-    waitingTime: null,
-    deadline: null,
-    openningHours: null,
-    isPrioritaryService: false,
-    serviceLocation: null,
-    requiredDocuments: null,
-    contactInfo: null,
-    isPatromonyIdRequired: true,
-    glpiSla: null,
-    createdAt: "2023-02-23T13:32:49.880Z",
-    updatedAt: "2023-02-23T13:32:49.880Z",
-  };
-
   const { errorMessage, successMessage } = useMessage();
 
-  // nessa tela não conseguimos passar o títuo do serviço e nem o ID do serviço. por alguma razão não estamos conseguindo pegar o objeto de serviço e passar para esse formulário e validar
-
-  // const fetchData = async () => {
-
-  const serviceInfo = await getService(serviceOrderId2);
-
-  if (serviceInfo.isPatromonyIdRequired) {
+  if (service?.isPatromonyIdRequired) {
     requiredValidation = validationSchema.patrimony;
   }
 
-  // }
-  // fetchData()
-
+  console.log(service);
   return (
     <>
-      <div className="mx-4">
-        <div
-          className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
-				flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
-				lg:w-202 lg:max-w-card"
-        >
-          <>
-            <div className="pl-9 pt-8">
-              <CardTitle title="Criar ordem de serviço" />
-            </div>
-            <div className="mx-9 mb-10 mt-4">
-              <CardLine />
-            </div>
+      <CardGeneric.Root>
+        <CardGeneric.Header>
+          <CardGeneric.Title>Criar ordem de serviço</CardGeneric.Title>
+        </CardGeneric.Header>
 
-            {serviceInfo ? (
-              <Formik
-                validateOnMount
-                initialValues={{
-                  description: "",
-                  serviceId: serviceInfo.id,
-                  patrimonyId: serviceInfo.isPatromonyIdRequired
-                    ? ""
-                    : "notrequired",
-                  requesterId: myuser.id,
-                  respponsibleId: myuser.id,
-                  // serviceLocal:"",
-                  title: serviceInfo.title,
-                  status: "Aberto",
-                  estimetadAt: new Date(),
-                  closedAt: new Date(),
-                }}
-                validationSchema={validate}
-                onSubmit={(values, actions) => {
-                  console.log("submetendo formulário");
-                  setTimeout(() => {
-                    console.log("submit:", values);
+        <CardGeneric.Separator />
 
-                    if (token !== null) {
-                      axios({
-                        method: "post",
-                        baseURL: "http://172.27.12.171:3333",
-                        url: `/servicebook/serviceorder/`,
-                        data: values,
-                        headers: { authorization: `Bearer ${token}` },
-                      });
-
-                      successMessage("Serviço criado com sucesso!");
-
-                      actions.resetForm();
-                    } else {
-                      errorMessage("Algo deu errado. Tente novamente.");
-                    }
-                  }, 400);
-                }}
-              >
-                {({ isSubmitting, isValid, errors, touched }) => (
-                  <Form autoComplete="on">
-                    <div className="mx-14 flex flex-col gap-9">
-                      <div className="">
-                        <CardLabelInput
-                          label="Título"
-                          name="title"
-                          type="text"
-                          width="w-full"
-                          inputid="title"
-                          disabled={
-                            serviceInfo && serviceInfo.title ? true : false
-                          }
-                        />
-                      </div>
-                      <div className="">
+        <CardGeneric.Content>
+          <Formik
+            validateOnMount
+            initialValues={{
+              // description: "",
+              serviceId: service.id,
+              patrimonyId: service.isPatromonyIdRequired ? "" : "notrequired",
+              requesterId: myuser.id,
+              respponsibleId: myuser.id,
+              // serviceLocal:"",
+              title: service.title,
+              status: "Aberto",
+              estimetadAt: new Date(),
+              closedAt: new Date(),
+            }}
+            validationSchema={validate}
+            onSubmit={(values, actions) => {
+              console.log(values);
+            }}
+          >
+            {({ isSubmitting, isValid, errors, touched }) => (
+              <Form autoComplete="on">
+                <div className="mx-14 flex flex-col gap-9">
+                  <div className="">
+                    <CardLabelInput
+                      label="Título"
+                      name="title"
+                      type="text"
+                      width="w-full"
+                      inputid="title"
+                      // disabled={service && service.title ? true : false}
+                    />
+                  </div>
+                  {/* <div className="">
                         <CardLabelTextareaTiny
                           label="Descrição"
                           type="textarea"
@@ -165,44 +106,40 @@ export default async function CardCreateServiceOrder({
                             {errors.description}
                           </span>
                         ) : null}
-                      </div>
-                      <div>
-                        {serviceInfo && serviceInfo.isPatromonyIdRequired ? (
-                          <CardLabelInput
-                            label="Patrimônio"
-                            name="patrimonyId"
-                            type="text"
-                            width="w-full"
-                            inputid="patrimonyId"
-                          />
-                        ) : (
-                          <></>
-                        )}
-                      </div>
-                    </div>
-                    <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
-                      <Button
-                        theme="primary"
-                        type="submit"
-                        disabled={isSubmitting || !isValid}
-                      >
-                        Criar
-                      </Button>
-                      <Button theme="secondary" type="button">
-                        Cancelar
-                      </Button>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
-            ) : (
-              <div className="flex justify-center">
-                <Spinner size="lg" />
-              </div>
+                      </div> */}
+                  <div>
+                    {service && service.isPatromonyIdRequired ? (
+                      <CardLabelInput
+                        label="Patrimônio"
+                        name="patrimonyId"
+                        type="text"
+                        width="w-full"
+                        inputid="patrimonyId"
+                      />
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+                <div className="mt-10 grid justify-end ">
+                  <div className="flex gap-x-3.5">
+                    <Button
+                      theme="primary"
+                      type="submit"
+                      // disabled={isSubmitting || !isValid}
+                    >
+                      Criar
+                    </Button>
+                    <Button theme="secondary" type="button">
+                      Cancelar
+                    </Button>
+                  </div>
+                </div>
+              </Form>
             )}
-          </>
-        </div>
-      </div>
+          </Formik>
+        </CardGeneric.Content>
+      </CardGeneric.Root>
     </>
   );
 }

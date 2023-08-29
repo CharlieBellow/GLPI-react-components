@@ -3,11 +3,11 @@ import CardServiceDescription from "@/components/Cards/CardServiceDescription";
 import { getService } from "@/Utils/server/getInfo";
 
 export default async function ServiceLetter({
-  params: { serviceId2 },
+  params: { serviceId },
 }: {
-  params: { serviceId2: string };
+  params: { serviceId: string };
 }) {
-  const service = await getService(serviceId2);
+  const service = await getService(serviceId);
 
   return (
     <CardServiceDescription

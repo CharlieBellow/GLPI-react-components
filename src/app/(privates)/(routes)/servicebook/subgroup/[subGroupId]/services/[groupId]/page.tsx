@@ -18,7 +18,7 @@ export default async function ServiceSubGroupPage({
         {servicesSubGroup.map((service) => (
           <Link
             id={service.title}
-            href={`/servicebook/service2/${service.id}`}
+            href={`/servicebook/service/${service.id}`}
             key={service.id}
             className="cursor-pointer rounded-lg bg-white-ice p-4 text-lg font-bold text-blue-ufal hover:bg-white-100 hover:underline hover:underline-offset-2"
           >
