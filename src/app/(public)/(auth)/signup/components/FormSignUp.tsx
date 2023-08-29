@@ -13,13 +13,11 @@ import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
 import { Button, button, Input } from "@/components/ui";
 
-import { useHandleApiError } from "@/hooks/useHandleApiError";
+import { useHandleApiError, useMessage } from "@/hooks";
 
 import { createUser } from "@/services/users";
 
 import { validationSchema } from "@/Utils/validations";
-
-import { useMessage } from "@/Contexts/MessageContext";
 
 const formSchema = yup.object().shape({
   fullName: validationSchema.fullName,

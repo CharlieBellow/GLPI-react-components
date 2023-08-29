@@ -14,9 +14,9 @@ import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
 import { Button, button, Input } from "@/components/ui";
 
-import { validationSchema } from "@/Utils/validations";
+import { useMessage } from "@/hooks";
 
-import { useMessage } from "@/Contexts/MessageContext";
+import { validationSchema } from "@/Utils/validations";
 
 const formSchema = yup.object().shape({
   email: validationSchema.email,
