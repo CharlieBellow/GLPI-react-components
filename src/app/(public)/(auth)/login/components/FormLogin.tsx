@@ -10,10 +10,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { Button, button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
-import { Input } from "@/components/ui";
+import { Button, button, Input } from "@/components/ui";
 
 import { validationSchema } from "@/Utils/validations";
 
@@ -35,7 +34,7 @@ export function FormLogin() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -99,11 +98,11 @@ export function FormLogin() {
               )}
             />
           </div>
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center gap-4">
             <Button
               theme="primary"
               type="submit"
-              disabled={isSubmitting || !isValid}
+              disabled={isSubmitting}
               isLoading={isSubmitting}
             >
               Entrar

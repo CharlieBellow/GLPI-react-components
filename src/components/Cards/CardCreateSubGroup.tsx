@@ -3,10 +3,10 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 
-import { Button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
 import FieldSelect from "@/components/Inputs/FieldSelect";
+import { Button } from "@/components/ui";
 
 import { postSubGroup } from "@/Utils/server/postInfo";
 import { validationSchema } from "@/Utils/validations";

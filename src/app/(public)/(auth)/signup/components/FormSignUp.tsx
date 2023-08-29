@@ -125,7 +125,7 @@ export function FormSignUp() {
               )}
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-8">
             <Input
               {...register("confirmPassword")}
               type={showInput ? "text" : "password"}
@@ -148,7 +148,7 @@ export function FormSignUp() {
             />
           </div>
 
-          <div className="mx-11 mt-8 flex  flex-col justify-center">
+          <div className="flex flex-col justify-center gap-4">
             <Button
               theme="primary"
               type="submit"

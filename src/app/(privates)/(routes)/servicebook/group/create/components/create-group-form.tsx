@@ -3,9 +3,9 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 
-import { Button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
+import { Button } from "@/components/ui";
 
 import { postGroup } from "@/Utils/server/postInfo";
 import { validationSchema } from "@/Utils/validations";
@@ -70,10 +70,10 @@ export default function CreateGroupForm() {
                     type="submit"
                     isLoading={isSubmitting}
                     disabled={isSubmitting || !isValid}
-                  >Criar</Button>
-                  <Button
-                    theme="secondary"
-                  >Cancelar</Button>
+                  >
+                    Criar
+                  </Button>
+                  <Button theme="secondary">Cancelar</Button>
                 </div>
               </Form>
             )}

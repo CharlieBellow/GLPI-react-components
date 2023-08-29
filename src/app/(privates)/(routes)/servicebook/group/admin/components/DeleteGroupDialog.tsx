@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { Button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
+import { Button } from "@/components/ui";
 import {
   Dialog,
   DialogClose,

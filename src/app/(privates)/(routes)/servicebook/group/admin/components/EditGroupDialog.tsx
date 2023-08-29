@@ -3,9 +3,9 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import { Button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { CardLabelInput } from "@/components/Inputs/CardLabelInput";
+import { Button } from "@/components/ui";
 import {
   Dialog,
   DialogClose,
