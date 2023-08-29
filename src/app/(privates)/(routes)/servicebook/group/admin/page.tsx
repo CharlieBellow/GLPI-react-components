@@ -1,4 +1,4 @@
-import { getAllGroups } from "@/Utils/server/getInfo";
+import { getAllGroups } from "@/services/service-book/groups";
 
 import { columns } from "./components/columns";
 import { DataTable } from "./components/DataTable";
