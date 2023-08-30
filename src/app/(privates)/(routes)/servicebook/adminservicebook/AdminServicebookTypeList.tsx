@@ -22,7 +22,7 @@ const validate = yup.object().shape({
 export default function AdminServiceBookTypeList(props: AdminProps) {
   const { successMessage } = useMessage();
 
-  const token = localStorage.getItem("token");
+
 
   const [edit, setEdit] = useState(false);
 
