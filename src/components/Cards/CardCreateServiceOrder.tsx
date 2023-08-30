@@ -2,30 +2,22 @@
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
+import { Button } from "@/components/ui";
+
 import { validationSchema } from "@/Utils/validations";
 
 import { Service } from "@/types";
 
-import { useMessage } from "@/Contexts/MessageContext";
-
-import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardGeneric } from "./CardGeneric";
 
 export const lettersOnly = /[^a-zA-Z]/g;
-let requiredValidation;
+
 const validate = yup.object().shape({
-  description: validationSchema.description,
+  // description: validationSchema.description,
   title: validationSchema.titleGroup,
   // serviceLocal: validationSchema.serviceLocal,
   patrimonyId: validationSchema.patrimony,
-});
-
-const validateWhitOutPatrimony = yup.object().shape({
-  description: validationSchema.description,
-  title: validationSchema.titleGroup,
-  // serviceLocal: validationSchema.serviceLocal,
-  // patrimony: validationSchema.patrimony,
 });
 
 type CardCreateServiceOrderProps = {
@@ -44,13 +36,8 @@ export default function CardCreateServiceOrder({
     created_at: "2023-03-02T20:00:24.955Z",
   };
 
-  const { errorMessage, successMessage } = useMessage();
-
-  if (service?.isPatromonyIdRequired) {
-    requiredValidation = validationSchema.patrimony;
-  }
-
   console.log(service);
+
   return (
     <>
       <CardGeneric.Root>
@@ -76,11 +63,11 @@ export default function CardCreateServiceOrder({
               closedAt: new Date(),
             }}
             validationSchema={validate}
-            onSubmit={(values, actions) => {
+            onSubmit={(values) => {
               console.log(values);
             }}
           >
-            {({ isSubmitting, isValid, errors, touched }) => (
+            {({ isSubmitting, isValid }) => (
               <Form autoComplete="on">
                 <div className="mx-14 flex flex-col gap-9">
                   <div className="">
@@ -126,7 +113,7 @@ export default function CardCreateServiceOrder({
                     <Button
                       theme="primary"
                       type="submit"
-                      // disabled={isSubmitting || !isValid}
+                      disabled={isSubmitting || !isValid}
                     >
                       Criar
                     </Button>

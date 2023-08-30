@@ -9,8 +9,9 @@ export default async function SubGroupPage({
 }: {
   params: { subGroupId: string };
 }) {
+  console.log("aqui", params.subGroupId)
   const subGroups = await getAllSubGroups(params.subGroupId);
-  const group = await getGroup(subGroups[0].serviceGroupId);
+  const group = await getGroup(params.subGroupId);
 
   return (
     <>
