@@ -8,6 +8,10 @@
     list-style: revert;
   }
 
+  body {
+    @apply antialiased;
+  }
+
   :root {
     --primary-blue: 199 100% 43%;
     --primary-red: 358 85% 52%;
@@ -25,31 +29,6 @@
     --secondary-2: 226 18% 24%;
     --tertiary-1: 0 0% 100%;
     --tertiary-2: 233 14% 54%;
-  }
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #edf2f7;
-}
-
-p,
-span,
-strong,
-div {
-  font-size: 14px;
-  font-weight: normal;
-}
-
-@media (max-width: 480px) {
-  p,
-  span,
-  strong,
-  div {
-    font-size: 14px;
-    font-weight: normal;
   }
 }
 
@@ -71,6 +50,29 @@ div {
     #0195da 74.58%,
     #1b4ba8 99.89%
   );
+}
+
+.ProseMirror:is(:focus, :focus-visible) {
+  outline: none;
+}
+
+.ProseMirror {
+  height: inherit;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.tiptap ul {
+  list-style: disc;
+}
+
+.tiptap ol {
+  list-style: decimal;
 }
 
 .floating-label {
