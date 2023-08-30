@@ -1,6 +1,6 @@
-import { Button } from "../Buttons/Button";
+import { Button } from "@/components/ui";
 
-function CardHomeMobile() {
+export default function CardHomeMobile() {
   return (
     <>
       <div className="-mt-16 box-border h-[9.75rem] w-[19.5rem] rounded-lg bg-white-ice px-2 pt-2 shadow-card lg:mt-0 lg:h-auto lg:w-auto lg:p-4">
@@ -31,19 +31,15 @@ function CardHomeMobile() {
           </div>
         </div>
         <div className="mt-5 flex justify-between lg:hidden">
-          <Button theme={"tertiary"}>Botão principal</Button>
-          <Button theme={"primary"}>Botão principal</Button>
+          <Button theme="tertiary">Botão principal</Button>
+          <Button theme="primary">Botão principal</Button>
         </div>
 
         <div className="mt-10 hidden justify-between gap-4 text-base lg:flex">
-          <Button theme={"tertiary"}>Meus Chamados</Button>
-          <Button theme={"primary"}>Abrir Chamados</Button>
+          <Button theme="tertiary">Meus Chamados</Button>
+          <Button theme="primary">Abrir Chamados</Button>
         </div>
       </div>
     </>
   );
 }
-
-export default CardHomeMobile;
-
-// tirar o título

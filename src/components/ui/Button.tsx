@@ -6,7 +6,7 @@ import { Spinner } from "@/components/icons";
 import * as Icon from "@/components/icons";
 
 export const button = tv({
-  base: "flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-bold shadow-button transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
+  base: "flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md font-bold shadow-button transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
   variants: {
     theme: {
       primary:
@@ -16,7 +16,7 @@ export const button = tv({
       tertiary:
         "bg-secondary-2 text-tertiary-1 hover:bg-secondary-2/80 focus-visible:outline-secondary-2",
       textOnly:
-        "text-primary-blue shadow-none hover:underline focus-visible:outline-none",
+        "inline-flex text-primary-blue shadow-none hover:underline focus-visible:outline-none",
       danger:
         "bg-primary-red text-white-100 hover:bg-primary-red/80 focus-visible:outline-primary-red",
       warning:
@@ -34,6 +34,21 @@ export const button = tv({
       lg: "h-12 px-6",
     },
   },
+  compoundVariants: [
+    {
+      size: ["sm", "md"],
+      className: "text-sm",
+    },
+    {
+      size: "lg",
+      className: "text-base",
+    },
+    {
+      theme: "textOnly",
+      size: ["sm", "md", "lg"],
+      class: "h-fit px-0",
+    },
+  ],
   defaultVariants: {
     size: "md",
     theme: "primary",
@@ -76,6 +91,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps2>(
     return (
       <button
         {...props}
+        type={props.type ?? "button"}
         ref={ref}
         className={button({
           size,

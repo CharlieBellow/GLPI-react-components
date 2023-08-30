@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 
-import { Button } from "@/components/Buttons/Button";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import * as Icon from "@/components/icons";
+import { Button } from "@/components/ui";
 
 import { Service } from "@/types";
 

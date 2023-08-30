@@ -11,7 +11,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { Button } from "@/components/Buttons/Button";
+import { Button } from "@/components/ui";
 import {
   Table,
   TableBody,
