@@ -46,7 +46,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="flex flex-col gap-1">
         <div
           className={cn(
-            "flex items-center rounded px-2 ring-1 h-10 transition-all group",
+            "flex items-center rounded-lg px-2 ring-1 h-10 transition-all group",
             {
               "focus-within:ring-primary-red ring-primary-red hover:ring-primary-red text-primary-red":
                 errorMessage,
@@ -69,7 +69,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <label
               htmlFor={inputId}
               className={cn(
-                "absolute -top-3 peer-placeholder-shown:left-0 peer-focus-visible:-left-1.5 -left-1.5 z-10 cursor-pointer peer-placeholder-shown:bg-transparent floating-label bg-white-100 px-1 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2  text-base peer-placeholder-shown:scale-100 scale-[.85] peer-focus-visible:-top-3 peer-focus-visible:translate-y-0 peer-focus-visible:scale-[.85] peer-focus-visible:bg-white-100",
+                "absolute -top-3 peer-placeholder-shown:left-0 left-0 z-10 cursor-pointer peer-placeholder-shown:bg-transparent floating-label bg-white-100 px-1 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2  text-base peer-placeholder-shown:scale-100 scale-[.85] peer-focus-visible:-top-3 peer-focus-visible:translate-y-0 peer-focus-visible:scale-[.85] peer-focus-visible:bg-white-100",
                 {
                   "text-primary-red": errorMessage,
                   "peer-placeholder-shown:text-black-text/80 peer-focus-visible:text-primary-blue group-hover:text-primary-blue":
