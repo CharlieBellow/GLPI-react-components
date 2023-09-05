@@ -1,6 +1,9 @@
+import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 
 import axios, { AxiosError, isAxiosError } from "axios";
+
+import { getAuthSession } from "@/Utils/auth";
 
 import { DEFAULT_ERRORS } from "@/exceptions/default-errors";
 import { ApiError, HttpError } from "@/exceptions/http-error";
@@ -10,7 +13,15 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const session = await getSession();
+  let session: Session | null = null;
+
+  const isServer = typeof window === "undefined";
+
+  if (isServer) {
+    session = await getAuthSession();
+  } else {
+    session = await getSession();
+  }
 
   if (session) {
     config.headers["Authorization"] = `Bearer ${session.user.token}`;
