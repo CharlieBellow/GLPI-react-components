@@ -1,17 +1,13 @@
 "use client";
 
-import { CharacterCount } from "@tiptapTextEditor/extension-character-count";
-import { Placeholder } from "@tiptapTextEditor/extension-placeholder";
-import { Subscript } from "@tiptapTextEditor/extension-subscript";
-import { Superscript } from "@tiptapTextEditor/extension-superscript";
-import { TextAlign } from "@tiptapTextEditor/extension-text-align";
-import { Underline } from "@tiptapTextEditor/extension-underline";
-import {
-  EditorContent,
-  EditorOptions,
-  useEditor,
-} from "@tiptapTextEditor/react";
-import StarterKit from "@tiptapTextEditor/starter-kit";
+import { CharacterCount } from "@tiptap/extension-character-count";
+import { Placeholder } from "@tiptap/extension-placeholder";
+import { Subscript } from "@tiptap/extension-subscript";
+import { Superscript } from "@tiptap/extension-superscript";
+import { TextAlign } from "@tiptap/extension-text-align";
+import { Underline } from "@tiptap/extension-underline";
+import { EditorContent, EditorOptions, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import {
   AlignCenter,
   AlignJustify,
