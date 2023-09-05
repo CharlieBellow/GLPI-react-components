@@ -65,6 +65,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ref={ref}
               className="peer h-full w-full bg-transparent px-2 text-base placeholder:text-transparent focus-visible:outline-none"
               placeholder={label}
+              aria-invalid={!!errorMessage}
             />
             <label
               htmlFor={inputId}
