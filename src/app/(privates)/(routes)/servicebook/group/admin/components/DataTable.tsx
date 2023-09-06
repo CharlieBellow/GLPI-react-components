@@ -57,9 +57,9 @@ export function DataTable<TData, TValue>({
       </div>
       <div className="overflow-hidden rounded-lg border border-secondary-2">
         <Table>
-          <TableHeader>
+          <TableHeader >
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className=" flex items-center justify-between pt-4">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -79,6 +79,7 @@ export function DataTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  className=" flex justify-between"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
