@@ -3,10 +3,9 @@ import Link from "next/link";
 import { useBreakpointValue } from "@chakra-ui/react";
 
 import { Pencil, Trash } from "@/components/icons";
+import { Button } from "@/components/ui/";
 
-import { deleteServiceOrder } from "../../Utils/server/delInfo";
 import { Service } from "../../Utils/server/types";
-import { Button } from "../Buttons/Button";
 
 export const servicesList = [
   {
@@ -39,16 +38,6 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
     lg: true,
   });
 
-  const token = localStorage.getItem("token");
-
-  // não exclui por algum erro no servidor
-  async function delServiceOrder(id: string) {
-    try {
-      const del = await deleteServiceOrder(id, token as string);
-    } catch (err) {
-      console.log(err);
-    }
-  }
   const createdAtDate = new Date(props.createdAt);
   const updatedAt = new Date(props.updatedAt);
 
@@ -162,22 +151,22 @@ export default function CardServiceOrder(props: ServiceOrderProps) {
       </div>
       <div className="flex w-fit flex-row gap-4 pt-3">
         <Link href={`serviceorder/${props.id}/edit`}>
-          <Button className="flex" theme={"primary"}>
+          <Button className="flex" theme="primary">
             {isWideVersion ? "Editar" : ""}
             <Pencil className="" weight="bold" size={20} />
           </Button>
         </Link>
         <Button
           className="flex"
-          theme={"secondary"}
+          theme="secondary"
           onClick={() => {
             console.log(props.id);
-            try {
-              deleteServiceOrder(props.id, token as string);
-              window.location.reload();
-            } catch (err) {
-              console.log(err);
-            }
+            // try {
+            //   deleteServiceOrder(props.id, token as string);
+            //   window.location.reload();
+            // } catch (err) {
+            //   console.log(err);
+            // }
           }}
         >
           {isWideVersion ? "Excluir" : ""}

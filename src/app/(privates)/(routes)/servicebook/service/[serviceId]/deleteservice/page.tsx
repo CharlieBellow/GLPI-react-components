@@ -1,14 +1,10 @@
-import { CardDeleteSubGroup } from "../../../../../components/Cards/CardDeleteSubGroup";
-import Head  from "next/head";
-import { Layout } from "../../../../../components/Layout";
+import { CardDeleteSubGroup } from "@/components/Cards/CardDeleteSubGroup";
+
 
 export default function DeleteService() {
 	return (
-		<Layout>
-			<Head>
-				<title>Deletar Serviço</title>
-			</Head>
+		
 			<CardDeleteSubGroup />
-		</Layout>
+
 	);
 }

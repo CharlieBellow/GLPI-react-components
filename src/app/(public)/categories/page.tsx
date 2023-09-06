@@ -12,6 +12,7 @@ export const revalidate = 86400; // 24 hours
 
 export default async function CategoriesPage() {
   const groups = await getAllGroups();
+  console.log(groups)
 
   return (
     <div className="w-auto">

@@ -61,29 +61,17 @@ export async function getService(id: string): Promise<Service> {
   return response.data;
 }
 
-export async function getRequesterService(id: string, token: string) {
-  const response = await api({
-    method: "get",
-    url: ``,
-    headers: { authorization: `Bearer ${token}` },
-  });
+export async function getRequesterService(id: string) {
+  const response = await api.get(`/servicebook/serviceorder/requester/${id}`);
   return response.data;
 }
 
-export async function getResponsibleService(id: string, token: string) {
-  const response = await api({
-    method: "get",
-    url: `/servicebook/serviceorder/responsible/${id}`,
-    headers: { authorization: `Bearer ${token}` },
-  });
+export async function getResponsibleService(id: string) {
+  const response = await api.get(`/servicebook/serviceorder/responsible/${id}`);
   return response.data;
 }
-export async function getServiceOrder(id: string, token: string) {
-  const response = await api({
-    method: "get",
-    url: `/servicebook/serviceorder/${id}`,
-    headers: { authorization: `Bearer ${token}` },
-  });
+export async function getServiceOrder(id: string) {
+  const response = await api.get(`/servicebook/serviceorder/${id}`);
   return response.data;
 }
 
@@ -96,12 +84,8 @@ export async function getUser(token: string) {
 
   return response.data;
 }
-export async function getUserId(id: string, token: string) {
-  const response = await api({
-    method: "get",
-    url: `/users/${id}`,
-    headers: { authorization: `Bearer ${token}` },
-  });
+export async function getUserId(id: string) {
+  const response = await api.get(`/users/${id}`);
 
   return response.data;
 }
@@ -122,3 +106,7 @@ export async function getAllUsers() {
 
   return response.data;
 }
+
+export const useServiceOrder = {
+  getRequesterService,
+};

@@ -1,19 +1,22 @@
 "use client";
-import { Form, Formik } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { Button } from "@/components/ui";
+import { Button, Input } from "@/components/ui";
 
+import { useMessage } from "@/hooks";
+
+import { postServiceOrder } from "@/Utils/server/postInfo";
 import { validationSchema } from "@/Utils/validations";
 
 import { Service } from "@/types";
 
-import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardGeneric } from "./CardGeneric";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
-const validate = yup.object().shape({
+const formSchema = yup.object().shape({
   // description: validationSchema.description,
   title: validationSchema.titleGroup,
   // serviceLocal: validationSchema.serviceLocal,
@@ -23,6 +26,9 @@ const validate = yup.object().shape({
 type CardCreateServiceOrderProps = {
   service: Service;
 };
+
+type FormValues = yup.InferType<typeof formSchema>;
+
 export default function CardCreateServiceOrder({
   service,
 }: CardCreateServiceOrderProps) {
@@ -38,6 +44,34 @@ export default function CardCreateServiceOrder({
 
   console.log(service);
 
+  const { successMessage } = useMessage();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>({
+    defaultValues: {
+      // description: "",
+      serviceId: service.id,
+      patrimonyId: service.isPatromonyIdRequired ? "" : "notrequired",
+      requesterId: myuser.id,
+      respponsibleId: myuser.id,
+      // serviceLocal:"",
+      title: service.title,
+      status: "Aberto",
+      estimetadAt: new Date(),
+      closedAt: new Date(),
+    },
+    resolver: yupResolver(formSchema),
+  });
+
+  const onSubmit = async (values: FormValues) => {
+    await postServiceOrder(values).then(() => {
+      successMessage("Chamado criado com sucesso!");
+    });
+  };
+
   return (
     <>
       <CardGeneric.Root>
@@ -48,83 +82,53 @@ export default function CardCreateServiceOrder({
         <CardGeneric.Separator />
 
         <CardGeneric.Content>
-          <Formik
-            validateOnMount
-            initialValues={{
-              // description: "",
-              serviceId: service.id,
-              patrimonyId: service.isPatromonyIdRequired ? "" : "notrequired",
-              requesterId: myuser.id,
-              respponsibleId: myuser.id,
-              // serviceLocal:"",
-              title: service.title,
-              status: "Aberto",
-              estimetadAt: new Date(),
-              closedAt: new Date(),
-            }}
-            validationSchema={validate}
-            onSubmit={(values) => {
-              console.log(values);
-            }}
-          >
-            {({ isSubmitting, isValid }) => (
-              <Form autoComplete="on">
-                <div className="mx-14 flex flex-col gap-9">
-                  <div className="">
-                    <CardLabelInput
-                      label="Título"
-                      name="title"
-                      type="text"
-                      width="w-full"
-                      inputid="title"
-                      // disabled={service && service.title ? true : false}
-                    />
-                  </div>
-                  {/* <div className="">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mx-14 flex flex-col gap-9">
+              <div className="">
+                <Input
+                  {...register("title")}
+                  label="Título"
+                  errorMessage={errors.title?.message}
+                  readOnly={service && service.title ? true : false}
+                  placeholder={service.title ? service.title : ""}
+                />
+              </div>
+              {/* <div className="">
                         <CardLabelTextareaTiny
                           label="Descrição"
                           type="textarea"
                           name="description"
                           textareaid="description"
                         />
-
                         {errors.description && touched.description ? (
                           <span className="text-sm text-red-ufal">
                             {errors.description}
                           </span>
                         ) : null}
                       </div> */}
-                  <div>
-                    {service && service.isPatromonyIdRequired ? (
-                      <CardLabelInput
-                        label="Patrimônio"
-                        name="patrimonyId"
-                        type="text"
-                        width="w-full"
-                        inputid="patrimonyId"
-                      />
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-10 grid justify-end ">
-                  <div className="flex gap-x-3.5">
-                    <Button
-                      theme="primary"
-                      type="submit"
-                      disabled={isSubmitting || !isValid}
-                    >
-                      Criar
-                    </Button>
-                    <Button theme="secondary" type="button">
-                      Cancelar
-                    </Button>
-                  </div>
-                </div>
-              </Form>
-            )}
-          </Formik>
+              <div>
+                {service && service.isPatromonyIdRequired ? (
+                  <Input
+                    {...register("patrimonyId")}
+                    label="Patrimônio"
+                    errorMessage={errors.patrimonyId?.message}
+                  />
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
+            <div className="mt-10 grid justify-end ">
+              <div className="flex gap-x-3.5">
+                <Button theme="secondary" type="button">
+                  Cancelar
+                </Button>
+                <Button theme="primary" type="submit" disabled={isSubmitting}>
+                  Criar
+                </Button>
+              </div>
+            </div>
+          </form>
         </CardGeneric.Content>
       </CardGeneric.Root>
     </>

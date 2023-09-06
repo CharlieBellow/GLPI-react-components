@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 
-import { House, Signpost, SquaresFour } from "@/components/icons";
+import { House, Signpost, Sparkle, SquaresFour } from "@/components/icons";
 
 type Route = {
   href: string;
@@ -32,6 +32,25 @@ export const routes = [
       {
         href: "/adminservicebook",
         label: "Admin. Grupos",
+      },
+    ],
+  },
+  {
+    href: "/servicebook/serviceorder",
+    label: "Meus Serviços",
+    icon: Sparkle,
+    subItems: [
+      {
+        href: "/myservices",
+        label: "Meus Serviços",
+      },
+      {
+        href: "/responsible",
+        label: "Atribuídos a mim",
+      },
+      {
+        href: "/status",
+        label: "Serviços por Status",
       },
     ],
   },
