@@ -1,118 +1,98 @@
-// import { useState } from "react";
-
-import router from "next/router";
+"use client";
+import { useRouter } from "next/navigation";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
+import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Button, Input } from "@/components/ui";
 
-import { getServiceOrder } from "../../Utils/server/getInfo";
+import { useHandleApiError, useMessage } from "@/hooks";
+
+import { updateServiceOrder } from "@/services/service-book/service-order";
+
+import { ServiceOrder } from "@/Utils/server/types";
+
 import { validationSchema } from "../../Utils/validations";
-import { CardLine } from "./CardLine";
-import { CardTitle } from "./CardTitle";
 
 const formSchema = yup.object().shape({
   description: validationSchema.description,
-  // serviceLocal: validationSchema.serviceLocal,
+  title: validationSchema.title,
   patrimonyId: validationSchema.patrimony,
 });
 
 type FormValues = yup.InferType<typeof formSchema>;
 
-// const validateWhitOutPatrimony = yup.object().shape({
-//   description: validationSchema.description,
-//   // serviceLocal: validationSchema.serviceLocal,
-// });
+type CardUpdateServiceOrderProps = {
+  serviceOrderInfo: ServiceOrder;
+  serviceOrderId: string;
+};
 
-function CardUpdateServiceOrder() {
-  // const { errorMessage, successMessage } = useMessage();
-
-  // const { serviceOrderId } = params();
-  // const [serviceOrderInfo, setServiceOrderInfo] = useState<ServiceOrder>();
-  // const [users, setUsers] = useState<User[]>([]);
-  // const [newStatus, setNewStatus] = useState<string>(""); //console.log("info", serviceOrderInfo)
-
+export default function CardUpdateServiceOrder({
+  serviceOrderInfo,
+  serviceOrderId,
+}: CardUpdateServiceOrderProps) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
+    mode: "onBlur",
     defaultValues: {
       description: serviceOrderInfo?.description,
-      id: serviceOrderInfo?.id,
-      patrimonyId: serviceOrderInfo?.service.isPatromonyIdRequired
-        ? serviceOrderInfo.patrimonyId
-        : "notrequired",
-      respponsibleId: serviceOrderInfo?.responsibleId,
-      status: serviceOrderInfo?.status,
-      estimetadAt: serviceOrderInfo?.estimatedAt,
-      //closedAt: serviceOrderInfo?.createdAt
+      title: serviceOrderInfo?.service.title,
+      patrimonyId: serviceOrderInfo?.patrimonyId,
     },
     resolver: yupResolver(formSchema),
   });
 
+  const navigator = useRouter();
+
+  const { successMessage } = useMessage();
+
+  const handleApiError = useHandleApiError();
+
   const onSubmit = async (values: FormValues) => {
-    const response = await getServiceOrder(serviceOrderId);
-
-    // const userResponse = await getAllUsers();
-
-    if (response.isPatromonyIdRequired) {
-      requiredValidation = validationSchema.patrimony;
+    try {
+      await updateServiceOrder({ ...values, id: serviceOrderId });
+      successMessage("Serviço atualizado com sucesso.");
+    } catch (err) {
+      handleApiError(err);
     }
 
     console.log("values", values);
   };
 
-  // const status = [
-  //   "Aberto",
-  //   "Pendente",
-  //   "Em Execução",
-  //   "Aguardando Peças",
-  //   "Fechado",
-  // ];
-
-  // console.log("infos", users);
-
   return (
     <>
       <div className="mx-4">
-        <div
-          className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
-				flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
-				lg:w-202 lg:max-w-card"
-        >
-          <>
-            <div className="pl-9 pt-8">
-              <CardTitle title="Editar ordem de serviço" />
-            </div>
-            <div className="mx-9 mb-10 mt-4">
-              <CardLine />
-            </div>
+        <CardGeneric.Root>
+          <CardGeneric.Header className="pl-9 pt-8">
+            <CardGeneric.Title>Editar ordem de serviço</CardGeneric.Title>
+          </CardGeneric.Header>
+          <CardGeneric.Separator />
+          <CardGeneric.Content>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mx-14 flex flex-col gap-9">
                 <div className="">
                   <Input
-                    {...register("description")}
+                    {...register("title")}
                     label="Título"
                     type="text"
-                    disabled={
-                      serviceInfo && serviceOrderInfo.description ? true : false
-                    }
-                    errorMessage={errors.description}
+                    disabled={serviceOrderInfo.service.title ? true : false}
                   />
                 </div>
                 <div className="">
                   <Input
-                    {...resgister("description")}
+                    {...register("description")}
                     label="Descrição"
                     type="textarea"
+                    errorMessage={errors.description?.message}
                   />
                 </div>
                 <div>
-                  {serviceOrderInfo &&
-                  serviceOrderInfo.service.isPatromonyIdRequired ? (
+                  {serviceOrderInfo.service.isPatromonyIdRequired ? (
                     <Input
                       {...register("patrimonyId")}
                       label="Patrimônio"
@@ -124,22 +104,25 @@ function CardUpdateServiceOrder() {
                   )}
                 </div>
                 <div>
-                  {/* {serviceOrderInfo ? (
-                          // && user.isAdmin
-                          <FieldSelect
-                            label="Responsável"
-                            name="respponsibleId"
-                            default={
-                              serviceOrderInfo.responsibleId
-                                ? ""
-                                : "Selecione o usuário responsável"
-                            }
-                            // é necessário passar um lista de usuários que podem ser atibuídos aqui, no caso, cada adm do setor vá ter uma lista de subordinados que ele pode atribuir tarefas
-                            listitems={users.map((user) => user.name)}
-                          />
-                        ) : (
-                          <></>
-                        )} */}
+                  {/* 
+                  
+                  // falta implementar a verificação do papel do usuário para ver se ele pode alterar o responsável pelo serviço (o ideal é que seja em outra tela ou em um modal. pq essa vai ser para o usuário editar alguma coisa no corpo da ordem de serviço.
+                  {serviceOrderInfo ? (
+                    // && user.isAdmin
+                    <FieldSelect
+                    label="Responsável"
+                    name="respponsibleId"
+                    default={
+                      serviceOrderInfo.responsibleId
+                      ? ""
+                      : "Selecione o usuário responsável"
+                    }
+                    // é necessário passar um lista de usuários que podem ser atibuídos aqui, no caso, cada adm do setor vá ter uma lista de subordinados que ele pode atribuir tarefas
+                    listitems={users.map((user) => user.name)}
+                    />
+                    ) : (
+                      <></>
+                    )} */}
                 </div>
                 <div>
                   {/* {serviceOrderInfo.status ? (
@@ -149,33 +132,34 @@ function CardUpdateServiceOrder() {
                             name="status"
                             listitems={status}
                           />
-                        ) : (
+                          ) : (
                           <></>
                         )} */}
                 </div>
               </div>
-              <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
-                <Button
-                  isLoading={isSubmitting}
-                  theme="primary"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Salvar
-                </Button>
-                <Button
-                  theme="secondary"
-                  type="button"
-                  onClick={() => router.back()}
-                >
-                  Cancelar
-                </Button>
+              <div className="mt-10 grid justify-end">
+                <div className="flex gap-x-3.5">
+                  <Button
+                    isLoading={isSubmitting}
+                    theme="primary"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    Salvar
+                  </Button>
+                  <Button
+                    theme="secondary"
+                    type="button"
+                    onClick={() => navigator.back()}
+                  >
+                    Cancelar
+                  </Button>
+                </div>
               </div>
             </form>
-          </>
-        </div>
+          </CardGeneric.Content>
+        </CardGeneric.Root>
       </div>
     </>
   );
 }
-export default CardUpdateServiceOrder;

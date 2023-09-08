@@ -1,3 +1,4 @@
+
 import { useRouter } from "next/router";
 
 import { Spinner } from "@chakra-ui/react";
@@ -5,12 +6,12 @@ import { FormikProvider, useFormik } from "formik";
 import * as yup from "yup";
 
 import { UploadSimple } from "@/components/icons";
+import { Button } from "@/components/ui";
 
 import EditorField from "../../components/Inputs/EditorField";
 import { useMessage } from "../../Contexts/MessageContext";
 import { postService } from "../../Utils/server/postInfo";
 import { validationSchema } from "../../Utils/validations";
-import { Button } from "../Buttons/Button";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
 import { CardLabelInputCheckBoolean } from "../Inputs/CardLabelInputCheckBoolean";
 import { CardLabelInputCheckbox } from "../Inputs/CardLabelInputCheckbox";
@@ -176,12 +177,12 @@ export const CardCreateService = () => {
                       disabled={
                         formikProps.isSubmitting || !formikProps.isValid
                       }
-                    >Criar</Button>
-                    <Button
-                      theme="secondary"
-                      type="button"
-                      isLoading={false}
-                    >Cancelar</Button>
+                    >
+                      Criar
+                    </Button>
+                    <Button theme="secondary" type="button" isLoading={false}>
+                      Cancelar
+                    </Button>
                   </>
                 </div>
               </form>
