@@ -36,3 +36,15 @@ type CreateUserInput = {
 export async function createUser(input: CreateUserInput) {
   return await api.post("/users", input);
 }
+
+export async function forgotPassword(email: string) {
+  return api.post("/password/forgot", { email });
+}
+type ResetPasswordInput = {
+  password: string;
+  token: string;
+};
+
+export async function resetPassword({ password, token }: ResetPasswordInput) {
+  return api.post("/password/reset", { password, token });
+}

@@ -113,7 +113,15 @@ export function MenuItem({
                 <ActiveLink
                   key={child.href}
                   href={getFullHrefItem(child)}
-                  className="inline-block px-4 py-2 font-medium text-white-100 hover:text-white-strong-ice hover:underline data-[active=true]:text-white-100/70"
+                  className={({ isActive }) =>
+                    cn(
+                      "inline-block px-4 py-2 font-medium hover:text-white-strong-ice hover:underline",
+                      {
+                        "text-white-100": !isActive,
+                        "text-white-100/70": isActive,
+                      }
+                    )
+                  }
                 >
                   {child.label}
                 </ActiveLink>

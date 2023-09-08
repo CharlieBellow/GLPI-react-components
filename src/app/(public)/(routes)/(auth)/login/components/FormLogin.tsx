@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,6 +13,7 @@ import * as yup from "yup";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
 import { Button, button, Input } from "@/components/ui";
+import { TextArea } from "@/components/ui/TextArea";
 
 import { useMessage } from "@/hooks";
 
@@ -30,6 +31,7 @@ export function FormLogin() {
   const [showInput, setShowInput] = useState(false);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const {
     register,
@@ -56,7 +58,14 @@ export function FormLogin() {
         "Login realizado com sucesso! Estamos lhe redirecionando..."
       );
 
-      router.push("/dashboard");
+      const redirectUrl = searchParams?.get("redirectUrl") ?? null;
+
+      if (!redirectUrl) {
+        router.push("/");
+        return;
+      }
+
+      router.push(redirectUrl);
     });
   };
 
@@ -76,6 +85,12 @@ export function FormLogin() {
               type="email"
               label="Email"
               errorMessage={errors.email?.message}
+            />
+
+            <TextArea
+              label="Test text area"
+              rootClassName="mt-4"
+              textareaClassName="resize-none"
             />
           </div>
           <div className="mb-8">

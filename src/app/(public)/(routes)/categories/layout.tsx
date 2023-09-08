@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { ReactNode } from "react";
+
+import Link from "next/link";
 
 export default function CategoriesLayout({
   children,
@@ -8,7 +9,7 @@ export default function CategoriesLayout({
 }) {
   return (
     <>
-      <header className="sticky top-0 z-10 h-16 bg-gradient">
+      <header className="bg-gradient sticky top-0 z-10 h-16">
         <div className="container flex h-full items-center justify-between">
           <span className="text-xl font-bold text-white-100">
             Carta de serviços

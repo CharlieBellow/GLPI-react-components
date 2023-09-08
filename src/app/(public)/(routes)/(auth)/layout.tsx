@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="bg-gradient flex h-screen items-center justify-center overflow-hidden">
+    <main className="bg-gradient flex h-screen items-center justify-center overflow-hidden p-6 md:p-0">
       {children}
       <div className="absolute left-0 top-1/2 flex h-screen w-full -translate-y-1/2 items-center justify-start overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}

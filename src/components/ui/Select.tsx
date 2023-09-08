@@ -47,6 +47,7 @@ export function Select({
                 !errorMessage,
             }
           )}
+          aria-invalid={!!errorMessage}
         >
           <SelectPrimitive.Value placeholder={label} />
           <SelectPrimitive.Icon asChild>
