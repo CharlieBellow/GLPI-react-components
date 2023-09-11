@@ -13,7 +13,6 @@ import * as yup from "yup";
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
 import { Button, button, Input } from "@/components/ui";
-import { TextArea } from "@/components/ui/TextArea";
 
 import { useMessage } from "@/hooks";
 
@@ -85,12 +84,6 @@ export function FormLogin() {
               type="email"
               label="Email"
               errorMessage={errors.email?.message}
-            />
-
-            <TextArea
-              label="Test text area"
-              rootClassName="mt-4"
-              textareaClassName="resize-none"
             />
           </div>
           <div className="mb-8">
