@@ -1,7 +1,7 @@
-import ServicesOrder from "@/components/ServicesComponent/ServicesOrder";
-
-import { getAuthSession } from "@/Utils/auth";
 import { getRequesterService } from "@/Utils/server/getInfo";
+
+import { columns } from "../../group/admin/components/columns";
+import { DataTable } from "../../group/admin/components/DataTable";
 
 // * ordens de serviço do usuário '/servicebook/serviceorder'
 const myuser = {
@@ -15,12 +15,8 @@ const myuser = {
 };
 export default async function MyServices() {
   // const responsible = await getResponsibleService(myuser.id);
-  const session = await getAuthSession();
-
-  if (!session) throw new Error("sem session");
 
   const data = await getRequesterService(myuser.id);
 
-  return <ServicesOrder requester={data} title="Meus Serviços" />;
-  //return <div>{requester?.length}</div>;
+  return <DataTable data={data} columns={columns} />;
 }

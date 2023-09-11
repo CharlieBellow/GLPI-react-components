@@ -118,7 +118,7 @@ export const validationSchema = {
   descriptionService: yup
     .string()
     .min(50, "No mínimo 50 caracteres")
-    .max(5000, "No máximo 500 caracteres")
+    .max(5000, "No máximo 5000 caracteres")
     .required("É obrigatório descrever o motivo"),
   serviceLocal: yup
     .string()
@@ -131,7 +131,8 @@ export const validationSchema = {
   file: yup
     .string()
     .required("Você precisa anexar um documento")
-    .matches(fileExtension, "Insira um arquivo válido"),
+    .matches(fileExtension, "Insira um arquivo válido")
+    .optional(),
   avatar: yup
     .string()
     .required("Você precisa anexar um documento")
