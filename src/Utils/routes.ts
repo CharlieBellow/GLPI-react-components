@@ -30,7 +30,7 @@ export const routes = [
         label: "Grupos",
       },
       {
-        href: "/adminservicebook",
+        href: "/group/admin",
         label: "Admin. Grupos",
       },
     ],
@@ -55,3 +55,16 @@ export const routes = [
     ],
   },
 ] satisfies Route[];
+
+const publicRoutesPaths = [
+  "login",
+  "signup",
+  "categories",
+  "forgot-password",
+  "reset-password",
+];
+
+export const buildPublicRoutesPathMatcher = () => {
+  const pathsParsed = publicRoutesPaths.map((path) => `${path}`).join("|");
+  return `/(${pathsParsed})` as const;
+};

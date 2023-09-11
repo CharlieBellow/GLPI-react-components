@@ -24,7 +24,9 @@ api.interceptors.request.use(async (config) => {
   }
 
   if (session) {
-    config.headers["Authorization"] = `Bearer ${session.user.token}`;
+    config.headers[
+      "Authorization"
+    ] = `Bearer ${session.sessionTokenInfo.token}`;
   }
 
   return config;

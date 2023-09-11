@@ -79,3 +79,18 @@
   transition: all 100ms ease-in-out;
   transform-origin: center top;
 }
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-svg path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 1s linear forwards;
+}

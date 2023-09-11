@@ -24,7 +24,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      className: _className,
+      className,
       errorMessage,
       label,
       renderStartIcon,
@@ -52,7 +52,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 errorMessage,
               "focus-within:ring-primary-blue ring-secondary-2 hover:ring-primary-blue text-black-text":
                 !errorMessage,
-            }
+            },
+            className
           )}
         >
           {startIcon && startIcon(defaultIconsClassName)}

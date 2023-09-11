@@ -54,6 +54,7 @@ export const authOptions: AuthOptions = {
         try {
           const data = await loginUser(credentials);
           const { user, ...rest } = data;
+
           return { ...rest, ...user };
         } catch (error) {
           if (error instanceof HttpError) {
@@ -74,21 +75,24 @@ export const authOptions: AuthOptions = {
   callbacks: {
     jwt({ token, user }) {
       if (token && user) {
-        return {
+        const userData = {
+          id: user.id,
+          name: user.name!,
+          email: user.email!,
+          permissions: user.permissions,
+          roles: user.roles,
+          avatar: user.avatar,
+        };
+
+        const tokenData = {
           ...token,
-          user: {
-            id: user.id,
-            name: user.name!,
-            email: user.email!,
-            permissions: user.permissions,
-            roles: user.roles,
-            avatar: user.avatar,
-          },
           token: user.token,
           refresh_token: user.refresh_token,
           tokenExpiresIn: new Date(user.tokenExpiresIn).getTime(),
           refreshTokenExpiresIn: new Date(user.refreshTokenExpiresIn).getTime(),
         };
+
+        return { ...tokenData, user: userData };
       }
 
       if (Date.now() < token.tokenExpiresIn) {
@@ -98,9 +102,8 @@ export const authOptions: AuthOptions = {
       return refreshUserToken(token);
     },
     async session({ session, token }) {
-      const { user, ...res } = token;
-      session.user = { ...user, ...res, email: user.email!, name: user.name! };
-      return { ...session };
+      const { user, ...tokenData } = token;
+      return { ...session, user, sessionTokenInfo: tokenData };
     },
   },
 };
