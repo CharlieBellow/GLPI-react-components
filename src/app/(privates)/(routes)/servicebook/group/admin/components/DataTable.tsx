@@ -11,6 +11,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
+import { Warning } from "@/components/icons";
 import { Button } from "@/components/ui";
 import {
   Table,
@@ -102,7 +103,12 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  Sem resultados
+                  <div className="flex w-full flex-col items-center justify-center gap-2 py-4">
+                    <Warning size={48} className="text-destructive" />
+                    <span className="text-lg lg:text-xl">
+                      Não foi encontrado nenhum resultado
+                    </span>
+                  </div>
                 </TableCell>
               </TableRow>
             )}

@@ -1,157 +1,155 @@
-import { useEffect, useState } from "react";
-
+"use client";
 import Link from "next/link";
 
-import { Spinner } from "@chakra-ui/react";
-import { Form, Formik } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { useMessage } from "../../Contexts/MessageContext";
-import { getUserId } from "../../Utils/server/getInfo";
+import { CardGeneric } from "@/components/Cards/CardGeneric";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+
+import { useHandleApiError, useMessage } from "@/hooks";
+
+import { postUser } from "@/Utils/server/postInfo";
+
 import { User } from "../../Utils/server/types";
 import { validationSchema } from "../../Utils/validations";
-import { Button } from "../Buttons/Button";
-import { CardLabelInput } from "../Inputs/CardLabelInput";
-import { CardLabelInputShowInfo } from "../Inputs/CardLabelInputShowInfo";
-import { CardLine } from "./CardLine";
-import { CardTitleImage } from "./CardTitleImage";
 
-const validate = yup.object().shape({
-  // fullName: validationSchema.fullName,
-  // email: validationSchema.email,
+
+const formSchema = yup.object().shape({
+  name: validationSchema.fullName,
+  email: validationSchema.email,
   password: validationSchema.password,
   confirmPassword: validationSchema.confirmPassword,
 });
 
-const myuser = {
-  id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-  name: "Charlie Bellow",
-  password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-  email: "email@email.com",
-  avatar: "https://www.github.com/arthwrvl.png",
-  isAdmin: false,
-  created_at: "2023-03-22T16:19:14.843Z",
-  permissions: [],
-  roles: [],
+
+
+type UserProps = {
+  user: User;
 };
 
-function CardUpdateUser() {
-  const { errorMessage, successMessage } = useMessage();
-  const [user, setUser] = useState<User>();
+type FormValues = yup.InferType<typeof formSchema>;
 
-  const token = localStorage.getItem("token");
-  // entender pq não tá pegando o usuario
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getUserId(myuser.id, token as string);
-      setUser(response);
-    };
-    fetchData();
+export default function CardUpdateUser({ name, email, avatar }: UserProps) {
+  const { successMessage } = useMessage();
+
+  const myuser = {
+    id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
+    name: "Charlie Bellow",
+    password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
+    email: "email@email.com",
+    avatar: avatar,
+    isAdmin: false,
+    created_at: "2023-03-22T16:19:14.843Z",
+    permissions: [],
+    roles: [],
+  };
+
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>({
+    mode: "onBlur",
+    defaultValues: {
+      name: name,
+      email: email,
+      password: "",
+      confirmPassword: "",
+    },
+    resolver: yupResolver(formSchema),
   });
 
-  const isAdmin = true;
+  const handleApiError = useHandleApiError();
+
+  const onSubmit = async (values: FormValues) => {
+    try {
+      await postUser({ ...values });
+      successMessage("Informações atualizadas com sucesso!");
+      reset();
+    } catch (error) {
+      handleApiError(error);
+
+    }
+  };
+  // const isAdmin = true;
 
   return (
     <div className="mx-4">
-      <div
-        className="mx-auto mb-80 mt-18 flex h-auto max-w-2xl
-				flex-col rounded-lg bg-white-ice pb-9 shadow-card lg:block
-				lg:w-202 lg:max-w-card"
-      >
-        <div className="pl-9">
-          <CardTitleImage
-            title="Alterar Informações do Usuário"
-            srcimage={myuser.avatar}
-            alt={"Imagem de perfil"}
-            editImage
-          />
-        </div>
-        <div className="mx-9 mb-10 mt-4">
-          <CardLine />
-        </div>
-        {user ? (
-          <Formik
-            initialValues={{
-              name: user.name,
-              email: user.email,
-              password: "",
-              confirmPassword: "",
-            }}
-            validationSchema={validate}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                successMessage("Chamado criado com sucesso!");
+      <CardGeneric.Root>
+        <CardGeneric.Header>
+          <CardGeneric.Title>Atualizar dados do perfil</CardGeneric.Title>
+        
 
-                // falta a função de alterar usuário
-                actions.resetForm();
-              }, 400);
-            }}
+          <CardGeneric.Image
+            fallbackText="Imagem de perfil"
+            url={myuser.avatar}
+            editImage
+            />
+          
+        </CardGeneric.Header>
+
+        <CardGeneric.Separator />
+        <CardGeneric.Content>
+          <form
+            action=""
+            className="mx-14 flex flex-col gap-9"
+            onSubmit={handleSubmit(onSubmit)}
           >
-            {({ isSubmitting, isValid }) => (
-              <Form action="" className="mx-14 flex flex-col gap-9">
-                <div className="flex flex-col justify-center gap-9 lg:flex-row lg:gap-x-13">
-                  <CardLabelInputShowInfo
-                    label="Nome Completo"
-                    name="name"
-                    type="text"
-                    inputid="name"
-                    width="lg:w-80 w-full"
-                    disabled={user.name ? true : false}
-                  />
-                  <CardLabelInputShowInfo
-                    label="E-mail"
-                    type="email"
-                    name="email"
-                    inputid="email"
-                    width="lg:w-80 w-full"
-                    disabled={user.name ? true : false}
-                  />
-                </div>
-                <div className="flex flex-col gap-9 lg:flex-row lg:gap-x-13">
-                  <CardLabelInput
-                    label="Senha"
-                    type="password"
-                    name="password"
-                    inputid="password"
-                    width="lg:w-80 w-full"
-                  />
-                  <CardLabelInput
-                    label="Confirme sua senha"
-                    type="password"
-                    name="confirmPassword"
-                    inputid="confirmPassword"
-                    width="lg:w-80 w-full"
-                  />
-                </div>
-                <div className="mt-10 flex justify-end gap-x-3.5 ">
-                  <Button
-                    title={"Alterar"}
-                    theme="primary"
-                    type="submit"
-                    disabled={isSubmitting || !isValid}
-                    isLoading={isSubmitting}
-                  />
-                  {isAdmin ? (
-                    <Button type="button" theme="secondary">
-                      Excluir
-                    </Button>
-                  ) : (
-                    <Link href="./">
-                      <Button theme="secondary">Cancelar</Button>
-                    </Link>
-                  )}
-                </div>
-              </Form>
-            )}
-          </Formik>
-        ) : (
-          <div className="flex justify-center">
-            <Spinner size="lg" />
-          </div>
-        )}
-      </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <Input
+                {...register("name")}
+                label="Nome Completo"
+                type="text"
+                disabled={name ? true : false}
+                errorMessage={errors.name?.message}
+              />
+              <Input
+                label="E-mail"
+                type="email"
+                {...register("email")}
+                errorMessage={errors.email?.message}
+                disabled={name ? true : false}
+              />
+
+              <Input
+                label="Senha"
+                type="password"
+                {...register("password")}
+                errorMessage={errors.password?.message}
+              />
+              <Input
+                label="Confirme sua senha"
+                type="password"
+                {...register("confirmPassword")}
+                errorMessage={errors.confirmPassword?.message}
+              />
+            </div>
+            <div className="mt-10 flex justify-end gap-x-3.5 ">
+              <div className="flex items-end gap-4">
+                <Button
+                  title="Alterar"
+                  theme="primary"
+                  type="submit"
+                  disabled={isSubmitting}
+                  isLoading={isSubmitting}
+                />
+
+                <Link href="./">
+                  <Button theme="secondary">Cancelar</Button>
+                </Link>
+
+                <Button type="button" theme="danger">
+                  Excluir Conta
+                </Button>
+              </div>
+            </div>
+          </form>
+        </CardGeneric.Content>
+      </CardGeneric.Root>
     </div>
   );
 }
-
-export default CardUpdateUser;

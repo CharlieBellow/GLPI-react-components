@@ -3,14 +3,7 @@ import CardAddUser from "@/components/Cards/CardAddUser";
 // * adicionar novo usuário 'user/add'
 
 function FormAddUser() {
-  return (
-    // <Layout>
-    // <Head>
-    // 	<title>Cadastro de Usuários - GLPI</title>
-    // </Head>
-    <CardAddUser />
-    // </Layout>
-  );
+  return <CardAddUser />;
 }
 
 export default FormAddUser;

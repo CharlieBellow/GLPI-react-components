@@ -31,6 +31,7 @@ type CreateUserInput = {
   name: string;
   email: string;
   password: string;
+  roles?: string[]
 };
 
 export async function createUser(input: CreateUserInput) {

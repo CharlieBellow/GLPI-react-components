@@ -1,14 +1,15 @@
+"use client";
 import { useState } from "react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import * as Icon from "@/components/icons";
+import {Camera, UploadSimple, X} from "@/components/icons";
+import { Button } from "@/components/ui/Button";
 
 import { useMessage } from "../Contexts/MessageContext";
 import { validationSchema } from "../Utils/validations";
-import { Button } from "./Buttons/Button";
 import { CardLabelInputFile } from "./Inputs/CardLabelInputFile";
 // import { patchAvatar2 } from '../Utils/server/putInfo';
 
@@ -17,15 +18,15 @@ const validate = yup.object().shape({
 });
 
 export default function Modal() {
-  const { errorMessage, successMessage } = useMessage();
+  const { successMessage } = useMessage();
   const [isActive, setIsActive] = useState(false);
-
-  const token = localStorage.getItem("token");
 
   return (
     <Dialog.Root open={isActive} onOpenChange={setIsActive}>
       <Dialog.Trigger className=" relative -left-6 top-10 flex h-8 w-8 items-center justify-center rounded-full bg-blue-ufal text-white-100 hover:cursor-pointer ">
-        <Icon.Camera size={22} />
+        
+        <Camera size={22} />
+     
       </Dialog.Trigger>
       <Dialog.Portal className="h-45 w-45 flex bg-gray-500">
         <Dialog.Overlay className=" fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm data-[state=open]:animate-overlayShow " />
@@ -75,7 +76,7 @@ export default function Modal() {
                     width="w-full"
                     inputid="title"
                     icon={
-                      <Icon.UploadSimple
+                      <UploadSimple
                         className="absolute mr-4 flex"
                         weight="bold"
                       />
@@ -101,7 +102,7 @@ export default function Modal() {
               className="focus:shadow-text-black-500 absolute right-[10px]    top-[10px] inline-flex h-6 w-6 appearance-none items-center justify-center rounded-full text-bg hover:bg-blue-ufal focus:shadow-[0_0_0_2px] focus:outline-none"
               aria-label="Close"
             >
-              <Icon.X />
+              <X />
             </button>
           </Dialog.Close>
         </Dialog.Content>

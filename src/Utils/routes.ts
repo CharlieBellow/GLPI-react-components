@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 
-import { House, Signpost, Sparkle, SquaresFour } from "@/components/icons";
+import { House, Signpost, Sparkle, SquaresFour, User, Users } from "@/components/icons";
 
 type Route = {
   href: string;
@@ -53,6 +53,34 @@ export const routes = [
         label: "Serviços por Status",
       },
     ],
+  },
+  {
+    href: "/user/",
+    label: "Usuário",
+    icon: User,
+    subItems: [
+      {
+        href: "/add",
+        label: "Perfil completo",
+      },
+      {
+        href: "/create",
+        label: "Adicionar Usuário",
+      },
+      {
+        href: "/info",
+        label: "Perfil",
+      },
+      {
+        href: "/update",
+        label: "Alterar usuário",
+      },
+    ],
+  },
+  {
+    href: "/users/1",
+    label: "Usuários",
+    icon: Users,
   },
 ] satisfies Route[];
 

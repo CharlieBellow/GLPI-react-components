@@ -1,23 +1,11 @@
 import { useBreakpointValue } from "@chakra-ui/react";
 
 import { Trash } from "@/components/icons";
+import { Button } from "@/components/ui/Button";
 
 import { User } from "../Utils/server/types";
-import { Button } from "./Buttons/Button";
 
 // * card de usuário para ser exibida na lista de usuários
-
-const myuser = {
-  id: "d49f2af4-333c-4873-8fe4-ffa5ca7b2822",
-  name: "Charlie Bellow",
-  password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
-  email: "email@email.com",
-  avatar: null,
-  isAdmin: false,
-  created_at: "2023-03-22T16:19:14.843Z",
-  permissions: [],
-  roles: [],
-};
 
 export default function CardUser(props: User) {
   const isWideVersion = useBreakpointValue({
@@ -71,10 +59,7 @@ export default function CardUser(props: User) {
         </div>
       </div>
       <div className="w-fit pt-3">
-        <Button
-          className="flex"
-          theme={"primary"}
-        >
+        <Button className="flex" theme="primary">
           {isWideVersion ? "Excluir" : ""}
           <Trash className="" weight="bold" size={20} />
         </Button>
