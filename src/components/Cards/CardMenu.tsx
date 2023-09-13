@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Bell, Question, UserPlus } from "@/components/icons";
-import Search from "@/components/Inputs/Search";
 import MobileNav from "@/components/MobileNav";
 import ToggleSidebarButton from "@/components/ToggleSidebarButton";
+import Search from "@/components/ui/Search";
 
 export default function CardMenu() {
   return (
@@ -13,7 +13,7 @@ export default function CardMenu() {
         <div className="flex w-[15rem] flex-row items-center gap-4">
           <MobileNav />
           <ToggleSidebarButton />
-          <h3 className="text-white hidden lg:block" />
+          {/* <h3 className="text-white hidden lg:block" /> */}
         </div>
         <div className="relative hidden h-full lg:flex lg:items-center lg:justify-center">
           <Image

@@ -1,32 +1,55 @@
 "use client";
 import { useState } from "react";
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Form, Formik } from "formik";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import {Camera, UploadSimple, X} from "@/components/icons";
+import { Camera, X } from "@/components/icons";
+import { Input } from "@/components/ui";
 import { Button } from "@/components/ui/Button";
 
-import { useMessage } from "../Contexts/MessageContext";
-import { validationSchema } from "../Utils/validations";
-import { CardLabelInputFile } from "./Inputs/CardLabelInputFile";
-// import { patchAvatar2 } from '../Utils/server/putInfo';
+import { useMessage } from "@/hooks/useMessage";
 
-const validate = yup.object().shape({
+import { validationSchema } from "../Utils/validations";
+
+
+const formSchema = yup.object().shape({
   avatar: validationSchema.avatar,
 });
 
-export default function Modal() {
+type FormValues = yup.InferType<typeof formSchema>;
+
+type ModalProps = {
+  avatar: string;
+};
+
+export default function Modal({ avatar }: ModalProps) {
   const { successMessage } = useMessage();
   const [isActive, setIsActive] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>({
+    mode: "onBlur",
+    defaultValues: {
+      avatar: avatar,
+    },
+    resolver: yupResolver(formSchema),
+  });
+
+  const onSubmit = (values: FormValues) => {
+    console.log(values);
+    successMessage("Imagem alterada com sucesso!")
+  };
 
   return (
     <Dialog.Root open={isActive} onOpenChange={setIsActive}>
       <Dialog.Trigger className=" relative -left-6 top-10 flex h-8 w-8 items-center justify-center rounded-full bg-blue-ufal text-white-100 hover:cursor-pointer ">
-        
         <Camera size={22} />
-     
       </Dialog.Trigger>
       <Dialog.Portal className="h-45 w-45 flex bg-gray-500">
         <Dialog.Overlay className=" fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-sm data-[state=open]:animate-overlayShow " />
@@ -37,65 +60,27 @@ export default function Modal() {
           <Dialog.Description className="mb-5 mt-3 text-base leading-normal text-bg">
             Escolha uma nova imagem para o seu perfil.
           </Dialog.Description>
-          <Formik
-            initialValues={{
-              avatar: "",
-            }}
-            validationSchema={validate}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                console.log(values);
 
-                // const formData = new FormData();
-                // formData.append(values, blob);
-                // const res = await axios.post("http://172.27.12.171:3333/users/avatar", formData, {'Content-Type': 'multipart/form-data'})
-
-                // patchAvatar2(values.avatar, token as string)
-                console.log("foi");
-                successMessage("Imagem alterada com sucesso!");
-
-                actions.resetForm();
-              }, 600);
-            }}
+          <form
+            action=""
+            className="mx-14 flex flex-col gap-9"
+            onSubmit={handleSubmit(onSubmit)}
           >
-            {({ isSubmitting, isValid }) => (
-              <Form action="" className="mx-14 flex flex-col gap-9">
-                <div className="flex flex-col gap-4">
-                  {/* <CardLabelInput
-									label="Imagem"
-									type="text"
-									name="avatar"
-									inputid="avatar"
-									width="lg:w-80 w-full"
-                  
-                /> */}
-                  <CardLabelInputFile
-                    label="Adicionar Foto"
-                    name="avatar"
-                    type="file"
-                    width="w-full"
-                    inputid="title"
-                    icon={
-                      <UploadSimple
-                        className="absolute mr-4 flex"
-                        weight="bold"
-                      />
-                    }
-                  />
+            <div className="flex flex-col gap-4">
+              <Input
+                {...register("avatar")}
+                label="Imagem"
+                type="file"
+                errorMessage={errors.avatar?.message}
+              />
 
-                  <div className="flex w-full justify-end">
-                    <Button
-                      theme="primary"
-                      type="submit"
-                      disabled={isSubmitting || !isValid}
-                    >
-                      Alterar
-                    </Button>
-                  </div>
-                </div>
-              </Form>
-            )}
-          </Formik>
+              <div className="flex w-full justify-end">
+                <Button theme="primary" type="submit" disabled={isSubmitting}>
+                  Alterar
+                </Button>
+              </div>
+            </div>
+          </form>
 
           <Dialog.Close asChild>
             <button

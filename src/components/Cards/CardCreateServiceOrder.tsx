@@ -1,9 +1,9 @@
 "use client";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { Controller,useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { Button, Input } from "@/components/ui";
+import { Button, Input, TipTapTextEditor } from "@/components/ui";
 
 import { useMessage } from "@/hooks";
 
@@ -17,7 +17,7 @@ import { CardGeneric } from "./CardGeneric";
 export const lettersOnly = /[^a-zA-Z]/g;
 
 const formSchema = yup.object().shape({
-  // description: validationSchema.description,
+  description: validationSchema.description,
   title: validationSchema.titleGroup,
   // serviceLocal: validationSchema.serviceLocal,
   patrimonyId: validationSchema.patrimony,
@@ -49,10 +49,11 @@ export default function CardCreateServiceOrder({
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     defaultValues: {
-      // description: "",
+      description: "",
       serviceId: service.id,
       patrimonyId: service.isPatromonyIdRequired ? "" : "notrequired",
       requesterId: myuser.id,
@@ -93,19 +94,22 @@ export default function CardCreateServiceOrder({
                   placeholder={service.title ? service.title : ""}
                 />
               </div>
-              {/* <div className="">
-                        <CardLabelTextareaTiny
-                          label="Descrição"
-                          type="textarea"
-                          name="description"
-                          textareaid="description"
-                        />
-                        {errors.description && touched.description ? (
-                          <span className="text-sm text-red-ufal">
-                            {errors.description}
-                          </span>
-                        ) : null}
-                      </div> */}
+              <div className="">
+                <Controller
+            name="description"
+            control={control}
+            render={({ field }) => {
+              return (
+                <TipTapTextEditor
+                  onUpdate={(event) => {
+                    field.onChange(event.editor.getHTML());
+                  }}
+                />
+              );
+            }}
+          />
+                        
+                      </div> 
               <div>
                 {service && service.isPatromonyIdRequired ? (
                   <Input

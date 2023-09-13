@@ -23,7 +23,7 @@ export default function CardImage({
         width={60}
         height={60}
       />
-      {editImage ? <Modal /> : <></>}
+      {editImage ? <Modal avatar="https://www.github.com/charliebellow.png" /> : <></>}
       {/* {editImage ? <Dialog /> : <></>} */}
     </>
   ) : (

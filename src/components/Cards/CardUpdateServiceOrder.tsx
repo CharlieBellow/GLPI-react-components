@@ -2,11 +2,11 @@
 import { useRouter } from "next/navigation";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { CardGeneric } from "@/components/Cards/CardGeneric";
-import { Button, Input } from "@/components/ui";
+import { Button, Input, TipTapTextEditor } from "@/components/ui";
 
 import { useHandleApiError, useMessage } from "@/hooks";
 
@@ -36,6 +36,7 @@ export default function CardUpdateServiceOrder({
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     mode: "onBlur",
@@ -84,11 +85,18 @@ export default function CardUpdateServiceOrder({
                   />
                 </div>
                 <div className="">
-                  <Input
-                    {...register("description")}
-                    label="Descrição"
-                    type="textarea"
-                    errorMessage={errors.description?.message}
+                  <Controller
+                    name="description"
+                    control={control}
+                    render={({ field }) => {
+                      return (
+                        <TipTapTextEditor
+                          onUpdate={(event) => {
+                            field.onChange(event.editor.getHTML());
+                          }}
+                        />
+                      );
+                    }}
                   />
                 </div>
                 <div>

@@ -1,4 +1,5 @@
 import { MagnifyingGlass } from "@/components/icons";
+
 interface SearchProps extends React.HTMLAttributes<HTMLElement> {
   placeholder: string;
   theme?: "outline-gray" | "";

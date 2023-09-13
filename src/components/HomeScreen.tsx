@@ -11,7 +11,7 @@ import {
   Users,
   Wrench,
 } from "@/components/icons";
-import Search from "@/components/Inputs/Search";
+import Search from "@/components/ui/Search";
 
 function HomeScreen() {
   return (
@@ -19,7 +19,7 @@ function HomeScreen() {
       <div className="lg:hidden">
         <div className="mx-2 flex flex-col items-center gap-6">
           <CardHomeMobile />
-          <Search placeholder={"O que está procurando?"} />
+          <Search placeholder="O que está procurando?" />
         </div>
 
         <h1 className="my-6 ml-8 text-base font-semibold">Categorias</h1>
