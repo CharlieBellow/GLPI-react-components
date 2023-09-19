@@ -12,7 +12,7 @@ import * as yup from "yup";
 
 import { CardGeneric } from "@/components/Cards/CardGeneric";
 import { Eye, EyeSlash } from "@/components/icons";
-import { Button, button, Input } from "@/components/ui";
+import { Button, button,Input } from "@/components/ui";
 
 import { useMessage } from "@/hooks";
 
@@ -50,6 +50,7 @@ export function FormLogin() {
     await signIn("credentials", { ...values, redirect: false }).then((res) => {
       if (res && res.error) {
         errorMessage(res.error!);
+
         return;
       }
 
