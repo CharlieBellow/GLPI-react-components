@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+  variable: "--roboto-sans",
 });
 
 export default async function RootLayout({
@@ -30,12 +31,12 @@ export default async function RootLayout({
 }) {
   const session = await getAuthSession();
 
-  if (session?.user.error === "RefreshTokenError") {
+  if (session?.error === "RefreshTokenError") {
     redirect("/login");
   }
 
   return (
-    <html lang="pt-BR" className={roboto.className}>
+    <html lang="pt-BR" className={roboto.variable}>
       <body className="bg-gray-medium">
         <Providers>{children}</Providers>
       </body>

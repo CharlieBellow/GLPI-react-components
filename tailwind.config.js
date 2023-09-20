@@ -91,6 +91,12 @@ module.exports = {
         danger: "hsl(var(--danger))",
         destructive: "hsl(var(--destructive))",
       },
+      fontFamily: {
+        sans: [
+          "var(--roboto-sans)",
+          ...require("tailwindcss/defaultTheme").fontFamily.sans,
+        ],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
