@@ -27,6 +27,10 @@ export type SubGroupModel = {
   createdAt: Date;
   updatedAt: Date;
   serviceGroupId: string;
+  person: {
+    id: string;
+    email: string;
+  };
 };
 
 export interface Service {
