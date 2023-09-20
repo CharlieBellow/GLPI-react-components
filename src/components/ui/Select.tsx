@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ComponentPropsWithoutRef } from "react";
+import React from "react";
 
 import * as SelectPrimitive from "@radix-ui/react-select";
 
@@ -21,24 +21,22 @@ type FieldSelectProps = {
    * @description this is the error message that will be displayed below the input
    */
   errorMessage?: string;
-} & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>;
+} & React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>;
 
-export function Select({
-  errorMessage,
-  options,
-  label,
-  ...props
-}: FieldSelectProps) {
+export const Select = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  FieldSelectProps
+>(({ errorMessage, label, options, ...props }, ref) => {
   return (
     <div
       className={cn("flex flex-col gap-1", {
         "text-black-text": !errorMessage,
         "text-primary-red": errorMessage,
       })}
-      tabIndex={-1}
     >
       <SelectPrimitive.Root {...props}>
         <SelectPrimitive.Trigger
+          ref={ref}
           className={cn(
             "flex w-full items-center [&>span]:text-base justify-between rounded-lg ring-1 bg-white-100 px-4 placeholder:text-secondary-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-current transition-all h-10",
             {
@@ -88,4 +86,6 @@ export function Select({
       )}
     </div>
   );
-}
+});
+
+Select.displayName = "Select";
