@@ -49,7 +49,7 @@ export function MenuItem({
           title={label}
           className={({ isActive }) =>
             cn(
-              "flex w-full items-center gap-3 rounded-lg py-2 text-white-100 transition-colors hover:bg-blue-final-gradient",
+              "flex w-full items-center gap-3 rounded-lg py-2 text-white-100 transition-colors hover:bg-blue-final-gradient group whitespace-nowrap overflow-hidden",
               {
                 "px-2 justify-center": !isOpen,
                 "px-4": isOpen,
@@ -58,10 +58,10 @@ export function MenuItem({
             )
           }
         >
-          {Icon && <Icon size={28} className="shrink-0" />}
+          {Icon && <Icon className="mb-px block h-6 w-6 shrink-0" />}
           <span
             className={cn(
-              "font-medium text-base/3",
+              "font-medium text-base/3 group-hover:underline group-focus-visible:underline",
               isOpen ? "inline" : "hidden"
             )}
           >
@@ -75,7 +75,7 @@ export function MenuItem({
           <Accordion.Trigger
             title={label}
             className={cn(
-              "flex w-full items-center gap-3 rounded-md py-2 text-white-100 transition-colors hover:bg-blue-final-gradient group",
+              "flex w-full items-center gap-3 rounded-md py-2 text-white-100 transition-colors hover:bg-blue-final-gradient group whitespace-nowrap overflow-hidden",
               {
                 "px-2 justify-center": !isOpen,
                 "px-4 justify-between data-[state=open]:rounded-b-none": isOpen,
@@ -86,7 +86,7 @@ export function MenuItem({
             onClick={onClick}
           >
             <span className="flex items-center gap-3">
-              {Icon && <Icon size={28} className="shrink-0" />}
+              {Icon && <Icon className="mb-px block h-6 w-6 shrink-0" />}
               <span
                 className={cn(
                   "font-medium text-base/3",
