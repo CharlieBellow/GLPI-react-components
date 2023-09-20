@@ -1,6 +1,13 @@
 import { Button, Heading } from "@/components/ui";
 
-export function ErrorBoundary({ reset }: { error: Error; reset: () => void }) {
+export default function ErrorBoundary({
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
+  const reloadPage = () => window.location.reload();
+
   return (
     <div className="">
       <svg
@@ -43,7 +50,16 @@ export function ErrorBoundary({ reset }: { error: Error; reset: () => void }) {
       <ul className="mt-8">
         Tente:
         <div className="pl-10 pt-2">
-          <li>Recarregar a página</li>
+          <li>
+            <button
+              type="button"
+              aria-label="Recarregar página"
+              className="cursor-pointer hover:underline"
+              onClick={reloadPage}
+            >
+              Recarregar a página
+            </button>
+          </li>
           <li>Verificar sua conexão com a internet</li>
           <li>Entrar em contato com o suporte</li>
         </div>
