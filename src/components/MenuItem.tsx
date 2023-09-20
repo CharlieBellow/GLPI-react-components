@@ -47,13 +47,16 @@ export function MenuItem({
         <ActiveLink
           href={href}
           title={label}
-          className={cn(
-            "flex w-full items-center gap-3 rounded-lg py-2 text-white-100 transition-colors hover:bg-blue-final-gradient data-[active=true]:bg-blue-ufal/70",
-            {
-              "px-2 justify-center": !isOpen,
-              "px-4": isOpen,
-            }
-          )}
+          className={({ isActive }) =>
+            cn(
+              "flex w-full items-center gap-3 rounded-lg py-2 text-white-100 transition-colors hover:bg-blue-final-gradient",
+              {
+                "px-2 justify-center": !isOpen,
+                "px-4": isOpen,
+                "bg-primary-blue/70 pointer-events-none": isActive,
+              }
+            )
+          }
         >
           {Icon && <Icon size={28} className="shrink-0" />}
           <span
@@ -76,7 +79,7 @@ export function MenuItem({
               {
                 "px-2 justify-center": !isOpen,
                 "px-4 justify-between data-[state=open]:rounded-b-none": isOpen,
-                "bg-blue-ufal/70": hasActiveLinkInSubItems,
+                "bg-primary-blue/70": hasActiveLinkInSubItems,
                 "data-[state=open]:bg-blue-final-gradient": isOpen,
               }
             )}
@@ -118,7 +121,7 @@ export function MenuItem({
                       "inline-block px-4 py-2 font-medium hover:text-white-strong-ice hover:underline",
                       {
                         "text-white-100": !isActive,
-                        "text-white-100/70": isActive,
+                        "text-white-100/70 pointer-events-none": isActive,
                       }
                     )
                   }
