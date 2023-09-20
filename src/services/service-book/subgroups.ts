@@ -2,9 +2,9 @@ import { api } from "@/Utils/server/api";
 
 import { SubGroupModel } from "@/types";
 
-export async function getAllSubGroups(idCategory: string) {
+export async function getAllSubGroupsByGroupId(groupId: string) {
   const { data } = await api.get<SubGroupModel[]>(
-    `/servicebook/group/${idCategory}/subgroup`
+    `/servicebook/group/${groupId}/subgroup`
   );
 
   return data?.map((subgroup) => ({
@@ -13,16 +13,16 @@ export async function getAllSubGroups(idCategory: string) {
     updatedAt: new Date(subgroup.updatedAt),
   }));
 }
-type CreateSubGroup = Pick<SubGroupModel, "serviceGroupId" | "description">;
+type CreateSubGroup = {
+  serviceGroupId: string;
+  description: string;
+  personId: string;
+};
 
-export async function createSubGroup({
-  serviceGroupId,
-  description,
-}: CreateSubGroup): Promise<SubGroupModel> {
-  return api.post("/servicebook/subgroup", {
-    serviceGroupId,
-    description,
-  });
+export async function createSubGroup(
+  input: CreateSubGroup
+): Promise<SubGroupModel> {
+  return api.post("/servicebook/subgroup", input);
 }
 
 export async function deleteSubGroup(id: string): Promise<void> {
