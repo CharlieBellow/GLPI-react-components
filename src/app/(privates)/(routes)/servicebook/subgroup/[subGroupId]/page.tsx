@@ -1,6 +1,6 @@
 import CardGroup from "@/components/CardGroup";
-import Heading from "@/components/Heading";
 import { Books } from "@/components/icons";
+import { Heading } from "@/components/ui";
 
 import { getAllSubGroups, getGroup } from "@/Utils/server/getInfo";
 
@@ -9,7 +9,6 @@ export default async function SubGroupPage({
 }: {
   params: { subGroupId: string };
 }) {
-  console.log("aqui", params.subGroupId)
   const subGroups = await getAllSubGroups(params.subGroupId);
   const group = await getGroup(params.subGroupId);
 

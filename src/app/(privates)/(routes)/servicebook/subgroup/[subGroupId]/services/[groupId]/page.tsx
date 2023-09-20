@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Heading from "@/components/Heading";
+import { Heading } from "@/components/ui";
 
 import { getAllServices } from "@/Utils/server/getInfo";
 

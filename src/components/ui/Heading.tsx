@@ -12,7 +12,7 @@ export function Heading({ title, subtitle }: HeadingProps) {
       {subtitle && (
         <p className="text-lg font-medium text-black-text/80">{subtitle}</p>
       )}
-      <hr className="mt-2=1 h-px w-full bg-secondary-2" />
+      <hr className="mt-1 h-px w-full bg-secondary-2" />
     </>
   );
 }

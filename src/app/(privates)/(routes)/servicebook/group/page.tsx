@@ -1,6 +1,6 @@
 import CardGroup from "@/components/CardGroup";
-import Heading from "@/components/Heading";
 import { Books } from "@/components/icons";
+import { Heading } from "@/components/ui";
 
 import { getAllGroups } from "@/Utils/server/getInfo";
 
