@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 
-import { House, Signpost, Sparkle, SquaresFour, User, Users } from "@/components/icons";
+import { Gauge, Mail, Sparkle, User, Users } from "lucide-react";
 
 type Route = {
   href: string;
@@ -11,19 +11,14 @@ type Route = {
 
 export const routes = [
   {
-    href: "/",
-    label: "Home",
-    icon: House,
-  },
-  {
     href: "/dashboard",
     label: "Dashboard",
-    icon: SquaresFour,
+    icon: Gauge,
   },
   {
     href: "/servicebook",
     label: "Carta de Serviços",
-    icon: Signpost,
+    icon: Mail,
     subItems: [
       {
         href: "/group",
