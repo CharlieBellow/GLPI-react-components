@@ -1,9 +1,9 @@
-import CardCreateUser from "@/components/Cards/CardCreateUser";
-
 // * criar novo usuário '/user/create'
 
+import CreateUser from "@/app/(privates)/(routes)/user/create/components/CreateUser";
+
 function FormCreateUser() {
-  return <CardCreateUser />;
+  return <CreateUser />;
 }
 
 export default FormCreateUser;

@@ -5,13 +5,13 @@ import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { CardGeneric } from "@/components/Cards/CardGeneric";
-import { Button, Input } from "@/components/ui";
+import { Button, CheckBox, Input } from "@/components/ui";
 import { TipTapTextEditor } from "@/components/ui/TipTapTextEditor";
 
 import { useHandleApiError, useMessage } from "@/hooks";
 
-import { postService } from "../../Utils/server/postInfo";
-import { validationSchema } from "../../Utils/validations";
+import { postService } from "../../../../../../../Utils/server/postInfo";
+import { validationSchema } from "../../../../../../../Utils/validations";
 
 export const lettersOnly = /[^a-zA-Z]/g;
 
@@ -20,7 +20,8 @@ const formSchema = yup.object().shape({
   definition: validationSchema.title,
   addFile: validationSchema.file,
   description: validationSchema.descriptionService,
-  // personType: validationSchema.personType,
+  personType: yup.array(yup.string()),
+  isPatromonyIdRequired: validationSchema.isPatromonyIdRequired
 });
 
 type FormValues = yup.InferType<typeof formSchema>;
@@ -31,6 +32,7 @@ export function CardCreateService() {
     control,
     reset,
     handleSubmit,
+    // setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     mode: "onBlur",
@@ -39,7 +41,7 @@ export function CardCreateService() {
       addFile: undefined,
       description: "",
       // personType: [],
-      // isPatromonyIdRequired: false,
+      isPatromonyIdRequired: false,
       definition: "",
     },
     resolver: yupResolver(formSchema),
@@ -95,38 +97,52 @@ export function CardCreateService() {
               );
             }}
           />
-
-          {/* <div className="">
-              <EditorField name="description" />
-            </div>
-            <div className="font-">
-              <CardLabelInputCheckBoolean
-                name="isPatromonyIdRequired"
-                label="Requisitar patrimônio"
-              />
-            </div> */}
+          {
+            
+}
+          
+       {/*    <CheckBox
+            {...register("isPatromonyIdRequired")}
+               onCheckedChange={field.onChange}
+            label="Requisitar patrimônio"
+          
+              /> */}
+           
 
           <div>
             <p>Quem pode criar esse serviço? (selecione pelo menos um)</p>
-            {/* <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 ">
-                <CardLabelInputCheckbox
+            <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 ">
+              {/*   <CheckBox
+                onCheckedChange={(value) =>
+                  setValue()
+                }
                   name="personType"
                   value="Discente"
-                />
-                <CardLabelInputCheckbox
+                  label="Discente"
+                /> */}
+                <CheckBox
+                {...register("personType")}
                   name="personType"
                   value="Técnico Administrativo"
+                  label="Técnico Administrativo"
                 />
-                <CardLabelInputCheckbox name="personType" value="Docente" />
-                <CardLabelInputCheckbox
+                <CheckBox
+                {...register("personType")} name="personType" value="Docente"
+               label="Docente"
+              />
+                <CheckBox
+                {...register("personType")}
                   name="personType"
                   value="Discente Pós-Graduação"
+                  label="Discente Pós-Graduação"
                 />
-                <CardLabelInputCheckbox
+                <CheckBox
+                {...register("personType")}
                   name="personType"
                   value="Terceirizado"
+                  label="Terceirizado"
                 />
-              </div> */}
+              </div>
           </div>
           <div className="mr-14 mt-10 flex justify-end gap-x-3.5">
             <>

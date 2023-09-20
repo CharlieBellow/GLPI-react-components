@@ -1,9 +1,9 @@
-import CardAddUser from "@/components/Cards/CardAddUser";
+import AddUser from "@/app/(privates)/(routes)/user/add/components/AddUser";
 
 // * adicionar novo usuário 'user/add'
 
 function FormAddUser() {
-  return <CardAddUser />;
+  return <AddUser />;
 }
 
 export default FormAddUser;

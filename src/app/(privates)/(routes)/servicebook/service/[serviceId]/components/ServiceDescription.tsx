@@ -8,13 +8,13 @@ import { Button } from "@/components/ui";
 
 import { Service } from "@/types";
 
-import InfoServiceLabel from "../ServicesComponent/InfoServiceLabel";
-import InfoServiceSeparator from "../ServicesComponent/InfoServiceSeparator";
-import RenderEnumAsLabels from "../ServicesComponent/RenderEnumAsLabels";
+import InfoServiceLabel from "../../../../../../../components/ServicesComponent/InfoServiceLabel";
+import InfoServiceSeparator from "../../../../../../../components/ServicesComponent/InfoServiceSeparator";
+import RenderEnumAsLabels from "../../../../../../../components/ServicesComponent/RenderEnumAsLabels";
 
 type CardServiceDescriptionProps = Service;
 
-export default function CardServiceDescription({
+export default function ServiceDescription({
   contactInfo,
   deadline,
   definition,

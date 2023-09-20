@@ -13,8 +13,8 @@ import { useHandleApiError } from "@/hooks";
 
 import { postUser } from "@/services/user";
 
-import { User } from "../../Utils/server/types";
-import { validationSchema } from "../../Utils/validations";
+import { User } from "../../../../../../Utils/server/types";
+import { validationSchema } from "../../../../../../Utils/validations";
 
 const formSchema = yup.object().shape({
   fullName: validationSchema.fullName,
@@ -30,7 +30,7 @@ type UserInfoProps = {
 type FormValues = yup.InferType<typeof formSchema>;
 
 // ! criar rota pra alterar senha / esquecer
-function CardUserInfo({ name, email, password }: UserInfoProps) {
+function UserInfo(user: UserInfoProps) {
   const handleApiError = useHandleApiError();
 
   const {
@@ -41,9 +41,9 @@ function CardUserInfo({ name, email, password }: UserInfoProps) {
   } = useForm<FormValues>({
     mode: "onBlur",
     defaultValues: {
-      name: name,
-      email: email,
-      password: password,
+      fullName: user.user.name,
+      email: user.user.email,
+      password: user.user.password,
     },
   });
 
@@ -79,14 +79,14 @@ function CardUserInfo({ name, email, password }: UserInfoProps) {
                 errorMessage={errors.fullName?.message}
                 label="Nome Completo"
                 type="text"
-                disabled={name ? true : false}
+                disabled={user.user.name ? true : false}
               />
               <Input
                 {...register("email")}
                 errorMessage={errors.email?.message}
                 label="E-mail"
                 type="email"
-                disabled={name ? true : false}
+                disabled={user.user.name ? true : false}
               />
 
               <Input
@@ -94,7 +94,7 @@ function CardUserInfo({ name, email, password }: UserInfoProps) {
                 errorMessage={errors.password?.message}
                 label="Senha"
                 type="password"
-                disabled={name ? true : false}
+                disabled={user.user.name ? true : false}
               />
             </div>
             <div className="mt-10 flex justify-end  ">
@@ -115,4 +115,4 @@ function CardUserInfo({ name, email, password }: UserInfoProps) {
   );
 }
 
-export default CardUserInfo;
+export default UserInfo;

@@ -8,8 +8,8 @@ import { Button, Input } from "@/components/ui";
 
 import { useHandleApiError, useMessage } from "@/hooks";
 
-import { postUser } from "../../Utils/server/postInfo";
-import { validationSchema } from "../../Utils/validations";
+import { postUser } from "../../../../../../Utils/server/postInfo";
+import { validationSchema } from "../../../../../../Utils/validations";
 
 const formSchema = yup.object().shape({
   name: validationSchema.fullName,

@@ -14,7 +14,7 @@ import { updateServiceOrder } from "@/services/service-book/service-order";
 
 import { ServiceOrder } from "@/Utils/server/types";
 
-import { validationSchema } from "../../Utils/validations";
+import { validationSchema } from "../../../../../../../../Utils/validations";
 
 const formSchema = yup.object().shape({
   description: validationSchema.description,
@@ -29,7 +29,7 @@ type CardUpdateServiceOrderProps = {
   serviceOrderId: string;
 };
 
-export default function CardUpdateServiceOrder({
+export default function CardEditServiceOrder({
   serviceOrderInfo,
   serviceOrderId,
 }: CardUpdateServiceOrderProps) {

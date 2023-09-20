@@ -13,8 +13,8 @@ import { useHandleApiError, useMessage } from "@/hooks";
 
 import { postUser } from "@/Utils/server/postInfo";
 
-import { User } from "../../Utils/server/types";
-import { validationSchema } from "../../Utils/validations";
+import { User } from "../../../../../../Utils/server/types";
+import { validationSchema } from "../../../../../../Utils/validations";
 
 
 const formSchema = yup.object().shape({
@@ -32,7 +32,7 @@ type UserProps = {
 
 type FormValues = yup.InferType<typeof formSchema>;
 
-export default function CardUpdateUser({ name, email, avatar }: UserProps) {
+export default function UpdateUser({user}: UserProps) {
   const { successMessage } = useMessage();
 
   const myuser = {
@@ -40,7 +40,7 @@ export default function CardUpdateUser({ name, email, avatar }: UserProps) {
     name: "Charlie Bellow",
     password: "$2a$08$epbV.KVDbEQSctWVhSocbOo1KaysC886/pDWopJDOwtfmlpzV9ygm",
     email: "email@email.com",
-    avatar: avatar,
+    avatar: user.avatar,
     isAdmin: false,
     created_at: "2023-03-22T16:19:14.843Z",
     permissions: [],
@@ -55,8 +55,8 @@ export default function CardUpdateUser({ name, email, avatar }: UserProps) {
   } = useForm<FormValues>({
     mode: "onBlur",
     defaultValues: {
-      name: name,
-      email: email,
+      name: user.name,
+      email: user.email,
       password: "",
       confirmPassword: "",
     },
@@ -104,7 +104,7 @@ export default function CardUpdateUser({ name, email, avatar }: UserProps) {
                 {...register("name")}
                 label="Nome Completo"
                 type="text"
-                disabled={name ? true : false}
+                disabled={user.name ? true : false}
                 errorMessage={errors.name?.message}
               />
               <Input
@@ -112,7 +112,7 @@ export default function CardUpdateUser({ name, email, avatar }: UserProps) {
                 type="email"
                 {...register("email")}
                 errorMessage={errors.email?.message}
-                disabled={name ? true : false}
+                disabled={user.name ? true : false}
               />
 
               <Input

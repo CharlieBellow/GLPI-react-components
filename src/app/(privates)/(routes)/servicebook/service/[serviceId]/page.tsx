@@ -1,6 +1,6 @@
-import CardServiceDescription from "@/components/Cards/CardServiceDescription";
-
 import { getService } from "@/Utils/server/getInfo";
+
+import ServiceDescription from "@/app/(privates)/(routes)/servicebook/service/[serviceId]/components/ServiceDescription";
 
 export default async function ServiceLetter({
   params: { serviceId },
@@ -10,7 +10,7 @@ export default async function ServiceLetter({
   const service = await getService(serviceId);
 
   return (
-    <CardServiceDescription
+    <ServiceDescription
       id={service.id}
       description={service.description}
       title={service.title}

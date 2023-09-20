@@ -11,7 +11,7 @@ import { useMessage } from "@/hooks";
 
 import { postUser } from "@/Utils/server/postInfo";
 
-import { validationSchema } from "../../Utils/validations";
+import { validationSchema } from "../../../../../../Utils/validations";
 
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
   '&[data-state="active"]': {
@@ -72,7 +72,7 @@ const formSchema = yup.object().shape({
 
 type FormValues = yup.InferType<typeof formSchema>;
 
-export function CardAddUser() {
+export function AddUser() {
   const {
     register,
     handleSubmit,
@@ -216,8 +216,11 @@ export function CardAddUser() {
                     <></>
                   </div>
                   <div>
-                    <Input {...register("city")} label="Cidade" type="text" 
-                    errorMessage={errors.city?.message}
+                    <Input
+                      {...register("city")}
+                      label="Cidade"
+                      type="text"
+                      errorMessage={errors.city?.message}
                     />
                   </div>
                 </div>

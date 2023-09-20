@@ -1,6 +1,6 @@
-import CardUpdateUser from "@/components/Cards/CardUpdateUser";
-
 import { getUserId } from "@/services/user";
+
+import UpdateUser from "@/app/(privates)/(routes)/user/update/components/UpdateUser";
 
 // * atualizar informações do usuario 'user/update'
 
@@ -19,5 +19,5 @@ const myuser = {
 export default async function FormUpdateUser() {
   const user = await getUserId(myuser.id);
 
-  return <CardUpdateUser user={user} />;
+  return <UpdateUser user={user} />;
 }

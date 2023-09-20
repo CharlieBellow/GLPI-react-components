@@ -1,6 +1,6 @@
-import CardUserInfo from "@/components/Cards/CardUserInfo";
-
 import { getUserId } from "@/services/user";
+
+import UserInfo from "@/app/(privates)/(routes)/user/info/components/UserInfo";
 // * informação do usuário atual 'user/info'
 
 const myuser = {
@@ -16,10 +16,7 @@ const myuser = {
 };
 
 export default async function FormUserInfo() {
-const user = await getUserId(myuser.id)
+  const user = await getUserId(myuser.id);
 
-
-  return <CardUserInfo user={user}/>;
+  return <UserInfo user={user} />;
 }
-
-

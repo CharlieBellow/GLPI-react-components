@@ -269,7 +269,8 @@ export const validationSchema = {
     .max(100, "No máximo 100 caracteres")
     .required(
       "Digite o número de série do patrimônio ao qual o serviço está sendo solicitado"
-    ),
+  ),
+  isPatromonyIdRequired: yup.boolean().oneOf([true], "é obrigado informar")
 };
 
 export const validations = yup.object().shape(validationSchema);
