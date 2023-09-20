@@ -16,6 +16,7 @@ import {
   DialogTitle,
 } from "@/components/ui/Dialog";
 
+import { useMessage } from "@/hooks";
 import { useHandleApiError } from "@/hooks/useHandleApiError";
 
 import { updateGroup } from "@/services/service-book/groups";
@@ -23,8 +24,6 @@ import { updateGroup } from "@/services/service-book/groups";
 import { validationSchema } from "@/Utils/validations";
 
 import { Group } from "@/types";
-
-import { useMessage } from "@/Contexts/MessageContext";
 
 type EditGroupDialogProps = {
   isOpen: boolean;

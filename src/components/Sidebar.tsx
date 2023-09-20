@@ -13,7 +13,7 @@ import { useMenuStore } from "@/hooks/useMenuStore";
 import { cn } from "@/Utils/cn";
 import { routes } from "@/Utils/routes";
 
-export default function Sidebar() {
+export function Sidebar() {
   const [accordionValue, setAccordionValue] = useState("");
   const { isOpen, setIsOpen } = useMenuStore();
   const styles = { "--position-bg": "to bottom" } as CSSProperties;

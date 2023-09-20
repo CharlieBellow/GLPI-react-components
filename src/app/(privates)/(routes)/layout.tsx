@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import CardMenu from "@/components/Cards/CardMenu";
-import Sidebar from "@/components/Sidebar/Sidebar";
+import { Sidebar } from "@/components/Sidebar";
 
 export default function PrivateLayout({ children }: { children: ReactNode }) {
   return (

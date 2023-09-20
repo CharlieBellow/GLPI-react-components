@@ -15,11 +15,10 @@ import {
   DialogTitle,
 } from "@/components/ui/Dialog";
 
+import { useMessage } from "@/hooks";
 import { useHandleApiError } from "@/hooks/useHandleApiError";
 
 import { deleteGroup } from "@/services/service-book/groups";
-
-import { useMessage } from "@/Contexts/MessageContext";
 
 type DeleteGroupDialogProps = {
   isOpen: boolean;

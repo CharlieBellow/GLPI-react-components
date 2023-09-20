@@ -2,6 +2,8 @@
 
 import { useCallback, useState } from "react";
 
+import Link from "next/link";
+
 import { DotsThreeVertical } from "@/components/icons";
 import {
   DropdownMenu,
@@ -70,6 +72,9 @@ export function ColumnDropDownMenu({
           <DropdownMenuItem onClick={() => handleDeleteDialogOpenChange()}>
             Deletar
           </DropdownMenuItem>
+          <Link href={`/servicebook/subgroup/${id}/admin`}>
+            <DropdownMenuItem>Admin sub categoria</DropdownMenuItem>
+          </Link>
         </DropdownMenuContent>
       </DropdownMenu>
       <EditGroupDialog

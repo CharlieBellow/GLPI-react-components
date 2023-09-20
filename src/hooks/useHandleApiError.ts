@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { useMessage } from "@/Contexts/MessageContext";
+import { useMessage } from "@/hooks";
+
 import { DEFAULT_ERRORS } from "@/exceptions/default-errors";
 import { HttpError } from "@/exceptions/http-error";
 
