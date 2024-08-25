@@ -1,3 +1,11 @@
+![glpi](https://github.com/user-attachments/assets/e9fdaece-65fb-4980-92db-c10f5192c30b)
+
+## GLPI
+
+É um site de gerenciamento de chamados que tive a oportunidade de desenvolver junto com a equipe de sistemas da Gerencia de Tecnologia da informação (GTI) da UFAL onde estagio atualmente. Foram dois anos de muito código, erros, bugs, migrações, melhorias, mas chegamos na reta final! Nesse projeto aprendi um pouco de tudo, não só no código, mas também o trabalho em equipe! Aqui começamos com a parte gráfica onde eu assumi o projeto no Figma porque não tinham outras pessoas quando entrei, depois o pessoal foi chegando e contribuindo. O projeto foi feito em React, depois migramos para Next e tive a oportunidade de trabalhar com Tailwind CSS, Radix UI, Chakra UI, Formik, Jest, Yup, consumo de APIs entre outros. O back-end foi feito em NodeJs ultilizando o Docker, tive a oportunidade de aprender a fazer integração com o banco conhecendo o seu funcionamento básico. A equipe sempre solícita, para nos ajudar a organizar as tasks usamos as Issues do Github e o ClickUp.
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
