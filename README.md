@@ -1,7 +1,9 @@
 ![login](https://github.com/user-attachments/assets/e5c8e133-32c0-41b5-abea-c89cb68b4620)
 ![grupos](https://github.com/user-attachments/assets/75607e48-44a8-4a47-99e1-d77e6c5ed804)
-![Captura de tela 2025-02-05 105759](https://github.com/user-attachments/assets/9278f0b2-1888-4461-b3d5-9e488b620ae9)
-![Captura de tela 2025-02-05 114408](https://github.com/user-attachments/assets/d96e0510-de02-42da-b332-7ac481b8b7f8)
+![borrado-2](https://github.com/user-attachments/assets/02acda07-b9f6-4349-95b6-aaffbde8ff85)
+![borrado](https://github.com/user-attachments/assets/43965ff6-f863-4179-ac58-6747603f2570)
+![borrado -1](https://github.com/user-attachments/assets/d1919cb6-3848-4365-8d5b-976d3bb47161)
+
 
 ## GLPI
 
