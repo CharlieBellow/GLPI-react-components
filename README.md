@@ -1,4 +1,3 @@
-![glpi](https://github.com/user-attachments/assets/e9fdaece-65fb-4980-92db-c10f5192c30b)
 ![login](https://github.com/user-attachments/assets/e5c8e133-32c0-41b5-abea-c89cb68b4620)
 ![grupos](https://github.com/user-attachments/assets/75607e48-44a8-4a47-99e1-d77e6c5ed804)
 ![Captura de tela 2025-02-05 105759](https://github.com/user-attachments/assets/9278f0b2-1888-4461-b3d5-9e488b620ae9)
