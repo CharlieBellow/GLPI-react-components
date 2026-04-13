@@ -10,7 +10,7 @@
 Este repositório contém a biblioteca de componentes e a base arquitetural desenvolvida para o novo sistema de chamados da **Universidade Federal de Alagoas (UFAL)**. 
 
 > [!IMPORTANT]
-> **Nota de Compliance:** O projeto completo reside em um repositório privado governamental. Este repositório público serve como **Portfólio Técnico**, demonstrando a arquitetura de componentes, padrões de código e design system utilizados na versão final.
+> **Nota de Compliance:** O projeto completo reside em um repositório privado governamental. Este repositório público serve como **Portfólio Técnico**, demonstrando a arquitetura de componentes, padrões de código e design system que podem ou não terem sido utilizados na versão final.
 
 ## 🚀 Minha Atuação
 
