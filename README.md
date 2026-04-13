@@ -5,11 +5,43 @@
 ![borrado -1](https://github.com/user-attachments/assets/d1919cb6-3848-4365-8d5b-976d3bb47161)
 
 
-## GLPI
+# GLPI - Sistema de Gestão de Chamados (UFAL)
 
-É um site de gerenciamento de chamados que tive a oportunidade de desenvolver junto com a equipe de sistemas da Gerencia de Tecnologia da informação (GTI) da UFAL onde estagio atualmente. Foram dois anos de muito código, erros, bugs, migrações, melhorias, mas chegamos na reta final! Nesse projeto aprendi um pouco de tudo, não só no código, mas também o trabalho em equipe! Aqui começamos com a parte gráfica onde eu assumi o projeto no Figma porque não tinham outras pessoas quando entrei, depois o pessoal foi chegando e contribuindo. O projeto foi feito em React utilizando Typescript, depois migramos para Next e tive a oportunidade de trabalhar com Tailwind CSS, Radix UI, Chakra UI, ES Lint, Formik, Jest, Yup, axios, ShadCn UI, Cypress, Storybook, consumo de APIs, Git na prática com a equipe, entre outros. O back-end foi feito em NodeJs ultilizando o Docker, tive a oportunidade de aprender a fazer integração com o banco conhecendo o seu funcionamento básico. Também pude fazer uma pesquisa de campo e teste nas tela para saber qual era mais adequada aos usuários. A equipe sempre solícita, para nos ajudar a organizar as tasks usamos as Issues do Github e o ClickUp. Atualmete esse site está repaginado e teve várias melhorias de design, mas como se trata de uma empresa federal, não posso compartilhar o código mais atual pois está em repositório privado. Quando o site estiver rodando publicamente compartilho o link aqui.
+Este repositório contém a biblioteca de componentes e a base arquitetural desenvolvida para o novo sistema de chamados da **Universidade Federal de Alagoas (UFAL)**. 
 
+> [!IMPORTANT]
+> **Nota de Compliance:** O projeto completo reside em um repositório privado governamental. Este repositório público serve como **Portfólio Técnico**, demonstrando a arquitetura de componentes, padrões de código e design system utilizados na versão final.
 
+## 🚀 Minha Atuação
+
+Neste projeto, exerci um papel híbrido entre **Liderança de Produto (PO)** e **Engenharia de Software**:
+
+* **Product Ownership:** Definição de requisitos, gestão de backlog via GitHub Issues/ClickUp e priorização de funcionalidades com foco no valor para o usuário.
+* **UX/UI Design:** Responsável pela concepção visual no **Figma**, criando um Design System escalável para futuras aplicações da GTI.
+* **Tech Lead:** Liderança da migração de React para Next.js, estabelecendo padrões de tipagem avançada e componentes reutilizáveis.
+
+## 🛠️ Stack Tecnológica
+
+* **Core:** React, Next.js, TypeScript.
+* **Estilização & UI:** Tailwind CSS, Radix UI, ShadCn UI, Chakra UI.
+* **Qualidade & Testes:** Jest, Cypress, Storybook, ESLint.
+* **Formulários & Validação:** Formik, Yup.
+* **Infra:** Node.js (Backend), Docker, Consumo de APIs REST.
+
+## 🧠 Metodologia de Design
+
+Apliquei princípios de **Psicologia Cognitiva** e **Design Thinking** para reformular a experiência do usuário. Através de pesquisas de campo e testes A/B, conseguimos reduzir a carga cognitiva no preenchimento de chamados, otimizando o fluxo de trabalho do setor de TI.
+
+## 🔗 Links do Projeto
+
+* **Protótipo de Alta Fidelidade:** [Acesse o Figma aqui](https://www.figma.com/file/YvgimWmPZIPsgqAD7JElCA/GLPI---UFAL-Arapiraca?node-id=4%3A3849)
+* **Documentação Visual:** Disponível nas imagens do diretório `/docs` (se você tiver prints, adicione-os!).
+
+---
+Desenvolvido com foco em escalabilidade e experiência do usuário por **Charlie Bellow**.
+
+---
+## Veja como rodar o projeto:
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
